@@ -26,13 +26,14 @@ namespace mag_app.Winform.Windows
 		{
 			if (loginPass.UseSystemPasswordChar == PasswordPropertyTextAttribute.No.Password)
 			{
-				loginPassShow.Image = Image.FromFile("C:\\Users\\davok\\OneDrive\\Рабочий стол\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
-				loginPass.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
+				loginPassShow.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
+
+                loginPass.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
 			}
 			else
 			{
 				loginPass.UseSystemPasswordChar = PasswordPropertyTextAttribute.No.Password;
-				loginPassShow.Image = Image.FromFile("C:\\Users\\davok\\OneDrive\\Рабочий стол\\mag-app\\src\\mag-app.Winform\\Resources\\hide (1).png");
+				loginPassShow.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\hide (1).png");
 			}
 		}
 
