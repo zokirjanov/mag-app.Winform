@@ -28,68 +28,84 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.MenuPanel = new System.Windows.Forms.Panel();
-			this.marketbtn = new System.Windows.Forms.Button();
-			this.ControlPanel = new System.Windows.Forms.Panel();
-			this.MainPanel = new System.Windows.Forms.Panel();
-			this.MenuPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// MenuPanel
-			// 
-			this.MenuPanel.Controls.Add(this.marketbtn);
-			this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
-			this.MenuPanel.Location = new System.Drawing.Point(0, 0);
-			this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.MenuPanel.Name = "MenuPanel";
-			this.MenuPanel.Size = new System.Drawing.Size(219, 541);
-			this.MenuPanel.TabIndex = 0;
-			// 
-			// marketbtn
-			// 
-			this.marketbtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.marketbtn.Location = new System.Drawing.Point(11, 10);
-			this.marketbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.marketbtn.Name = "marketbtn";
-			this.marketbtn.Size = new System.Drawing.Size(194, 60);
-			this.marketbtn.TabIndex = 0;
-			this.marketbtn.Text = "Store";
-			this.marketbtn.UseVisualStyleBackColor = true;
-			this.marketbtn.Click += new System.EventHandler(this.marketbtn_Click);
-			// 
-			// ControlPanel
-			// 
-			this.ControlPanel.Dock = System.Windows.Forms.DockStyle.Right;
-			this.ControlPanel.Location = new System.Drawing.Point(838, 0);
-			this.ControlPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ControlPanel.Name = "ControlPanel";
-			this.ControlPanel.Size = new System.Drawing.Size(267, 541);
-			this.ControlPanel.TabIndex = 0;
-			// 
-			// MainPanel
-			// 
-			this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.MainPanel.Location = new System.Drawing.Point(219, 0);
-			this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.MainPanel.Name = "MainPanel";
-			this.MainPanel.Size = new System.Drawing.Size(619, 541);
-			this.MainPanel.TabIndex = 1;
-			// 
-			// Form1
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1105, 541);
-			this.Controls.Add(this.MainPanel);
-			this.Controls.Add(this.ControlPanel);
-			this.Controls.Add(this.MenuPanel);
-			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.Name = "Form1";
-			this.Text = "Form1";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-			this.Load += new System.EventHandler(this.Form1_Load);
-			this.MenuPanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.MenuPanel = new System.Windows.Forms.Panel();
+            this.marketbtn = new System.Windows.Forms.Button();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.MainFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.MenuPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // MenuPanel
+            // 
+            this.MenuPanel.Controls.Add(this.button1);
+            this.MenuPanel.Controls.Add(this.marketbtn);
+            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MenuPanel.Name = "MenuPanel";
+            this.MenuPanel.Size = new System.Drawing.Size(219, 635);
+            this.MenuPanel.TabIndex = 0;
+            // 
+            // marketbtn
+            // 
+            this.marketbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.marketbtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.marketbtn.Location = new System.Drawing.Point(13, 10);
+            this.marketbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.marketbtn.Name = "marketbtn";
+            this.marketbtn.Size = new System.Drawing.Size(194, 60);
+            this.marketbtn.TabIndex = 0;
+            this.marketbtn.Text = "My Stores";
+            this.marketbtn.UseVisualStyleBackColor = false;
+            this.marketbtn.Click += new System.EventHandler(this.marketbtn_Click);
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.MainPanel.Location = new System.Drawing.Point(660, 0);
+            this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(388, 635);
+            this.MainPanel.TabIndex = 1;
+            // 
+            // MainFlowPanel
+            // 
+            this.MainFlowPanel.Location = new System.Drawing.Point(224, 0);
+            this.MainFlowPanel.Name = "MainFlowPanel";
+            this.MainFlowPanel.Size = new System.Drawing.Size(433, 635);
+            this.MainFlowPanel.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(13, 83);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 60);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Add Store";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(1048, 635);
+            this.Controls.Add(this.MainFlowPanel);
+            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.MenuPanel);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.MenuPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 
@@ -97,7 +113,8 @@
 
 		private Panel MenuPanel;
 		private Button marketbtn;
-		private Panel ControlPanel;
 		private Panel MainPanel;
-	}
+        private FlowLayoutPanel MainFlowPanel;
+        private Button button1;
+    }
 }

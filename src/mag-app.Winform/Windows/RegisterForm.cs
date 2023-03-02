@@ -38,13 +38,13 @@ namespace mag_app.Winform.Windows
 		{
 			if (registerPasswordtb.UseSystemPasswordChar == PasswordPropertyTextAttribute.No.Password)
 			{
-				passwordShowbt.Image = Image.FromFile("C:\\Users\\davok\\OneDrive\\Рабочий стол\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
+				passwordShowbt.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
 				registerPasswordtb.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
 			}
 			else
 			{
 				registerPasswordtb.UseSystemPasswordChar = PasswordPropertyTextAttribute.No.Password;
-				passwordShowbt.Image = Image.FromFile("C:\\Users\\davok\\OneDrive\\Рабочий стол\\mag-app\\src\\mag-app.Winform\\Resources\\hide (1).png");
+				passwordShowbt.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\hide (1).png");
 			}
 		}
 
@@ -53,13 +53,13 @@ namespace mag_app.Winform.Windows
 			if (registerConfirmtb.UseSystemPasswordChar == PasswordPropertyTextAttribute.No.Password)
 			{
 				registerConfirmtb.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
-				confirmShowbt.Image = Image.FromFile("C:\\Users\\davok\\OneDrive\\Рабочий стол\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
+				confirmShowbt.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
 
 			}
 			else
 			{
 				registerConfirmtb.UseSystemPasswordChar = PasswordPropertyTextAttribute.No.Password;
-				confirmShowbt.Image = Image.FromFile("C:\\Users\\davok\\OneDrive\\Рабочий стол\\mag-app\\src\\mag-app.Winform\\Resources\\hide (1).png");
+				confirmShowbt.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\hide (1).png");
 			}
 		}
 
