@@ -1,4 +1,5 @@
 using mag_app.DataAccess.DbContexts;
+using mag_app.Winform.Components;
 using System;
 
 namespace mag_app.Winform
@@ -11,10 +12,23 @@ namespace mag_app.Winform
 			_dbContext = appDbContext;
 			InitializeComponent();
 		}
+		StorePanel storePanel;
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
 
+		}
+
+		private void marketbtn_Click(object sender, EventArgs e)
+		{
+			storePanel = new StorePanel(this);
+			MainPanel.Controls.Clear();
+			MainPanel.Controls.Add(storePanel);
+		}
+
+		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }
