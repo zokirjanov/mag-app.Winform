@@ -48,7 +48,7 @@ namespace mag_app.Service.Service
 		{
 			var account = await _repository.Users.FirstOrDefaultAsync(
 		    x => x.Login.ToLower() == RegisterDto.Login.ToLower());
-			if (account != null) { return "User already exists"; }
+			if (account != null) { return "User already exists";}
 			var user = (User)RegisterDto;
 			var hash = PasswordHasher.Hash(RegisterDto.Password);
 			user.PasswordHash = hash.Hash;
