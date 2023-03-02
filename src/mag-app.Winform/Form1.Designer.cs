@@ -40,16 +40,18 @@
 			this.MenuPanel.Controls.Add(this.marketbtn);
 			this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
 			this.MenuPanel.Location = new System.Drawing.Point(0, 0);
+			this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.MenuPanel.Name = "MenuPanel";
-			this.MenuPanel.Size = new System.Drawing.Size(250, 721);
+			this.MenuPanel.Size = new System.Drawing.Size(219, 541);
 			this.MenuPanel.TabIndex = 0;
 			// 
 			// marketbtn
 			// 
 			this.marketbtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.marketbtn.Location = new System.Drawing.Point(13, 12);
+			this.marketbtn.Location = new System.Drawing.Point(11, 10);
+			this.marketbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.marketbtn.Name = "marketbtn";
-			this.marketbtn.Size = new System.Drawing.Size(222, 80);
+			this.marketbtn.Size = new System.Drawing.Size(194, 60);
 			this.marketbtn.TabIndex = 0;
 			this.marketbtn.Text = "Store";
 			this.marketbtn.UseVisualStyleBackColor = true;
@@ -58,27 +60,30 @@
 			// ControlPanel
 			// 
 			this.ControlPanel.Dock = System.Windows.Forms.DockStyle.Right;
-			this.ControlPanel.Location = new System.Drawing.Point(958, 0);
+			this.ControlPanel.Location = new System.Drawing.Point(838, 0);
+			this.ControlPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ControlPanel.Name = "ControlPanel";
-			this.ControlPanel.Size = new System.Drawing.Size(305, 721);
+			this.ControlPanel.Size = new System.Drawing.Size(267, 541);
 			this.ControlPanel.TabIndex = 0;
 			// 
 			// MainPanel
 			// 
 			this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.MainPanel.Location = new System.Drawing.Point(250, 0);
+			this.MainPanel.Location = new System.Drawing.Point(219, 0);
+			this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.MainPanel.Name = "MainPanel";
-			this.MainPanel.Size = new System.Drawing.Size(708, 721);
+			this.MainPanel.Size = new System.Drawing.Size(619, 541);
 			this.MainPanel.TabIndex = 1;
 			// 
 			// Form1
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1263, 721);
+			this.ClientSize = new System.Drawing.Size(1105, 541);
 			this.Controls.Add(this.MainPanel);
 			this.Controls.Add(this.ControlPanel);
 			this.Controls.Add(this.MenuPanel);
+			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
