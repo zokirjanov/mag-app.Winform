@@ -68,7 +68,7 @@
 			// 
 			this.loginPassShow.BackColor = System.Drawing.Color.Transparent;
 			this.loginPassShow.Image = ((System.Drawing.Image)(resources.GetObject("loginPassShow.Image")));
-			this.loginPassShow.Location = new System.Drawing.Point(398, 353);
+			this.loginPassShow.Location = new System.Drawing.Point(398, 354);
 			this.loginPassShow.Name = "loginPassShow";
 			this.loginPassShow.Size = new System.Drawing.Size(30, 29);
 			this.loginPassShow.TabIndex = 14;
