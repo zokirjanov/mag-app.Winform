@@ -67,10 +67,6 @@ namespace mag_app.Service.Service
 			if (user is null) { return "User not Found"; }
             string path = "database.txt";
             File.WriteAllText(path, LoginDto.Login + ":" + LoginDto.Password);
-
-   //         var path = Environment.CurrentDirectory + "\\RememberME.txt";
-			//var json = JsonConvert.SerializeObject(LoginDto, Formatting.Indented);
-			//File.WriteAllText(path, json!);
 			return "true";
 		}
 	}

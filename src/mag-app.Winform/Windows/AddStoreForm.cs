@@ -51,11 +51,19 @@ namespace mag_app.Winform.Windows
                 var res = await _service.CreateAsync(storeDto);
                 if (res == "true")
                 {
-                    MessageBox.Show("Store added successfully ");
                     storeNametb.Text = "";
                     MyStoresForm myStoresForm = new MyStoresForm(new AppDbContext());
                     myStoresForm.Refresh();
 
+                    DialogResult dlg = MessageBox.Show("Store added successfully \n Do you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (dlg == DialogResult.OK)
+                    {
+                        //do nothing
+                    }
+                    if (dlg == DialogResult.Cancel)
+                    {
+                        this.Hide();
+                    }
                 }
                 else
                 {
