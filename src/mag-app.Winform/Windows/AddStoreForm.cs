@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Accounts;
 using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Service;
@@ -44,25 +45,29 @@ namespace mag_app.Winform.Windows
                 AddStoreDto storeDto = new AddStoreDto()
                 {
                     StoreName = storeNametb.Text,
-                    EmployeeCount = int.Parse(empNumbertb.Text)
+                    EmployeeCount = int.Parse(empNumbertb.Text),
+                    EmployeeID = IdentitySingelton.GetInstance().EmployeeId
                 };
                 var res = await _service.CreateAsync(storeDto);
                 if (res == "true")
                 {
                     MessageBox.Show("Store added successfully ");
+                    storeNametb.Text = "";
+                    MyStoresForm myStoresForm = new MyStoresForm(new AppDbContext());
+                    myStoresForm.Refresh();
+
                 }
                 else
                 {
                     MessageBox.Show("Login Already Exists, try another name");
                     storeNametb.Text = "";
                 }
-
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }

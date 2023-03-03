@@ -1,5 +1,6 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Users;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Accounts;
 using mag_app.Service.Interfaces.Users;
 using mag_app.Service.Security;
@@ -29,7 +30,8 @@ namespace mag_app.Service.Service
 			var checkPass = PasswordHasher.Verify(LoginDto.Password, user.Salt, user.PasswordHash);
 			if (checkPass)
 			{
-					return true.ToString();
+                IdentitySingelton.BuildInstance(user.Id);
+                return true.ToString();
 			}
 			return "Password wrong";
 		}
@@ -63,9 +65,12 @@ namespace mag_app.Service.Service
 		{
 			var user = await _repository.Users.FirstOrDefaultAsync(x => x.Login.ToLower() == LoginDto.Login.ToLower());
 			if (user is null) { return "User not Found"; }
-			var path = Environment.CurrentDirectory + "\\RememberME.txt";
-			var json = JsonConvert.SerializeObject(LoginDto, Formatting.Indented);
-			File.WriteAllText(path, json!);
+            string path = "database.txt";
+            File.WriteAllText(path, LoginDto.Login + ":" + LoginDto.Password);
+
+   //         var path = Environment.CurrentDirectory + "\\RememberME.txt";
+			//var json = JsonConvert.SerializeObject(LoginDto, Formatting.Indented);
+			//File.WriteAllText(path, json!);
 			return "true";
 		}
 	}

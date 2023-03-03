@@ -49,14 +49,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(417, 596);
+            this.panel1.Size = new System.Drawing.Size(417, 260);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // empNumbertb
             // 
             this.empNumbertb.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.empNumbertb.Location = new System.Drawing.Point(258, 241);
+            this.empNumbertb.Location = new System.Drawing.Point(256, 100);
             this.empNumbertb.Name = "empNumbertb";
             this.empNumbertb.Size = new System.Drawing.Size(93, 32);
             this.empNumbertb.TabIndex = 9;
@@ -65,7 +65,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(221, 311);
+            this.button2.Location = new System.Drawing.Point(219, 170);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(141, 47);
             this.button2.TabIndex = 8;
@@ -77,7 +77,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(48, 311);
+            this.button1.Location = new System.Drawing.Point(46, 170);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 47);
             this.button1.TabIndex = 7;
@@ -91,7 +91,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(48, 245);
+            this.label1.Location = new System.Drawing.Point(46, 104);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 25);
             this.label1.TabIndex = 6;
@@ -102,7 +102,7 @@
             this.storeNametb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.storeNametb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.storeNametb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.storeNametb.Location = new System.Drawing.Point(48, 185);
+            this.storeNametb.Location = new System.Drawing.Point(46, 44);
             this.storeNametb.Name = "storeNametb";
             this.storeNametb.PlaceholderText = "Store Name";
             this.storeNametb.Size = new System.Drawing.Size(314, 30);
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 596);
+            this.ClientSize = new System.Drawing.Size(417, 260);
             this.Controls.Add(this.panel1);
             this.Name = "AddStoreForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

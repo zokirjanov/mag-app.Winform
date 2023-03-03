@@ -28,36 +28,38 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.marketbtn = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.MainFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
+            this.MenuPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.MenuPanel.Controls.Add(this.button1);
             this.MenuPanel.Controls.Add(this.marketbtn);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(219, 635);
+            this.MenuPanel.Size = new System.Drawing.Size(219, 569);
             this.MenuPanel.TabIndex = 0;
+            this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(13, 83);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(6, 528);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 60);
+            this.button1.Size = new System.Drawing.Size(210, 38);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Add Store";
-            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Text = "Log out";
+            this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // marketbtn
@@ -75,28 +77,19 @@
             // 
             // MainPanel
             // 
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MainPanel.Location = new System.Drawing.Point(648, 0);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(219, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(400, 635);
+            this.MainPanel.Size = new System.Drawing.Size(652, 569);
             this.MainPanel.TabIndex = 1;
-            // 
-            // MainFlowPanel
-            // 
-            this.MainFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainFlowPanel.Location = new System.Drawing.Point(219, 0);
-            this.MainFlowPanel.Name = "MainFlowPanel";
-            this.MainFlowPanel.Size = new System.Drawing.Size(429, 635);
-            this.MainFlowPanel.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1048, 635);
-            this.Controls.Add(this.MainFlowPanel);
+            this.ClientSize = new System.Drawing.Size(871, 569);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.MenuPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -115,7 +108,6 @@
 		private Panel MenuPanel;
 		private Button marketbtn;
 		private Panel MainPanel;
-        private FlowLayoutPanel MainFlowPanel;
         private Button button1;
     }
 }
