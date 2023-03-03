@@ -13,8 +13,7 @@ namespace mag_app.Service.Interfaces.Stores
         public Task<string> CreateAsync(AddStoreDto storeDto);
         public Task<bool> DeleteAsync(long id);
         public Task<bool> UpdateAsync(Store store, long id);
-
-        //public Task<IQueryable<AddStoreDto>> GetAllAsync(AddStoreDto storeDto);
+        public Task<List<Store>> GetAllAsync();
        
     }
 }

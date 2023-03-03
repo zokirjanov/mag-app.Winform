@@ -2,6 +2,7 @@
 using mag_app.Service.Common.Attributes;
 using mag_app.Service.Dtos.Accounts;
 using mag_app.Service.Service;
+using Microsoft.Data.Sqlite;
 using System.ComponentModel;
 
 namespace mag_app.Winform.Windows
@@ -19,8 +20,12 @@ namespace mag_app.Winform.Windows
 
 		private void LoginForm_Load(object sender, EventArgs e)
 		{
-
-		}
+            string path = "database.txt";
+            var result = File.ReadAllText(path);
+            string[] tokens = result.Split(':');
+            loginlogin.Text = tokens[0];
+            loginPass.Text = tokens[1];
+        }
 
 		private void loginPassShow_Click(object sender, EventArgs e)
 		{
@@ -46,6 +51,7 @@ namespace mag_app.Winform.Windows
 
 		private async void registerBtn_Click(object sender, EventArgs e)
 		{
+
 			if (!string.IsNullOrEmpty(loginlogin.Text) && !string.IsNullOrEmpty(loginPass.Text)
 			  && loginLoginerror.Text == "" && loginPasserror.Text == "")
 			{
@@ -67,8 +73,8 @@ namespace mag_app.Winform.Windows
 				{
 					if (rememberMe.Checked)
 					{
-						var remember = await _service.AccountRememberMeAsync(accountLoginDto);
-					}
+						var remember = await _service.AccountRememberMeAsync(accountLoginDto);                    
+                    }
 					else
 					{
 						_service.AccountLogout();

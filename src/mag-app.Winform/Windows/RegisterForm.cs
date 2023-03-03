@@ -140,5 +140,12 @@ namespace mag_app.Winform.Windows
 				confirmlabel.Text = "";
 			}
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			this.Hide();
+			LoginForm login = new LoginForm(_dbContex);
+			login.ShowDialog();
+        }
+    }
 }

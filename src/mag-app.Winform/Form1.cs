@@ -3,6 +3,7 @@ using mag_app.Service.Dtos.Stores;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows;
 using System;
+using System.Data;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
 
@@ -17,8 +18,6 @@ namespace mag_app.Winform
 			_dbContext = appDbContext;
 			InitializeComponent();
 		}
-        
-
 
         private void Form1_Load(object sender, EventArgs e)
 		{
@@ -27,28 +26,13 @@ namespace mag_app.Winform
 
         private void marketbtn_Click(object sender, EventArgs e)
 		{
-            using (var res = new AppDbContext())
-            {
-                var blogs = _dbContext.Stores.ToList();
-            }
-
-            foreach (var items in MainFlowPanel.Controls)
-            {
-                var wdg = (StoreBrick)items;
-                wdg.Visible = true;
-            }
+            openChildForm(new MyStoresForm(new AppDbContext()));
         }
-
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Application.Exit();
 		}
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            openChildForm(new AddStoreForm(new AppDbContext()));
-        }
 
         private Form activeForm = null;
         private void openChildForm(Form childForm)
@@ -63,6 +47,20 @@ namespace mag_app.Winform
             childForm.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void MenuPanel_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, MenuPanel.ClientRectangle,
+               Color.White, 1, ButtonBorderStyle.Solid, // left
+               Color.White, 1, ButtonBorderStyle.Solid, // top
+               Color.DimGray, 1, ButtonBorderStyle.Solid, // right
+               Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
