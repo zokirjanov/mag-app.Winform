@@ -1,14 +1,19 @@
-﻿using System.ComponentModel;
+﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Services;
+using mag_app.Winform.Windows;
+using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Drawing2D;
 
 namespace mag_app.Winform.Components
 {
     public partial class storeControl : UserControl
     {
-
-        public storeControl()
+        private StoreService _service;
+        public storeControl(AppDbContext appDbContext)
         {
             InitializeComponent();
+            _service = new StoreService(appDbContext);
         }
 
         public long _count;
@@ -16,6 +21,7 @@ namespace mag_app.Winform.Components
         private void storeControl_Load(object sender, EventArgs e)
         {
         }
+
         public string StoreName { get => storeNameLabel.Text; set => storeNameLabel.Text = value; }
         public long EmployeeCount { get => int.Parse(empCountlb.Text); set { _count = value; empCountlb.Text = _count.ToString(); } }
 
@@ -62,6 +68,27 @@ namespace mag_app.Winform.Components
         {
             base.OnSizeChanged(e);
             this.RecreateRegion();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                var res = _service.DeleteAsync(storeNameLabel.Text);
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                this.Hide();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UpdateForm updateForm = new UpdateForm(new AppDbContext());
+            updateForm.storeName = storeNameLabel.Text;
+            updateForm.empCount =  long.Parse(empCountlb.Text);
+            updateForm.ShowDialog();
         }
     }
 }

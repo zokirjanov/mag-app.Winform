@@ -1,20 +1,6 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Services;
 using mag_app.Winform.Components;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows
 {
@@ -31,25 +17,20 @@ namespace mag_app.Winform.Windows
             InitializeComponent();
         }
 
-        private async void MyStoresForm_Load(object sender, EventArgs e)
+        public void MyStoresForm_Load(object sender, EventArgs e)
         {
-           
+            CreateControls();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddStoreForm form = new AddStoreForm(new DataAccess.DbContexts.AppDbContext());
+            AddStoreForm form = new AddStoreForm(new AppDbContext());
             form.ShowDialog();
-        }
-
-        private void contentPanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         public void AddItem(string storename, long empCount)
         {
-            var w = new storeControl()
+            var w = new storeControl(new AppDbContext())
             {
                 StoreName = storename,
                 EmployeeCount = empCount,
@@ -57,10 +38,10 @@ namespace mag_app.Winform.Windows
             flowLayoutPanel1.Controls.Add(w);
         }
 
-        public async void MyStoresForm_Shown(object sender, EventArgs e)
+        public async void CreateControls()
         {
             var items = await _service.GetAllAsync();
-            foreach(var item in items)
+            foreach (var item in items)
             {
                 AddItem(item.StoreName, item.EmployeeCount);
             }

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace mag_app.Service.Services
 {
-    public class StoreService : IStoreService
+    public  class StoreService : IStoreService
     {
 
         private AppDbContext _repository;
@@ -24,13 +24,13 @@ namespace mag_app.Service.Services
         public StoreService(AppDbContext repository)
         {
             _repository = repository;
+
         }
 
         public async Task<string> CreateAsync(AddStoreDto storeDto)
         {
             var storee = await _repository.Stores.FirstOrDefaultAsync(
-            x => x.StoreName.ToLower() == storeDto.StoreName.ToLower()
-            && x.EmployeeId == storeDto.EmployeeID);
+            x => x.StoreName.ToLower() == storeDto.StoreName.ToLower() && x.EmployeeId == storeDto.EmployeeID);
             if (storee != null) { return "Store already exists"; }
             var store = (Store)storeDto;
             _repository.Stores.Add(store);
@@ -39,9 +39,21 @@ namespace mag_app.Service.Services
             return "false";
         }
 
-        public Task<bool> DeleteAsync(long id)
+        public async Task<string> DeleteAsync(string name)
         {
-            throw new NotImplementedException();
+            var store = await _repository.Stores.FirstOrDefaultAsync(x=>x.StoreName == name);
+            if (store != null)
+            {
+                var res = _repository.Stores.Remove(store);
+                if (res != null)
+                {
+                    var ss = await _repository.SaveChangesAsync();
+                    if(ss > 0) return "true";
+                    
+                }
+                else return "false";
+            }
+            return "false";
         }
 
         public async Task<List<Store>> GetAllAsync()
@@ -52,9 +64,18 @@ namespace mag_app.Service.Services
             else return null;
         }
 
-        public Task<bool> UpdateAsync(Store store, long id)
+        public async Task<string> UpdateAsync(Store store, string name)
         {
-            throw new NotImplementedException();
+            var entity = await _repository.Stores.FirstOrDefaultAsync(x=>x.StoreName == name);
+            if (entity != null)
+            {
+                entity.StoreName = store.StoreName;
+                entity.EmployeeCount= store.EmployeeCount;
+                var res = await _repository.SaveChangesAsync();
+                if(res > 0) return "true";
+                else return "false";
+            }
+            return "Store not found";
         }
     }
 }

@@ -4,6 +4,7 @@ using mag_app.Service.Dtos.Accounts;
 using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Service;
 using mag_app.Service.Services;
+using mag_app.Winform.Components;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,12 +36,11 @@ namespace mag_app.Winform.Windows
 
         private void AddStoreForm_Load(object sender, EventArgs e)
         {
-
+            empNumbertb.Maximum = decimal.MaxValue;
         }
-
         private async void button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(storeNametb.Text) && !string.IsNullOrEmpty(empNumbertb.Text))
+            if (!string.IsNullOrEmpty(storeNametb.Text))
             {
                 AddStoreDto storeDto = new AddStoreDto()
                 {
@@ -48,14 +48,12 @@ namespace mag_app.Winform.Windows
                     EmployeeCount = int.Parse(empNumbertb.Text),
                     EmployeeID = IdentitySingelton.GetInstance().EmployeeId
                 };
+
                 var res = await _service.CreateAsync(storeDto);
                 if (res == "true")
                 {
                     storeNametb.Text = "";
-                    MyStoresForm myStoresForm = new MyStoresForm(new AppDbContext());
-                    myStoresForm.Refresh();
-
-                    DialogResult dlg = MessageBox.Show("Store added successfully \n Do you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    DialogResult dlg = MessageBox.Show("Store added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
                         //do nothing
@@ -76,6 +74,11 @@ namespace mag_app.Winform.Windows
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddStoreForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

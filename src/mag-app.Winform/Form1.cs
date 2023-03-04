@@ -24,9 +24,11 @@ namespace mag_app.Winform
 
 		}
 
-        private void marketbtn_Click(object sender, EventArgs e)
+        public void marketbtn_Click(object sender, EventArgs e)
 		{
             openChildForm(new MyStoresForm(new AppDbContext()));
+            MyStoresForm myStoresForm = new MyStoresForm(new AppDbContext());
+            myStoresForm.CreateControls();
         }
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -35,7 +37,7 @@ namespace mag_app.Winform
 		}
 
         private Form activeForm = null;
-        private void openChildForm(Form childForm)
+        public  void openChildForm(Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();

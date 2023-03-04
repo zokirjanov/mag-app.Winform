@@ -56,6 +56,7 @@
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(6, 528);
             this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(210, 38);
             this.button1.TabIndex = 1;
             this.button1.Text = "Log out";
@@ -66,9 +67,12 @@
             // 
             this.marketbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.marketbtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.marketbtn.Image = ((System.Drawing.Image)(resources.GetObject("marketbtn.Image")));
+            this.marketbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.marketbtn.Location = new System.Drawing.Point(13, 10);
             this.marketbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.marketbtn.Name = "marketbtn";
+            this.marketbtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.marketbtn.Size = new System.Drawing.Size(194, 60);
             this.marketbtn.TabIndex = 0;
             this.marketbtn.Text = "My Stores";
