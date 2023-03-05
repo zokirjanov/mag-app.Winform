@@ -75,10 +75,5 @@ namespace mag_app.Winform.Windows
         {
             this.Close();
         }
-
-        private void AddStoreForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
     }
 }
