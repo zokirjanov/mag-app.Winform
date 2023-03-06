@@ -15,7 +15,7 @@ namespace mag_app.Winform.Windows
 		public TextBox logintxb;
 		public TextBox passwordtxb;
 
-		public LoginForm(AppDbContext appDbContext)
+		public LoginForm(AppDbContext appDbContext)	
 		{
 			InitializeComponent();
             _dbContex = appDbContext;
