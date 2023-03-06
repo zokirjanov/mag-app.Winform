@@ -65,7 +65,7 @@ namespace mag_app.Winform.Windows
 		{
 
 			if (!string.IsNullOrEmpty(loginlogin.Text) && !string.IsNullOrEmpty(loginPass.Text)
-			  && loginLoginerror.Text == "" && loginPasserror.Text == "")
+			  && loginLoginerror.Text == "")
 			{
 				LoginDto accountLoginDto = new LoginDto() { Login = loginlogin.Text, Password = loginPass.Text };
 				var res = await _service.AccountLoginAsync(accountLoginDto);

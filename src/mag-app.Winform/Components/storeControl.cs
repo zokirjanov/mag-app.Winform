@@ -17,9 +17,8 @@ namespace mag_app.Winform.Components
         }
 
         public long _count;
-
- 
         public string StoreName { get => storeNameLabel.Text; set => storeNameLabel.Text = value; }
+
 
         //Border radius
         private int radius = 20;
