@@ -68,7 +68,7 @@
             // storeNameLabel
             // 
             this.storeNameLabel.AutoSize = true;
-            this.storeNameLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.storeNameLabel.BackColor = System.Drawing.Color.AliceBlue;
             this.storeNameLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.storeNameLabel.Location = new System.Drawing.Point(22, 19);
             this.storeNameLabel.Name = "storeNameLabel";
@@ -80,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.Controls.Add(this.storeNameLabel);
             this.Controls.Add(this.panel1);
             this.Name = "storeControl";

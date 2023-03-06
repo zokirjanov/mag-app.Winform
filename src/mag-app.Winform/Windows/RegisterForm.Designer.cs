@@ -141,10 +141,10 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(73, 461);
+            this.button1.Location = new System.Drawing.Point(46, 461);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(279, 34);
+            this.button1.Size = new System.Drawing.Size(329, 34);
             this.button1.TabIndex = 10;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
