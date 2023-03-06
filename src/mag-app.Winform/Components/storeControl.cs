@@ -18,13 +18,8 @@ namespace mag_app.Winform.Components
 
         public long _count;
 
-        private void storeControl_Load(object sender, EventArgs e)
-        {
-        }
-
+ 
         public string StoreName { get => storeNameLabel.Text; set => storeNameLabel.Text = value; }
-        public long EmployeeCount { get => int.Parse(empCountlb.Text); set { _count = value; empCountlb.Text = _count.ToString(); } }
-
 
         //Border radius
         private int radius = 20;
@@ -89,7 +84,6 @@ namespace mag_app.Winform.Components
         {
             UpdateForm updateForm = new UpdateForm(new AppDbContext());
             updateForm.storeName = storeNameLabel.Text;
-            updateForm.empCount =  long.Parse(empCountlb.Text);
             updateForm.ShowDialog();
         }
     }

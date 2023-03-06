@@ -104,5 +104,10 @@ namespace mag_app.Winform.Windows
         {
 			Application.Exit();
         }
+
+        private void loginlogin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

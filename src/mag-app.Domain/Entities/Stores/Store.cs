@@ -10,7 +10,6 @@ namespace mag_app.Domain.Entities.Stores
     public class Store : Auditable
     {
         public string StoreName { get; set; } = string.Empty;
-        public long EmployeeCount { get; set; }
         public long EmployeeId { get; set; }
     }
 }

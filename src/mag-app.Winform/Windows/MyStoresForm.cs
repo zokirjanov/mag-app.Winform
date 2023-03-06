@@ -31,12 +31,11 @@ namespace mag_app.Winform.Windows
             form.ShowDialog();
         }
 
-        public void AddItem(string storename, long empCount)
+        public void AddItem(string storename)
         {
             var w = new storeControl(new AppDbContext())
             {
-                StoreName = storename,
-                EmployeeCount = empCount,
+                StoreName = storename
             };
             flowLayoutPanel1.Controls.Add(w);
         }
@@ -47,7 +46,7 @@ namespace mag_app.Winform.Windows
             var items = await _service.GetAllAsync();
             foreach (var item in items)
             {
-                AddItem(item.StoreName, item.EmployeeCount);
+                AddItem(item.StoreName);
             }
         }
 

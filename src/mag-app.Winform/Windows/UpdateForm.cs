@@ -1,6 +1,8 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Stores;
+using mag_app.Service.Common.Attributes;
 using mag_app.Service.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,37 +30,42 @@ namespace mag_app.Winform.Windows
         {
             oldName = storeName;
             storeNameTb.Text= storeName;
-            empCounttb.Text = empCount.ToString();
-            empCounttb.Maximum = decimal.MaxValue;
         }
 
 
         string oldName;
         public string storeName { get; set; }
-        public long empCount { get; set; }
 
-
-        private void updateBtn_Click(object sender, EventArgs e)
+        private async void updateBtn_Click(object sender, EventArgs e)
         {
             Store store = new Store();
             store.StoreName= storeNameTb.Text;
-            store.EmployeeCount=  long.Parse(empCounttb.Text);
-
 
             DialogResult dlg = MessageBox.Show("Do you want to Update store?", "Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = _service.UpdateAsync(store, oldName);
-                this.Close();
-                Form1.formInstance.pnl.Controls.Clear();
-                Form1.formInstance.marketbtn_Click(sender, e);
+                var res = await _service.UpdateAsync(store, oldName);
+                if (res == "true")
+                {
+                    this.Close();
+                    Form1.formInstance.pnl.Controls.Clear();
+                    Form1.formInstance.marketbtn_Click(sender, e);
+                }
+                else if(res == "false")
+                {
+                    MessageBox.Show("Something went wrong, there is no store to match");
+                }
+                else
+                {
+                    MessageBox.Show(res);
+                    storeNameTb.Focus();
+                    storeNameTb.SelectAll();
+                }
             }
             if (dlg == DialogResult.Cancel)
             {
                 this.Close();
             }
         }
-
-        
     }
 }

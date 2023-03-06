@@ -33,8 +33,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.storeNameLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.empCountlb = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +40,7 @@
             // 
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.deleteBtn);
-            this.panel1.Location = new System.Drawing.Point(509, 8);
+            this.panel1.Location = new System.Drawing.Point(521, 8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(96, 44);
             this.panel1.TabIndex = 0;
@@ -70,44 +68,23 @@
             // storeNameLabel
             // 
             this.storeNameLabel.AutoSize = true;
-            this.storeNameLabel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.storeNameLabel.Location = new System.Drawing.Point(11, 4);
+            this.storeNameLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.storeNameLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.storeNameLabel.Location = new System.Drawing.Point(22, 19);
             this.storeNameLabel.Name = "storeNameLabel";
-            this.storeNameLabel.Size = new System.Drawing.Size(124, 30);
+            this.storeNameLabel.Size = new System.Drawing.Size(112, 24);
             this.storeNameLabel.TabIndex = 1;
             this.storeNameLabel.Text = "Store name";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(11, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Employee count: ";
-            // 
-            // empCountlb
-            // 
-            this.empCountlb.AutoSize = true;
-            this.empCountlb.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.empCountlb.Location = new System.Drawing.Point(142, 39);
-            this.empCountlb.Name = "empCountlb";
-            this.empCountlb.Size = new System.Drawing.Size(0, 17);
-            this.empCountlb.TabIndex = 3;
             // 
             // storeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.Controls.Add(this.empCountlb);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.storeNameLabel);
             this.Controls.Add(this.panel1);
             this.Name = "storeControl";
-            this.Size = new System.Drawing.Size(624, 61);
-            this.Load += new System.EventHandler(this.storeControl_Load);
+            this.Size = new System.Drawing.Size(628, 61);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -120,7 +97,5 @@
         private Button deleteBtn;
         private Button button2;
         private Label storeNameLabel;
-        private Label label1;
-        private Label empCountlb;
     }
 }

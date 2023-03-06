@@ -22,5 +22,4 @@ namespace mag_app.DataAccess.Interfaces.Stores
 
         public Task<int> SaveChangesAsync();
     }
-
 }

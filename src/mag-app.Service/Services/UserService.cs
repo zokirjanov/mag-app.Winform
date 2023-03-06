@@ -46,7 +46,7 @@ namespace mag_app.Service.Service
 			}
 		}
 
-		public  async Task<string> AccountRegisterAsync(RegisterDto RegisterDto)
+		public async Task<string> AccountRegisterAsync(RegisterDto RegisterDto)
 		{
 			var account = await _repository.Users.FirstOrDefaultAsync(
 		    x => x.Login.ToLower() == RegisterDto.Login.ToLower());
