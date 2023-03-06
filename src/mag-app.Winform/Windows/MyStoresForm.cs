@@ -47,6 +47,8 @@ namespace mag_app.Winform.Windows
             }
         }
 
+
+        
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,

@@ -26,9 +26,7 @@ namespace mag_app.Winform
 
         public void marketbtn_Click(object sender, EventArgs e)
 		{
-            openChildForm(new MyStoresForm(new AppDbContext()));
-            MyStoresForm myStoresForm = new MyStoresForm(new AppDbContext());
-            myStoresForm.CreateControls();
+            openChildForm(new MyStoresForm(new AppDbContext()));    
         }
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
