@@ -44,9 +44,16 @@ namespace mag_app.Winform.Windows
         {
             flowLayoutPanel1.Controls.Clear();
             var items = await _service.GetAllAsync();
-            foreach (var item in items)
+            if(items is null)
             {
-                AddItem(item.StoreName);
+                MessageBox.Show("Stores not found");
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    AddItem(item.StoreName);
+                }
             }
         }
 

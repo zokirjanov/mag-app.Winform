@@ -48,8 +48,8 @@ namespace mag_app.Winform.Windows
                 if (res == "true")
                 {
                     this.Close();
-                    Form1.formInstance.pnl.Controls.Clear();
-                    Form1.formInstance.marketbtn_Click(sender, e);
+                    MainForm.mainParent.pnl.Controls.Clear();
+                    MainForm.mainParent.marketbtn_Click(sender, e);
                 }
                 else if(res == "false")
                 {

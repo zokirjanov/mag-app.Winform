@@ -36,6 +36,7 @@
             // 
             this.storeNameTb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.storeNameTb.Location = new System.Drawing.Point(32, 32);
+            this.storeNameTb.MaxLength = 30;
             this.storeNameTb.Name = "storeNameTb";
             this.storeNameTb.Size = new System.Drawing.Size(327, 29);
             this.storeNameTb.TabIndex = 0;
@@ -59,6 +60,7 @@
             this.ClientSize = new System.Drawing.Size(395, 179);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.storeNameTb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateForm";

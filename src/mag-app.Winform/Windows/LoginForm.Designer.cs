@@ -36,7 +36,6 @@
             this.loginlogin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rememberMe = new System.Windows.Forms.CheckBox();
-            this.loginPasserror = new System.Windows.Forms.Label();
             this.loginLoginerror = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -44,7 +43,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(48, 430);
+            this.button1.Location = new System.Drawing.Point(48, 434);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(326, 37);
@@ -113,23 +112,16 @@
             // rememberMe
             // 
             this.rememberMe.AutoSize = true;
-            this.rememberMe.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rememberMe.Location = new System.Drawing.Point(262, 301);
+            this.rememberMe.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rememberMe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rememberMe.Location = new System.Drawing.Point(46, 306);
             this.rememberMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rememberMe.Name = "rememberMe";
-            this.rememberMe.Size = new System.Drawing.Size(107, 19);
+            this.rememberMe.Size = new System.Drawing.Size(101, 19);
             this.rememberMe.TabIndex = 17;
-            this.rememberMe.Text = "Remember me:";
+            this.rememberMe.Text = "Remember me";
+            this.rememberMe.UseCompatibleTextRendering = true;
             this.rememberMe.UseVisualStyleBackColor = true;
-            // 
-            // loginPasserror
-            // 
-            this.loginPasserror.AutoSize = true;
-            this.loginPasserror.ForeColor = System.Drawing.Color.Red;
-            this.loginPasserror.Location = new System.Drawing.Point(51, 298);
-            this.loginPasserror.Name = "loginPasserror";
-            this.loginPasserror.Size = new System.Drawing.Size(0, 15);
-            this.loginPasserror.TabIndex = 18;
             // 
             // loginLoginerror
             // 
@@ -147,7 +139,6 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(424, 548);
             this.Controls.Add(this.loginLoginerror);
-            this.Controls.Add(this.loginPasserror);
             this.Controls.Add(this.rememberMe);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.registerBtn);
@@ -175,7 +166,6 @@
 		private TextBox loginlogin;
 		private Label label1;
 		private CheckBox rememberMe;
-		private Label loginPasserror;
 		private Label loginLoginerror;
 	}
 }
