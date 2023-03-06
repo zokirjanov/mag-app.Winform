@@ -23,7 +23,7 @@ namespace mag_app.Winform
 			_dbContext = appDbContext;
             _addStore = new AddStoreForm(appDbContext);
             InitializeComponent();
-            formInstance= this;
+            formInstance = this;
             btn = marketbtn;
             pnl = MainPanel;
 		}

@@ -24,7 +24,6 @@ namespace mag_app.Service.Services
         public StoreService(AppDbContext repository)
         {
             _repository = repository;
-
         }
 
         public async Task<string> CreateAsync(AddStoreDto storeDto)
@@ -36,7 +35,7 @@ namespace mag_app.Service.Services
             _repository.Stores.Add(store);
             var res = await _repository.SaveChangesAsync();
             if (res > 0) return "true";
-            return "false";
+            return "Something went wrong";
         }
 
         public async Task<string> DeleteAsync(string name)
@@ -49,7 +48,6 @@ namespace mag_app.Service.Services
                 {
                     var ss = await _repository.SaveChangesAsync();
                     if(ss > 0) return "true";
-                    
                 }
                 else return "false";
             }
@@ -59,23 +57,27 @@ namespace mag_app.Service.Services
         public async Task<List<Store>> GetAllAsync()
         {
             long id = IdentitySingelton.GetInstance().EmployeeId;
-            var result = await _repository.Stores.Where(x => x.EmployeeId == id).ToListAsync();
+            var result = await _repository.Stores.Where(x => x.EmployeeId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null)  return result.ToList();
             else return null;
         }
 
         public async Task<string> UpdateAsync(Store store, string name)
         {
-            var entity = await _repository.Stores.FirstOrDefaultAsync(x=>x.StoreName == name);
-            if (entity != null)
+            var checkname = await _repository.Stores.FirstOrDefaultAsync(x => x.StoreName.ToLower() == store.StoreName.ToLower());
+            if (checkname is null)
             {
-                entity.StoreName = store.StoreName;
-                entity.EmployeeCount= store.EmployeeCount;
-                var res = await _repository.SaveChangesAsync();
-                if(res > 0) return "true";
-                else return "false";
+                var entity = await _repository.Stores.FirstOrDefaultAsync(x => x.StoreName == name);
+                if (entity != null)
+                { 
+                    entity.StoreName = store.StoreName;
+                    var res = await _repository.SaveChangesAsync();
+                    if (res > 0){ return "true"; }
+                    else{ return "false"; }
+                }
+                return "false";
             }
-            return "Store not found";
+            else return "Store already exists, please try another name";
         }
     }
 }

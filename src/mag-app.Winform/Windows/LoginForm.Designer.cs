@@ -98,6 +98,7 @@
             this.loginlogin.PlaceholderText = "Login";
             this.loginlogin.Size = new System.Drawing.Size(333, 30);
             this.loginlogin.TabIndex = 12;
+            this.loginlogin.TextChanged += new System.EventHandler(this.loginlogin_TextChanged);
             // 
             // label1
             // 
@@ -112,19 +113,20 @@
             // rememberMe
             // 
             this.rememberMe.AutoSize = true;
-            this.rememberMe.Location = new System.Drawing.Point(46, 317);
+            this.rememberMe.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rememberMe.Location = new System.Drawing.Point(262, 301);
             this.rememberMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rememberMe.Name = "rememberMe";
-            this.rememberMe.Size = new System.Drawing.Size(100, 19);
+            this.rememberMe.Size = new System.Drawing.Size(107, 19);
             this.rememberMe.TabIndex = 17;
-            this.rememberMe.Text = "Remenber me";
+            this.rememberMe.Text = "Remember me:";
             this.rememberMe.UseVisualStyleBackColor = true;
             // 
             // loginPasserror
             // 
             this.loginPasserror.AutoSize = true;
             this.loginPasserror.ForeColor = System.Drawing.Color.Red;
-            this.loginPasserror.Location = new System.Drawing.Point(51, 292);
+            this.loginPasserror.Location = new System.Drawing.Point(51, 298);
             this.loginPasserror.Name = "loginPasserror";
             this.loginPasserror.Size = new System.Drawing.Size(0, 15);
             this.loginPasserror.TabIndex = 18;

@@ -54,7 +54,7 @@
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(6, 528);
+            this.button1.Location = new System.Drawing.Point(4, 528);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(210, 38);

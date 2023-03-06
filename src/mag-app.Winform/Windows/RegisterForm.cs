@@ -71,7 +71,6 @@ namespace mag_app.Winform.Windows
 				var res = await _service.AccountRegisterAsync(registerDto);
 				if (res == "true")
 				{
-
 					LoginForm.LoginInstance.logintxb.Text = registerLogintb.Text;
 					LoginForm.LoginInstance.passwordtxb.Text = registerPasswordtb.Text;
 					MessageBox.Show("You are successfully registered");

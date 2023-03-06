@@ -12,7 +12,6 @@ namespace mag_app.Service.Dtos.Stores
     public class AddStoreDto
     {
         public string StoreName { get; set; } = string.Empty;
-        public long EmployeeCount { get; set; }
         public long EmployeeID { get; set; }
 
         public static implicit operator Store(AddStoreDto storeDto)
@@ -20,7 +19,6 @@ namespace mag_app.Service.Dtos.Stores
             return new Store()
             {
                 StoreName = storeDto.StoreName,
-                EmployeeCount = storeDto.EmployeeCount,
                 EmployeeId = storeDto.EmployeeID,
                 CreatedAt = TimeHelper.CurrentTime(),
                 UpdatedAt = TimeHelper.CurrentTime()

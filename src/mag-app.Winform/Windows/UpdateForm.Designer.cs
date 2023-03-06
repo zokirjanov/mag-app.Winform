@@ -30,8 +30,6 @@
         {
             this.storeNameTb = new System.Windows.Forms.TextBox();
             this.updateBtn = new System.Windows.Forms.Button();
-            this.empCounttb = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.empCounttb)).BeginInit();
             this.SuspendLayout();
             // 
             // storeNameTb
@@ -46,7 +44,7 @@
             // 
             this.updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.updateBtn.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.updateBtn.Location = new System.Drawing.Point(68, 128);
+            this.updateBtn.Location = new System.Drawing.Point(69, 98);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(258, 39);
             this.updateBtn.TabIndex = 2;
@@ -54,28 +52,17 @@
             this.updateBtn.UseVisualStyleBackColor = false;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
-            // empCounttb
-            // 
-            this.empCounttb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.empCounttb.Location = new System.Drawing.Point(32, 80);
-            this.empCounttb.Name = "empCounttb";
-            this.empCounttb.Size = new System.Drawing.Size(327, 29);
-            this.empCounttb.TabIndex = 3;
-
-            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 179);
-            this.Controls.Add(this.empCounttb);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.storeNameTb);
             this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateForm";
             this.Load += new System.EventHandler(this.UpdateForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.empCounttb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,6 +72,5 @@
 
         private TextBox storeNameTb;
         private Button updateBtn;
-        private NumericUpDown empCounttb;
     }
 }

@@ -26,9 +26,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("EmployeeCount")
-                        .HasColumnType("INTEGER");
-
                     b.Property<long>("EmployeeId")
                         .HasColumnType("INTEGER");
 

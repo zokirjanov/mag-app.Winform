@@ -16,7 +16,7 @@ namespace mag_app.DataAccess.Migrations
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     StoreName = table.Column<string>(type: "TEXT", nullable: false),
-                    EmployeeCount = table.Column<long>(type: "INTEGER", nullable: false),
+                    EmployeeId = table.Column<long>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },

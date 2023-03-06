@@ -29,16 +29,6 @@ namespace mag_app.Winform.Windows
             _service = new StoreService(appDbContext);
             InitializeComponent();
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void AddStoreForm_Load(object sender, EventArgs e)
-        {
-            empNumbertb.Maximum = decimal.MaxValue;
-        }
         private async void button1_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(storeNametb.Text))
@@ -46,7 +36,6 @@ namespace mag_app.Winform.Windows
                 AddStoreDto storeDto = new AddStoreDto()
                 {
                     StoreName = storeNametb.Text,
-                    EmployeeCount = int.Parse(empNumbertb.Text),
                     EmployeeID = IdentitySingelton.GetInstance().EmployeeId
                 };
 
@@ -58,26 +47,21 @@ namespace mag_app.Winform.Windows
                     DialogResult dlg = MessageBox.Show("Store added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
-						//do nothing
+						storeNametb.Focus();
 					}
                     if (dlg == DialogResult.Cancel)
                     {
+                        this.Close();
                         Form1.formInstance.pnl.Controls.Clear();
                         Form1.formInstance.marketbtn_Click(sender, e);
-                        this.Close();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Login Already Exists, try another name");
+                    MessageBox.Show(res);
                     storeNametb.Text = "";
                 }
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
