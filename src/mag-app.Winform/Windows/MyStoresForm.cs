@@ -9,6 +9,9 @@ namespace mag_app.Winform.Windows
 
         private AppDbContext _dbContex;
         private StoreService _service;
+        public FlowLayoutPanel panel;
+
+
 
         public MyStoresForm(AppDbContext appDbContext)
         {
@@ -19,7 +22,7 @@ namespace mag_app.Winform.Windows
 
         public void MyStoresForm_Load(object sender, EventArgs e)
         {
-            CreateControls();
+            LoadData();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,8 +41,9 @@ namespace mag_app.Winform.Windows
             flowLayoutPanel1.Controls.Add(w);
         }
 
-        public async void CreateControls()
+        public async void LoadData()
         {
+            flowLayoutPanel1.Controls.Clear();
             var items = await _service.GetAllAsync();
             foreach (var item in items)
             {
@@ -47,8 +51,6 @@ namespace mag_app.Winform.Windows
             }
         }
 
-
-        
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,

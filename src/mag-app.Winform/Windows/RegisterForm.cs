@@ -29,11 +29,6 @@ namespace mag_app.Winform.Windows
 			InitializeComponent();
 		}
 
-		private void label1_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void passwordShowbt_Click(object sender, EventArgs e)
 		{
 			if (registerPasswordtb.UseSystemPasswordChar == PasswordPropertyTextAttribute.No.Password)
@@ -54,7 +49,6 @@ namespace mag_app.Winform.Windows
 			{
 				registerConfirmtb.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
 				confirmShowbt.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
-
 			}
 			else
 			{
@@ -77,31 +71,31 @@ namespace mag_app.Winform.Windows
 				var res = await _service.AccountRegisterAsync(registerDto);
 				if (res == "true")
 				{
+
+					LoginForm.LoginInstance.logintxb.Text = registerLogintb.Text;
+					LoginForm.LoginInstance.passwordtxb.Text = registerPasswordtb.Text;
 					MessageBox.Show("You are successfully registered");
-					LoginForm login = new LoginForm(_dbContex);
-					
+					LoginForm.LoginInstance.Show();
 					this.Hide();
-					login.ShowDialog();
 				}
 				else 
 				{
-					MessageBox.Show("Login Already Exists, try another name");
+					MessageBox.Show(res);
 					registerLogintb.Text = "";
 				}
-
 			}
 		}
 
 		private void registerLogintb_TextChanged(object sender, EventArgs e)
 		{
-			var loginAttr = LoginAttributes.IsValid(registerLogintb.Text);
-			if(loginAttr == "true")
+			var loginAttribute = LoginAttributes.IsValid(registerLogintb.Text);
+			if(loginAttribute == "true")
 			{
 				loginlabel.Text = "";
 			}
 			else
 			{
-				loginlabel.Text = loginAttr.ToString();
+				loginlabel.Text = loginAttribute.ToString();
 			}
 		}
 
@@ -124,9 +118,7 @@ namespace mag_app.Winform.Windows
 			else
 			{
 				passwordlabel.Text = passwordAttribute.ToString();
-
 			}
-
 		}
 
 		private void registerConfirmtb_TextChanged(object sender, EventArgs e)
@@ -145,7 +137,12 @@ namespace mag_app.Winform.Windows
         {
 			this.Hide();
 			LoginForm login = new LoginForm(_dbContex);
-			login.ShowDialog();
+			login.Show();
+        }
+
+        private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+			Application.Exit();	
         }
     }
 }

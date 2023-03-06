@@ -11,14 +11,26 @@ namespace mag_app.Winform.Windows
 	{
 		private readonly AppDbContext _dbContex;
 		private readonly UserService _service;
+		public static LoginForm LoginInstance;
+		public TextBox logintxb;
+		public TextBox passwordtxb;
+
 		public LoginForm(AppDbContext appDbContext)
 		{
-			_dbContex = appDbContext;
-			_service = new UserService(appDbContext);
 			InitializeComponent();
-		}
+            _dbContex = appDbContext;
+            _service = new UserService(appDbContext);
+			LoginInstance = this;
+			logintxb = loginlogin;
+			passwordtxb = loginPass;
+        }
 
 		private void LoginForm_Load(object sender, EventArgs e)
+		{
+			lastuser();
+		}
+
+		private void lastuser()
 		{
             string path = "database.txt";
             var result = File.ReadAllText(path);
@@ -46,7 +58,7 @@ namespace mag_app.Winform.Windows
 		{
 			RegisterForm register = new RegisterForm(_dbContex);
 			this.Hide();
-			register.ShowDialog();
+			register.Show();
 		}
 
 		private async void registerBtn_Click(object sender, EventArgs e)
@@ -88,12 +100,9 @@ namespace mag_app.Winform.Windows
 			}
 		}
 
-		private void loginlogin_TextChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void loginPass_TextChanged(object sender, EventArgs e)
-		{
-		}
-	}
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+			Application.Exit();
+        }
+    }
 }

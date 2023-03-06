@@ -53,7 +53,6 @@
             this.label1.Size = new System.Drawing.Size(149, 47);
             this.label1.TabIndex = 0;
             this.label1.Text = "Register";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // registerLogintb
             // 
@@ -210,6 +209,7 @@
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegisterForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

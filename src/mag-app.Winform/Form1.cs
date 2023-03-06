@@ -6,36 +6,40 @@ using System;
 using System.Data;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
+#nullable disable
 
 namespace mag_app.Winform
 {
 	public partial class Form1 : Form
 	{
 		private readonly AppDbContext _dbContext;
+        private AddStoreForm _addStore;
+        public static Form1 formInstance;
+        public Button btn;
+        public Panel pnl;
 
-		public Form1(AppDbContext appDbContext)
+        public Form1(AppDbContext appDbContext)
 		{
 			_dbContext = appDbContext;
-			InitializeComponent();
-		}
-
-        private void Form1_Load(object sender, EventArgs e)
-		{
-
+            _addStore = new AddStoreForm(appDbContext);
+            InitializeComponent();
+            formInstance= this;
+            btn = marketbtn;
+            pnl = MainPanel;
 		}
 
         public void marketbtn_Click(object sender, EventArgs e)
 		{
-            openChildForm(new MyStoresForm(new AppDbContext()));    
+            formInstance.openChildForm(new MyStoresForm(new AppDbContext())); 
         }
-
+            
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Application.Exit();
 		}
 
         private Form activeForm = null;
-        public  void openChildForm(Form childForm)
+        public void openChildForm(Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -61,6 +65,11 @@ namespace mag_app.Winform
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

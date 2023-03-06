@@ -50,6 +50,8 @@ namespace mag_app.Winform.Windows
             {
                 var res = _service.UpdateAsync(store, oldName);
                 this.Close();
+                Form1.formInstance.pnl.Controls.Clear();
+                Form1.formInstance.marketbtn_Click(sender, e);
             }
             if (dlg == DialogResult.Cancel)
             {
