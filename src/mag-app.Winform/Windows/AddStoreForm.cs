@@ -22,9 +22,10 @@ namespace mag_app.Winform.Windows
     {
         private readonly AppDbContext _dbContex;
         private readonly StoreService _service;
-        public AddStoreForm(AppDbContext appDbContext)
+
+		public AddStoreForm(AppDbContext appDbContext)
         {
-            _dbContex = appDbContext;
+			_dbContex = appDbContext;
             _service = new StoreService(appDbContext);
             InitializeComponent();
         }
@@ -52,14 +53,16 @@ namespace mag_app.Winform.Windows
                 var res = await _service.CreateAsync(storeDto);
                 if (res == "true")
                 {
-                    storeNametb.Text = "";
+					storeNametb.Text = "";
                     DialogResult dlg = MessageBox.Show("Store added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
-                        //do nothing
-                    }
+						//do nothing
+					}
                     if (dlg == DialogResult.Cancel)
                     {
+                        MyStoresForm my = new MyStoresForm(new AppDbContext());
+                        my.CreateControls();
                         this.Hide();
                     }
                 }
