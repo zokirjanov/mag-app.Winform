@@ -70,8 +70,8 @@ namespace mag_app.Winform.Components
             if (dlg == DialogResult.OK)
             {
                 var res = _service.DeleteAsync(storeNameLabel.Text);
-                Form1.formInstance.pnl.Controls.Clear();
-                Form1.formInstance.marketbtn_Click(sender, e);
+                MainForm.mainParent.pnl.Controls.Clear();
+                MainForm.mainParent.marketbtn_Click(sender, e);
             }
             if (dlg == DialogResult.Cancel)
             {

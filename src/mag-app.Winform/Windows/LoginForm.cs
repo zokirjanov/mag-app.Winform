@@ -91,7 +91,7 @@ namespace mag_app.Winform.Windows
 					{
 						_service.AccountLogout();
 					}
-					Form1 mainForm = new Form1(_dbContex);
+					MainForm mainForm = new MainForm(_dbContex);
 					this.Hide();
 					mainForm.ShowDialog();
 

@@ -3,27 +3,27 @@ using mag_app.Winform.Windows;
 
 namespace mag_app.Winform
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private readonly AppDbContext _dbContext;
         private AddStoreForm _addStore;
-        public static Form1 formInstance;
+        public static MainForm mainParent;
         public Button btn;
         public Panel pnl;
 
-        public Form1(AppDbContext appDbContext)
+        public MainForm(AppDbContext appDbContext)
         {
             _dbContext = appDbContext;
             _addStore = new AddStoreForm(appDbContext);
             InitializeComponent();
-            formInstance = this;
+            mainParent = this;
             btn = marketbtn;
             pnl = MainPanel;
         }
 
         public void marketbtn_Click(object sender, EventArgs e)
         {
-            formInstance.openChildForm(new MyStoresForm(new AppDbContext()));
+            mainParent.openChildForm(new MyStoresForm(new AppDbContext()));
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

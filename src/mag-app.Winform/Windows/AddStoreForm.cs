@@ -29,7 +29,7 @@ namespace mag_app.Winform.Windows
                 var res = await _service.CreateAsync(storeDto);
                 if (res == "true")
                 {
-                    Form1.formInstance.marketbtn_Click(sender, e);
+                    MainForm.mainParent.marketbtn_Click(sender, e);
                     storeNametb.Text = "";
                     DialogResult dlg = MessageBox.Show("Store added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
@@ -39,8 +39,8 @@ namespace mag_app.Winform.Windows
                     if (dlg == DialogResult.Cancel)
                     {
                         this.Close();
-                        Form1.formInstance.pnl.Controls.Clear();
-                        Form1.formInstance.marketbtn_Click(sender, e);
+                        MainForm.mainParent.pnl.Controls.Clear();
+                        MainForm.mainParent.marketbtn_Click(sender, e);
                     }
                 }
                 else
