@@ -1,13 +1,13 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Attributes;
 using mag_app.Service.Dtos.Accounts;
-using mag_app.Service.Service;
+using mag_app.Service.Services.UserService;
 using Microsoft.Data.Sqlite;
 using System.ComponentModel;
 
 namespace mag_app.Winform.Windows
 {
-	public partial class LoginForm : Form
+    public partial class LoginForm : Form
 	{
 		private readonly AppDbContext _dbContex;
 		private readonly UserService _service;

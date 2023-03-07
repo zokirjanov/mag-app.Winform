@@ -1,5 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Service.Services;
+using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 
 namespace mag_app.Winform.Windows

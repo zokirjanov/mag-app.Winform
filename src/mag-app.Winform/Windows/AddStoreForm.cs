@@ -1,7 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Stores;
-using mag_app.Service.Services;
+using mag_app.Service.Services.StoreService;
 
 namespace mag_app.Winform.Windows
 {

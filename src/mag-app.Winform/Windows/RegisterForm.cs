@@ -1,7 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Attributes;
 using mag_app.Service.Dtos.Accounts;
-using mag_app.Service.Service;
+using mag_app.Service.Services.UserService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.Logging;
 using System;
@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows
 {
-	public partial class RegisterForm : Form
+    public partial class RegisterForm : Form
 	{
 
 		private readonly AppDbContext _dbContex;
