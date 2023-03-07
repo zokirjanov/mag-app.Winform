@@ -64,6 +64,7 @@
             this.productEditBtn.Size = new System.Drawing.Size(34, 33);
             this.productEditBtn.TabIndex = 2;
             this.productEditBtn.UseVisualStyleBackColor = true;
+            this.productEditBtn.Click += new System.EventHandler(this.productEditBtn_Click);
             // 
             // productDeleteBtn
             // 
@@ -73,6 +74,7 @@
             this.productDeleteBtn.Size = new System.Drawing.Size(34, 33);
             this.productDeleteBtn.TabIndex = 1;
             this.productDeleteBtn.UseVisualStyleBackColor = true;
+            this.productDeleteBtn.Click += new System.EventHandler(this.productDeleteBtn_Click);
             // 
             // productControl
             // 

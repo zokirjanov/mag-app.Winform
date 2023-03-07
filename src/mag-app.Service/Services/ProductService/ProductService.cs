@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Products;
+using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Interfaces.Products;
 using Microsoft.EntityFrameworkCore;
@@ -31,9 +32,20 @@ namespace mag_app.Service.Services.ProductService
             return "Something went wrong";
         }
 
-        public Task<bool> DeleteAsync(long id)
+        public async Task<string> DeleteAsync(string name)
         {
-            throw new NotImplementedException();
+            var product = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
+            if (product != null)
+            {
+                var res = _appDbContext.Products.Remove(product);
+                if (res != null)
+                {
+                    var ss = await _appDbContext.SaveChangesAsync();
+                    if (ss > 0) return "Successfully deleted";
+                }
+                else return "Something went wrong";
+            }
+            return "Product not found";
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
@@ -43,10 +55,23 @@ namespace mag_app.Service.Services.ProductService
             if (result is not null) return result.ToList();
             else return null;
         }
-
-        public Task<bool> UpdateAsync(long id, Product Product)
+        
+        public async Task<string> UpdateAsync(Product product, string name)
         {
-            throw new NotImplementedException();
+            var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
+            if (checkname is null)
+            {
+                var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
+                if (entity != null)
+                {
+                    entity.ProdutName = product.ProdutName;
+                    var res = await _appDbContext.SaveChangesAsync();
+                    if (res > 0) { return "true"; }
+                    else { return "false"; }
+                }
+                return "false";
+            }
+            else return "Producty already exists, please try another name";
         }
     }
 }

@@ -4,6 +4,7 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
+using mag_app.Winform.Windows.Product_Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,8 +51,8 @@ namespace mag_app.Winform.Windows.ProductForms
                     if (dlg == DialogResult.Cancel)
                     {
                         this.Close();
-                        MainForm.mainParent.pnl.Controls.Clear();
-                        MainForm.mainParent.marketbtn_Click(sender, e);
+                        StoreProductsForm.storeParent.pnl.Controls.Clear();
+                        StoreProductsForm.storeParent.productBtn_Click(sender,e);
                     }
                 }
                 else

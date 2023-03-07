@@ -1,6 +1,10 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
+using mag_app.Winform.Windows;
+using mag_app.Winform.Windows.Product_Forms;
+using mag_app.Winform.Windows.ProductForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +62,29 @@ namespace mag_app.Winform.Components
         {
             base.OnSizeChanged(e);
             this.RecreateRegion();
+        }
+
+        private void productEditBtn_Click(object sender, EventArgs e)
+        {
+            ProductUpdateForm updateForm = new ProductUpdateForm(new AppDbContext());
+            updateForm.productName = productNameLb.Text;
+            updateForm.ShowDialog();
+        }
+
+        private void productDeleteBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dlg = MessageBox.Show("Do you want to delete product?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                var res = _service.DeleteAsync(productNameLb.Text);
+                AutoClosingMessageBox.Show("Succesfullt deleted", "Delete", 300);
+                StoreProductsForm.storeParent.pnl.Controls.Clear();
+                StoreProductsForm.storeParent.productBtn_Click(sender, e);
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                this.Hide();
+            }
         }
     }
 }
