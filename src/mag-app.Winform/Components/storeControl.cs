@@ -1,5 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Service.Services;
+using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
@@ -84,6 +84,11 @@ namespace mag_app.Winform.Components
             UpdateForm updateForm = new UpdateForm(new AppDbContext());
             updateForm.storeName = storeNameLabel.Text;
             updateForm.ShowDialog();
+        }
+
+        private void storeControl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

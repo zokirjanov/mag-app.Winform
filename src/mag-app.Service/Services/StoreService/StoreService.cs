@@ -5,39 +5,39 @@ using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Interfaces.Stores;
 using Microsoft.EntityFrameworkCore;
 
-namespace mag_app.Service.Services
+namespace mag_app.Service.Services.StoreService
 {
     public class StoreService : IStoreService
     {
 
-        private AppDbContext _repository;
+        private AppDbContext _appDbContext;
 
         public StoreService(AppDbContext repository)
         {
-            _repository = repository;
+            _appDbContext = repository;
         }
 
         public async Task<string> CreateAsync(AddStoreDto storeDto)
         {
-            var storee = await _repository.Stores.FirstOrDefaultAsync(
+            var storee = await _appDbContext.Stores.FirstOrDefaultAsync(
             x => x.StoreName.ToLower() == storeDto.StoreName.ToLower() && x.EmployeeId == storeDto.EmployeeID);
-            if (storee != null) { return "Store already exists"; }
+            if (storee != null) { return "Category already exists"; }
             var store = (Store)storeDto;
-            _repository.Stores.Add(store);
-            var res = await _repository.SaveChangesAsync();
+            _appDbContext.Stores.Add(store);
+            var res = await _appDbContext.SaveChangesAsync();
             if (res > 0) return "true";
             return "Something went wrong";
         }
 
         public async Task<string> DeleteAsync(string name)
         {
-            var store = await _repository.Stores.FirstOrDefaultAsync(x => x.StoreName == name);
+            var store = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName == name);
             if (store != null)
             {
-                var res = _repository.Stores.Remove(store);
+                var res = _appDbContext.Stores.Remove(store);
                 if (res != null)
                 {
-                    var ss = await _repository.SaveChangesAsync();
+                    var ss = await _appDbContext.SaveChangesAsync();
                     if (ss > 0) return "true";
                 }
                 else return "false";
@@ -48,27 +48,27 @@ namespace mag_app.Service.Services
         public async Task<List<Store>> GetAllAsync()
         {
             long id = IdentitySingelton.GetInstance().EmployeeId;
-            var result = await _repository.Stores.Where(x => x.EmployeeId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.Stores.Where(x => x.EmployeeId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
 
         public async Task<string> UpdateAsync(Store store, string name)
         {
-            var checkname = await _repository.Stores.FirstOrDefaultAsync(x => x.StoreName.ToLower() == store.StoreName.ToLower());
+            var checkname = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName.ToLower() == store.StoreName.ToLower());
             if (checkname is null)
             {
-                var entity = await _repository.Stores.FirstOrDefaultAsync(x => x.StoreName == name);
+                var entity = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName == name);
                 if (entity != null)
                 {
                     entity.StoreName = store.StoreName;
-                    var res = await _repository.SaveChangesAsync();
+                    var res = await _appDbContext.SaveChangesAsync();
                     if (res > 0) { return "true"; }
                     else { return "false"; }
                 }
                 return "false";
             }
-            else return "Store already exists, please try another name";
+            else return "Category already exists, please try another name";
         }
     }
 }

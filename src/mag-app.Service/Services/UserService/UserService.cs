@@ -6,19 +6,19 @@ using mag_app.Service.Interfaces.Users;
 using mag_app.Service.Security;
 using Microsoft.EntityFrameworkCore;
 
-namespace mag_app.Service.Service
+namespace mag_app.Service.Services.UserService
 {
     public class UserService : IUserService
     {
-        private AppDbContext _repository;
+        private AppDbContext _appDbContext;
         public UserService(AppDbContext appContext)
         {
-            _repository = appContext;
+            _appDbContext = appContext;
         }
 
         public async Task<string> AccountLoginAsync(LoginDto LoginDto)
         {
-            var user = await _repository.Users.FirstOrDefaultAsync(
+            var user = await _appDbContext.Users.FirstOrDefaultAsync(
             x => x.Login.ToLower() == LoginDto.Login.ToLower());
             if (user is null) { return "User not Found"; }
             var checkPass = PasswordHasher.Verify(LoginDto.Password, user.Salt, user.PasswordHash);
@@ -41,22 +41,22 @@ namespace mag_app.Service.Service
 
         public async Task<string> AccountRegisterAsync(RegisterDto RegisterDto)
         {
-            var account = await _repository.Users.FirstOrDefaultAsync(
+            var account = await _appDbContext.Users.FirstOrDefaultAsync(
             x => x.Login.ToLower() == RegisterDto.Login.ToLower());
             if (account != null) { return "User already exists"; }
             var user = (User)RegisterDto;
             var hash = PasswordHasher.Hash(RegisterDto.Password);
             user.PasswordHash = hash.Hash;
             user.Salt = hash.Salt;
-            _repository.Users.Add(user);
-            var res = await _repository.SaveChangesAsync();
+            _appDbContext.Users.Add(user);
+            var res = await _appDbContext.SaveChangesAsync();
             if (res > 0) return "true";
             return "false";
         }
 
         public async Task<string> AccountRememberMeAsync(LoginDto LoginDto)
         {
-            var user = await _repository.Users.FirstOrDefaultAsync(x => x.Login.ToLower() == LoginDto.Login.ToLower());
+            var user = await _appDbContext.Users.FirstOrDefaultAsync(x => x.Login.ToLower() == LoginDto.Login.ToLower());
             if (user is null) { return "User not Found"; }
             string path = "database.txt";
             File.WriteAllText(path, LoginDto.Login + ":" + LoginDto.Password);

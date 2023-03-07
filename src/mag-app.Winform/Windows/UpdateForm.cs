@@ -1,7 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Attributes;
-using mag_app.Service.Services;
+using mag_app.Service.Services.StoreService;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
