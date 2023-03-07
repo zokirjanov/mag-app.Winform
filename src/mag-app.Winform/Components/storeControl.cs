@@ -72,6 +72,7 @@ namespace mag_app.Winform.Components
             if (dlg == DialogResult.OK)
             {
                 var res = _service.DeleteAsync(storeNameLabel.Text);
+                AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
                 MainForm.mainParent.pnl.Controls.Clear();
                 MainForm.mainParent.marketbtn_Click(sender, e);
             }

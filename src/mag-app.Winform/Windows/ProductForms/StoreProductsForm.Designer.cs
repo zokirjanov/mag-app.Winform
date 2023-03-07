@@ -74,7 +74,7 @@
             this.productBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.productBtn.Size = new System.Drawing.Size(194, 60);
             this.productBtn.TabIndex = 0;
-            this.productBtn.Text = "Products";
+            this.productBtn.Text = "Create Product";
             this.productBtn.UseVisualStyleBackColor = false;
             this.productBtn.Click += new System.EventHandler(this.productBtn_Click);
             // 
