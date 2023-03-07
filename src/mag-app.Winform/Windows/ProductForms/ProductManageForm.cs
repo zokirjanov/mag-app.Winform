@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace mag_app.Winform.Windows.Product_Forms
+namespace mag_app.Winform.Windows.ProductForms
 {
-    public partial class StoreProductsForm : Form
+    public partial class ProductManageForm : Form
     {
-        public StoreProductsForm()
+        public ProductManageForm()
         {
             InitializeComponent();
         }

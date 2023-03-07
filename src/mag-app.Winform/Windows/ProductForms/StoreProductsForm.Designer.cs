@@ -30,14 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StoreProductsForm));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.backButton = new System.Windows.Forms.Button();
             this.productBtn = new System.Windows.Forms.Button();
-            this.childPanel = new System.Windows.Forms.Panel();
+            this.productChildPanel = new System.Windows.Forms.Panel();
             this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.MenuPanel.Controls.Add(this.backButton);
             this.MenuPanel.Controls.Add(this.productBtn);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
@@ -45,6 +47,18 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(219, 569);
             this.MenuPanel.TabIndex = 1;
+            // 
+            // backButton
+            // 
+            this.backButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.backButton.Image = ((System.Drawing.Image)(resources.GetObject("backButton.Image")));
+            this.backButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.backButton.Location = new System.Drawing.Point(13, 528);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(194, 31);
+            this.backButton.TabIndex = 1;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // productBtn
             // 
@@ -61,23 +75,25 @@
             this.productBtn.Text = "Products";
             this.productBtn.UseVisualStyleBackColor = false;
             // 
-            // childPanel
+            // productChildPanel
             // 
-            this.childPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.childPanel.Location = new System.Drawing.Point(219, 0);
-            this.childPanel.Name = "childPanel";
-            this.childPanel.Size = new System.Drawing.Size(652, 569);
-            this.childPanel.TabIndex = 2;
+            this.productChildPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.productChildPanel.Location = new System.Drawing.Point(219, 0);
+            this.productChildPanel.Name = "productChildPanel";
+            this.productChildPanel.Size = new System.Drawing.Size(652, 569);
+            this.productChildPanel.TabIndex = 2;
             // 
             // StoreProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 569);
-            this.Controls.Add(this.childPanel);
+            this.Controls.Add(this.productChildPanel);
             this.Controls.Add(this.MenuPanel);
             this.Name = "StoreProductsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StoreProductsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StoreProductsForm_FormClosed);
             this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -87,6 +103,7 @@
 
         private Panel MenuPanel;
         private Button productBtn;
-        private Panel childPanel;
+        private Panel productChildPanel;
+        private Button backButton;
     }
 }

@@ -86,6 +86,8 @@
             this.Name = "storeControl";
             this.Size = new System.Drawing.Size(628, 61);
             this.Click += new System.EventHandler(this.storeControl_Click);
+            this.MouseLeave += new System.EventHandler(this.storeControl_MouseLeave);
+            this.MouseHover += new System.EventHandler(this.storeControl_MouseHover);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
