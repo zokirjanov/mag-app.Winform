@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductManageForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.productComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.producFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
@@ -37,12 +38,22 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.productComboBox);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(636, 40);
             this.panel1.TabIndex = 0;
+            // 
+            // productComboBox
+            // 
+            this.productComboBox.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productComboBox.FormattingEnabled = true;
+            this.productComboBox.Location = new System.Drawing.Point(468, 8);
+            this.productComboBox.Name = "productComboBox";
+            this.productComboBox.Size = new System.Drawing.Size(162, 23);
+            this.productComboBox.TabIndex = 4;
             // 
             // button1
             // 
@@ -57,6 +68,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Add Product";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // producFlowPanel
             // 
@@ -65,6 +77,7 @@
             this.producFlowPanel.Name = "producFlowPanel";
             this.producFlowPanel.Size = new System.Drawing.Size(636, 490);
             this.producFlowPanel.TabIndex = 1;
+            this.producFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.producFlowPanel_Paint);
             // 
             // ProductManageForm
             // 
@@ -75,6 +88,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ProductManageForm";
             this.Text = "ProductManageForm";
+            this.Load += new System.EventHandler(this.ProductManageForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -85,5 +99,6 @@
         private Panel panel1;
         private Button button1;
         private FlowLayoutPanel producFlowPanel;
+        private ComboBox productComboBox;
     }
 }

@@ -8,8 +8,5 @@ namespace mag_app.Domain.Entities.Products
     {
         public string ProdutName { get; set; } = string.Empty;
         public long CategoryId { get; set; }
-        public virtual Category Category { get; set; } = default!;
-        public long StoreId { get; set; }
-        public virtual Store Store { get; set; } = default!;
     }
 }

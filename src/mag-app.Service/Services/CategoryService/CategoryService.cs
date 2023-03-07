@@ -23,7 +23,6 @@ namespace mag_app.Service.Services.CategoryService
             _appDbContext = appDbContext;
         }
 
-
         public async Task<string> CreateCategoryAsync(Category category)
         {
             var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName);
@@ -51,7 +50,7 @@ namespace mag_app.Service.Services.CategoryService
             return false;
         }
 
-        public async Task<IEnumerable<Category>> GetAllAsync()
+        public async Task<List<Category>> GetAllAsync()
         {
             long id = IdentitySingelton.GetInstance().EmployeeId;
             var result = await _appDbContext.Categories.ToListAsync();

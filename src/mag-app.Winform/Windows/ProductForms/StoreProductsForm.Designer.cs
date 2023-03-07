@@ -47,6 +47,7 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(219, 569);
             this.MenuPanel.TabIndex = 1;
+            this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
             // 
             // backButton
             // 
@@ -59,6 +60,7 @@
             this.backButton.TabIndex = 1;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // productBtn
             // 
@@ -74,6 +76,7 @@
             this.productBtn.TabIndex = 0;
             this.productBtn.Text = "Products";
             this.productBtn.UseVisualStyleBackColor = false;
+            this.productBtn.Click += new System.EventHandler(this.productBtn_Click);
             // 
             // productChildPanel
             // 

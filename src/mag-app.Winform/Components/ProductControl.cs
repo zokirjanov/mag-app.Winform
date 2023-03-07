@@ -1,4 +1,7 @@
-﻿using System;
+﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Services.ProductService;
+using mag_app.Service.Services.StoreService;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,25 +14,22 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Components
 {
-    public partial class ProductControl : UserControl
+    public partial class productControl : UserControl
     {
-        public ProductControl()
+        private ProductService _service;
+        public productControl(AppDbContext appDbContext)
         {
             InitializeComponent();
+            _service = new ProductService(appDbContext);
         }
+
+        public string ProductName { get => productNameLb.Text; set => productNameLb.Text = value; }
+
 
         //Border radius
         private int radius = 20;
         [DefaultValue(20)]
-        public int Radius
-        {
-            get { return radius; }
-            set
-            {
-                radius = value;
-                this.RecreateRegion();
-            }
-        }
+        public int Radius{get { return radius; }set{radius = value;this.RecreateRegion();}}
 
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect,
@@ -47,7 +47,6 @@ namespace mag_app.Winform.Components
             path.CloseFigure();
             return path;
         }
-
         private void RecreateRegion()
         {
             var bounds = ClientRectangle;
@@ -55,7 +54,6 @@ namespace mag_app.Winform.Components
                 bounds.Right, bounds.Bottom, Radius, radius));
             this.Invalidate();
         }
-
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);

@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Components
 {
-    partial class ProductControl
+    partial class productControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(productControl));
             this.productNameLb = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.productEditBtn = new System.Windows.Forms.Button();
@@ -43,9 +43,9 @@
             this.productNameLb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.productNameLb.Location = new System.Drawing.Point(22, 19);
             this.productNameLb.Name = "productNameLb";
-            this.productNameLb.Size = new System.Drawing.Size(112, 24);
+            this.productNameLb.Size = new System.Drawing.Size(136, 24);
             this.productNameLb.TabIndex = 2;
-            this.productNameLb.Text = "Store name";
+            this.productNameLb.Text = "Product name";
             // 
             // panel1
             // 
@@ -74,14 +74,14 @@
             this.productDeleteBtn.TabIndex = 1;
             this.productDeleteBtn.UseVisualStyleBackColor = true;
             // 
-            // ProductControl
+            // productControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.productNameLb);
-            this.Name = "ProductControl";
+            this.Name = "productControl";
             this.Size = new System.Drawing.Size(628, 61);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

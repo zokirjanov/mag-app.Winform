@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows;
 using mag_app.Winform.Windows.Product_Forms;
@@ -90,7 +91,8 @@ namespace mag_app.Winform.Components
         private void storeControl_Click(object sender, EventArgs e)
         {
             MainForm.mainParent.Hide();
-            StoreProductsForm.storeProductParent.Show();
+            StoreProductsForm storeProductsForm = new StoreProductsForm();
+            storeProductsForm.Show();
         }
 
         private void storeControl_MouseHover(object sender, EventArgs e)
