@@ -11,7 +11,7 @@ namespace mag_app.Service.Interfaces.Categories
     public interface ICategoryService
     {
         public Task<string> CreateCategoryAsync(Category category);
-        public Task<IEnumerable<Category>> GetAllAsync();
+        public Task<List<Category>> GetAllAsync();
         public Task<bool> DeleteAsync(long id);
         public Task<string> UpdateAsync(Category category, string name);
     }

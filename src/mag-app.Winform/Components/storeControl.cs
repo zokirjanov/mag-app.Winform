@@ -1,6 +1,8 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows;
+using mag_app.Winform.Windows.Product_Forms;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Drawing2D;
@@ -88,7 +90,21 @@ namespace mag_app.Winform.Components
 
         private void storeControl_Click(object sender, EventArgs e)
         {
+            MainForm.mainParent.Hide();
+            StoreProductsForm storeProductsForm = new StoreProductsForm();
+            storeProductsForm.Show();
+        }
 
+        private void storeControl_MouseHover(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Cyan;
+            storeNameLabel.BackColor = Color.Cyan;
+        }
+
+        private void storeControl_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.AliceBlue;
+            storeNameLabel.BackColor = Color.AliceBlue;
         }
     }
 }
