@@ -48,6 +48,7 @@
             // 
             // productComboBox
             // 
+            this.productComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.productComboBox.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productComboBox.FormattingEnabled = true;
             this.productComboBox.Location = new System.Drawing.Point(468, 8);
@@ -72,9 +73,11 @@
             // 
             // producFlowPanel
             // 
+            this.producFlowPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.producFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.producFlowPanel.Location = new System.Drawing.Point(0, 40);
             this.producFlowPanel.Name = "producFlowPanel";
+            this.producFlowPanel.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.producFlowPanel.Size = new System.Drawing.Size(636, 490);
             this.producFlowPanel.TabIndex = 1;
             this.producFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.producFlowPanel_Paint);

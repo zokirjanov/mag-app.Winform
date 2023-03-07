@@ -14,10 +14,16 @@ namespace mag_app.Winform.Windows.Product_Forms
     public partial class StoreProductsForm : Form
     {
         public static StoreProductsForm storeProductParent;
+        public static StoreProductsForm storeParent;
+        public Button btn;
+        public Panel pnl;
         public StoreProductsForm()
         {
             InitializeComponent();
             storeProductParent = this;
+            storeParent = this;
+            btn = productBtn;
+            pnl = productChildPanel;
         }
 
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -41,7 +47,7 @@ namespace mag_app.Winform.Windows.Product_Forms
             Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
         }
 
-        private void productBtn_Click(object sender, EventArgs e)
+        public void productBtn_Click(object sender, EventArgs e)
         {
             openChildForm(new ProductManageForm());
         }
