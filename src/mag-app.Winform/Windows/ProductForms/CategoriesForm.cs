@@ -16,5 +16,15 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             InitializeComponent();
         }
+
+        private void CategoriesForm_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Button button = new Button();
+                button.Tag = i;
+                categoryFlowPanel.Controls.Add(button);
+            }
+        }
     }
 }

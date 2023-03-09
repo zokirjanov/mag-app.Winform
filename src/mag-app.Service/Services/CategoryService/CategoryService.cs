@@ -25,7 +25,7 @@ namespace mag_app.Service.Services.CategoryService
 
         public async Task<string> CreateCategoryAsync(Category category)
         {
-            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName);
+            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName && x.EmployeeId == category.EmployeeId);
             if (check is not null) return "Such a category exists, try another category name";
             var cat = (Category)category;
             _appDbContext.Categories.Add(cat);

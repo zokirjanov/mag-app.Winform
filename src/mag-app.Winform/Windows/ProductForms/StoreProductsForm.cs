@@ -49,7 +49,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         public void productBtn_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProductManageForm());
+            openChildForm(new CategoriesForm());
         }
 
         private Form activeForm = null;

@@ -28,19 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.AddCategoryBtn = new System.Windows.Forms.Button();
+            this.categoryFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.AddCategoryBtn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(636, 43);
+            this.panel1.TabIndex = 1;
+            // 
+            // AddCategoryBtn
+            // 
+            this.AddCategoryBtn.Location = new System.Drawing.Point(7, 6);
+            this.AddCategoryBtn.Name = "AddCategoryBtn";
+            this.AddCategoryBtn.Size = new System.Drawing.Size(107, 33);
+            this.AddCategoryBtn.TabIndex = 0;
+            this.AddCategoryBtn.Text = "Add Category";
+            this.AddCategoryBtn.UseVisualStyleBackColor = true;
+            // 
+            // categoryFlowPanel
+            // 
+            this.categoryFlowPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.categoryFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.categoryFlowPanel.Location = new System.Drawing.Point(0, 43);
+            this.categoryFlowPanel.Name = "categoryFlowPanel";
+            this.categoryFlowPanel.Size = new System.Drawing.Size(636, 487);
+            this.categoryFlowPanel.TabIndex = 2;
             // 
             // CategoriesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 530);
+            this.Controls.Add(this.categoryFlowPanel);
+            this.Controls.Add(this.panel1);
             this.Name = "CategoriesForm";
             this.Text = "CategoriesForm";
+            this.Load += new System.EventHandler(this.CategoriesForm_Load);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+        private Panel panel1;
+        private Button AddCategoryBtn;
+        private FlowLayoutPanel categoryFlowPanel;
     }
 }
