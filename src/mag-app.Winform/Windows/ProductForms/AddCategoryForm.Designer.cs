@@ -65,6 +65,7 @@
             this.Controls.Add(this.categoryNameTb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddCategoryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCategoryForm";
             this.ResumeLayout(false);
             this.PerformLayout();

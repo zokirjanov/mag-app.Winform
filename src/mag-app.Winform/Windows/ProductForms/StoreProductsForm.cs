@@ -1,4 +1,5 @@
-﻿using mag_app.Winform.Windows.ProductForms;
+﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Winform.Windows.ProductForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,7 +50,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         public void productBtn_Click(object sender, EventArgs e)
         {
-            openChildForm(new CategoriesForm());
+            openChildForm(new CategoriesForm(new AppDbContext()));
         }
 
         private Form activeForm = null;
