@@ -8,5 +8,6 @@ namespace mag_app.Domain.Entities.Products
     {
         public string ProdutName { get; set; } = string.Empty;
         public long CategoryId { get; set; }
+        public long  EmployeeId { get; set; }
     }
 }

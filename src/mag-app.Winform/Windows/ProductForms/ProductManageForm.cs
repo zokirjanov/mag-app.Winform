@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Interfaces.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Components;
@@ -49,7 +50,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public async void LoadData()
         {
             producFlowPanel.Controls.Clear();
-            var items = await _ProductService.GetAllAsync();
+            var items = await _ProductService.GetAllAsync(1, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");
