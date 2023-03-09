@@ -51,6 +51,7 @@
             this.AddCategoryBtn.TabIndex = 0;
             this.AddCategoryBtn.Text = "Add Category";
             this.AddCategoryBtn.UseVisualStyleBackColor = true;
+            this.AddCategoryBtn.Click += new System.EventHandler(this.AddCategoryBtn_Click);
             // 
             // categoryFlowPanel
             // 

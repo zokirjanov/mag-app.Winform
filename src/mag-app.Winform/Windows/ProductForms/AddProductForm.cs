@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Dtos.Products;
 using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
@@ -20,7 +21,7 @@ namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class AddProductForm : Form
     {
-        //private readonly AppDbContext _dbContex;
+  
         private readonly ProductService _service;
         public AddProductForm(AppDbContext appDbContext)
         {
@@ -32,7 +33,7 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             if (!string.IsNullOrEmpty(productNameTb.Text))
             {
-                Product product = new Product()
+                ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
                     CategoryId = 1,

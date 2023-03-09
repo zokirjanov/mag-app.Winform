@@ -2,6 +2,7 @@
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Dtos.Categories;
 using mag_app.Service.Interfaces.Categories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -23,7 +24,7 @@ namespace mag_app.Service.Services.CategoryService
             _appDbContext = appDbContext;
         }
 
-        public async Task<string> CreateCategoryAsync(Category category)
+        public async Task<string> CreateCategoryAsync(CategoryDto category)
         {
             var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName && x.EmployeeId == category.EmployeeId);
             if (check is not null) return "Such a category exists, try another category name";
@@ -58,7 +59,7 @@ namespace mag_app.Service.Services.CategoryService
             else return null;
         }
 
-        public async Task<string> UpdateAsync(Category category, string name)
+        public async Task<string> UpdateAsync(CategoryDto category, string name)
         {
             var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName.ToLower());
             if (checkname is null)

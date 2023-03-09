@@ -1,4 +1,5 @@
 ﻿using mag_app.Domain.Entities.Products;
+using mag_app.Service.Dtos.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace mag_app.Service.Interfaces.Products
 {
     public interface IproductService
     {
-        public Task<string> CreateProductAsync(Product product);
+        public Task<string> CreateProductAsync(ProductDto product);
         public Task<IEnumerable<Product>> GetAllAsync();
         public Task<string> DeleteAsync(string name);
-        public Task<string> UpdateAsync(Product Product, string name);
+        public Task<string> UpdateAsync(ProductDto Product, string name);
     }
 }

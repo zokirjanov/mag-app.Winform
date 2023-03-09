@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mag_app.DataAccess.DbContexts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 button.Tag = i;
                 categoryFlowPanel.Controls.Add(button);
             }
+        }
+
+        private void AddCategoryBtn_Click(object sender, EventArgs e)
+        {
+            AddCategoryForm addCategoryForm = new AddCategoryForm(new AppDbContext());
+            addCategoryForm.ShowDialog();
         }
     }
 }
