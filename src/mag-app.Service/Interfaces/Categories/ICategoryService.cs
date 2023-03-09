@@ -15,6 +15,6 @@ namespace mag_app.Service.Interfaces.Categories
         public Task<List<Category>> GetAllAsync();
         public Task<bool> DeleteAsync(long id);
         public Task<string> UpdateAsync(CategoryDto category, string name);
-        public Task<Category> GetByName(string name);
+        //public Task<Category> GetByName(string name);
     }
 }
