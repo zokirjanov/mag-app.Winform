@@ -59,6 +59,16 @@ namespace mag_app.Service.Services.CategoryService
             else return null;
         }
 
+        public Task<Category> GetByName(string name)
+        {
+            var result = _appDbContext.Categories.Where(x => x.CategoryName == name).ToListAsync();
+            if (result is not null)
+            {
+             
+            }
+            else return null;
+        }
+
         public async Task<string> UpdateAsync(CategoryDto category, string name)
         {
             var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName.ToLower());

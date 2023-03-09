@@ -36,7 +36,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
-                    CategoryId = 1,
+                    CategoryId = IdentitySingelton.GetInstance().CategoryId,
+                    EmployeeId = IdentitySingelton.GetInstance().EmployeeId
                 };
 
                 var res = await _service.CreateProductAsync(product);

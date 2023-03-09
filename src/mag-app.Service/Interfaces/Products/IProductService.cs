@@ -11,7 +11,7 @@ namespace mag_app.Service.Interfaces.Products
     public interface IproductService
     {
         public Task<string> CreateProductAsync(ProductDto product);
-        public Task<IEnumerable<Product>> GetAllAsync();
+        public Task<IEnumerable<Product>> GetAllAsync(long cid, long eId);
         public Task<string> DeleteAsync(string name);
         public Task<string> UpdateAsync(ProductDto Product, string name);
     }
