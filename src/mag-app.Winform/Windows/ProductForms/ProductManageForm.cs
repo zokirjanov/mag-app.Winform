@@ -2,12 +2,14 @@
 using mag_app.Service.Interfaces.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Components;
+using mag_app.Winform.Windows.Product_Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,10 +19,12 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class ProductManageForm : Form
     {
         private ProductService _ProductService;
+        public static ProductManageForm produuctManageParent;
         public ProductManageForm()
         {
             _ProductService = new ProductService(new AppDbContext());
             InitializeComponent();
+            produuctManageParent = this;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -60,11 +64,20 @@ namespace mag_app.Winform.Windows.ProductForms
         }
         private void producFlowPanel_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, producFlowPanel.ClientRectangle,
+             ControlPaint.DrawBorder(e.Graphics, producFlowPanel.ClientRectangle,
              Color.DimGray, 1, ButtonBorderStyle.Solid, // left
              Color.DimGray, 1, ButtonBorderStyle.Solid, // top
              Color.White, 1, ButtonBorderStyle.Solid, // right
              Color.White, 1, ButtonBorderStyle.Solid);// bottom
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title;
+            StoreProductsForm.storeProductParent.magLabel.Text = "магазин:";
+            StoreProductsForm.storeProductParent.backBtn.Show();
+          
         }
     }
 }

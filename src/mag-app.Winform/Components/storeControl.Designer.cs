@@ -40,7 +40,7 @@
             // 
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.deleteBtn);
-            this.panel1.Location = new System.Drawing.Point(521, 8);
+            this.panel1.Location = new System.Drawing.Point(733, 9);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(96, 44);
             this.panel1.TabIndex = 0;
@@ -84,7 +84,7 @@
             this.Controls.Add(this.storeNameLabel);
             this.Controls.Add(this.panel1);
             this.Name = "storeControl";
-            this.Size = new System.Drawing.Size(628, 61);
+            this.Size = new System.Drawing.Size(832, 61);
             this.Click += new System.EventHandler(this.storeControl_Click);
             this.MouseLeave += new System.EventHandler(this.storeControl_MouseLeave);
             this.MouseHover += new System.EventHandler(this.storeControl_MouseHover);

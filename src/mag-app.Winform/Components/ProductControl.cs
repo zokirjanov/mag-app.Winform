@@ -78,8 +78,7 @@ namespace mag_app.Winform.Components
             {
                 var res = _service.DeleteAsync(productNameLb.Text);
                 AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
-                StoreProductsForm.storeParent.pnl.Controls.Clear();
-                StoreProductsForm.storeParent.productBtn_Click(sender, e);
+                StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
             }
             if (dlg == DialogResult.Cancel)
             {

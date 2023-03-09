@@ -45,7 +45,7 @@
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(219, 569);
+            this.MenuPanel.Size = new System.Drawing.Size(219, 638);
             this.MenuPanel.TabIndex = 0;
             this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
             // 
@@ -54,12 +54,12 @@
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(4, 528);
+            this.button1.Location = new System.Drawing.Point(4, 594);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(210, 38);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Log out";
+            this.button1.Text = "Выйти";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -75,7 +75,7 @@
             this.marketbtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.marketbtn.Size = new System.Drawing.Size(194, 60);
             this.marketbtn.TabIndex = 0;
-            this.marketbtn.Text = "My Stores";
+            this.marketbtn.Text = "Мои магазины";
             this.marketbtn.UseVisualStyleBackColor = false;
             this.marketbtn.Click += new System.EventHandler(this.marketbtn_Click);
             // 
@@ -85,23 +85,24 @@
             this.MainPanel.Location = new System.Drawing.Point(219, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(652, 569);
+            this.MainPanel.Size = new System.Drawing.Size(861, 638);
             this.MainPanel.TabIndex = 1;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(871, 569);
+            this.ClientSize = new System.Drawing.Size(1080, 638);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.MenuPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(887, 608);
+            this.MinimumSize = new System.Drawing.Size(1078, 677);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

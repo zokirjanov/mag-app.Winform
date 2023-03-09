@@ -53,7 +53,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
             this.button1.TabIndex = 7;
-            this.button1.Text = "Add";
+            this.button1.Text = "Добавлять";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -65,7 +65,7 @@
             this.storeNametb.Location = new System.Drawing.Point(46, 44);
             this.storeNametb.MaxLength = 50;
             this.storeNametb.Name = "storeNametb";
-            this.storeNametb.PlaceholderText = "Store Name";
+            this.storeNametb.PlaceholderText = "Название магазина";
             this.storeNametb.Size = new System.Drawing.Size(314, 30);
             this.storeNametb.TabIndex = 5;
             // 
