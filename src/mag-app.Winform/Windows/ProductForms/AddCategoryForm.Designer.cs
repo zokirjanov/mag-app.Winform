@@ -40,7 +40,7 @@
             this.categoryNameTb.Location = new System.Drawing.Point(51, 43);
             this.categoryNameTb.MaxLength = 50;
             this.categoryNameTb.Name = "categoryNameTb";
-            this.categoryNameTb.PlaceholderText = "Category name";
+            this.categoryNameTb.PlaceholderText = "Название категории";
             this.categoryNameTb.Size = new System.Drawing.Size(314, 30);
             this.categoryNameTb.TabIndex = 7;
             // 
@@ -52,7 +52,7 @@
             this.categoryAddBtn.Name = "categoryAddBtn";
             this.categoryAddBtn.Size = new System.Drawing.Size(314, 39);
             this.categoryAddBtn.TabIndex = 9;
-            this.categoryAddBtn.Text = "Add";
+            this.categoryAddBtn.Text = "добавлять";
             this.categoryAddBtn.UseVisualStyleBackColor = false;
             this.categoryAddBtn.Click += new System.EventHandler(this.categoryAddBtn_Click);
             // 

@@ -40,33 +40,35 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(636, 43);
+            this.panel1.Size = new System.Drawing.Size(845, 47);
             this.panel1.TabIndex = 1;
             // 
             // AddCategoryBtn
             // 
-            this.AddCategoryBtn.Location = new System.Drawing.Point(7, 6);
+            this.AddCategoryBtn.Location = new System.Drawing.Point(12, 8);
             this.AddCategoryBtn.Name = "AddCategoryBtn";
-            this.AddCategoryBtn.Size = new System.Drawing.Size(107, 33);
+            this.AddCategoryBtn.Size = new System.Drawing.Size(137, 33);
             this.AddCategoryBtn.TabIndex = 0;
-            this.AddCategoryBtn.Text = "Add Category";
+            this.AddCategoryBtn.Text = "Добавить категорию";
             this.AddCategoryBtn.UseVisualStyleBackColor = true;
             this.AddCategoryBtn.Click += new System.EventHandler(this.AddCategoryBtn_Click);
             // 
             // categoryFlowPanel
             // 
+            this.categoryFlowPanel.AutoScroll = true;
             this.categoryFlowPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.categoryFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoryFlowPanel.Location = new System.Drawing.Point(0, 43);
+            this.categoryFlowPanel.Location = new System.Drawing.Point(0, 47);
             this.categoryFlowPanel.Name = "categoryFlowPanel";
-            this.categoryFlowPanel.Size = new System.Drawing.Size(636, 487);
+            this.categoryFlowPanel.Size = new System.Drawing.Size(845, 552);
             this.categoryFlowPanel.TabIndex = 2;
+            this.categoryFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.categoryFlowPanel_Paint);
             // 
             // CategoriesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 530);
+            this.ClientSize = new System.Drawing.Size(845, 599);
             this.Controls.Add(this.categoryFlowPanel);
             this.Controls.Add(this.panel1);
             this.Name = "CategoriesForm";

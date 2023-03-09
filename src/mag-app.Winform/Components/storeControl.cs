@@ -13,10 +13,12 @@ namespace mag_app.Winform.Components
     public partial class storeControl : UserControl
     {
         private StoreService _service;
+        public storeControl storeControlParent;
         public storeControl(AppDbContext appDbContext)
         {
             InitializeComponent();
             _service = new StoreService(appDbContext);
+            storeControlParent = this;
         }
 
         public long _count;
@@ -94,7 +96,9 @@ namespace mag_app.Winform.Components
         {
             MainForm.mainParent.Hide();
             StoreProductsForm storeProductsForm = new StoreProductsForm();
+            storeProductsForm.Title = StoreName;
             storeProductsForm.Show();
+            
         }
 
         private void storeControl_MouseHover(object sender, EventArgs e)

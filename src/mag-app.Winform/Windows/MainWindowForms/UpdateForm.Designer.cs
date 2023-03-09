@@ -49,7 +49,7 @@
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(258, 39);
             this.updateBtn.TabIndex = 2;
-            this.updateBtn.Text = "Update";
+            this.updateBtn.Text = "Редактировать";
             this.updateBtn.UseVisualStyleBackColor = false;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 179);
+            this.ClientSize = new System.Drawing.Size(395, 157);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.storeNameTb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

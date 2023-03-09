@@ -51,9 +51,9 @@
             // 
             this.panel1.Controls.Add(this.productEditBtn);
             this.panel1.Controls.Add(this.productDeleteBtn);
-            this.panel1.Location = new System.Drawing.Point(521, 8);
+            this.panel1.Location = new System.Drawing.Point(730, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(96, 44);
+            this.panel1.Size = new System.Drawing.Size(99, 44);
             this.panel1.TabIndex = 3;
             // 
             // productEditBtn
@@ -84,7 +84,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.productNameLb);
             this.Name = "productControl";
-            this.Size = new System.Drawing.Size(628, 61);
+            this.Size = new System.Drawing.Size(832, 61);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
