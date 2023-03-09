@@ -3,6 +3,7 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows;
 using mag_app.Winform.Windows.Product_Forms;
+using mag_app.Winform.Windows.ProductForms;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Drawing2D;

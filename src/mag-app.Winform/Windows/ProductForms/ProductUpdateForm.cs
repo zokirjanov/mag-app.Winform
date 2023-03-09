@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
+using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows.Product_Forms;
@@ -37,7 +38,7 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void updateBtn_Click(object sender, EventArgs e)
         {
-            Product product  = new Product();
+            ProductDto product  = new ProductDto();
             product.ProdutName = productNameTb.Text;
 
             DialogResult dlg = MessageBox.Show("Do you want to update product?", "Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

@@ -3,6 +3,7 @@ using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.Products;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,7 +22,7 @@ namespace mag_app.Service.Services.ProductService
         {
               this._appDbContext = appDbContext;
         }
-        public async Task<string> CreateProductAsync(Product product)
+        public async Task<string> CreateProductAsync(ProductDto product)
         {
             var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
             if (check is not null) return "Such a Product name exists, try another category name";
@@ -56,7 +57,7 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
         
-        public async Task<string> UpdateAsync(Product product, string name)
+        public async Task<string> UpdateAsync(ProductDto product, string name)
         {
             var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
             if (checkname is null)

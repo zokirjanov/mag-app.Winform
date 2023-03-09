@@ -1,5 +1,6 @@
 ﻿using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Products;
+using mag_app.Service.Dtos.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace mag_app.Service.Interfaces.Categories
 {
     public interface ICategoryService
     {
-        public Task<string> CreateCategoryAsync(Category category);
+        public Task<string> CreateCategoryAsync(CategoryDto category);
         public Task<List<Category>> GetAllAsync();
         public Task<bool> DeleteAsync(long id);
-        public Task<string> UpdateAsync(Category category, string name);
+        public Task<string> UpdateAsync(CategoryDto category, string name);
     }
 }
