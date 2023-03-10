@@ -41,7 +41,7 @@
             this.productNameLb.AutoSize = true;
             this.productNameLb.BackColor = System.Drawing.Color.AliceBlue;
             this.productNameLb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.productNameLb.Location = new System.Drawing.Point(22, 19);
+            this.productNameLb.Location = new System.Drawing.Point(17, 10);
             this.productNameLb.Name = "productNameLb";
             this.productNameLb.Size = new System.Drawing.Size(136, 24);
             this.productNameLb.TabIndex = 2;
@@ -51,15 +51,15 @@
             // 
             this.panel1.Controls.Add(this.productEditBtn);
             this.panel1.Controls.Add(this.productDeleteBtn);
-            this.panel1.Location = new System.Drawing.Point(730, 8);
+            this.panel1.Location = new System.Drawing.Point(733, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(99, 44);
+            this.panel1.Size = new System.Drawing.Size(97, 37);
             this.panel1.TabIndex = 3;
             // 
             // productEditBtn
             // 
             this.productEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("productEditBtn.Image")));
-            this.productEditBtn.Location = new System.Drawing.Point(12, 6);
+            this.productEditBtn.Location = new System.Drawing.Point(12, 2);
             this.productEditBtn.Name = "productEditBtn";
             this.productEditBtn.Size = new System.Drawing.Size(34, 33);
             this.productEditBtn.TabIndex = 2;
@@ -69,7 +69,7 @@
             // productDeleteBtn
             // 
             this.productDeleteBtn.Image = ((System.Drawing.Image)(resources.GetObject("productDeleteBtn.Image")));
-            this.productDeleteBtn.Location = new System.Drawing.Point(52, 6);
+            this.productDeleteBtn.Location = new System.Drawing.Point(52, 2);
             this.productDeleteBtn.Name = "productDeleteBtn";
             this.productDeleteBtn.Size = new System.Drawing.Size(34, 33);
             this.productDeleteBtn.TabIndex = 1;
@@ -84,7 +84,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.productNameLb);
             this.Name = "productControl";
-            this.Size = new System.Drawing.Size(832, 61);
+            this.Size = new System.Drawing.Size(832, 43);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

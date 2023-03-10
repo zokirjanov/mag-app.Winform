@@ -14,5 +14,6 @@ namespace mag_app.Service.Interfaces.Stores
         public Task<string> DeleteAsync(string name);
         public Task<string> UpdateAsync(Store store, string name);
         public Task<List<Store>> GetAllAsync();
+        public Task<long> GetByName(string name);
     }
 }

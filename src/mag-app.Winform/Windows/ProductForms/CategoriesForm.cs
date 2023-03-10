@@ -2,15 +2,6 @@
 using mag_app.Service.Services.CategoryService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -33,7 +24,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public async void LoadData()
         {
             categoryFlowPanel.Controls.Clear();
-            var items = await _service.GetAllAsync();
+            var items = await _service.GetAllAsync(storeControl.storeControlParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Categories not found");
@@ -76,11 +67,11 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void categoryFlowPanel_Paint(object sender, PaintEventArgs e)
         {
-              ControlPaint.DrawBorder(e.Graphics, categoryFlowPanel.ClientRectangle,
-              Color.DimGray, 1, ButtonBorderStyle.Solid, // left
-              Color.DimGray, 1, ButtonBorderStyle.Solid, // top
-              Color.White, 1, ButtonBorderStyle.Solid, // right
-              Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
+            ControlPaint.DrawBorder(e.Graphics, categoryFlowPanel.ClientRectangle,
+            Color.DimGray, 1, ButtonBorderStyle.Solid, // left
+            Color.DimGray, 1, ButtonBorderStyle.Solid, // top
+            Color.White, 1, ButtonBorderStyle.Solid, // right
+            Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
         }
     }
 }

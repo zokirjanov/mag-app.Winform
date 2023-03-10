@@ -46,7 +46,7 @@
             // 
             // categoryAddBtn
             // 
-            this.categoryAddBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.categoryAddBtn.BackColor = System.Drawing.Color.LightCyan;
             this.categoryAddBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.categoryAddBtn.Location = new System.Drawing.Point(51, 97);
             this.categoryAddBtn.Name = "categoryAddBtn";

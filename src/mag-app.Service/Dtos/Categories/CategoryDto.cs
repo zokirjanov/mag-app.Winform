@@ -9,6 +9,8 @@ namespace mag_app.Service.Dtos.Categories
 
         public long EmployeeId { get; set; }
 
+        public long StoreId { get; set; }
+
 
         public static implicit operator Category(CategoryDto categoryDto)
         {
@@ -16,6 +18,7 @@ namespace mag_app.Service.Dtos.Categories
             {
                 CategoryName = categoryDto.CategoryName,
                 EmployeeId = categoryDto.EmployeeId,
+                StoreId = categoryDto.StoreId,
                 CreatedAt = TimeHelper.CurrentTime(),
                 UpdatedAt = TimeHelper.CurrentTime()
             };

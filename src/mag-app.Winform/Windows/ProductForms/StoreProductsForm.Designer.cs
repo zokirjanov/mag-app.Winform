@@ -85,9 +85,9 @@
             // productChildPanel
             // 
             this.productChildPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.productChildPanel.Location = new System.Drawing.Point(219, 40);
+            this.productChildPanel.Location = new System.Drawing.Point(219, 33);
             this.productChildPanel.Name = "productChildPanel";
-            this.productChildPanel.Size = new System.Drawing.Size(861, 598);
+            this.productChildPanel.Size = new System.Drawing.Size(861, 605);
             this.productChildPanel.TabIndex = 2;
             // 
             // panel1
@@ -97,14 +97,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(219, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(861, 40);
+            this.panel1.Size = new System.Drawing.Size(861, 33);
             this.panel1.TabIndex = 3;
             // 
             // magazineLabel
             // 
             this.magazineLabel.AutoSize = true;
             this.magazineLabel.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.magazineLabel.Location = new System.Drawing.Point(6, 9);
+            this.magazineLabel.Location = new System.Drawing.Point(7, 9);
             this.magazineLabel.Name = "magazineLabel";
             this.magazineLabel.Size = new System.Drawing.Size(82, 21);
             this.magazineLabel.TabIndex = 1;
