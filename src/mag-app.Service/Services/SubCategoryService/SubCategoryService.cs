@@ -3,6 +3,7 @@ using mag_app.DataAccess.DbContexts;
 using mag_app.DataAccess.Interfaces.SubCategories;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.SubCategories;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Categories;
 using mag_app.Service.Dtos.SubCategories;
 using mag_app.Service.Interfaces.SubCategories;
@@ -50,9 +51,12 @@ namespace mag_app.Service.Services.SubCategoryService
             return false;
         }
 
-        public Task<List<Category>> GetAllAsync(long id)
+        public async Task<List<SubCategory>> GetAllAsync(long id)
         {
-            throw new NotImplementedException();
+            long Id = IdentitySingelton.GetInstance().EmployeeId;
+            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == Id).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            if (result is not null) return result.ToList();
+            else return null;
         }
 
         public Task<long> GetByName(string name)
