@@ -24,7 +24,7 @@ namespace mag_app.Winform.Windows.ProductForms
             InitializeComponent();
             categoryParent = this;
         }
-
+        public long Id { get; set; }
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -58,8 +58,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 14),
             };
             categoryFlowPanel.Controls.Add(w);
-            w.Click += (s, e) =>
+            w.Click += async (s, e) =>
             {
+                Id = await _service.GetByName(w.Text);
                 StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
                 StoreProductsForm.storeProductParent.backBtn.Hide();
                 StoreProductsForm.storeProductParent.titleLabel.Text = w.Text;

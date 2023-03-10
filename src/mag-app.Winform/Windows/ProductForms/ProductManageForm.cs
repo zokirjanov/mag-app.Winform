@@ -50,7 +50,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public async void LoadData()
         {
             producFlowPanel.Controls.Clear();
-            var items = await _ProductService.GetAllAsync(1, IdentitySingelton.GetInstance().EmployeeId);
+            var items = await _ProductService.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");

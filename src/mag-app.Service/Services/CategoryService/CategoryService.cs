@@ -18,10 +18,12 @@ namespace mag_app.Service.Services.CategoryService
     public class CategoryService : ICategoryService
     {
         private AppDbContext _appDbContext;
+        public static CategoryService categoryParent { get; private set; }
 
         public CategoryService(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
+            categoryParent = this;
         }
 
         public async Task<string> CreateCategoryAsync(CategoryDto category)
@@ -59,15 +61,15 @@ namespace mag_app.Service.Services.CategoryService
             else return null;
         }
 
-        //public Task<Category> GetByName(string name)
-        //{
-        //    var result = _appDbContext.Categories.Where(x => x.CategoryName == name).ToListAsync();
-        //    if (result is not null)
-        //    {
-             
-        //    }
-        //    else return null;
-        //}
+        public async Task<long> GetByName(string name)
+        {
+            var result =  _appDbContext.Categories.First(x => x.CategoryName == name);
+            if (result is not null)
+            {
+                return result.Id;
+            }
+            else return 0;
+        }
 
         public async Task<string> UpdateAsync(CategoryDto category, string name)
         {

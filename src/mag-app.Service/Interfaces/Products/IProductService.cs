@@ -1,4 +1,5 @@
-﻿using mag_app.Domain.Entities.Products;
+﻿using mag_app.Domain.Entities.Categories;
+using mag_app.Domain.Entities.Products;
 using mag_app.Service.Dtos.Products;
 using System;
 using System.Collections.Generic;
