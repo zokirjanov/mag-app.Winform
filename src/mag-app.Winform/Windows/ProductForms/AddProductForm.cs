@@ -3,6 +3,7 @@ using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Dtos.Stores;
+using mag_app.Service.Services.CategoryService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows.Product_Forms;
@@ -36,7 +37,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
-                    CategoryId = IdentitySingelton.GetInstance().CategoryId,
+                    CategoryId = CategoriesForm.categoryParent.Id,
                     EmployeeId = IdentitySingelton.GetInstance().EmployeeId
                 };
 

@@ -127,7 +127,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.productChildPanel);
             this.Controls.Add(this.MenuPanel);
-            this.MinimumSize = new System.Drawing.Size(1078, 677);
+            this.MaximumSize = new System.Drawing.Size(1096, 677);
+            this.MinimumSize = new System.Drawing.Size(1096, 677);
             this.Name = "StoreProductsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StoreProductsForm";
