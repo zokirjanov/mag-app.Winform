@@ -2,6 +2,7 @@
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Categories;
 using mag_app.Service.Services.CategoryService;
+using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
@@ -22,6 +23,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 CategoryDto category = new CategoryDto()
                 {
                     CategoryName = categoryNameTb.Text,
+                    StoreId = storeControl.storeControlParent.Id,
                     EmployeeId = IdentitySingelton.GetInstance().EmployeeId
                 };
 

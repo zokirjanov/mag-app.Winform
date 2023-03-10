@@ -12,5 +12,6 @@ namespace mag_app.Domain.Entities.Categories
     {
         public string CategoryName { get; set; } = string.Empty;
         public long EmployeeId { get; set; }
+        public long StoreId { get; set; }
     }
 }

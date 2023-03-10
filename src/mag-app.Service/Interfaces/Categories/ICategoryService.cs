@@ -12,7 +12,7 @@ namespace mag_app.Service.Interfaces.Categories
     public interface ICategoryService
     {
         public Task<string> CreateCategoryAsync(CategoryDto category);
-        public Task<List<Category>> GetAllAsync();
+        public Task<List<Category>> GetAllAsync(long id);
         public Task<bool> DeleteAsync(long id);
         public Task<string> UpdateAsync(CategoryDto category, string name);
         public Task<long> GetByName(string name);

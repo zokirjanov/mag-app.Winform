@@ -13,7 +13,7 @@ namespace mag_app.Winform.Components
     public partial class storeControl : UserControl
     {
         private StoreService _service;
-        public storeControl storeControlParent;
+        public static storeControl storeControlParent;
         public storeControl(AppDbContext appDbContext)
         {
             InitializeComponent();
@@ -22,8 +22,8 @@ namespace mag_app.Winform.Components
         }
 
         public long _count;
+        public long Id { get; set; }
         public string StoreName { get => storeNameLabel.Text; set => storeNameLabel.Text = value; }
-
 
         //Border radius
         private int radius = 20;
@@ -36,6 +36,14 @@ namespace mag_app.Winform.Components
                 radius = value;
                 this.RecreateRegion();
             }
+        }
+        private async void storeControl_Click(object sender, EventArgs e)
+        {
+            Id = await _service.GetByName(StoreName);
+            MainForm.mainParent.Hide();
+            StoreProductsForm storeProductsForm = new StoreProductsForm();
+            storeProductsForm.Title = StoreName;
+            storeProductsForm.Show();
         }
 
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
@@ -90,27 +98,6 @@ namespace mag_app.Winform.Components
             UpdateForm updateForm = new UpdateForm(new AppDbContext());
             updateForm.storeName = storeNameLabel.Text;
             updateForm.ShowDialog();
-        }
-
-        private void storeControl_Click(object sender, EventArgs e)
-        {
-            MainForm.mainParent.Hide();
-            StoreProductsForm storeProductsForm = new StoreProductsForm();
-            storeProductsForm.Title = StoreName;
-            storeProductsForm.Show();
-            
-        }
-
-        private void storeControl_MouseHover(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Cyan;
-            storeNameLabel.BackColor = Color.Cyan;
-        }
-
-        private void storeControl_MouseLeave(object sender, EventArgs e)
-        {
-            this.BackColor = Color.AliceBlue;
-            storeNameLabel.BackColor = Color.AliceBlue;
         }
     }
 }

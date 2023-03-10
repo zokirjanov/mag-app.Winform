@@ -53,10 +53,10 @@ namespace mag_app.Service.Services.CategoryService
             return false;
         }
 
-        public async Task<List<Category>> GetAllAsync()
+        public async Task<List<Category>> GetAllAsync(long id)
         {
             long Id = IdentitySingelton.GetInstance().EmployeeId;
-            var result = await _appDbContext.Categories.Where(x => x.EmployeeId == Id).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.Categories.Where(x => x.EmployeeId == Id && x.StoreId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }

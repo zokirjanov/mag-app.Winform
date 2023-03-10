@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Stores;
@@ -51,6 +52,16 @@ namespace mag_app.Service.Services.StoreService
             var result = await _appDbContext.Stores.Where(x => x.EmployeeId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
+        }
+
+        public async Task<long> GetByName(string name)
+        {
+            var result = _appDbContext.Stores.First(x => x.StoreName == name);
+            if (result is not null)
+            {
+                return  result.Id;
+            }        
+            else return 0;
         }
 
         public async Task<string> UpdateAsync(Store store, string name)
