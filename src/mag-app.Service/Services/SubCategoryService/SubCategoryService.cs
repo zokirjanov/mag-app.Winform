@@ -2,8 +2,11 @@
 using mag_app.DataAccess.DbContexts;
 using mag_app.DataAccess.Interfaces.SubCategories;
 using mag_app.Domain.Entities.Categories;
+using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Dtos.Categories;
+using mag_app.Service.Dtos.SubCategories;
 using mag_app.Service.Interfaces.SubCategories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +23,31 @@ namespace mag_app.Service.Services.SubCategoryService
             _appDbContext = appDbContext;
         }
 
-
-        public Task<string> CreateCategoryAsync(CategoryDto category)
+        public async Task<string> CreateCategoryAsync(SubCategoryDto subCategory)
         {
-            throw new NotImplementedException();
+            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId);
+            if (check is not null) return "Such a sub-category exists, try another sub-category name";
+            var cat = (SubCategory)subCategory;
+            _appDbContext.SubCategories.Add(cat);
+            var res = await _appDbContext.SaveChangesAsync();
+            if (res > 0) return "true";
+            return "Something went wrong";
         }
 
-        public Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(long id)
         {
-            throw new NotImplementedException();
+            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.Id == id);
+            if (check != null)
+            {
+                var res = _appDbContext.SubCategories.Remove(check);
+                if (res != null)
+                {
+                    var ss = await _appDbContext.SaveChangesAsync();
+                    if (ss > 0) return true;
+                }
+                else return false;
+            }
+            return false;
         }
 
         public Task<List<Category>> GetAllAsync(long id)
