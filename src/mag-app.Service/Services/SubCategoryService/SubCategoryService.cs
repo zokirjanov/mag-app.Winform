@@ -59,14 +59,32 @@ namespace mag_app.Service.Services.SubCategoryService
             else return null;
         }
 
-        public Task<long> GetByName(string name)
+        public async Task<long> GetByName(string name)
         {
-            throw new NotImplementedException();
+            var result = _appDbContext.SubCategories.First(x => x.SubCategoryName == name);
+            if (result is not null)
+            {
+                return result.Id;
+            }
+            else return 0;
         }
 
-        public Task<string> UpdateAsync(CategoryDto category, string name)
+        public async Task<string> UpdateAsync(SubCategoryDto category, string name)
         {
-            throw new NotImplementedException();
+            var checkname = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == category.SubCategoryName.ToLower());
+            if (checkname is null)
+            {
+                var entity = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == name);
+                if (entity != null)
+                {
+                    category.SubCategoryName = category.SubCategoryName;
+                    var res = await _appDbContext.SaveChangesAsync();
+                    if (res > 0) { return "true"; }
+                    else { return "false"; }
+                }
+                return "false";
+            }
+            else return "SubCategory already exists, please try another name";
         }
     }
 }

@@ -83,7 +83,7 @@ namespace mag_app.Service.Services.CategoryService
                 }
                 return "false";
             }
-            else return "Store already exists, please try another name";
+            else return "Category already exists, please try another name";
         }
     }
 }
