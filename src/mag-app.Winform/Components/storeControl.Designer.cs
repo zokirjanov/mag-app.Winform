@@ -40,15 +40,15 @@
             // 
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.deleteBtn);
-            this.panel1.Location = new System.Drawing.Point(733, 9);
+            this.panel1.Location = new System.Drawing.Point(733, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(96, 44);
+            this.panel1.Size = new System.Drawing.Size(96, 38);
             this.panel1.TabIndex = 0;
             // 
             // button2
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(12, 6);
+            this.button2.Location = new System.Drawing.Point(12, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(34, 33);
             this.button2.TabIndex = 2;
@@ -58,7 +58,7 @@
             // deleteBtn
             // 
             this.deleteBtn.Image = ((System.Drawing.Image)(resources.GetObject("deleteBtn.Image")));
-            this.deleteBtn.Location = new System.Drawing.Point(52, 6);
+            this.deleteBtn.Location = new System.Drawing.Point(52, 2);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(34, 33);
             this.deleteBtn.TabIndex = 1;
@@ -70,7 +70,7 @@
             this.storeNameLabel.AutoSize = true;
             this.storeNameLabel.BackColor = System.Drawing.Color.AliceBlue;
             this.storeNameLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.storeNameLabel.Location = new System.Drawing.Point(22, 19);
+            this.storeNameLabel.Location = new System.Drawing.Point(15, 10);
             this.storeNameLabel.Name = "storeNameLabel";
             this.storeNameLabel.Size = new System.Drawing.Size(112, 24);
             this.storeNameLabel.TabIndex = 1;
@@ -84,9 +84,8 @@
             this.Controls.Add(this.storeNameLabel);
             this.Controls.Add(this.panel1);
             this.Name = "storeControl";
-            this.Size = new System.Drawing.Size(832, 61);
+            this.Size = new System.Drawing.Size(832, 43);
             this.Click += new System.EventHandler(this.storeControl_Click);
-
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

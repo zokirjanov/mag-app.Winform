@@ -49,7 +49,15 @@ namespace mag_app.Winform.Windows.ProductForms
 
         public async void LoadData()
         {
+            PrimaryButton primaryButton = new PrimaryButton();
             producFlowPanel.Controls.Clear();
+            producFlowPanel.Controls.Add(primaryButton);
+            primaryButton.Text = "Добавить продукт";
+            primaryButton.Click += (s, e) =>
+            {
+                AddProductForm addProductForm = new AddProductForm(new AppDbContext());
+                addProductForm.ShowDialog();
+            };
             var items = await _ProductService.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {

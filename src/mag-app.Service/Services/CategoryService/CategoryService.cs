@@ -18,12 +18,9 @@ namespace mag_app.Service.Services.CategoryService
     public class CategoryService : ICategoryService
     {
         private AppDbContext _appDbContext;
-        public static CategoryService categoryParent { get; private set; }
-
         public CategoryService(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-            categoryParent = this;
         }
 
         public async Task<string> CreateCategoryAsync(CategoryDto category)

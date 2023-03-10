@@ -25,12 +25,6 @@ namespace mag_app.Winform.Windows
             LoadData();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AddStoreForm form = new AddStoreForm(new AppDbContext());
-            form.ShowDialog();
-        }
-
         public void AddItem(string storename)
         {
             var w = new storeControl(new AppDbContext())
@@ -42,7 +36,16 @@ namespace mag_app.Winform.Windows
 
         public async void LoadData()
         {
+            PrimaryButton primaryButton = new PrimaryButton();
             flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Controls.Add(primaryButton);
+            primaryButton.Text = "добавить магазин";
+            primaryButton.Click += (s, e) => 
+            {
+                AddStoreForm form = new AddStoreForm(new AppDbContext());
+                form.ShowDialog();
+            };
+
             var items = await _service.GetAllAsync();
             if(items is null)
             {
