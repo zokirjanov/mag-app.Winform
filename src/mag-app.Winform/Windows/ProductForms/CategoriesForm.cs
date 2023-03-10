@@ -52,7 +52,7 @@ namespace mag_app.Winform.Windows.ProductForms
             w.Click += async (s, e) =>
             {
                 Id = await _service.GetByName(w.Text);
-                StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
+                StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
                 StoreProductsForm.storeProductParent.backBtn.Hide();
                 StoreProductsForm.storeProductParent.titleLabel.Text = w.Text;
                 StoreProductsForm.storeProductParent.magLabel.Text = "Категории:";
