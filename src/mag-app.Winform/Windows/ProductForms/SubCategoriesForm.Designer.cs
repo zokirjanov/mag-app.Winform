@@ -57,6 +57,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "назад";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -87,6 +88,7 @@
             this.Name = "SubCategoriesForm";
             this.Text = "SubCategoriesForm";
             this.Load += new System.EventHandler(this.SubCategoriesForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SubCategoriesForm_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

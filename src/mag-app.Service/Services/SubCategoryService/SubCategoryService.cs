@@ -53,8 +53,7 @@ namespace mag_app.Service.Services.SubCategoryService
 
         public async Task<List<SubCategory>> GetAllAsync(long id)
         {
-            long Id = IdentitySingelton.GetInstance().EmployeeId;
-            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == Id).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }

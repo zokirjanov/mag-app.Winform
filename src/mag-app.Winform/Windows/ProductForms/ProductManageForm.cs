@@ -82,11 +82,10 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
-            StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title;
-            StoreProductsForm.storeProductParent.magLabel.Text = "магазин:";
+            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.titleLabel.Text = CategoriesForm.categoryParent.CategoryTitle;
+            StoreProductsForm.storeProductParent.magLabel.Text = "Категории:";
             StoreProductsForm.storeProductParent.backBtn.Show();
-          
         }
     }
 }
