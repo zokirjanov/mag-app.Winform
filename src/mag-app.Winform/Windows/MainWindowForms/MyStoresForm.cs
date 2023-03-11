@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
+using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.Winform.Windows
 {
@@ -10,8 +11,6 @@ namespace mag_app.Winform.Windows
         private AppDbContext _dbContex;
         private StoreService _service;
         public FlowLayoutPanel panel;
-
-
 
         public MyStoresForm(AppDbContext appDbContext)
         {
@@ -27,6 +26,7 @@ namespace mag_app.Winform.Windows
 
         public void AddItem(string storename)
         {
+  
             var w = new storeControl(new AppDbContext())
             {
                 StoreName = storename

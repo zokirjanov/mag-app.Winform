@@ -21,7 +21,6 @@ namespace mag_app.Winform.Components
             storeControlParent = this;
         }
 
-        public long _count;
         public long Id { get; set; }
         public string StoreName { get => storeNameLabel.Text; set => storeNameLabel.Text = value; }
 
@@ -39,7 +38,8 @@ namespace mag_app.Winform.Components
         }
         private async void storeControl_Click(object sender, EventArgs e)
         {
-            Id = await _service.GetByName(StoreName);
+            storeControl.storeControlParent.Id = await _service.GetByName(StoreName);
+            storeControl.storeControlParent.StoreName = storeNameLabel.Text;
             MainForm.mainParent.Hide();
             StoreProductsForm storeProductsForm = new StoreProductsForm();
             storeProductsForm.Title = StoreName;

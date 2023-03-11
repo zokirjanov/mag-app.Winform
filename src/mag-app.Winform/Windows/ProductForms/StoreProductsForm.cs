@@ -46,6 +46,7 @@ namespace mag_app.Winform.Windows.Product_Forms
         {
             this.Hide();
             MainForm.mainParent.Show();
+            MainForm.mainParent.openChildForm(new MyStoresForm(new AppDbContext()));
         }
 
         private void MenuPanel_Paint(object sender, PaintEventArgs e)

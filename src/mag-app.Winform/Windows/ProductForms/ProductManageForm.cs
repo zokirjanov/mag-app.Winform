@@ -58,7 +58,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 AddProductForm addProductForm = new AddProductForm(new AppDbContext());
                 addProductForm.ShowDialog();
             };
-            var items = await _ProductService.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
+            var items = await _ProductService.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");
@@ -82,11 +82,10 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
-            StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title;
-            StoreProductsForm.storeProductParent.magLabel.Text = "магазин:";
+            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.titleLabel.Text = CategoriesForm.categoryParent.CategoryTitle;
+            StoreProductsForm.storeProductParent.magLabel.Text = "Категории:";
             StoreProductsForm.storeProductParent.backBtn.Show();
-          
         }
     }
 }

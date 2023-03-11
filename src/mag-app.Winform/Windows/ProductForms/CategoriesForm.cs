@@ -16,6 +16,7 @@ namespace mag_app.Winform.Windows.ProductForms
             categoryParent = this;
         }
         public long Id { get; set; }
+        public string  CategoryTitle { get; set; }
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -52,6 +53,7 @@ namespace mag_app.Winform.Windows.ProductForms
             w.Click += async (s, e) =>
             {
                 Id = await _service.GetByName(w.Text);
+                CategoryTitle = w.Text;
                 StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
                 StoreProductsForm.storeProductParent.backBtn.Hide();
                 StoreProductsForm.storeProductParent.titleLabel.Text = w.Text;
