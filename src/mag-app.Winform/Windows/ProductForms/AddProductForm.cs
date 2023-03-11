@@ -37,7 +37,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
-                    CategoryId = CategoriesForm.categoryParent.Id,
+                    CategoryId = SubCategoriesForm.subCategoryParent.Id,
                     EmployeeId = IdentitySingelton.GetInstance().EmployeeId
                 };
 

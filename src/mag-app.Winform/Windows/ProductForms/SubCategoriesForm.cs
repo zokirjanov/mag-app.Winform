@@ -17,10 +17,12 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class SubCategoriesForm : Form
     {
         private SubCategoryService _service;
+        public static SubCategoriesForm subCategoryParent;
         public long Id { get; set; }
         public SubCategoriesForm(AppDbContext appDbContext)
         {
             _service = new SubCategoryService(appDbContext);
+            subCategoryParent = this;
             InitializeComponent();
         }
 
