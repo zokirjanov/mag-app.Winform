@@ -38,7 +38,7 @@ namespace mag_app.Winform.Windows.ProductForms
             subCategoryFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "Добавить подкатегории";
             primaryButton.BackColor = Color.LightGray;
-            primaryButton.Height = 50;
+            primaryButton.Height = 70;
             primaryButton.Width = 200;
             primaryButton.Click += (s, e) =>
             {
@@ -65,7 +65,7 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Text = subcategoryName,
                 Width = 200,
-                Height = 50,
+                Height = 70,
                 BackColor = Color.LightSkyBlue,
                 Font = new Font("Times New Roman", 14),
             };
@@ -75,7 +75,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Id = await _service.GetByName(button.Text);
                 StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
                 StoreProductsForm.storeProductParent.titleLabel.Text = button.Text;
-                StoreProductsForm.storeProductParent.magLabel.Text = "Податегории:";
+                StoreProductsForm.storeProductParent.magLabel.Text = "Подкатегории:";
                 StoreProductsForm.storeProductParent.backBtn.Hide();
             };
         }
@@ -84,6 +84,8 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
             StoreProductsForm.storeProductParent.backBtn.Show();
+            StoreProductsForm.storeProductParent.magLabel.Text = "магазин:";
+            StoreProductsForm.storeProductParent.titleLabel.Text = storeControl.storeControlParent.StoreName;
         }
 
         private void SubCategoriesForm_Paint(object sender, PaintEventArgs e)
