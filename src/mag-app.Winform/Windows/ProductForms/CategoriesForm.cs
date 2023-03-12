@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Services.CategoryService;
 using mag_app.Winform.Components;
+using mag_app.Winform.Properties;
 using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
@@ -48,6 +49,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 Height = 75,
                 BackColor = Color.LightYellow,
                 Font = new Font("Times New Roman", 14),
+                Image = Image.FromFile(@"C:\Users\davok\OneDrive\Рабочий стол\mag-app\src\mag-app.Winform\Resources\Icons\add-button.png"),
+                Location= new Point(12,12)
             };
             categoryFlowPanel.Controls.Add(w);
             w.Click += async (s, e) =>
