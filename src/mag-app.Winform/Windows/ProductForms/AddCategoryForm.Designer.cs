@@ -38,7 +38,7 @@
             this.categoryNameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.categoryNameTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.categoryNameTb.Location = new System.Drawing.Point(51, 43);
-            this.categoryNameTb.MaxLength = 50;
+            this.categoryNameTb.MaxLength = 15;
             this.categoryNameTb.Name = "categoryNameTb";
             this.categoryNameTb.PlaceholderText = "Название категории";
             this.categoryNameTb.Size = new System.Drawing.Size(314, 30);
