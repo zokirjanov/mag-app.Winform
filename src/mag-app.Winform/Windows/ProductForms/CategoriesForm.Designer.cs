@@ -29,39 +29,38 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.AddCategoryBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.categoryFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.AddCategoryBtn);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(845, 41);
+            this.panel1.Size = new System.Drawing.Size(845, 32);
             this.panel1.TabIndex = 1;
             // 
-            // AddCategoryBtn
+            // label1
             // 
-            this.AddCategoryBtn.BackColor = System.Drawing.Color.Honeydew;
-            this.AddCategoryBtn.Location = new System.Drawing.Point(9, 4);
-            this.AddCategoryBtn.Name = "AddCategoryBtn";
-            this.AddCategoryBtn.Size = new System.Drawing.Size(137, 33);
-            this.AddCategoryBtn.TabIndex = 0;
-            this.AddCategoryBtn.Text = "Добавить категорию";
-            this.AddCategoryBtn.UseVisualStyleBackColor = false;
-            this.AddCategoryBtn.Click += new System.EventHandler(this.AddCategoryBtn_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(6, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "список категории:";
             // 
             // categoryFlowPanel
             // 
             this.categoryFlowPanel.AutoScroll = true;
             this.categoryFlowPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.categoryFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoryFlowPanel.Location = new System.Drawing.Point(0, 41);
+            this.categoryFlowPanel.Location = new System.Drawing.Point(0, 32);
             this.categoryFlowPanel.Name = "categoryFlowPanel";
-            this.categoryFlowPanel.Size = new System.Drawing.Size(845, 558);
+            this.categoryFlowPanel.Size = new System.Drawing.Size(845, 567);
             this.categoryFlowPanel.TabIndex = 2;
             this.categoryFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.categoryFlowPanel_Paint);
             // 
@@ -76,13 +75,14 @@
             this.Text = "CategoriesForm";
             this.Load += new System.EventHandler(this.CategoriesForm_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Panel panel1;
-        private Button AddCategoryBtn;
         private FlowLayoutPanel categoryFlowPanel;
+        private Label label1;
     }
 }

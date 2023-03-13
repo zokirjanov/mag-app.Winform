@@ -17,13 +17,12 @@ namespace mag_app.Winform.Windows.Product_Forms
         {
             InitializeComponent();
             titleLabel = TitleLabel;
-            magLabel = magazineLabel;
             storeProductParent = this;
             btn = productBtn;
             backBtn = backButton;
             pnl = productChildPanel;
         }
-        public string Title { get; set; } = string.Empty;
+        public string Title { get; set; }
 
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {

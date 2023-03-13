@@ -1,7 +1,9 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
+using mag_app.Winform.Windows.ProductForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,23 +40,64 @@ namespace mag_app.Winform.Windows.MainWindowForms
 
         public void AddItem(string storename)
         {
-            var category = new Button
+            var w = new Button
             {
                 Text = storename,
                 Width = 200,
                 Height = 80,
-                BackColor = Color.LightCoral,
+                BackColor = Color.LightSteelBlue,
                 Font = new Font("Times New Roman", 14),
             };
-            flowLayoutPanel1.Controls.Add(category);
-            category.Click += async (s, e) =>
+            flowLayoutPanel1.Controls.Add(w);
+            w.Click += async (s, e) =>
             {
-                Id = await _service.GetByName(category.Text);
-                StoreName= category.Text;
+                Id = await _service.GetByName(w.Text);
+                StoreName= w.Text;
                 MainForm.mainParent.Hide();
                 StoreProductsForm storeProductsForm = new StoreProductsForm();
                 storeProductsForm.Title = StoreName;
                 storeProductsForm.Show();
+            };
+
+            var update = new Button()
+            {
+                Parent = w,
+                Width = w.Width / 8,
+                Height = w.Height / 3,
+                Location = new Point(170, 10),
+                BackColor = Color.LightYellow,
+                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
+            };
+            update.Click += async (s, e) =>
+            {
+                UpdateForm updateForm = new UpdateForm(new AppDbContext());
+                updateForm.storeName = storename;
+                updateForm.ShowDialog();
+            };
+
+            var delete = new Button()
+            {
+                Parent = w,
+                Width = w.Width / 8,
+                Height = w.Height / 3,
+                Location = new Point(170, 40),
+                BackColor = Color.Transparent,
+                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
+            };
+            delete.Click += async (s, e) =>
+            {
+                DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dlg == DialogResult.OK)
+                {
+                    var res = _service.DeleteAsync(storename);
+                    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
+                    MainForm.mainParent.pnl.Controls.Clear();
+                    MainForm.mainParent.marketbtn_Click(s, e);
+                }
+                if (dlg == DialogResult.Cancel)
+                {
+                    this.Hide();
+                }
             };
         }
 
@@ -66,6 +109,7 @@ namespace mag_app.Winform.Windows.MainWindowForms
             primaryButton.Text = "добавить магазин";
             primaryButton.Width= 200;
             primaryButton.Height = 80;
+            primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
             {
                 AddStoreForm form = new AddStoreForm(new AppDbContext());
