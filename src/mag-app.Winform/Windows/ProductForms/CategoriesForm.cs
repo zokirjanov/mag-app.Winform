@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.CategoryService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Properties;
@@ -40,17 +41,15 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
-        public void AddItem(string categoryName)
+        public  void AddItem(string categoryName)
         {
             var w = new Button()
             {
                 Text = categoryName,
                 Width = 205,
                 Height = 75,
-                BackColor = Color.LightYellow,
+                BackColor = Color.LightGreen,
                 Font = new Font("Times New Roman", 14),
-                Image = Image.FromFile(@"C:\Users\davok\OneDrive\Рабочий стол\mag-app\src\mag-app.Winform\Resources\Icons\add-button.png"),
-                Location= new Point(12,12)
             };
             categoryFlowPanel.Controls.Add(w);
             w.Click += async (s, e) =>
@@ -62,6 +61,46 @@ namespace mag_app.Winform.Windows.ProductForms
                 StoreProductsForm.storeProductParent.titleLabel.Text = w.Text;
                 StoreProductsForm.storeProductParent.magLabel.Text = "Категории:";
             };
+
+            var update = new Button()
+            {
+                Parent = w,
+                Width = w.Width / 8,
+                Height = w.Height /3,
+                Location = new Point(170, 10),
+                BackColor = Color.LightYellow,
+                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
+            };
+                update.Click += async (s, e) =>
+                {
+                    CategoryUpdateForm category = new CategoryUpdateForm(new AppDbContext());
+                    category.categoryName = w.Text;
+                    category.ShowDialog();
+                };
+            var delete = new Button()
+            {
+                Parent = w,
+                Width = w.Width / 8,
+                Height = w.Height / 3,
+                Location = new Point(170, 40),
+                BackColor = Color.Transparent,
+                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
+            };
+                delete.Click += async (s, e) =>
+                {
+                    DialogResult dlg = MessageBox.Show("Are you sure to delete Category?\n" +
+                                                       "All Sub-categories and products will be deleted permanently", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (dlg == DialogResult.OK)
+                    {
+                        var res = _service.DeleteAsync(w.Text);
+                        AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                        LoadData();
+                    }
+                    if (dlg == DialogResult.Cancel)
+                    {
+                        this.Hide();
+                    }
+                };
         }
 
         private void AddCategoryBtn_Click(object sender, EventArgs e)
