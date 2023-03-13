@@ -35,9 +35,9 @@ namespace mag_app.Service.Services.SubCategoryService
             return "Something went wrong";
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(string subcategoryName)
         {
-            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.Id == id);
+            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subcategoryName);
             if (check != null)
             {
                 var res = _appDbContext.SubCategories.Remove(check);
@@ -73,10 +73,10 @@ namespace mag_app.Service.Services.SubCategoryService
             var checkname = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == category.SubCategoryName.ToLower());
             if (checkname is null)
             {
-                var entity = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == name);
+                var entity = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == name);
                 if (entity != null)
                 {
-                    category.SubCategoryName = category.SubCategoryName;
+                    entity.SubCategoryName = category.SubCategoryName;
                     var res = await _appDbContext.SaveChangesAsync();
                     if (res > 0) { return "true"; }
                     else { return "false"; }

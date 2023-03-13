@@ -45,7 +45,7 @@
             // 
             // AddCategoryBtn
             // 
-            this.AddCategoryBtn.BackColor = System.Drawing.Color.PaleGreen;
+            this.AddCategoryBtn.BackColor = System.Drawing.Color.Honeydew;
             this.AddCategoryBtn.Location = new System.Drawing.Point(9, 4);
             this.AddCategoryBtn.Name = "AddCategoryBtn";
             this.AddCategoryBtn.Size = new System.Drawing.Size(137, 33);

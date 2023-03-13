@@ -61,7 +61,7 @@ namespace mag_app.Winform.Windows.ProductForms
             var items = await _ProductService.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
-                MessageBox.Show("Stores not found");
+                MessageBox.Show("stores not found");
             }
             else
             {

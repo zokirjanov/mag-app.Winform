@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
@@ -38,7 +39,7 @@ namespace mag_app.Winform.Windows.ProductForms
             subCategoryFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "Добавить подкатегории";
             primaryButton.BackColor = Color.LightGray;
-            primaryButton.Height = 70;
+            primaryButton.Height = 80;
             primaryButton.Width = 200;
             primaryButton.Click += (s, e) =>
             {
@@ -65,7 +66,7 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Text = subcategoryName,
                 Width = 200,
-                Height = 70,
+                Height = 80,
                 BackColor = Color.LightSkyBlue,
                 Font = new Font("Times New Roman", 14),
             };
@@ -77,6 +78,45 @@ namespace mag_app.Winform.Windows.ProductForms
                 StoreProductsForm.storeProductParent.titleLabel.Text = button.Text;
                 StoreProductsForm.storeProductParent.magLabel.Text = "Подкатегории:";
                 StoreProductsForm.storeProductParent.backBtn.Hide();
+            };
+            var update = new Button()
+            {
+                Parent = button,
+                Width = button.Width / 8,
+                Height = button.Height / 3,
+                Location = new Point(170, 13),
+                BackColor = Color.LightYellow,
+                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
+            };
+            update.Click += async (s, e) =>
+            {
+                SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
+                category.categoryName = button.Text;
+                category.ShowDialog();
+            };
+            var delete = new Button()
+            {
+                Parent = button,
+                Width = button.Width / 8,
+                Height = button.Height / 3,
+                Location = new Point(170, 40),
+                BackColor = Color.Transparent,
+                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
+            };
+            delete.Click += async (s, e) =>
+            {
+                DialogResult dlg = MessageBox.Show("Are you sure to delete Sub-Category?\n" +
+                                                   "All Sub-categories and products will be deleted permanently", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dlg == DialogResult.OK)
+                {
+                    var res = _service.DeleteAsync(subcategoryName);
+                    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                    LoadData();
+                }
+                if (dlg == DialogResult.Cancel)
+                {
+                    this.Hide();
+                }
             };
         }
 

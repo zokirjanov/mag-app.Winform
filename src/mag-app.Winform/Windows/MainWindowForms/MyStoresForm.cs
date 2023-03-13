@@ -40,6 +40,7 @@ namespace mag_app.Winform.Windows
             flowLayoutPanel1.Controls.Clear();
             flowLayoutPanel1.Controls.Add(primaryButton);
             primaryButton.Text = "добавить магазин";
+            primaryButton.Dock = DockStyle.Top;
             primaryButton.Click += (s, e) => 
             {
                 AddStoreForm form = new AddStoreForm(new AppDbContext());

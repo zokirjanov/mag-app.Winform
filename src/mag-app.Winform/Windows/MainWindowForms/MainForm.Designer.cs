@@ -97,7 +97,8 @@
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.MenuPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1078, 677);
+            this.MaximumSize = new System.Drawing.Size(1096, 677);
+            this.MinimumSize = new System.Drawing.Size(1096, 677);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";

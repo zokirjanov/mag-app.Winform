@@ -5,6 +5,7 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Categories;
 using mag_app.Service.Interfaces.Categories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +35,9 @@ namespace mag_app.Service.Services.CategoryService
             return "Something went wrong";
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(string  categoryName)
         {
-            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == categoryName);
             if (check != null)
             {
                 var res = _appDbContext.Categories.Remove(check);
@@ -70,13 +71,13 @@ namespace mag_app.Service.Services.CategoryService
 
         public async Task<string> UpdateAsync(CategoryDto category, string name)
         {
-            var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName.ToLower());
+            var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName);
             if (checkname is null)
             {
                 var entity = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == name);
                 if (entity != null)
                 {
-                    category.CategoryName = category.CategoryName;
+                    entity.CategoryName = category.CategoryName;
                     var res = await _appDbContext.SaveChangesAsync();
                     if (res > 0) { return "true"; }
                     else { return "false"; }
