@@ -41,7 +41,7 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
-        public  void AddItem(string categoryName)
+        public void AddItem(string categoryName)
         {
             var w = new Button()
             {

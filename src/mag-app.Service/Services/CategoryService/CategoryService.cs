@@ -71,7 +71,7 @@ namespace mag_app.Service.Services.CategoryService
 
         public async Task<string> UpdateAsync(CategoryDto category, string name)
         {
-            var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName.ToLower());
+            var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName);
             if (checkname is null)
             {
                 var entity = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == name);
