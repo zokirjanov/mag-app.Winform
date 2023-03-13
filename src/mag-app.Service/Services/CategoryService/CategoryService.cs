@@ -41,6 +41,7 @@ namespace mag_app.Service.Services.CategoryService
             if (check != null)
             {
                 var res = _appDbContext.Categories.Remove(check);
+                
                 if (res != null)
                 {
                     var ss = await _appDbContext.SaveChangesAsync();

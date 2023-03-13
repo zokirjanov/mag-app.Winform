@@ -24,18 +24,6 @@ namespace mag_app.Winform.Components
         public long Id { get; set; }
         public string StoreName { get => storeNameLabel.Text; set => storeNameLabel.Text = value; }
 
-        //Border radius
-        private int radius = 20;
-        [DefaultValue(20)]
-        public int Radius
-        {
-            get { return radius; }
-            set
-            {
-                radius = value;
-                this.RecreateRegion();
-            }
-        }
         private async void storeControl_Click(object sender, EventArgs e)
         {
             storeControl.storeControlParent.Id = await _service.GetByName(StoreName);
@@ -45,38 +33,6 @@ namespace mag_app.Winform.Components
             storeProductsForm.Title = StoreName;
             storeProductsForm.Show();
         }
-
-        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect,
-            int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
-
-        private GraphicsPath GetRoundRectagle(Rectangle bounds, int radius)
-        {
-            float r = radius;
-            GraphicsPath path = new GraphicsPath();
-            path.StartFigure();
-            path.AddArc(bounds.Left, bounds.Top, r, r, 180, 90);
-            path.AddArc(bounds.Right - r, bounds.Top, r, r, 270, 90);
-            path.AddArc(bounds.Right - r, bounds.Bottom - r, r, r, 0, 90);
-            path.AddArc(bounds.Left, bounds.Bottom - r, r, r, 90, 90);
-            path.CloseFigure();
-            return path;
-        }
-
-        private void RecreateRegion()
-        {
-            var bounds = ClientRectangle;
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(bounds.Left, bounds.Top,
-                bounds.Right, bounds.Bottom, Radius, radius));
-            this.Invalidate();
-        }
-
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            base.OnSizeChanged(e);
-            this.RecreateRegion();
-        }
-
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

@@ -3,6 +3,7 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.CategoryService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Properties;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
@@ -27,7 +28,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public async void LoadData()
         {
             categoryFlowPanel.Controls.Clear();
-            var items = await _service.GetAllAsync(storeControl.storeControlParent.Id);
+            var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Categories not found");

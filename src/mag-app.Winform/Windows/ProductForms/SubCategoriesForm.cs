@@ -2,6 +2,7 @@
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Components;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 using System;
 using System.Collections.Generic;
@@ -125,7 +126,7 @@ namespace mag_app.Winform.Windows.ProductForms
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
             StoreProductsForm.storeProductParent.backBtn.Show();
             StoreProductsForm.storeProductParent.magLabel.Text = "магазин:";
-            StoreProductsForm.storeProductParent.titleLabel.Text = storeControl.storeControlParent.StoreName;
+            StoreProductsForm.storeProductParent.titleLabel.Text = MyStoreForm.myStoreFormParent.StoreName;
         }
 
         private void SubCategoriesForm_Paint(object sender, PaintEventArgs e)
