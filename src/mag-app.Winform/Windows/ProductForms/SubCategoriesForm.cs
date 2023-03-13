@@ -39,7 +39,7 @@ namespace mag_app.Winform.Windows.ProductForms
             subCategoryFlowPanel.Controls.Clear();
             subCategoryFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "Добавить подкатегории";
-            primaryButton.Height = 80;
+            primaryButton.Height = 75;
             primaryButton.Width = 200;
             primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
@@ -67,7 +67,7 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Text = subcategoryName,
                 Width = 200,
-                Height = 80,
+                Height = 75,
                 BackColor = Color.LightSkyBlue,
                 Font = new Font("Times New Roman", 14),
             };

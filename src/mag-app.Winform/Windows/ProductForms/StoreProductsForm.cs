@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.ProductForms;
+using System.Text;
 
 namespace mag_app.Winform.Windows.Product_Forms
 {
@@ -11,7 +12,6 @@ namespace mag_app.Winform.Windows.Product_Forms
         public Button backBtn;
         public Panel pnl;
         public Label titleLabel;
-        public Label magLabel;
 
         public StoreProductsForm()
         {
@@ -22,8 +22,9 @@ namespace mag_app.Winform.Windows.Product_Forms
             backBtn = backButton;
             pnl = productChildPanel;
         }
-        public string Title { get; set; }
 
+        public  StringBuilder Title = new StringBuilder();
+    
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -67,7 +68,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         private void StoreProductsForm_Load(object sender, EventArgs e)
         {
-            TitleLabel.Text = Title;
+            TitleLabel.Text = Title.ToString();
         }
     }
 }
