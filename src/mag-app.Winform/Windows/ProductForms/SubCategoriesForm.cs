@@ -126,7 +126,7 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
             StoreProductsForm.storeProductParent.backBtn.Show();
-            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length - CategoriesForm.categoryParent.lengthOfButton, CategoriesForm.categoryParent.lengthOfButton);
+            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length - 9, 9);
             StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
         }
 
