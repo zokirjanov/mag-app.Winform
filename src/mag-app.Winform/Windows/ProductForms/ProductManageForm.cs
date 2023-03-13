@@ -84,7 +84,6 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
             StoreProductsForm.storeProductParent.titleLabel.Text = CategoriesForm.categoryParent.CategoryTitle;
-            StoreProductsForm.storeProductParent.magLabel.Text = "Категории:";
             StoreProductsForm.storeProductParent.backBtn.Show();
         }
     }

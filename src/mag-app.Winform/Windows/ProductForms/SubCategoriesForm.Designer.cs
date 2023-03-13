@@ -42,7 +42,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(845, 38);
+            this.panel1.Size = new System.Drawing.Size(845, 32);
             this.panel1.TabIndex = 0;
             // 
             // button2
@@ -50,12 +50,13 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(764, 2);
+            this.button2.Location = new System.Drawing.Point(762, 1);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 32);
+            this.button2.Size = new System.Drawing.Size(81, 29);
             this.button2.TabIndex = 7;
             this.button2.Text = "назад";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -63,20 +64,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(9, 14);
+            this.label1.Location = new System.Drawing.Point(6, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 19);
+            this.label1.Size = new System.Drawing.Size(166, 19);
             this.label1.TabIndex = 6;
-            this.label1.Text = "подкатегории:";
+            this.label1.Text = "список подкатегории:";
             // 
             // subCategoryFlowPanel
             // 
             this.subCategoryFlowPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.subCategoryFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subCategoryFlowPanel.Location = new System.Drawing.Point(0, 38);
+            this.subCategoryFlowPanel.Location = new System.Drawing.Point(0, 32);
             this.subCategoryFlowPanel.Name = "subCategoryFlowPanel";
-            this.subCategoryFlowPanel.Size = new System.Drawing.Size(845, 561);
+            this.subCategoryFlowPanel.Size = new System.Drawing.Size(845, 567);
             this.subCategoryFlowPanel.TabIndex = 1;
+            this.subCategoryFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.subCategoryFlowPanel_Paint);
             // 
             // SubCategoriesForm
             // 
@@ -88,7 +90,6 @@
             this.Name = "SubCategoriesForm";
             this.Text = "SubCategoriesForm";
             this.Load += new System.EventHandler(this.SubCategoriesForm_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SubCategoriesForm_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

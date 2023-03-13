@@ -3,7 +3,10 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.CategoryService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Properties;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -26,8 +29,19 @@ namespace mag_app.Winform.Windows.ProductForms
 
         public async void LoadData()
         {
+            PrimaryButton primaryButton = new PrimaryButton();
+            primaryButton.Text = "добавить магазин";
+            primaryButton.Width = 205;
+            primaryButton.BorderRadius = 5;
+            primaryButton.Height = 75;
             categoryFlowPanel.Controls.Clear();
-            var items = await _service.GetAllAsync(storeControl.storeControlParent.Id);
+            categoryFlowPanel.Controls.Add(primaryButton);
+            primaryButton.Click += (s, e) =>
+            {
+                AddCategoryForm addCategoryForm = new AddCategoryForm(new AppDbContext());
+                addCategoryForm.ShowDialog();
+            };
+            var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Categories not found");
@@ -58,8 +72,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 CategoryTitle = w.Text;
                 StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
                 StoreProductsForm.storeProductParent.backBtn.Hide();
-                StoreProductsForm.storeProductParent.titleLabel.Text = w.Text;
-                StoreProductsForm.storeProductParent.magLabel.Text = "Категории:";
+                StoreProductsForm.storeProductParent.Title.Append("→ ");
+                StoreProductsForm.storeProductParent.Title.Append(w.Text);
+                StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
             };
 
             var update = new Button()
@@ -102,13 +117,6 @@ namespace mag_app.Winform.Windows.ProductForms
                     }
                 };
         }
-
-        private void AddCategoryBtn_Click(object sender, EventArgs e)
-        {
-            AddCategoryForm addCategoryForm = new AddCategoryForm(new AppDbContext());
-            addCategoryForm.ShowDialog();
-        }
-
         private void categoryFlowPanel_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, categoryFlowPanel.ClientRectangle,

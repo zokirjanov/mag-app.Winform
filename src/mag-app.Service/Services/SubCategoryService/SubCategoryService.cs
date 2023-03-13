@@ -18,9 +18,11 @@ namespace mag_app.Service.Services.SubCategoryService
 {
     public class SubCategoryService : ISubCategoryService
     {
+        public SubCategoryService subCategoryService;
         private AppDbContext _appDbContext;
         public SubCategoryService(AppDbContext appDbContext)
         {
+            subCategoryService = this;
             _appDbContext = appDbContext;
         }
 

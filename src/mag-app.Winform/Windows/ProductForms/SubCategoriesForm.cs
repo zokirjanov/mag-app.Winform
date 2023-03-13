@@ -2,13 +2,16 @@
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Components;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,9 +41,9 @@ namespace mag_app.Winform.Windows.ProductForms
             subCategoryFlowPanel.Controls.Clear();
             subCategoryFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "Добавить подкатегории";
-            primaryButton.BackColor = Color.LightGray;
-            primaryButton.Height = 80;
+            primaryButton.Height = 75;
             primaryButton.Width = 200;
+            primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
             {
                 AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm(new AppDbContext());
@@ -66,7 +69,7 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Text = subcategoryName,
                 Width = 200,
-                Height = 80,
+                Height = 75,
                 BackColor = Color.LightSkyBlue,
                 Font = new Font("Times New Roman", 14),
             };
@@ -76,7 +79,6 @@ namespace mag_app.Winform.Windows.ProductForms
                 Id = await _service.GetByName(button.Text);
                 StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
                 StoreProductsForm.storeProductParent.titleLabel.Text = button.Text;
-                StoreProductsForm.storeProductParent.magLabel.Text = "Подкатегории:";
                 StoreProductsForm.storeProductParent.backBtn.Hide();
             };
             var update = new Button()
@@ -124,17 +126,17 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
             StoreProductsForm.storeProductParent.backBtn.Show();
-            StoreProductsForm.storeProductParent.magLabel.Text = "магазин:";
-            StoreProductsForm.storeProductParent.titleLabel.Text = storeControl.storeControlParent.StoreName;
+            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length -5, 4 );
+            StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
         }
 
-        private void SubCategoriesForm_Paint(object sender, PaintEventArgs e)
+        private void subCategoryFlowPanel_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, subCategoryFlowPanel.ClientRectangle,
-            Color.DimGray, 1, ButtonBorderStyle.Solid, // left
-            Color.DimGray, 1, ButtonBorderStyle.Solid, // top
-            Color.White, 1, ButtonBorderStyle.Solid, // right
-            Color.White, 1, ButtonBorderStyle.Solid);// bottom
+              ControlPaint.DrawBorder(e.Graphics, subCategoryFlowPanel.ClientRectangle,
+              Color.DimGray, 1, ButtonBorderStyle.Solid, // left
+              Color.DimGray, 1, ButtonBorderStyle.Solid, // top
+              Color.White, 1, ButtonBorderStyle.Solid, // right
+              Color.White, 1, ButtonBorderStyle.Solid);// bottom
         }
     }
 }

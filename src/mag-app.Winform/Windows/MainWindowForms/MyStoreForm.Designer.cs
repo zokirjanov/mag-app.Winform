@@ -1,6 +1,6 @@
-﻿namespace mag_app.Winform.Windows
+﻿namespace mag_app.Winform.Windows.MainWindowForms
 {
-    partial class MyStoresForm
+    partial class MyStoreForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(827, 39);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // label1
             // 
@@ -64,20 +64,18 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(827, 560);
-            this.flowLayoutPanel1.TabIndex = 1;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // MyStoresForm
+            // MyStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(827, 599);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Name = "MyStoresForm";
-            this.Text = "MyStoresForm";
-            this.Load += new System.EventHandler(this.MyStoresForm_Load);
+            this.Name = "MyStoreForm";
+            this.Text = "MyStoreForm";
+            this.Load += new System.EventHandler(this.MyStoreForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -88,7 +86,7 @@
         #endregion
 
         private Panel panel1;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Label label1;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

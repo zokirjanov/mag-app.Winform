@@ -1,5 +1,6 @@
 using mag_app.DataAccess.DbContexts;
 using mag_app.Winform.Windows;
+using mag_app.Winform.Windows.MainWindowForms;
 
 namespace mag_app.Winform
 {
@@ -23,7 +24,7 @@ namespace mag_app.Winform
 
         public void marketbtn_Click(object sender, EventArgs e)
         {
-            mainParent.openChildForm(new MyStoresForm(new AppDbContext()));
+            mainParent.openChildForm(new MyStoreForm(new AppDbContext()));
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

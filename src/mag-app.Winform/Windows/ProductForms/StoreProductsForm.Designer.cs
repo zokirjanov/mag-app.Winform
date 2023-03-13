@@ -34,7 +34,6 @@
             this.productBtn = new System.Windows.Forms.Button();
             this.productChildPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.magazineLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -92,7 +91,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.magazineLabel);
             this.panel1.Controls.Add(this.TitleLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(219, 0);
@@ -100,23 +98,13 @@
             this.panel1.Size = new System.Drawing.Size(861, 33);
             this.panel1.TabIndex = 3;
             // 
-            // magazineLabel
-            // 
-            this.magazineLabel.AutoSize = true;
-            this.magazineLabel.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.magazineLabel.Location = new System.Drawing.Point(7, 9);
-            this.magazineLabel.Name = "magazineLabel";
-            this.magazineLabel.Size = new System.Drawing.Size(82, 21);
-            this.magazineLabel.TabIndex = 1;
-            this.magazineLabel.Text = "Магазин:";
-            // 
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TitleLabel.Location = new System.Drawing.Point(127, 4);
+            this.TitleLabel.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TitleLabel.Location = new System.Drawing.Point(5, 6);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(0, 26);
+            this.TitleLabel.Size = new System.Drawing.Size(0, 22);
             this.TitleLabel.TabIndex = 0;
             // 
             // StoreProductsForm
@@ -149,6 +137,5 @@
         private Button backButton;
         private Panel panel1;
         private Label TitleLabel;
-        private Label magazineLabel;
     }
 }
