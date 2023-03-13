@@ -23,7 +23,7 @@ namespace mag_app.Winform.Windows.Product_Forms
             pnl = productChildPanel;
         }
 
-        public  StringBuilder Title = new StringBuilder();
+        public StringBuilder Title = new StringBuilder();
     
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -68,7 +68,8 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         private void StoreProductsForm_Load(object sender, EventArgs e)
         {
-            TitleLabel.Text = Title.ToString();
+     
+            StoreProductsForm.storeProductParent.TitleLabel.Text = Title.ToString();  
         }
     }
 }

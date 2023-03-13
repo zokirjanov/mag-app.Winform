@@ -4,12 +4,14 @@ using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -124,7 +126,8 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
             StoreProductsForm.storeProductParent.backBtn.Show();
-            StoreProductsForm.storeProductParent.titleLabel.Text = MyStoreForm.myStoreFormParent.StoreName;
+            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length -5, 4 );
+            StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
         }
 
         private void subCategoryFlowPanel_Paint(object sender, PaintEventArgs e)

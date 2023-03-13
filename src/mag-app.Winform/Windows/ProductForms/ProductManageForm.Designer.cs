@@ -51,9 +51,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(6, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 19);
+            this.label1.Size = new System.Drawing.Size(138, 19);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Продукты:";
+            this.label1.Text = "список продукты:";
             // 
             // button2
             // 

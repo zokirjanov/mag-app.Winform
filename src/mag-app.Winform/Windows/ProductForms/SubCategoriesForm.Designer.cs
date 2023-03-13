@@ -66,9 +66,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(6, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 19);
+            this.label1.Size = new System.Drawing.Size(166, 19);
             this.label1.TabIndex = 6;
-            this.label1.Text = "подкатегории:";
+            this.label1.Text = "список подкатегории:";
             // 
             // subCategoryFlowPanel
             // 

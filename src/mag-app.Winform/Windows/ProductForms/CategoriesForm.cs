@@ -5,6 +5,7 @@ using mag_app.Winform.Components;
 using mag_app.Winform.Properties;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
@@ -71,7 +72,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 CategoryTitle = w.Text;
                 StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
                 StoreProductsForm.storeProductParent.backBtn.Hide();
-                StoreProductsForm.storeProductParent.titleLabel.Text = w.Text;
+                StoreProductsForm.storeProductParent.Title.Append("→ ");
+                StoreProductsForm.storeProductParent.Title.Append(w.Text);
+                StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
             };
 
             var update = new Button()
