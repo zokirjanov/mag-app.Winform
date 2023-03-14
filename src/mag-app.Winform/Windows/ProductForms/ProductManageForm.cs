@@ -72,6 +72,8 @@ namespace mag_app.Winform.Windows.ProductForms
         private void button2_Click(object sender, EventArgs e)
         {
             StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(2);
+            StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(2);
             StoreProductsForm.storeProductParent.backBtn.Show();
         }
     }

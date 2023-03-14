@@ -33,9 +33,10 @@
             this.backButton = new System.Windows.Forms.Button();
             this.productBtn = new System.Windows.Forms.Button();
             this.productChildPanel = new System.Windows.Forms.Panel();
-            this.panelTitle = new System.Windows.Forms.Panel();
             this.store = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.subtitleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,18 +85,10 @@
             // productChildPanel
             // 
             this.productChildPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.productChildPanel.Location = new System.Drawing.Point(219, 43);
+            this.productChildPanel.Location = new System.Drawing.Point(219, 36);
             this.productChildPanel.Name = "productChildPanel";
-            this.productChildPanel.Size = new System.Drawing.Size(861, 595);
+            this.productChildPanel.Size = new System.Drawing.Size(861, 602);
             this.productChildPanel.TabIndex = 2;
-            // 
-            // panelTitle
-            // 
-            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTitle.Location = new System.Drawing.Point(219, 0);
-            this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(861, 43);
-            this.panelTitle.TabIndex = 3;
             // 
             // store
             // 
@@ -111,12 +104,30 @@
             this.category.ReadOnly = true;
             this.category.Visible = false;
             // 
+            // titleFlowPanel
+            // 
+            this.titleFlowPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titleFlowPanel.Location = new System.Drawing.Point(219, 0);
+            this.titleFlowPanel.Name = "titleFlowPanel";
+            this.titleFlowPanel.Size = new System.Drawing.Size(861, 18);
+            this.titleFlowPanel.TabIndex = 3;
+            // 
+            // subtitleFlowPanel
+            // 
+            this.subtitleFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subtitleFlowPanel.Location = new System.Drawing.Point(219, 18);
+            this.subtitleFlowPanel.Name = "subtitleFlowPanel";
+            this.subtitleFlowPanel.Size = new System.Drawing.Size(861, 18);
+            this.subtitleFlowPanel.TabIndex = 4;
+            this.subtitleFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.subtitleFlowPanel_Paint);
+            // 
             // StoreProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 638);
-            this.Controls.Add(this.panelTitle);
+            this.Controls.Add(this.subtitleFlowPanel);
+            this.Controls.Add(this.titleFlowPanel);
             this.Controls.Add(this.productChildPanel);
             this.Controls.Add(this.MenuPanel);
             this.MaximumSize = new System.Drawing.Size(1096, 677);
@@ -125,6 +136,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StoreProductsForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StoreProductsForm_FormClosed);
+            this.Load += new System.EventHandler(this.StoreProductsForm_Load);
             this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -136,8 +148,9 @@
         private Button productBtn;
         private Panel productChildPanel;
         private Button backButton;
-        private Panel panelTitle;
         private DataGridViewTextBoxColumn store;
         private DataGridViewTextBoxColumn category;
+        private FlowLayoutPanel titleFlowPanel;
+        private FlowLayoutPanel subtitleFlowPanel;
     }
 }

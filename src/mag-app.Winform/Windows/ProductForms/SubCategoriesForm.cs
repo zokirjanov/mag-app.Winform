@@ -78,6 +78,7 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Id = await _service.GetByName(button.Text);
                 StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
+                StoreProductsForm.storeProductParent.AddTitle(button.Text, "›подкатегория");
                 StoreProductsForm.storeProductParent.backBtn.Hide();
             };
             var update = new Button()
@@ -129,6 +130,8 @@ namespace mag_app.Winform.Windows.ProductForms
         private void button2_Click(object sender, EventArgs e)
         {
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(1);
+            StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(1);
             StoreProductsForm.storeProductParent.backBtn.Show();
         }
 

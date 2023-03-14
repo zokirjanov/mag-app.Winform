@@ -71,6 +71,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Id = await _service.GetByName(w.Text);
                 CategoryTitle = w.Text;
                 StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+                StoreProductsForm.storeProductParent.AddTitle(categoryName, "›категория");
                 StoreProductsForm.storeProductParent.backBtn.Hide();
             };
 
