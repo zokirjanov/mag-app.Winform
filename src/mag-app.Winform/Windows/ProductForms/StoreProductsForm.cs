@@ -16,14 +16,11 @@ namespace mag_app.Winform.Windows.Product_Forms
         public StoreProductsForm()
         {
             InitializeComponent();
-            titleLabel = TitleLabel;
             storeProductParent = this;
             btn = productBtn;
             backBtn = backButton;
             pnl = productChildPanel;
         }
-
-        public StringBuilder Title = new StringBuilder();
     
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -68,7 +65,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         private void StoreProductsForm_Load(object sender, EventArgs e)
         {
-            storeProductParent.TitleLabel.Text = Title.ToString();  
+        
         }
     }
 }

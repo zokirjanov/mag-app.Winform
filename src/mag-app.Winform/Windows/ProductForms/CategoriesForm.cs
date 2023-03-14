@@ -22,7 +22,6 @@ namespace mag_app.Winform.Windows.ProductForms
         }
         public long Id { get; set; }
         public string  CategoryTitle { get; set; }
-        public int len;
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -67,16 +66,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 14),
             };
             categoryFlowPanel.Controls.Add(w);
-            len = w.Text.Length + 2;
             w.Click += async (s, e) =>
             {
                 Id = await _service.GetByName(w.Text);
                 CategoryTitle = w.Text;
                 StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
                 StoreProductsForm.storeProductParent.backBtn.Hide();
-                StoreProductsForm.storeProductParent.Title.Append("→ ");
-                StoreProductsForm.storeProductParent.Title.Append(w.Text);
-                StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
             };
 
             var update = new Button()
@@ -84,7 +79,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Parent = w,
                 Width = w.Width / 8,
                 Height = w.Height /3,
-                Location = new Point(170, 10),
+                Location = new Point(170, 13),
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             };

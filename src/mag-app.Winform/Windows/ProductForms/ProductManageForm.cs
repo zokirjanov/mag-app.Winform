@@ -72,9 +72,6 @@ namespace mag_app.Winform.Windows.ProductForms
         private void button2_Click(object sender, EventArgs e)
         {
             StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
-            int len = SubCategoriesForm.subCategoryParent.subLen;
-            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length - len, len);
-            StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
             StoreProductsForm.storeProductParent.backBtn.Show();
         }
     }

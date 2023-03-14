@@ -34,9 +34,9 @@
             this.productBtn = new System.Windows.Forms.Button();
             this.productChildPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TitleLabel = new System.Windows.Forms.Label();
+            this.store = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
@@ -84,28 +84,32 @@
             // productChildPanel
             // 
             this.productChildPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.productChildPanel.Location = new System.Drawing.Point(219, 33);
+            this.productChildPanel.Location = new System.Drawing.Point(219, 43);
             this.productChildPanel.Name = "productChildPanel";
-            this.productChildPanel.Size = new System.Drawing.Size(861, 605);
+            this.productChildPanel.Size = new System.Drawing.Size(861, 595);
             this.productChildPanel.TabIndex = 2;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.TitleLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(219, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(861, 33);
+            this.panel1.Size = new System.Drawing.Size(861, 43);
             this.panel1.TabIndex = 3;
             // 
-            // TitleLabel
+            // store
             // 
-            this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TitleLabel.Location = new System.Drawing.Point(5, 6);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(0, 22);
-            this.TitleLabel.TabIndex = 0;
+            this.store.HeaderText = "store";
+            this.store.Name = "store";
+            this.store.ReadOnly = true;
+            this.store.Visible = false;
+            // 
+            // category
+            // 
+            this.category.HeaderText = "category";
+            this.category.Name = "category";
+            this.category.ReadOnly = true;
+            this.category.Visible = false;
             // 
             // StoreProductsForm
             // 
@@ -123,8 +127,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StoreProductsForm_FormClosed);
             this.Load += new System.EventHandler(this.StoreProductsForm_Load);
             this.MenuPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -136,6 +138,7 @@
         private Panel productChildPanel;
         private Button backButton;
         private Panel panel1;
-        private Label TitleLabel;
+        private DataGridViewTextBoxColumn store;
+        private DataGridViewTextBoxColumn category;
     }
 }

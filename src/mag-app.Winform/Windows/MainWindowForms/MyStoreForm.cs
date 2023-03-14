@@ -55,7 +55,6 @@ namespace mag_app.Winform.Windows.MainWindowForms
                 StoreName= w.Text;
                 MainForm.mainParent.Hide();
                 StoreProductsForm storeProductsForm = new StoreProductsForm();
-                storeProductsForm.Title.Append(storename);
                 storeProductsForm.Show();
             };
 
