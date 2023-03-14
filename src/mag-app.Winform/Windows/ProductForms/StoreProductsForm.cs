@@ -48,7 +48,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         public void productBtn_Click(object sender, EventArgs e)
         {
-            openChildForm(new CategoriesForm(new AppDbContext()));
+            storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
         }
 
         private Form activeForm = null;
@@ -68,8 +68,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         private void StoreProductsForm_Load(object sender, EventArgs e)
         {
-     
-            StoreProductsForm.storeProductParent.TitleLabel.Text = Title.ToString();  
+            storeProductParent.TitleLabel.Text = Title.ToString();  
         }
     }
 }

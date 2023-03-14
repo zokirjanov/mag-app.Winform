@@ -31,7 +31,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public async void LoadData()
         {
             PrimaryButton primaryButton = new PrimaryButton();
-            primaryButton.Text = "добавить магазин";
+            primaryButton.Text = "добавить категории";
             primaryButton.Width = 205;
             primaryButton.BorderRadius = 5;
             primaryButton.Height = 75;
@@ -110,8 +110,12 @@ namespace mag_app.Winform.Windows.ProductForms
                     if (dlg == DialogResult.OK)
                     {
                         var res = _service.DeleteAsync(w.Text);
-                        AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
-                        LoadData();
+                        if (await res == true)
+                        {
+                            AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                            LoadData();
+                        }
+                        else MessageBox.Show("Category can not be deleted");
                     }
                     if (dlg == DialogResult.Cancel)
                     {

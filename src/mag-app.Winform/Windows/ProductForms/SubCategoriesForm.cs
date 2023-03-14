@@ -20,8 +20,8 @@ namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class SubCategoriesForm : Form
     {
-        private SubCategoryService _service;
         public static SubCategoriesForm subCategoryParent;
+        private SubCategoryService _service;
         public long Id { get; set; }
         public int subLen { get; set; }
         public SubCategoriesForm(AppDbContext appDbContext)
@@ -94,12 +94,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             };
-            update.Click += async (s, e) =>
-            {
-                SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
-                category.categoryName = button.Text;
-                category.ShowDialog();
-            };
+                update.Click += async (s, e) =>
+                {
+                    SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
+                    category.categoryName = button.Text;
+                    category.ShowDialog();
+                };
             var delete = new Button()
             {
                 Parent = button,
@@ -109,21 +109,26 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.Transparent,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
             };
-            delete.Click += async (s, e) =>
-            {
-                DialogResult dlg = MessageBox.Show("Are you sure to delete Sub-Category?\n" +
-                                                   "All Sub-categories and products will be deleted permanently", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                if (dlg == DialogResult.OK)
+                delete.Click += async (s, e) =>
                 {
-                    var res = _service.DeleteAsync(subcategoryName);
-                    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
-                    LoadData();
-                }
-                if (dlg == DialogResult.Cancel)
-                {
-                    this.Hide();
-                }
-            };
+                    DialogResult dlg = MessageBox.Show("Are you sure to delete Sub-Category?\n" +
+                                                       "All Sub-categories and products will be deleted permanently",
+                                                       "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (dlg == DialogResult.OK)
+                    {
+                        var res = _service.DeleteAsync(subcategoryName);
+                        if (await res == true)
+                        {
+                            AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                            LoadData();
+                        }
+                        else MessageBox.Show("Subcategory can not be deleted!");
+                    }
+                    if (dlg == DialogResult.Cancel)
+                    {
+                        this.Hide();
+                    }
+                };
         }
 
         private void button2_Click(object sender, EventArgs e)
