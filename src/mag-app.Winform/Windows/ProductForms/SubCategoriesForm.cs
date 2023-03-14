@@ -20,8 +20,8 @@ namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class SubCategoriesForm : Form
     {
-        private SubCategoryService _service;
         public static SubCategoriesForm subCategoryParent;
+        private SubCategoryService _service;
         public long Id { get; set; }
         public SubCategoriesForm(AppDbContext appDbContext)
         {
@@ -42,7 +42,7 @@ namespace mag_app.Winform.Windows.ProductForms
             subCategoryFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "Добавить подкатегории";
             primaryButton.Height = 75;
-            primaryButton.Width = 200;
+            primaryButton.Width = 205;
             primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
             {
@@ -68,7 +68,7 @@ namespace mag_app.Winform.Windows.ProductForms
             var button = new Button()
             {
                 Text = subcategoryName,
-                Width = 200,
+                Width = 205,
                 Height = 75,
                 BackColor = Color.LightSkyBlue,
                 Font = new Font("Times New Roman", 14),
@@ -78,7 +78,7 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Id = await _service.GetByName(button.Text);
                 StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
-                StoreProductsForm.storeProductParent.titleLabel.Text = button.Text;
+                StoreProductsForm.storeProductParent.AddTitle(button.Text, "›подкатегория");
                 StoreProductsForm.storeProductParent.backBtn.Hide();
             };
             var update = new Button()
@@ -90,12 +90,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             };
-            update.Click += async (s, e) =>
-            {
-                SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
-                category.categoryName = button.Text;
-                category.ShowDialog();
-            };
+                update.Click += async (s, e) =>
+                {
+                    SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
+                    category.categoryName = button.Text;
+                    category.ShowDialog();
+                };
             var delete = new Button()
             {
                 Parent = button,
@@ -105,29 +105,34 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.Transparent,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
             };
-            delete.Click += async (s, e) =>
-            {
-                DialogResult dlg = MessageBox.Show("Are you sure to delete Sub-Category?\n" +
-                                                   "All Sub-categories and products will be deleted permanently", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                if (dlg == DialogResult.OK)
+                delete.Click += async (s, e) =>
                 {
-                    var res = _service.DeleteAsync(subcategoryName);
-                    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
-                    LoadData();
-                }
-                if (dlg == DialogResult.Cancel)
-                {
-                    this.Hide();
-                }
-            };
+                    DialogResult dlg = MessageBox.Show("Are you sure to delete Sub-Category?\n" +
+                                                       "All Sub-categories and products will be deleted permanently",
+                                                       "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (dlg == DialogResult.OK)
+                    {
+                        var res = _service.DeleteAsync(subcategoryName);
+                        if (await res == true)
+                        {
+                            AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                            LoadData();
+                        }
+                        else MessageBox.Show("Subcategory can not be deleted!");
+                    }
+                    if (dlg == DialogResult.Cancel)
+                    {
+                        this.Hide();
+                    }
+                };
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(1);
+            StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(1);
             StoreProductsForm.storeProductParent.backBtn.Show();
-            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length - 9, 9);
-            StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
         }
 
         private void subCategoryFlowPanel_Paint(object sender, PaintEventArgs e)

@@ -39,8 +39,6 @@ namespace mag_app.Winform.Windows
                     if (dlg == DialogResult.Cancel)
                     {
                         this.Close();
-                        MainForm.mainParent.pnl.Controls.Clear();
-                        MainForm.mainParent.marketbtn_Click(sender, e);
                     }
                 }
                 else

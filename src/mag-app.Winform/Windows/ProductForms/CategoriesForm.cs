@@ -30,7 +30,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public async void LoadData()
         {
             PrimaryButton primaryButton = new PrimaryButton();
-            primaryButton.Text = "добавить магазин";
+            primaryButton.Text = "добавить категории";
             primaryButton.Width = 205;
             primaryButton.BorderRadius = 5;
             primaryButton.Height = 75;
@@ -71,10 +71,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 Id = await _service.GetByName(w.Text);
                 CategoryTitle = w.Text;
                 StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+                StoreProductsForm.storeProductParent.AddTitle(categoryName, "›категория");
                 StoreProductsForm.storeProductParent.backBtn.Hide();
-                StoreProductsForm.storeProductParent.Title.Append("→ ");
-                StoreProductsForm.storeProductParent.Title.Append(w.Text);
-                StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
             };
 
             var update = new Button()
@@ -82,7 +80,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Parent = w,
                 Width = w.Width / 8,
                 Height = w.Height /3,
-                Location = new Point(170, 10),
+                Location = new Point(170, 13),
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             };
@@ -108,8 +106,12 @@ namespace mag_app.Winform.Windows.ProductForms
                     if (dlg == DialogResult.OK)
                     {
                         var res = _service.DeleteAsync(w.Text);
-                        AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
-                        LoadData();
+                        if (await res == true)
+                        {
+                            AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                            LoadData();
+                        }
+                        else MessageBox.Show("Category can not be deleted");
                     }
                     if (dlg == DialogResult.Cancel)
                     {

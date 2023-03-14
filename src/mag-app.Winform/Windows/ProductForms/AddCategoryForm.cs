@@ -31,8 +31,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 var res = await _service.CreateCategoryAsync(category);
                 if (res == "true")
                 {
-                    MainForm.mainParent.marketbtn_Click(sender, e);
+                 // MainForm.mainParent.marketbtn_Click(sender, e);
                     categoryNameTb.Text = "";
+                    StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
                     DialogResult dlg = MessageBox.Show("Category added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
@@ -41,8 +42,6 @@ namespace mag_app.Winform.Windows.ProductForms
                     if (dlg == DialogResult.Cancel)
                     {
                         this.Close();
-                        StoreProductsForm.storeProductParent.pnl.Controls.Clear();
-                        StoreProductsForm.storeProductParent.productBtn_Click(sender, e);
                     }
                 }
                 else

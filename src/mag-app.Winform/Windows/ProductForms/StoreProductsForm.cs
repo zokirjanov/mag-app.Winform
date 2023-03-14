@@ -1,7 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.ProductForms;
-using System.Text;
 
 namespace mag_app.Winform.Windows.Product_Forms
 {
@@ -11,20 +11,21 @@ namespace mag_app.Winform.Windows.Product_Forms
         public Button btn;
         public Button backBtn;
         public Panel pnl;
-        public Label titleLabel;
+        public FlowLayoutPanel title1;
+        public FlowLayoutPanel title2;
 
         public StoreProductsForm()
         {
             InitializeComponent();
-            titleLabel = TitleLabel;
             storeProductParent = this;
             btn = productBtn;
             backBtn = backButton;
             pnl = productChildPanel;
-        }
+            title1 = titleFlowPanel;
+            title2 = subtitleFlowPanel;
 
-        public StringBuilder Title = new StringBuilder();
-    
+        }
+        public string  Title { get; set; }
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -48,7 +49,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         public void productBtn_Click(object sender, EventArgs e)
         {
-            openChildForm(new CategoriesForm(new AppDbContext()));
+            storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
         }
 
         private Form activeForm = null;
@@ -65,11 +66,40 @@ namespace mag_app.Winform.Windows.Product_Forms
             childForm.BringToFront();
             childForm.Show();
         }
+        public void AddTitle(string title, string subtitles)
+        {
+            var Title = new Label()
+            {
+                ForeColor = Color.Black,
+                Text = title,
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                Padding = new Padding(0,0,0,0),
+                Width = 100
+            };
+            var subtitle = new Label()
+            {
+                ForeColor = Color.Black,
+                Text = subtitles,
+                Font = new Font("Arial", 10),
+                Height = 15,
+                Width= 100,
+            };
+            titleFlowPanel.Controls.Add(Title);
+            subtitleFlowPanel.Controls.Add(subtitle);
+        }
 
         private void StoreProductsForm_Load(object sender, EventArgs e)
         {
-     
-            StoreProductsForm.storeProductParent.TitleLabel.Text = Title.ToString();  
+            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+        }
+
+        private void subtitleFlowPanel_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, subtitleFlowPanel.ClientRectangle,
+              Color.Transparent, 1, ButtonBorderStyle.Solid, // left
+              Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+              Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+              Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
         }
     }
 }

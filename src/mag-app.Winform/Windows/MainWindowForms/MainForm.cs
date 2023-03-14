@@ -68,10 +68,5 @@ namespace mag_app.Winform
                 //do nothing
             }
         }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
- 
-        }
     }
 }

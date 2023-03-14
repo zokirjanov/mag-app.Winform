@@ -48,10 +48,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 9);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(326, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 19);
+            this.label1.Size = new System.Drawing.Size(191, 25);
             this.label1.TabIndex = 5;
             this.label1.Text = "список продукты:";
             // 
@@ -66,6 +66,7 @@
             this.button2.Size = new System.Drawing.Size(81, 29);
             this.button2.TabIndex = 4;
             this.button2.Text = "назад";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

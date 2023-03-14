@@ -63,7 +63,7 @@
             this.storeNametb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.storeNametb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.storeNametb.Location = new System.Drawing.Point(46, 44);
-            this.storeNametb.MaxLength = 50;
+            this.storeNametb.MaxLength = 20;
             this.storeNametb.Name = "storeNametb";
             this.storeNametb.PlaceholderText = "Название магазина";
             this.storeNametb.Size = new System.Drawing.Size(314, 30);
