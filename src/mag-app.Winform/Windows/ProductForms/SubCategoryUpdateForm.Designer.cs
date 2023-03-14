@@ -49,7 +49,7 @@
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(258, 39);
             this.updateBtn.TabIndex = 6;
-            this.updateBtn.Text = "Обновлять";
+            this.updateBtn.Text = "редактировать";
             this.updateBtn.UseVisualStyleBackColor = false;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
