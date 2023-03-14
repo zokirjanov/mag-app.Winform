@@ -1,7 +1,6 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.ProductForms;
-using System.Text;
 
 namespace mag_app.Winform.Windows.Product_Forms
 {
@@ -21,7 +20,7 @@ namespace mag_app.Winform.Windows.Product_Forms
             backBtn = backButton;
             pnl = productChildPanel;
         }
-    
+
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -61,11 +60,6 @@ namespace mag_app.Winform.Windows.Product_Forms
             childForm.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-        }
-
-        private void StoreProductsForm_Load(object sender, EventArgs e)
-        {
-        
         }
     }
 }

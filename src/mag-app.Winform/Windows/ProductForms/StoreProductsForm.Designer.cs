@@ -33,7 +33,7 @@
             this.backButton = new System.Windows.Forms.Button();
             this.productBtn = new System.Windows.Forms.Button();
             this.productChildPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelTitle = new System.Windows.Forms.Panel();
             this.store = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuPanel.SuspendLayout();
@@ -89,13 +89,13 @@
             this.productChildPanel.Size = new System.Drawing.Size(861, 595);
             this.productChildPanel.TabIndex = 2;
             // 
-            // panel1
+            // panelTitle
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(219, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(861, 43);
-            this.panel1.TabIndex = 3;
+            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTitle.Location = new System.Drawing.Point(219, 0);
+            this.panelTitle.Name = "panelTitle";
+            this.panelTitle.Size = new System.Drawing.Size(861, 43);
+            this.panelTitle.TabIndex = 3;
             // 
             // store
             // 
@@ -116,7 +116,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 638);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelTitle);
             this.Controls.Add(this.productChildPanel);
             this.Controls.Add(this.MenuPanel);
             this.MaximumSize = new System.Drawing.Size(1096, 677);
@@ -125,7 +125,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StoreProductsForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StoreProductsForm_FormClosed);
-            this.Load += new System.EventHandler(this.StoreProductsForm_Load);
             this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -137,7 +136,7 @@
         private Button productBtn;
         private Panel productChildPanel;
         private Button backButton;
-        private Panel panel1;
+        private Panel panelTitle;
         private DataGridViewTextBoxColumn store;
         private DataGridViewTextBoxColumn category;
     }
