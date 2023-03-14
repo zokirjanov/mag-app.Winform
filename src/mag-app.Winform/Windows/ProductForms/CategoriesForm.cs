@@ -22,6 +22,7 @@ namespace mag_app.Winform.Windows.ProductForms
         }
         public long Id { get; set; }
         public string  CategoryTitle { get; set; }
+        public int len;
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -66,6 +67,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 14),
             };
             categoryFlowPanel.Controls.Add(w);
+            len = w.Text.Length + 2;
             w.Click += async (s, e) =>
             {
                 Id = await _service.GetByName(w.Text);

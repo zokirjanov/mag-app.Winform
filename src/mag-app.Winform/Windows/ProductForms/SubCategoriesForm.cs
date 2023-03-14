@@ -23,6 +23,7 @@ namespace mag_app.Winform.Windows.ProductForms
         private SubCategoryService _service;
         public static SubCategoriesForm subCategoryParent;
         public long Id { get; set; }
+        public int subLen { get; set; }
         public SubCategoriesForm(AppDbContext appDbContext)
         {
             _service = new SubCategoryService(appDbContext);
@@ -42,7 +43,7 @@ namespace mag_app.Winform.Windows.ProductForms
             subCategoryFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "Добавить подкатегории";
             primaryButton.Height = 75;
-            primaryButton.Width = 200;
+            primaryButton.Width = 205;
             primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
             {
@@ -68,18 +69,21 @@ namespace mag_app.Winform.Windows.ProductForms
             var button = new Button()
             {
                 Text = subcategoryName,
-                Width = 200,
+                Width = 205,
                 Height = 75,
                 BackColor = Color.LightSkyBlue,
                 Font = new Font("Times New Roman", 14),
             };
             subCategoryFlowPanel.Controls.Add(button);
+            subLen = button.Text.Length+2;
             button.Click += async (s, e) =>
             {
                 Id = await _service.GetByName(button.Text);
                 StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
-                StoreProductsForm.storeProductParent.titleLabel.Text = button.Text;
                 StoreProductsForm.storeProductParent.backBtn.Hide();
+                StoreProductsForm.storeProductParent.Title.Append("→ ");
+                StoreProductsForm.storeProductParent.Title.Append(button.Text);
+                StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
             };
             var update = new Button()
             {
@@ -126,7 +130,8 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
             StoreProductsForm.storeProductParent.backBtn.Show();
-            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length - 9, 9);
+            int len = CategoriesForm.categoryParent.len;
+            StoreProductsForm.storeProductParent.Title.Remove(StoreProductsForm.storeProductParent.Title.Length - len,len);
             StoreProductsForm.storeProductParent.titleLabel.Text = StoreProductsForm.storeProductParent.Title.ToString();
         }
 
