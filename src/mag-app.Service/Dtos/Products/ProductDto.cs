@@ -20,7 +20,7 @@ namespace mag_app.Service.Dtos.Products
             return new Product()
             {
                 ProdutName = productDto.ProdutName,
-                CategoryId = productDto.CategoryId,
+                SubCategoryId = productDto.CategoryId,
                 EmployeeId = productDto.EmployeeId,
                 CreatedAt = TimeHelper.CurrentTime(),
                 UpdatedAt = TimeHelper.CurrentTime()
