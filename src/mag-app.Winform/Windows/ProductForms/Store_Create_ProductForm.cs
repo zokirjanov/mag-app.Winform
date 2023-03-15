@@ -55,8 +55,6 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
-
-
         public void AddItem(Product product)
         {
             
@@ -74,7 +72,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Text = product.ProdutName,
                 Font = new Font("Times New Roman", 16),
                 Height = 30,
-                Location = new Point(15, 15)
+                Location = new Point(15, 15),
             };
             var labelP = new Label()
             {

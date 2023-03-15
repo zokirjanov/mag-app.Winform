@@ -94,11 +94,6 @@ namespace mag_app.Winform.Windows.Product_Forms
             AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
         }
 
-        private void subtitleFlowPanel_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
         private void titleFlowPanel_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, titleFlowPanel.ClientRectangle,
