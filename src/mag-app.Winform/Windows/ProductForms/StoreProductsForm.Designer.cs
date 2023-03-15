@@ -85,9 +85,9 @@
             // productChildPanel
             // 
             this.productChildPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.productChildPanel.Location = new System.Drawing.Point(219, 36);
+            this.productChildPanel.Location = new System.Drawing.Point(219, 42);
             this.productChildPanel.Name = "productChildPanel";
-            this.productChildPanel.Size = new System.Drawing.Size(861, 602);
+            this.productChildPanel.Size = new System.Drawing.Size(861, 596);
             this.productChildPanel.TabIndex = 2;
             // 
             // store
@@ -106,16 +106,17 @@
             // 
             // titleFlowPanel
             // 
-            this.titleFlowPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleFlowPanel.Location = new System.Drawing.Point(219, 0);
+            this.titleFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titleFlowPanel.Location = new System.Drawing.Point(219, 18);
             this.titleFlowPanel.Name = "titleFlowPanel";
-            this.titleFlowPanel.Size = new System.Drawing.Size(861, 18);
+            this.titleFlowPanel.Size = new System.Drawing.Size(861, 24);
             this.titleFlowPanel.TabIndex = 3;
+            this.titleFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.titleFlowPanel_Paint);
             // 
             // subtitleFlowPanel
             // 
-            this.subtitleFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subtitleFlowPanel.Location = new System.Drawing.Point(219, 18);
+            this.subtitleFlowPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subtitleFlowPanel.Location = new System.Drawing.Point(219, 0);
             this.subtitleFlowPanel.Name = "subtitleFlowPanel";
             this.subtitleFlowPanel.Size = new System.Drawing.Size(861, 18);
             this.subtitleFlowPanel.TabIndex = 4;
@@ -126,8 +127,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 638);
-            this.Controls.Add(this.subtitleFlowPanel);
             this.Controls.Add(this.titleFlowPanel);
+            this.Controls.Add(this.subtitleFlowPanel);
             this.Controls.Add(this.productChildPanel);
             this.Controls.Add(this.MenuPanel);
             this.MaximumSize = new System.Drawing.Size(1096, 677);

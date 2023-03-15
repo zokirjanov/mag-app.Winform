@@ -95,7 +95,12 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         private void subtitleFlowPanel_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, subtitleFlowPanel.ClientRectangle,
+            
+        }
+
+        private void titleFlowPanel_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, titleFlowPanel.ClientRectangle,
               Color.Transparent, 1, ButtonBorderStyle.Solid, // left
               Color.Transparent, 1, ButtonBorderStyle.Solid, // top
               Color.Transparent, 1, ButtonBorderStyle.Solid, // right

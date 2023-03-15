@@ -85,6 +85,7 @@
             this.Controls.Add(this.productNameLb);
             this.Name = "productControl";
             this.Size = new System.Drawing.Size(832, 43);
+            this.Click += new System.EventHandler(this.productControl_Click);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

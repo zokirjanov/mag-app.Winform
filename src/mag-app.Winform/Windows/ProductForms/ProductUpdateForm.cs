@@ -41,7 +41,7 @@ namespace mag_app.Winform.Windows.ProductForms
             ProductDto product  = new ProductDto();
             product.ProdutName = productNameTb.Text;
 
-            DialogResult dlg = MessageBox.Show("Do you want to update product?", "Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
                 var res = await _productService.UpdateAsync(product, oldName);
@@ -52,7 +52,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
                 else if (res == "false")
                 {
-                    MessageBox.Show("Something went wrong, there is no product to match");
+                    MessageBox.Show("Что-то пошло не так, нет подходящего продукта");
                 }
                 else
                 {

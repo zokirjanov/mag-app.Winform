@@ -31,7 +31,7 @@ namespace mag_app.Winform.Windows
                 {
                     MainForm.mainParent.marketbtn_Click(sender, e);
                     storeNametb.Text = "";
-                    DialogResult dlg = MessageBox.Show("Store added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    DialogResult dlg = MessageBox.Show("Магазин успешно добавлен \n\nВы хотите добавить еще один?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
                         storeNametb.Focus();

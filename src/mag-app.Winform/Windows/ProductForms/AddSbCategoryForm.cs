@@ -30,7 +30,7 @@ namespace mag_app.Winform.Windows.ProductForms
                   //MainForm.mainParent.marketbtn_Click(sender, e);
                     subCategoryNameTb.Text = "";
                     StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
-                    DialogResult dlg = MessageBox.Show("Sub-category added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    DialogResult dlg = MessageBox.Show("Подкатегория успешно добавлена \n\nВы хотите добавить еще один?", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
                         subCategoryNameTb.Focus();
