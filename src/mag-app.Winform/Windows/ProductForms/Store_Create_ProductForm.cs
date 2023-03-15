@@ -25,7 +25,7 @@ namespace mag_app.Winform.Windows.ProductForms
             _service = new ProductService(appDbContext);
             InitializeComponent();
         }
-
+        
         public async void LoadData()
         {
             PrimaryButton primaryButton = new PrimaryButton();
@@ -54,9 +54,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
             }
         }
-
-
-
+        public event EventHandler OnSelect = null;
         public void AddItem(Product product)
         {
             
@@ -74,7 +72,11 @@ namespace mag_app.Winform.Windows.ProductForms
                 Text = product.ProdutName,
                 Font = new Font("Times New Roman", 16),
                 Height = 30,
-                Location = new Point(15, 15)
+                Location = new Point(15, 15),
+            };
+            label.Click += async (s, e) =>
+            {
+                OnSelect?.Invoke(this, e);
             };
             var labelP = new Label()
             {
@@ -107,6 +109,7 @@ namespace mag_app.Winform.Windows.ProductForms
             create_ProductFlowPanel.Controls.Add(w);
             w.Click += async (s, e) =>
             {
+                MessageBox.Show("sdsfdsdfs");
                 //MainForm.mainParent.Hide();
                 //StoreProductsForm storeProductsForm = new StoreProductsForm();
                 //storeProductsForm.Show();

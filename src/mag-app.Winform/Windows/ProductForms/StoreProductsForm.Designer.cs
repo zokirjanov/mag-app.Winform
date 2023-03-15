@@ -138,7 +138,6 @@
             this.subtitleFlowPanel.Name = "subtitleFlowPanel";
             this.subtitleFlowPanel.Size = new System.Drawing.Size(861, 18);
             this.subtitleFlowPanel.TabIndex = 4;
-            this.subtitleFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.subtitleFlowPanel_Paint);
             // 
             // StoreProductsForm
             // 
