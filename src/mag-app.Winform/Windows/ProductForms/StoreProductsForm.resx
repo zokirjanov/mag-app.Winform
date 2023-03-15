@@ -58,6 +58,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFISURBVEhLzZU9
+        SsVAGEUjiKCd5duBjWBhr4W1VmJrZesWbMQluAAXYCUWgorNE1EElyCija1op+fKXJmXTH4meYUHDmSS
+        me9+Ccmk+C/M4CbeBXWsc4Nx4YfgVtDj3kFx4Ud8xVNcQaHrvYM2UI/hCbdRC+dwD1/wAlfRpOZXaOvY
+        zOM+Kijrjm7xHTVJF+oKmbYg1RrrhPlGpztE5Abtouuo5h8alG+za5Dm7OAnvqHXVQJMTlDc8RFeoakN
+        MHVBMtXxOmYFmHKQLXfcO8Ao6DgYdzzCGzwMY5MdIA6CQgHXeIYn+IyXaKYS8IX6imdxEZfRDA5Yww9c
+        +h1VqQToubYRByxgvCfFqNZEgD7r+FWsIw5IobV+4ya2CtFlV2wK6LSriqaJqYDOhcukFsYBvQvHaJH/
+        E/I86HHWn6wJB90Hp1Z4IEXxA2WChp67B7bfAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="backButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
@@ -69,14 +81,14 @@
   </data>
   <data name="productBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFISURBVEhLzZU9
-        SsVAGEUjiKCd5duBjWBhr4W1VmJrZesWbMQluAAXYCUWgorNE1EElyCija1op+fKXJmXTH4meYUHDmSS
-        me9+Ccmk+C/M4CbeBXWsc4Nx4YfgVtDj3kFx4Ud8xVNcQaHrvYM2UI/hCbdRC+dwD1/wAlfRpOZXaOvY
-        zOM+Kijrjm7xHTVJF+oKmbYg1RrrhPlGpztE5Abtouuo5h8alG+za5Dm7OAnvqHXVQJMTlDc8RFeoakN
-        MHVBMtXxOmYFmHKQLXfcO8Ao6DgYdzzCGzwMY5MdIA6CQgHXeIYn+IyXaKYS8IX6imdxEZfRDA5Yww9c
-        +h1VqQToubYRByxgvCfFqNZEgD7r+FWsIw5IobV+4ya2CtFlV2wK6LSriqaJqYDOhcukFsYBvQvHaJH/
-        E/I86HHWn6wJB90Hp1Z4IEXxA2WChp67B7bfAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAALAAAACwARRqq2kAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAABLUlEQVRIS+2WTUoDQRBGZ+kN9Ay6luxExa2ao6in0YWIO3WpXiagiH+nUND3OumQbqpJhMxG8sEj
+        PTU9X81PdVe6GW3AHhxUDGANahnzXD1fj3UodAbf8NPgDbYgy7GxaK58wSkkeeea30B9N3IMn/AAWY/w
+        AZ6LrrkDk6Qn2QGz+mgtXcPzeJjk2FhL+6Cn3t3u5MDflq7gZTxMcmyspcJzlSBS4bk9OTj0oKG/JjgC
+        PfVOC8aatuwu4SJgBHUCY9FcPSzrV5gu0E2wzp/AEow4hyyNojmixz3o+Y/k3jLvFflasua9Ir2me1f+
+        yO+wrI9sweiZPnLvZdr7QlsliFR49t5wbGu2t1uI2t8Q6pbp2NhCLVPZoA2YNcKNa3ZvWaTpn0Ahsy35
+        b0vX/QJwgb6ESImn1QAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>
