@@ -94,7 +94,6 @@ namespace mag_app.Winform.Components
             {
                 if(f.Text == "Product_Info")
                 {
-               //     isOpen = true;
                     f.Close();
                     break;
                 }
