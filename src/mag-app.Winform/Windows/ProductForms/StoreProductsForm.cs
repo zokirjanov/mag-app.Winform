@@ -2,6 +2,7 @@
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.ProductForms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.Winform.Windows.Product_Forms
 {
@@ -105,6 +106,11 @@ namespace mag_app.Winform.Windows.Product_Forms
               Color.Transparent, 1, ButtonBorderStyle.Solid, // top
               Color.Transparent, 1, ButtonBorderStyle.Solid, // right
               Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
         }
     }
 }

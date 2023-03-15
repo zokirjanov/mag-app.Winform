@@ -95,7 +95,7 @@ namespace mag_app.Winform.Windows.MainWindowForms
                 }
                 if (dlg == DialogResult.Cancel)
                 {
-                    this.Hide();
+                    //do nothing
                 }
             };
         }
