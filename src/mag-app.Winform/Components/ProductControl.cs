@@ -1,5 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows;
@@ -15,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace mag_app.Winform.Components
 {
@@ -28,7 +31,6 @@ namespace mag_app.Winform.Components
         }
 
         public string ProductName { get => productNameLb.Text; set => productNameLb.Text = value; }
-
 
         //Border radius
         private int radius = 20;
@@ -82,7 +84,26 @@ namespace mag_app.Winform.Components
             }
             if (dlg == DialogResult.Cancel)
             {
-                this.Hide();
+                //this.hide
+            }
+        }
+        private async void productControl_Click(object sender, EventArgs e)
+        {
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms)
+            {
+                if(f.Text == "Product_Info")
+                {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if(isOpen == false)
+            {
+                Product_Info product_Info = new Product_Info(new AppDbContext());
+                product_Info.FillInfo(ProductName);
+                product_Info.Show();
             }
         }
     }

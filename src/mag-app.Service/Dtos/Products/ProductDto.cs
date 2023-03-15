@@ -12,14 +12,19 @@ namespace mag_app.Service.Dtos.Products
     public class ProductDto
     {
         public string ProdutName { get; set; } = string.Empty;
+        public decimal Quantity { get; set; }
+        public double Price { get; set; }
+        public string Description { get; set; } = string.Empty;
         public long CategoryId { get; set; }
-
         public long EmployeeId { get; set; }
         public static implicit operator Product(ProductDto productDto)
         {
             return new Product()
             {
                 ProdutName = productDto.ProdutName,
+                Quantity = productDto.Quantity,
+                Price = productDto.Price,
+                Description = productDto.Description,
                 SubCategoryId = productDto.CategoryId,
                 EmployeeId = productDto.EmployeeId,
                 CreatedAt = TimeHelper.CurrentTime(),

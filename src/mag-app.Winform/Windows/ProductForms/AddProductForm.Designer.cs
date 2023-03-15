@@ -30,6 +30,14 @@
         {
             this.productNameTb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.productPriceTb = new System.Windows.Forms.TextBox();
+            this.productQuantity = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.productDescription = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.productNameCheckLabel = new System.Windows.Forms.Label();
+            this.productPriceChecker = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // productNameTb
@@ -37,18 +45,19 @@
             this.productNameTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.productNameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.productNameTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productNameTb.Location = new System.Drawing.Point(51, 37);
-            this.productNameTb.MaxLength = 50;
+            this.productNameTb.Location = new System.Drawing.Point(34, 37);
+            this.productNameTb.MaxLength = 30;
             this.productNameTb.Name = "productNameTb";
             this.productNameTb.PlaceholderText = "Название продукта";
             this.productNameTb.Size = new System.Drawing.Size(314, 30);
             this.productNameTb.TabIndex = 6;
+            this.productNameTb.TextChanged += new System.EventHandler(this.productNameTb_TextChanged);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(51, 98);
+            this.button1.Location = new System.Drawing.Point(34, 332);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
             this.button1.TabIndex = 8;
@@ -56,17 +65,105 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // productPriceTb
+            // 
+            this.productPriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.productPriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productPriceTb.Location = new System.Drawing.Point(34, 94);
+            this.productPriceTb.MaxLength = 50;
+            this.productPriceTb.Name = "productPriceTb";
+            this.productPriceTb.PlaceholderText = "цена";
+            this.productPriceTb.Size = new System.Drawing.Size(314, 30);
+            this.productPriceTb.TabIndex = 9;
+            this.productPriceTb.TextChanged += new System.EventHandler(this.productPriceTb_TextChanged);
+            this.productPriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // productQuantity
+            // 
+            this.productQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productQuantity.Location = new System.Drawing.Point(228, 146);
+            this.productQuantity.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.productQuantity.Name = "productQuantity";
+            this.productQuantity.Size = new System.Drawing.Size(120, 29);
+            this.productQuantity.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(34, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 22);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "количество:";
+            // 
+            // productDescription
+            // 
+            this.productDescription.Location = new System.Drawing.Point(34, 232);
+            this.productDescription.Name = "productDescription";
+            this.productDescription.Size = new System.Drawing.Size(314, 77);
+            this.productDescription.TabIndex = 12;
+            this.productDescription.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(34, 207);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 22);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "описание:";
+            // 
+            // productNameCheckLabel
+            // 
+            this.productNameCheckLabel.AutoSize = true;
+            this.productNameCheckLabel.BackColor = System.Drawing.Color.Transparent;
+            this.productNameCheckLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productNameCheckLabel.ForeColor = System.Drawing.Color.Red;
+            this.productNameCheckLabel.Location = new System.Drawing.Point(12, 42);
+            this.productNameCheckLabel.Name = "productNameCheckLabel";
+            this.productNameCheckLabel.Size = new System.Drawing.Size(20, 25);
+            this.productNameCheckLabel.TabIndex = 14;
+            this.productNameCheckLabel.Text = "*";
+            // 
+            // productPriceChecker
+            // 
+            this.productPriceChecker.AutoSize = true;
+            this.productPriceChecker.BackColor = System.Drawing.Color.Transparent;
+            this.productPriceChecker.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productPriceChecker.ForeColor = System.Drawing.Color.Red;
+            this.productPriceChecker.Location = new System.Drawing.Point(12, 99);
+            this.productPriceChecker.Name = "productPriceChecker";
+            this.productPriceChecker.Size = new System.Drawing.Size(20, 25);
+            this.productPriceChecker.TabIndex = 15;
+            this.productPriceChecker.Text = "*";
+            // 
             // AddProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 177);
+            this.ClientSize = new System.Drawing.Size(385, 421);
+            this.Controls.Add(this.productPriceChecker);
+            this.Controls.Add(this.productNameCheckLabel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.productDescription);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.productQuantity);
+            this.Controls.Add(this.productPriceTb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.productNameTb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddProductForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddProductForm";
+            this.Load += new System.EventHandler(this.AddProductForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,5 +173,12 @@
 
         private TextBox productNameTb;
         private Button button1;
+        private TextBox productPriceTb;
+        private NumericUpDown productQuantity;
+        private Label label1;
+        private RichTextBox productDescription;
+        private Label label2;
+        private Label productNameCheckLabel;
+        private Label productPriceChecker;
     }
 }

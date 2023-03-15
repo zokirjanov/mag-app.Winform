@@ -37,7 +37,7 @@ namespace mag_app.Winform.Windows.ProductForms
             SubCategoryDto category = new SubCategoryDto();
             category.SubCategoryName = subCategoryNameTb.Text;
 
-            DialogResult dlg = MessageBox.Show("Do you want to update sub-category?", "Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult dlg = MessageBox.Show("Вы хотите изменить подкатегорию?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
                 var res = await service.UpdateAsync(category, oldName);
@@ -48,7 +48,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
                 else if (res == "false")
                 {
-                    MessageBox.Show("Something went wrong, there is no sub-category to match");
+                    MessageBox.Show("Что-то пошло не так, нет соответствующей подкатегории");
                 }
                 else
                 {

@@ -34,7 +34,7 @@ namespace mag_app.Winform.Windows.ProductForms
                  // MainForm.mainParent.marketbtn_Click(sender, e);
                     categoryNameTb.Text = "";
                     StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
-                    DialogResult dlg = MessageBox.Show("Category added successfully \n\nDo you want to add another one?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    DialogResult dlg = MessageBox.Show("Категория успешно добавлена \n\nВы хотите добавить еще один", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
                         categoryNameTb.Focus();

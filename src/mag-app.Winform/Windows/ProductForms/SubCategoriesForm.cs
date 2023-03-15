@@ -122,7 +122,7 @@ namespace mag_app.Winform.Windows.ProductForms
                     }
                     if (dlg == DialogResult.Cancel)
                     {
-                        this.Hide();
+                        // do nothing
                     }
                 };
         }
