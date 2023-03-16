@@ -11,6 +11,7 @@ namespace mag_app.Domain.Entities.Products
     {
         public string ProdutName { get; set; } = string.Empty;
         public double Price { get; set; }
+        public double PurchasedPrice { get; set; }
         public decimal  Quantity { get; set; }
         public string Description { get; set; } = string.Empty;
         public long SubCategoryId { get; set; }

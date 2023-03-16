@@ -83,7 +83,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 var labelPprice = new Label()
                 {
                     Parent = w,
-                    Text = product.Price.ToString(),
+                    Text = product.PurchasedPrice.ToString(),
                     Font = new Font("Times New Roman", 12),
                     Location = new Point(115, 60)
                 };
@@ -119,12 +119,8 @@ namespace mag_app.Winform.Windows.ProductForms
             create_ProductFlowPanel.Controls.Add(w);
             w.Click += async (s, e) =>
             {
-                MessageBox.Show("sdsfdsdfs");
-                //MainForm.mainParent.Hide();
-                //StoreProductsForm storeProductsForm = new StoreProductsForm();
-                //storeProductsForm.Show();
+                MessageBox.Show("Button Clicked");
             };
-
 
             // Delete && Update Buttons
             var update = new Button()
@@ -154,18 +150,17 @@ namespace mag_app.Winform.Windows.ProductForms
             };
             delete.Click += async (s, e) =>
             {
-                //DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                //if (dlg == DialogResult.OK)
-                //{
-                //    var res = _service.DeleteAsync(storename);
-                //    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
-                //    MainForm.mainParent.pnl.Controls.Clear();
-                //    MainForm.mainParent.marketbtn_Click(s, e);
-                //}
-                //if (dlg == DialogResult.Cancel)
-                //{
-                //    this.Hide();
-                //}
+                DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dlg == DialogResult.OK)
+                {
+                    var res = _service.DeleteAsync(product.ProdutName);
+                    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
+                    StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+                }
+                if (dlg == DialogResult.Cancel)
+                {
+                    //do nothing
+                }
             };
         }
 

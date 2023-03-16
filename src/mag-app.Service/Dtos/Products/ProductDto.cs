@@ -14,6 +14,7 @@ namespace mag_app.Service.Dtos.Products
         public string ProdutName { get; set; } = string.Empty;
         public decimal Quantity { get; set; }
         public double Price { get; set; }
+        public double PurchasedPrice { get; set; }
         public string Description { get; set; } = string.Empty;
         public long SubCategoryId { get; set; }
         public long CategoryId { get; set; }
@@ -25,6 +26,7 @@ namespace mag_app.Service.Dtos.Products
                 ProdutName = productDto.ProdutName,
                 Quantity = productDto.Quantity,
                 Price = productDto.Price,
+                PurchasedPrice = productDto.PurchasedPrice,
                 Description = productDto.Description,
                 CategoryId = productDto.CategoryId,
                 SubCategoryId = productDto.SubCategoryId,

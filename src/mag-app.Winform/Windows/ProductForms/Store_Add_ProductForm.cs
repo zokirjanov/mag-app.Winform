@@ -42,6 +42,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 {
                     ProdutName = productNameTb.Text,
                     Price = double.Parse(productPriceTb.Text),
+                    PurchasedPrice= double.Parse(purchasePriceTb.Text),
                     Quantity = productQuantity.Value,
                     Description = productDescription.Text,
                     CategoryId = CategoryId,
@@ -60,6 +61,7 @@ namespace mag_app.Winform.Windows.ProductForms
                         productNameTb.Text = "";
                         productPriceTb.Text = "";
                         productQuantity.Value = 0;
+                        purchasePriceTb.Text = "";
                         productDescription.Text = "";
                     }
                     if (dlg == DialogResult.Cancel)
@@ -97,6 +99,10 @@ namespace mag_app.Winform.Windows.ProductForms
             var entity = await categoryService.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
             categoryComboBox.DataSource = entity;
             categoryComboBox.ValueMember = "CategoryName";
+
+            var select = categoryComboBox.SelectedValue;
+            long id = await categoryService.GetByNameAsync(select.ToString());
+            ComboBoxFillSubCategory(id);
         }
         private async void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
