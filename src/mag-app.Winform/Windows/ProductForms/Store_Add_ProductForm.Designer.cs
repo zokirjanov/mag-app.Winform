@@ -213,6 +213,7 @@
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(146, 23);
             this.categoryComboBox.TabIndex = 28;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
             // subCategoryComboBox
             // 
@@ -221,6 +222,7 @@
             this.subCategoryComboBox.Name = "subCategoryComboBox";
             this.subCategoryComboBox.Size = new System.Drawing.Size(146, 23);
             this.subCategoryComboBox.TabIndex = 29;
+            this.subCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.subCategoryComboBox_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -266,6 +268,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.productNameTb);
             this.Name = "Store_Add_ProductForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store_Add_ProductForm";
             this.Load += new System.EventHandler(this.Store_Add_ProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).EndInit();

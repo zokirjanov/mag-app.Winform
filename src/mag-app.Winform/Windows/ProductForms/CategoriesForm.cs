@@ -68,7 +68,7 @@ namespace mag_app.Winform.Windows.ProductForms
             categoryFlowPanel.Controls.Add(w);
             w.Click += async (s, e) =>
             {
-                Id = await _service.GetByName(w.Text);
+                Id = await _service.GetByNameAsync(w.Text);
                 CategoryTitle = w.Text;
                 StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
                 StoreProductsForm.storeProductParent.AddTitle(categoryName, "›категория");

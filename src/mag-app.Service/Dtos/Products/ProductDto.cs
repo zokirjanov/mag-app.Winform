@@ -15,6 +15,7 @@ namespace mag_app.Service.Dtos.Products
         public decimal Quantity { get; set; }
         public double Price { get; set; }
         public string Description { get; set; } = string.Empty;
+        public long SubCategoryId { get; set; }
         public long CategoryId { get; set; }
         public long EmployeeId { get; set; }
         public static implicit operator Product(ProductDto productDto)
@@ -25,7 +26,8 @@ namespace mag_app.Service.Dtos.Products
                 Quantity = productDto.Quantity,
                 Price = productDto.Price,
                 Description = productDto.Description,
-                SubCategoryId = productDto.CategoryId,
+                CategoryId = productDto.CategoryId,
+                SubCategoryId = productDto.SubCategoryId,
                 EmployeeId = productDto.EmployeeId,
                 CreatedAt = TimeHelper.CurrentTime(),
                 UpdatedAt = TimeHelper.CurrentTime()

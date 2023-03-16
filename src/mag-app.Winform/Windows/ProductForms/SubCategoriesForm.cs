@@ -76,7 +76,7 @@ namespace mag_app.Winform.Windows.ProductForms
             subCategoryFlowPanel.Controls.Add(button);
             button.Click += async (s, e) =>
             {
-                Id = await _service.GetByName(button.Text);
+                Id = await _service.GetByNameAsync(button.Text);
                 StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
                 StoreProductsForm.storeProductParent.AddTitle(button.Text, "›подкатегория");
                 StoreProductsForm.storeProductParent.backBtn.Hide();

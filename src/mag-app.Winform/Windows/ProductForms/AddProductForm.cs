@@ -27,7 +27,8 @@ namespace mag_app.Winform.Windows.ProductForms
                     Price = double.Parse(productPriceTb.Text),
                     Quantity = productQuantity.Value,
                     Description = productDescription.Text,
-                    CategoryId = SubCategoriesForm.subCategoryParent.Id,
+                    SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
+                    CategoryId = CategoriesForm.categoryParent.Id,
                     EmployeeId = IdentitySingelton.GetInstance().EmployeeId
                 };
 
