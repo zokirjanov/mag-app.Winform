@@ -59,6 +59,13 @@ namespace mag_app.Service.Services.SubCategoryService
             if (result is not null) return result.ToList();
             else return null;
         }
+        public async Task<List<SubCategory>> GetAllAsync()
+        {
+            var result = await _appDbContext.SubCategories.OrderByDescending(x => x.CreatedAt).ToListAsync();
+            if (result is not null) return result.ToList();
+            else return null;
+        }
+
 
         public async Task<long> GetByName(string name)
         {

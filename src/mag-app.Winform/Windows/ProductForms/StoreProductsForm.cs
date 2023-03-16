@@ -106,6 +106,9 @@ namespace mag_app.Winform.Windows.Product_Forms
         private void button1_Click(object sender, EventArgs e)
         {
             storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+            storeProductParent.titleFlowPanel.Controls.Clear();
+            storeProductParent.subtitleFlowPanel.Controls.Clear();
+            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
         }
     }
 }
