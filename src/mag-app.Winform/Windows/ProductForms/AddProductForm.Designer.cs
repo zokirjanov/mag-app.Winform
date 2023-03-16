@@ -55,6 +55,7 @@
             this.productNameTb.Name = "productNameTb";
             this.productNameTb.Size = new System.Drawing.Size(314, 30);
             this.productNameTb.TabIndex = 6;
+            this.productNameTb.TextChanged += new System.EventHandler(this.productNameTb_TextChanged);
             // 
             // button1
             // 

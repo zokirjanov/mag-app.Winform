@@ -3,6 +3,7 @@ using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Components;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace mag_app.Winform.Windows.ProductForms
             create_ProductFlowPanel.Controls.Clear();
             create_ProductFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "добавить продукт";
+            primaryButton.Font = new Font("Times new roman", 14);
             primaryButton.Width = 270;
             primaryButton.Height = 130;
             primaryButton.BorderRadius = 5;
@@ -41,7 +43,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 form.ShowDialog();
             };
 
-            var items = await _service.GetAllAsync(IdentitySingelton.GetInstance().EmployeeId);
+            var items = await _service.GetAllByStoreAsync(IdentitySingelton.GetInstance().EmployeeId, MyStoreForm.myStoreFormParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");
@@ -167,6 +169,14 @@ namespace mag_app.Winform.Windows.ProductForms
         private void Store_Create_ProductForm_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(2);
+            StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(2);
+            StoreProductsForm.storeProductParent.backBtn.Show();
         }
     }
 }

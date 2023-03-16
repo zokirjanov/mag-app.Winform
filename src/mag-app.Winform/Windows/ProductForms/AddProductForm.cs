@@ -94,5 +94,14 @@ namespace mag_app.Winform.Windows.ProductForms
             }
             else purchasedPriceChecker.Text = "*";
         }
+
+        private void productNameTb_TextChanged(object sender, EventArgs e)
+        {
+            if(!(productNameTb.Text == ""))
+            {
+                productNameCheckLabel.Text = "";
+            }
+            else productNameCheckLabel.Text="*";
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync(long eid)
+        public async Task<IEnumerable<Product>> GetAllByStoreAsync(long eid, long cid)
         {
             var result = await _appDbContext.Products.Where(x => x.EmployeeId == eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
