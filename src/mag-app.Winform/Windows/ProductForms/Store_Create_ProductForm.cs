@@ -66,7 +66,7 @@ namespace mag_app.Winform.Windows.ProductForms
             };
 
             // Labels
-            var labelname = new Label()
+            var labelname = new Slidinglabel()
             {
                 Parent = w,
                 Text = product.ProdutName,
