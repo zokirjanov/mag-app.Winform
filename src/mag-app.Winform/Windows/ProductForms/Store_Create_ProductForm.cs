@@ -74,6 +74,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Height = 30,
                 Width= 150,
                 Location = new Point(15, 15),
+                AutoSize= true,
             };
             var labelPp = new Label()
             {
