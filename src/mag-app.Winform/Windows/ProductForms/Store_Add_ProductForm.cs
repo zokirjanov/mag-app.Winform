@@ -1,22 +1,11 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
-using mag_app.Service.Interfaces.Categories;
 using mag_app.Service.Services.CategoryService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -28,7 +17,7 @@ namespace mag_app.Winform.Windows.ProductForms
 
         public Store_Add_ProductForm(AppDbContext appDbContext)
         {
-            _service  = new ProductService(appDbContext);
+            _service = new ProductService(appDbContext);
             InitializeComponent();
         }
 
@@ -41,10 +30,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
-                    Price = double.Parse(productPriceTb.Text),
-                    PurchasedPrice= double.Parse(purchasePriceTb.Text),
-                    Quantity = productQuantity.Value,
-                    Description = productDescription.Text,
+                    Price = decimal.Parse(productPriceTb.Text),
+                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                    Quantity = Convert.ToInt32(productQuantity.Value),
                     CategoryId = CategoryId,
                     SubCategoryId = SubCategoryId,
                     EmployeeId = IdentitySingelton.GetInstance().EmployeeId
@@ -62,7 +50,6 @@ namespace mag_app.Winform.Windows.ProductForms
                         productPriceTb.Text = "";
                         productQuantity.Value = 0;
                         purchasePriceTb.Text = "";
-                        productDescription.Text = "";
                     }
                     if (dlg == DialogResult.Cancel)
                     {
@@ -82,8 +69,9 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             productQuantity.Maximum = 100000000;
             ComboBoxFillcategory();
+            categoryComboBox.Text = CategoriesForm.categoryParent.CategoryTitle;
+            subCategoryComboBox.Text = SubCategoriesForm.subCategoryParent.Title;
         }
-
 
         // Combo box filling
         private async void ComboBoxFillSubCategory(long categoryId)
@@ -102,14 +90,14 @@ namespace mag_app.Winform.Windows.ProductForms
 
             var select = categoryComboBox.SelectedValue;
             long id = await categoryService.GetByNameAsync(select.ToString());
-            ComboBoxFillSubCategory(id);
+            if (id > 0) ComboBoxFillSubCategory(id);
         }
         private async void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             CategoryService categoryService = new CategoryService(new AppDbContext());
             var select = categoryComboBox.SelectedValue;
             long id = await categoryService.GetByNameAsync(select.ToString());
-            CategoryId = id;
+            if (id > 0) CategoryId = id;
             ComboBoxFillSubCategory(id);
         }
         private async void subCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,7 +105,7 @@ namespace mag_app.Winform.Windows.ProductForms
             SubCategoryService subCategoryService = new SubCategoryService(new AppDbContext());
             var select = subCategoryComboBox.SelectedValue;
             long id = await subCategoryService.GetByNameAsync(select.ToString());
-            SubCategoryId = id;
+            if (id > 0) SubCategoryId = id;
         }
 
 
@@ -165,17 +153,15 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
         }
-
-
     }
 }

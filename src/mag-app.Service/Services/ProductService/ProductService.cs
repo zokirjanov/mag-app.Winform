@@ -56,13 +56,6 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync(long eid)
-        {
-            var result = await _appDbContext.Products.Where(x => x.EmployeeId == eid).ToListAsync();
-            if (result is not null) return result.ToList();
-            else return null;
-        }
-
         public async Task<IEnumerable<Product>> GetByNameAsync(string name, long eid)
         {
             var result = await _appDbContext.Products.Where(x => x.ProdutName == name && x.EmployeeId == eid).ToListAsync();

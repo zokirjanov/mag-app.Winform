@@ -12,10 +12,9 @@ namespace mag_app.Service.Dtos.Products
     public class ProductDto
     {
         public string ProdutName { get; set; } = string.Empty;
-        public decimal Quantity { get; set; }
-        public double Price { get; set; }
-        public double PurchasedPrice { get; set; }
-        public string Description { get; set; } = string.Empty;
+        public int Quantity { get; set; }
+        public decimal  Price { get; set; }
+        public decimal PurchasedPrice { get; set; }
         public long SubCategoryId { get; set; }
         public long CategoryId { get; set; }
         public long EmployeeId { get; set; }
@@ -27,7 +26,6 @@ namespace mag_app.Service.Dtos.Products
                 Quantity = productDto.Quantity,
                 Price = productDto.Price,
                 PurchasedPrice = productDto.PurchasedPrice,
-                Description = productDto.Description,
                 CategoryId = productDto.CategoryId,
                 SubCategoryId = productDto.SubCategoryId,
                 EmployeeId = productDto.EmployeeId,

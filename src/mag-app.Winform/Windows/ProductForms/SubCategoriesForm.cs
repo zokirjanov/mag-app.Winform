@@ -23,6 +23,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public static SubCategoriesForm subCategoryParent;
         private SubCategoryService _service;
         public long Id { get; set; }
+        public string Title { get; set; }
         public SubCategoriesForm(AppDbContext appDbContext)
         {
             _service = new SubCategoryService(appDbContext);
@@ -77,7 +78,8 @@ namespace mag_app.Winform.Windows.ProductForms
             button.Click += async (s, e) =>
             {
                 Id = await _service.GetByNameAsync(button.Text);
-                StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
+                Title = button.Text;
+                StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
                 StoreProductsForm.storeProductParent.AddTitle(button.Text, "›подкатегория");
                 StoreProductsForm.storeProductParent.backBtn.Hide();
             };
