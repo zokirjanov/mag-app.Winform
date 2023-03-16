@@ -51,7 +51,7 @@ namespace mag_app.Service.Services.ProductService
 
         public async Task<IEnumerable<Product>> GetAllAsync(long cid, long eid)
         {
-            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cid && x.EmployeeId == eid).ToListAsync();
+            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cid && x.EmployeeId == eid).OrderByDescending(x=>x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
