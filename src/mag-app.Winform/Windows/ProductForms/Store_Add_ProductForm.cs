@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
@@ -41,9 +42,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
-                    Price = double.Parse(productPriceTb.Text),
-                    PurchasedPrice= double.Parse(purchasePriceTb.Text),
-                    Quantity = productQuantity.Value,
+                    Price = decimal.Parse(productPriceTb.Text),
+                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                    Quantity = Convert.ToInt32(productQuantity.Value),
                     Description = productDescription.Text,
                     CategoryId = CategoryId,
                     SubCategoryId = SubCategoryId,
@@ -81,7 +82,26 @@ namespace mag_app.Winform.Windows.ProductForms
         private void Store_Add_ProductForm_Load(object sender, EventArgs e)
         {
             productQuantity.Maximum = 100000000;
-            ComboBoxFillcategory();
+            using (var db = new AppDbContext())
+            {
+                var cat = db.Categories.FirstOrDefault();
+                var subcat = db.SubCategories.FirstOrDefault();
+                if (subcat is null && cat is null)
+                {
+                    DialogResult dlg = MessageBox.Show("категория или подкатегория не существует, \nпожалуйста, добавьте категорию с подкатегорией", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (dlg == DialogResult.OK)
+                    {
+                        StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+                        this.Close();
+                    }
+                    if (dlg == DialogResult.Cancel)
+                    {
+                        StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+                        this.Close();
+                    }
+                }
+                else ComboBoxFillcategory();
+            }
         }
 
 
@@ -102,14 +122,14 @@ namespace mag_app.Winform.Windows.ProductForms
 
             var select = categoryComboBox.SelectedValue;
             long id = await categoryService.GetByNameAsync(select.ToString());
-            ComboBoxFillSubCategory(id);
+            if(id > 0) ComboBoxFillSubCategory(id);
         }
         private async void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             CategoryService categoryService = new CategoryService(new AppDbContext());
             var select = categoryComboBox.SelectedValue;
             long id = await categoryService.GetByNameAsync(select.ToString());
-            CategoryId = id;
+            if(id > 0) CategoryId = id;
             ComboBoxFillSubCategory(id);
         }
         private async void subCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,7 +137,7 @@ namespace mag_app.Winform.Windows.ProductForms
             SubCategoryService subCategoryService = new SubCategoryService(new AppDbContext());
             var select = subCategoryComboBox.SelectedValue;
             long id = await subCategoryService.GetByNameAsync(select.ToString());
-            SubCategoryId = id;
+            if (id > 0) SubCategoryId = id;
         }
 
 
@@ -165,17 +185,15 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
         }
-
-
     }
 }

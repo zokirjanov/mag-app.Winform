@@ -56,7 +56,6 @@ namespace mag_app.Winform.Windows.ProductForms
         }
         public void AddItem(Product product)
         {
-            
             var w = new Button
             {
                 Width = 270,

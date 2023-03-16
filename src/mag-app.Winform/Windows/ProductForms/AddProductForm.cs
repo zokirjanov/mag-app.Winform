@@ -18,14 +18,15 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text))
+            if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
             {
 
                 ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
-                    Price = double.Parse(productPriceTb.Text),
-                    Quantity = productQuantity.Value,
+                    Price = decimal.Parse(productPriceTb.Text),
+                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                    Quantity = Convert.ToInt32(productQuantity.Value),
                     Description = productDescription.Text,
                     SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
                     CategoryId = CategoriesForm.categoryParent.Id,
@@ -41,7 +42,7 @@ namespace mag_app.Winform.Windows.ProductForms
                     {
                         productNameTb.Focus();
                         productNameTb.Text = "";
-                        productPriceTb.Text = "";
+                        purchasePriceTb.Text = "";
                         productQuantity.Value = 0;
                         productDescription.Text = "";
                     }
@@ -71,19 +72,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 e.Handled = true;
             }
         }
-
-        private void productNameTb_TextChanged(object sender, EventArgs e)
-        {
-            if(!(productNameTb.Text == ""))
-            {
-                productNameCheckLabel.Text = "";
-            }
-            else productNameCheckLabel.Text = "*";
-        }
-
         private void productPriceTb_TextChanged(object sender, EventArgs e)
         {
-            if(!(productPriceTb.Text == ""))
+            if(!(purchasePriceTb.Text == ""))
             {
                 productPriceChecker.Text = "";
             }
@@ -92,6 +83,16 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void AddProductForm_Load(object sender, EventArgs e)
         {
+            productQuantity.Maximum = 100000000;
+        }
+
+        private void productPriceTb_TextChanged_1(object sender, EventArgs e)
+        {
+            if (!(purchasePriceTb.Text == ""))
+            {
+                purchasedPriceChecker.Text = "";
+            }
+            else purchasedPriceChecker.Text = "*";
         }
     }
 }
