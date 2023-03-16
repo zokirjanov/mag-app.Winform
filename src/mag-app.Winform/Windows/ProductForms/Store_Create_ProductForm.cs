@@ -69,8 +69,9 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Parent = w,
                 Text = product.ProdutName,
-                Font = new Font("Times New Roman", 16),
+                Font = new Font("Times New Roman", 14),
                 Height = 30,
+                Width= 150,
                 Location = new Point(15, 15),
             };
             var labelPp = new Label()
