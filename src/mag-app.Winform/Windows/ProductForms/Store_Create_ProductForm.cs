@@ -33,11 +33,11 @@ namespace mag_app.Winform.Windows.ProductForms
             create_ProductFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "добавить продукт";
             primaryButton.Width = 270;
-            primaryButton.Height = 110;
+            primaryButton.Height = 130;
             primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
             {
-                AddProductForm form = new AddProductForm(new AppDbContext());
+                Store_Add_ProductForm form = new Store_Add_ProductForm(new AppDbContext());
                 form.ShowDialog();
             };
 
@@ -54,67 +54,74 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
             }
         }
-        public event EventHandler OnSelect = null;
         public void AddItem(Product product)
         {
             
             var w = new Button
             {
                 Width = 270,
-                Height = 110,
+                Height = 130,
                 BackColor = Color.LightSteelBlue,
             };
 
             // Labels
-            var label = new Label()
+            var labelname = new Label()
             {
                 Parent = w,
                 Text = product.ProdutName,
-                Font = new Font("Times New Roman", 16),
+                Font = new Font("Times New Roman", 14),
                 Height = 30,
+                Width= 150,
                 Location = new Point(15, 15),
             };
-            label.Click += async (s, e) =>
+            var labelPp = new Label()
             {
-                OnSelect?.Invoke(this, e);
+                Parent = w,
+                Text = "себестоимсть:",
+                Font = new Font("Times New Roman", 12),
+                Location = new Point(15, 60)
             };
+                var labelPprice = new Label()
+                {
+                    Parent = w,
+                    Text = product.PurchasedPrice.ToString(),
+                    Font = new Font("Times New Roman", 12),
+                    Location = new Point(115, 60)
+                };
             var labelP = new Label()
             {
                 Parent = w,
                 Text = "цена:",
                 Font = new Font("Times New Roman", 12),
-                Location = new Point(15, 60)
+                Location = new Point(15, 80)
             };
                 var labelPrice = new Label()
                 {
                     Parent = w,
                     Text = product.Price.ToString(),
                     Font = new Font("Times New Roman", 12),
-                    Location = new Point(110, 60)
+                    Location = new Point(115, 80)
                 };
             var labelQ = new Label()
             {
                 Parent = w,
                 Text = "количество:",
                 Font = new Font("Times New Roman", 12),
-                Location = new Point(15, 80)
+                Location = new Point(15, 100)
             };
                 var labelQuantity = new Label()
                 {
                     Parent = w,
                     Text = product.Quantity.ToString(),
                     Font = new Font("Times New Roman", 12),
-                    Location = new Point(110, 80)
+                    Location = new Point(115, 100)
                 };
+           
             create_ProductFlowPanel.Controls.Add(w);
             w.Click += async (s, e) =>
             {
-                MessageBox.Show("sdsfdsdfs");
-                //MainForm.mainParent.Hide();
-                //StoreProductsForm storeProductsForm = new StoreProductsForm();
-                //storeProductsForm.Show();
+                MessageBox.Show("Button Clicked");
             };
-
 
             // Delete && Update Buttons
             var update = new Button()
@@ -144,18 +151,17 @@ namespace mag_app.Winform.Windows.ProductForms
             };
             delete.Click += async (s, e) =>
             {
-                //DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                //if (dlg == DialogResult.OK)
-                //{
-                //    var res = _service.DeleteAsync(storename);
-                //    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
-                //    MainForm.mainParent.pnl.Controls.Clear();
-                //    MainForm.mainParent.marketbtn_Click(s, e);
-                //}
-                //if (dlg == DialogResult.Cancel)
-                //{
-                //    this.Hide();
-                //}
+                DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dlg == DialogResult.OK)
+                {
+                    var res = _service.DeleteAsync(product.ProdutName);
+                    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
+                    StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+                }
+                if (dlg == DialogResult.Cancel)
+                {
+                    //do nothing
+                }
             };
         }
 
