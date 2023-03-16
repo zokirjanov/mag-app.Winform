@@ -23,7 +23,6 @@ namespace mag_app.Winform.Windows.ProductForms
                 productNameInfo.Text = item.ProdutName;
                 productPriceInfo.Text = item.Price.ToString();
                 productQuantityInfo.Text = item.Quantity.ToString();
-                productDescriptionInfo.Items.Add(item.Description);
             }
         }
         private void Product_Info_Load(object sender, EventArgs e)

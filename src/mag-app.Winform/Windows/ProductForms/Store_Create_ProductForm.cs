@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Interfaces.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
@@ -42,8 +43,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Store_Add_ProductForm form = new Store_Add_ProductForm(new AppDbContext());
                 form.ShowDialog();
             };
-
-            var items = await _service.GetAllByStoreAsync(IdentitySingelton.GetInstance().EmployeeId, MyStoreForm.myStoreFormParent.Id);
+            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");
@@ -136,9 +136,9 @@ namespace mag_app.Winform.Windows.ProductForms
             };
             update.Click += async (s, e) =>
             {
-                UpdateForm updateForm = new UpdateForm(new AppDbContext());
-                updateForm.storeName = product.ProdutName;
-                updateForm.ShowDialog();
+                ProductUpdateForm productUpdateForm = new ProductUpdateForm(new AppDbContext());
+                productUpdateForm.productName = product.ProdutName;
+                productUpdateForm.ShowDialog();
             };
 
             var delete = new Button()

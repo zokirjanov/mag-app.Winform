@@ -51,6 +51,10 @@ namespace mag_app.Winform.Windows.Product_Forms
         public void productBtn_Click(object sender, EventArgs e)
         {
             storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+            titleFlowPanel.Controls.Clear();    
+            subtitleFlowPanel.Controls.Clear();
+            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+
         }
 
         private Form activeForm = null;
@@ -101,14 +105,6 @@ namespace mag_app.Winform.Windows.Product_Forms
               Color.Transparent, 1, ButtonBorderStyle.Solid, // top
               Color.Transparent, 1, ButtonBorderStyle.Solid, // right
               Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
-            storeProductParent.titleFlowPanel.Controls.Clear();
-            storeProductParent.subtitleFlowPanel.Controls.Clear();
-            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
         }
     }
 }

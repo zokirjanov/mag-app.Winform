@@ -48,7 +48,6 @@ namespace mag_app.Winform.Windows.ProductForms
                 if (res == "true")
                 {
                     this.Close();
-                    StoreProductsForm.storeProductParent.openChildForm(new ProductManageForm());
                 }
                 else if (res == "false")
                 {

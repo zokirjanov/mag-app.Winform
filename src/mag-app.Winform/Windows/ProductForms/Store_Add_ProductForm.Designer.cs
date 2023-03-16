@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.productDescription = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.productQuantity = new System.Windows.Forms.NumericUpDown();
             this.productPriceTb = new System.Windows.Forms.TextBox();
@@ -49,24 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(35, 367);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 22);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "описание:";
-            // 
-            // productDescription
-            // 
-            this.productDescription.Location = new System.Drawing.Point(35, 392);
-            this.productDescription.Name = "productDescription";
-            this.productDescription.Size = new System.Drawing.Size(314, 56);
-            this.productDescription.TabIndex = 19;
-            this.productDescription.Text = "";
             // 
             // label1
             // 
@@ -108,7 +88,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(35, 465);
+            this.button1.Location = new System.Drawing.Point(35, 383);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
             this.button1.TabIndex = 15;
@@ -259,7 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 531);
+            this.ClientSize = new System.Drawing.Size(385, 458);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -272,8 +252,6 @@
             this.Controls.Add(this.purchasedPriceChecker);
             this.Controls.Add(this.productNameCheckLabel);
             this.Controls.Add(this.purchasePriceTb);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.productDescription);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.productQuantity);
             this.Controls.Add(this.productPriceTb);
@@ -290,9 +268,6 @@
         }
 
         #endregion
-
-        private Label label2;
-        private RichTextBox productDescription;
         private Label label1;
         private NumericUpDown productQuantity;
         private TextBox productPriceTb;

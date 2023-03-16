@@ -34,8 +34,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.purchasePriceTb = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.productDescription = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.productQuantity = new System.Windows.Forms.NumericUpDown();
             this.productPriceTb = new System.Windows.Forms.TextBox();
@@ -47,7 +45,7 @@
             // 
             this.updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.updateBtn.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.updateBtn.Location = new System.Drawing.Point(41, 430);
+            this.updateBtn.Location = new System.Drawing.Point(41, 347);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(314, 39);
             this.updateBtn.TabIndex = 4;
@@ -104,24 +102,6 @@
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 33;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(41, 331);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 22);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "описание:";
-            // 
-            // productDescription
-            // 
-            this.productDescription.Location = new System.Drawing.Point(41, 356);
-            this.productDescription.Name = "productDescription";
-            this.productDescription.Size = new System.Drawing.Size(314, 56);
-            this.productDescription.TabIndex = 31;
-            this.productDescription.Text = "";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -169,13 +149,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 502);
+            this.ClientSize = new System.Drawing.Size(395, 437);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.purchasePriceTb);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.productDescription);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.productQuantity);
             this.Controls.Add(this.productPriceTb);
@@ -200,8 +178,6 @@
         private Label label6;
         private Label label5;
         private TextBox purchasePriceTb;
-        private Label label2;
-        private RichTextBox productDescription;
         private Label label1;
         private NumericUpDown productQuantity;
         private TextBox productPriceTb;
