@@ -21,7 +21,7 @@ namespace mag_app.Winform.Windows.ProductForms
             categoryParent = this;
         }
         public long Id { get; set; }
-        public string  CategoryTitle { get; set; }
+        public string CategoryTitle { get; set; }
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -79,17 +79,18 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Parent = w,
                 Width = w.Width / 8,
-                Height = w.Height /3,
+                Height = w.Height / 3,
                 Location = new Point(170, 13),
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             };
-                update.Click += async (s, e) =>
-                {
-                    CategoryUpdateForm category = new CategoryUpdateForm(new AppDbContext());
-                    category.categoryName = w.Text;
-                    category.ShowDialog();
-                };
+            update.Click += (s, e) =>
+            {
+                CategoryUpdateForm category = new CategoryUpdateForm(new AppDbContext());
+                category.categoryName = w.Text;
+                category.ShowDialog();
+            };
+
             var delete = new Button()
             {
                 Parent = w,
@@ -99,25 +100,24 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.Transparent,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
             };
-                delete.Click += async (s, e) =>
+            delete.Click += async (s, e) =>
+            {
+                DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить категорию?\n" + "Все подкатегории и продукты будут удалены безвозвратно", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dlg == DialogResult.OK)
                 {
-                    DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить категорию?\n" +
-                                                       "\r\nВсе подкатегории и продукты будут удалены безвозвратно", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    if (dlg == DialogResult.OK)
+                    var res = _service.DeleteAsync(w.Text);
+                    if (await res == true)
                     {
-                        var res = _service.DeleteAsync(w.Text);
-                        if (await res == true)
-                        {
-                            AutoClosingMessageBox.Show("\r\nУспешно удалено\r\n", "Delete", 350);
-                            LoadData();
-                        }
-                        else MessageBox.Show("категория не может быть удалена!");
+                        AutoClosingMessageBox.Show("\r\nУспешно удалено\r\n", "Delete", 350);
+                        LoadData();
                     }
-                    if (dlg == DialogResult.Cancel)
-                    {
-                        //do nothing
-                    }
-                };
+                    else MessageBox.Show("категория не может быть удалена!");
+                }
+                if (dlg == DialogResult.Cancel)
+                {
+                    //do nothing
+                }
+            };
         }
         private void categoryFlowPanel_Paint(object sender, PaintEventArgs e)
         {

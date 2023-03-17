@@ -49,7 +49,7 @@ namespace mag_app.Winform.Windows.MainWindowForms
                 Font = new Font("Times New Roman", 14),
             };
             flowLayoutPanel1.Controls.Add(w);
-            w.Click += async (s, e) =>
+            w.Click += async (s, e) => 
             {
                 Id = await _service.GetByName(w.Text);
                 StoreName= w.Text;
@@ -67,7 +67,7 @@ namespace mag_app.Winform.Windows.MainWindowForms
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             };
-            update.Click += async (s, e) =>
+            update.Click +=  (s, e) =>
             {
                 UpdateForm updateForm = new UpdateForm(new AppDbContext());
                 updateForm.storeName = storename;
@@ -83,7 +83,7 @@ namespace mag_app.Winform.Windows.MainWindowForms
                 BackColor = Color.Transparent,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
             };
-            delete.Click += async (s, e) =>
+            delete.Click +=  (s, e) =>
             {
                 DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)

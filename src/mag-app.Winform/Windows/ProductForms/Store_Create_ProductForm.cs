@@ -64,6 +64,11 @@ namespace mag_app.Winform.Windows.ProductForms
                 Height = 130,
                 BackColor = Color.LightSteelBlue,
             };
+            create_ProductFlowPanel.Controls.Add(w);
+            w.Click += async (s, e) =>
+            {
+                MessageBox.Show("Button Clicked");
+            };
 
             // Labels
             var labelname = new Slidinglabel()
@@ -76,55 +81,54 @@ namespace mag_app.Winform.Windows.ProductForms
                 Width= 150,
                 Location = new Point(15, 15),
                 AutoSize= true,
-            };
+            }; labelname.Click += (sender, args) => InvokeOnClick(w, args);
+          
             var labelPp = new Label()
             {
                 Parent = w,
                 Text = "себестоимсть:",
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 60)
-            };
+            }; labelPp.Click += (sender, args) => InvokeOnClick(w, args);
+        
                 var labelPprice = new Label()
                 {
                     Parent = w,
                     Text = product.PurchasedPrice.ToString(),
                     Font = new Font("Times New Roman", 12),
                     Location = new Point(115, 60)
-                };
+                }; labelPprice.Click += (sender, args) => InvokeOnClick(w, args);
+
             var labelP = new Label()
             {
                 Parent = w,
                 Text = "цена:",
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 80)
-            };
+            }; labelP.Click += (sender, args) => InvokeOnClick(w, args);
                 var labelPrice = new Label()
                 {
                     Parent = w,
                     Text = product.Price.ToString(),
                     Font = new Font("Times New Roman", 12),
                     Location = new Point(115, 80)
-                };
+                }; labelPrice.Click += (sender, args) => InvokeOnClick(w, args);
             var labelQ = new Label()
             {
                 Parent = w,
                 Text = "количество:",
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 100)
-            };
+            }; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
                 var labelQuantity = new Label()
                 {
                     Parent = w,
                     Text = product.Quantity.ToString(),
                     Font = new Font("Times New Roman", 12),
                     Location = new Point(115, 100)
-                };
-           
-            create_ProductFlowPanel.Controls.Add(w);
-            w.Click += async (s, e) =>
-            {
-                MessageBox.Show("Button Clicked");
-            };
+                };  labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
+
+            
 
             // Delete && Update Buttons
             var update = new Button()

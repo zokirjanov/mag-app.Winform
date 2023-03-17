@@ -63,12 +63,6 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
-        public async Task<int> GetTotal()
-        {
-            var count =  _appDbContext.Products.Count();
-            return count;
-        }
-
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
             var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
