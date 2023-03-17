@@ -78,7 +78,7 @@
             this.productBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.productBtn.Size = new System.Drawing.Size(194, 60);
             this.productBtn.TabIndex = 0;
-            this.productBtn.Text = "категория";
+            this.productBtn.Text = "Добавитъ товар";
             this.productBtn.UseVisualStyleBackColor = false;
             this.productBtn.Click += new System.EventHandler(this.productBtn_Click);
             // 
@@ -130,6 +130,7 @@
             this.Controls.Add(this.subtitleFlowPanel);
             this.Controls.Add(this.productChildPanel);
             this.Controls.Add(this.MenuPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1096, 677);
             this.MinimumSize = new System.Drawing.Size(1096, 677);
             this.Name = "StoreProductsForm";

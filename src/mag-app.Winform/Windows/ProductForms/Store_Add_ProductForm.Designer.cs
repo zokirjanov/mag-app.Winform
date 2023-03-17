@@ -45,6 +45,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.categorylabel = new System.Windows.Forms.Label();
+            this.subCategoryLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(35, 328);
+            this.label1.Location = new System.Drawing.Point(34, 360);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 22);
             this.label1.TabIndex = 18;
@@ -61,7 +63,7 @@
             // productQuantity
             // 
             this.productQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productQuantity.Location = new System.Drawing.Point(229, 326);
+            this.productQuantity.Location = new System.Drawing.Point(228, 358);
             this.productQuantity.Maximum = new decimal(new int[] {
             0,
             0,
@@ -76,7 +78,7 @@
             this.productPriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.productPriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productPriceTb.Location = new System.Drawing.Point(35, 213);
+            this.productPriceTb.Location = new System.Drawing.Point(34, 301);
             this.productPriceTb.MaxLength = 50;
             this.productPriceTb.Name = "productPriceTb";
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
@@ -88,7 +90,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(35, 383);
+            this.button1.Location = new System.Drawing.Point(34, 422);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
             this.button1.TabIndex = 15;
@@ -101,7 +103,7 @@
             this.productNameTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.productNameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.productNameTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productNameTb.Location = new System.Drawing.Point(35, 88);
+            this.productNameTb.Location = new System.Drawing.Point(34, 176);
             this.productNameTb.MaxLength = 30;
             this.productNameTb.Name = "productNameTb";
             this.productNameTb.Size = new System.Drawing.Size(314, 30);
@@ -113,7 +115,7 @@
             this.purchasePriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.purchasePriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.purchasePriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.purchasePriceTb.Location = new System.Drawing.Point(35, 150);
+            this.purchasePriceTb.Location = new System.Drawing.Point(34, 238);
             this.purchasePriceTb.MaxLength = 50;
             this.purchasePriceTb.Name = "purchasePriceTb";
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
@@ -127,7 +129,7 @@
             this.purchasedPriceChecker.BackColor = System.Drawing.Color.Transparent;
             this.purchasedPriceChecker.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.purchasedPriceChecker.ForeColor = System.Drawing.Color.Red;
-            this.purchasedPriceChecker.Location = new System.Drawing.Point(12, 153);
+            this.purchasedPriceChecker.Location = new System.Drawing.Point(11, 241);
             this.purchasedPriceChecker.Name = "purchasedPriceChecker";
             this.purchasedPriceChecker.Size = new System.Drawing.Size(20, 25);
             this.purchasedPriceChecker.TabIndex = 23;
@@ -139,7 +141,7 @@
             this.productNameCheckLabel.BackColor = System.Drawing.Color.Transparent;
             this.productNameCheckLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productNameCheckLabel.ForeColor = System.Drawing.Color.Red;
-            this.productNameCheckLabel.Location = new System.Drawing.Point(12, 88);
+            this.productNameCheckLabel.Location = new System.Drawing.Point(11, 176);
             this.productNameCheckLabel.Name = "productNameCheckLabel";
             this.productNameCheckLabel.Size = new System.Drawing.Size(20, 25);
             this.productNameCheckLabel.TabIndex = 22;
@@ -151,7 +153,7 @@
             this.price.BackColor = System.Drawing.Color.Transparent;
             this.price.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.price.ForeColor = System.Drawing.Color.Red;
-            this.price.Location = new System.Drawing.Point(12, 217);
+            this.price.Location = new System.Drawing.Point(11, 305);
             this.price.Name = "price";
             this.price.Size = new System.Drawing.Size(20, 25);
             this.price.TabIndex = 24;
@@ -161,7 +163,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(33, 66);
+            this.label4.Location = new System.Drawing.Point(32, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 19);
             this.label4.TabIndex = 25;
@@ -171,7 +173,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(33, 129);
+            this.label5.Location = new System.Drawing.Point(32, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 19);
             this.label5.TabIndex = 26;
@@ -181,7 +183,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(33, 191);
+            this.label6.Location = new System.Drawing.Point(32, 279);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 19);
             this.label6.TabIndex = 27;
@@ -190,7 +192,7 @@
             // categoryComboBox
             // 
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(35, 275);
+            this.categoryComboBox.Location = new System.Drawing.Point(167, 60);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(146, 23);
             this.categoryComboBox.TabIndex = 28;
@@ -199,7 +201,7 @@
             // subCategoryComboBox
             // 
             this.subCategoryComboBox.FormattingEnabled = true;
-            this.subCategoryComboBox.Location = new System.Drawing.Point(203, 275);
+            this.subCategoryComboBox.Location = new System.Drawing.Point(167, 105);
             this.subCategoryComboBox.Name = "subCategoryComboBox";
             this.subCategoryComboBox.Size = new System.Drawing.Size(146, 23);
             this.subCategoryComboBox.TabIndex = 29;
@@ -209,21 +211,21 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(35, 253);
+            this.label7.Location = new System.Drawing.Point(32, 64);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 19);
+            this.label7.Size = new System.Drawing.Size(91, 19);
             this.label7.TabIndex = 30;
-            this.label7.Text = "Категория";
+            this.label7.Text = "Категория:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(210, 253);
+            this.label8.Location = new System.Drawing.Point(32, 109);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 19);
+            this.label8.Size = new System.Drawing.Size(116, 19);
             this.label8.TabIndex = 31;
-            this.label8.Text = "Подкатегория";
+            this.label8.Text = "Подкатегория:";
             // 
             // label3
             // 
@@ -235,11 +237,33 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "добавить продукт";
             // 
+            // categorylabel
+            // 
+            this.categorylabel.AutoSize = true;
+            this.categorylabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.categorylabel.Location = new System.Drawing.Point(257, 38);
+            this.categorylabel.Name = "categorylabel";
+            this.categorylabel.Size = new System.Drawing.Size(91, 19);
+            this.categorylabel.TabIndex = 33;
+            this.categorylabel.Text = "Категория:";
+            // 
+            // subCategoryLabel
+            // 
+            this.subCategoryLabel.AutoSize = true;
+            this.subCategoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.subCategoryLabel.Location = new System.Drawing.Point(257, 86);
+            this.subCategoryLabel.Name = "subCategoryLabel";
+            this.subCategoryLabel.Size = new System.Drawing.Size(91, 19);
+            this.subCategoryLabel.TabIndex = 34;
+            this.subCategoryLabel.Text = "Категория:";
+            // 
             // Store_Add_ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 458);
+            this.ClientSize = new System.Drawing.Size(385, 494);
+            this.Controls.Add(this.subCategoryLabel);
+            this.Controls.Add(this.categorylabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -285,5 +309,7 @@
         private Label label7;
         private Label label8;
         private Label label3;
+        private Label categorylabel;
+        private Label subCategoryLabel;
     }
 }

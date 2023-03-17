@@ -57,6 +57,10 @@ namespace mag_app.Winform.Windows.ProductForms
 
         public void AddItem(string categoryName)
         {
+
+            //
+            // Categories Button
+            //
             var w = new Button()
             {
                 Text = categoryName,
@@ -74,7 +78,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 StoreProductsForm.storeProductParent.AddTitle(categoryName, "›категория");
                 StoreProductsForm.storeProductParent.backBtn.Hide();
             };
-
+            //
+            // Update Category Button
+            //
             var update = new Button()
             {
                 Parent = w,
@@ -91,6 +97,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 category.ShowDialog();
             };
 
+            //
+            // Delete Category Button
+            //
             var delete = new Button()
             {
                 Parent = w,

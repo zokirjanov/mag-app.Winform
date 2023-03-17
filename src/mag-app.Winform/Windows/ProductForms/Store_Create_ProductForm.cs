@@ -65,7 +65,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.LightSteelBlue,
             };
             create_ProductFlowPanel.Controls.Add(w);
-            w.Click += async (s, e) =>
+            w.Click +=  (s, e) =>
             {
                 MessageBox.Show("Button Clicked");
             };

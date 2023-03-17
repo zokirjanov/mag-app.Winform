@@ -51,10 +51,10 @@ namespace mag_app.Winform.Windows.Product_Forms
         public void productBtn_Click(object sender, EventArgs e)
         {
             storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+            storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();    
             subtitleFlowPanel.Controls.Clear();
             AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
-
         }
 
         private Form activeForm = null;

@@ -72,6 +72,8 @@ namespace mag_app.Winform.Windows.ProductForms
             ComboBoxFillcategory();
             categoryComboBox.Text = CategoriesForm.categoryParent.CategoryTitle;
             subCategoryComboBox.Text = SubCategoriesForm.subCategoryParent.Title;
+            categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
+            subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
         }
 
         // Combo box filling
