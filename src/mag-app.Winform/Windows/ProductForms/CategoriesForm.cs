@@ -44,7 +44,7 @@ namespace mag_app.Winform.Windows.ProductForms
             var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
             if (items is null)
             {
-                MessageBox.Show("Categories not found");
+                MessageBox.Show("Категории не найдены");
             }
             else
             {
@@ -101,17 +101,17 @@ namespace mag_app.Winform.Windows.ProductForms
             };
                 delete.Click += async (s, e) =>
                 {
-                    DialogResult dlg = MessageBox.Show("Are you sure to delete Category?\n" +
-                                                       "All Sub-categories and products will be deleted permanently", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить категорию?\n" +
+                                                       "\r\nВсе подкатегории и продукты будут удалены безвозвратно", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
                         var res = _service.DeleteAsync(w.Text);
                         if (await res == true)
                         {
-                            AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                            AutoClosingMessageBox.Show("\r\nУспешно удалено\r\n", "Delete", 350);
                             LoadData();
                         }
-                        else MessageBox.Show("Category can not be deleted");
+                        else MessageBox.Show("категория не может быть удалена!");
                     }
                     if (dlg == DialogResult.Cancel)
                     {
