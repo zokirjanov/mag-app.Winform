@@ -12,8 +12,6 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class Store_Add_ProductForm : Form
     {
         private readonly ProductService _service;
-        public long SubCategoryId { get; set; }
-        public long CategoryId { get; set; }
 
         public Store_Add_ProductForm(AppDbContext appDbContext)
         {
@@ -31,8 +29,8 @@ namespace mag_app.Winform.Windows.ProductForms
                     Price = decimal.Parse(productPriceTb.Text),
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Quantity = Convert.ToInt32(productQuantity.Value),
-                    CategoryId = CategoryId,
-                    SubCategoryId = SubCategoryId,
+                    CategoryId = CategoriesForm.categoryParent.Id,
+                    SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
                     EmployeeId = IdentitySingelton.GetInstance().EmployeeId
                 };
 
@@ -66,7 +64,7 @@ namespace mag_app.Winform.Windows.ProductForms
         private void Store_Add_ProductForm_Load(object sender, EventArgs e)
         {
             productQuantity.Minimum = 0;
-            productQuantity.Maximum = 1000000;
+            productQuantity.Maximum = 9999999999;
             categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
             subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
         }

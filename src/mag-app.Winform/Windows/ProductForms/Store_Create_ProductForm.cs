@@ -56,6 +56,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
             }
         }
+
+        public string PriceConverter(decimal price)
+        {
+
+            return null;
+        }
         public void AddItem(Product product)
         {
             var w = new Button
@@ -94,7 +100,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 var labelPprice = new Label()
                 {
                     Parent = w,
-                    Text = product.PurchasedPrice.ToString(),
+                    AutoSize = true,
+                    Text = product.PurchasedPrice.ToString(@"#\ ###\ ###\ ###\"),
                     Font = new Font("Times New Roman", 12),
                     Location = new Point(115, 60)
                 }; labelPprice.Click += (sender, args) => InvokeOnClick(w, args);
@@ -109,7 +116,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 var labelPrice = new Label()
                 {
                     Parent = w,
-                    Text = product.Price.ToString(),
+                    AutoSize = true,
+                    Text = product.Price.ToString(@"#\ ###\ ###\ ###\"),
                     Font = new Font("Times New Roman", 12),
                     Location = new Point(115, 80)
                 }; labelPrice.Click += (sender, args) => InvokeOnClick(w, args);
@@ -123,7 +131,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 var labelQuantity = new Label()
                 {
                     Parent = w,
-                    Text = product.Quantity.ToString(),
+                    Text = product.Quantity.ToString(@" #\ ###\"),
                     Font = new Font("Times New Roman", 12),
                     Location = new Point(115, 100)
                 };  labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
@@ -185,6 +193,15 @@ namespace mag_app.Winform.Windows.ProductForms
             StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(2);
             StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(2);
             StoreProductsForm.storeProductParent.backBtn.Show();
+        }
+
+        private void create_ProductFlowPanel_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, create_ProductFlowPanel.ClientRectangle,
+            Color.DimGray, 1, ButtonBorderStyle.Solid, // left
+            Color.DimGray, 1, ButtonBorderStyle.Solid, // top
+            Color.White, 1, ButtonBorderStyle.Solid, // right
+            Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
         }
     }
 }

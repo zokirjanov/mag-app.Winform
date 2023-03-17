@@ -80,7 +80,7 @@
             this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.productPriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productPriceTb.Location = new System.Drawing.Point(34, 301);
-            this.productPriceTb.MaxLength = 50;
+            this.productPriceTb.MaxLength = 10;
             this.productPriceTb.Name = "productPriceTb";
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 16;
@@ -117,7 +117,7 @@
             this.purchasePriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.purchasePriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.purchasePriceTb.Location = new System.Drawing.Point(34, 238);
-            this.purchasePriceTb.MaxLength = 50;
+            this.purchasePriceTb.MaxLength = 10;
             this.purchasePriceTb.Name = "purchasePriceTb";
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 21;

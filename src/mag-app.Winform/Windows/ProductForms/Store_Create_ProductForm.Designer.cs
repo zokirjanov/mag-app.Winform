@@ -78,6 +78,7 @@
             this.create_ProductFlowPanel.Name = "create_ProductFlowPanel";
             this.create_ProductFlowPanel.Size = new System.Drawing.Size(845, 567);
             this.create_ProductFlowPanel.TabIndex = 1;
+            this.create_ProductFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.create_ProductFlowPanel_Paint);
             // 
             // Store_Create_ProductForm
             // 
