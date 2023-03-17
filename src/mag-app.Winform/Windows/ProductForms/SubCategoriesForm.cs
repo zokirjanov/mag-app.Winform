@@ -53,7 +53,7 @@ namespace mag_app.Winform.Windows.ProductForms
             var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id);
             if (items is null)
             {
-                MessageBox.Show("Sub-Categories not found");
+                MessageBox.Show("Подкатегории не найдены");
             }
             else
             {
@@ -109,18 +109,18 @@ namespace mag_app.Winform.Windows.ProductForms
             };
                 delete.Click += async (s, e) =>
                 {
-                    DialogResult dlg = MessageBox.Show("Are you sure to delete Sub-Category?\n" +
-                                                       "All Sub-categories and products will be deleted permanently",
+                    DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить подкатегорию?\n" +
+                                                       "Все подкатегории и продукты будут удалены безвозвратно.",
                                                        "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {
                         var res = _service.DeleteAsync(subcategoryName);
                         if (await res == true)
                         {
-                            AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 350);
+                            AutoClosingMessageBox.Show("Успешно удалено", "Delete", 350);
                             LoadData();
                         }
-                        else MessageBox.Show("Subcategory can not be deleted!");
+                        else MessageBox.Show("Подкатегория не может быть удалена!");
                     }
                     if (dlg == DialogResult.Cancel)
                     {

@@ -25,12 +25,12 @@ namespace mag_app.Service.Services.ProductService
         public async Task<string> CreateProductAsync(ProductDto product)
         {
             var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
-            if (check is not null) return "Such a Product name exists, try another category name";
+            if (check is not null) return "Такое название продукта существует, попробуйте другое название категории";
             var pro = (Product)product;
             _appDbContext.Products.Add(pro);
             var res = await _appDbContext.SaveChangesAsync();
             if (res > 0) return "true";
-            return "Something went wrong";
+            return "Что-то пошло не так";
         }
 
         public async Task<string> DeleteAsync(string name)
@@ -42,11 +42,11 @@ namespace mag_app.Service.Services.ProductService
                 if (res != null)
                 {
                     var ss = await _appDbContext.SaveChangesAsync();
-                    if (ss > 0) return "Successfully deleted";
+                    if (ss > 0) return "Успешно удалено";
                 }
-                else return "Something went wrong";
+                else return "Что-то пошло не так";
             }
-            return "Product not found";
+            return "Товар не найден";
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync(long cid, long eid)
@@ -63,28 +63,27 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
-        public async Task<int> GetTotal()
-        {
-            var count =  _appDbContext.Products.Count();
-            return count;
-        }
-
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
             var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
-            if (checkname is null)
-            {
+            //if (checkname is null)
+            //{
                 var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
                 if (entity != null)
                 {
                     entity.ProdutName = product.ProdutName;
+                    entity.PurchasedPrice = product.PurchasedPrice;
+                    entity.Price = product.Price;
+                    entity.Quantity= product.Quantity;
+                    entity.UpdatedAt = product.UpdatedAt;
+
                     var res = await _appDbContext.SaveChangesAsync();
                     if (res > 0) { return "true"; }
                     else { return "false"; }
                 }
                 return "false";
-            }
-            else return "Producty already exists, please try another name";
+            //}
+            //else return "Продукт уже существует, попробуйте другое имя";
         }
     }
 }

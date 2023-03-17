@@ -97,10 +97,11 @@
             this.purchasePriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.purchasePriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.purchasePriceTb.Location = new System.Drawing.Point(41, 166);
-            this.purchasePriceTb.MaxLength = 50;
+            this.purchasePriceTb.MaxLength = 10;
             this.purchasePriceTb.Name = "purchasePriceTb";
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 33;
+            this.purchasePriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.purchasePriceTb_KeyPress);
             // 
             // label1
             // 
@@ -130,10 +131,11 @@
             this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.productPriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productPriceTb.Location = new System.Drawing.Point(41, 226);
-            this.productPriceTb.MaxLength = 50;
+            this.productPriceTb.MaxLength = 10;
             this.productPriceTb.Name = "productPriceTb";
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 28;
+            this.productPriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productPriceTb_KeyPress);
             // 
             // label3
             // 
