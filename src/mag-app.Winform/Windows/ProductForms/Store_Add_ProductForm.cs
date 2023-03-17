@@ -67,7 +67,8 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void Store_Add_ProductForm_Load(object sender, EventArgs e)
         {
-            productQuantity.Maximum = 100000000;
+            productQuantity.Minimum = 0;
+            productQuantity.Maximum = 1000000;
             ComboBoxFillcategory();
             categoryComboBox.Text = CategoriesForm.categoryParent.CategoryTitle;
             subCategoryComboBox.Text = SubCategoriesForm.subCategoryParent.Title;

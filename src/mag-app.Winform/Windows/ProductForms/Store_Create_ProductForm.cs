@@ -70,6 +70,7 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 Parent = w,
                 Text = product.ProdutName,
+                SliteTime = 25,
                 Font = new Font("Times New Roman", 14),
                 Height = 30,
                 Width= 150,
@@ -138,7 +139,7 @@ namespace mag_app.Winform.Windows.ProductForms
             update.Click += async (s, e) =>
             {
                 ProductUpdateForm productUpdateForm = new ProductUpdateForm(new AppDbContext());
-                productUpdateForm.productName = product.ProdutName;
+                productUpdateForm.ProductName = product.ProdutName;
                 productUpdateForm.ShowDialog();
             };
 
@@ -153,11 +154,13 @@ namespace mag_app.Winform.Windows.ProductForms
             };
             delete.Click += async (s, e) =>
             {
-                DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult dlg = MessageBox.Show("Вы хотите удалить товар?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
                     var res = _service.DeleteAsync(product.ProdutName);
-                    AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
+                    if (await res == "Успешно удалено") AutoClosingMessageBox.Show(await res, "Удалить", 300);
+                    else if (await res == "Товар не найден") MessageBox.Show(await res);
+                    else MessageBox.Show(await res);
                     StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
                 }
                 if (dlg == DialogResult.Cancel)

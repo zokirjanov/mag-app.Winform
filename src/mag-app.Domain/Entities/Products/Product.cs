@@ -13,6 +13,7 @@ namespace mag_app.Domain.Entities.Products
         public decimal Price { get; set; }
         public decimal PurchasedPrice { get; set; }
         public int  Quantity { get; set; }
+        public string Barcode { get; set; } = string.Empty;
         public long SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; } = default!;
         public long  EmployeeId { get; set; }

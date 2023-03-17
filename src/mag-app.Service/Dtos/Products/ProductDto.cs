@@ -18,6 +18,8 @@ namespace mag_app.Service.Dtos.Products
         public long SubCategoryId { get; set; }
         public long CategoryId { get; set; }
         public long EmployeeId { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
         public static implicit operator Product(ProductDto productDto)
         {
             return new Product()
@@ -30,7 +32,7 @@ namespace mag_app.Service.Dtos.Products
                 SubCategoryId = productDto.SubCategoryId,
                 EmployeeId = productDto.EmployeeId,
                 CreatedAt = TimeHelper.CurrentTime(),
-                UpdatedAt = TimeHelper.CurrentTime()
+                UpdatedAt = productDto.UpdatedAt,
             };
         }
     }

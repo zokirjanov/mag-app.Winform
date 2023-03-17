@@ -101,6 +101,7 @@
             this.purchasePriceTb.Name = "purchasePriceTb";
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 33;
+            this.purchasePriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.purchasePriceTb_KeyPress);
             // 
             // label1
             // 
@@ -134,6 +135,7 @@
             this.productPriceTb.Name = "productPriceTb";
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 28;
+            this.productPriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productPriceTb_KeyPress);
             // 
             // label3
             // 
