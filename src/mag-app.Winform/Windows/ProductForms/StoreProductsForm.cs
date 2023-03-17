@@ -26,7 +26,7 @@ namespace mag_app.Winform.Windows.Product_Forms
             title2 = subtitleFlowPanel;
 
         }
-        public string  Title { get; set; }
+  //      public string  Title { get; set; }
         private void StoreProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

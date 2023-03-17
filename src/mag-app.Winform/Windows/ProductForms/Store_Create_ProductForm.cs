@@ -57,11 +57,6 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
-        public string PriceConverter(decimal price)
-        {
-
-            return null;
-        }
         public void AddItem(Product product)
         {
             var w = new Button

@@ -1,16 +1,8 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Products;
-using mag_app.Domain.Entities.Stores;
-using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.Products;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mag_app.Service.Services.ProductService
 {
@@ -20,7 +12,7 @@ namespace mag_app.Service.Services.ProductService
 
         public ProductService(AppDbContext appDbContext)
         {
-              this._appDbContext = appDbContext;
+            this._appDbContext = appDbContext;
         }
         public async Task<string> CreateProductAsync(ProductDto product)
         {
@@ -51,37 +43,29 @@ namespace mag_app.Service.Services.ProductService
 
         public async Task<IEnumerable<Product>> GetAllAsync(long cid, long eid)
         {
-            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cid && x.EmployeeId == eid).OrderByDescending(x=>x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cid && x.EmployeeId == eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
-
-        public async Task<IEnumerable<Product>> GetByNameAsync(string name, long eid)
-        {
-            var result = await _appDbContext.Products.Where(x => x.ProdutName == name && x.EmployeeId == eid).ToListAsync();
-            if (result is not null) return result.ToList();
-            else return null;
-        }
-
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
             var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
             //if (checkname is null)
             //{
-                var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
-                if (entity != null)
-                {
-                    entity.ProdutName = product.ProdutName;
-                    entity.PurchasedPrice = product.PurchasedPrice;
-                    entity.Price = product.Price;
-                    entity.Quantity= product.Quantity;
-                    entity.UpdatedAt = product.UpdatedAt;
+            var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
+            if (entity != null)
+            {
+                entity.ProdutName = product.ProdutName;
+                entity.PurchasedPrice = product.PurchasedPrice;
+                entity.Price = product.Price;
+                entity.Quantity = product.Quantity;
+                entity.UpdatedAt = product.UpdatedAt;
 
-                    var res = await _appDbContext.SaveChangesAsync();
-                    if (res > 0) { return "true"; }
-                    else { return "false"; }
-                }
-                return "false";
+                var res = await _appDbContext.SaveChangesAsync();
+                if (res > 0) { return "true"; }
+                else { return "false"; }
+            }
+            return "false";
             //}
             //else return "Продукт уже существует, попробуйте другое имя";
         }
