@@ -23,10 +23,8 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text)
-                && !string.IsNullOrEmpty(categoryComboBox.Text) && !string.IsNullOrEmpty(subCategoryComboBox.Text))
+            if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
             {
-
                 ProductDto product = new ProductDto()
                 {
                     ProdutName = productNameTb.Text,
@@ -69,49 +67,9 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             productQuantity.Minimum = 0;
             productQuantity.Maximum = 1000000;
-            ComboBoxFillcategory();
-            categoryComboBox.Text = CategoriesForm.categoryParent.CategoryTitle;
-            subCategoryComboBox.Text = SubCategoriesForm.subCategoryParent.Title;
             categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
             subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
         }
-
-        // Combo box filling
-        private async void ComboBoxFillSubCategory(long categoryId)
-        {
-            SubCategoryService subCategoryService = new SubCategoryService(new AppDbContext());
-            var entity = await subCategoryService.GetAllAsync(categoryId);
-            subCategoryComboBox.DataSource = entity;
-            subCategoryComboBox.ValueMember = "SubCategoryName";
-        }
-        private async void ComboBoxFillcategory()
-        {
-            CategoryService categoryService = new CategoryService(new AppDbContext());
-            var entity = await categoryService.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
-            categoryComboBox.DataSource = entity;
-            categoryComboBox.ValueMember = "CategoryName";
-
-            var select = categoryComboBox.SelectedValue;
-            long id = await categoryService.GetByNameAsync(select.ToString());
-            if (id > 0) ComboBoxFillSubCategory(id);
-        }
-        private async void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CategoryService categoryService = new CategoryService(new AppDbContext());
-            var select = categoryComboBox.SelectedValue;
-            long id = await categoryService.GetByNameAsync(select.ToString());
-            if (id > 0) CategoryId = id;
-            ComboBoxFillSubCategory(id);
-        }
-        private async void subCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SubCategoryService subCategoryService = new SubCategoryService(new AppDbContext());
-            var select = subCategoryComboBox.SelectedValue;
-            long id = await subCategoryService.GetByNameAsync(select.ToString());
-            if (id > 0) SubCategoryId = id;
-        }
-
-
 
         // UX Design Codes
         private void productPriceTb_TextChanged(object sender, EventArgs e)

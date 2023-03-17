@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store_Add_ProductForm));
             this.label1 = new System.Windows.Forms.Label();
             this.productQuantity = new System.Windows.Forms.NumericUpDown();
             this.productPriceTb = new System.Windows.Forms.TextBox();
@@ -40,13 +41,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.subCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.categorylabel = new System.Windows.Forms.Label();
             this.subCategoryLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,24 +190,6 @@
             this.label6.TabIndex = 27;
             this.label6.Text = "Цена";
             // 
-            // categoryComboBox
-            // 
-            this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(167, 60);
-            this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(146, 23);
-            this.categoryComboBox.TabIndex = 28;
-            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
-            // 
-            // subCategoryComboBox
-            // 
-            this.subCategoryComboBox.FormattingEnabled = true;
-            this.subCategoryComboBox.Location = new System.Drawing.Point(167, 105);
-            this.subCategoryComboBox.Name = "subCategoryComboBox";
-            this.subCategoryComboBox.Size = new System.Drawing.Size(146, 23);
-            this.subCategoryComboBox.TabIndex = 29;
-            this.subCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.subCategoryComboBox_SelectedIndexChanged);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -239,36 +222,55 @@
             // 
             // categorylabel
             // 
-            this.categorylabel.AutoSize = true;
+            this.categorylabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.categorylabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.categorylabel.Location = new System.Drawing.Point(257, 38);
+            this.categorylabel.Location = new System.Drawing.Point(279, 64);
             this.categorylabel.Name = "categorylabel";
-            this.categorylabel.Size = new System.Drawing.Size(91, 19);
+            this.categorylabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.categorylabel.Size = new System.Drawing.Size(69, 19);
             this.categorylabel.TabIndex = 33;
-            this.categorylabel.Text = "Категория:";
+            this.categorylabel.Text = "category";
             // 
             // subCategoryLabel
             // 
-            this.subCategoryLabel.AutoSize = true;
+            this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.subCategoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subCategoryLabel.Location = new System.Drawing.Point(257, 86);
+            this.subCategoryLabel.Location = new System.Drawing.Point(257, 109);
             this.subCategoryLabel.Name = "subCategoryLabel";
+            this.subCategoryLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.subCategoryLabel.Size = new System.Drawing.Size(91, 19);
             this.subCategoryLabel.TabIndex = 34;
-            this.subCategoryLabel.Text = "Категория:";
+            this.subCategoryLabel.Text = "subcategory";
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(34, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(314, 2);
+            this.label2.TabIndex = 35;
+            // 
+            // label9
+            // 
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label9.Location = new System.Drawing.Point(34, 128);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(314, 2);
+            this.label9.TabIndex = 36;
             // 
             // Store_Add_ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(385, 494);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.subCategoryLabel);
             this.Controls.Add(this.categorylabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.subCategoryComboBox);
-            this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -281,6 +283,8 @@
             this.Controls.Add(this.productPriceTb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.productNameTb);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Store_Add_ProductForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store_Add_ProductForm";
@@ -304,12 +308,12 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private ComboBox categoryComboBox;
-        private ComboBox subCategoryComboBox;
         private Label label7;
         private Label label8;
         private Label label3;
         private Label categorylabel;
         private Label subCategoryLabel;
+        private Label label2;
+        private Label label9;
     }
 }
