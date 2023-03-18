@@ -10,13 +10,14 @@ namespace mag_app.Domain.Entities.Products
     public class Product : Auditable
     {
         public string ProdutName { get; set; } = string.Empty;
+        public string Barcode { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public decimal PurchasedPrice { get; set; }
         public int  Quantity { get; set; }
-        public string Barcode { get; set; } = string.Empty;
-        public long SubCategoryId { get; set; }
-        public virtual SubCategory SubCategory { get; set; } = default!;
         public long  EmployeeId { get; set; }
         public long CategoryId { get; set; }
+        public long SubCategoryId { get; set; }
+        public virtual SubCategory SubCategory { get; set; } = default!;
     }
 }
+

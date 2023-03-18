@@ -17,7 +17,7 @@ namespace mag_app.Winform
 		//	Application.Run(new LoginForm(new AppDbContext()));
 		//}
         static void Main()
-        {
+       {
             using (Mutex mutex = new Mutex(false, "Global\\" + appGuid))
             {
                 if (!mutex.WaitOne(0, false))
