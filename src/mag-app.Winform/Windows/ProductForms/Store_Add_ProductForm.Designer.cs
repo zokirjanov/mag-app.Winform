@@ -48,6 +48,10 @@
             this.subCategoryLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.barcodeTb = new System.Windows.Forms.TextBox();
+            this.barcodeLabel = new System.Windows.Forms.Label();
+            this.barcodeCheckbox = new System.Windows.Forms.Button();
+            this.barcodeQuestion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +59,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(34, 360);
+            this.label1.Location = new System.Drawing.Point(34, 419);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 22);
             this.label1.TabIndex = 18;
@@ -64,7 +68,7 @@
             // productQuantity
             // 
             this.productQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productQuantity.Location = new System.Drawing.Point(228, 358);
+            this.productQuantity.Location = new System.Drawing.Point(228, 417);
             this.productQuantity.Maximum = new decimal(new int[] {
             0,
             0,
@@ -91,7 +95,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(34, 422);
+            this.button1.Location = new System.Drawing.Point(34, 487);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
             this.button1.TabIndex = 15;
@@ -224,7 +228,7 @@
             // 
             this.categorylabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.categorylabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.categorylabel.Location = new System.Drawing.Point(279, 64);
+            this.categorylabel.Location = new System.Drawing.Point(279, 66);
             this.categorylabel.Name = "categorylabel";
             this.categorylabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.categorylabel.Size = new System.Drawing.Size(69, 19);
@@ -258,12 +262,56 @@
             this.label9.Size = new System.Drawing.Size(314, 2);
             this.label9.TabIndex = 36;
             // 
+            // barcodeTb
+            // 
+            this.barcodeTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.barcodeTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.barcodeTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.barcodeTb.Location = new System.Drawing.Point(32, 361);
+            this.barcodeTb.MaxLength = 30;
+            this.barcodeTb.Name = "barcodeTb";
+            this.barcodeTb.Size = new System.Drawing.Size(284, 30);
+            this.barcodeTb.TabIndex = 37;
+            // 
+            // barcodeLabel
+            // 
+            this.barcodeLabel.AutoSize = true;
+            this.barcodeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.barcodeLabel.Location = new System.Drawing.Point(32, 339);
+            this.barcodeLabel.Name = "barcodeLabel";
+            this.barcodeLabel.Size = new System.Drawing.Size(90, 19);
+            this.barcodeLabel.TabIndex = 38;
+            this.barcodeLabel.Text = "Штрих-код";
+            // 
+            // barcodeCheckbox
+            // 
+            this.barcodeCheckbox.Location = new System.Drawing.Point(318, 361);
+            this.barcodeCheckbox.Name = "barcodeCheckbox";
+            this.barcodeCheckbox.Size = new System.Drawing.Size(30, 30);
+            this.barcodeCheckbox.TabIndex = 39;
+            this.barcodeCheckbox.UseVisualStyleBackColor = true;
+            this.barcodeCheckbox.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // barcodeQuestion
+            // 
+            this.barcodeQuestion.AutoSize = true;
+            this.barcodeQuestion.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.barcodeQuestion.Location = new System.Drawing.Point(84, 365);
+            this.barcodeQuestion.Name = "barcodeQuestion";
+            this.barcodeQuestion.Size = new System.Drawing.Size(214, 22);
+            this.barcodeQuestion.TabIndex = 41;
+            this.barcodeQuestion.Text = "У тебя есть штрих-код?";
+            // 
             // Store_Add_ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(385, 494);
+            this.ClientSize = new System.Drawing.Size(385, 563);
+            this.Controls.Add(this.barcodeQuestion);
+            this.Controls.Add(this.barcodeCheckbox);
+            this.Controls.Add(this.barcodeLabel);
+            this.Controls.Add(this.barcodeTb);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.subCategoryLabel);
@@ -315,5 +363,9 @@
         private Label subCategoryLabel;
         private Label label2;
         private Label label9;
+        private TextBox barcodeTb;
+        private Label barcodeLabel;
+        private Button barcodeCheckbox;
+        private Label barcodeQuestion;
     }
 }

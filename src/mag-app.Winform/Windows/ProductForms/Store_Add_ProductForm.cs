@@ -6,6 +6,10 @@ using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using System.ComponentModel;
+using System.Security.Cryptography;
+using System.Text;
+using System.Xml.Linq;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -19,7 +23,42 @@ namespace mag_app.Winform.Windows.ProductForms
             InitializeComponent();
         }
 
+
+        private void Store_Add_ProductForm_Load(object sender, EventArgs e)
+        {
+            productQuantity.Minimum = 0;
+            productQuantity.Maximum = 9999999999;
+            barcodeLabel.Visible = false;
+            barcodeTb.Visible = false;
+            categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
+            subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
+        }
+
+
+
         private async void button1_Click(object sender, EventArgs e)
+        {
+            string barcodeResult;
+
+            if (barcodeTb.Visible ==  true && !string.IsNullOrEmpty(barcodeTb.Text))
+            {
+                barcodeResult = barcodeTb.Text;
+                ProductPraparing(barcodeResult);
+            }
+            else if(barcodeTb.Visible == false)
+            {
+                byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
+                var value = BitConverter.ToUInt32(generatedBarcode, 0) / 4;
+                barcodeResult = value.ToString();
+                barcodeTb.Text = value.ToString();
+                ProductPraparing(barcodeResult);
+            }
+            else MessageBox.Show("Заполните поле");
+        }
+
+
+
+        private async void ProductPraparing(string barcodeResult)
         {
             if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
             {
@@ -27,6 +66,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 {
                     ProdutName = productNameTb.Text,
                     Price = decimal.Parse(productPriceTb.Text),
+                    Barcode = barcodeResult,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Quantity = Convert.ToInt32(productQuantity.Value),
                     CategoryId = CategoriesForm.categoryParent.Id,
@@ -59,15 +99,13 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
             }
             else MessageBox.Show("Заполните поле");
+
         }
 
-        private void Store_Add_ProductForm_Load(object sender, EventArgs e)
-        {
-            productQuantity.Minimum = 0;
-            productQuantity.Maximum = 9999999999;
-            categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
-            subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
-        }
+
+
+       
+
 
         // UX Design Codes
         private void productPriceTb_TextChanged(object sender, EventArgs e)
@@ -78,6 +116,9 @@ namespace mag_app.Winform.Windows.ProductForms
             }
             else price.Text = "*";
         }
+
+
+
 
         private void productPriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -92,6 +133,9 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
+
+
+
         private void productNameTb_TextChanged(object sender, EventArgs e)
         {
             if (!(productNameTb.Text == ""))
@@ -101,6 +145,9 @@ namespace mag_app.Winform.Windows.ProductForms
             else productNameCheckLabel.Text = "*";
         }
 
+
+
+
         private void purchasePriceTb_TextChanged(object sender, EventArgs e)
         {
             if (!(purchasePriceTb.Text == ""))
@@ -109,6 +156,9 @@ namespace mag_app.Winform.Windows.ProductForms
             }
             else purchasedPriceChecker.Text = "*";
         }
+
+
+
 
         private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -120,6 +170,27 @@ namespace mag_app.Winform.Windows.ProductForms
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
+            }
+        }
+      
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+        
+            if (barcodeQuestion.Visible == true)
+            {
+                barcodeCheckbox.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\Icons\\check-box.png");
+                barcodeQuestion.Visible = false;
+                barcodeLabel.Visible = true;
+                barcodeTb.Visible= true;
+            }
+            else
+            {
+                barcodeCheckbox.Image = null;
+                barcodeQuestion.Visible = true;
+                barcodeLabel.Visible = false;
+                barcodeTb.Visible = false;
             }
         }
     }
