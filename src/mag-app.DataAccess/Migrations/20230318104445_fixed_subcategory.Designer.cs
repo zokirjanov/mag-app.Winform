@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230315055312_ProductFixedMigration")]
-    partial class ProductFixedMigration
+    [Migration("20230318104445_fixed_subcategory")]
+    partial class fixed_subcategory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,24 +54,30 @@ namespace mag_app.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("Barcode")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<long>("EmployeeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProdutName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("PurchasedPrice")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("StoreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<long>("SubCategoryId")
@@ -124,6 +130,12 @@ namespace mag_app.DataAccess.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
+
+                    b.Property<long>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("StoreId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SubCategoryName")
                         .IsRequired()

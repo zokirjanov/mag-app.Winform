@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230314093543_FixedMigrations")]
-    partial class FixedMigrations
+    [Migration("20230318102049_storefixed")]
+    partial class storefixed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,14 +41,9 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long?>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("StoreId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Categories");
                 });
@@ -59,8 +54,9 @@ namespace mag_app.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<long?>("CategoryId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Barcode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
@@ -68,9 +64,21 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<long>("EmployeeId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ProdutName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<decimal>("PurchasedPrice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("StoreId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<long>("SubCategoryId")
                         .HasColumnType("INTEGER");
@@ -78,16 +86,9 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long?>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("SubCategoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -130,7 +131,7 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("EmployeeId")
+                    b.Property<long>("StoreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SubCategoryName")
@@ -140,14 +141,9 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long?>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("SubCategories");
                 });
@@ -193,28 +189,16 @@ namespace mag_app.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("mag_app.Domain.Entities.Users.User", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Store");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Products.Product", b =>
                 {
-                    b.HasOne("mag_app.Domain.Entities.Categories.Category", null)
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("mag_app.Domain.Entities.SubCategories.SubCategory", "SubCategory")
                         .WithMany("Products")
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("mag_app.Domain.Entities.Users.User", null)
-                        .WithMany("Products")
-                        .HasForeignKey("UserId");
 
                     b.Navigation("SubCategory");
                 });
@@ -238,17 +222,11 @@ namespace mag_app.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("mag_app.Domain.Entities.Users.User", null)
-                        .WithMany("SubCategories")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Category");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Categories.Category", b =>
                 {
-                    b.Navigation("Products");
-
                     b.Navigation("SubCategories");
                 });
 
@@ -264,13 +242,7 @@ namespace mag_app.DataAccess.Migrations
 
             modelBuilder.Entity("mag_app.Domain.Entities.Users.User", b =>
                 {
-                    b.Navigation("Categories");
-
-                    b.Navigation("Products");
-
                     b.Navigation("Stores");
-
-                    b.Navigation("SubCategories");
                 });
 #pragma warning restore 612, 618
         }

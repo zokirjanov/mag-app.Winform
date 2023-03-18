@@ -41,7 +41,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 AddCategoryForm addCategoryForm = new AddCategoryForm(new AppDbContext());
                 addCategoryForm.ShowDialog();
             };
-            var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Категории не найдены");

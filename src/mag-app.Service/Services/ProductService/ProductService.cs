@@ -41,15 +41,15 @@ namespace mag_app.Service.Services.ProductService
             return "Товар не найден";
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync(long cid, long eid)
+        public async Task<IEnumerable<Product>> GetAllAsync(long cId, long eId, long sId)
         {
-            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cid && x.EmployeeId == eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cId && x.EmployeeId == eId && x.StoreId == sId).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
-            var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
+            var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower() && x.StoreId == product.StoreId);
             //if (checkname is null)
             //{
             var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);

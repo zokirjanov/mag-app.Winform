@@ -2,6 +2,7 @@
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Components;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
@@ -38,7 +39,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm(new AppDbContext());
                 addSbCategoryForm.ShowDialog();
             };
-            var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id);
+            var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId, MyStoreForm.myStoreFormParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Подкатегории не найдены");

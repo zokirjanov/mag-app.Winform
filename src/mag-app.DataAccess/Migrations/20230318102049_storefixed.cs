@@ -4,23 +4,23 @@
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class productMigrationFixed : Migration
+    public partial class storefixed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Barcode",
-                table: "Products",
-                type: "TEXT",
+            migrationBuilder.AddColumn<long>(
+                name: "StoreId",
+                table: "SubCategories",
+                type: "INTEGER",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: 0L);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Barcode",
-                table: "Products");
+                name: "StoreId",
+                table: "SubCategories");
         }
     }
 }

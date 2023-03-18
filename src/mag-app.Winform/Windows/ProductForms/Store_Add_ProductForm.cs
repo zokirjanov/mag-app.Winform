@@ -51,7 +51,7 @@ namespace mag_app.Winform.Windows.ProductForms
             else if(barcodeTb.Visible == false)
             {
                 byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
-                var value = BitConverter.ToInt32(generatedBarcode, 0) / 4;
+                var value = BitConverter.ToInt32(generatedBarcode, 0) / 100000;
                 barcodeResult = value.ToString();
                 barcodeTb.Text = value.ToString();
                 ProductPraparing(barcodeResult);
@@ -74,9 +74,10 @@ namespace mag_app.Winform.Windows.ProductForms
                     Barcode = barcodeResult,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Quantity = Convert.ToInt32(productQuantity.Value),
-                    CategoryId = CategoriesForm.categoryParent.Id,
+                    StoreId = MyStoreForm.myStoreFormParent.Id,
                     SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
-                    EmployeeId = IdentitySingelton.GetInstance().EmployeeId
+                    EmployeeId = IdentitySingelton.GetInstance().EmployeeId,
+                    UpdatedAt = TimeHelper.CurrentTime()
                 };
 
                 var res = await _service.CreateProductAsync(product);
