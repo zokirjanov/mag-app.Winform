@@ -15,7 +15,7 @@ namespace mag_app.Domain.Entities.Products
         public decimal PurchasedPrice { get; set; }
         public int  Quantity { get; set; }
         public long  EmployeeId { get; set; }
-        public long CategoryId { get; set; }
+        public long StoreId { get; set; }
         public long SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; } = default!;
     }
