@@ -4,17 +4,6 @@ using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -50,7 +39,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm(new AppDbContext());
                 addSbCategoryForm.ShowDialog();
             };
-            var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id);
+            var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId, MyStoreForm.myStoreFormParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Подкатегории не найдены");
@@ -92,12 +81,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             };
-                update.Click += async (s, e) =>
-                {
-                    SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
-                    category.categoryName = button.Text;
-                    category.ShowDialog();
-                };
+            update.Click += async (s, e) =>
+            {
+                SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
+                category.categoryName = button.Text;
+                category.ShowDialog();
+            };
             var delete = new Button()
             {
                 Parent = button,
@@ -107,26 +96,26 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.Transparent,
                 Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
             };
-                delete.Click += async (s, e) =>
+            delete.Click += async (s, e) =>
+            {
+                DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить подкатегорию?\n" +
+                                                   "Все подкатегории и продукты будут удалены безвозвратно.",
+                                                   "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dlg == DialogResult.OK)
                 {
-                    DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить подкатегорию?\n" +
-                                                       "Все подкатегории и продукты будут удалены безвозвратно.",
-                                                       "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    if (dlg == DialogResult.OK)
+                    var res = _service.DeleteAsync(subcategoryName);
+                    if (await res == true)
                     {
-                        var res = _service.DeleteAsync(subcategoryName);
-                        if (await res == true)
-                        {
-                            AutoClosingMessageBox.Show("Успешно удалено", "Delete", 350);
-                            LoadData();
-                        }
-                        else MessageBox.Show("Подкатегория не может быть удалена!");
+                        AutoClosingMessageBox.Show("Успешно удалено", "Delete", 350);
+                        LoadData();
                     }
-                    if (dlg == DialogResult.Cancel)
-                    {
-                        // do nothing
-                    }
-                };
+                    else MessageBox.Show("Подкатегория не может быть удалена!");
+                }
+                if (dlg == DialogResult.Cancel)
+                {
+                    // do nothing
+                }
+            };
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -139,11 +128,11 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void subCategoryFlowPanel_Paint(object sender, PaintEventArgs e)
         {
-              ControlPaint.DrawBorder(e.Graphics, subCategoryFlowPanel.ClientRectangle,
-              Color.DimGray, 1, ButtonBorderStyle.Solid, // left
-              Color.DimGray, 1, ButtonBorderStyle.Solid, // top
-              Color.White, 1, ButtonBorderStyle.Solid, // right
-              Color.White, 1, ButtonBorderStyle.Solid);// bottom
+            ControlPaint.DrawBorder(e.Graphics, subCategoryFlowPanel.ClientRectangle,
+            Color.DimGray, 1, ButtonBorderStyle.Solid, // left
+            Color.DimGray, 1, ButtonBorderStyle.Solid, // top
+            Color.White, 1, ButtonBorderStyle.Solid, // right
+            Color.White, 1, ButtonBorderStyle.Solid);// bottom
         }
     }
 }

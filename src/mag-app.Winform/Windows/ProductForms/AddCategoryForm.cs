@@ -31,7 +31,6 @@ namespace mag_app.Winform.Windows.ProductForms
                 var res = await _service.CreateCategoryAsync(category);
                 if (res == "true")
                 {
-                 // MainForm.mainParent.marketbtn_Click(sender, e);
                     categoryNameTb.Text = "";
                     StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
                     DialogResult dlg = MessageBox.Show("Категория успешно добавлена \n\nВы хотите добавить еще один", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

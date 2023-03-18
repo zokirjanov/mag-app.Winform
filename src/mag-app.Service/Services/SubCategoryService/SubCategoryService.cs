@@ -28,7 +28,7 @@ namespace mag_app.Service.Services.SubCategoryService
 
         public async Task<string> CreateCategoryAsync(SubCategoryDto subCategory)
         {
-            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId);
+            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId && x.StoreId == subCategory.StoreId && x.EmployeeId == subCategory.EmployeeId);
             if (check is not null) return "Such a sub-category exists, try another sub-category name";
             var cat = (SubCategory)subCategory;
             _appDbContext.SubCategories.Add(cat);
@@ -53,9 +53,9 @@ namespace mag_app.Service.Services.SubCategoryService
             return false;
         }
 
-        public async Task<List<SubCategory>> GetAllAsync(long id)
+        public async Task<List<SubCategory>> GetAllAsync(long cid, long eid, long sid)
         {
-            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == cid && x.EmployeeId == eid && x.StoreId == sid).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }

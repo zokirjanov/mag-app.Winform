@@ -1,6 +1,8 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.SubCategories;
 using mag_app.Service.Services.SubCategoryService;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
@@ -21,7 +23,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 SubCategoryDto category = new SubCategoryDto()
                 {
                     SubCategoryName = subCategoryNameTb.Text,
-                    CategoryId = CategoriesForm.categoryParent.Id
+                    EmployeeId = IdentitySingelton.GetInstance().EmployeeId,
+                    CategoryId = CategoriesForm.categoryParent.Id,
+                    StoreId = MyStoreForm.myStoreFormParent.Id
                 };
 
                 var res = await _service.CreateCategoryAsync(category);

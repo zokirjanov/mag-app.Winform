@@ -56,9 +56,6 @@ namespace mag_app.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("CategoryId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
@@ -76,6 +73,9 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("StoreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<long>("SubCategoryId")
@@ -128,6 +128,12 @@ namespace mag_app.DataAccess.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
+
+                    b.Property<long>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("StoreId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SubCategoryName")
                         .IsRequired()

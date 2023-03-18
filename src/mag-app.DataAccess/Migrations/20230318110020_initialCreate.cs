@@ -57,7 +57,6 @@ namespace mag_app.DataAccess.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CategoryName = table.Column<string>(type: "TEXT", nullable: false),
                     EmployeeId = table.Column<long>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<long>(type: "INTEGER", nullable: false),
                     StoreId = table.Column<long>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
@@ -71,12 +70,6 @@ namespace mag_app.DataAccess.Migrations
                         principalTable: "Stores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Categories_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,9 +79,9 @@ namespace mag_app.DataAccess.Migrations
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SubCategoryName = table.Column<string>(type: "TEXT", nullable: false),
-                    CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     EmployeeId = table.Column<long>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<long>(type: "INTEGER", nullable: false),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
+                    CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -101,12 +94,6 @@ namespace mag_app.DataAccess.Migrations
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SubCategories_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,10 +103,13 @@ namespace mag_app.DataAccess.Migrations
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ProdutName = table.Column<string>(type: "TEXT", nullable: false),
-                    SubCategoryId = table.Column<long>(type: "INTEGER", nullable: false),
+                    Barcode = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    PurchasedPrice = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     EmployeeId = table.Column<long>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<long>(type: "INTEGER", nullable: false),
-                    CategoryId = table.Column<long>(type: "INTEGER", nullable: true),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
+                    SubCategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -127,20 +117,9 @@ namespace mag_app.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Products_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
                         principalTable: "SubCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Products_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -151,24 +130,9 @@ namespace mag_app.DataAccess.Migrations
                 column: "StoreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_UserId",
-                table: "Categories",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Products_SubCategoryId",
                 table: "Products",
                 column: "SubCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_UserId",
-                table: "Products",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Stores_EmployeeId",
@@ -179,11 +143,6 @@ namespace mag_app.DataAccess.Migrations
                 name: "IX_SubCategories_CategoryId",
                 table: "SubCategories",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubCategories_UserId",
-                table: "SubCategories",
-                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
