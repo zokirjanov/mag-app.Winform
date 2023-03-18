@@ -16,7 +16,7 @@ namespace mag_app.Service.Services.ProductService
         }
         public async Task<string> CreateProductAsync(ProductDto product)
         {
-            var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.StoreId == product.StoreId);
+            var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.StoreId == product.StoreId && x.EmployeeId == product.EmployeeId);
             if (check is not null) return "Такое название продукта существует, попробуйте другое название категории";
             var pro = (Product)product;
             _appDbContext.Products.Add(pro);
