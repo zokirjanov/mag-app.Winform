@@ -16,12 +16,13 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class Store_Add_ProductForm : Form
     {
         private readonly ProductService _service;
-
         public Store_Add_ProductForm(AppDbContext appDbContext)
         {
             _service = new ProductService(appDbContext);
             InitializeComponent();
         }
+
+
 
 
         private void Store_Add_ProductForm_Load(object sender, EventArgs e)
@@ -33,6 +34,8 @@ namespace mag_app.Winform.Windows.ProductForms
             categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
             subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
         }
+
+
 
 
 
@@ -48,13 +51,15 @@ namespace mag_app.Winform.Windows.ProductForms
             else if(barcodeTb.Visible == false)
             {
                 byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
-                var value = BitConverter.ToUInt32(generatedBarcode, 0) / 4;
+                var value = BitConverter.ToInt32(generatedBarcode, 0) / 4;
                 barcodeResult = value.ToString();
                 barcodeTb.Text = value.ToString();
                 ProductPraparing(barcodeResult);
             }
             else MessageBox.Show("Заполните поле");
         }
+
+
 
 
 

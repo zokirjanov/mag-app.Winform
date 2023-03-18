@@ -1,10 +1,13 @@
-﻿using mag_app.DataAccess.DbContexts;
+﻿using BarcodeLib;
+using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.Product_Forms;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.PortableExecutable;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -29,6 +32,9 @@ namespace mag_app.Winform.Windows.ProductForms
         public string ProductName { get; set; } = string.Empty;
 
 
+
+
+
         public async void FillPoles(string productname)
         {
             using (var db = new AppDbContext())
@@ -36,7 +42,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 var entity = await db.Products.Where(x => x.ProdutName == productname).ToListAsync();
                 if (entity != null)
                 {
-                    foreach(var item in entity)
+                    foreach (var item in entity)
                     {
                         productNameTb.Text = item.ProdutName;
                         purchasePriceTb.Text = item.PurchasedPrice.ToString();
@@ -47,13 +53,23 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
+
+
+
+
         private async void updateBtn_Click(object sender, EventArgs e)
         {
+            string barcodeResult;
+            byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
+            var value = BitConverter.ToInt32(generatedBarcode, 0) / 4;
+            barcodeResult = value.ToString();
+
             ProductDto product = new ProductDto()
             {
                 ProdutName = productNameTb.Text,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Price = decimal.Parse(productPriceTb.Text),
+                Barcode = barcodeResult,
                 Quantity = Convert.ToInt32(productQuantity.Value),
                 UpdatedAt = TimeHelper.CurrentTime()
             };
@@ -84,6 +100,10 @@ namespace mag_app.Winform.Windows.ProductForms
                 this.Close();
             }
         }
+
+
+
+
 
         private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {

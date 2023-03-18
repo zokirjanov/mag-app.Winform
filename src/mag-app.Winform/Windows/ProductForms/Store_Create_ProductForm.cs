@@ -16,18 +16,22 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class Store_Create_ProductForm : Form
     {
+        public static Store_Create_ProductForm parentInstanse;
         public ProductService _service;
         public Store_Create_ProductForm(AppDbContext appDbContext)
         {
             _service = new ProductService(appDbContext);
+            parentInstanse = this;
             InitializeComponent();
         }
-        
+
+        public string Barcode { get; set; }
         public async void LoadData()
         {
             PrimaryButton primaryButton = new PrimaryButton();
@@ -68,7 +72,8 @@ namespace mag_app.Winform.Windows.ProductForms
             create_ProductFlowPanel.Controls.Add(w);
             w.Click +=  (s, e) =>
             {
-                MessageBox.Show("Button Clicked");
+                Product_Info product_Info = new Product_Info();
+                product_Info.ShowDialog();
             };
 
             // Labels
