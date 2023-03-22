@@ -22,12 +22,12 @@ namespace mag_app.Service.Services.StoreService
         {
             var storee = await _appDbContext.Stores.FirstOrDefaultAsync(
             x => x.StoreName.ToLower() == storeDto.StoreName.ToLower() && x.EmployeeId == storeDto.EmployeeID);
-            if (storee != null) { return "Category already exists"; }
+            if (storee != null) { return "Категория уже существует"; }
             var store = (Store)storeDto;
             _appDbContext.Stores.Add(store);
             var res = await _appDbContext.SaveChangesAsync();
             if (res > 0) return "true";
-            return "Something went wrong";
+            return "Что-то пошло не так";
         }
 
         public async Task<string> DeleteAsync(string name)
@@ -79,7 +79,7 @@ namespace mag_app.Service.Services.StoreService
                 }
                 return "false";
             }
-            else return "Category already exists, please try another name";
+            else return "Категория уже существует, попробуйте другое название";
         }
     }
 }
