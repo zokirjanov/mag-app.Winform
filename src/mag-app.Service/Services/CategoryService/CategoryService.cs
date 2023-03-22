@@ -24,6 +24,8 @@ namespace mag_app.Service.Services.CategoryService
             _appDbContext = appDbContext;
         }
 
+
+
         public async Task<string> CreateCategoryAsync(CategoryDto category)
         {
             var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName && x.StoreId == category.StoreId && x.EmployeeId == category.EmployeeId);
@@ -34,6 +36,9 @@ namespace mag_app.Service.Services.CategoryService
             if (res > 0) return "true";
             return "Something went wrong";
         }
+
+
+
 
         public async Task<bool> DeleteAsync(string  categoryName)
         {
@@ -52,12 +57,18 @@ namespace mag_app.Service.Services.CategoryService
             return false;
         }
 
-        public async Task<List<Category>> GetAllAsync(long sid, long Eid)
+
+
+
+        public async Task<List<Category>> GetAllAsync(long Eid)
         {
-            var result = await _appDbContext.Categories.Where(x => x.StoreId == sid && x.EmployeeId == Eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.Categories.Where(x => x.EmployeeId == Eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
+
+
+
 
         public async Task<long> GetByNameAsync(string name)
         {
@@ -68,6 +79,9 @@ namespace mag_app.Service.Services.CategoryService
             }
             else return 0;
         }
+
+
+
 
         public async Task<string> UpdateAsync(CategoryDto category, string name)
         {

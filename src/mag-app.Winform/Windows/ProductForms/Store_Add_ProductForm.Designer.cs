@@ -46,8 +46,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.categorylabel = new System.Windows.Forms.Label();
             this.subCategoryLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.barcodeTb = new System.Windows.Forms.TextBox();
             this.barcodeLabel = new System.Windows.Forms.Label();
             this.barcodeCheckbox = new System.Windows.Forms.Button();
@@ -246,22 +244,6 @@
             this.subCategoryLabel.TabIndex = 34;
             this.subCategoryLabel.Text = "subcategory";
             // 
-            // label2
-            // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(34, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(314, 2);
-            this.label2.TabIndex = 35;
-            // 
-            // label9
-            // 
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label9.Location = new System.Drawing.Point(34, 128);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(314, 2);
-            this.label9.TabIndex = 36;
-            // 
             // barcodeTb
             // 
             this.barcodeTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -272,6 +254,7 @@
             this.barcodeTb.Name = "barcodeTb";
             this.barcodeTb.Size = new System.Drawing.Size(284, 30);
             this.barcodeTb.TabIndex = 37;
+            this.barcodeTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.barcodeTb_KeyPress);
             // 
             // barcodeLabel
             // 
@@ -312,8 +295,6 @@
             this.Controls.Add(this.barcodeCheckbox);
             this.Controls.Add(this.barcodeLabel);
             this.Controls.Add(this.barcodeTb);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.subCategoryLabel);
             this.Controls.Add(this.categorylabel);
             this.Controls.Add(this.label3);
@@ -361,8 +342,6 @@
         private Label label3;
         private Label categorylabel;
         private Label subCategoryLabel;
-        private Label label2;
-        private Label label9;
         private TextBox barcodeTb;
         private Label barcodeLabel;
         private Button barcodeCheckbox;

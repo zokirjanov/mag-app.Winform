@@ -22,10 +22,16 @@ namespace mag_app.Winform.Windows.ProductForms
         }
         public long Id { get; set; }
         public string CategoryTitle { get; set; }
+
+
+
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
             LoadData();
         }
+
+
+
 
         public async void LoadData()
         {
@@ -41,7 +47,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 AddCategoryForm addCategoryForm = new AddCategoryForm(new AppDbContext());
                 addCategoryForm.ShowDialog();
             };
-            var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id, IdentitySingelton.GetInstance().EmployeeId);
+            var items = await _service.GetAllAsync(IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Категории не найдены");
@@ -54,6 +60,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
             }
         }
+
+
+
 
         public void AddItem(string categoryName)
         {
@@ -128,6 +137,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 }
             };
         }
+
+
+
         private void categoryFlowPanel_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, categoryFlowPanel.ClientRectangle,

@@ -17,5 +17,6 @@ public class User : Auditable
 	public string Email { get; set; } = string.Empty;
 	public string PasswordHash { get; set; } = string.Empty;
 	public string Salt { get; set; } = string.Empty;
-	public List<Store> Stores { get; set; }
+	public List<Store> Stores { get; set; } = default!;
+
 }

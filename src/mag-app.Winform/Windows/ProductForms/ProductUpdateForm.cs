@@ -19,6 +19,9 @@ namespace mag_app.Winform.Windows.ProductForms
             InitializeComponent();
             _productService = new ProductService(appDbContext);
         }
+        string oldName;
+        public string ProductName { get; set; } = string.Empty;
+
 
         private void ProductUpdateForm_Load(object sender, EventArgs e)
         {
@@ -27,9 +30,6 @@ namespace mag_app.Winform.Windows.ProductForms
             oldName = ProductName;
             FillPoles(ProductName);
         }
-
-        string oldName;
-        public string ProductName { get; set; } = string.Empty;
 
 
 
@@ -56,12 +56,11 @@ namespace mag_app.Winform.Windows.ProductForms
 
 
 
-
         private async void updateBtn_Click(object sender, EventArgs e)
         {
             string barcodeResult;
             byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
-            var value = BitConverter.ToInt32(generatedBarcode, 0) / 4;
+            var value = BitConverter.ToInt32(generatedBarcode, 0) % 100000;
             barcodeResult = value.ToString();
 
             ProductDto product = new ProductDto()
@@ -104,7 +103,6 @@ namespace mag_app.Winform.Windows.ProductForms
 
 
 
-
         private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
@@ -117,6 +115,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 e.Handled = true;
             }
         }
+
+
 
         private void productPriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {

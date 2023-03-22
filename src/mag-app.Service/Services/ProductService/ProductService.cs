@@ -14,6 +14,9 @@ namespace mag_app.Service.Services.ProductService
         {
             this._appDbContext = appDbContext;
         }
+
+
+
         public async Task<string> CreateProductAsync(ProductDto product)
         {
             var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.StoreId == product.StoreId && x.EmployeeId == product.EmployeeId);
@@ -24,6 +27,9 @@ namespace mag_app.Service.Services.ProductService
             if (res > 0) return "true";
             return "Что-то пошло не так";
         }
+
+
+
 
         public async Task<string> DeleteAsync(string name)
         {
@@ -41,12 +47,19 @@ namespace mag_app.Service.Services.ProductService
             return "Товар не найден";
         }
 
+
+
+
         public async Task<IEnumerable<Product>> GetAllAsync(long cId, long eId, long sId)
         {
             var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cId && x.EmployeeId == eId && x.StoreId == sId).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
+
+
+
+
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
             var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower() && x.StoreId == product.StoreId);
@@ -58,6 +71,7 @@ namespace mag_app.Service.Services.ProductService
                 entity.ProdutName = product.ProdutName;
                 entity.PurchasedPrice = product.PurchasedPrice;
                 entity.Price = product.Price;
+                entity.Barcode= product.Barcode;
                 entity.Quantity = product.Quantity;
                 entity.UpdatedAt = product.UpdatedAt;
 

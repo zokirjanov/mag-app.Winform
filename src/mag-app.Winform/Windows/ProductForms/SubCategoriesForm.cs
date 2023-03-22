@@ -39,7 +39,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm(new AppDbContext());
                 addSbCategoryForm.ShowDialog();
             };
-            var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId, MyStoreForm.myStoreFormParent.Id);
+            var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Подкатегории не найдены");
