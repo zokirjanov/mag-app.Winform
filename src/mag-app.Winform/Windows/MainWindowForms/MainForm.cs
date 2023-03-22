@@ -11,6 +11,8 @@ namespace mag_app.Winform
         public Button btn;
         public Panel pnl;
 
+
+
         public MainForm(AppDbContext appDbContext)
         {
             _addStore = new AddStoreForm(appDbContext);
@@ -20,15 +22,22 @@ namespace mag_app.Winform
             pnl = MainPanel;
         }
 
+
+
         public void marketbtn_Click(object sender, EventArgs e)
         {
-            mainParent.openChildForm(new MyStoreForm(new AppDbContext()));
+            mainParent.openChildForm(new MyStoreForm(new AppDbContext()));            
         }
+
+
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
+
+
 
         private Form activeForm = null;
         public void openChildForm(Form childForm)
@@ -45,6 +54,9 @@ namespace mag_app.Winform
             childForm.Show();
         }
 
+
+
+
         private void MenuPanel_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, MenuPanel.ClientRectangle,
@@ -53,6 +65,9 @@ namespace mag_app.Winform
                Color.DimGray, 1, ButtonBorderStyle.Solid, // right
                Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
         }
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {

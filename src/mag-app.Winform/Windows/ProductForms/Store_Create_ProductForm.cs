@@ -157,7 +157,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Height = w.Height / 4,
                 Location = new Point(230, 10),
                 BackColor = Color.LightYellow,
-                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
+                Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
             };
             update.Click += async (s, e) =>
             {
@@ -176,7 +176,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Height = w.Height / 4,
                 Location = new Point(200, 10),
                 BackColor = Color.Transparent,
-                Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\delete.png")
+                Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/delete.png")
             };
             delete.Click += async (s, e) =>
             {

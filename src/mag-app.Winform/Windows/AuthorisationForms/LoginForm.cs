@@ -43,14 +43,14 @@ namespace mag_app.Winform.Windows
 		{
 			if (loginPass.UseSystemPasswordChar == PasswordPropertyTextAttribute.No.Password)
 			{
-				loginPassShow.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\view.png");
+				loginPassShow.Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/view.png");
 
                 loginPass.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
 			}
 			else
 			{
 				loginPass.UseSystemPasswordChar = PasswordPropertyTextAttribute.No.Password;
-				loginPassShow.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\hide (1).png");
+				loginPassShow.Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/hide (1).png");
 			}
 		}
 
