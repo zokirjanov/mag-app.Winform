@@ -51,7 +51,7 @@ public partial class Store_Add_ProductForm : Form
         else if(barcodeTb.Visible == false)
         {
             byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
-            var value = BitConverter.ToInt32(generatedBarcode, 0) % 100000;
+            var value = BitConverter.ToInt64(generatedBarcode, 0) % 100000;
             barcodeResult = value.ToString();
             barcodeTb.Text = value.ToString();
             ProductPraparing(barcodeResult);
@@ -92,6 +92,7 @@ public partial class Store_Add_ProductForm : Form
                     productPriceTb.Text = "";
                     productQuantity.Value = 0;
                     purchasePriceTb.Text = "";
+                    barcodeTb.Text = "";
                 }
                 if (dlg == DialogResult.Cancel)
                 {

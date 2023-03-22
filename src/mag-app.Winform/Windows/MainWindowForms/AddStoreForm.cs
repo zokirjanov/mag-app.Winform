@@ -7,12 +7,10 @@ namespace mag_app.Winform.Windows
 {
     public partial class AddStoreForm : Form
     {
-        private readonly AppDbContext _dbContex;
         private readonly StoreService _service;
 
         public AddStoreForm(AppDbContext appDbContext)
         {
-            _dbContex = appDbContext;
             _service = new StoreService(appDbContext);
             InitializeComponent();
         }

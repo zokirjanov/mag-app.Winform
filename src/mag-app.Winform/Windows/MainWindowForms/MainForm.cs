@@ -6,7 +6,6 @@ namespace mag_app.Winform
 {
     public partial class MainForm : Form
     {
-        private readonly AppDbContext _dbContext;
         private AddStoreForm _addStore;
         public static MainForm mainParent;
         public Button btn;
@@ -14,7 +13,6 @@ namespace mag_app.Winform
 
         public MainForm(AppDbContext appDbContext)
         {
-            _dbContext = appDbContext;
             _addStore = new AddStoreForm(appDbContext);
             InitializeComponent();
             mainParent = this;

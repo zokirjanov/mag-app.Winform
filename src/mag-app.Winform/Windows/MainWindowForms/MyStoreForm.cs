@@ -18,14 +18,12 @@ namespace mag_app.Winform.Windows.MainWindowForms
 {
     public partial class MyStoreForm : Form
     { 
-        private AppDbContext _dbContex;
         private StoreService _service;
         public FlowLayoutPanel panel;
         public static MyStoreForm myStoreFormParent;
 
         public MyStoreForm(AppDbContext appDbContext)
         {
-            _dbContex = appDbContext;
             _service = new StoreService(appDbContext);
             myStoreFormParent = this;
             InitializeComponent();
@@ -90,8 +88,7 @@ namespace mag_app.Winform.Windows.MainWindowForms
                 {
                     var res = _service.DeleteAsync(storename);
                     AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
-                    MainForm.mainParent.pnl.Controls.Clear();
-                    MainForm.mainParent.marketbtn_Click(s, e);
+                    LoadData();
                 }
                 if (dlg == DialogResult.Cancel)
                 {
