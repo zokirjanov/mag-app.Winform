@@ -162,6 +162,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.productNameTb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ProductUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductUpdateForm";

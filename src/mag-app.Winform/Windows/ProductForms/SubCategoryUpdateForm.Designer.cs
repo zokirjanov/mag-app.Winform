@@ -60,6 +60,7 @@
             this.ClientSize = new System.Drawing.Size(395, 179);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.subCategoryNameTb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SubCategoryUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SubCategoryUpdateForm";

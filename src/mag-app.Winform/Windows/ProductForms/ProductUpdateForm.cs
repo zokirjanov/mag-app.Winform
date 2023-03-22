@@ -110,7 +110,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 e.Handled = true;
             }
             // only allow one decimal point
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -125,7 +125,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 e.Handled = true;
             }
             // only allow one decimal point
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }

@@ -31,7 +31,7 @@ public partial class Store_Add_ProductForm : Form
         productQuantity.Maximum = 9999999999;
         barcodeLabel.Visible = false;
         barcodeTb.Visible = false;
-        categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
+        categorylabel.Text = CategoriesForm.categoryParent!.CategoryTitle;
         subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
     }
 
@@ -39,7 +39,7 @@ public partial class Store_Add_ProductForm : Form
 
 
 
-    private async void button1_Click(object sender, EventArgs e)
+    private void button1_Click(object sender, EventArgs e)
     {
         string barcodeResult;
 
@@ -134,7 +134,7 @@ public partial class Store_Add_ProductForm : Form
             e.Handled = true;
         }
         // only allow one decimal point
-        if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
         {
             e.Handled = true;
         }
@@ -197,7 +197,7 @@ public partial class Store_Add_ProductForm : Form
             e.Handled = true;
         }
         // only allow one decimal point
-        if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
         {
             e.Handled = true;
         }
@@ -213,7 +213,7 @@ public partial class Store_Add_ProductForm : Form
             e.Handled = true;
         }
         // only allow one decimal point
-        if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
         {
             e.Handled = true;
         }
