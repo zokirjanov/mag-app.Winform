@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230318110020_initialCreate")]
-    partial class initialCreate
+    [Migration("20230322111308_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,9 +132,6 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<long>("EmployeeId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("StoreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SubCategoryName")

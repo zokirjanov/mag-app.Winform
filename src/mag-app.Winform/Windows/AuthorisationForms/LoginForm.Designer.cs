@@ -97,7 +97,6 @@
             this.loginlogin.PlaceholderText = "Login";
             this.loginlogin.Size = new System.Drawing.Size(333, 30);
             this.loginlogin.TabIndex = 12;
-            this.loginlogin.TextChanged += new System.EventHandler(this.loginlogin_TextChanged);
             // 
             // label1
             // 

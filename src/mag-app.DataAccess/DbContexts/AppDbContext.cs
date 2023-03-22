@@ -24,7 +24,7 @@ public class AppDbContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
         var path = (Environment.CurrentDirectory);
-        optionsBuilder.UseSqlite("Data Source=" + path + "\\LocalDatabase.db");
+        optionsBuilder.UseSqlite("Data Source= ../../../../../Database/LocalDatabase.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
