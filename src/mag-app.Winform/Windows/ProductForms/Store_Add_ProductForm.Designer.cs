@@ -235,7 +235,7 @@
             // 
             // subCategoryLabel
             // 
-            this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.subCategoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.subCategoryLabel.Location = new System.Drawing.Point(257, 109);
             this.subCategoryLabel.Name = "subCategoryLabel";
@@ -313,6 +313,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.productNameTb);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Store_Add_ProductForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

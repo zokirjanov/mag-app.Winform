@@ -32,7 +32,6 @@ public partial class SubCategoriesForm : Form
 
 
 
-
     public async void LoadData()
     {
         PrimaryButton primaryButton = new PrimaryButton();
@@ -47,7 +46,7 @@ public partial class SubCategoriesForm : Form
             AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm(new AppDbContext());
             addSbCategoryForm.ShowDialog();
         };
-        var items = await _service.GetAllAsync(CategoriesForm.categoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
+        var items = await _service.GetAllAsync(CategoriesForm.categoryParent!.Id, IdentitySingelton.GetInstance().EmployeeId);
         if (items is null)
         {
             MessageBox.Show("Подкатегории не найдены");
