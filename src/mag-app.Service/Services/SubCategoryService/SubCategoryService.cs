@@ -31,12 +31,12 @@ namespace mag_app.Service.Services.SubCategoryService
         public async Task<string> CreateCategoryAsync(SubCategoryDto subCategory)
         {
             var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId && x.EmployeeId == subCategory.EmployeeId);
-            if (check is not null) return "Such a sub-category exists, try another sub-category name";
+            if (check is not null) return "Такая подкатегория существует, попробуйте другое название подкатегории";
             var cat = (SubCategory)subCategory;
             _appDbContext.SubCategories.Add(cat);
             var res = await _appDbContext.SaveChangesAsync();
             if (res > 0) return "true";
-            return "Something went wrong";
+            return "Что-то пошло не так";
         }
 
 
@@ -99,7 +99,7 @@ namespace mag_app.Service.Services.SubCategoryService
                 }
                 return "false";
             }
-            else return "SubCategory already exists, please try another name";
+            else return "Подкатегория уже существует, попробуйте другое название";
         }
     }
 }
