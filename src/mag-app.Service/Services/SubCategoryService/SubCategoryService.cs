@@ -26,9 +26,11 @@ namespace mag_app.Service.Services.SubCategoryService
             _appDbContext = appDbContext;
         }
 
+
+
         public async Task<string> CreateCategoryAsync(SubCategoryDto subCategory)
         {
-            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId && x.StoreId == subCategory.StoreId && x.EmployeeId == subCategory.EmployeeId);
+            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId && x.EmployeeId == subCategory.EmployeeId);
             if (check is not null) return "Such a sub-category exists, try another sub-category name";
             var cat = (SubCategory)subCategory;
             _appDbContext.SubCategories.Add(cat);
@@ -36,6 +38,9 @@ namespace mag_app.Service.Services.SubCategoryService
             if (res > 0) return "true";
             return "Something went wrong";
         }
+
+
+
 
         public async Task<bool> DeleteAsync(string subcategoryName)
         {
@@ -53,12 +58,18 @@ namespace mag_app.Service.Services.SubCategoryService
             return false;
         }
 
-        public async Task<List<SubCategory>> GetAllAsync(long cid, long eid, long sid)
+
+
+
+        public async Task<List<SubCategory>> GetAllAsync(long cid, long eid)
         {
-            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == cid && x.EmployeeId == eid && x.StoreId == sid).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == cid && x.EmployeeId == eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
+
+
+
 
         public async Task<long> GetByNameAsync(string name)
         {
@@ -69,6 +80,9 @@ namespace mag_app.Service.Services.SubCategoryService
             }
             else return 0;
         }
+
+
+
 
         public async Task<string> UpdateAsync(SubCategoryDto category, string name)
         {

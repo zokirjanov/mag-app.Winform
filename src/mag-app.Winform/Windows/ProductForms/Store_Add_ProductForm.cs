@@ -164,20 +164,6 @@ public partial class Store_Add_ProductForm : Form
     }
 
 
-
-
-    private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
-        {
-            e.Handled = true;
-        }
-    }
   
 
 
@@ -200,6 +186,9 @@ public partial class Store_Add_ProductForm : Form
         }
     }
 
+
+
+
     private void barcodeTb_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -208,6 +197,22 @@ public partial class Store_Add_ProductForm : Form
         }
         // only allow one decimal point
         if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+
+
+
+    private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
         {
             e.Handled = true;
         }
