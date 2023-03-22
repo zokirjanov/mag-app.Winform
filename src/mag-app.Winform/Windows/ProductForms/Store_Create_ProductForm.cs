@@ -32,6 +32,16 @@ namespace mag_app.Winform.Windows.ProductForms
         }
 
         public string Barcode { get; set; }
+
+
+
+        private void Store_Create_ProductForm_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+
+
         public async void LoadData()
         {
             PrimaryButton primaryButton = new PrimaryButton();
@@ -61,6 +71,8 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
+
+
         public void AddItem(Product product)
         {
             var w = new Button
@@ -72,8 +84,7 @@ namespace mag_app.Winform.Windows.ProductForms
             create_ProductFlowPanel.Controls.Add(w);
             w.Click +=  (s, e) =>
             {
-                Product_Info product_Info = new Product_Info();
-                product_Info.ShowDialog();
+                MessageBox.Show("Product Clicked");
             };
 
             // Labels
@@ -155,6 +166,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 productUpdateForm.ShowDialog();
             };
 
+
+
+
             var delete = new Button()
             {
                 Parent = w,
@@ -182,10 +196,7 @@ namespace mag_app.Winform.Windows.ProductForms
             };
         }
 
-        private void Store_Create_ProductForm_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -194,6 +205,8 @@ namespace mag_app.Winform.Windows.ProductForms
             StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(2);
             StoreProductsForm.storeProductParent.backBtn.Show();
         }
+
+
 
         private void create_ProductFlowPanel_Paint(object sender, PaintEventArgs e)
         {

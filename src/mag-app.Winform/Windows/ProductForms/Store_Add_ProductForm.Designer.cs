@@ -272,6 +272,7 @@
             this.barcodeTb.Name = "barcodeTb";
             this.barcodeTb.Size = new System.Drawing.Size(284, 30);
             this.barcodeTb.TabIndex = 37;
+            this.barcodeTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.barcodeTb_KeyPress);
             // 
             // barcodeLabel
             // 
