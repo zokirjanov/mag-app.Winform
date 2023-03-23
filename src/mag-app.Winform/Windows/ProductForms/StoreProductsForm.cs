@@ -73,8 +73,7 @@ namespace mag_app.Winform.Windows.Product_Forms
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();
             AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
-            Progress_Form progress_Form = new Progress_Form();
-            progress_Form.Show();
+           
         }
 
 

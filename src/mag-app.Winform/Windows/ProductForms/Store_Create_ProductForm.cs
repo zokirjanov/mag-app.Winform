@@ -22,7 +22,7 @@ namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class Store_Create_ProductForm : Form
     {
-        public static Store_Create_ProductForm parentInstanse;
+        public static Store_Create_ProductForm parentInstanse = default!;
         public ProductService _service;
         public Store_Create_ProductForm(AppDbContext appDbContext)
         {
@@ -30,9 +30,6 @@ namespace mag_app.Winform.Windows.ProductForms
             parentInstanse = this;
             InitializeComponent();
         }
-
-        public string Barcode { get; set; }
-
 
 
         private void Store_Create_ProductForm_Load(object sender, EventArgs e)
@@ -57,7 +54,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Store_Add_ProductForm form = new Store_Add_ProductForm(new AppDbContext());
                 form.ShowDialog();
             };
-            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().EmployeeId, MyStoreForm.myStoreFormParent.Id);
+            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");
@@ -148,8 +145,9 @@ namespace mag_app.Winform.Windows.ProductForms
                 };  labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
 
             
-
+            //
             // Delete && Update Buttons
+            //
             var update = new Button()
             {
                 Parent = w,
@@ -159,14 +157,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
             };
-            update.Click += async (s, e) =>
+            update.Click +=  (s, e) =>
             {
                 ProductUpdateForm productUpdateForm = new ProductUpdateForm(new AppDbContext());
                 productUpdateForm.ProductName = product.ProdutName;
                 productUpdateForm.ShowDialog();
             };
-
-
 
 
             var delete = new Button()

@@ -16,5 +16,10 @@ namespace mag_app.Winform.Windows.AuthorisationForms
         {
             InitializeComponent();
         }
+
+        private void Progress_Form_Load(object sender, EventArgs e)
+        {
+          
+        }
     }
 }

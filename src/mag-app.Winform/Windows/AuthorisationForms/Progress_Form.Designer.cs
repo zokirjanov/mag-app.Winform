@@ -62,6 +62,7 @@
             this.Name = "Progress_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Progress_Form";
+            this.Load += new System.EventHandler(this.Progress_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,8 +19,11 @@ namespace mag_app.Winform.Windows.ProductForms
             InitializeComponent();
             _productService = new ProductService(appDbContext);
         }
-        string oldName;
-        public string ProductName { get; set; } = string.Empty;
+
+        public string oldName { get; set; } = string.Empty;
+        public new string ProductName { get; set; } = string.Empty;
+
+
 
 
         private void ProductUpdateForm_Load(object sender, EventArgs e)
@@ -48,6 +51,7 @@ namespace mag_app.Winform.Windows.ProductForms
                         purchasePriceTb.Text = item.PurchasedPrice.ToString();
                         productPriceTb.Text = item.Price.ToString();
                         productQuantity.Value = Convert.ToInt32(item.Quantity.ToString());
+                        barcodeTb.Text = item.Barcode.ToString();   
                     }
                 }
             }
@@ -58,17 +62,17 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void updateBtn_Click(object sender, EventArgs e)
         {
-            string barcodeResult;
-            byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
-            var value = BitConverter.ToInt32(generatedBarcode, 0) % 100000;
-            barcodeResult = value.ToString();
+            //string barcodeResult;
+            //byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
+            //var value = BitConverter.ToInt32(generatedBarcode, 0) % 100000;
+            //barcodeResult = value.ToString();
 
             ProductDto product = new ProductDto()
             {
                 ProdutName = productNameTb.Text,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Price = decimal.Parse(productPriceTb.Text),
-                Barcode = barcodeResult,
+                Barcode = barcodeTb.Text,
                 Quantity = Convert.ToInt32(productQuantity.Value),
                 UpdatedAt = TimeHelper.CurrentTime()
             };
