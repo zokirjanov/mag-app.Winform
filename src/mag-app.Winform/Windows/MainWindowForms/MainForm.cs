@@ -1,6 +1,7 @@
 using mag_app.DataAccess.DbContexts;
 using mag_app.Winform.Windows;
 using mag_app.Winform.Windows.MainWindowForms;
+using mag_app.Winform.Windows.Quick_PassForms;
 
 namespace mag_app.Winform
 {
@@ -80,6 +81,11 @@ namespace mag_app.Winform
             {
                 //do nothing
             }
+        }
+
+        private void quick_PassBtn_Click(object sender, EventArgs e)
+        {
+            mainParent.openChildForm(new List_products(new AppDbContext()));
         }
     }
 }
