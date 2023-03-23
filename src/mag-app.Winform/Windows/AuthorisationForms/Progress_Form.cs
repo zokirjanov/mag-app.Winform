@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.AuthorisationForms
 {
-    public partial class ProgresForm : Form
+    public partial class Progress_Form : Form
     {
-        public ProgresForm()
+        public Progress_Form()
         {
             InitializeComponent();
+        }
+
+        private void Progress_Form_Load(object sender, EventArgs e)
+        {
+          
         }
     }
 }

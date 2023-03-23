@@ -9,7 +9,7 @@ namespace mag_app.Winform.Windows.ProductForms;
 
 public partial class SubCategoriesForm : Form
 {
-    public static SubCategoriesForm subCategoryParent;
+    public static SubCategoriesForm subCategoryParent = default!;
     private SubCategoryService _service;
 
     public SubCategoriesForm(AppDbContext appDbContext)
@@ -72,7 +72,7 @@ public partial class SubCategoriesForm : Form
             Width = 205,
             Height = 75,
             BackColor = Color.LightSkyBlue,
-            Font = new Font("Times New Roman", 14),
+            Font = new Font("Times New Roman", 12),
         };
         subCategoryFlowPanel.Controls.Add(button);
         button.Click += async (s, e) =>
@@ -92,7 +92,7 @@ public partial class SubCategoriesForm : Form
             BackColor = Color.LightYellow,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
         };
-        update.Click += async (s, e) =>
+        update.Click +=  (s, e) =>
         {
             SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
             category.categoryName = button.Text;

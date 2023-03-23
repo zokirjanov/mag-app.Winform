@@ -37,12 +37,14 @@
             this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.subtitleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.quick_PassBtn = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.MenuPanel.Controls.Add(this.quick_PassBtn);
             this.MenuPanel.Controls.Add(this.backButton);
             this.MenuPanel.Controls.Add(this.productBtn);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -121,6 +123,22 @@
             this.subtitleFlowPanel.Size = new System.Drawing.Size(861, 18);
             this.subtitleFlowPanel.TabIndex = 4;
             // 
+            // quick_PassBtn
+            // 
+            this.quick_PassBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.quick_PassBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.quick_PassBtn.Image = ((System.Drawing.Image)(resources.GetObject("quick_PassBtn.Image")));
+            this.quick_PassBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.quick_PassBtn.Location = new System.Drawing.Point(13, 84);
+            this.quick_PassBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.quick_PassBtn.Name = "quick_PassBtn";
+            this.quick_PassBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.quick_PassBtn.Size = new System.Drawing.Size(194, 60);
+            this.quick_PassBtn.TabIndex = 3;
+            this.quick_PassBtn.Text = "Продукты";
+            this.quick_PassBtn.UseVisualStyleBackColor = false;
+            this.quick_PassBtn.Click += new System.EventHandler(this.quick_PassBtn_Click);
+            // 
             // StoreProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -153,5 +171,6 @@
         private DataGridViewTextBoxColumn category;
         private FlowLayoutPanel titleFlowPanel;
         private FlowLayoutPanel subtitleFlowPanel;
+        private Button quick_PassBtn;
     }
 }

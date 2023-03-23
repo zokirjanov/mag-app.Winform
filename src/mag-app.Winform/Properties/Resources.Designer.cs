@@ -63,9 +63,9 @@ namespace mag_app.Winform.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap _1495 {
+        public static System.Drawing.Bitmap Spinner_0_7s_271px {
             get {
-                object obj = ResourceManager.GetObject("_1495", resourceCulture);
+                object obj = ResourceManager.GetObject("Spinner-0.7s-271px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

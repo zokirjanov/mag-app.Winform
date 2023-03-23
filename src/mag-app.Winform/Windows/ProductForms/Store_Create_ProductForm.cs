@@ -1,28 +1,15 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
-using mag_app.Service.Interfaces.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Components;
-using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class Store_Create_ProductForm : Form
     {
-        public static Store_Create_ProductForm parentInstanse;
+        public static Store_Create_ProductForm parentInstanse = default!;
         public ProductService _service;
         public Store_Create_ProductForm(AppDbContext appDbContext)
         {
@@ -30,9 +17,6 @@ namespace mag_app.Winform.Windows.ProductForms
             parentInstanse = this;
             InitializeComponent();
         }
-
-        public string Barcode { get; set; }
-
 
 
         private void Store_Create_ProductForm_Load(object sender, EventArgs e)
@@ -57,7 +41,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Store_Add_ProductForm form = new Store_Add_ProductForm(new AppDbContext());
                 form.ShowDialog();
             };
-            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().EmployeeId, MyStoreForm.myStoreFormParent.Id);
+            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().EmployeeId);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");
@@ -82,7 +66,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.LightSteelBlue,
             };
             create_ProductFlowPanel.Controls.Add(w);
-            w.Click +=  (s, e) =>
+            w.Click += (s, e) =>
             {
                 MessageBox.Show("Product Clicked");
             };
@@ -95,11 +79,11 @@ namespace mag_app.Winform.Windows.ProductForms
                 SliteTime = 25,
                 Font = new Font("Times New Roman", 14),
                 Height = 30,
-                Width= 150,
+                Width = 150,
                 Location = new Point(15, 15),
-                AutoSize= true,
+                AutoSize = true,
             }; labelname.Click += (sender, args) => InvokeOnClick(w, args);
-          
+
             var labelPp = new Label()
             {
                 Parent = w,
@@ -107,15 +91,15 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 60)
             }; labelPp.Click += (sender, args) => InvokeOnClick(w, args);
-        
-                var labelPprice = new Label()
-                {
-                    Parent = w,
-                    AutoSize = true,
-                    Text = product.PurchasedPrice.ToString(@"#\ ###\ ###\ ###\"),
-                    Font = new Font("Times New Roman", 12),
-                    Location = new Point(115, 60)
-                }; labelPprice.Click += (sender, args) => InvokeOnClick(w, args);
+
+            var labelPprice = new Label()
+            {
+                Parent = w,
+                AutoSize = true,
+                Text = product.PurchasedPrice.ToString(@"#\ ###\ ###\ ###\"),
+                Font = new Font("Times New Roman", 12),
+                Location = new Point(115, 60)
+            }; labelPprice.Click += (sender, args) => InvokeOnClick(w, args);
 
             var labelP = new Label()
             {
@@ -124,14 +108,14 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 80)
             }; labelP.Click += (sender, args) => InvokeOnClick(w, args);
-                var labelPrice = new Label()
-                {
-                    Parent = w,
-                    AutoSize = true,
-                    Text = product.Price.ToString(@"#\ ###\ ###\ ###\"),
-                    Font = new Font("Times New Roman", 12),
-                    Location = new Point(115, 80)
-                }; labelPrice.Click += (sender, args) => InvokeOnClick(w, args);
+            var labelPrice = new Label()
+            {
+                Parent = w,
+                AutoSize = true,
+                Text = product.Price.ToString(@"#\ ###\ ###\ ###\"),
+                Font = new Font("Times New Roman", 12),
+                Location = new Point(115, 80)
+            }; labelPrice.Click += (sender, args) => InvokeOnClick(w, args);
             var labelQ = new Label()
             {
                 Parent = w,
@@ -139,17 +123,18 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 100)
             }; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
-                var labelQuantity = new Label()
-                {
-                    Parent = w,
-                    Text = product.Quantity.ToString(@" #\ ###\"),
-                    Font = new Font("Times New Roman", 12),
-                    Location = new Point(115, 100)
-                };  labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
+            var labelQuantity = new Label()
+            {
+                Parent = w,
+                Text = product.Quantity.ToString(@" #\ ###\"),
+                Font = new Font("Times New Roman", 12),
+                Location = new Point(115, 100)
+            }; labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
 
-            
 
+            //
             // Delete && Update Buttons
+            //
             var update = new Button()
             {
                 Parent = w,
@@ -159,14 +144,12 @@ namespace mag_app.Winform.Windows.ProductForms
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
             };
-            update.Click += async (s, e) =>
+            update.Click += (s, e) =>
             {
                 ProductUpdateForm productUpdateForm = new ProductUpdateForm(new AppDbContext());
                 productUpdateForm.ProductName = product.ProdutName;
                 productUpdateForm.ShowDialog();
             };
-
-
 
 
             var delete = new Button()

@@ -144,9 +144,9 @@ public partial class MyStoreForm : Form
 
 
 
-    private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+    private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
     {
-          ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
+        ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
           Color.DimGray, 1, ButtonBorderStyle.Solid, // left
           Color.DimGray, 1, ButtonBorderStyle.Solid, // top
           Color.White, 1, ButtonBorderStyle.Solid, // right
