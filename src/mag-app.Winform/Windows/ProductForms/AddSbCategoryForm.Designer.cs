@@ -38,7 +38,7 @@
             this.subCategoryNameTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.subCategoryNameTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.subCategoryNameTb.Location = new System.Drawing.Point(51, 37);
-            this.subCategoryNameTb.MaxLength = 15;
+            this.subCategoryNameTb.MaxLength = 20;
             this.subCategoryNameTb.Name = "subCategoryNameTb";
             this.subCategoryNameTb.PlaceholderText = "Название подкатегории";
             this.subCategoryNameTb.Size = new System.Drawing.Size(314, 30);

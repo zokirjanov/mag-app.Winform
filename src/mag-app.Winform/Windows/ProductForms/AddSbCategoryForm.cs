@@ -24,7 +24,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 {
                     SubCategoryName = subCategoryNameTb.Text,
                     EmployeeId = IdentitySingelton.GetInstance().EmployeeId,
-                    CategoryId = CategoriesForm.categoryParent.Id,
+                    CategoryId = CategoriesForm.categoryParent!.Id,
                 };
 
                 var res = await _service.CreateCategoryAsync(category);

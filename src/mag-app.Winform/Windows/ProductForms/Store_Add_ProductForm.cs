@@ -1,15 +1,11 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
-using mag_app.Service.Services.CategoryService;
 using mag_app.Service.Services.ProductService;
-using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
-using System.ComponentModel;
 using System.Security.Cryptography;
 using System.Text;
-using System.Xml.Linq;
 
 namespace mag_app.Winform.Windows.ProductForms;
 
@@ -36,27 +32,57 @@ public partial class Store_Add_ProductForm : Form
     }
 
 
-
-
-
+    //
+    // Add Button click
+    //
     private void button1_Click(object sender, EventArgs e)
     {
         string barcodeResult;
 
-        if (barcodeTb.Visible ==  true && !string.IsNullOrEmpty(barcodeTb.Text))
+        if (barcodeTb.Visible == true && !string.IsNullOrEmpty(barcodeTb.Text))
         {
             barcodeResult = barcodeTb.Text;
             ProductPraparing(barcodeResult);
         }
-        else if(barcodeTb.Visible == false)
+        else if (barcodeTb.Visible == false)
         {
             byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
-            var value = BitConverter.ToInt64(generatedBarcode, 0) % 100000;
-            barcodeResult = value.ToString();
-            barcodeTb.Text = value.ToString();
-            ProductPraparing(barcodeResult);
+            var res = BitConverter.ToUInt32(generatedBarcode, 0) % 100000;
+
+            string barcode = CalculateEan13("999", "12345", res.ToString());
+            barcodeResult = barcode.ToString();
+            barcodeTb.Text = barcode.ToString();
+            ProductPraparing(barcode);
         }
         else MessageBox.Show("Заполните поле");
+    }
+
+
+
+    //
+    // Ean 13 barcode Generator
+    //
+    public static string CalculateEan13(string country, string manufacturer, string product)
+    {
+        string temp = $"{country}{manufacturer}{product}";
+        int sum = 0;
+        int digit = 0;
+
+        for (int i = temp.Length; i >= 1; i--)
+        {
+            digit = Convert.ToInt32(temp.Substring(i - 1, 1));
+
+            if (i % 2 == 0)
+            {
+                sum += digit * 3;
+            }
+            else
+            {
+                sum += digit * 1;
+            }
+        }
+        int checkSum = (10 - (sum % 10)) % 10;
+        return $"{temp}{checkSum}";
     }
 
 
@@ -106,12 +132,11 @@ public partial class Store_Add_ProductForm : Form
             }
         }
         else MessageBox.Show("Заполните поле");
-
     }
 
 
 
-   
+
 
 
     // UX Design Codes
@@ -165,18 +190,18 @@ public partial class Store_Add_ProductForm : Form
     }
 
 
-  
+
 
 
     private void button2_Click(object sender, EventArgs e)
     {
-    
+
         if (barcodeQuestion.Visible == true)
         {
-            barcodeCheckbox.Image = Image.FromFile("D:\\shohrux\\mag-app\\src\\mag-app.Winform\\Resources\\Icons\\check-box.png");
+            barcodeCheckbox.Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/check-box.png");
             barcodeQuestion.Visible = false;
             barcodeLabel.Visible = true;
-            barcodeTb.Visible= true;
+            barcodeTb.Visible = true;
         }
         else
         {

@@ -36,7 +36,7 @@
             // 
             this.subCategoryNameTb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.subCategoryNameTb.Location = new System.Drawing.Point(34, 37);
-            this.subCategoryNameTb.MaxLength = 15;
+            this.subCategoryNameTb.MaxLength = 20;
             this.subCategoryNameTb.Name = "subCategoryNameTb";
             this.subCategoryNameTb.Size = new System.Drawing.Size(327, 29);
             this.subCategoryNameTb.TabIndex = 5;
