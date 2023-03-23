@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.productDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.produtNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchasedPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productDtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,14 +65,89 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Мои продукты:";
             // 
-            // flowLayoutPanel1
+            // dataGridView1
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 32);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(827, 567);
-            this.flowLayoutPanel1.TabIndex = 1;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.produtNameDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.purchasedPriceDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.barcodeDataGridViewTextBoxColumn,
+            this.editColumn,
+            this.deleteColumn});
+            this.dataGridView1.DataSource = this.productDtoBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(827, 567);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // productDtoBindingSource
+            // 
+            this.productDtoBindingSource.DataSource = typeof(mag_app.Service.Dtos.Products.ProductDto);
+            // 
+            // produtNameDataGridViewTextBoxColumn
+            // 
+            this.produtNameDataGridViewTextBoxColumn.DataPropertyName = "ProdutName";
+            this.produtNameDataGridViewTextBoxColumn.HeaderText = "ProdutName";
+            this.produtNameDataGridViewTextBoxColumn.Name = "produtNameDataGridViewTextBoxColumn";
+            this.produtNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.produtNameDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // purchasedPriceDataGridViewTextBoxColumn
+            // 
+            this.purchasedPriceDataGridViewTextBoxColumn.DataPropertyName = "PurchasedPrice";
+            this.purchasedPriceDataGridViewTextBoxColumn.HeaderText = "PurchasedPrice";
+            this.purchasedPriceDataGridViewTextBoxColumn.Name = "purchasedPriceDataGridViewTextBoxColumn";
+            this.purchasedPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchasedPriceDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // barcodeDataGridViewTextBoxColumn
+            // 
+            this.barcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.MaxInputLength = 13;
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // editColumn
+            // 
+            this.editColumn.DataPropertyName = "ProdutName";
+            this.editColumn.HeaderText = "Edit";
+            this.editColumn.Name = "editColumn";
+            this.editColumn.ReadOnly = true;
+            this.editColumn.Width = 60;
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.DataPropertyName = "ProdutName";
+            this.deleteColumn.HeaderText = "Delete";
+            this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.ReadOnly = true;
+            this.deleteColumn.Width = 60;
             // 
             // List_products
             // 
@@ -69,13 +155,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(827, 599);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "List_products";
             this.Text = "List_products";
             this.Load += new System.EventHandler(this.List_products_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productDtoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,7 +171,15 @@
         #endregion
 
         private Panel panel1;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Label label1;
+        private DataGridView dataGridView1;
+        private BindingSource productDtoBindingSource;
+        private DataGridViewTextBoxColumn produtNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn purchasedPriceDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
+        private DataGridViewButtonColumn editColumn;
+        private DataGridViewButtonColumn deleteColumn;
     }
 }

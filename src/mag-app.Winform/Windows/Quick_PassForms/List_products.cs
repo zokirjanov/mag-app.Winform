@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,19 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private void List_products_Load(object sender, EventArgs e)
         {
-
+            FillData();
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void FillData()
         {
-            ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
-            Color.DimGray, 1, ButtonBorderStyle.Solid, // left
-            Color.DimGray, 1, ButtonBorderStyle.Solid, // top
-            Color.White, 1, ButtonBorderStyle.Solid, // right
-            Color.White, 1, ButtonBorderStyle.Solid);// bottom
+            using (var db =  new AppDbContext())
+            {
+                var entity = db.Products.ToList();
+                foreach(var i in entity)
+                {
+                    productDtoBindingSource.Add(new ProductDto() {ProdutName = i.ProdutName, Barcode = i.Barcode,  Price=i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity});
+                }
+            }
         }
     }
 }
