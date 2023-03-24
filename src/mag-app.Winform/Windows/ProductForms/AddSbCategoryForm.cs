@@ -23,7 +23,6 @@ namespace mag_app.Winform.Windows.ProductForms
                 SubCategoryDto category = new SubCategoryDto()
                 {
                     SubCategoryName = subCategoryNameTb.Text,
-                    EmployeeId = IdentitySingelton.GetInstance().UserId,
                     CategoryId = CategoriesForm.categoryParent!.Id,
                 };
 

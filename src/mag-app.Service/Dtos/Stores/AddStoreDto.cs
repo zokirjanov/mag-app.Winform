@@ -22,6 +22,8 @@ namespace mag_app.Service.Dtos.Stores
             {
                 StoreName = storeDto.StoreName,
                 UserId = storeDto.UserId,
+                CreatedAt = TimeHelper.CurrentTime(),
+                UpdatedAt = TimeHelper.CurrentTime()
             };
         }
     }

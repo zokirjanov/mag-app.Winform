@@ -1,4 +1,5 @@
 ﻿using mag_app.Domain.Entities.Products;
+using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Common.Helpers;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,14 @@ namespace mag_app.Service.Dtos.Products
     public class ProductDto
     {
         public string ProdutName { get; set; } = string.Empty;
-        public int Quantity { get; set; }
-        public decimal  Price { get; set; }
-        public string Barcode { get; set; }
+        public decimal Price { get; set; }
         public decimal PurchasedPrice { get; set; }
+        public string Barcode { get; set; } = string.Empty;
+        public int Quantity { get; set; }
+        public string CategoryName { get; set; } = string.Empty;
+        public long CategoryId { get; set; }
+        public string SubcategoryName { get; set; } = string.Empty;
         public long SubCategoryId { get; set; }
-        public long StoreId { get; set; }
-        public long EmployeeId { get; set; }
         public DateTime UpdatedAt { get; set; }
 
         public static implicit operator Product(ProductDto productDto)
@@ -26,13 +28,14 @@ namespace mag_app.Service.Dtos.Products
             return new Product()
             {
                 ProdutName = productDto.ProdutName,
-                Quantity = productDto.Quantity,
                 Price = productDto.Price,
-                Barcode= productDto.Barcode,
                 PurchasedPrice = productDto.PurchasedPrice,
-                StoreId = productDto.StoreId,
+                Barcode = productDto.Barcode,
+                Quantity = productDto.Quantity,
+                CategoryName= productDto.CategoryName,
+                CategoryId= productDto.CategoryId,
+                SubcategoryName= productDto.SubcategoryName,
                 SubCategoryId = productDto.SubCategoryId,
-                EmployeeId = productDto.EmployeeId,
                 CreatedAt = TimeHelper.CurrentTime(),
                 UpdatedAt = productDto.UpdatedAt,
             };

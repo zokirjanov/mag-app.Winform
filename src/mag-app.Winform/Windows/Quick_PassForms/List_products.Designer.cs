@@ -36,7 +36,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.productDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.produtNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Store = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchasedPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,7 +78,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.produtNameDataGridViewTextBoxColumn,
-            this.Store,
             this.priceDataGridViewTextBoxColumn,
             this.purchasedPriceDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
@@ -107,12 +105,6 @@
             this.produtNameDataGridViewTextBoxColumn.Name = "produtNameDataGridViewTextBoxColumn";
             this.produtNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.produtNameDataGridViewTextBoxColumn.Width = 180;
-            // 
-            // Store
-            // 
-            this.Store.HeaderText = "Store";
-            this.Store.Name = "Store";
-            this.Store.ReadOnly = true;
             // 
             // priceDataGridViewTextBoxColumn
             // 
@@ -203,7 +195,6 @@
         private DataGridView dataGridView1;
         private BindingSource productDtoBindingSource;
         private DataGridViewTextBoxColumn produtNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Store;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn purchasedPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;

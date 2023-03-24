@@ -1,12 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.DataAccess.Interfaces;
 using mag_app.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mag_app.DataAccess.Repositories
 {

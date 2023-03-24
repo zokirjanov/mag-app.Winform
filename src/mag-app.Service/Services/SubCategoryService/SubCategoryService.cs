@@ -30,7 +30,7 @@ namespace mag_app.Service.Services.SubCategoryService
 
         public async Task<string> CreateCategoryAsync(SubCategoryDto subCategory)
         {
-            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId && x.EmployeeId == subCategory.EmployeeId);
+            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId);
             if (check is not null) return "Такая подкатегория существует, попробуйте другое название подкатегории";
             var cat = (SubCategory)subCategory;
             _appDbContext.SubCategories.Add(cat);
@@ -61,9 +61,9 @@ namespace mag_app.Service.Services.SubCategoryService
 
 
 
-        public async Task<List<SubCategory>> GetAllAsync(long cid, long eid)
+        public async Task<List<SubCategory>> GetAllAsync(long cid)
         {
-            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == cid && x.EmployeeId == eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == cid).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }

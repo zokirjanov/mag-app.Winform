@@ -41,7 +41,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Store_Add_ProductForm form = new Store_Add_ProductForm(new AppDbContext());
                 form.ShowDialog();
             };
-            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id, IdentitySingelton.GetInstance().UserId);
+            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");

@@ -28,7 +28,7 @@ namespace mag_app.Service.Services.CategoryService
 
         public async Task<string> CreateCategoryAsync(CategoryDto category)
         {
-            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName && x.StoreId == category.StoreId && x.EmployeeId == category.EmployeeId);
+            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName && x.StoreId == category.StoreId);
             if (check is not null) return "Such a category exists, try another category name";
             var cat = (Category)category;
             _appDbContext.Categories.Add(cat);
@@ -62,7 +62,7 @@ namespace mag_app.Service.Services.CategoryService
 
         public async Task<List<Category>> GetAllAsync(long Eid)
         {
-            var result = await _appDbContext.Categories.Where(x => x.EmployeeId == Eid).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.Categories.OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
