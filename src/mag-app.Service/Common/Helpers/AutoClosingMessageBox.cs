@@ -14,7 +14,7 @@ namespace mag_app.Service.Common.Helpers
         AutoClosingMessageBox(string text, string caption, int timeout)
         {
             _caption = caption;
-            _timeoutTimer = new System.Threading.Timer(OnTimerElapsed,
+            _timeoutTimer = new System.Threading.Timer(OnTimerElapsed!,
                 null, timeout, System.Threading.Timeout.Infinite);
             using (_timeoutTimer)
                 MessageBox.Show(text, caption);
