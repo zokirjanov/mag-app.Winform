@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store_Add_ProductForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.productQuantity = new System.Windows.Forms.NumericUpDown();
             this.productPriceTb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.productNameTb = new System.Windows.Forms.TextBox();
@@ -50,31 +48,7 @@
             this.barcodeLabel = new System.Windows.Forms.Label();
             this.barcodeCheckbox = new System.Windows.Forms.Button();
             this.barcodeQuestion = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(34, 419);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 22);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "количество:";
-            // 
-            // productQuantity
-            // 
-            this.productQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productQuantity.Location = new System.Drawing.Point(228, 417);
-            this.productQuantity.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.productQuantity.Name = "productQuantity";
-            this.productQuantity.Size = new System.Drawing.Size(120, 29);
-            this.productQuantity.TabIndex = 17;
             // 
             // productPriceTb
             // 
@@ -93,7 +67,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(34, 487);
+            this.button1.Location = new System.Drawing.Point(32, 428);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
             this.button1.TabIndex = 15;
@@ -226,7 +200,7 @@
             // 
             this.categorylabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.categorylabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.categorylabel.Location = new System.Drawing.Point(279, 66);
+            this.categorylabel.Location = new System.Drawing.Point(279, 41);
             this.categorylabel.Name = "categorylabel";
             this.categorylabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.categorylabel.Size = new System.Drawing.Size(69, 19);
@@ -237,7 +211,7 @@
             // 
             this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.subCategoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subCategoryLabel.Location = new System.Drawing.Point(257, 109);
+            this.subCategoryLabel.Location = new System.Drawing.Point(257, 84);
             this.subCategoryLabel.Name = "subCategoryLabel";
             this.subCategoryLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.subCategoryLabel.Size = new System.Drawing.Size(91, 19);
@@ -290,7 +264,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(385, 563);
+            this.ClientSize = new System.Drawing.Size(385, 512);
             this.Controls.Add(this.barcodeQuestion);
             this.Controls.Add(this.barcodeCheckbox);
             this.Controls.Add(this.barcodeLabel);
@@ -307,8 +281,6 @@
             this.Controls.Add(this.purchasedPriceChecker);
             this.Controls.Add(this.productNameCheckLabel);
             this.Controls.Add(this.purchasePriceTb);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.productQuantity);
             this.Controls.Add(this.productPriceTb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.productNameTb);
@@ -319,15 +291,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store_Add_ProductForm";
             this.Load += new System.EventHandler(this.Store_Add_ProductForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Label label1;
-        private NumericUpDown productQuantity;
         private TextBox productPriceTb;
         private Button button1;
         private TextBox productNameTb;

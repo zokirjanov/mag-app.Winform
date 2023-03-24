@@ -23,8 +23,6 @@ public partial class Store_Add_ProductForm : Form
 
     private void Store_Add_ProductForm_Load(object sender, EventArgs e)
     {
-        productQuantity.Minimum = 0;
-        productQuantity.Maximum = 9999999999;
         barcodeLabel.Visible = false;
         barcodeTb.Visible = false;
         categorylabel.Text = CategoriesForm.categoryParent!.CategoryTitle;
@@ -98,8 +96,8 @@ public partial class Store_Add_ProductForm : Form
                 ProdutName = productNameTb.Text,
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeResult,
+                Quantity = 0,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                Quantity = Convert.ToInt32(productQuantity.Value),
                 CategoryName = CategoriesForm.categoryParent.CategoryTitle,
                 CategoryId = CategoriesForm.categoryParent.Id,
                 SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
@@ -117,7 +115,6 @@ public partial class Store_Add_ProductForm : Form
                     productNameTb.Focus();
                     productNameTb.Text = "";
                     productPriceTb.Text = "";
-                    productQuantity.Value = 0;
                     purchasePriceTb.Text = "";
                     barcodeTb.Text = "";
                 }

@@ -101,7 +101,7 @@
             // produtNameDataGridViewTextBoxColumn
             // 
             this.produtNameDataGridViewTextBoxColumn.DataPropertyName = "ProdutName";
-            this.produtNameDataGridViewTextBoxColumn.HeaderText = "ProdutName";
+            this.produtNameDataGridViewTextBoxColumn.HeaderText = "наименование товара";
             this.produtNameDataGridViewTextBoxColumn.Name = "produtNameDataGridViewTextBoxColumn";
             this.produtNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.produtNameDataGridViewTextBoxColumn.Width = 180;
@@ -109,21 +109,21 @@
             // priceDataGridViewTextBoxColumn
             // 
             this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "цена";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             this.priceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // purchasedPriceDataGridViewTextBoxColumn
             // 
             this.purchasedPriceDataGridViewTextBoxColumn.DataPropertyName = "PurchasedPrice";
-            this.purchasedPriceDataGridViewTextBoxColumn.HeaderText = "PurchasedPrice";
+            this.purchasedPriceDataGridViewTextBoxColumn.HeaderText = "себестоимсть";
             this.purchasedPriceDataGridViewTextBoxColumn.Name = "purchasedPriceDataGridViewTextBoxColumn";
             this.purchasedPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "количество";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -131,7 +131,7 @@
             // 
             this.barcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "штрих-код";
             this.barcodeDataGridViewTextBoxColumn.MaxInputLength = 13;
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -139,34 +139,37 @@
             // editbtn
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5, 1, 5, 1);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.DimGray;
             this.editbtn.DefaultCellStyle = dataGridViewCellStyle1;
             this.editbtn.HeaderText = "Edit";
             this.editbtn.Name = "editbtn";
             this.editbtn.ReadOnly = true;
             this.editbtn.Text = "⇙";
             this.editbtn.ToolTipText = "edit the row";
+            this.editbtn.UseColumnTextForButtonValue = true;
             this.editbtn.Width = 50;
             // 
             // deleteBtn
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 1, 5, 1);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.deleteBtn.DefaultCellStyle = dataGridViewCellStyle2;
             this.deleteBtn.HeaderText = "Delete";
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.ReadOnly = true;
             this.deleteBtn.Text = "⨂";
+            this.deleteBtn.UseColumnTextForButtonValue = true;
             this.deleteBtn.Width = 50;
             // 
             // List_products

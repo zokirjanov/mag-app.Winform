@@ -8,7 +8,7 @@ namespace mag_app.Winform
     public partial class MainForm : Form
     {
         private AddStoreForm _addStore;
-        public static MainForm mainParent;
+        public static MainForm mainParent = default!;
         public Button btn;
         public Panel pnl;
 

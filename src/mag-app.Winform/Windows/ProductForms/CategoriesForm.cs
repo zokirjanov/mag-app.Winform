@@ -15,7 +15,7 @@ namespace mag_app.Winform.Windows.ProductForms;
 public partial class CategoriesForm : Form
 {
     private readonly CategoryService _service;
-    public static CategoriesForm? categoryParent;
+    public static CategoriesForm categoryParent = default!;
     public CategoriesForm(AppDbContext appDbContext)
     {
         _service = new CategoryService(appDbContext);
@@ -23,7 +23,7 @@ public partial class CategoriesForm : Form
         InitializeComponent();
     }
     public long Id { get; set; }
-    public string CategoryTitle { get; set; }
+    public string CategoryTitle { get; set; } = string.Empty;
 
 
 

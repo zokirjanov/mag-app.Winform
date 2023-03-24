@@ -28,6 +28,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         }
 
 
+
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
@@ -38,6 +39,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private void FillData()
         {           
+            DataGridViewCellStyle dataGridViewCellStyle= new DataGridViewCellStyle();
+            dataGridViewCellStyle.BackColor = Color.OrangeRed;
+
             using (var db =  new AppDbContext())
             {
                 var entity = db.Products.ToList();
@@ -53,10 +57,10 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
 
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
-                var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 Row_Update row = new Row_Update(new AppDbContext());
                 row.ProductName = value!;
                 row.ShowDialog();
@@ -65,10 +69,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
-                DialogResult dlg = MessageBox.Show("Вы хотите удалить товар?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
-                    var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                     var res = _service.DeleteAsync(value!);
                     if (await res == "Успешно удалено") AutoClosingMessageBox.Show(await res, "Удалить", 300);
                     else if (await res == "Товар не найден") MessageBox.Show(await res);
