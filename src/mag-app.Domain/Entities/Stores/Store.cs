@@ -13,7 +13,7 @@ namespace mag_app.Domain.Entities.Stores
     {
         public string StoreName { get; set; } = string.Empty;
         public long EmployeeId { get; set; }
-        public virtual User User { get; set; } = default!; 
-        public List<Category> Categories { get; set; }
+        public virtual User User { get; set; } = default!;
+        public List<Category> Categories { get; set; } = default!;
     }
 }

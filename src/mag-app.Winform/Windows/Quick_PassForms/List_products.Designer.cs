@@ -29,17 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.productDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.produtNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Store = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchasedPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.editbtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productDtoBindingSource)).BeginInit();
@@ -69,17 +72,20 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.produtNameDataGridViewTextBoxColumn,
+            this.Store,
             this.priceDataGridViewTextBoxColumn,
             this.purchasedPriceDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.barcodeDataGridViewTextBoxColumn,
-            this.editColumn,
-            this.deleteColumn});
+            this.editbtn,
+            this.deleteBtn});
             this.dataGridView1.DataSource = this.productDtoBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 32);
@@ -88,6 +94,7 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(827, 567);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // productDtoBindingSource
             // 
@@ -101,13 +108,18 @@
             this.produtNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.produtNameDataGridViewTextBoxColumn.Width = 180;
             // 
+            // Store
+            // 
+            this.Store.HeaderText = "Store";
+            this.Store.Name = "Store";
+            this.Store.ReadOnly = true;
+            // 
             // priceDataGridViewTextBoxColumn
             // 
             this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
             this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn.Width = 150;
             // 
             // purchasedPriceDataGridViewTextBoxColumn
             // 
@@ -115,7 +127,6 @@
             this.purchasedPriceDataGridViewTextBoxColumn.HeaderText = "PurchasedPrice";
             this.purchasedPriceDataGridViewTextBoxColumn.Name = "purchasedPriceDataGridViewTextBoxColumn";
             this.purchasedPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.purchasedPriceDataGridViewTextBoxColumn.Width = 150;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
@@ -133,21 +144,38 @@
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // editColumn
+            // editbtn
             // 
-            this.editColumn.DataPropertyName = "ProdutName";
-            this.editColumn.HeaderText = "Edit";
-            this.editColumn.Name = "editColumn";
-            this.editColumn.ReadOnly = true;
-            this.editColumn.Width = 60;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.editbtn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.editbtn.HeaderText = "Edit";
+            this.editbtn.Name = "editbtn";
+            this.editbtn.ReadOnly = true;
+            this.editbtn.Text = "⇙";
+            this.editbtn.ToolTipText = "edit the row";
+            this.editbtn.Width = 50;
             // 
-            // deleteColumn
+            // deleteBtn
             // 
-            this.deleteColumn.DataPropertyName = "ProdutName";
-            this.deleteColumn.HeaderText = "Delete";
-            this.deleteColumn.Name = "deleteColumn";
-            this.deleteColumn.ReadOnly = true;
-            this.deleteColumn.Width = 60;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.deleteBtn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.deleteBtn.HeaderText = "Delete";
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.ReadOnly = true;
+            this.deleteBtn.Text = "⨂";
+            this.deleteBtn.Width = 50;
             // 
             // List_products
             // 
@@ -175,11 +203,12 @@
         private DataGridView dataGridView1;
         private BindingSource productDtoBindingSource;
         private DataGridViewTextBoxColumn produtNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Store;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn purchasedPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
-        private DataGridViewButtonColumn editColumn;
-        private DataGridViewButtonColumn deleteColumn;
+        private DataGridViewButtonColumn editbtn;
+        private DataGridViewButtonColumn deleteBtn;
     }
 }

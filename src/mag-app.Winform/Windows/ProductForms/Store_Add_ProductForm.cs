@@ -102,7 +102,7 @@ public partial class Store_Add_ProductForm : Form
                 Quantity = Convert.ToInt32(productQuantity.Value),
                 StoreId = MyStoreForm.myStoreFormParent.Id,
                 SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
-                EmployeeId = IdentitySingelton.GetInstance().EmployeeId,
+                EmployeeId = IdentitySingelton.GetInstance().UserId,
                 UpdatedAt = TimeHelper.CurrentTime()
             };
 

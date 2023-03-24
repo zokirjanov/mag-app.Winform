@@ -49,7 +49,7 @@ public partial class CategoriesForm : Form
             AddCategoryForm addCategoryForm = new AddCategoryForm(new AppDbContext());
             addCategoryForm.ShowDialog();
         };
-        var items = await _service.GetAllAsync(IdentitySingelton.GetInstance().EmployeeId);
+        var items = await _service.GetAllAsync(IdentitySingelton.GetInstance().UserId);
         if (items is null)
         {
             MessageBox.Show("Категории не найдены");

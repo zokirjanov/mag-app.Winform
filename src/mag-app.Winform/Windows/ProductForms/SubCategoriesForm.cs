@@ -46,7 +46,7 @@ public partial class SubCategoriesForm : Form
             AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm(new AppDbContext());
             addSbCategoryForm.ShowDialog();
         };
-        var items = await _service.GetAllAsync(CategoriesForm.categoryParent!.Id, IdentitySingelton.GetInstance().EmployeeId);
+        var items = await _service.GetAllAsync(CategoriesForm.categoryParent!.Id, IdentitySingelton.GetInstance().UserId);
         if (items is null)
         {
             MessageBox.Show("Подкатегории не найдены");

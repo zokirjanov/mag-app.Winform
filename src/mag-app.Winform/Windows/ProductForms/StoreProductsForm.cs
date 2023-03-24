@@ -137,6 +137,7 @@ namespace mag_app.Winform.Windows.Product_Forms
         private void quick_PassBtn_Click(object sender, EventArgs e)
         {
             storeProductParent.openChildForm(new List_products(new AppDbContext()));
+            storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();
             AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
