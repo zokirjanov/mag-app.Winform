@@ -14,14 +14,14 @@ namespace mag_app.Service.Dtos.Stores
     {
         [MaxLength(30)]
         public string StoreName { get; set; } = string.Empty;
-        public long UserId { get; set; }
+        public long EmployeeId { get; set; }
 
         public static implicit operator Store(AddStoreDto storeDto)
         {
             return new Store()
             {
                 StoreName = storeDto.StoreName,
-                UserId = storeDto.UserId,
+                EmployeeId = storeDto.EmployeeId,
             };
         }
     }
