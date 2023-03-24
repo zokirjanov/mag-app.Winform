@@ -1,4 +1,5 @@
-﻿using mag_app.Domain.Entities.SubCategories;
+﻿using mag_app.Domain.Common;
+using mag_app.Domain.Entities.SubCategories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace mag_app.Domain.Entities.AllProducts
 {
-    public class AllProducts
+    public class AllProducts : Auditable
     {
         public string ProdutName { get; set; } = string.Empty;
         public string Barcode { get; set; } = string.Empty;
