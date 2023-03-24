@@ -11,13 +11,50 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230322111308_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230324102322_initalcreate")]
+    partial class initalcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
+
+            modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProducts", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Barcode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProdutName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("PurchasedPrice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("StoreId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AllProducts");
+                });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Categories.Category", b =>
                 {
@@ -102,9 +139,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("EmployeeId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("StoreName")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -112,9 +146,12 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Stores");
                 });
@@ -207,7 +244,7 @@ namespace mag_app.DataAccess.Migrations
                 {
                     b.HasOne("mag_app.Domain.Entities.Users.User", "User")
                         .WithMany("Stores")
-                        .HasForeignKey("EmployeeId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -21,7 +21,7 @@ namespace mag_app.Winform.Windows
                 AddStoreDto storeDto = new AddStoreDto()
                 {
                     StoreName = storeNametb.Text,
-                    EmployeeId = IdentitySingelton.GetInstance().UserId
+                    UserId = IdentitySingelton.GetInstance().UserId
                 };
 
                 var res = await _service.CreateAsync(storeDto);

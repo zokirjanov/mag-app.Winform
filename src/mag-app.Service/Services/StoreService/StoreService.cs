@@ -20,8 +20,7 @@ namespace mag_app.Service.Services.StoreService
 
         public async Task<string> CreateAsync(AddStoreDto storeDto)
         {
-            var storee = await _appDbContext.Stores.FirstOrDefaultAsync(
-            x => x.StoreName.ToLower() == storeDto.StoreName.ToLower() && x.EmployeeId == storeDto.EmployeeId);
+            var storee = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName.ToLower() == storeDto.StoreName.ToLower() && x.UserId == storeDto.UserId);
             if (storee != null) { return "Категория уже существует"; }
             var store = (Store)storeDto;
             _appDbContext.Stores.Add(store);
@@ -49,14 +48,14 @@ namespace mag_app.Service.Services.StoreService
         public async Task<List<Store>> GetAllAsync()
         {
             long id = IdentitySingelton.GetInstance().UserId;
-            var result = await _appDbContext.Stores.Where(x => x.EmployeeId == id).ToListAsync();
+            var result = await _appDbContext.Stores.Where(x => x.UserId == id).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
 
         public async Task<long> GetByName(string name)
         {
-            var result = _appDbContext.Stores.First(x => x.StoreName == name);
+            var result = await _appDbContext.Stores.FirstAsync(x => x.StoreName == name);
             if (result is not null)
             {
                 return  result.Id;
