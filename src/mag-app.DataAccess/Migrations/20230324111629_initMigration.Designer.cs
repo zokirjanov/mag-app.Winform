@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230324102322_initalcreate")]
-    partial class initalcreate
+    [Migration("20230324111629_initMigration")]
+    partial class initMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,9 +69,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("EmployeeId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<long>("StoreId")
                         .HasColumnType("INTEGER");
 
@@ -95,11 +92,15 @@ namespace mag_app.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<long>("CategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("EmployeeId")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
@@ -114,11 +115,12 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("StoreId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<long>("SubCategoryId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("SubcategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
@@ -167,9 +169,6 @@ namespace mag_app.DataAccess.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
-
-                    b.Property<long>("EmployeeId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SubCategoryName")
                         .IsRequired()
