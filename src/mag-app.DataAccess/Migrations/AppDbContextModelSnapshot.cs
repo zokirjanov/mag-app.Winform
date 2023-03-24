@@ -137,9 +137,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("EmployeeId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("StoreName")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -147,9 +144,12 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Stores");
                 });
@@ -242,7 +242,7 @@ namespace mag_app.DataAccess.Migrations
                 {
                     b.HasOne("mag_app.Domain.Entities.Users.User", "User")
                         .WithMany("Stores")
-                        .HasForeignKey("EmployeeId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

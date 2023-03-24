@@ -26,8 +26,6 @@ public class AppDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        var path = (Environment.CurrentDirectory);
-  //    optionsBuilder.UseSqlite("Data Source= ../../../../../localDatabase/LocalDatabase.db");
         optionsBuilder.UseSqlite("Data Source = LocalDatabase.db");
     }
 
