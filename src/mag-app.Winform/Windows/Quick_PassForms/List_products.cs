@@ -36,8 +36,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-
-
         private void FillData()
         {           
             using (var db =  new AppDbContext())
@@ -45,7 +43,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 var entity = db.Products.ToList();
                 foreach (var i in entity)
                 {
-                    productDtoBindingSource.Add(new ProductDto() {ProdutName = i.ProdutName, Barcode = i.Barcode,  Price=i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity});
+                    productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity });
                 }
             }
         }
@@ -53,17 +51,19 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
                 var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                ProductUpdateForm productUpdateForm = new ProductUpdateForm(new AppDbContext());
-                productUpdateForm.ProductName = value!;
-                productUpdateForm.ShowDialog();
+                Row_Update row = new Row_Update(new AppDbContext());
+                row.ProductName = value!;
+                row.ShowDialog();
             }
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
+
+
+            else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
                 DialogResult dlg = MessageBox.Show("Вы хотите удалить товар?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
@@ -81,6 +81,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     //do nothing
                 }
             }
+
         }
     }
 }
