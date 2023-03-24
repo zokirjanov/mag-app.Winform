@@ -27,7 +27,8 @@ public class AppDbContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
         var path = (Environment.CurrentDirectory);
-        optionsBuilder.UseSqlite("Data Source= ../../../../../Database/LocalDatabase.db");
+  //    optionsBuilder.UseSqlite("Data Source= ../../../../../localDatabase/LocalDatabase.db");
+        optionsBuilder.UseSqlite("Data Source = LocalDatabase.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,7 +39,7 @@ public class AppDbContext : DbContext
             .Entity<User>()
             .HasMany(t => t.Stores)
             .WithOne(c => c.User)
-            .HasForeignKey(c => c.EmployeeId)
+            .HasForeignKey(c => c.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder

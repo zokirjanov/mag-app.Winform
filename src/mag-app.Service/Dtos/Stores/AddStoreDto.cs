@@ -21,7 +21,7 @@ namespace mag_app.Service.Dtos.Stores
             return new Store()
             {
                 StoreName = storeDto.StoreName,
-                EmployeeId = storeDto.EmployeeId,
+                UserId = storeDto.EmployeeId,
             };
         }
     }
