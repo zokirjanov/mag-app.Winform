@@ -8,10 +8,10 @@ namespace mag_app.Service.Common.Helpers
 {
     public class IdentitySingelton
     {
-        public long EmployeeId { get; private set; }
+        public long UserId { get; private set; }
         public long StoreId { get; private set; }
 
-        private static IdentitySingelton _identitySingelton;
+        private static IdentitySingelton _identitySingelton = default!;
         private IdentitySingelton()
         {
         }
@@ -20,7 +20,7 @@ namespace mag_app.Service.Common.Helpers
             if (_identitySingelton is null)
             {
                 _identitySingelton = new IdentitySingelton();
-                _identitySingelton.EmployeeId = userId;
+                _identitySingelton.UserId = userId;
             }
             else throw new Exception("Is not null Instance");
         }

@@ -12,8 +12,8 @@ namespace mag_app.Domain.Entities.Stores
     public class Store : Auditable
     {
         public string StoreName { get; set; } = string.Empty;
-        public long EmployeeId { get; set; }
-        public virtual User User { get; set; } = default!; 
-        public List<Category> Categories { get; set; }
+        public long UserId { get; set; }
+        public virtual User User { get; set; } = default!;
+        public List<Category> Categories { get; set; } = default!;
     }
 }

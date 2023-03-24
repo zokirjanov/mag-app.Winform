@@ -35,7 +35,7 @@ public class AppDbContext : DbContext
             .Entity<User>()
             .HasMany(t => t.Stores)
             .WithOne(c => c.User)
-            .HasForeignKey(c => c.EmployeeId)
+            .HasForeignKey(c => c.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder
