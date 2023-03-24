@@ -100,9 +100,10 @@ public partial class Store_Add_ProductForm : Form
                 Barcode = barcodeResult,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Quantity = Convert.ToInt32(productQuantity.Value),
-                StoreId = MyStoreForm.myStoreFormParent.Id,
+                CategoryName = CategoriesForm.categoryParent.CategoryTitle,
+                CategoryId = CategoriesForm.categoryParent.Id,
+                SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
                 SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
-                EmployeeId = IdentitySingelton.GetInstance().UserId,
                 UpdatedAt = TimeHelper.CurrentTime()
             };
 

@@ -13,9 +13,8 @@ namespace mag_app.Domain.Entities.SubCategories
     public class SubCategory : Auditable
     {
         public string SubCategoryName { get; set; } = string.Empty;
-        public long EmployeeId { get; set; }
         public long CategoryId { get; set; }
         public virtual Category Category { get; set; } = default!;
-        public List<Product> Products { get; set; }
+        public List<Product> Products { get; set; } = default!;
     }
 }

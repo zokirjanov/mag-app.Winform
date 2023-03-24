@@ -25,7 +25,6 @@ namespace mag_app.Winform.Windows.ProductForms
                 {
                     CategoryName = categoryNameTb.Text,
                     StoreId = MyStoreForm.myStoreFormParent.Id,
-                    EmployeeId = IdentitySingelton.GetInstance().UserId
                 };
 
                 var res = await _service.CreateCategoryAsync(category);

@@ -19,7 +19,7 @@ namespace mag_app.Service.Services.ProductService
 
         public async Task<string> CreateProductAsync(ProductDto product)
         {
-            var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.StoreId == product.StoreId && x.EmployeeId == product.EmployeeId);
+            var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.SubCategoryId == product.SubCategoryId);
             if (check is not null) return "Такое название продукта существует, попробуйте другое название категории";
             var pro = (Product)product;
             _appDbContext.Products.Add(pro);
@@ -50,9 +50,9 @@ namespace mag_app.Service.Services.ProductService
 
 
 
-        public async Task<IEnumerable<Product>> GetAllAsync(long cId, long eId)
+        public async Task<IEnumerable<Product>> GetAllAsync(long cId)
         {
-            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cId && x.EmployeeId == eId).OrderByDescending(x => x.CreatedAt).ToListAsync();
+            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cId).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }
@@ -62,7 +62,7 @@ namespace mag_app.Service.Services.ProductService
 
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
-            var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower() && x.StoreId == product.StoreId);
+            var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
             //if (checkname is null)
             //{
             var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);

@@ -19,8 +19,8 @@ public partial class CategoriesForm : Form
     public CategoriesForm(AppDbContext appDbContext)
     {
         _service = new CategoryService(appDbContext);
-        InitializeComponent();
         categoryParent = this;
+        InitializeComponent();
     }
     public long Id { get; set; }
     public string CategoryTitle { get; set; }
