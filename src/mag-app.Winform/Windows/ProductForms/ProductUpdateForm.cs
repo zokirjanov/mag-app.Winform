@@ -1,5 +1,4 @@
-﻿using BarcodeLib;
-using mag_app.DataAccess.DbContexts;
+﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;

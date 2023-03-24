@@ -12,6 +12,6 @@ namespace mag_app.Domain.Entities.Categories
         public long EmployeeId { get; set; }
         public long StoreId { get; set; }
         public virtual Store Store { get; set; } = default!;
-        public List<SubCategory> SubCategories { get; set; }
+        public List<SubCategory> SubCategories { get; set; } = default!;
     }
 }
