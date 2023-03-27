@@ -47,7 +47,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 var entity = db.Products.ToList();
                 foreach (var i in entity)
                 {
-                    productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity });
+                    productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, CategoryName = i.CategoryName, SubcategoryName = i.SubcategoryName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity });
                 }
             }
         }

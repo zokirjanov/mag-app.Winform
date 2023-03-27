@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StoreProductsForm));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.quick_PassBtn = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.productBtn = new System.Windows.Forms.Button();
             this.productChildPanel = new System.Windows.Forms.Panel();
@@ -37,7 +38,6 @@
             this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.subtitleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.quick_PassBtn = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,16 +51,32 @@
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(219, 638);
+            this.MenuPanel.Size = new System.Drawing.Size(219, 661);
             this.MenuPanel.TabIndex = 1;
             this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
+            // 
+            // quick_PassBtn
+            // 
+            this.quick_PassBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.quick_PassBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.quick_PassBtn.Image = ((System.Drawing.Image)(resources.GetObject("quick_PassBtn.Image")));
+            this.quick_PassBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.quick_PassBtn.Location = new System.Drawing.Point(13, 84);
+            this.quick_PassBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.quick_PassBtn.Name = "quick_PassBtn";
+            this.quick_PassBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.quick_PassBtn.Size = new System.Drawing.Size(194, 60);
+            this.quick_PassBtn.TabIndex = 3;
+            this.quick_PassBtn.Text = "Продукты";
+            this.quick_PassBtn.UseVisualStyleBackColor = false;
+            this.quick_PassBtn.Click += new System.EventHandler(this.quick_PassBtn_Click);
             // 
             // backButton
             // 
             this.backButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.backButton.Image = ((System.Drawing.Image)(resources.GetObject("backButton.Image")));
             this.backButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.backButton.Location = new System.Drawing.Point(11, 593);
+            this.backButton.Location = new System.Drawing.Point(12, 611);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(194, 38);
             this.backButton.TabIndex = 1;
@@ -87,9 +103,9 @@
             // productChildPanel
             // 
             this.productChildPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.productChildPanel.Location = new System.Drawing.Point(219, 42);
+            this.productChildPanel.Location = new System.Drawing.Point(219, 46);
             this.productChildPanel.Name = "productChildPanel";
-            this.productChildPanel.Size = new System.Drawing.Size(861, 596);
+            this.productChildPanel.Size = new System.Drawing.Size(990, 615);
             this.productChildPanel.TabIndex = 2;
             // 
             // store
@@ -111,7 +127,7 @@
             this.titleFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleFlowPanel.Location = new System.Drawing.Point(219, 18);
             this.titleFlowPanel.Name = "titleFlowPanel";
-            this.titleFlowPanel.Size = new System.Drawing.Size(861, 24);
+            this.titleFlowPanel.Size = new System.Drawing.Size(990, 28);
             this.titleFlowPanel.TabIndex = 3;
             this.titleFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.titleFlowPanel_Paint);
             // 
@@ -120,37 +136,21 @@
             this.subtitleFlowPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.subtitleFlowPanel.Location = new System.Drawing.Point(219, 0);
             this.subtitleFlowPanel.Name = "subtitleFlowPanel";
-            this.subtitleFlowPanel.Size = new System.Drawing.Size(861, 18);
+            this.subtitleFlowPanel.Size = new System.Drawing.Size(990, 18);
             this.subtitleFlowPanel.TabIndex = 4;
-            // 
-            // quick_PassBtn
-            // 
-            this.quick_PassBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.quick_PassBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.quick_PassBtn.Image = ((System.Drawing.Image)(resources.GetObject("quick_PassBtn.Image")));
-            this.quick_PassBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.quick_PassBtn.Location = new System.Drawing.Point(13, 84);
-            this.quick_PassBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.quick_PassBtn.Name = "quick_PassBtn";
-            this.quick_PassBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.quick_PassBtn.Size = new System.Drawing.Size(194, 60);
-            this.quick_PassBtn.TabIndex = 3;
-            this.quick_PassBtn.Text = "Продукты";
-            this.quick_PassBtn.UseVisualStyleBackColor = false;
-            this.quick_PassBtn.Click += new System.EventHandler(this.quick_PassBtn_Click);
             // 
             // StoreProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 638);
+            this.ClientSize = new System.Drawing.Size(1209, 661);
             this.Controls.Add(this.titleFlowPanel);
             this.Controls.Add(this.subtitleFlowPanel);
             this.Controls.Add(this.productChildPanel);
             this.Controls.Add(this.MenuPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1096, 677);
-            this.MinimumSize = new System.Drawing.Size(1096, 677);
+            this.MaximumSize = new System.Drawing.Size(1225, 700);
+            this.MinimumSize = new System.Drawing.Size(1225, 700);
             this.Name = "StoreProductsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StoreProductsForm";

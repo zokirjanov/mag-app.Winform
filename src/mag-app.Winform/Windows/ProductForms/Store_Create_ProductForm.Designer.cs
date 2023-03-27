@@ -42,7 +42,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(845, 32);
+            this.panel1.Size = new System.Drawing.Size(984, 32);
             this.panel1.TabIndex = 0;
             // 
             // button2
@@ -50,7 +50,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(762, 1);
+            this.button2.Location = new System.Drawing.Point(903, 1);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 29);
@@ -64,7 +64,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(327, 4);
+            this.label1.Location = new System.Drawing.Point(419, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 25);
             this.label1.TabIndex = 6;
@@ -76,7 +76,7 @@
             this.create_ProductFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.create_ProductFlowPanel.Location = new System.Drawing.Point(0, 32);
             this.create_ProductFlowPanel.Name = "create_ProductFlowPanel";
-            this.create_ProductFlowPanel.Size = new System.Drawing.Size(845, 567);
+            this.create_ProductFlowPanel.Size = new System.Drawing.Size(984, 569);
             this.create_ProductFlowPanel.TabIndex = 1;
             this.create_ProductFlowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.create_ProductFlowPanel_Paint);
             // 
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 599);
+            this.ClientSize = new System.Drawing.Size(984, 601);
             this.Controls.Add(this.create_ProductFlowPanel);
             this.Controls.Add(this.panel1);
             this.Name = "Store_Create_ProductForm";
