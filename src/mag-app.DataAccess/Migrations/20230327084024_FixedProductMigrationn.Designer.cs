@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230327074213_fixedBugsMigrationd")]
-    partial class fixedBugsMigrationd
+    [Migration("20230327084024_FixedProductMigrationn")]
+    partial class FixedProductMigrationn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

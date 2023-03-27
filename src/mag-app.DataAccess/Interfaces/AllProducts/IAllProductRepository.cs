@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mag_app.DataAccess.Interfaces.AllProducts
 {
-    internal interface IAllProductRepository : IGenericRepository<AllProduct>
+    public interface IAllProductRepository : IGenericRepository<AllProduct>
     {
     }
 }

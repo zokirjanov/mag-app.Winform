@@ -57,7 +57,8 @@ public class AppDbContext : DbContext
             .WithOne(c => c.SubCategory)
             .OnDelete(DeleteBehavior.Cascade);
 
-        modelBuilder.Entity<AllProduct>()
-            .HasKey(bc => new { bc.StoreId, bc.ProductId });
+        //modelBuilder
+        //    .Entity<AllProduct>()
+        //    .HasKey(bc => new { bc.StoreId, bc.ProductId });
     }
 }

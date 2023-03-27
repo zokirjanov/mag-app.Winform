@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230327074052_fixedBugsMigration")]
-    partial class fixedBugsMigration
+    [Migration("20230327075746_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,8 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("StoreId", "ProductId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("AllProducts");
                 });
@@ -209,7 +211,7 @@ namespace mag_app.DataAccess.Migrations
                 {
                     b.HasOne("mag_app.Domain.Entities.Products.Product", "Products")
                         .WithMany("AllProducts")
-                        .HasForeignKey("StoreId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -31,7 +31,7 @@ namespace mag_app.Service.Services.AllProductService
                 StoreId = product.StoreId,
                 Quantity = product.Quantity,
                 CreatedAt = TimeHelper.CurrentTime(),
-                UpdatedAt = TimeHelper.CurrentTime()
+                UpdatedAt = TimeHelper.CurrentTime(),
             };
 
             _appDbContext.AllProducts.Add(allProduct);

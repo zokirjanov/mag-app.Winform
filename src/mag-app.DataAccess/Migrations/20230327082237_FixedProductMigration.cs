@@ -4,7 +4,7 @@
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class fixedBugsMigration : Migration
+    public partial class FixedProductMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
