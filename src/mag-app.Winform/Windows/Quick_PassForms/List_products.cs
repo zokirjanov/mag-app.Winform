@@ -5,6 +5,7 @@ using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.Product_Forms;
 using mag_app.Winform.Windows.ProductForms;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,11 +45,24 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             using (var db =  new AppDbContext())
             {
-                var entity = db.Products.ToList();
-                foreach (var i in entity)
+
+                var player =  db.Products
+                             .Include(z => z.AllProducts)
+                             .ThenInclude(x => x.Stores)
+                             .ToList();
+
+
+                foreach (var i in player)
                 {
                     productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, CategoryName = i.CategoryName, SubcategoryName = i.SubcategoryName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity });
                 }
+
+
+                //var entity = db.Products.ToList();
+                //foreach (var i in entity)
+                //{
+                //    productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, CategoryName = i.CategoryName, SubcategoryName = i.SubcategoryName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity });
+                //}
             }
         }
 
