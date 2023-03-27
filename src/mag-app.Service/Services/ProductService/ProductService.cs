@@ -57,6 +57,12 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
+        public async Task<long> GetByNameAsync(string name)
+        {
+            var result = await _appDbContext.Products.FirstOrDefaultAsync(x => x.SubcategoryName == name);
+            if (result is not null) return Convert.ToInt64(result);
+            else return 0;
+        }
 
 
 

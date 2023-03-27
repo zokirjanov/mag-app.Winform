@@ -48,7 +48,7 @@ namespace mag_app.Service.Services.StoreService
         public async Task<List<Store>> GetAllAsync()
         {
             long id = IdentitySingelton.GetInstance().UserId;
-            var result = await _appDbContext.Stores.Where(x => x.UserId == id).ToListAsync();
+            var result = await _appDbContext.Stores.Where(x => x.UserId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
             if (result is not null) return result.ToList();
             else return null;
         }

@@ -1,4 +1,5 @@
 ﻿using mag_app.Domain.Common;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Domain.Entities.SubCategories;
@@ -22,8 +23,9 @@ namespace mag_app.Domain.Entities.Products
 
         public string SubcategoryName { get; set; } = string.Empty;
         public long SubCategoryId { get; set; }
-
         public virtual SubCategory SubCategory { get; set; } = default!;
+
+        public List<AllProduct> AllProducts { get; set; } = default!;
     }
 }
 
