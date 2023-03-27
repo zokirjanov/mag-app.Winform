@@ -53,7 +53,7 @@ namespace mag_app.Service.Services.AllProductService
                                                        .Include(c => c.SubCategory.Category)
                                                        .ToListAsync();
 
-            var storeProducts = await _appDbContext.AllProducts.Where(x => x.StoreId == cId)
+            var allProducts = await _appDbContext.AllProducts.Where(x => x.StoreId == cId)
                                                                .Include(x => x.Products)
                                                                .ToListAsync();
 
@@ -61,11 +61,11 @@ namespace mag_app.Service.Services.AllProductService
             {
                 AllProduct product = new AllProduct();
 
-                foreach (var item1 in storeProducts)
+                foreach (var i in allProducts)
                 {
-                    if (item.Id == item1.ProductId)
+                    if (item.Id == i.ProductId)
                     {
-                        product = item1;
+                        product = i;
                     }
                 }
 

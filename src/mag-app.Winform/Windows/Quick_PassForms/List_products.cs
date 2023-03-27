@@ -61,32 +61,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     Quantity = i.Quantity
                 });
             }
-
-            //    using (var db =  new AppDbContext())
-            //    {
-
-            //        var player =  db.Products
-            //                     .Include(z => z.AllProducts)
-            //                     .ThenInclude(x => x.Stores)
-            //                     .ToList();
-
-
-
-            //        foreach (var i in player)
-            //        {
-            //            productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, CategoryName = i.CategoryName, SubcategoryName = i.SubcategoryName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = 0 });
-            //        }
-
-
-
-            //        //var entity = db.Products.ToList();
-            //        //foreach (var i in entity)
-            //        //{
-            //        //    productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, CategoryName = i.CategoryName, SubcategoryName = i.SubcategoryName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity });
-            //        //}
-            //    }
-            //}
-
         }
 
 
