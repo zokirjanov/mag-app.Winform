@@ -78,7 +78,6 @@ namespace mag_app.Service.Services.ProductService
                 entity.PurchasedPrice = product.PurchasedPrice;
                 entity.Price = product.Price;
                 entity.Barcode= product.Barcode;
-                entity.Quantity = product.Quantity;
                 entity.UpdatedAt = product.UpdatedAt;
 
                 var res = await _appDbContext.SaveChangesAsync();

@@ -16,7 +16,6 @@ namespace mag_app.Domain.Entities.Products
         public decimal PurchasedPrice { get; set; }
 
         public string Barcode { get; set; } = string.Empty;
-        public int  Quantity { get; set; }
 
         public string CategoryName { get; set; } = string.Empty;
         public long CategoryId { get; set; }

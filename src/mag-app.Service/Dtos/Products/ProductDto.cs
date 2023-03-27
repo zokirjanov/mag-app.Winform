@@ -31,7 +31,6 @@ namespace mag_app.Service.Dtos.Products
                 Price = productDto.Price,
                 PurchasedPrice = productDto.PurchasedPrice,
                 Barcode = productDto.Barcode,
-                Quantity = productDto.Quantity,
                 CategoryName= productDto.CategoryName,
                 CategoryId= productDto.CategoryId,
                 SubcategoryName= productDto.SubcategoryName,

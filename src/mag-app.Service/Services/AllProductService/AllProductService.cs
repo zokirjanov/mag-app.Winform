@@ -2,6 +2,7 @@
 using mag_app.Domain.Constant;
 using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Products;
+using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Interfaces.AllProducts;
 using Microsoft.EntityFrameworkCore;
@@ -44,12 +45,45 @@ namespace mag_app.Service.Services.AllProductService
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
+        public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
         {
-            throw new NotImplementedException();
+            IList<AllProduct> list = new List<AllProduct>();
+
+            var products = await _appDbContext.Products.Include(c => c.SubCategory)
+                                                       .Include(c => c.SubCategory.Category)
+                                                       .ToListAsync();
+
+            var storeProducts = await _appDbContext.AllProducts.Where(x => x.StoreId == cId)
+                                                               .Include(x => x.Products)
+                                                               .ToListAsync();
+
+            foreach (var item in products)
+            {
+                AllProduct product = new AllProduct();
+
+                foreach (var item1 in storeProducts)
+                {
+                    if (item.Id == item1.ProductId)
+                    {
+                        product = item1;
+                    }
+                }
+
+                if (product.Id != 0)
+                {
+                    list.Add(product);
+                }
+                else
+                {
+                    product.Products = item;
+                    list.Add(product);
+                }
+            }
+
+            return list;
         }
 
-        public Task<string> UpdateAsync(AllProduct Product, string name)
+        public async Task<string> UpdateAsync(AllProduct Product, string name)
         {
             throw new NotImplementedException();
         }
