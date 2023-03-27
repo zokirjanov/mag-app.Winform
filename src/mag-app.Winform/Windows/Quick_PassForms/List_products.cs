@@ -34,12 +34,10 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         }
 
 
-
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
         }
-
 
 
 
