@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class initmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -126,16 +126,17 @@ namespace mag_app.DataAccess.Migrations
                 name: "AllProducts",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false).Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     StoreId = table.Column<long>(type: "INTEGER", nullable: false),
                     ProductId = table.Column<long>(type: "INTEGER", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AllProducts", x => new { x.StoreId, x.ProductId });
+                    table.PrimaryKey("PK_AllProducts", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AllProducts_Products_ProductId",
                         column: x => x.ProductId,
@@ -154,6 +155,11 @@ namespace mag_app.DataAccess.Migrations
                 name: "IX_AllProducts_ProductId",
                 table: "AllProducts",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AllProducts_StoreId",
+                table: "AllProducts",
+                column: "StoreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_StoreId",

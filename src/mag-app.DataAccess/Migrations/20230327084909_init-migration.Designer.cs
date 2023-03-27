@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230327082237_FixedProductMigration")]
-    partial class FixedProductMigration
+    [Migration("20230327084909_init-migration")]
+    partial class initmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,28 +21,30 @@ namespace mag_app.DataAccess.Migrations
 
             modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProduct", b =>
                 {
-                    b.Property<long>("StoreId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("ProductId")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<long>("ProductId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
+                    b.Property<long>("StoreId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("StoreId", "ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("StoreId");
 
                     b.ToTable("AllProducts");
                 });
