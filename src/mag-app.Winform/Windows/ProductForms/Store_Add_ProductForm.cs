@@ -6,6 +6,7 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -108,21 +109,17 @@ public partial class Store_Add_ProductForm : Form
             };
 
             var res = await _service.CreateProductAsync(product);
-            long entityId = await _service.GetByNameAsync(productNameTb.Text);
-            if (res == "true")
+            if (res.product is not null)
             {
                 AllProduct allProduct = new AllProduct()
                 {
                     StoreId = MyStoreForm.myStoreFormParent.Id,
-                    ProductId = entityId,
-                    Quantity = 0
+                    ProductId = res.product.Id,
+                    Quantity = 0,
                 };
 
-                using(var db = new AppDbContext())
-                {
-                     db.AllProducts.Add(allProduct);
-                }
-
+                AllProductService allProductService = new AllProductService(new AppDbContext());
+                await allProductService.CreateAllProductAsync(allProduct);
 
                 StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -141,7 +138,7 @@ public partial class Store_Add_ProductForm : Form
             }
             else
             {
-                MessageBox.Show(res);
+                MessageBox.Show(res.message);
                 productNameTb.Text = "";
             }
         }

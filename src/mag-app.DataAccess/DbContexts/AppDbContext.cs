@@ -59,15 +59,5 @@ public class AppDbContext : DbContext
 
         modelBuilder.Entity<AllProduct>()
             .HasKey(bc => new { bc.StoreId, bc.ProductId });
-
-        modelBuilder.Entity<AllProduct>()
-            .HasOne(bc => bc.Stores)
-            .WithMany(b => b.AllProducts)
-            .HasForeignKey(bc => bc.StoreId);
-
-        modelBuilder.Entity<AllProduct>()
-            .HasOne(bc => bc.Products)
-            .WithMany(c => c.AllProducts)
-            .HasForeignKey(bc => bc.StoreId);
     }
 }

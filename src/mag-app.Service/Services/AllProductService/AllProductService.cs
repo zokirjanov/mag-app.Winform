@@ -1,6 +1,8 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Constant;
 using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Products;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Interfaces.AllProducts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,9 +30,12 @@ namespace mag_app.Service.Services.AllProductService
                 ProductId = product.ProductId,
                 StoreId = product.StoreId,
                 Quantity = product.Quantity,
+                CreatedAt = TimeHelper.CurrentTime(),
+                UpdatedAt = TimeHelper.CurrentTime()
             };
 
-            var res = await _appDbContext.AllProducts.AddAsync(allProduct);
+            _appDbContext.AllProducts.Add(allProduct);
+            var res = await _appDbContext.SaveChangesAsync();
             return allProduct;
         }
 
