@@ -61,18 +61,12 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void updateBtn_Click(object sender, EventArgs e)
         {
-            //string barcodeResult;
-            //byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
-            //var value = BitConverter.ToInt32(generatedBarcode, 0) % 100000;
-            //barcodeResult = value.ToString();
-
             ProductDto product = new ProductDto()
             {
                 ProdutName = productNameTb.Text,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeTb.Text,
-                Quantity = Convert.ToInt32(productQuantity.Value),
                 UpdatedAt = TimeHelper.CurrentTime()
             };
 

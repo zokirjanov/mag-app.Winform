@@ -10,6 +10,7 @@ using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 using mag_app.Winform.Windows.ProductForms;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,21 +49,23 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             foreach (var i in player)
             {
-                productDtoBindingSource.Add(new ProductDto()
+                allProductViewModeBindingSource.Add(new AllProductViewMode()
                 {
                     ProdutName = i.Products.ProdutName,
                     CategoryName = i.Products.CategoryName,
                     SubcategoryName = i.Products.SubcategoryName,
                     Barcode = i.Products.Barcode,
                     Price = i.Products.Price,
+                    Quantity = i.Quantity,
                     PurchasedPrice = i.Products.PurchasedPrice,
-                    Quantity = i.Quantity
                 });
             }
         }
 
 
-        private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private async void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
 
@@ -83,7 +86,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     if (await res == "Успешно удалено") AutoClosingMessageBox.Show(await res, "Удалить", 300);
                     else if (await res == "Товар не найден") MessageBox.Show(await res);
                     else MessageBox.Show(await res);
-                    productDtoBindingSource.Clear();
+                    allProductViewModeBindingSource.Clear();
                     FillData();
                 }
                 if (dlg == DialogResult.Cancel)
@@ -91,7 +94,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     //do nothing
                 }
             }
-
         }
     }
 }

@@ -48,6 +48,8 @@
             this.barcodeLabel = new System.Windows.Forms.Label();
             this.barcodeCheckbox = new System.Windows.Forms.Button();
             this.barcodeQuestion = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // productPriceTb
@@ -55,9 +57,10 @@
             this.productPriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.productPriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productPriceTb.Location = new System.Drawing.Point(34, 301);
+            this.productPriceTb.Location = new System.Drawing.Point(34, 317);
             this.productPriceTb.MaxLength = 10;
             this.productPriceTb.Name = "productPriceTb";
+            this.productPriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 16;
             this.productPriceTb.TextChanged += new System.EventHandler(this.productPriceTb_TextChanged);
@@ -67,7 +70,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(32, 428);
+            this.button1.Location = new System.Drawing.Point(32, 446);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
             this.button1.TabIndex = 15;
@@ -92,9 +95,10 @@
             this.purchasePriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.purchasePriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.purchasePriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.purchasePriceTb.Location = new System.Drawing.Point(34, 238);
+            this.purchasePriceTb.Location = new System.Drawing.Point(34, 246);
             this.purchasePriceTb.MaxLength = 10;
             this.purchasePriceTb.Name = "purchasePriceTb";
+            this.purchasePriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 21;
             this.purchasePriceTb.TextChanged += new System.EventHandler(this.purchasePriceTb_TextChanged);
@@ -106,7 +110,7 @@
             this.purchasedPriceChecker.BackColor = System.Drawing.Color.Transparent;
             this.purchasedPriceChecker.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.purchasedPriceChecker.ForeColor = System.Drawing.Color.Red;
-            this.purchasedPriceChecker.Location = new System.Drawing.Point(11, 241);
+            this.purchasedPriceChecker.Location = new System.Drawing.Point(11, 249);
             this.purchasedPriceChecker.Name = "purchasedPriceChecker";
             this.purchasedPriceChecker.Size = new System.Drawing.Size(20, 25);
             this.purchasedPriceChecker.TabIndex = 23;
@@ -130,7 +134,7 @@
             this.price.BackColor = System.Drawing.Color.Transparent;
             this.price.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.price.ForeColor = System.Drawing.Color.Red;
-            this.price.Location = new System.Drawing.Point(11, 305);
+            this.price.Location = new System.Drawing.Point(11, 321);
             this.price.Name = "price";
             this.price.Size = new System.Drawing.Size(20, 25);
             this.price.TabIndex = 24;
@@ -150,7 +154,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(32, 217);
+            this.label5.Location = new System.Drawing.Point(32, 225);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 19);
             this.label5.TabIndex = 26;
@@ -160,7 +164,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(32, 279);
+            this.label6.Location = new System.Drawing.Point(32, 295);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 19);
             this.label6.TabIndex = 27;
@@ -223,9 +227,10 @@
             this.barcodeTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.barcodeTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.barcodeTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.barcodeTb.Location = new System.Drawing.Point(32, 361);
+            this.barcodeTb.Location = new System.Drawing.Point(32, 389);
             this.barcodeTb.MaxLength = 13;
             this.barcodeTb.Name = "barcodeTb";
+            this.barcodeTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.barcodeTb.Size = new System.Drawing.Size(284, 30);
             this.barcodeTb.TabIndex = 37;
             this.barcodeTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.barcodeTb_KeyPress);
@@ -234,7 +239,7 @@
             // 
             this.barcodeLabel.AutoSize = true;
             this.barcodeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.barcodeLabel.Location = new System.Drawing.Point(32, 339);
+            this.barcodeLabel.Location = new System.Drawing.Point(32, 367);
             this.barcodeLabel.Name = "barcodeLabel";
             this.barcodeLabel.Size = new System.Drawing.Size(90, 19);
             this.barcodeLabel.TabIndex = 38;
@@ -242,7 +247,7 @@
             // 
             // barcodeCheckbox
             // 
-            this.barcodeCheckbox.Location = new System.Drawing.Point(318, 361);
+            this.barcodeCheckbox.Location = new System.Drawing.Point(318, 389);
             this.barcodeCheckbox.Name = "barcodeCheckbox";
             this.barcodeCheckbox.Size = new System.Drawing.Size(30, 30);
             this.barcodeCheckbox.TabIndex = 39;
@@ -253,11 +258,29 @@
             // 
             this.barcodeQuestion.AutoSize = true;
             this.barcodeQuestion.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.barcodeQuestion.Location = new System.Drawing.Point(84, 365);
+            this.barcodeQuestion.Location = new System.Drawing.Point(84, 393);
             this.barcodeQuestion.Name = "barcodeQuestion";
             this.barcodeQuestion.Size = new System.Drawing.Size(214, 22);
             this.barcodeQuestion.TabIndex = 41;
             this.barcodeQuestion.Text = "У тебя есть штрих-код?";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(302, 350);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 15);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "200 000";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(300, 279);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 15);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "200 000";
             // 
             // Store_Add_ProductForm
             // 
@@ -265,6 +288,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(385, 512);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.barcodeQuestion);
             this.Controls.Add(this.barcodeCheckbox);
             this.Controls.Add(this.barcodeLabel);
@@ -316,5 +341,7 @@
         private Label barcodeLabel;
         private Button barcodeCheckbox;
         private Label barcodeQuestion;
+        private Label label2;
+        private Label label1;
     }
 }

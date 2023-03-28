@@ -57,10 +57,11 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
+
         public async Task<long> GetByNameAsync(string name)
         {
-            var result = await _appDbContext.Products.FindAsync(name);
-            if (result is not null) return Convert.ToInt64(result);
+            var result = await _appDbContext.Products.FirstOrDefaultAsync(x=> x.ProdutName == name);
+            if (result is not null) return Convert.ToInt64(result.Id);
             else return 0;
         }
 
@@ -69,8 +70,6 @@ namespace mag_app.Service.Services.ProductService
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
             var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
-            //if (checkname is null)
-            //{
             var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
             if (entity != null)
             {
@@ -85,8 +84,6 @@ namespace mag_app.Service.Services.ProductService
                 else { return "false"; }
             }
             return "false";
-            //}
-            //else return "Продукт уже существует, попробуйте другое имя";
         }
     }
 }
