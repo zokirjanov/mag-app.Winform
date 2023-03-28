@@ -10,6 +10,7 @@ using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 using mag_app.Winform.Windows.ProductForms;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -64,7 +65,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-
         private async void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -72,7 +72,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
                 Row_Update row = new Row_Update(new AppDbContext());
-                row.ProductName = value!;
+                row.ProductName = value;
                 row.ShowDialog();
             }
 
