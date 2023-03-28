@@ -1,4 +1,6 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.DataAccess.Interfaces;
+using mag_app.DataAccess.Repositories.AllProducts;
 using mag_app.Domain.Constant;
 using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Products;
@@ -24,6 +26,8 @@ namespace mag_app.Service.Services.AllProductService
         }
 
 
+
+
         public async Task<AllProduct> CreateAllProductAsync(AllProduct product)
         {
             AllProduct allProduct = new AllProduct()
@@ -40,10 +44,15 @@ namespace mag_app.Service.Services.AllProductService
             return allProduct;
         }
 
+
+
         public Task<string> DeleteAsync(string name)
         {
             throw new NotImplementedException();
         }
+
+
+
 
         public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
         {
@@ -60,7 +69,6 @@ namespace mag_app.Service.Services.AllProductService
             foreach (var item in products)
             {
                 AllProduct product = new AllProduct();
-
                 foreach (var i in allProducts)
                 {
                     if (item.Id == i.ProductId)
@@ -79,13 +87,22 @@ namespace mag_app.Service.Services.AllProductService
                     list.Add(product);
                 }
             }
-
             return list;
         }
 
-        public async Task<string> UpdateAsync(AllProduct Product, string name)
+
+
+        public async Task<(string message, AllProduct product)> UpdateAsync(AllProduct product)
         {
-            throw new NotImplementedException();
+            var check = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == product.ProductId && x.StoreId == product.StoreId);
+            if (check == null) return ("Такое название продукта  не существует", check)!;
+            else
+            {
+                check.Quantity = product.Quantity;
+                var res = await _appDbContext.SaveChangesAsync();
+                if (res > 0) { return (message: "true", check); }
+                else { return (message: "false", null); }
+            }
         }
     }
 }
