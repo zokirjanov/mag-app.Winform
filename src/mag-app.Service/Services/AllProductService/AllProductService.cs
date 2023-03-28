@@ -57,9 +57,16 @@ namespace mag_app.Service.Services.AllProductService
 
         public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
         {
-            var allProducts = await _appDbContext.AllProducts.Include(x => x.Products).OrderByDescending(x => x.Id).ToListAsync();
+            var allProducts = await _appDbContext.AllProducts.Include(x => x.Products).OrderByDescending(x => x.Products.UpdatedAt).ToListAsync();
             return allProducts;
         }
+
+        public async Task<IEnumerable<AllProduct>> GetByNameAsync(long cId, string name)
+        {
+            var allProducts = await _appDbContext.AllProducts.Include(x => x.Products).Where(x =>x.Products.ProdutName == name).OrderByDescending(x => x.Id).ToListAsync();
+            return allProducts;
+        }
+
 
         public async Task<long> GetById(long pid, long cid)
         {
@@ -71,15 +78,15 @@ namespace mag_app.Service.Services.AllProductService
 
         public async Task<(string message, AllProduct product)> UpdateAsync(AllProduct product)
         {
-            var check =  await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == product.ProductId && x.StoreId == product.StoreId);
-            if (check == null) return ("Такое  продукта  не  существует", null)!;
-            else
+            var check = await _appDbContext.AllProducts.FirstOrDefaultAsync(x=>x.Id == product.Id);
+            if (check != null)
             {
                 check.Quantity = product.Quantity;
                 var res = await _appDbContext.SaveChangesAsync();
                 if (res > 0) { return (message: "true", check); }
-                else { return (message: "false", null); }
+                else  return (message: "false", null)!; 
             }
+            else return ("Такое  продукта  не  существует", null)!;
         }
     }
 }

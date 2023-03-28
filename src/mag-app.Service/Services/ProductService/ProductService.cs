@@ -69,7 +69,7 @@ namespace mag_app.Service.Services.ProductService
 
         public async Task<string> UpdateAsync(ProductDto product, string name)
         {
-            var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
+         // var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
             var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
             if (entity != null)
             {

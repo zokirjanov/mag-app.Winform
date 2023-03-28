@@ -17,6 +17,7 @@ namespace mag_app.Service.Interfaces.AllProducts
         public Task<string> DeleteAsync(string name);
         public Task<(string message, AllProduct product)> UpdateAsync(AllProduct product);
         public Task<long> GetById(long pid, long cid);
+        public Task<IEnumerable<AllProduct>> GetByNameAsync(long cId, string name);
     }
 }
 

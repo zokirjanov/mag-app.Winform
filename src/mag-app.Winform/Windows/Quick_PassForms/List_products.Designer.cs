@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -158,28 +159,34 @@
             // 
             this.barcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.barcodeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.barcodeDataGridViewTextBoxColumn.HeaderText = "штрих-код";
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Edit
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle5;
             this.Edit.HeaderText = "Edit";
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
+            this.Edit.Text = "⇙";
+            this.Edit.UseColumnTextForButtonValue = true;
             this.Edit.Width = 50;
             // 
             // Delete
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle6;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
+            this.Delete.Text = "⨂";
+            this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 50;
             // 
             // List_products

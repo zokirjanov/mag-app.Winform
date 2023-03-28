@@ -6,6 +6,8 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
@@ -152,6 +154,7 @@ public partial class Store_Add_ProductForm : Form
     // UX Design Codes
     private void productPriceTb_TextChanged(object sender, EventArgs e)
     {
+        productPriceTb.Text = formatString(productPriceTb.Text);
         if (!(productPriceTb.Text == ""))
         {
             price.Text = "";
@@ -219,6 +222,7 @@ public partial class Store_Add_ProductForm : Form
             barcodeQuestion.Visible = true;
             barcodeLabel.Visible = false;
             barcodeTb.Visible = false;
+            barcodeTb.Text = " ";
         }
     }
 
@@ -251,6 +255,41 @@ public partial class Store_Add_ProductForm : Form
         if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
         {
             e.Handled = true;
+        }
+    }
+
+    public string formatString(string value)
+    {
+        char[] numberText = value.ToCharArray();
+        for (int i = 0; i < numberText.Length; ++i)
+        {
+            if (numberText[i].Equals(','))
+            {
+                numberText[i] = ' ';
+            }
+        }
+        return new String(numberText);
+    }
+
+    private void purchasePriceTb_KeyUp(object sender, KeyEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(purchasePriceTb.Text))
+        {
+            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
+            int valueBefore = Int32.Parse(purchasePriceTb.Text, System.Globalization.NumberStyles.AllowExponent);
+            purchasePriceTb.Text = String.Format(culture, "{0:N0}", valueBefore);
+            purchasePriceTb.Select(purchasePriceTb.Text.Length, 0);
+        }
+    }
+
+    private void productPriceTb_KeyUp(object sender, KeyEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(productPriceTb.Text))
+        {
+            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
+            int valueBefore = Int32.Parse(productPriceTb.Text, System.Globalization.NumberStyles.AllowExponent);
+            productPriceTb.Text = String.Format(culture, "{0:N0}", valueBefore);
+            productPriceTb.Select(productPriceTb.Text.Length, 0);
         }
     }
 }

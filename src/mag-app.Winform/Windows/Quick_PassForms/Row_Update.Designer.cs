@@ -45,11 +45,13 @@
             // 
             // barcodeTb
             // 
-            this.barcodeTb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.barcodeTb.Cursor = System.Windows.Forms.Cursors.No;
             this.barcodeTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.barcodeTb.Location = new System.Drawing.Point(41, 311);
             this.barcodeTb.MaxLength = 13;
             this.barcodeTb.Name = "barcodeTb";
+            this.barcodeTb.ReadOnly = true;
+            this.barcodeTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.barcodeTb.Size = new System.Drawing.Size(314, 30);
             this.barcodeTb.TabIndex = 52;
             // 
@@ -100,6 +102,7 @@
             this.purchasePriceTb.Location = new System.Drawing.Point(41, 186);
             this.purchasePriceTb.MaxLength = 10;
             this.purchasePriceTb.Name = "purchasePriceTb";
+            this.purchasePriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 47;
             // 
@@ -133,6 +136,7 @@
             this.productPriceTb.Location = new System.Drawing.Point(41, 246);
             this.productPriceTb.MaxLength = 10;
             this.productPriceTb.Name = "productPriceTb";
+            this.productPriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 44;
             // 
