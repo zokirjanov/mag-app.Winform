@@ -3,6 +3,7 @@ using mag_app.Domain.Entities.Products;
 using mag_app.Service.Dtos.Products;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace mag_app.Service.Interfaces.AllProducts
         public Task<IEnumerable<AllProduct>> GetAllAsync(long cId);
         public Task<string> DeleteAsync(string name);
         public Task<(string message, AllProduct product)> UpdateAsync(AllProduct product);
+        public Task<long> GetById(long pid, long cid);
     }
 }
 

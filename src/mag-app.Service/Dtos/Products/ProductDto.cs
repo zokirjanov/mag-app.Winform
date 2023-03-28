@@ -16,7 +16,6 @@ namespace mag_app.Service.Dtos.Products
         public decimal Price { get; set; }
         public decimal PurchasedPrice { get; set; }
         public string Barcode { get; set; } = string.Empty;
-        public int Quantity { get; set; }
         public string CategoryName { get; set; } = string.Empty;
         public long CategoryId { get; set; }
         public string SubcategoryName { get; set; } = string.Empty;

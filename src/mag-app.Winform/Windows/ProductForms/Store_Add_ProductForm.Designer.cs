@@ -60,6 +60,7 @@
             this.productPriceTb.Location = new System.Drawing.Point(34, 317);
             this.productPriceTb.MaxLength = 10;
             this.productPriceTb.Name = "productPriceTb";
+            this.productPriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 16;
             this.productPriceTb.TextChanged += new System.EventHandler(this.productPriceTb_TextChanged);
@@ -97,6 +98,7 @@
             this.purchasePriceTb.Location = new System.Drawing.Point(34, 246);
             this.purchasePriceTb.MaxLength = 10;
             this.purchasePriceTb.Name = "purchasePriceTb";
+            this.purchasePriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 21;
             this.purchasePriceTb.TextChanged += new System.EventHandler(this.purchasePriceTb_TextChanged);
@@ -228,6 +230,7 @@
             this.barcodeTb.Location = new System.Drawing.Point(32, 389);
             this.barcodeTb.MaxLength = 13;
             this.barcodeTb.Name = "barcodeTb";
+            this.barcodeTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.barcodeTb.Size = new System.Drawing.Size(284, 30);
             this.barcodeTb.TabIndex = 37;
             this.barcodeTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.barcodeTb_KeyPress);

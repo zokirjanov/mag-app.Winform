@@ -90,12 +90,19 @@ namespace mag_app.Service.Services.AllProductService
             return list;
         }
 
+        public async Task<long> GetById(long pid, long cid)
+        {
+            var entity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.StoreId == cid && x.ProductId == pid);
+            if (entity is not null) return Convert.ToInt64(entity.Id);
+            else return -1;
+        }
+
 
 
         public async Task<(string message, AllProduct product)> UpdateAsync(AllProduct product)
         {
-            var check = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == product.ProductId && x.StoreId == product.StoreId);
-            if (check == null) return ("Такое название продукта  не существует", check)!;
+            var check =  await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == product.ProductId && x.StoreId == product.StoreId);
+            if (check == null) return ("Такое  продукта  не  существует", null)!;
             else
             {
                 check.Quantity = product.Quantity;
