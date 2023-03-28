@@ -17,15 +17,15 @@ namespace mag_app.Service.Services.ProductService
 
 
 
-        public async Task<string> CreateProductAsync(ProductDto product)
+        public async Task<(string message, Product product)> CreateProductAsync(ProductDto product)
         {
             var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.SubCategoryId == product.SubCategoryId);
-            if (check is not null) return "Такое название продукта существует, попробуйте другое название категории";
+            if (check is not null) return ("Такое название продукта существует, попробуйте другое название категории", null)!;
             var pro = (Product)product;
             _appDbContext.Products.Add(pro);
             var res = await _appDbContext.SaveChangesAsync();
-            if (res > 0) return "true";
-            return "Что-то пошло не так";
+            if (res > 0) return ("true", pro)!;
+            return ("Что-то пошло не так", null)!;
         }
 
 
@@ -57,6 +57,12 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
+        public async Task<long> GetByNameAsync(string name)
+        {
+            var result = await _appDbContext.Products.FindAsync(name);
+            if (result is not null) return Convert.ToInt64(result);
+            else return 0;
+        }
 
 
 
@@ -72,7 +78,6 @@ namespace mag_app.Service.Services.ProductService
                 entity.PurchasedPrice = product.PurchasedPrice;
                 entity.Price = product.Price;
                 entity.Barcode= product.Barcode;
-                entity.Quantity = product.Quantity;
                 entity.UpdatedAt = product.UpdatedAt;
 
                 var res = await _appDbContext.SaveChangesAsync();

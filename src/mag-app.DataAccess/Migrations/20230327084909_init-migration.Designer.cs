@@ -11,36 +11,25 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230324111629_initMigration")]
-    partial class initMigration
+    [Migration("20230327084909_init-migration")]
+    partial class initmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
 
-            modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProducts", b =>
+            modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProduct", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Barcode")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProdutName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("PurchasedPrice")
-                        .HasColumnType("TEXT");
+                    b.Property<long>("ProductId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
@@ -52,6 +41,10 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("StoreId");
 
                     b.ToTable("AllProducts");
                 });
@@ -217,6 +210,25 @@ namespace mag_app.DataAccess.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProduct", b =>
+                {
+                    b.HasOne("mag_app.Domain.Entities.Products.Product", "Products")
+                        .WithMany("AllProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("mag_app.Domain.Entities.Stores.Store", "Stores")
+                        .WithMany("AllProducts")
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
+
+                    b.Navigation("Stores");
+                });
+
             modelBuilder.Entity("mag_app.Domain.Entities.Categories.Category", b =>
                 {
                     b.HasOne("mag_app.Domain.Entities.Stores.Store", "Store")
@@ -266,8 +278,15 @@ namespace mag_app.DataAccess.Migrations
                     b.Navigation("SubCategories");
                 });
 
+            modelBuilder.Entity("mag_app.Domain.Entities.Products.Product", b =>
+                {
+                    b.Navigation("AllProducts");
+                });
+
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
                 {
+                    b.Navigation("AllProducts");
+
                     b.Navigation("Categories");
                 });
 

@@ -126,7 +126,7 @@ namespace mag_app.Winform.Windows.ProductForms
             var labelQuantity = new Label()
             {
                 Parent = w,
-                Text = product.Quantity.ToString(@" #\ ###\"),
+                Text =  "0",//product.Quantity.ToString(@" #\ ###\"),
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(115, 100)
             }; labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);

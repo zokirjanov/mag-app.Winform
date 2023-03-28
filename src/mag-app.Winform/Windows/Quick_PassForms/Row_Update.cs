@@ -52,7 +52,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                         productNameTb.Text = item.ProdutName;
                         purchasePriceTb.Text = item.PurchasedPrice.ToString();
                         productPriceTb.Text = item.Price.ToString();
-                        productQuantity.Value = Convert.ToInt32(item.Quantity.ToString());
+                        productQuantity.Value = Convert.ToInt32("0");
                         barcodeTb.Text = item.Barcode.ToString();
                     }
                 }

@@ -1,9 +1,12 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
+using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -47,7 +50,7 @@ public partial class Store_Add_ProductForm : Form
             byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
             var res = BitConverter.ToUInt32(generatedBarcode, 0) % 100000;
 
-            string barcode = CalculateEan13("999", "12345", res.ToString());
+            string barcode = CalculateEan13("999", "1234", res.ToString());
             barcodeResult = barcode.ToString();
             barcodeTb.Text = barcode.ToString();
             ProductPraparing(barcode);
@@ -106,8 +109,18 @@ public partial class Store_Add_ProductForm : Form
             };
 
             var res = await _service.CreateProductAsync(product);
-            if (res == "true")
+            if (res.product is not null)
             {
+                AllProduct allProduct = new AllProduct()
+                {
+                    StoreId = MyStoreForm.myStoreFormParent.Id,
+                    ProductId = res.product.Id,
+                    Quantity = 0,
+                };
+
+                AllProductService allProductService = new AllProductService(new AppDbContext());
+                await allProductService.CreateAllProductAsync(allProduct);
+
                 StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
@@ -125,7 +138,7 @@ public partial class Store_Add_ProductForm : Form
             }
             else
             {
-                MessageBox.Show(res);
+                MessageBox.Show(res.message);
                 productNameTb.Text = "";
             }
         }

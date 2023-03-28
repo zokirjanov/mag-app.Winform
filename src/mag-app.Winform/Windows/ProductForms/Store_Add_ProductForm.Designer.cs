@@ -200,7 +200,7 @@
             // 
             this.categorylabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.categorylabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.categorylabel.Location = new System.Drawing.Point(279, 41);
+            this.categorylabel.Location = new System.Drawing.Point(279, 66);
             this.categorylabel.Name = "categorylabel";
             this.categorylabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.categorylabel.Size = new System.Drawing.Size(69, 19);
@@ -211,7 +211,7 @@
             // 
             this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.subCategoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subCategoryLabel.Location = new System.Drawing.Point(257, 84);
+            this.subCategoryLabel.Location = new System.Drawing.Point(257, 109);
             this.subCategoryLabel.Name = "subCategoryLabel";
             this.subCategoryLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.subCategoryLabel.Size = new System.Drawing.Size(91, 19);
@@ -224,7 +224,7 @@
             this.barcodeTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.barcodeTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.barcodeTb.Location = new System.Drawing.Point(32, 361);
-            this.barcodeTb.MaxLength = 30;
+            this.barcodeTb.MaxLength = 13;
             this.barcodeTb.Name = "barcodeTb";
             this.barcodeTb.Size = new System.Drawing.Size(284, 30);
             this.barcodeTb.TabIndex = 37;

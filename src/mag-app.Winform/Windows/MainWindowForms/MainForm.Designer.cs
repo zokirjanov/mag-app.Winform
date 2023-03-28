@@ -45,7 +45,7 @@
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(219, 638);
+            this.MenuPanel.Size = new System.Drawing.Size(219, 661);
             this.MenuPanel.TabIndex = 0;
             this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
             // 
@@ -54,7 +54,7 @@
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(4, 594);
+            this.button1.Location = new System.Drawing.Point(4, 619);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(210, 38);
@@ -85,7 +85,7 @@
             this.MainPanel.Location = new System.Drawing.Point(219, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(861, 638);
+            this.MainPanel.Size = new System.Drawing.Size(990, 661);
             this.MainPanel.TabIndex = 1;
             // 
             // MainForm
@@ -93,13 +93,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1080, 638);
+            this.ClientSize = new System.Drawing.Size(1209, 661);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.MenuPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(1096, 677);
-            this.MinimumSize = new System.Drawing.Size(1096, 677);
+            this.MaximumSize = new System.Drawing.Size(1225, 700);
+            this.MinimumSize = new System.Drawing.Size(1225, 700);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";

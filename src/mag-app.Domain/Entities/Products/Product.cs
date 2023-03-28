@@ -1,4 +1,5 @@
 ﻿using mag_app.Domain.Common;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Domain.Entities.SubCategories;
@@ -15,15 +16,15 @@ namespace mag_app.Domain.Entities.Products
         public decimal PurchasedPrice { get; set; }
 
         public string Barcode { get; set; } = string.Empty;
-        public int  Quantity { get; set; }
 
         public string CategoryName { get; set; } = string.Empty;
         public long CategoryId { get; set; }
 
         public string SubcategoryName { get; set; } = string.Empty;
         public long SubCategoryId { get; set; }
-
         public virtual SubCategory SubCategory { get; set; } = default!;
+
+        public List<AllProduct> AllProducts { get; set; } = default!;
     }
 }
 

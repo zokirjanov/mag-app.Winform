@@ -19,8 +19,8 @@ namespace mag_app.Winform.Windows.MainWindowForms;
 public partial class MyStoreForm : Form
 { 
     private StoreService _service;
-    public FlowLayoutPanel panel;
-    public static MyStoreForm myStoreFormParent;
+    public FlowLayoutPanel panel = default!;
+    public static MyStoreForm myStoreFormParent = default!;
 
     public MyStoreForm(AppDbContext appDbContext)
     {
@@ -29,7 +29,7 @@ public partial class MyStoreForm : Form
         InitializeComponent();
     }
     public long Id { get; set; }
-    public string StoreName { get; set; }
+    public string StoreName { get; set; } = string.Empty;
 
 
 
@@ -70,7 +70,6 @@ public partial class MyStoreForm : Form
             Height = w.Height / 3,
             Location = new Point(170, 13),
             BackColor = Color.LightYellow,
-       //     Image = Image.FromFile(@"D:\shohrux\mag-app\src\mag-app.Winform\Resources\Icons\edit-button.png"),
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
         };
         update.Click +=  (s, e) =>

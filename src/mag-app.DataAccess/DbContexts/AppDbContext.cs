@@ -20,7 +20,7 @@ public class AppDbContext : DbContext
     public virtual DbSet<Category> Categories { get; set; } = default!;
     public virtual DbSet<SubCategory> SubCategories { get; set; } = default!;
     public virtual DbSet<Product> Products { get; set; } = default!;
-    public virtual DbSet<AllProducts> AllProducts { get; set; } = default!;
+    public virtual DbSet<AllProduct> AllProducts { get; set; } = default!;
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,28 +37,28 @@ public class AppDbContext : DbContext
             .Entity<User>()
             .HasMany(t => t.Stores)
             .WithOne(c => c.User)
-            .HasForeignKey(c => c.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder
             .Entity<Store>()
             .HasMany(x => x.Categories)
             .WithOne(c => c.Store)
-            .HasForeignKey(c => c.StoreId)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder
             .Entity<Category>()
             .HasMany(t => t.SubCategories)
             .WithOne(c => c.Category)
-            .HasForeignKey(c => c.CategoryId)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder
             .Entity<SubCategory>()
             .HasMany(t => t.Products)
             .WithOne(c => c.SubCategory)
-            .HasForeignKey(c => c.SubCategoryId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        //modelBuilder
+        //    .Entity<AllProduct>()
+        //    .HasKey(bc => new { bc.StoreId, bc.ProductId });
     }
 }

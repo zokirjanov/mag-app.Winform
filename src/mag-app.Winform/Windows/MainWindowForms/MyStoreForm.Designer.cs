@@ -41,14 +41,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(827, 74);
+            this.panel1.Size = new System.Drawing.Size(984, 74);
             this.panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(315, 27);
+            this.label1.Location = new System.Drawing.Point(419, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 31);
             this.label1.TabIndex = 3;
@@ -63,7 +63,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 74);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(827, 525);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(984, 527);
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint_1);
             // 
@@ -71,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 599);
+            this.ClientSize = new System.Drawing.Size(984, 601);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Name = "MyStoreForm";

@@ -1,16 +1,22 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Products;
+using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
+using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 using mag_app.Winform.Windows.ProductForms;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,10 +29,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         public List_products(AppDbContext appDbContext)
         {
-            _service= new ProductService(appDbContext);
+            _service = new ProductService(appDbContext);
             InitializeComponent();
         }
-
 
 
         private void List_products_Load(object sender, EventArgs e)
@@ -36,23 +41,25 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
+        private async void FillData()
+        {
+            AllProductService allProduct = new AllProductService(new AppDbContext());
+            var player = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
 
-        private void FillData()
-        {           
-            DataGridViewCellStyle dataGridViewCellStyle= new DataGridViewCellStyle();
-            dataGridViewCellStyle.BackColor = Color.OrangeRed;
-
-            using (var db =  new AppDbContext())
+            foreach (var i in player)
             {
-                var entity = db.Products.ToList();
-                foreach (var i in entity)
+                productDtoBindingSource.Add(new ProductDto()
                 {
-                    productDtoBindingSource.Add(new ProductDto() { ProdutName = i.ProdutName, Barcode = i.Barcode, Price = i.Price, PurchasedPrice = i.PurchasedPrice, Quantity = i.Quantity });
-                }
+                    ProdutName = i.Products.ProdutName,
+                    CategoryName = i.Products.CategoryName,
+                    SubcategoryName = i.Products.SubcategoryName,
+                    Barcode = i.Products.Barcode,
+                    Price = i.Products.Price,
+                    PurchasedPrice = i.Products.PurchasedPrice,
+                    Quantity = i.Quantity
+                });
             }
         }
-
-
 
 
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -88,3 +95,5 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         }
     }
 }
+
+
