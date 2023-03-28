@@ -72,6 +72,7 @@
             // 
             // create_ProductFlowPanel
             // 
+            this.create_ProductFlowPanel.AutoScroll = true;
             this.create_ProductFlowPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.create_ProductFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.create_ProductFlowPanel.Location = new System.Drawing.Point(0, 32);

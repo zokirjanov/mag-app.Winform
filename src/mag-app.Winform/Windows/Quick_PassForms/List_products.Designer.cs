@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -76,6 +77,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -109,6 +111,8 @@
             this.produtNameDataGridViewTextBoxColumn.HeaderText = "наименование";
             this.produtNameDataGridViewTextBoxColumn.Name = "produtNameDataGridViewTextBoxColumn";
             this.produtNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.produtNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.produtNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.produtNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // categoryNameDataGridViewTextBoxColumn
@@ -117,6 +121,8 @@
             this.categoryNameDataGridViewTextBoxColumn.HeaderText = "категория";
             this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
             this.categoryNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categoryNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.categoryNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.categoryNameDataGridViewTextBoxColumn.Width = 130;
             // 
             // subcategoryNameDataGridViewTextBoxColumn
@@ -125,25 +131,35 @@
             this.subcategoryNameDataGridViewTextBoxColumn.HeaderText = "подкатегория";
             this.subcategoryNameDataGridViewTextBoxColumn.Name = "subcategoryNameDataGridViewTextBoxColumn";
             this.subcategoryNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.subcategoryNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.subcategoryNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.subcategoryNameDataGridViewTextBoxColumn.Width = 130;
             // 
             // purchasedPriceDataGridViewTextBoxColumn
             // 
             this.purchasedPriceDataGridViewTextBoxColumn.DataPropertyName = "PurchasedPrice";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "### ### ### ###";
+            dataGridViewCellStyle1.NullValue = null;
             this.purchasedPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.purchasedPriceDataGridViewTextBoxColumn.HeaderText = "себестоимсть";
             this.purchasedPriceDataGridViewTextBoxColumn.Name = "purchasedPriceDataGridViewTextBoxColumn";
             this.purchasedPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchasedPriceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.purchasedPriceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // priceDataGridViewTextBoxColumn
             // 
             this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "### ### ### ###";
+            dataGridViewCellStyle2.NullValue = null;
             this.priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.priceDataGridViewTextBoxColumn.HeaderText = "цена";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.priceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Quantity
             // 
@@ -153,33 +169,45 @@
             this.Quantity.HeaderText = "количество";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
+            this.Quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Quantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
             this.barcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.barcodeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.barcodeDataGridViewTextBoxColumn.HeaderText = "штрих-код";
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.barcodeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.barcodeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Edit
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle5;
             this.Edit.HeaderText = "Edit";
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
+            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Edit.Text = "⇙";
+            this.Edit.UseColumnTextForButtonValue = true;
             this.Edit.Width = 50;
             // 
             // Delete
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle6;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Delete.Text = "⨂";
+            this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 50;
             // 
             // List_products

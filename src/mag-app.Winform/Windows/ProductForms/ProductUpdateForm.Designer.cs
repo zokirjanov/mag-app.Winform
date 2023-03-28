@@ -34,20 +34,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.purchasePriceTb = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.productQuantity = new System.Windows.Forms.NumericUpDown();
             this.productPriceTb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.barcodeLabel = new System.Windows.Forms.Label();
             this.barcodeTb = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // updateBtn
             // 
             this.updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.updateBtn.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.updateBtn.Location = new System.Drawing.Point(41, 396);
+            this.updateBtn.Location = new System.Drawing.Point(41, 364);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(314, 39);
             this.updateBtn.TabIndex = 4;
@@ -105,29 +102,6 @@
             this.purchasePriceTb.TabIndex = 33;
             this.purchasePriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.purchasePriceTb_KeyPress);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(41, 347);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 22);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "количество:";
-            // 
-            // productQuantity
-            // 
-            this.productQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productQuantity.Location = new System.Drawing.Point(235, 345);
-            this.productQuantity.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.productQuantity.Name = "productQuantity";
-            this.productQuantity.Size = new System.Drawing.Size(120, 29);
-            this.productQuantity.TabIndex = 29;
-            // 
             // productPriceTb
             // 
             this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -173,15 +147,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 484);
+            this.ClientSize = new System.Drawing.Size(395, 434);
             this.Controls.Add(this.barcodeTb);
             this.Controls.Add(this.barcodeLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.purchasePriceTb);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.productQuantity);
             this.Controls.Add(this.productPriceTb);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.updateBtn);
@@ -191,7 +163,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductUpdateForm";
             this.Load += new System.EventHandler(this.ProductUpdateForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,8 +176,6 @@
         private Label label6;
         private Label label5;
         private TextBox purchasePriceTb;
-        private Label label1;
-        private NumericUpDown productQuantity;
         private TextBox productPriceTb;
         private Label label3;
         private Label barcodeLabel;

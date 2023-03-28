@@ -6,6 +6,8 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
@@ -148,15 +150,23 @@ public partial class Store_Add_ProductForm : Form
 
 
 
-
     // UX Design Codes
     private void productPriceTb_TextChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrEmpty(productPriceTb.Text))
+        {
+            decimal pr = decimal.Parse(productPriceTb.Text);
+            label1.Text = pr.ToString(@"###\ ###\ ###\ ###\");
+        }
         if (!(productPriceTb.Text == ""))
         {
             price.Text = "";
         }
-        else price.Text = "*";
+        else
+        {
+            price.Text = "*";
+            label1.Text = "";
+        } 
     }
 
 
@@ -192,11 +202,21 @@ public partial class Store_Add_ProductForm : Form
 
     private void purchasePriceTb_TextChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrEmpty(purchasePriceTb.Text))
+        {
+            decimal pr = decimal.Parse(purchasePriceTb.Text);
+            label2.Text = pr.ToString(@"#\ ###\ ###\ ###\");
+        }
+
         if (!(purchasePriceTb.Text == ""))
         {
             purchasedPriceChecker.Text = "";
         }
-        else purchasedPriceChecker.Text = "*";
+        else
+        {
+            purchasedPriceChecker.Text = "*";
+            label2.Text = "";
+        }
     }
 
 
@@ -219,6 +239,7 @@ public partial class Store_Add_ProductForm : Form
             barcodeQuestion.Visible = true;
             barcodeLabel.Visible = false;
             barcodeTb.Visible = false;
+            barcodeTb.Text = " ";
         }
     }
 

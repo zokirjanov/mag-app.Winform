@@ -48,9 +48,8 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         public async void FillPoles(string productname)
         {
-
             AllProductService allProduct = new AllProductService(new AppDbContext());
-            var entity = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            var entity = await allProduct.GetByNameAsync(MyStoreForm.myStoreFormParent.Id, productname);
 
             foreach (var item in entity)
             {
@@ -65,8 +64,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private async void updateBtn_Click_1(object sender, EventArgs e)
         {
-           
-            
             ProductDto product = new ProductDto()
             {
                 ProdutName = productNameTb.Text,
@@ -90,11 +87,11 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res1 = await _product.UpdateAsync(product, productNameTb.Text);
                 var res = await _productService.UpdateAsync(allProduct);
 
-                if (res.message == "true" && res1 == "true")
+                if (res.message == "true")
                 {
+                    var res1 = await _product.UpdateAsync(product, oldName);
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
                     StoreProductsForm.storeProductParent.openChildForm(new List_products(new AppDbContext()));
                     this.Close();

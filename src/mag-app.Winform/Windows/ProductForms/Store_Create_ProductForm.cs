@@ -33,7 +33,7 @@ namespace mag_app.Winform.Windows.ProductForms
             create_ProductFlowPanel.Controls.Add(primaryButton);
             primaryButton.Text = "добавить продукт";
             primaryButton.Font = new Font("Times new roman", 14);
-            primaryButton.Width = 270;
+            primaryButton.Width = 318;
             primaryButton.Height = 130;
             primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
@@ -61,7 +61,7 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             var w = new Button
             {
-                Width = 270,
+                Width = 318,
                 Height = 130,
                 BackColor = Color.LightSteelBlue,
             };
@@ -95,7 +95,8 @@ namespace mag_app.Winform.Windows.ProductForms
             var labelPprice = new Label()
             {
                 Parent = w,
-                AutoSize = true,
+                Width = 150,
+                TextAlign = ContentAlignment.MiddleLeft,
                 Text = product.PurchasedPrice.ToString(@"#\ ###\ ###\ ###\"),
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(115, 60)
@@ -111,7 +112,8 @@ namespace mag_app.Winform.Windows.ProductForms
             var labelPrice = new Label()
             {
                 Parent = w,
-                AutoSize = true,
+                Width = 150,
+                TextAlign = ContentAlignment.MiddleLeft,
                 Text = product.Price.ToString(@"#\ ###\ ###\ ###\"),
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(115, 80)
@@ -123,13 +125,13 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 100)
             }; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
-            var labelQuantity = new Label()
-            {
-                Parent = w,
-                Text =  "0",//product.Quantity.ToString(@" #\ ###\"),
-                Font = new Font("Times New Roman", 12),
-                Location = new Point(115, 100)
-            }; labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
+            //var labelQuantity = new Label()
+            //{
+            //    Parent = w,
+            //    Text = product.Quantity.ToString(@"#\ ###\ ###\ ###\"),
+            //    Font = new Font("Times New Roman", 12),
+            //    Location = new Point(115, 100)
+            //}; labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
 
 
             //
@@ -140,7 +142,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Parent = w,
                 Width = w.Width / 9,
                 Height = w.Height / 4,
-                Location = new Point(230, 10),
+                Location = new Point(270, 10),
                 BackColor = Color.LightYellow,
                 Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
             };
@@ -157,7 +159,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Parent = w,
                 Width = w.Width / 9,
                 Height = w.Height / 4,
-                Location = new Point(200, 10),
+                Location = new Point(235, 10),
                 BackColor = Color.Transparent,
                 Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/delete.png")
             };

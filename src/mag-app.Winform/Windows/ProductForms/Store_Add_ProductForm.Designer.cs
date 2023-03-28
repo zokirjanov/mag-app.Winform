@@ -48,20 +48,20 @@
             this.barcodeLabel = new System.Windows.Forms.Label();
             this.barcodeCheckbox = new System.Windows.Forms.Button();
             this.barcodeQuestion = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // productPriceTb
             // 
             this.productPriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.productPriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productPriceTb.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productPriceTb.Location = new System.Drawing.Point(34, 317);
             this.productPriceTb.MaxLength = 10;
             this.productPriceTb.Name = "productPriceTb";
             this.productPriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.productPriceTb.Size = new System.Drawing.Size(314, 30);
+            this.productPriceTb.Size = new System.Drawing.Size(314, 34);
             this.productPriceTb.TabIndex = 16;
             this.productPriceTb.TextChanged += new System.EventHandler(this.productPriceTb_TextChanged);
             this.productPriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productPriceTb_KeyPress);
@@ -94,12 +94,12 @@
             // 
             this.purchasePriceTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.purchasePriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.purchasePriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.purchasePriceTb.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.purchasePriceTb.Location = new System.Drawing.Point(34, 246);
             this.purchasePriceTb.MaxLength = 10;
             this.purchasePriceTb.Name = "purchasePriceTb";
             this.purchasePriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
+            this.purchasePriceTb.Size = new System.Drawing.Size(314, 34);
             this.purchasePriceTb.TabIndex = 21;
             this.purchasePriceTb.TextChanged += new System.EventHandler(this.purchasePriceTb_TextChanged);
             this.purchasePriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.purchasePriceTb_KeyPress);
@@ -204,10 +204,10 @@
             // 
             this.categorylabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.categorylabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.categorylabel.Location = new System.Drawing.Point(279, 66);
+            this.categorylabel.Location = new System.Drawing.Point(248, 64);
             this.categorylabel.Name = "categorylabel";
             this.categorylabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.categorylabel.Size = new System.Drawing.Size(69, 19);
+            this.categorylabel.Size = new System.Drawing.Size(100, 19);
             this.categorylabel.TabIndex = 33;
             this.categorylabel.Text = "category";
             // 
@@ -215,10 +215,10 @@
             // 
             this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.subCategoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subCategoryLabel.Location = new System.Drawing.Point(257, 109);
+            this.subCategoryLabel.Location = new System.Drawing.Point(248, 109);
             this.subCategoryLabel.Name = "subCategoryLabel";
             this.subCategoryLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.subCategoryLabel.Size = new System.Drawing.Size(91, 19);
+            this.subCategoryLabel.Size = new System.Drawing.Size(100, 19);
             this.subCategoryLabel.TabIndex = 34;
             this.subCategoryLabel.Text = "subcategory";
             // 
@@ -258,29 +258,29 @@
             // 
             this.barcodeQuestion.AutoSize = true;
             this.barcodeQuestion.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.barcodeQuestion.Location = new System.Drawing.Point(84, 393);
+            this.barcodeQuestion.Location = new System.Drawing.Point(40, 392);
             this.barcodeQuestion.Name = "barcodeQuestion";
-            this.barcodeQuestion.Size = new System.Drawing.Size(214, 22);
+            this.barcodeQuestion.Size = new System.Drawing.Size(272, 22);
             this.barcodeQuestion.TabIndex = 41;
-            this.barcodeQuestion.Text = "У тебя есть штрих-код?";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(302, 350);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 15);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "200 000";
+            this.barcodeQuestion.Text = "Есть ли штрих-код на товаре?";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(300, 279);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(174, 299);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "200 000";
+            this.label1.Size = new System.Drawing.Size(174, 15);
+            this.label1.TabIndex = 42;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(186, 229);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 15);
+            this.label2.TabIndex = 43;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Store_Add_ProductForm
             // 
@@ -288,8 +288,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(385, 512);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.barcodeQuestion);
             this.Controls.Add(this.barcodeCheckbox);
             this.Controls.Add(this.barcodeLabel);
@@ -341,7 +341,7 @@
         private Label barcodeLabel;
         private Button barcodeCheckbox;
         private Label barcodeQuestion;
-        private Label label2;
         private Label label1;
+        private Label label2;
     }
 }

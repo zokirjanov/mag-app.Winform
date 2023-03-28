@@ -27,8 +27,6 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void ProductUpdateForm_Load(object sender, EventArgs e)
         {
-            productQuantity.Minimum = 0;
-            productQuantity.Maximum = 1000000;
             oldName = ProductName;
             FillPoles(ProductName);
         }
@@ -49,7 +47,6 @@ namespace mag_app.Winform.Windows.ProductForms
                         productNameTb.Text = item.ProdutName;
                         purchasePriceTb.Text = item.PurchasedPrice.ToString();
                         productPriceTb.Text = item.Price.ToString();
-                        productQuantity.Value = Convert.ToInt32("0");
                         barcodeTb.Text = item.Barcode.ToString();   
                     }
                 }
