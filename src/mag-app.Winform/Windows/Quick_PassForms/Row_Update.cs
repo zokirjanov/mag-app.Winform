@@ -40,7 +40,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-
         private void Row_Update_Load(object sender, EventArgs e)
         {
             productQuantity.Minimum = 0;
@@ -48,7 +47,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             oldName = ProductName;
             FillPoles(ProductName, Quantity);
         }
-
 
 
 
@@ -215,6 +213,11 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 productNameCheckLabel.Text = "";
             }
             else productNameCheckLabel.Text = "*";
+        }
+
+        private void productQuantity_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

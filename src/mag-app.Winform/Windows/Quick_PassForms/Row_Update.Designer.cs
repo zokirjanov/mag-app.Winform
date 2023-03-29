@@ -134,6 +134,7 @@
             this.productQuantity.Name = "productQuantity";
             this.productQuantity.Size = new System.Drawing.Size(120, 29);
             this.productQuantity.TabIndex = 45;
+            this.productQuantity.ValueChanged += new System.EventHandler(this.productQuantity_ValueChanged);
             // 
             // productPriceTb
             // 

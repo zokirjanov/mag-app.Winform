@@ -114,6 +114,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(984, 557);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // produtNameDataGridViewTextBoxColumn
@@ -233,7 +234,7 @@
             this.ClientSize = new System.Drawing.Size(984, 601);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
-            this.Name = "List_products";
+       //     this.Name = "List_products";
             this.Text = "List_products";
             this.Load += new System.EventHandler(this.List_products_Load);
             this.panel1.ResumeLayout(false);

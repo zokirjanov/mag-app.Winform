@@ -230,6 +230,7 @@
             this.updateBtn.TabIndex = 59;
             this.updateBtn.Text = "редактировать";
             this.updateBtn.UseVisualStyleBackColor = false;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // productNameTb
             // 
