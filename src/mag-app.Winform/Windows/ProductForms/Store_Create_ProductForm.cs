@@ -118,21 +118,23 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(115, 80)
             }; labelPrice.Click += (sender, args) => InvokeOnClick(w, args);
-            //var labelQ = new Label()
-            //{
-            //    Parent = w,
-            //    Text = "количество:",
-            //    Font = new Font("Times New Roman", 12),
-            //    Location = new Point(15, 100)
-            //}; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
+            var labelQ = new Label()
+            {
+                Parent = w,
+                Text = "количество во всех магазинов:",
+                AutoSize = true,
+                Font = new Font("Times New Roman", 12),
+                Location = new Point(15, 100)
+            }; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
 
-            //var labelQuantity = new Label()
-            //{
-            //    Parent = w,
-            //    Text = product.Quantity.ToString(@"#\ ###\ ###\ ###\"),
-            //    Font = new Font("Times New Roman", 12),
-            //    Location = new Point(115, 100)
-            //}; labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
+            var labelQuantity = new Label()
+            {
+                Parent = w,
+                Text = CountQuantity(product.ProdutName.ToString()).ToString(),
+                Font = new Font("Times New Roman", 12),
+                AutoSize= true,
+                Location = new Point(230, 100)
+            }; labelQuantity.Click += (sender, args) => InvokeOnClick(w, args);
 
 
             //
@@ -182,6 +184,20 @@ namespace mag_app.Winform.Windows.ProductForms
             };
         }
 
+
+        private int CountQuantity(string name)
+        {
+            int cnt = 0;
+            using (var db = new AppDbContext())
+            {
+                var prods = db.AllProducts.Where(x => x.Products.ProdutName == name);
+                foreach (var items in prods)
+                {
+                    cnt += items.Quantity;
+                }
+                return cnt;
+            }
+        }
 
 
         private void button2_Click(object sender, EventArgs e)
