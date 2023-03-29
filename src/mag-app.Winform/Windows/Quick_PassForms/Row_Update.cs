@@ -35,6 +35,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         public string oldName { get; set; } = string.Empty;
         public new string ProductName { get; set; } = string.Empty;
+        public int  Quantity { get; set; }
 
 
         private void Row_Update_Load(object sender, EventArgs e)
@@ -42,14 +43,14 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             productQuantity.Minimum = 0;
             productQuantity.Maximum = 1000000;
             oldName = ProductName;
-            FillPoles(ProductName);
+            FillPoles(ProductName, Quantity);
         }
 
 
-        public async void FillPoles(string productname)
+        public async void FillPoles(string productname, int quantity)
         {
             AllProductService allProduct = new AllProductService(new AppDbContext());
-            var entity = await allProduct.GetByNameAsync(MyStoreForm.myStoreFormParent.Id, productname);
+            var entity = await allProduct.GetByNameAsync(productname, quantity);
 
             foreach (var item in entity)
             {
@@ -80,6 +81,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             AllProduct allProduct = new AllProduct()
             {
                 StoreId = MyStoreForm.myStoreFormParent.Id,
+                ProductId = pid,
                 Id = allproductId,
                 Quantity = Convert.ToInt32(productQuantity.Value)
             };
@@ -88,6 +90,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
+
                 var res = await _productService.UpdateAsync(allProduct);
 
                 if (res.message == "true")

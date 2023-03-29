@@ -65,9 +65,9 @@ namespace mag_app.Service.Services.AllProductService
 
 
 
-        public async Task<IEnumerable<AllProduct>> GetByNameAsync(long cId, string name)
+        public async Task<IEnumerable<AllProduct>> GetByNameAsync( string name, int quantity)
         {
-            var allProducts = await _appDbContext.AllProducts.Include(x => x.Products).Where(x =>x.Products.ProdutName == name).OrderByDescending(x => x.Id).ToListAsync();
+            var allProducts = await _appDbContext.AllProducts.Include(x => x.Products).Where(x =>x.Products.ProdutName == name && x.Quantity == quantity).OrderByDescending(x => x.Id).ToListAsync();
             return allProducts;
         }
 
@@ -76,8 +76,11 @@ namespace mag_app.Service.Services.AllProductService
 
         public async Task<long> GetById(long pid, long cid)
         {
-            var entity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.StoreId == cid && x.ProductId == pid);
+            var entity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == pid && x.StoreId == cid);
+            var nullentity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == pid && x.StoreId == null);
+
             if (entity is not null) return Convert.ToInt64(entity.Id);
+            else if (nullentity is not null) return Convert.ToInt64(nullentity.Id);
             else return -1;
         }
 
@@ -86,13 +89,20 @@ namespace mag_app.Service.Services.AllProductService
 
         public async Task<(string message, AllProduct product)> UpdateAsync(AllProduct product)
         {
-            var check = await _appDbContext.AllProducts.FirstOrDefaultAsync(x=>x.Id == product.Id);
-            if (check != null)
+
+            var check = await _appDbContext.AllProducts.FirstOrDefaultAsync(x=>x.Id == product.Id && x.StoreId == product.StoreId && x.ProductId == product.ProductId);
+            if(check == null)
+            {
+                var res = CreateAllProductAsync(product);
+                return (message: "true", product);
+            }
+            else if(check != null)
             {
                 check.Quantity = product.Quantity;
+                check.StoreId = product.StoreId;
                 var res = await _appDbContext.SaveChangesAsync();
                 if (res > 0) { return (message: "true", check); }
-                else  return (message: "false", null)!; 
+                else return (message: "false", null)!;
             }
             else return ("Такое  продукта  не  существует", null)!;
         }

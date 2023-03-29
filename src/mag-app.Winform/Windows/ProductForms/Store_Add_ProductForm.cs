@@ -115,7 +115,7 @@ public partial class Store_Add_ProductForm : Form
             {
                 AllProduct allProduct = new AllProduct()
                 {
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
+                    StoreId = null,
                     ProductId = res.product.Id,
                     Quantity = 0,
                 };

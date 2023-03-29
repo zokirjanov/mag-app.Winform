@@ -68,11 +68,13 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         private async void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            var quantity_value = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
                 Row_Update row = new Row_Update(new AppDbContext());
                 row.ProductName = value;
+                row.Quantity = int.Parse(quantity_value);
                 row.ShowDialog();
             }
 
