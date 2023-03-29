@@ -1,27 +1,9 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.AllProducts;
-using mag_app.Domain.Entities.Products;
-using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
-using mag_app.Winform.Windows.Product_Forms;
-using mag_app.Winform.Windows.ProductForms;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Quick_PassForms
 {
@@ -39,6 +21,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
+            //dataGridView1.Columns[index: 7].SortMode= DataGridViewColumnSortMode.Automatic;
+            //dataGridView1.Columns[index: 8].SortMode= DataGridViewColumnSortMode.Automatic;
         }
 
 
@@ -67,12 +52,21 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private async void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            var value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            var value = "test";
+            var quantity_value = "-1";
+
+            if (e.RowIndex != -1)
+            {
+                value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()!;
+                quantity_value = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString()!;
+            }
+
 
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
                 Row_Update row = new Row_Update(new AppDbContext());
                 row.ProductName = value;
+                row.Quantity = int.Parse(quantity_value);
                 row.ShowDialog();
             }
 

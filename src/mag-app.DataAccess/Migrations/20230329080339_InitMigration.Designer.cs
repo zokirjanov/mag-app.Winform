@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230327084909_init-migration")]
-    partial class initmigration
+    [Migration("20230329080339_InitMigration")]
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("StoreId")
+                    b.Property<long?>("StoreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -104,9 +104,6 @@ namespace mag_app.DataAccess.Migrations
 
                     b.Property<decimal>("PurchasedPrice")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
 
                     b.Property<long>("SubCategoryId")
                         .HasColumnType("INTEGER");
@@ -220,9 +217,7 @@ namespace mag_app.DataAccess.Migrations
 
                     b.HasOne("mag_app.Domain.Entities.Stores.Store", "Stores")
                         .WithMany("AllProducts")
-                        .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StoreId");
 
                     b.Navigation("Products");
 

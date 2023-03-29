@@ -38,7 +38,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.allProductViewModeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.produtNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subcategoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +47,7 @@
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.allProductViewModeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductViewModeBindingSource)).BeginInit();
@@ -100,10 +100,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(984, 569);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // 
-            // allProductViewModeBindingSource
-            // 
-            this.allProductViewModeBindingSource.DataSource = typeof(mag_app.Service.Dtos.Products.AllProductViewMode);
             // 
             // produtNameDataGridViewTextBoxColumn
             // 
@@ -209,6 +205,10 @@
             this.Delete.Text = "⨂";
             this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 50;
+            // 
+            // allProductViewModeBindingSource
+            // 
+            this.allProductViewModeBindingSource.DataSource = typeof(mag_app.Service.Dtos.Products.AllProductViewMode);
             // 
             // List_products
             // 

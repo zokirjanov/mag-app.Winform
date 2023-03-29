@@ -14,10 +14,10 @@ namespace mag_app.Service.Interfaces.AllProducts
     {
         public Task<AllProduct> CreateAllProductAsync(AllProduct product);
         public Task<IEnumerable<AllProduct>> GetAllAsync(long cId);
-        public Task<string> DeleteAsync(string name);
+        public Task<bool> DeleteAsync(AllProduct product);
         public Task<(string message, AllProduct product)> UpdateAsync(AllProduct product);
         public Task<long> GetById(long pid, long cid);
-        public Task<IEnumerable<AllProduct>> GetByNameAsync(long cId, string name);
+        public Task<IEnumerable<AllProduct>> GetByNameAsync(string name, int quantity);
     }
 }
 

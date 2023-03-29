@@ -118,13 +118,14 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(115, 80)
             }; labelPrice.Click += (sender, args) => InvokeOnClick(w, args);
-            var labelQ = new Label()
-            {
-                Parent = w,
-                Text = "количество:",
-                Font = new Font("Times New Roman", 12),
-                Location = new Point(15, 100)
-            }; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
+            //var labelQ = new Label()
+            //{
+            //    Parent = w,
+            //    Text = "количество:",
+            //    Font = new Font("Times New Roman", 12),
+            //    Location = new Point(15, 100)
+            //}; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
+
             //var labelQuantity = new Label()
             //{
             //    Parent = w,

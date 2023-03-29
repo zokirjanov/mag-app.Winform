@@ -17,6 +17,7 @@ namespace mag_app.Winform.Windows.ProductForms;
 public partial class Store_Add_ProductForm : Form
 {
     private readonly ProductService _service;
+
     public Store_Add_ProductForm(AppDbContext appDbContext)
     {
         _service = new ProductService(appDbContext);
@@ -52,7 +53,7 @@ public partial class Store_Add_ProductForm : Form
             byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
             var res = BitConverter.ToUInt32(generatedBarcode, 0) % 100000;
 
-            string barcode = CalculateEan13("999", "1234", res.ToString());
+            string barcode = CalculateEan13("478", "1234", res.ToString());
             barcodeResult = barcode.ToString();
             barcodeTb.Text = barcode.ToString();
             ProductPraparing(barcode);
@@ -94,7 +95,7 @@ public partial class Store_Add_ProductForm : Form
 
     private async void ProductPraparing(string barcodeResult)
     {
-        if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
+        if (!string.IsNullOrEmpty(productNameTb.Text) || !string.IsNullOrEmpty(productPriceTb.Text) || !string.IsNullOrEmpty(purchasePriceTb.Text))
         {
             ProductDto product = new ProductDto()
             {
@@ -114,7 +115,7 @@ public partial class Store_Add_ProductForm : Form
             {
                 AllProduct allProduct = new AllProduct()
                 {
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
+                    StoreId = null,
                     ProductId = res.product.Id,
                     Quantity = 0,
                 };

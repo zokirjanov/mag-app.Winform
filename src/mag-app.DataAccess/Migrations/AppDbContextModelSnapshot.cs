@@ -32,7 +32,7 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("StoreId")
+                    b.Property<long?>("StoreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -215,9 +215,7 @@ namespace mag_app.DataAccess.Migrations
 
                     b.HasOne("mag_app.Domain.Entities.Stores.Store", "Stores")
                         .WithMany("AllProducts")
-                        .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StoreId");
 
                     b.Navigation("Products");
 

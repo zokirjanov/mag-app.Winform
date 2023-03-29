@@ -15,7 +15,7 @@ namespace mag_app.Domain.Entities.AllProducts
     {
         public int Quantity { get; set; }
 
-        public long StoreId { get; set; }
+        public long? StoreId { get; set; }
         public virtual Store Stores { get; set; } = default!;
 
         public long  ProductId { get; set; }

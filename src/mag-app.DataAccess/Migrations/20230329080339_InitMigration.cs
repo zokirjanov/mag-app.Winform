@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class initmigration : Migration
+    public partial class InitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -103,7 +103,6 @@ namespace mag_app.DataAccess.Migrations
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
                     PurchasedPrice = table.Column<decimal>(type: "TEXT", nullable: false),
                     Barcode = table.Column<string>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     CategoryName = table.Column<string>(type: "TEXT", nullable: false),
                     CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     SubcategoryName = table.Column<string>(type: "TEXT", nullable: false),
@@ -129,7 +128,7 @@ namespace mag_app.DataAccess.Migrations
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: true),
                     ProductId = table.Column<long>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
@@ -147,8 +146,7 @@ namespace mag_app.DataAccess.Migrations
                         name: "FK_AllProducts_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
