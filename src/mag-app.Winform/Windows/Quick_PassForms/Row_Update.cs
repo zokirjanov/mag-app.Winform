@@ -79,6 +79,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             AllProduct allProduct = new AllProduct()
             {
+                StoreId = MyStoreForm.myStoreFormParent.Id,
                 Id = allproductId,
                 Quantity = Convert.ToInt32(productQuantity.Value)
             };

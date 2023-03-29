@@ -48,18 +48,22 @@ namespace mag_app.Service.Services.AllProductService
         }
 
 
-
+        
         public Task<string> DeleteAsync(string name)
         {
             throw new NotImplementedException();
         }
 
 
+
+
         public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
         {
-            var allProducts = await _appDbContext.AllProducts.Include(x => x.Products).OrderByDescending(x => x.Products.UpdatedAt).ToListAsync();
+            var allProducts = await _appDbContext.AllProducts.Where(x => x.StoreId == cId || x.Quantity == 0).Include(x => x.Products).OrderByDescending(x => x.Products.UpdatedAt).ToListAsync();
             return allProducts;
         }
+
+
 
         public async Task<IEnumerable<AllProduct>> GetByNameAsync(long cId, string name)
         {
@@ -68,12 +72,16 @@ namespace mag_app.Service.Services.AllProductService
         }
 
 
+
+
         public async Task<long> GetById(long pid, long cid)
         {
             var entity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.StoreId == cid && x.ProductId == pid);
             if (entity is not null) return Convert.ToInt64(entity.Id);
             else return -1;
         }
+
+
 
 
         public async Task<(string message, AllProduct product)> UpdateAsync(AllProduct product)

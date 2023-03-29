@@ -125,6 +125,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 Font = new Font("Times New Roman", 12),
                 Location = new Point(15, 100)
             }; labelQ.Click += (sender, args) => InvokeOnClick(w, args);
+
             //var labelQuantity = new Label()
             //{
             //    Parent = w,
