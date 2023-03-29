@@ -95,7 +95,7 @@ public partial class Store_Add_ProductForm : Form
 
     private async void ProductPraparing(string barcodeResult)
     {
-        if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
+        if (!string.IsNullOrEmpty(productNameTb.Text) || !string.IsNullOrEmpty(productPriceTb.Text) || !string.IsNullOrEmpty(purchasePriceTb.Text))
         {
             ProductDto product = new ProductDto()
             {

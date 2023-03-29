@@ -40,6 +40,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.updateBtn = new System.Windows.Forms.Button();
             this.productNameTb = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.price = new System.Windows.Forms.Label();
+            this.purchasedPriceChecker = new System.Windows.Forms.Label();
+            this.productNameCheckLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +110,7 @@
             this.purchasePriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 47;
+            this.purchasePriceTb.TextChanged += new System.EventHandler(this.purchasePriceTb_TextChanged);
             // 
             // label1
             // 
@@ -139,6 +145,7 @@
             this.productPriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 44;
+            this.productPriceTb.TextChanged += new System.EventHandler(this.productPriceTb_TextChanged);
             // 
             // label4
             // 
@@ -170,12 +177,72 @@
             this.productNameTb.Name = "productNameTb";
             this.productNameTb.Size = new System.Drawing.Size(314, 29);
             this.productNameTb.TabIndex = 41;
+            this.productNameTb.TextChanged += new System.EventHandler(this.productNameTb_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(193, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 15);
+            this.label2.TabIndex = 56;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(181, 230);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(174, 15);
+            this.label7.TabIndex = 55;
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // price
+            // 
+            this.price.AutoSize = true;
+            this.price.BackColor = System.Drawing.Color.Transparent;
+            this.price.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.price.ForeColor = System.Drawing.Color.Red;
+            this.price.Location = new System.Drawing.Point(18, 251);
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(20, 25);
+            this.price.TabIndex = 54;
+            this.price.Text = "*";
+            // 
+            // purchasedPriceChecker
+            // 
+            this.purchasedPriceChecker.AutoSize = true;
+            this.purchasedPriceChecker.BackColor = System.Drawing.Color.Transparent;
+            this.purchasedPriceChecker.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.purchasedPriceChecker.ForeColor = System.Drawing.Color.Red;
+            this.purchasedPriceChecker.Location = new System.Drawing.Point(18, 191);
+            this.purchasedPriceChecker.Name = "purchasedPriceChecker";
+            this.purchasedPriceChecker.Size = new System.Drawing.Size(20, 25);
+            this.purchasedPriceChecker.TabIndex = 53;
+            this.purchasedPriceChecker.Text = "*";
+            // 
+            // productNameCheckLabel
+            // 
+            this.productNameCheckLabel.AutoSize = true;
+            this.productNameCheckLabel.BackColor = System.Drawing.Color.Transparent;
+            this.productNameCheckLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productNameCheckLabel.ForeColor = System.Drawing.Color.Red;
+            this.productNameCheckLabel.Location = new System.Drawing.Point(18, 129);
+            this.productNameCheckLabel.Name = "productNameCheckLabel";
+            this.productNameCheckLabel.Size = new System.Drawing.Size(20, 25);
+            this.productNameCheckLabel.TabIndex = 57;
+            this.productNameCheckLabel.Text = "*";
             // 
             // Row_Update
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 489);
+            this.Controls.Add(this.productNameCheckLabel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.price);
+            this.Controls.Add(this.purchasedPriceChecker);
             this.Controls.Add(this.barcodeTb);
             this.Controls.Add(this.barcodeLabel);
             this.Controls.Add(this.label3);
@@ -212,5 +279,10 @@
         private Label label4;
         private Button updateBtn;
         private TextBox productNameTb;
+        private Label label2;
+        private Label label7;
+        private Label price;
+        private Label purchasedPriceChecker;
+        private Label productNameCheckLabel;
     }
 }
