@@ -18,12 +18,13 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         }
 
 
+
+
+
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
-            //dataGridView1.Columns[index: 7].SortMode= DataGridViewColumnSortMode.Automatic;
-            //dataGridView1.Columns[index: 8].SortMode= DataGridViewColumnSortMode.Automatic;
         }
 
 
@@ -88,6 +89,12 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     //do nothing
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Quick_Pass quick_Pass = new Quick_Pass();
+            quick_Pass.ShowDialog();
         }
     }
 }

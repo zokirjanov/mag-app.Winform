@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -49,6 +51,11 @@
             this.label2.Size = new System.Drawing.Size(119, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Please wait...";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Progress_Form
             // 
@@ -72,5 +79,6 @@
 
         private Label label1;
         private Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

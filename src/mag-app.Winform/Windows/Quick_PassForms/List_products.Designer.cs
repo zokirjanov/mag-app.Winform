@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.produtNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,18 +57,30 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(984, 32);
+            this.panel1.Size = new System.Drawing.Size(984, 44);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Azure;
+            this.button1.Location = new System.Drawing.Point(9, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(147, 35);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "быстрый прыход";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(419, 4);
+            this.label1.Location = new System.Drawing.Point(419, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 25);
             this.label1.TabIndex = 1;
@@ -93,11 +106,13 @@
             this.Delete});
             this.dataGridView1.DataSource = this.allProductViewModeBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 44);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(984, 569);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(984, 557);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -245,5 +260,6 @@
         private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private Button button1;
     }
 }

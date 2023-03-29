@@ -105,6 +105,7 @@ public partial class LoginForm : Form
                 {
                     _service.AccountLogout();
                 }
+
                 MainForm mainForm = new MainForm(_dbContex);
                 this.Hide();
                 mainForm.ShowDialog();

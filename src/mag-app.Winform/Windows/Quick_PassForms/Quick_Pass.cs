@@ -8,23 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace mag_app.Winform.Windows.AuthorisationForms
+namespace mag_app.Winform.Windows.Quick_PassForms
 {
-    public partial class Progress_Form : Form
+    public partial class Quick_Pass : Form
     {
-        public Progress_Form()
+        public Quick_Pass()
         {
             InitializeComponent();
         }
 
-        private void Progress_Form_Load(object sender, EventArgs e)
+        private void Quick_Pass_Load(object sender, EventArgs e)
         {
           
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
         }
     }
 }
