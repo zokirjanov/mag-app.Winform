@@ -10,17 +10,17 @@ namespace mag_app.DataAccess.Interfaces
 {
     public interface IGenericRepository<T>  where T : class
     {
-        public IQueryable<T> GetAll();
+        public Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression = null!);
 
-        public IQueryable<T> Where(Expression<Func<T, bool>> expression);
+        public Task<IQueryable<T>> Where(Expression<Func<T, bool>> expression);
 
         public Task<T?> FindByIdAsync(long id);
 
         public Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> expression);
 
-        public void Add(T entity);
+        public Task<T> CreateAsync(T entity);
 
-        public void Delete(long id);
+        public Task<bool> DeleteAsync(Expression<Func<T, bool>> expression);
 
         public Task<T> UpdateAsync(T entity);
     }

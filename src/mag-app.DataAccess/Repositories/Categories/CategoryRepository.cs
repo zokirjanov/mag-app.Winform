@@ -11,8 +11,5 @@ namespace mag_app.DataAccess.Repositories.Categories
 {
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {
-        public CategoryRepository(AppDbContext appDbContext) : base(appDbContext)
-        {
-        }
     }
 }

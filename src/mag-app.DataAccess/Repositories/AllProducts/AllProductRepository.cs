@@ -13,8 +13,5 @@ namespace mag_app.DataAccess.Repositories.AllProducts
 {
     public class AllProductRepository : GenericRepository<AllProduct>, IAllProductRepository
     {
-        public AllProductRepository(AppDbContext appDbContext) : base(appDbContext)
-        {
-        }
     }
 }

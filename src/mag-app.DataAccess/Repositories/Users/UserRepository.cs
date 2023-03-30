@@ -13,8 +13,5 @@ namespace mag_app.DataAccess.Repositories.Users
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public UserRepository(AppDbContext context) : base(context)
-        {
-        }
     }
 }

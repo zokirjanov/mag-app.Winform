@@ -8,8 +8,5 @@ namespace mag_app.DataAccess.Repositories.Products
 {
     public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
-        public ProductRepository(AppDbContext appDbContext) : base(appDbContext)
-        {
-        }
     }
 }

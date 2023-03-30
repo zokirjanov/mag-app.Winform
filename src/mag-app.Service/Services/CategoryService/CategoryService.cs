@@ -1,8 +1,13 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.DataAccess.Interfaces.Categories;
+using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.Categories;
+using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Categories;
+using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Interfaces.Categories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
@@ -18,41 +23,39 @@ namespace mag_app.Service.Services.CategoryService
 {
     public class CategoryService : ICategoryService
     {
-        private AppDbContext _appDbContext;
-        public CategoryService(AppDbContext appDbContext)
+        ICategoryRepository categoryRepository { get; set; }
+    
+        public CategoryService()
         {
-            _appDbContext = appDbContext;
+            categoryRepository = new CategoryRepository();
         }
 
 
 
-        public async Task<string> CreateCategoryAsync(CategoryViewModel category)
+        public async Task<string> CreateCategoryAsync(CategoryViewModel categoryViewModel)
         {
-            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName && x.StoreId == category.StoreId);
-            if (check is not null) return "Such a category exists, try another category name";
-            var cat = (Category)category;
-            _appDbContext.Categories.Add(cat);
-            var res = await _appDbContext.SaveChangesAsync();
-            if (res > 0) return "true";
-            return "Something went wrong";
-        }
-
-
-
-
-        public async Task<bool> DeleteAsync(string  categoryName)
-        {
-            var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == categoryName);
-            if (check != null)
+            var categoryCheck = await categoryRepository.FirstOrDefaultAsync(x => x.CategoryName == categoryViewModel.CategoryName);
+            if (categoryCheck != null)
             {
-                var res = _appDbContext.Categories.Remove(check);
-                
-                if (res != null)
-                {
-                    var ss = await _appDbContext.SaveChangesAsync();
-                    if (ss > 0) return true;
-                }
-                else return false;
+                return "Категория уже существует";
+            }
+
+            var category = (Category)categoryViewModel;
+            var res = await categoryRepository.CreateAsync(category);
+
+            return (res != null)?  "true": "Что-то пошло не так";
+        }
+
+
+
+
+        public async Task<bool> DeleteAsync(long Id)
+        {
+            var category = await categoryRepository.FindByIdAsync(Id);
+
+            if (category != null)
+            {
+                return await categoryRepository.DeleteAsync(x => x.Id == category.Id);
             }
             return false;
         }
@@ -60,45 +63,26 @@ namespace mag_app.Service.Services.CategoryService
 
 
 
-        public async Task<List<Category>> GetAllAsync(long Eid)
+        public async Task<List<Category>> GetAllAsync()
         {
-            var result = await _appDbContext.Categories.OrderByDescending(x => x.CreatedAt).ToListAsync();
-            if (result is not null) return result.ToList();
+            var result = await categoryRepository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }
 
 
 
 
-        public async Task<long> GetByNameAsync(string name)
-        {
-            var result = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == name);
-            if (result is not null)
-            {
-                return result.Id;
-            }
-            else return 0;
-        }
-
-
-
 
         public async Task<string> UpdateAsync(CategoryViewModel category, string name)
         {
-            var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName);
+            var checkname = await categoryRepository.Where(x => x.CategoryName == name);
             if (checkname is null)
             {
-                var entity = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == name);
-                if (entity != null)
-                {
-                    entity.CategoryName = category.CategoryName;
-                    var res = await _appDbContext.SaveChangesAsync();
-                    if (res > 0) { return "true"; }
-                    else { return "false"; }
-                }
-                return "false";
+                var res = await categoryRepository.UpdateAsync(category);
+                return (res != null) ? "true" : "false";
             }
-            else return "Category already exists, please try another name";
+            else return "Категория уже существует, попробуйте другое название";
         }
     }
 }

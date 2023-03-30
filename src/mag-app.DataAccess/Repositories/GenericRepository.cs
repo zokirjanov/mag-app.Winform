@@ -10,33 +10,35 @@ namespace mag_app.DataAccess.Repositories
     {
         protected AppDbContext _dbcontext;
         protected DbSet<T> _dbSet;
-        public GenericRepository(AppDbContext context)
-        {
-            _dbcontext = context;
-            _dbSet = context.Set<T>();
+        public GenericRepository()
+        { 
+            _dbcontext = new AppDbContext();
+            _dbSet = _dbcontext.Set<T>();
         }
 
-        public IQueryable<T> GetAll() => _dbSet;
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression = null!)
+        {
+            return expression == null ? _dbSet : _dbSet.Where(expression);
+        }
 
-        public IQueryable<T> Where(Expression<Func<T, bool>> expression)
-            => _dbSet.Where(expression);
+        public async Task<IQueryable<T>> Where(Expression<Func<T, bool>> expression)
+            =>  _dbSet.Where(expression);
      
 
-        public virtual void Add(T entity) => _dbSet.Add(entity);
-
-        public virtual void Delete(long id)
+        public async Task<T>  CreateAsync(T entity)
         {
-            var entity = _dbSet.Find(id);
-            if (entity is not null)
-                _dbSet.Remove(entity);
+            var res = await _dbSet.AddAsync(entity);
+            await _dbcontext.SaveChangesAsync();
+            return res.Entity;
         }
 
-        public virtual async Task<T?> FindByIdAsync(long id)
+
+        public  async Task<T?> FindByIdAsync(long id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public virtual async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> expression)
+        public  async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> expression)
         {
             return await _dbSet.FirstOrDefaultAsync(expression);
         }
@@ -48,6 +50,15 @@ namespace mag_app.DataAccess.Repositories
             await _dbcontext.SaveChangesAsync();
 
             return updatedEntity.Entity;
+        }
+
+        public async Task<bool> DeleteAsync(Expression<Func<T, bool>> expression)
+        {
+            var entity = _dbSet.FirstOrDefault(expression);
+            if (entity == null)  return false;
+             _dbSet.Remove(entity);
+            await _dbcontext.SaveChangesAsync();
+            return true;
         }
     }
 }
