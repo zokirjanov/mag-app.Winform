@@ -20,11 +20,12 @@ namespace mag_app.Winform.Windows
     public partial class UpdateForm : Form
     {
         private StoreService _service;
-        public UpdateForm(AppDbContext appDbContext)
+        public UpdateForm()
         {
             InitializeComponent();
-            _service = new StoreService(appDbContext);
+            _service = new StoreService();
         }
+
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
@@ -33,8 +34,11 @@ namespace mag_app.Winform.Windows
         }
 
 
+
         string oldName;
         public string storeName { get; set; }
+
+
 
         private async void updateBtn_Click(object sender, EventArgs e)
         {

@@ -62,9 +62,17 @@ namespace mag_app.Service.Services.StoreService
 
 
 
+        public async Task<long> GetId(string name)
+        {
+            var store = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == name);
+            return store.Id;
+        }
+
+
+
         public async Task<string> UpdateAsync(Store store, string name)
         {
-            var checkname = await storeRepository.Where(x => x.StoreName == name);
+            var checkname = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == name);
             if (checkname is null)
             {
                 var res = await storeRepository.UpdateAsync(store);

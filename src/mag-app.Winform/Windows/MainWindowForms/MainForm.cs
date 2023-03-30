@@ -7,7 +7,6 @@ namespace mag_app.Winform
 {
     public partial class MainForm : Form
     {
-        private AddStoreForm _addStore;
         public static MainForm mainParent = default!;
         public Button btn;
         public Panel pnl;
@@ -16,7 +15,6 @@ namespace mag_app.Winform
 
         public MainForm(AppDbContext appDbContext)
         {
-            _addStore = new AddStoreForm(appDbContext);
             InitializeComponent();
             mainParent = this;
             btn = marketbtn;

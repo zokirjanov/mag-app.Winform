@@ -10,7 +10,7 @@ public partial class LoginForm : Form
 {
     private readonly AppDbContext _dbContex;
     private readonly UserService _service;
-    public static LoginForm LoginInstance;
+    public static LoginForm LoginInstance = default!;
     public TextBox logintxb;
     public TextBox passwordtxb;
 
@@ -81,14 +81,14 @@ public partial class LoginForm : Form
         if (!string.IsNullOrEmpty(loginlogin.Text) && !string.IsNullOrEmpty(loginPass.Text)
           && loginLoginerror.Text == "")
         {
-            LoginViewModel accountLoginDto = new LoginViewModel() { Login = loginlogin.Text, Password = loginPass.Text };
-            var res = await _service.AccountLoginAsync(accountLoginDto);
+            LoginViewModel loginViewModel = new LoginViewModel() { Login = loginlogin.Text, Password = loginPass.Text };
+            var res = await _service.AccountLoginAsync(loginViewModel);
 
             if (res == "False")
             {
                 if (rememberMe.Checked)
                 {
-                    var remember = await _service.AccountRememberMeAsync(accountLoginDto);
+                    var remember = await _service.AccountRememberMeAsync(loginViewModel);
                 }
                 else
                 {
@@ -99,7 +99,7 @@ public partial class LoginForm : Form
             {
                 if (rememberMe.Checked)
                 {
-                    var remember = await _service.AccountRememberMeAsync(accountLoginDto);
+                    var remember = await _service.AccountRememberMeAsync(loginViewModel);
                 }
                 else
                 {

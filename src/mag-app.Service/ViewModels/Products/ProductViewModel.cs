@@ -1,12 +1,4 @@
 ﻿using mag_app.Domain.Entities.Products;
-using mag_app.Domain.Entities.SubCategories;
-using mag_app.Service.Common.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mag_app.Service.Dtos.Products
 {
@@ -31,8 +23,8 @@ namespace mag_app.Service.Dtos.Products
                 PurchasedPrice = product.PurchasedPrice,
                 Barcode = product.Barcode,
                 Quantity = product.Quantity,
-                CategoryName= product.CategoryName,
-                CategoryId= product.CategoryId,
+                CategoryName = product.CategoryName,
+                CategoryId = product.CategoryId,
                 SubCategoryName = product.SubcategoryName,
                 SubCategoryId = product.SubCategoryId,
             };
