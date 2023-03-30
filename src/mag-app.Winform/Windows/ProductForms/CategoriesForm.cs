@@ -16,12 +16,16 @@ public partial class CategoriesForm : Form
 {
     private readonly CategoryService _service;
     public static CategoriesForm categoryParent = default!;
-    public CategoriesForm(AppDbContext appDbContext)
+
+
+    public CategoriesForm()
     {
-        _service = new CategoryService(appDbContext);
+        _service = new CategoryService();
         categoryParent = this;
         InitializeComponent();
     }
+
+
     public long Id { get; set; }
     public string CategoryTitle { get; set; } = string.Empty;
 
@@ -42,14 +46,18 @@ public partial class CategoriesForm : Form
         primaryButton.Width = 205;
         primaryButton.BorderRadius = 5;
         primaryButton.Height = 75;
+
         categoryFlowPanel.Controls.Clear();
         categoryFlowPanel.Controls.Add(primaryButton);
+
         primaryButton.Click += (s, e) =>
         {
-            AddCategoryForm addCategoryForm = new AddCategoryForm(new AppDbContext());
+            AddCategoryForm addCategoryForm = new AddCategoryForm();
             addCategoryForm.ShowDialog();
         };
-        var items = await _service.GetAllAsync(IdentitySingelton.GetInstance().UserId);
+
+        var items = await _service.GetAllAsync();
+
         if (items is null)
         {
             MessageBox.Show("Категории не найдены");
@@ -83,9 +91,9 @@ public partial class CategoriesForm : Form
         categoryFlowPanel.Controls.Add(w);
         w.Click += async (s, e) =>
         {
-            Id = await _service.GetByNameAsync(w.Text);
+            Id = await _service.GetId(w.Text);
             CategoryTitle = w.Text;
-            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
             StoreProductsForm.storeProductParent.AddTitle(categoryName, "›категория");
             StoreProductsForm.storeProductParent.backBtn.Hide();
         };
@@ -103,7 +111,7 @@ public partial class CategoriesForm : Form
         };
         update.Click += (s, e) =>
         {
-            CategoryUpdateForm category = new CategoryUpdateForm(new AppDbContext());
+            CategoryUpdateForm category = new CategoryUpdateForm();
             category.categoryName = w.Text;
             category.ShowDialog();
         };
@@ -125,7 +133,8 @@ public partial class CategoriesForm : Form
             DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить категорию?\n" + "Все подкатегории и продукты будут удалены безвозвратно", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = _service.DeleteAsync(w.Text);
+                long id = await _service.GetId(w.Text);
+                var res = _service.DeleteAsync(id);
                 if (await res == true)
                 {
                     AutoClosingMessageBox.Show("\r\nУспешно удалено\r\n", "Delete", 350);

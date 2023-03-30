@@ -11,9 +11,9 @@ namespace mag_app.Winform.Windows.ProductForms
     {
         public static Store_Create_ProductForm parentInstanse = default!;
         public ProductService _service;
-        public Store_Create_ProductForm(AppDbContext appDbContext)
+        public Store_Create_ProductForm()
         {
-            _service = new ProductService(appDbContext);
+            _service = new ProductService();
             parentInstanse = this;
             InitializeComponent();
         }
@@ -38,10 +38,10 @@ namespace mag_app.Winform.Windows.ProductForms
             primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
             {
-                Store_Add_ProductForm form = new Store_Add_ProductForm(new AppDbContext());
+                Store_Add_ProductForm form = new Store_Add_ProductForm();
                 form.ShowDialog();
             };
-            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id);
+            var items = await _service.GetAllAsync();
             if (items is null)
             {
                 MessageBox.Show("Stores not found");
@@ -130,7 +130,8 @@ namespace mag_app.Winform.Windows.ProductForms
             var labelQuantity = new Label()
             {
                 Parent = w,
-                Text = CountQuantity(product.ProdutName.ToString()).ToString(),
+                Text = "",
+                //Text = CountQuantity(product.ProdutName.ToString()).ToString(),
                 Font = new Font("Times New Roman", 12),
                 AutoSize= true,
                 Location = new Point(230, 100)
@@ -151,7 +152,7 @@ namespace mag_app.Winform.Windows.ProductForms
             };
             update.Click += (s, e) =>
             {
-                ProductUpdateForm productUpdateForm = new ProductUpdateForm(new AppDbContext());
+                ProductUpdateForm productUpdateForm = new ProductUpdateForm();
                 productUpdateForm.ProductName = product.ProdutName;
                 productUpdateForm.ShowDialog();
             };
@@ -171,11 +172,14 @@ namespace mag_app.Winform.Windows.ProductForms
                 DialogResult dlg = MessageBox.Show("Вы хотите удалить товар?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
-                    var res = _service.DeleteAsync(product.ProdutName);
-                    if (await res == "Успешно удалено") AutoClosingMessageBox.Show(await res, "Удалить", 300);
-                    else if (await res == "Товар не найден") MessageBox.Show(await res);
-                    else MessageBox.Show(await res);
-                    StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+                    long id = await _service.GetId(product.ProdutName);
+                    var res = _service.DeleteAsync(id);
+
+
+                    if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                    else if (await res == false) MessageBox.Show("Товар не найден");
+                    LoadData();
+                   // StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
                 }
                 if (dlg == DialogResult.Cancel)
                 {
@@ -185,24 +189,24 @@ namespace mag_app.Winform.Windows.ProductForms
         }
 
 
-        private int CountQuantity(string name)
-        {
-            int cnt = 0;
-            using (var db = new AppDbContext())
-            {
-                var prods = db.AllProducts.Where(x => x.Products.ProdutName == name);
-                foreach (var items in prods)
-                {
-                    cnt += items.Quantity;
-                }
-                return cnt;
-            }
-        }
+        //private int CountQuantity(string name)
+        //{
+        //    int cnt = 0;
+        //    using (var db = new AppDbContext())
+        //    {
+        //        var prods = db.AllProducts.Where(x => x.Products.ProdutName == name);
+        //        foreach (var items in prods)
+        //        {
+        //            cnt += items.Quantity;
+        //        }
+        //        return cnt;
+        //    }
+        //}
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
             StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(2);
             StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(2);
             StoreProductsForm.storeProductParent.backBtn.Show();

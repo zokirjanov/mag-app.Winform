@@ -74,6 +74,13 @@ namespace mag_app.Service.Services.SubCategoryService
 
 
 
+        public async Task<long> GetId(string name)
+        {
+            var store = await subCategoryRepository.FirstOrDefaultAsync(x => x.SubCategoryName == name);
+            return store.Id;
+        }
+
+
 
 
         public async Task<string> UpdateAsync(SubCategoryViewModel category, string name)

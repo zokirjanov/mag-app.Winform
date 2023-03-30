@@ -65,7 +65,7 @@ public partial class MyStoreForm : Form
         };
         update.Click += (s, e) =>
         {
-            UpdateForm updateForm = new UpdateForm(new AppDbContext());
+            UpdateForm updateForm = new UpdateForm();
             updateForm.storeName = storename;
             updateForm.ShowDialog();
         };

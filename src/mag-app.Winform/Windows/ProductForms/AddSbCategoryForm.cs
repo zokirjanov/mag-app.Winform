@@ -10,9 +10,9 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class AddSbCategoryForm : Form
     {
         private readonly SubCategoryService _service;
-        public AddSbCategoryForm(AppDbContext appDbContext)
+        public AddSbCategoryForm()
         {
-            _service = new SubCategoryService(appDbContext);
+            _service = new SubCategoryService();
             InitializeComponent();
         }
 
@@ -27,10 +27,11 @@ namespace mag_app.Winform.Windows.ProductForms
                 };
 
                 var res = await _service.CreateCategoryAsync(category);
+
                 if (res == "true")
                 {
                     subCategoryNameTb.Text = "";
-                    StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+                    StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
                     DialogResult dlg = MessageBox.Show("Подкатегория успешно добавлена \n\nВы хотите добавить еще один?", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {

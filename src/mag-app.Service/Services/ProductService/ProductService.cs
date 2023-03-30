@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.DataAccess.Interfaces.Products;
 using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.Categories;
 using mag_app.DataAccess.Repositories.Products;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Products;
@@ -62,6 +63,13 @@ namespace mag_app.Service.Services.ProductService
             else return null;
         }
 
+
+
+        public async Task<long> GetId(string name)
+        {
+            var store = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
+            return store.Id;
+        }
 
 
 

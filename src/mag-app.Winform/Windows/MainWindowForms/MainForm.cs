@@ -25,7 +25,7 @@ namespace mag_app.Winform
 
         public void marketbtn_Click(object sender, EventArgs e)
         {
-            mainParent.openChildForm(new MyStoreForm(new AppDbContext()));            
+            mainParent.openChildForm(new MyStoreForm());            
         }
 
 
@@ -83,7 +83,7 @@ namespace mag_app.Winform
 
         private void quick_PassBtn_Click(object sender, EventArgs e)
         {
-            mainParent.openChildForm(new List_products(new AppDbContext()));
+            mainParent.openChildForm(new List_products());
         }
     }
 }

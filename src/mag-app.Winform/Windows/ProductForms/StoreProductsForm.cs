@@ -8,7 +8,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 {
     public partial class StoreProductsForm : Form
     {
-        public static StoreProductsForm storeProductParent;
+        public static StoreProductsForm storeProductParent = default!;
         public Button btn;
         public Button backBtn;
         public Panel pnl;
@@ -47,7 +47,7 @@ namespace mag_app.Winform.Windows.Product_Forms
         {
             this.Hide();
             MainForm.mainParent.Show();
-            MainForm.mainParent.openChildForm(new MyStoreForm(new AppDbContext()));
+            MainForm.mainParent.openChildForm(new MyStoreForm());
         }
 
 
@@ -69,7 +69,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         public void productBtn_Click(object sender, EventArgs e)
         {
-            storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+            storeProductParent.openChildForm(new CategoriesForm());
             storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();
@@ -81,7 +81,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
 
 
-        private Form activeForm = null;
+        private Form activeForm = null!;
         public void openChildForm(Form childForm)
         {
             if (activeForm != null)
@@ -136,7 +136,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         private void quick_PassBtn_Click(object sender, EventArgs e)
         {
-            storeProductParent.openChildForm(new List_products(new AppDbContext()));
+            storeProductParent.openChildForm(new List_products());
             storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();

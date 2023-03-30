@@ -71,6 +71,12 @@ namespace mag_app.Service.Services.CategoryService
         }
 
 
+        public async Task<long> GetId(string name)
+        {
+            var store = await categoryRepository.FirstOrDefaultAsync(x => x.CategoryName == name);
+            return store.Id;
+        }
+
 
 
 

@@ -15,11 +15,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         public static List_products listProductsParent = default!;
 
 
-
-
-        public List_products(AppDbContext appDbContext)
+        public List_products( )
         {
-            _service = new ProductService(appDbContext);
+            _service = new ProductService();
             InitializeComponent();
             listProductsParent = this;
         }

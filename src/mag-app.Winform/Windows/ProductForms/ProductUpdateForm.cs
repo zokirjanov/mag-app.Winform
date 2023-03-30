@@ -13,10 +13,10 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class ProductUpdateForm : Form
     {
         ProductService _productService;
-        public ProductUpdateForm(AppDbContext appDbContext)
+        public ProductUpdateForm()
         {
             InitializeComponent();
-            _productService = new ProductService(appDbContext);
+            _productService = new ProductService();
         }
 
         public string oldName { get; set; } = string.Empty;
@@ -64,17 +64,16 @@ namespace mag_app.Winform.Windows.ProductForms
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeTb.Text,
-                UpdatedAt = TimeHelper.CurrentTime()
             };
 
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = await _productService.UpdateAsync(product, oldName);
+                var res = await _productService.UpdateAsync(product);
                 if (res == "true")
                 {
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
-                    StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+                    StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
                     this.Close();
                 }
                 else if (res == "false")
