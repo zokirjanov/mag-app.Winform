@@ -27,11 +27,11 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         AllProductService _productService;
         ProductService _product;
 
-        public Row_Update(AppDbContext appDbContext)
+        public Row_Update( )
         {
             InitializeComponent();
-            _productService = new AllProductService(appDbContext);
-            _product = new ProductService(appDbContext);
+            _productService = new AllProductService();
+            _product = new ProductService();
         }
 
         public string oldName { get; set; } = string.Empty;
@@ -52,16 +52,16 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         public async void FillPoles(string productname, int quantity)
         {
-            AllProductService allProduct = new AllProductService(new AppDbContext());
-            var entity = await allProduct.GetByNameAsync(productname, quantity);
+            AllProductService allProduct = new AllProductService();
+            var entity = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
 
             foreach (var item in entity)
             {
-                productNameTb.Text = item.Products.ProdutName;
-                purchasePriceTb.Text = item.Products.PurchasedPrice.ToString();
-                productPriceTb.Text = item.Products.Price.ToString();
+                productNameTb.Text = item.ProdutName;
+                purchasePriceTb.Text = item.PurchasedPrice.ToString();
+                productPriceTb.Text = item.Price.ToString();
                 productQuantity.Value = Convert.ToInt32(item.Quantity);
-                barcodeTb.Text = item.Products.Barcode.ToString();
+                barcodeTb.Text = item.Barcode.ToString();
             }
         }
 
@@ -83,18 +83,16 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Price = decimal.Parse(productPriceTb.Text),
                     Barcode = barcodeTb.Text,
-                    UpdatedAt = TimeHelper.CurrentTime()
                 };
 
-
-                long pid = await _product.GetByNameAsync(oldName);
-                long allproductId = await _productService.GetById(pid, MyStoreForm.myStoreFormParent.Id);
 
                 AllProduct allProduct = new AllProduct()
                 {
                     StoreId = MyStoreForm.myStoreFormParent.Id,
-                    ProductId = pid,
-                    Id = allproductId,
+                    ProdutName = productNameTb.Text,
+                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                    Price = decimal.Parse(productPriceTb.Text),
+                    Barcode = barcodeTb.Text,
                     Quantity = Convert.ToInt32(productQuantity.Value)
                 };
 
@@ -105,20 +103,20 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
                     var res = await _productService.UpdateAsync(allProduct);
 
-                    if (res.message == "true")
+                    if (res == "true")
                     {
-                        var res1 = await _product.UpdateAsync(product, oldName);
+                        var res1 = await _product.UpdateAsync(product);
                         AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
-                        StoreProductsForm.storeProductParent.openChildForm(new List_products(new AppDbContext()));
+                        StoreProductsForm.storeProductParent.openChildForm(new List_products());
                         this.Close();
                     }
-                    else if (res.message == "false")
+                    else if (res == "false")
                     {
                         MessageBox.Show("Что-то пошло не так, нет подходящего продукта");
                     }
                     else
                     {
-                        MessageBox.Show(res.message);
+                        MessageBox.Show(res);
                         productNameTb.Focus();
                         productNameTb.SelectAll();
                     }

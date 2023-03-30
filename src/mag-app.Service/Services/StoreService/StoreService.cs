@@ -70,12 +70,15 @@ namespace mag_app.Service.Services.StoreService
 
 
 
-        public async Task<string> UpdateAsync(Store store, string name)
+        public async Task<string> UpdateAsync(Store store, string oldname)
         {
-            var checkname = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == name);
+            var checkname = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == store.StoreName);
+           
             if (checkname is null)
             {
-                var res = await storeRepository.UpdateAsync(store);
+                var oldStore = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == oldname);
+                oldStore.StoreName =  store.StoreName;
+                var res = await storeRepository.UpdateAsync(oldStore);
                 return (res != null)?  "true" : "false";
             }
             else return "магазин уже существует, попробуйте другое название";
