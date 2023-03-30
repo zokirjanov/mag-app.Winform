@@ -97,7 +97,7 @@ public partial class Store_Add_ProductForm : Form
     {
         if (!string.IsNullOrEmpty(productNameTb.Text) || !string.IsNullOrEmpty(productPriceTb.Text) || !string.IsNullOrEmpty(purchasePriceTb.Text))
         {
-            ProductDto product = new ProductDto()
+            ProductViewModel product = new ProductViewModel()
             {
                 ProdutName = productNameTb.Text,
                 Price = decimal.Parse(productPriceTb.Text),

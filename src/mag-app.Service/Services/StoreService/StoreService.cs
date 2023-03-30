@@ -1,84 +1,84 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Interfaces.Stores;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.Service.Services.StoreService
 {
     public class StoreService : IStoreService
     {
-
-        private AppDbContext _appDbContext;
-
-        public StoreService(AppDbContext repository)
+        private IStoreRepository storeRepository { get; set; }
+        public StoreService()
         {
-            _appDbContext = repository;
+            storeRepository = new StoreRepository();
         }
 
-        public async Task<string> CreateAsync(AddStoreDto storeDto)
+
+
+        public async Task<string> CreateAsync(StoreViewModel storeViewModel)
         {
-            var storee = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName.ToLower() == storeDto.StoreName.ToLower() && x.UserId == storeDto.UserId);
-            if (storee != null) { return "Категория уже существует"; }
-            var store = (Store)storeDto;
-            _appDbContext.Stores.Add(store);
-            var res = await _appDbContext.SaveChangesAsync();
-            if (res > 0) return "true";
-            return "Что-то пошло не так";
+            var storee = await storeRepository.FirstOrDefaultAsync(x=>x.StoreName == storeViewModel.StoreName);
+            if (storee != null) 
+            {
+                return "Магазин уже существует";
+            }
+           
+            var store = (Store)storeViewModel;
+            var res = await storeRepository.CreateAsync(store);
+
+            return (res != null) ? "true" : "Что-то пошло не так";
         }
 
-        public async Task<string> DeleteAsync(string name)
+
+
+
+        public async Task<string> DeleteAsync(long Id)
         {
-            var store = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName == name);
+            var store = await storeRepository.FindByIdAsync(Id);
+
             if (store != null)
             {
-                var res = _appDbContext.Stores.Remove(store);
-                if (res != null)
-                {
-                    var ss = await _appDbContext.SaveChangesAsync();
-                    if (ss > 0) return "true";
-                }
+                var res = storeRepository.DeleteAsync(x => x.Id == store.Id);
+                if (res != null)  return "true";
                 else return "false";
             }
             return "false";
         }
 
+
+
         public async Task<List<Store>> GetAllAsync()
         {
-            long id = IdentitySingelton.GetInstance().UserId;
-            var result = await _appDbContext.Stores.Where(x => x.UserId == id).OrderByDescending(x => x.CreatedAt).ToListAsync();
-            if (result is not null) return result.ToList();
+            var result = await storeRepository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x=>x.Id).ToList();
             else return null;
         }
 
-        public async Task<long> GetByName(string name)
+
+
+        public async Task<long> GetId(string name)
         {
-            var result = await _appDbContext.Stores.FirstAsync(x => x.StoreName == name);
-            if (result is not null)
-            {
-                return  result.Id;
-            }        
-            else return 0;
+            var store = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == name);
+            return store.Id;
         }
+
+
 
         public async Task<string> UpdateAsync(Store store, string name)
         {
-            var checkname = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName.ToLower() == store.StoreName.ToLower());
+            var checkname = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == name);
             if (checkname is null)
             {
-                var entity = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName == name);
-                if (entity != null)
-                {
-                    entity.StoreName = store.StoreName;
-                    var res = await _appDbContext.SaveChangesAsync();
-                    if (res > 0) { return "true"; }
-                    else { return "false"; }
-                }
-                return "false";
+                var res = await storeRepository.UpdateAsync(store);
+                return (res != null)?  "true" : "false";
             }
-            else return "Категория уже существует, попробуйте другое название";
+            else return "магазин уже существует, попробуйте другое название";
         }
     }
 }

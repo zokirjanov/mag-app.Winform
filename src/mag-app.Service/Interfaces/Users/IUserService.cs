@@ -9,10 +9,9 @@ namespace mag_app.Service.Interfaces.Users
 {
 	public interface IUserService
 	{
-		public Task<string> AccountLoginAsync(LoginDto LoginDto);
+		public Task<string> AccountLoginAsync(LoginViewModel LoginDto);
 		public void AccountLogout();
-		public Task<string> AccountRegisterAsync(RegisterDto RegisterDto);
-		public Task<string> AccountRememberMeAsync(LoginDto LoginDto);
-
+		public Task<string> AccountRegisterAsync(RegisterViewModel RegisterDto);
+		public Task<string> AccountRememberMeAsync(LoginViewModel LoginDto);
 	}
 }

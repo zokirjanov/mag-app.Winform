@@ -54,7 +54,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             foreach (var i in player)
             {
-                allProductViewModeBindingSource.Add(new AllProductViewMode()
+                allProductViewModeBindingSource.Add(new AllProductViewModel()
                 {
                     ProdutName = i.Products.ProdutName,
                     CategoryName = i.Products.CategoryName,
@@ -98,9 +98,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 if (dlg == DialogResult.OK)
                 {
                     var res = _service.DeleteAsync(value!);
-                    if (await res == "Успешно удалено") AutoClosingMessageBox.Show(await res, "Удалить", 300);
-                    else if (await res == "Товар не найден") MessageBox.Show(await res);
-                    else MessageBox.Show(await res);
+
+                    if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                    else if (await res == false) MessageBox.Show("Товар не найден");
                     allProductViewModeBindingSource.Clear();
                     FillData();
                 }

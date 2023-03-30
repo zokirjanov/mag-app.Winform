@@ -11,10 +11,9 @@ namespace mag_app.Service.Interfaces.Categories
 {
     public interface ICategoryService
     {
-        public Task<string> CreateCategoryAsync(CategoryDto category);
-        public Task<List<Category>> GetAllAsync(long Eid);
-        public Task<bool> DeleteAsync(string categoryName);
-        public Task<string> UpdateAsync(CategoryDto category, string name);
-        public Task<long> GetByNameAsync(string name);
+        public Task<string> CreateCategoryAsync(CategoryViewModel category);
+        public Task<List<Category>> GetAllAsync();
+        public Task<bool> DeleteAsync(long Id);
+        public Task<string> UpdateAsync(CategoryViewModel category, string name);
     }
 }

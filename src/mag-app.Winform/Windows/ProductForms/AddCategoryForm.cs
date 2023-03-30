@@ -21,7 +21,7 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             if (!string.IsNullOrEmpty(categoryAddBtn.Text))
             {
-                CategoryDto category = new CategoryDto()
+                CategoryViewModel category = new CategoryViewModel()
                 {
                     CategoryName = categoryNameTb.Text,
                     StoreId = MyStoreForm.myStoreFormParent.Id,

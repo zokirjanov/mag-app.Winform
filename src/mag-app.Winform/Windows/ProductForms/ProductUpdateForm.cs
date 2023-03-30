@@ -58,7 +58,7 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void updateBtn_Click(object sender, EventArgs e)
         {
-            ProductDto product = new ProductDto()
+            ProductViewModel product = new ProductViewModel()
             {
                 ProdutName = productNameTb.Text,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),

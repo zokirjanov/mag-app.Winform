@@ -34,7 +34,7 @@ namespace mag_app.Winform.Windows.ProductForms
         public string categoryName { get; set; }
         private async void updateBtn_Click(object sender, EventArgs e)
         {
-            SubCategoryDto category = new SubCategoryDto();
+            SubCategoryViewModel category = new SubCategoryViewModel();
             category.SubCategoryName = subCategoryNameTb.Text;
 
             DialogResult dlg = MessageBox.Show("Вы хотите изменить подкатегорию?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

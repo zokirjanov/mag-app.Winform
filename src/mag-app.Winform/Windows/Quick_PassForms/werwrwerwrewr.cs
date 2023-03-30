@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mag_app.Domain.Common;
-
-public class BaseEntity
+namespace mag_app.Winform.Windows.Quick_PassForms
 {
-	public long Id { get; set; }
+    internal class werwrwerwrewr
+    {
+    }
 }

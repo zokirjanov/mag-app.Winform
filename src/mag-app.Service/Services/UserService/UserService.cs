@@ -16,12 +16,12 @@ namespace mag_app.Service.Services.UserService
             _appDbContext = appContext;
         }
 
-        public async Task<string> AccountLoginAsync(LoginDto LoginDto)
+        public async Task<string> AccountLoginAsync(LoginViewModel login)
         {
             var user = await _appDbContext.Users.FirstOrDefaultAsync(
-            x => x.Login.ToLower() == LoginDto.Login.ToLower());
+            x => x.Login.ToLower() == login.Login.ToLower());
             if (user is null) { return "User not Found"; }
-            var checkPass = PasswordHasher.Verify(LoginDto.Password, user.Salt, user.PasswordHash);
+            var checkPass = PasswordHasher.Verify(login.Password, user.Salt, user.PasswordHash);
             if (checkPass)
             {
                 IdentitySingelton.BuildInstance(user.Id);
@@ -39,13 +39,13 @@ namespace mag_app.Service.Services.UserService
             }
         }
 
-        public async Task<string> AccountRegisterAsync(RegisterDto RegisterDto)
+        public async Task<string> AccountRegisterAsync(RegisterViewModel register)
         {
             var account = await _appDbContext.Users.FirstOrDefaultAsync(
-            x => x.Login.ToLower() == RegisterDto.Login.ToLower());
+            x => x.Login.ToLower() == register.Login.ToLower());
             if (account != null) { return "User already exists"; }
-            var user = (User)RegisterDto;
-            var hash = PasswordHasher.Hash(RegisterDto.Password);
+            var user = (User)register;
+            var hash = PasswordHasher.Hash(register.Password);
             user.PasswordHash = hash.Hash;
             user.Salt = hash.Salt;
             _appDbContext.Users.Add(user);
@@ -54,12 +54,12 @@ namespace mag_app.Service.Services.UserService
             return "false";
         }
 
-        public async Task<string> AccountRememberMeAsync(LoginDto LoginDto)
+        public async Task<string> AccountRememberMeAsync(LoginViewModel login)
         {
-            var user = await _appDbContext.Users.FirstOrDefaultAsync(x => x.Login.ToLower() == LoginDto.Login.ToLower());
+            var user = await _appDbContext.Users.FirstOrDefaultAsync(x => x.Login.ToLower() == login.Login.ToLower());
             if (user is null) { return "User not Found"; }
             string path = "database.txt";
-            File.WriteAllText(path, LoginDto.Login + ":" + LoginDto.Password);
+            File.WriteAllText(path, login.Login + ":" + login.Password);
             return "true";
         }
     }

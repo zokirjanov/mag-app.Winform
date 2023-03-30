@@ -77,7 +77,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             }
             else
             {
-                ProductDto product = new ProductDto()
+                ProductViewModel product = new ProductViewModel()
                 {
                     ProdutName = productNameTb.Text,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),

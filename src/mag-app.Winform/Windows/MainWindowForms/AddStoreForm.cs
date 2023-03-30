@@ -9,22 +9,25 @@ namespace mag_app.Winform.Windows
     {
         private readonly StoreService _service;
 
-        public AddStoreForm(AppDbContext appDbContext)
+
+        public AddStoreForm()
         {
-            _service = new StoreService(appDbContext);
+            _service = new StoreService();
             InitializeComponent();
         }
+
+
+
         private async void button1_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(storeNametb.Text))
             {
-                AddStoreDto storeDto = new AddStoreDto()
+                StoreViewModel StoreViewModel = new StoreViewModel()
                 {
                     StoreName = storeNametb.Text,
-                    UserId = IdentitySingelton.GetInstance().UserId
                 };
 
-                var res = await _service.CreateAsync(storeDto);
+                var res = await _service.CreateAsync(StoreViewModel);
                 if (res == "true")
                 {
                     MainForm.mainParent.marketbtn_Click(sender, e);

@@ -3,34 +3,25 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
-using mag_app.Winform.Windows.ProductForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.MainWindowForms;
 
 public partial class MyStoreForm : Form
-{ 
+{
     private StoreService _service;
     public FlowLayoutPanel panel = default!;
     public static MyStoreForm myStoreFormParent = default!;
 
-    public MyStoreForm(AppDbContext appDbContext)
+
+
+    public MyStoreForm()
     {
-        _service = new StoreService(appDbContext);
+        _service = new StoreService();
         myStoreFormParent = this;
         InitializeComponent();
     }
     public long Id { get; set; }
     public string StoreName { get; set; } = string.Empty;
-
 
 
     private void MyStoreForm_Load(object sender, EventArgs e)
@@ -52,10 +43,10 @@ public partial class MyStoreForm : Form
             Font = new Font("Times New Roman", 14),
         };
         flowLayoutPanel1.Controls.Add(w);
-        w.Click += async (s, e) => 
+        w.Click += async (s, e) =>
         {
-            Id = await _service.GetByName(w.Text);
-            StoreName= w.Text;
+            Id = await _service.GetId(w.Text);
+            StoreName = w.Text;
             MainForm.mainParent.Hide();
             StoreProductsForm storeProductsForm = new StoreProductsForm();
             storeProductsForm.Show();
@@ -72,7 +63,7 @@ public partial class MyStoreForm : Form
             BackColor = Color.LightYellow,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
         };
-        update.Click +=  (s, e) =>
+        update.Click += (s, e) =>
         {
             UpdateForm updateForm = new UpdateForm(new AppDbContext());
             updateForm.storeName = storename;
@@ -90,12 +81,13 @@ public partial class MyStoreForm : Form
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/delete.png")
         };
-        delete.Click +=  (s, e) =>
+        delete.Click += async (s, e) =>
         {
             DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = _service.DeleteAsync(storename);
+                long id = await _service.GetId(storename);
+                var res = _service.DeleteAsync(id);
                 AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
                 LoadData();
             }
@@ -113,16 +105,17 @@ public partial class MyStoreForm : Form
         //
         // Create button
         //
+
         PrimaryButton primaryButton = new PrimaryButton();
         flowLayoutPanel1.Controls.Clear();
         flowLayoutPanel1.Controls.Add(primaryButton);
         primaryButton.Text = "добавить магазин";
-        primaryButton.Width= 200;
+        primaryButton.Width = 200;
         primaryButton.Height = 80;
         primaryButton.BorderRadius = 5;
         primaryButton.Click += (s, e) =>
         {
-            AddStoreForm form = new AddStoreForm(new AppDbContext());
+            AddStoreForm form = new AddStoreForm();
             form.ShowDialog();
         };
 

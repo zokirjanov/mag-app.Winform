@@ -1,6 +1,9 @@
 ﻿
 using mag_app.DataAccess.DbContexts;
+using mag_app.DataAccess.Interfaces.Categories;
 using mag_app.DataAccess.Interfaces.SubCategories;
+using mag_app.DataAccess.Repositories.Categories;
+using mag_app.DataAccess.Repositories.SubCategories;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Common.Helpers;
@@ -18,86 +21,68 @@ namespace mag_app.Service.Services.SubCategoryService
 {
     public class SubCategoryService : ISubCategoryService
     {
-        public SubCategoryService subCategoryService;
-        private AppDbContext _appDbContext;
-        public SubCategoryService(AppDbContext appDbContext)
+        private ISubCategoryRepository subCategoryRepository { get; set; }
+
+
+        public SubCategoryService()
         {
-            subCategoryService = this;
-            _appDbContext = appDbContext;
-        }
-
-
-
-        public async Task<string> CreateCategoryAsync(SubCategoryDto subCategory)
-        {
-            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId);
-            if (check is not null) return "Такая подкатегория существует, попробуйте другое название подкатегории";
-            var cat = (SubCategory)subCategory;
-            _appDbContext.SubCategories.Add(cat);
-            var res = await _appDbContext.SaveChangesAsync();
-            if (res > 0) return "true";
-            return "Что-то пошло не так";
+            subCategoryRepository = new SubCategoryRepository();
         }
 
 
 
 
-        public async Task<bool> DeleteAsync(string subcategoryName)
+        public async Task<string> CreateCategoryAsync(SubCategoryViewModel subCategoryViewModel)
         {
-            var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subcategoryName);
-            if (check != null)
+            var subCategoryCheck = await subCategoryRepository.FirstOrDefaultAsync(x => x.SubCategoryName == subCategoryViewModel.SubCategoryName);
+            if (subCategoryCheck != null)
             {
-                var res = _appDbContext.SubCategories.Remove(check);
-                if (res != null)
-                {
-                    var ss = await _appDbContext.SaveChangesAsync();
-                    if (ss > 0) return true;
-                }
-                else return false;
+                return "Такая подкатегория существует, попробуйте другое название подкатегории";
+            }
+
+            var subCategory = (SubCategory)subCategoryViewModel;
+            var res = await subCategoryRepository.CreateAsync(subCategory);
+
+            return (res != null) ? "true" : "Что-то пошло не так";
+        }
+
+
+
+
+
+        public async Task<bool> DeleteAsync(long Id)
+        {
+            var category = await subCategoryRepository.FindByIdAsync(Id);
+
+            if (category != null)
+            {
+                return await subCategoryRepository.DeleteAsync(x => x.Id == category.Id);
             }
             return false;
         }
 
+         
 
 
 
         public async Task<List<SubCategory>> GetAllAsync(long cid)
         {
-            var result = await _appDbContext.SubCategories.Where(x => x.CategoryId == cid).OrderByDescending(x => x.CreatedAt).ToListAsync();
-            if (result is not null) return result.ToList();
+            var result = await subCategoryRepository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }
 
 
 
 
-        public async Task<long> GetByNameAsync(string name)
+
+        public async Task<string> UpdateAsync(SubCategoryViewModel category, string name)
         {
-            var result = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == name);
-            if (result is not null)
-            {
-                return result.Id;
-            }
-            else return 0;
-        }
-
-
-
-
-        public async Task<string> UpdateAsync(SubCategoryDto category, string name)
-        {
-            var checkname = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == category.SubCategoryName.ToLower());
+            var checkname = await subCategoryRepository.Where(x => x.SubCategoryName == name);
             if (checkname is null)
             {
-                var entity = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == name);
-                if (entity != null)
-                {
-                    entity.SubCategoryName = category.SubCategoryName;
-                    var res = await _appDbContext.SaveChangesAsync();
-                    if (res > 0) { return "true"; }
-                    else { return "false"; }
-                }
-                return "false";
+                var res = await subCategoryRepository.UpdateAsync(category);
+                return (res != null) ? "true" : "false";
             }
             else return "Подкатегория уже существует, попробуйте другое название";
         }

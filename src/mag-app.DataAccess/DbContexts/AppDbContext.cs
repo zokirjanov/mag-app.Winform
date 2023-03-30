@@ -26,39 +26,7 @@ public class AppDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseSqlite("Data Source = LocalDatabase.db");
-    }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-
-        modelBuilder
-            .Entity<User>()
-            .HasMany(t => t.Stores)
-            .WithOne(c => c.User)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        modelBuilder
-            .Entity<Store>()
-            .HasMany(x => x.Categories)
-            .WithOne(c => c.Store)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        modelBuilder
-            .Entity<Category>()
-            .HasMany(t => t.SubCategories)
-            .WithOne(c => c.Category)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        modelBuilder
-            .Entity<SubCategory>()
-            .HasMany(t => t.Products)
-            .WithOne(c => c.SubCategory)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        //modelBuilder
-        //    .Entity<AllProduct>()
-        //    .HasKey(bc => new { bc.StoreId, bc.ProductId });
+        //optionsBuilder.UseSqlite("Data Source = LocalDatabase.db");
+        optionsBuilder.UseSqlite("Data Source" + "../../../../../LocalDatabase.db");
     }
 }

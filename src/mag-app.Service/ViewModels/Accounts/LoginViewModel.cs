@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mag_app.Service.Dtos.Accounts
 {
-	public class LoginDto
+	public class LoginViewModel
 	{
 		public string Login { get; set; } = string.Empty;
 		public string Password { get; set; } = string.Empty;

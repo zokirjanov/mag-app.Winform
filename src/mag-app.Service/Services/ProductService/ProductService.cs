@@ -1,5 +1,10 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.DataAccess.Interfaces.Products;
+using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.Products;
+using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Products;
+using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.Products;
 using Microsoft.EntityFrameworkCore;
@@ -8,82 +13,80 @@ namespace mag_app.Service.Services.ProductService
 {
     public class ProductService : IproductService
     {
-        private AppDbContext _appDbContext;
+        IProductRepository productRepository { get; set; }
 
-        public ProductService(AppDbContext appDbContext)
+        public ProductService()
         {
-            this._appDbContext = appDbContext;
+            productRepository = new ProductRepository();
         }
 
 
 
-        public async Task<(string message, Product product)> CreateProductAsync(ProductDto product)
+        public async Task<(string message, Product product)> CreateProductAsync(ProductViewModel productViewModel)
         {
-            var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.SubCategoryId == product.SubCategoryId);
+            var check = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == productViewModel.ProdutName && x.SubCategoryId == productViewModel.SubCategoryId);
             if (check is not null) return ("Такое название продукта существует, попробуйте другое название категории", null)!;
-            var pro = (Product)product;
-            _appDbContext.Products.Add(pro);
-            var res = await _appDbContext.SaveChangesAsync();
-            if (res > 0) return ("true", pro)!;
-            return ("Что-то пошло не так", null)!;
+           
+            var product = (Product)productViewModel;
+            var result = await productRepository.CreateAsync(product);
+
+            if (result != null) return (message: "true", product);
+            else return (message: "Что-то пошло не так", null)!;
         }
 
 
 
 
-        public async Task<string> DeleteAsync(string name)
+        public async Task<bool> DeleteAsync(long Id)
         {
-            var product = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
+            var product = await productRepository.FindByIdAsync(Id);
+
             if (product != null)
             {
-                var res = _appDbContext.Products.Remove(product);
-                if (res != null)
-                {
-                    var ss = await _appDbContext.SaveChangesAsync();
-                    if (ss > 0) return "Успешно удалено";
-                }
-                else return "Что-то пошло не так";
+                var res = productRepository.DeleteAsync(x => x.Id == product.Id);
+
+                if (res != null) return true;
+                else return false;
             }
-            return "Товар не найден";
+            return false;
         }
 
 
 
 
-        public async Task<IEnumerable<Product>> GetAllAsync(long cId)
+
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            var result = await _appDbContext.Products.Where(x => x.SubCategoryId == cId).OrderByDescending(x => x.CreatedAt).ToListAsync();
-            if (result is not null) return result.ToList();
+            var result = await productRepository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }
 
 
-        public async Task<long> GetByNameAsync(string name)
+
+
+
+        public async Task<string> UpdateAsync(Product product)
         {
-            var result = await _appDbContext.Products.FirstOrDefaultAsync(x=> x.ProdutName == name);
-            if (result is not null) return Convert.ToInt64(result.Id);
-            else return 0;
-        }
+            var checkname = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
+            if (checkname != null) return "Такое название продукта существует, попробуйте другое название товара";
 
-
-
-        public async Task<string> UpdateAsync(ProductDto product, string name)
-        {
-         // var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
-            var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);
-            if (entity != null)
+            else
             {
-                entity.ProdutName = product.ProdutName;
-                entity.PurchasedPrice = product.PurchasedPrice;
-                entity.Price = product.Price;
-                entity.Barcode= product.Barcode;
-                entity.UpdatedAt = product.UpdatedAt;
+                var oldproduct = await productRepository.FirstOrDefaultAsync(x => x.Id == product.Id);
+                if (oldproduct is not null)
+                {
+                    oldproduct.ProdutName = product.ProdutName;
+                    oldproduct.Price = product.Price;
+                    oldproduct.PurchasedPrice = product.PurchasedPrice;
+                    oldproduct.Quantity = product.Quantity;
+                    oldproduct.Barcode = product.Barcode;
 
-                var res = await _appDbContext.SaveChangesAsync();
-                if (res > 0) { return "true"; }
-                else { return "false"; }
+                    var res = await productRepository.UpdateAsync(product);
+                    return (res != null) ? "true" : "false";
+                }
+                else return "товар не найден";
             }
-            return "false";
         }
     }
 }

@@ -57,13 +57,13 @@ namespace mag_app.Winform.Windows
             if (passwordlabel.Text == "" && emaillabel.Text == "" && confirmlabel.Text == ""
                   && !string.IsNullOrEmpty(registerConfirmtb.Text) && !string.IsNullOrEmpty(registerLogintb.Text) && !string.IsNullOrEmpty(registerPasswordtb.Text))
             {
-                RegisterDto registerDto = new RegisterDto()
+                RegisterViewModel registerViewModel = new RegisterViewModel()
                 {
                     Email = registerEmailtb.Text,
                     Login = registerLogintb.Text,
                     Password = registerPasswordtb.Text,
                 };
-                var res = await _service.AccountRegisterAsync(registerDto);
+                var res = await _service.AccountRegisterAsync(registerViewModel);
                 if (res == "true")
                 {
                     LoginForm.LoginInstance.logintxb.Text = registerLogintb.Text;
