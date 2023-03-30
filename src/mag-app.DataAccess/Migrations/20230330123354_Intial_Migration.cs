@@ -4,7 +4,7 @@
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class Intial_Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -78,8 +78,8 @@ namespace mag_app.DataAccess.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ProdutName = table.Column<string>(type: "TEXT", nullable: false),
                     Barcode = table.Column<string>(type: "TEXT", nullable: false),
-                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
-                    StoreName = table.Column<string>(type: "TEXT", nullable: false),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: true),
+                    StoreName = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     CategoryName = table.Column<string>(type: "TEXT", nullable: false),
                     SubCategoryId = table.Column<long>(type: "INTEGER", nullable: false),
@@ -98,8 +98,8 @@ namespace mag_app.DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AllProducts_Stores_StoreId",
-                        column: x => x.StoreId,
+                        name: "FK_AllProducts_Stores_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Stores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -118,7 +118,7 @@ namespace mag_app.DataAccess.Migrations
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ProdutName = table.Column<string>(type: "TEXT", nullable: false),
-                    Barcode = table.Column<string>(type: "TEXT", nullable: false),
+                    Barcode = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     CategoryName = table.Column<string>(type: "TEXT", nullable: false),
                     SubCategoryId = table.Column<long>(type: "INTEGER", nullable: false),
@@ -148,11 +148,6 @@ namespace mag_app.DataAccess.Migrations
                 name: "IX_AllProducts_CategoryId",
                 table: "AllProducts",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AllProducts_StoreId",
-                table: "AllProducts",
-                column: "StoreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AllProducts_SubCategoryId",

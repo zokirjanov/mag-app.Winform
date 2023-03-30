@@ -121,8 +121,6 @@ public partial class Store_Add_ProductForm : Form
                     Price = decimal.Parse(productPriceTb.Text),
                     Barcode = barcodeResult,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                    Storename = MyStoreForm.myStoreFormParent.StoreName,
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
                     CategoryName = CategoriesForm.categoryParent.CategoryTitle,
                     CategoryId = CategoriesForm.categoryParent.Id,
                     SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
