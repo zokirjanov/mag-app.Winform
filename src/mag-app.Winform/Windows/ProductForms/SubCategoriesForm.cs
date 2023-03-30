@@ -12,14 +12,16 @@ public partial class SubCategoriesForm : Form
     public static SubCategoriesForm subCategoryParent = default!;
     private SubCategoryService _service;
 
-    public SubCategoriesForm(AppDbContext appDbContext)
+    public SubCategoriesForm()
     {
-        _service = new SubCategoryService(appDbContext);
+        _service = new SubCategoryService();
         subCategoryParent = this;
         InitializeComponent();
     }
+
+
     public long Id { get; set; }
-    public string Title { get; set; }
+    public string Title { get; set; } = string.Empty;   
 
 
 
@@ -43,7 +45,7 @@ public partial class SubCategoriesForm : Form
         primaryButton.BorderRadius = 5;
         primaryButton.Click += (s, e) =>
         {
-            AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm(new AppDbContext());
+            AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm();
             addSbCategoryForm.ShowDialog();
         };
         var items = await _service.GetAllAsync(CategoriesForm.categoryParent!.Id);
@@ -77,12 +79,17 @@ public partial class SubCategoriesForm : Form
         subCategoryFlowPanel.Controls.Add(button);
         button.Click += async (s, e) =>
         {
-            Id = await _service.GetByNameAsync(button.Text);
+            Id = await _service.GetId(button.Text);
             Title = button.Text;
-            StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+            StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
             StoreProductsForm.storeProductParent.AddTitle(button.Text, "›подкатегория");
             StoreProductsForm.storeProductParent.backBtn.Hide();
         };
+     
+        
+        
+        
+        
         var update = new Button()
         {
             Parent = button,
@@ -94,10 +101,15 @@ public partial class SubCategoriesForm : Form
         };
         update.Click +=  (s, e) =>
         {
-            SubCategoryUpdateForm category = new SubCategoryUpdateForm(new AppDbContext());
+            SubCategoryUpdateForm category = new SubCategoryUpdateForm();
             category.categoryName = button.Text;
             category.ShowDialog();
         };
+     
+        
+        
+        
+        
         var delete = new Button()
         {
             Parent = button,
@@ -112,9 +124,11 @@ public partial class SubCategoriesForm : Form
             DialogResult dlg = MessageBox.Show("Вы уверены, что хотите удалить подкатегорию?\n" +
                                                "Все подкатегории и продукты будут удалены безвозвратно.",
                                                "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            
             if (dlg == DialogResult.OK)
             {
-                var res = _service.DeleteAsync(subcategoryName);
+                long id = await _service.GetId(subcategoryName);
+                var res = _service.DeleteAsync(id);
                 if (await res == true)
                 {
                     AutoClosingMessageBox.Show("Успешно удалено", "Delete", 350);
@@ -134,7 +148,7 @@ public partial class SubCategoriesForm : Form
 
     private void button2_Click(object sender, EventArgs e)
     {
-        StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+        StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm());
         StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(1);
         StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(1);
         StoreProductsForm.storeProductParent.backBtn.Show();

@@ -4,19 +4,16 @@ using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.Product_Forms;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.PortableExecutable;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class ProductUpdateForm : Form
     {
         ProductService _productService;
-        public ProductUpdateForm(AppDbContext appDbContext)
+        public ProductUpdateForm()
         {
             InitializeComponent();
-            _productService = new ProductService(appDbContext);
+            _productService = new ProductService();
         }
 
         public string oldName { get; set; } = string.Empty;
@@ -47,7 +44,7 @@ namespace mag_app.Winform.Windows.ProductForms
                         productNameTb.Text = item.ProdutName;
                         purchasePriceTb.Text = item.PurchasedPrice.ToString();
                         productPriceTb.Text = item.Price.ToString();
-                        barcodeTb.Text = item.Barcode.ToString();   
+                        barcodeTb.Text = item.Barcode.ToString();
                     }
                 }
             }
@@ -64,17 +61,17 @@ namespace mag_app.Winform.Windows.ProductForms
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeTb.Text,
-                UpdatedAt = TimeHelper.CurrentTime()
             };
 
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = await _productService.UpdateAsync(product, oldName);
+                var res = await _productService.UpdateAsync(product);
+
                 if (res == "true")
                 {
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
-                    StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+                    StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
                     this.Close();
                 }
                 else if (res == "false")

@@ -18,13 +18,17 @@ namespace mag_app.Winform.Windows.ProductForms;
 public partial class CategoryUpdateForm : Form
 {
     public CategoryService categoryService;
-    public CategoryUpdateForm(AppDbContext appDbContext)
+
+
+    public CategoryUpdateForm()
     {
-        categoryService = new CategoryService(appDbContext);
+        categoryService = new CategoryService();
         InitializeComponent();
     }
-    string oldName;
-    public string categoryName { get; set; }
+
+
+    string oldName = "";
+    public string categoryName { get; set; } = string.Empty;
 
 
 
@@ -48,7 +52,7 @@ public partial class CategoryUpdateForm : Form
             var res = await categoryService.UpdateAsync(category, oldName);
             if (res == "true")
             {
-                StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+                StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm());
                 this.Close();
             }
             else if (res == "false")

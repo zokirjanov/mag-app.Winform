@@ -140,6 +140,7 @@
             this.barcodeTb.Location = new System.Drawing.Point(41, 291);
             this.barcodeTb.MaxLength = 13;
             this.barcodeTb.Name = "barcodeTb";
+            this.barcodeTb.ReadOnly = true;
             this.barcodeTb.Size = new System.Drawing.Size(314, 30);
             this.barcodeTb.TabIndex = 40;
             // 

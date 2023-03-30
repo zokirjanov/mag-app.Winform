@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Attributes;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -52,6 +53,7 @@ namespace mag_app.Winform.Windows
                 if (res == "true")
                 {
                     this.Close();
+                    AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 300);
                     MainForm.mainParent.pnl.Controls.Clear();
                     MainForm.mainParent.marketbtn_Click(sender, e);
                 }

@@ -18,9 +18,9 @@ public partial class Store_Add_ProductForm : Form
 {
     private readonly ProductService _service;
 
-    public Store_Add_ProductForm(AppDbContext appDbContext)
+    public Store_Add_ProductForm()
     {
-        _service = new ProductService(appDbContext);
+        _service = new ProductService();
         InitializeComponent();
     }
 
@@ -107,23 +107,31 @@ public partial class Store_Add_ProductForm : Form
                 CategoryId = CategoriesForm.categoryParent.Id,
                 SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
                 SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
-                UpdatedAt = TimeHelper.CurrentTime()
+                Quantity = 0
             };
 
             var res = await _service.CreateProductAsync(product);
+
+
             if (res.product is not null)
             {
-                AllProduct allProduct = new AllProduct()
+                AllProductViewModel allProduct = new AllProductViewModel()
                 {
-                    StoreId = null,
-                    ProductId = res.product.Id,
-                    Quantity = 0,
+                    ProdutName = productNameTb.Text,
+                    Price = decimal.Parse(productPriceTb.Text),
+                    Barcode = barcodeResult,
+                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                    CategoryName = CategoriesForm.categoryParent.CategoryTitle,
+                    CategoryId = CategoriesForm.categoryParent.Id,
+                    SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
+                    SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
+                    Quantity = 0
                 };
 
-                AllProductService allProductService = new AllProductService(new AppDbContext());
+                AllProductService allProductService = new AllProductService();
                 await allProductService.CreateAllProductAsync(allProduct);
 
-                StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm(new AppDbContext()));
+                StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {

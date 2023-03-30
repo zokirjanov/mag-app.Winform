@@ -35,6 +35,7 @@ public partial class Quick_Pass : Form
     public int Quantity { get; set; }
 
 
+
     private void Quick_Pass_Load(object sender, EventArgs e)
     {
         productQuantity.Minimum = 0;
@@ -48,6 +49,8 @@ public partial class Quick_Pass : Form
         barcodeTb.Text = list_Products.barcode;
         productQuantity.Value = list_Products.qquantity;
     }
+
+
 
     private async void updateBtn_Click(object sender, EventArgs e)
     {
@@ -63,18 +66,18 @@ public partial class Quick_Pass : Form
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeTb.Text,
-                UpdatedAt = TimeHelper.CurrentTime()
+                Quantity = Convert.ToInt32(productQuantity.Value)
             };
 
 
-            long pid = await _product.GetByNameAsync(oldName);
-            long allproductId = await _productService.GetById(pid, MyStoreForm.myStoreFormParent.Id);
 
             AllProduct allProduct = new AllProduct()
             {
                 StoreId = MyStoreForm.myStoreFormParent.Id,
-                ProductId = pid,
-                Id = allproductId,
+                ProdutName = productNameTb.Text,
+                PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                Price = decimal.Parse(productPriceTb.Text),
+                Barcode = barcodeTb.Text,
                 Quantity = Convert.ToInt32(productQuantity.Value)
             };
 
@@ -85,20 +88,20 @@ public partial class Quick_Pass : Form
 
                 var res = await _productService.UpdateAsync(allProduct);
 
-                if (res.message == "true")
+                if (res == "true")
                 {
-                    var res1 = await _product.UpdateAsync(product, oldName);
+                    var res1 = await _product.UpdateAsync(product);
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
-                    StoreProductsForm.storeProductParent.openChildForm(new List_products(new AppDbContext()));
+                    StoreProductsForm.storeProductParent.openChildForm(new List_products());
                     this.Close();
                 }
-                else if (res.message == "false")
+                else if (res == "false")
                 {
                     MessageBox.Show("Что-то пошло не так, нет подходящего продукта");
                 }
                 else
                 {
-                    MessageBox.Show(res.message);
+                    MessageBox.Show(res);
                     productNameTb.Focus();
                     productNameTb.SelectAll();
                 }

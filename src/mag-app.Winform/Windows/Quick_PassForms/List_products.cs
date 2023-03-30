@@ -15,11 +15,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         public static List_products listProductsParent = default!;
 
 
-
-
-        public List_products(AppDbContext appDbContext)
+        public List_products( )
         {
-            _service = new ProductService(appDbContext);
+            _service = new ProductService();
             InitializeComponent();
             listProductsParent = this;
         }
@@ -49,20 +47,20 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private async void FillData()
         {
-            AllProductService allProduct = new AllProductService(new AppDbContext());
-            var player = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            AllProductService allProduct = new AllProductService();
+            var products = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
 
-            foreach (var i in player)
+            foreach (var i in products)
             {
                 allProductViewModeBindingSource.Add(new AllProductViewModel()
                 {
-                    ProdutName = i.Products.ProdutName,
-                    CategoryName = i.Products.CategoryName,
-                    SubcategoryName = i.Products.SubcategoryName,
-                    Barcode = i.Products.Barcode,
-                    Price = i.Products.Price,
+                    ProdutName = i.ProdutName,
+                    CategoryName = i.CategoryName,
+                    SubcategoryName = i.SubCategoryName,
+                    Barcode = i.Barcode,
+                    Price = i.Price,
                     Quantity = i.Quantity,
-                    PurchasedPrice = i.Products.PurchasedPrice,
+                    PurchasedPrice = i.PurchasedPrice,
                 });
             }
         }
@@ -85,7 +83,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
-                Row_Update row = new Row_Update(new AppDbContext());
+                Row_Update row = new Row_Update();
                 row.ProductName = value;
                 row.Quantity = int.Parse(quantity_value);
                 row.ShowDialog();
@@ -97,8 +95,8 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
-                    var res = _service.DeleteAsync(value!);
-
+                    long id = await _service.GetId(value);
+                    var res = _service.DeleteAsync(id);
                     if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
                     else if (await res == false) MessageBox.Show("Товар не найден");
                     allProductViewModeBindingSource.Clear();

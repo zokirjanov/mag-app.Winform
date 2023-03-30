@@ -12,11 +12,35 @@ using System.Threading.Tasks;
 
 namespace mag_app.Domain.Entities.AllProducts
 {
-    public class AllProduct : Product
+    public class AllProduct 
     {
-        [ForeignKey(nameof(StoreId))]
-        public Store Store { get; set; } = default!;
-        public string StoreName { get; set; } = string.Empty;
-        public long StoreId { get; set; }
+
+        public long Id { get; set; }
+        public string ProdutName { get; set; }
+        public string Barcode { get; set; } 
+
+
+       
+        [ForeignKey("CategoryId")]
+        public virtual Store Store { get; set; }
+        public long? StoreId { get; set; }
+        public string? StoreName { get; set; } 
+
+
+        [ForeignKey(nameof(CategoryId))]
+        public Category Category { get; set; }
+        public long CategoryId { get; set; }
+        public string CategoryName { get; set; } 
+
+
+        [ForeignKey(nameof(SubCategoryId))]
+        public SubCategory SubCategory { get; set; } 
+        public long SubCategoryId { get; set; }
+        public string SubCategoryName { get; set; } 
+
+        public int Quantity { get; set; }
+        public decimal PurchasedPrice { get; set; }
+        public decimal Price { get; set; }
+
     }
 }

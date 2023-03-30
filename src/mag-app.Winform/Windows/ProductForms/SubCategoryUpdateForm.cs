@@ -1,37 +1,31 @@
-﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Service.Dtos.Categories;
-using mag_app.Service.Dtos.SubCategories;
-using mag_app.Service.Services.CategoryService;
+﻿using mag_app.Service.Dtos.SubCategories;
 using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Windows.Product_Forms;
-using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
     public partial class SubCategoryUpdateForm : Form
     {
         SubCategoryService service;
-        public SubCategoryUpdateForm(AppDbContext appDbContext)
+        public SubCategoryUpdateForm()
         {
-            service = new SubCategoryService(appDbContext);
+            service = new SubCategoryService();
             InitializeComponent();
         }
+
+
         private void SubCategoryUpdateForm_Load(object sender, EventArgs e)
         {
             oldName = categoryName;
             subCategoryNameTb.Text = categoryName;
         }
-        string oldName;
-        public string categoryName { get; set; }
+
+
+        string oldName = "";
+        public string categoryName { get; set; } = string.Empty;
+
+
+
         private async void updateBtn_Click(object sender, EventArgs e)
         {
             SubCategoryViewModel category = new SubCategoryViewModel();
@@ -43,7 +37,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 var res = await service.UpdateAsync(category, oldName);
                 if (res == "true")
                 {
-                    StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm(new AppDbContext()));
+                    StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
                     this.Close();
                 }
                 else if (res == "false")
@@ -63,6 +57,6 @@ namespace mag_app.Winform.Windows.ProductForms
             }
         }
 
-      
+
     }
 }

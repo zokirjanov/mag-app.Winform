@@ -11,9 +11,9 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class AddCategoryForm : Form
     {
         private readonly CategoryService _service;
-        public AddCategoryForm(AppDbContext appDbContext)
+        public AddCategoryForm()
         {
-            _service = new CategoryService(appDbContext);
+            _service = new CategoryService();
             InitializeComponent();
         }
 
@@ -24,14 +24,13 @@ namespace mag_app.Winform.Windows.ProductForms
                 CategoryViewModel category = new CategoryViewModel()
                 {
                     CategoryName = categoryNameTb.Text,
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
                 };
 
                 var res = await _service.CreateCategoryAsync(category);
                 if (res == "true")
                 {
                     categoryNameTb.Text = "";
-                    StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm(new AppDbContext()));
+                    StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm());
                     DialogResult dlg = MessageBox.Show("Категория успешно добавлена \n\nВы хотите добавить еще один", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {

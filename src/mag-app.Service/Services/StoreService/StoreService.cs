@@ -1,7 +1,9 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.Products;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Categories;
+using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Stores;
@@ -62,6 +64,8 @@ namespace mag_app.Service.Services.StoreService
 
 
 
+
+
         public async Task<long> GetId(string name)
         {
             var store = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == name);
@@ -70,12 +74,15 @@ namespace mag_app.Service.Services.StoreService
 
 
 
-        public async Task<string> UpdateAsync(Store store, string name)
+        public async Task<string> UpdateAsync(Store store, string oldname)
         {
-            var checkname = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == name);
+            var checkname = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == store.StoreName);
+           
             if (checkname is null)
             {
-                var res = await storeRepository.UpdateAsync(store);
+                var oldStore = await storeRepository.FirstOrDefaultAsync(x => x.StoreName == oldname);
+                oldStore.StoreName =  store.StoreName;
+                var res = await storeRepository.UpdateAsync(oldStore);
                 return (res != null)?  "true" : "false";
             }
             else return "магазин уже существует, попробуйте другое название";
