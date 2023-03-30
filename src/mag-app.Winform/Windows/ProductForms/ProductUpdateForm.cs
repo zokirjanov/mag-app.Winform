@@ -4,9 +4,6 @@ using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.Product_Forms;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.PortableExecutable;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -47,7 +44,7 @@ namespace mag_app.Winform.Windows.ProductForms
                         productNameTb.Text = item.ProdutName;
                         purchasePriceTb.Text = item.PurchasedPrice.ToString();
                         productPriceTb.Text = item.Price.ToString();
-                        barcodeTb.Text = item.Barcode.ToString();   
+                        barcodeTb.Text = item.Barcode.ToString();
                     }
                 }
             }
@@ -70,6 +67,7 @@ namespace mag_app.Winform.Windows.ProductForms
             if (dlg == DialogResult.OK)
             {
                 var res = await _productService.UpdateAsync(product);
+
                 if (res == "true")
                 {
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);

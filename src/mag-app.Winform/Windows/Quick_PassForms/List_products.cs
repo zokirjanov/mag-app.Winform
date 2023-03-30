@@ -48,9 +48,9 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         private async void FillData()
         {
             AllProductService allProduct = new AllProductService();
-            var player = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            var products = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
 
-            foreach (var i in player)
+            foreach (var i in products)
             {
                 allProductViewModeBindingSource.Add(new AllProductViewModel()
                 {

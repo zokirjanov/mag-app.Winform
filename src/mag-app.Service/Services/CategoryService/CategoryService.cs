@@ -2,8 +2,10 @@
 using mag_app.DataAccess.Interfaces.Categories;
 using mag_app.DataAccess.Interfaces.Stores;
 using mag_app.DataAccess.Repositories.Categories;
+using mag_app.DataAccess.Repositories.Products;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Categories;
+using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Categories;
@@ -71,6 +73,8 @@ namespace mag_app.Service.Services.CategoryService
         }
 
 
+
+
         public async Task<long> GetId(string name)
         {
             var store = await categoryRepository.FirstOrDefaultAsync(x => x.CategoryName == name);
@@ -80,15 +84,18 @@ namespace mag_app.Service.Services.CategoryService
 
 
 
-        public async Task<string> UpdateAsync(CategoryViewModel category, string name)
+        public async Task<string> UpdateAsync(CategoryViewModel category, string oldname)
         {
-            var checkname = await categoryRepository.Where(x => x.CategoryName == name);
+            var checkname = await categoryRepository.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName);
+
             if (checkname is null)
             {
-                var res = await categoryRepository.UpdateAsync(category);
+                var oldCategory = await categoryRepository.FirstOrDefaultAsync(x => x.CategoryName == oldname);
+                oldCategory.CategoryName = category.CategoryName;
+                var res = await categoryRepository.UpdateAsync(oldCategory);
                 return (res != null) ? "true" : "false";
             }
-            else return "Категория уже существует, попробуйте другое название";
+            else return "категория уже существует, попробуйте другое название";
         }
     }
 }

@@ -10,13 +10,68 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230330101316_initialMigration")]
-    partial class initialMigration
+    [Migration("20230330112632_fixedddd")]
+    partial class fixedddd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
+
+            modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProduct", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Barcode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("CategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProdutName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("PurchasedPrice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("StoreId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("StoreName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("SubCategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SubCategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("StoreId");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("AllProducts");
+                });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Categories.Category", b =>
                 {
@@ -40,17 +95,12 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Barcode")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -81,8 +131,6 @@ namespace mag_app.DataAccess.Migrations
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Products");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Product");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
@@ -149,18 +197,29 @@ namespace mag_app.DataAccess.Migrations
 
             modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProduct", b =>
                 {
-                    b.HasBaseType("mag_app.Domain.Entities.Products.Product");
+                    b.HasOne("mag_app.Domain.Entities.Categories.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<long>("StoreId")
-                        .HasColumnType("INTEGER");
+                    b.HasOne("mag_app.Domain.Entities.Stores.Store", "Store")
+                        .WithMany()
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("StoreName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.HasOne("mag_app.Domain.Entities.SubCategories.SubCategory", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasIndex("StoreId");
+                    b.Navigation("Category");
 
-                    b.HasDiscriminator().HasValue("AllProduct");
+                    b.Navigation("Store");
+
+                    b.Navigation("SubCategory");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Products.Product", b =>
@@ -191,17 +250,6 @@ namespace mag_app.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProduct", b =>
-                {
-                    b.HasOne("mag_app.Domain.Entities.Stores.Store", "Store")
-                        .WithMany()
-                        .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Store");
                 });
 #pragma warning restore 612, 618
         }

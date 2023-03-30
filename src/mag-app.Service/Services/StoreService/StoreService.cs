@@ -1,7 +1,9 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.Products;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Categories;
+using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Stores;
@@ -59,6 +61,8 @@ namespace mag_app.Service.Services.StoreService
             if (result is not null) return result.OrderByDescending(x=>x.Id).ToList();
             else return null;
         }
+
+
 
 
 

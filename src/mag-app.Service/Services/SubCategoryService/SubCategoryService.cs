@@ -3,8 +3,10 @@ using mag_app.DataAccess.DbContexts;
 using mag_app.DataAccess.Interfaces.Categories;
 using mag_app.DataAccess.Interfaces.SubCategories;
 using mag_app.DataAccess.Repositories.Categories;
+using mag_app.DataAccess.Repositories.Products;
 using mag_app.DataAccess.Repositories.SubCategories;
 using mag_app.Domain.Entities.Categories;
+using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Categories;
@@ -67,10 +69,12 @@ namespace mag_app.Service.Services.SubCategoryService
 
         public async Task<List<SubCategory>> GetAllAsync(long cid)
         {
-            var result = await subCategoryRepository.GetAllAsync();
+            var result = await subCategoryRepository.GetAllAsync(x=>x.CategoryId == cid);
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }
+
+
 
 
 
@@ -83,15 +87,18 @@ namespace mag_app.Service.Services.SubCategoryService
 
 
 
-        public async Task<string> UpdateAsync(SubCategoryViewModel category, string name)
+        public async Task<string> UpdateAsync(SubCategoryViewModel category, string oldname)
         {
-            var checkname = await subCategoryRepository.Where(x => x.SubCategoryName == name);
+            var checkname = await subCategoryRepository.FirstOrDefaultAsync(x => x.SubCategoryName == category.SubCategoryName);
+
             if (checkname is null)
             {
-                var res = await subCategoryRepository.UpdateAsync(category);
+                var oldSubCategory = await subCategoryRepository.FirstOrDefaultAsync(x => x.SubCategoryName == oldname);
+                oldSubCategory.SubCategoryName = category.SubCategoryName;
+                var res = await subCategoryRepository.UpdateAsync(oldSubCategory);
                 return (res != null) ? "true" : "false";
             }
-            else return "Подкатегория уже существует, попробуйте другое название";
+            else return "категория уже существует, попробуйте другое название";
         }
     }
 }

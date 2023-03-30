@@ -4,6 +4,7 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
@@ -41,7 +42,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 Store_Add_ProductForm form = new Store_Add_ProductForm();
                 form.ShowDialog();
             };
-            var items = await _service.GetAllAsync();
+
+            var items = await _service.GetAllAsync(SubCategoriesForm.subCategoryParent.Id);
             if (items is null)
             {
                 MessageBox.Show("Stores not found");

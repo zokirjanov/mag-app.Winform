@@ -1,14 +1,8 @@
-﻿using mag_app.DataAccess.DbContexts;
-using mag_app.DataAccess.Interfaces.Products;
-using mag_app.DataAccess.Interfaces.Stores;
-using mag_app.DataAccess.Repositories.Categories;
+﻿using mag_app.DataAccess.Interfaces.Products;
 using mag_app.DataAccess.Repositories.Products;
-using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Products;
-using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.Products;
-using Microsoft.EntityFrameworkCore;
 
 namespace mag_app.Service.Services.ProductService
 {
@@ -27,7 +21,7 @@ namespace mag_app.Service.Services.ProductService
         {
             var check = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == productViewModel.ProdutName && x.SubCategoryId == productViewModel.SubCategoryId);
             if (check is not null) return ("Такое название продукта существует, попробуйте другое название категории", null)!;
-           
+
             var product = (Product)productViewModel;
             var result = await productRepository.CreateAsync(product);
 
@@ -54,11 +48,18 @@ namespace mag_app.Service.Services.ProductService
 
 
 
-
-
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
             var result = await productRepository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
+            else return null;
+        }
+
+
+
+        public async Task<IEnumerable<Product>> GetAllAsync(long Id)
+        {
+            var result = await productRepository.GetAllAsync(x => x.SubCategoryId == Id);
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }
@@ -74,6 +75,7 @@ namespace mag_app.Service.Services.ProductService
 
 
 
+
         public async Task<string> UpdateAsync(Product product)
         {
             var checkname = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
@@ -81,7 +83,7 @@ namespace mag_app.Service.Services.ProductService
 
             else
             {
-                var oldproduct = await productRepository.FirstOrDefaultAsync(x => x.Id == product.Id);
+                var oldproduct = await productRepository.FirstOrDefaultAsync(x=> x.Barcode == product.Barcode);
                 if (oldproduct is not null)
                 {
                     oldproduct.ProdutName = product.ProdutName;
@@ -96,5 +98,7 @@ namespace mag_app.Service.Services.ProductService
                 else return "товар не найден";
             }
         }
+
+
     }
 }

@@ -10,8 +10,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230330104022_FixedMigration")]
-    partial class FixedMigration
+    [Migration("20230330104213_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

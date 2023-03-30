@@ -27,6 +27,8 @@ public class AllProductService : IAllProductService
     {
         AllProduct allProduct = new AllProduct()
         {
+            ProdutName = product.ProdutName,
+            Barcode = product.Barcode,
             StoreId = product.StoreId,
             StoreName = product.Storename,
             CategoryId = product.CategoryId,
@@ -34,6 +36,8 @@ public class AllProductService : IAllProductService
             SubCategoryId = product.SubCategoryId,
             SubCategoryName = product.SubcategoryName,
             Quantity = product.Quantity,
+            PurchasedPrice = product.PurchasedPrice,
+            Price = product.Price
         };
 
         return await allProductRepository.CreateAsync(allProduct);
