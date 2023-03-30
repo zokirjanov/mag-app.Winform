@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mag_app.Domain.Common;
-
-public class BaseEntity
+namespace mag_app.Domain.Common
 {
-	public long Id { get; set; }
+    public interface IAuditable
+    {
+        public long Id  { get; set; }
+    }
 }

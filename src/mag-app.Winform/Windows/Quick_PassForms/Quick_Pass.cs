@@ -57,7 +57,7 @@ public partial class Quick_Pass : Form
         }
         else
         {
-            ProductDto product = new ProductDto()
+            ProductViewModel product = new ProductViewModel()
             {
                 ProdutName = productNameTb.Text,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),

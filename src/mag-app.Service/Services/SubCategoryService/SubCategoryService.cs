@@ -28,7 +28,7 @@ namespace mag_app.Service.Services.SubCategoryService
 
 
 
-        public async Task<string> CreateCategoryAsync(SubCategoryDto subCategory)
+        public async Task<string> CreateCategoryAsync(SubCategoryViewModel subCategory)
         {
             var check = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == subCategory.SubCategoryName && x.CategoryId == subCategory.CategoryId);
             if (check is not null) return "Такая подкатегория существует, попробуйте другое название подкатегории";
@@ -84,7 +84,7 @@ namespace mag_app.Service.Services.SubCategoryService
 
 
 
-        public async Task<string> UpdateAsync(SubCategoryDto category, string name)
+        public async Task<string> UpdateAsync(SubCategoryViewModel category, string name)
         {
             var checkname = await _appDbContext.SubCategories.FirstOrDefaultAsync(x => x.SubCategoryName == category.SubCategoryName.ToLower());
             if (checkname is null)

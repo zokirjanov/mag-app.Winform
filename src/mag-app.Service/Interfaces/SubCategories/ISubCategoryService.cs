@@ -12,10 +12,10 @@ namespace mag_app.Service.Interfaces.SubCategories
 {
     public interface ISubCategoryService
     {
-        public Task<string> CreateCategoryAsync(SubCategoryDto subCategory);
+        public Task<string> CreateCategoryAsync(SubCategoryViewModel subCategory);
         public Task<List<SubCategory>> GetAllAsync(long cid);
         public Task<bool> DeleteAsync(string subcategoryName);
-        public Task<string> UpdateAsync(SubCategoryDto category, string name);
+        public Task<string> UpdateAsync(SubCategoryViewModel category, string name);
         public Task<long> GetByNameAsync(string name);
     }
 }

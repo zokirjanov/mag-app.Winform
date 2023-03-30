@@ -18,7 +18,7 @@ namespace mag_app.Service.Services.StoreService
             _appDbContext = repository;
         }
 
-        public async Task<string> CreateAsync(AddStoreDto storeDto)
+        public async Task<string> CreateAsync(StoreViewModel storeDto)
         {
             var storee = await _appDbContext.Stores.FirstOrDefaultAsync(x => x.StoreName.ToLower() == storeDto.StoreName.ToLower() && x.UserId == storeDto.UserId);
             if (storee != null) { return "Категория уже существует"; }

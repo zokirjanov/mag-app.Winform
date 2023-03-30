@@ -81,7 +81,7 @@ public partial class LoginForm : Form
         if (!string.IsNullOrEmpty(loginlogin.Text) && !string.IsNullOrEmpty(loginPass.Text)
           && loginLoginerror.Text == "")
         {
-            LoginDto accountLoginDto = new LoginDto() { Login = loginlogin.Text, Password = loginPass.Text };
+            LoginViewModel accountLoginDto = new LoginViewModel() { Login = loginlogin.Text, Password = loginPass.Text };
             var res = await _service.AccountLoginAsync(accountLoginDto);
 
             if (res == "False")

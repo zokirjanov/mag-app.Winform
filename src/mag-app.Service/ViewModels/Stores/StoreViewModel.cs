@@ -10,20 +10,15 @@ using System.Threading.Tasks;
 
 namespace mag_app.Service.Dtos.Stores
 {
-    public class AddStoreDto
+    public class StoreViewModel
     {
-        [MaxLength(30)]
         public string StoreName { get; set; } = string.Empty;
-        public long UserId { get; set; }
 
-        public static implicit operator Store(AddStoreDto storeDto)
+        public static implicit operator Store(StoreViewModel storeDto)
         {
             return new Store()
             {
                 StoreName = storeDto.StoreName,
-                UserId = storeDto.UserId,
-                CreatedAt = TimeHelper.CurrentTime(),
-                UpdatedAt = TimeHelper.CurrentTime()
             };
         }
     }

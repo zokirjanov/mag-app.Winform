@@ -39,7 +39,7 @@ public partial class CategoryUpdateForm : Form
 
     private async void updateBtn_Click(object sender, EventArgs e)
     {
-        CategoryDto category = new CategoryDto();
+        CategoryViewModel category = new CategoryViewModel();
         category.CategoryName = categoryNameTb.Text;
 
         DialogResult dlg = MessageBox.Show("Вы хотите изменить категорию?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

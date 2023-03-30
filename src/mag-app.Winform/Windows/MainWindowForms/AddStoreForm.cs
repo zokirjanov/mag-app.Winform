@@ -18,7 +18,7 @@ namespace mag_app.Winform.Windows
         {
             if (!string.IsNullOrEmpty(storeNametb.Text))
             {
-                AddStoreDto storeDto = new AddStoreDto()
+                StoreViewModel storeDto = new StoreViewModel()
                 {
                     StoreName = storeNametb.Text,
                     UserId = IdentitySingelton.GetInstance().UserId

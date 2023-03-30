@@ -17,7 +17,7 @@ namespace mag_app.Service.Services.ProductService
 
 
 
-        public async Task<(string message, Product product)> CreateProductAsync(ProductDto product)
+        public async Task<(string message, Product product)> CreateProductAsync(ProductViewModel product)
         {
             var check = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName && x.SubCategoryId == product.SubCategoryId);
             if (check is not null) return ("Такое название продукта существует, попробуйте другое название категории", null)!;
@@ -67,7 +67,7 @@ namespace mag_app.Service.Services.ProductService
 
 
 
-        public async Task<string> UpdateAsync(ProductDto product, string name)
+        public async Task<string> UpdateAsync(ProductViewModel product, string name)
         {
          // var checkname = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName.ToLower() == product.ProdutName.ToLower());
             var entity = await _appDbContext.Products.FirstOrDefaultAsync(x => x.ProdutName == name);

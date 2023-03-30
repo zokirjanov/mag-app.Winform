@@ -120,7 +120,7 @@
             // 
             // allProductViewModeBindingSource
             // 
-            this.allProductViewModeBindingSource.DataSource = typeof(mag_app.Service.Dtos.Products.AllProductViewMode);
+            this.allProductViewModeBindingSource.DataSource = typeof(mag_app.Service.Dtos.Products.AllProductViewModel);
             // 
             // barcodeLabel
             // 

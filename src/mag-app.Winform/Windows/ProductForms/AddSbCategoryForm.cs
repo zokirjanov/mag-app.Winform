@@ -20,7 +20,7 @@ namespace mag_app.Winform.Windows.ProductForms
         {
             if (!string.IsNullOrEmpty(categoryAddBtn.Text))
             {
-                SubCategoryDto category = new SubCategoryDto()
+                SubCategoryViewModel category = new SubCategoryViewModel()
                 {
                     SubCategoryName = subCategoryNameTb.Text,
                     CategoryId = CategoriesForm.categoryParent!.Id,

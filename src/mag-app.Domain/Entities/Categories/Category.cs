@@ -6,11 +6,9 @@ using mag_app.Domain.Entities.Users;
 
 namespace mag_app.Domain.Entities.Categories
 {
-    public class Category : Auditable
+    public class Category : IAuditable
     {
+        public long Id { get; set; }
         public string CategoryName { get; set; } = string.Empty;
-        public long StoreId { get; set; }
-        public virtual Store Store { get; set; } = default!;
-        public List<SubCategory> SubCategories { get; set; } = default!;
     }
 }

@@ -54,7 +54,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             foreach (var i in player)
             {
-                allProductViewModeBindingSource.Add(new AllProductViewMode()
+                allProductViewModeBindingSource.Add(new AllProductViewModel()
                 {
                     ProdutName = i.Products.ProdutName,
                     CategoryName = i.Products.CategoryName,

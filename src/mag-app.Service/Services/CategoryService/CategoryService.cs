@@ -26,7 +26,7 @@ namespace mag_app.Service.Services.CategoryService
 
 
 
-        public async Task<string> CreateCategoryAsync(CategoryDto category)
+        public async Task<string> CreateCategoryAsync(CategoryViewModel category)
         {
             var check = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName && x.StoreId == category.StoreId);
             if (check is not null) return "Such a category exists, try another category name";
@@ -83,7 +83,7 @@ namespace mag_app.Service.Services.CategoryService
 
 
 
-        public async Task<string> UpdateAsync(CategoryDto category, string name)
+        public async Task<string> UpdateAsync(CategoryViewModel category, string name)
         {
             var checkname = await _appDbContext.Categories.FirstOrDefaultAsync(x => x.CategoryName == category.CategoryName);
             if (checkname is null)

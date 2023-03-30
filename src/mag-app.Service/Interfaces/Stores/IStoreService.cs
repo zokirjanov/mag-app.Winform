@@ -10,7 +10,7 @@ namespace mag_app.Service.Interfaces.Stores
 {
     public interface IStoreService
     {
-        public Task<string> CreateAsync(AddStoreDto storeDto);
+        public Task<string> CreateAsync(StoreViewModel storeDto);
         public Task<string> DeleteAsync(string name);
         public Task<string> UpdateAsync(Store store, string name);
         public Task<List<Store>> GetAllAsync();

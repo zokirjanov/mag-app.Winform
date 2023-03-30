@@ -57,7 +57,7 @@ namespace mag_app.Winform.Windows
             if (passwordlabel.Text == "" && emaillabel.Text == "" && confirmlabel.Text == ""
                   && !string.IsNullOrEmpty(registerConfirmtb.Text) && !string.IsNullOrEmpty(registerLogintb.Text) && !string.IsNullOrEmpty(registerPasswordtb.Text))
             {
-                RegisterDto registerDto = new RegisterDto()
+                RegisterViewModel registerDto = new RegisterViewModel()
                 {
                     Email = registerEmailtb.Text,
                     Login = registerLogintb.Text,

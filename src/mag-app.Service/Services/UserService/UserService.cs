@@ -16,7 +16,7 @@ namespace mag_app.Service.Services.UserService
             _appDbContext = appContext;
         }
 
-        public async Task<string> AccountLoginAsync(LoginDto LoginDto)
+        public async Task<string> AccountLoginAsync(LoginViewModel LoginDto)
         {
             var user = await _appDbContext.Users.FirstOrDefaultAsync(
             x => x.Login.ToLower() == LoginDto.Login.ToLower());
@@ -39,7 +39,7 @@ namespace mag_app.Service.Services.UserService
             }
         }
 
-        public async Task<string> AccountRegisterAsync(RegisterDto RegisterDto)
+        public async Task<string> AccountRegisterAsync(RegisterViewModel RegisterDto)
         {
             var account = await _appDbContext.Users.FirstOrDefaultAsync(
             x => x.Login.ToLower() == RegisterDto.Login.ToLower());
@@ -54,7 +54,7 @@ namespace mag_app.Service.Services.UserService
             return "false";
         }
 
-        public async Task<string> AccountRememberMeAsync(LoginDto LoginDto)
+        public async Task<string> AccountRememberMeAsync(LoginViewModel LoginDto)
         {
             var user = await _appDbContext.Users.FirstOrDefaultAsync(x => x.Login.ToLower() == LoginDto.Login.ToLower());
             if (user is null) { return "User not Found"; }
