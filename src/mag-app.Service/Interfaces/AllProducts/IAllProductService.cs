@@ -12,12 +12,10 @@ namespace mag_app.Service.Interfaces.AllProducts
 {
     public interface IAllProductService
     {
-        public Task<AllProduct> CreateAllProductAsync(AllProduct product);
+        public Task<AllProduct> CreateAllProductAsync(AllProductViewModel product);
         public Task<IEnumerable<AllProduct>> GetAllAsync(long cId);
-        public Task<bool> DeleteAsync(AllProduct product);
-        public Task<(string message, AllProduct product)> UpdateAsync(AllProduct product);
-        public Task<long> GetById(long pid, long cid);
-        public Task<IEnumerable<AllProduct>> GetByNameAsync(string name, int quantity);
+        public Task<bool> DeleteAsync(long Id );
+        public Task<string> UpdateAsync(AllProduct product);
     }
 }
 

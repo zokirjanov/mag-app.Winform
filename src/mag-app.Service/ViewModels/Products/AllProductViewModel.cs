@@ -18,6 +18,9 @@ namespace mag_app.Service.Dtos.Products
         public int Quantity { get; set; }
         public string Barcode { get; set; } = string.Empty;
 
+        public string Storename { get; set; } = string.Empty;
+        public long StoreId { get; set; }
+
         public string CategoryName { get; set; } = string.Empty;
         public long CategoryId { get; set; }
 
@@ -27,7 +30,7 @@ namespace mag_app.Service.Dtos.Products
 
         public static implicit operator AllProduct(AllProductViewModel product)
         {
-            return new Product()
+            return new AllProduct()
             {
                 ProdutName = product.ProdutName,
                 Price = product.Price,
@@ -35,7 +38,7 @@ namespace mag_app.Service.Dtos.Products
                 Barcode = product.Barcode,
                 Quantity = product.Quantity,
                 CategoryName = product.CategoryName,
-                CategoryId = product.ca,
+                CategoryId = product.CategoryId,
                 SubCategoryName = product.SubcategoryName,
                 SubCategoryId = product.SubCategoryId,
             };

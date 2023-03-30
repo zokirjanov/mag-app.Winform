@@ -28,10 +28,6 @@ namespace mag_app.Domain.Entities.Products
         public string SubCategoryName { get; set; } = string.Empty;
         public long SubCategoryId { get; set; }
 
-
-
-        
-
     }
 }
 

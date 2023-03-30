@@ -12,28 +12,11 @@ using System.Threading.Tasks;
 
 namespace mag_app.Domain.Entities.AllProducts
 {
-    public class AllProduct : IAuditable
+    public class AllProduct : Product
     {
-        public long Id  { get; set; }
-        public int Quantity { get; set; }
-
-
-        [ForeignKey(nameof(StoreId))] 
+        [ForeignKey(nameof(StoreId))]
         public Store Store { get; set; } = default!;
+        public string StoreName { get; set; } = string.Empty;
         public long StoreId { get; set; }
-
-
-        [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; } = default!;
-        public string CategoryName { get; set; } = string.Empty;
-        public long CategoryId { get; set; }
-
-
-
-        [ForeignKey(nameof(SubcategoryId))] 
-        public SubCategory SubCategory { get; set; } = default!;
-        public string SubCategoryName { get; set; } = string.Empty;
-        public long SubcategoryId { get; set; }
-
     }
 }

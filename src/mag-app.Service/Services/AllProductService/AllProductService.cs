@@ -1,129 +1,92 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.DataAccess.Interfaces.AllProducts;
+using mag_app.DataAccess.Interfaces.Products;
+using mag_app.DataAccess.Repositories.AllProducts;
+using mag_app.DataAccess.Repositories.Products;
 using mag_app.Domain.Entities.AllProducts;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.AllProducts;
 using Microsoft.EntityFrameworkCore;
 
-namespace mag_app.Service.Services.AllProductService
+namespace mag_app.Service.Services.AllProductService;
+
+public class AllProductService : IAllProductService
 {
-    public class AllProductService : IAllProductService
+    IAllProductRepository allProductRepository { get; set; }
+
+    public AllProductService()
     {
-        private AppDbContext _appDbContext;
+        allProductRepository = new AllProductRepository();
+    }
 
-        public AllProductService(AppDbContext appDbContext)
+
+
+
+    public async Task<AllProduct> CreateAllProductAsync(AllProductViewModel product)
+    {
+        AllProduct allProduct = new AllProduct()
         {
-            this._appDbContext = appDbContext;
+            StoreId = product.StoreId,
+            StoreName = product.Storename,
+            CategoryId = product.CategoryId,
+            CategoryName = product.CategoryName,
+            SubCategoryId = product.SubCategoryId,
+            SubCategoryName = product.SubcategoryName,
+            Quantity = product.Quantity,
+        };
+
+        return await allProductRepository.CreateAsync(allProduct);
+    }
+
+
+
+    public async Task<bool> DeleteAsync(long Id)
+    {
+        var checkProduct = await allProductRepository.FirstOrDefaultAsync(x => x.Id == Id);
+
+        if (checkProduct != null)
+        {
+            var res = await allProductRepository.DeleteAsync(x => x.Id == checkProduct.Id);
+            return (res) ? true : false;
         }
+        return false;
+    }
 
 
 
 
-        public async Task<AllProduct> CreateAllProductAsync(AllProduct product)
+    public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
+    {
+        var result = await allProductRepository.GetAllAsync();
+        if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
+        else return null;
+    }
+
+
+
+
+
+    public async Task<string> UpdateAsync(AllProduct product)
+    {
+
+        var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
+
+        if (oldproduct != null) return ("Такое название продукта существует, попробуйте другое название товара");
+
+        else
         {
-            AllProduct allProduct = new AllProduct()
-            {
-                ProductId = product.ProductId,
-                StoreId = product.StoreId,
-                Quantity = product.Quantity,
-                CreatedAt = TimeHelper.CurrentTime(),
-                UpdatedAt = TimeHelper.CurrentTime(),
-            };
-            _appDbContext.AllProducts.Add(allProduct);
-            var res = await _appDbContext.SaveChangesAsync();
-            return allProduct;
-        }
+            oldproduct.ProdutName = product.ProdutName;
+            oldproduct.Price = product.Price;
+            oldproduct.PurchasedPrice = product.PurchasedPrice;
+            oldproduct.Quantity = product.Quantity;
+            oldproduct.Barcode = product.Barcode;
 
+            var res = await allProductRepository.UpdateAsync(oldproduct);
 
-
-        public async Task<bool> DeleteAsync(AllProduct product)
-        {
-            var result = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.Id == product.Id && x.ProductId == product.ProductId && x.StoreId == null);
-            if (result != null)
-            {
-                var res = _appDbContext.AllProducts.Remove(result);
-                if (res != null)
-                {
-                    var ss = await _appDbContext.SaveChangesAsync();
-                    if (ss > 0) return true;
-                }
-                else return false;
-            }
-            return false;
-        }
-
-
-
-
-        public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
-        {
-            IList<AllProduct> allProducts = new List<AllProduct>();
-
-            var products = await _appDbContext.Products.Include(c => c.SubCategory).Include(c => c.SubCategory.Category).ToListAsync();
-            var allproducts = await _appDbContext.AllProducts.Where(x => x.StoreId == cId).Include(x => x.Products).ToListAsync();
-
-            foreach (var i in products)
-            {
-                AllProduct product = new AllProduct();
-
-                foreach (var j in allproducts)
-                {
-                    if (i.Id == j.ProductId) product = j;
-                }
-                if (product.Id != 0) allProducts.Add(product);
-                else
-                {
-                    product.Products = i;
-                    allProducts.Add(product);
-                }
-            }
-            return allProducts;
-        }
-
-
-
-
-        public async Task<IEnumerable<AllProduct>> GetByNameAsync(string name, int quantity)
-        {
-            var allProducts = await _appDbContext.AllProducts.Include(x => x.Products).Where(x => x.Products.ProdutName == name && x.Quantity == quantity).OrderByDescending(x => x.Id).ToListAsync();
-            return allProducts;
-        }
-
-
-
-
-        public async Task<long> GetById(long pid, long cid)
-        {
-            var entity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == pid && x.StoreId == cid);
-            var nullentity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == pid && x.StoreId == null);
-
-            if (entity is not null) return Convert.ToInt64(entity.Id);
-            else if (nullentity is not null) return Convert.ToInt64(nullentity.Id);
-            else return -1;
-        }
-
-
-
-
-        public async Task<(string message, AllProduct product)> UpdateAsync(AllProduct product)
-        {
-
-            var check = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.Id == product.Id && x.StoreId == product.StoreId && x.ProductId == product.ProductId);
-            var nullentity = await _appDbContext.AllProducts.FirstOrDefaultAsync(x => x.ProductId == product.ProductId && x.StoreId == null);
-
-            if (check == null)
-            {
-                var res = CreateAllProductAsync(product);
-                return (message: "true", product);
-            }
-            else if (check != null)
-            {
-                check.Quantity = product.Quantity;
-                check.StoreId = product.StoreId;
-                var res = await _appDbContext.SaveChangesAsync();
-                if (res > 0) { return (message: "true", check); }
-                else return (message: "false", null)!;
-            }
-            else return ("Такое  продукта  не  существует", null)!;
+            return (res != null)? "true":"false";
         }
     }
+
 }
+
