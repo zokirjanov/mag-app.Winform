@@ -8,13 +8,16 @@ namespace mag_app.Service.Dtos.SubCategories
     {
         public string SubCategoryName { get; set; } = string.Empty;
         public long CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
-        public static implicit operator SubCategory(SubCategoryViewModel subCategoryDto)
+
+        public static implicit operator SubCategory(SubCategoryViewModel subCategoryViewModel)
         {
             return new SubCategory()
             {
-                SubCategoryName= subCategoryDto.SubCategoryName,
-                CategoryId = subCategoryDto.CategoryId,
+                SubCategoryName= subCategoryViewModel.SubCategoryName,
+                CategoryId = subCategoryViewModel.CategoryId,
+                CategoryName= subCategoryViewModel.CategoryName
             };
         }
     }

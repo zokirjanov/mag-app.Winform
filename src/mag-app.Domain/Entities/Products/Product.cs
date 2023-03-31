@@ -9,25 +9,26 @@ namespace mag_app.Domain.Entities.Products
     public class Product : IAuditable
     {
         public long Id { get; set; }
-        public string ProdutName { get; set; }
         public string? Barcode { get; set; }
 
 
-        [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; }
+        [ForeignKey("CategoryId")]
         public long CategoryId { get; set; }
+        public virtual Category Category { get; set; }
         public string CategoryName { get; set; }
 
 
-        [ForeignKey(nameof(SubCategoryId))]
-        public SubCategory SubCategory { get; set; }
+        [ForeignKey("SubCategoryId")]
         public long SubCategoryId { get; set; }
-        public string SubCategoryName { get; set; } 
+        public virtual SubCategory SubCategory { get; set; }
+        public string SubCategoryName { get; set; }
 
 
-        public int Quantity { get; set; }
+        public string ProdutName { get; set; }
         public decimal PurchasedPrice { get; set; }
         public decimal Price { get; set; }
+        public int Quantity { get; set; }
+
 
     }
 }

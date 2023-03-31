@@ -95,7 +95,7 @@ public partial class Store_Add_ProductForm : Form
 
     private async void ProductPraparing(string barcodeResult)
     {
-        if (!string.IsNullOrEmpty(productNameTb.Text) || !string.IsNullOrEmpty(productPriceTb.Text) || !string.IsNullOrEmpty(purchasePriceTb.Text))
+        if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
         {
             ProductViewModel product = new ProductViewModel()
             {
@@ -121,6 +121,8 @@ public partial class Store_Add_ProductForm : Form
                     Price = decimal.Parse(productPriceTb.Text),
                     Barcode = barcodeResult,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                    StoreId = MyStoreForm.myStoreFormParent.Id,
+                    Storename = MyStoreForm.myStoreFormParent.StoreName,
                     CategoryName = CategoriesForm.categoryParent.CategoryTitle,
                     CategoryId = CategoriesForm.categoryParent.Id,
                     SubcategoryName = SubCategoriesForm.subCategoryParent.Title,

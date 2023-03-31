@@ -29,4 +29,49 @@ public class AppDbContext : DbContext
         optionsBuilder.UseSqlite("Data Source = LocalDatabase.db");
        // optionsBuilder.UseSqlite("Data Source" + "../../../../../LocalDatabase.db");
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Products
+        modelBuilder.Entity<Product>()
+                    .HasOne<SubCategory>(e => e.SubCategory)
+                    .WithMany(d => d.Products)
+                    .HasForeignKey(e => e.SubCategoryId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Product>()
+                    .HasOne<Category>(e => e.Category)
+                    .WithMany(d => d.Products)
+                    .HasForeignKey(e => e.CategoryId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+        // Sub-Categroy
+        modelBuilder.Entity<SubCategory>()
+                    .HasOne<Category>(e => e.Category)
+                    .WithMany(d => d.SubCategories)
+                    .HasForeignKey(e => e.CategoryId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+        // All products
+        modelBuilder.Entity<AllProduct>()
+                    .HasOne<SubCategory>(e => e.SubCategory)
+                    .WithMany(d => d.AllProducts)
+                    .HasForeignKey(e => e.SubCategoryId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<AllProduct>()
+                    .HasOne<Category>(e => e.Category)
+                    .WithMany(d => d.AllProducts)
+                    .HasForeignKey(e => e.CategoryId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<AllProduct>()
+                    .HasOne<Store>(e => e.Store)
+                    .WithMany(d => d.AllProducts)
+                    .HasForeignKey(e => e.StoreId)
+                    .IsRequired(false)
+                    .OnDelete(DeleteBehavior.SetNull);
+    }
 }

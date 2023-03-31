@@ -57,8 +57,8 @@ namespace mag_app.DataAccess.Repositories
             var entity = _dbSet.FirstOrDefault(expression);
             if (entity == null)  return false;
              _dbSet.Remove(entity);
-            await _dbcontext.SaveChangesAsync();
-            return true;
+            var res = await _dbcontext.SaveChangesAsync();
+            return(res >= 1)? true: false;
         }
     }
 }

@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230330123354_Intial_Migration")]
-    partial class Intial_Migration
+    [Migration("20230331064325_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,7 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<string>("StoreName")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("SubCategoryId")
+                    b.Property<long?>("SubCategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SubCategoryName")
@@ -65,6 +65,8 @@ namespace mag_app.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("StoreId");
 
                     b.HasIndex("SubCategoryId");
 
@@ -155,6 +157,10 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<long>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("SubCategoryName")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -196,22 +202,20 @@ namespace mag_app.DataAccess.Migrations
             modelBuilder.Entity("mag_app.Domain.Entities.AllProducts.AllProduct", b =>
                 {
                     b.HasOne("mag_app.Domain.Entities.Categories.Category", "Category")
-                        .WithMany()
+                        .WithMany("AllProducts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("mag_app.Domain.Entities.Stores.Store", "Store")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("AllProducts")
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("mag_app.Domain.Entities.SubCategories.SubCategory", "SubCategory")
-                        .WithMany()
+                        .WithMany("AllProducts")
                         .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Category");
 
@@ -223,13 +227,13 @@ namespace mag_app.DataAccess.Migrations
             modelBuilder.Entity("mag_app.Domain.Entities.Products.Product", b =>
                 {
                     b.HasOne("mag_app.Domain.Entities.Categories.Category", "Category")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("mag_app.Domain.Entities.SubCategories.SubCategory", "SubCategory")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -242,12 +246,33 @@ namespace mag_app.DataAccess.Migrations
             modelBuilder.Entity("mag_app.Domain.Entities.SubCategories.SubCategory", b =>
                 {
                     b.HasOne("mag_app.Domain.Entities.Categories.Category", "Category")
-                        .WithMany()
+                        .WithMany("SubCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("mag_app.Domain.Entities.Categories.Category", b =>
+                {
+                    b.Navigation("AllProducts");
+
+                    b.Navigation("Products");
+
+                    b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
+                {
+                    b.Navigation("AllProducts");
+                });
+
+            modelBuilder.Entity("mag_app.Domain.Entities.SubCategories.SubCategory", b =>
+                {
+                    b.Navigation("AllProducts");
+
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

@@ -58,7 +58,7 @@ namespace mag_app.Service.Services.SubCategoryService
 
             if (category != null)
             {
-                return await subCategoryRepository.DeleteAsync(x => x.Id == category.Id);
+                return await subCategoryRepository.DeleteAsync(x => x.Id == Id);
             }
             return false;
         }
