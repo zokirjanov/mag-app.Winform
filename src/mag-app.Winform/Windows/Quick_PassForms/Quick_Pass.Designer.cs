@@ -264,9 +264,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.productNameTb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Quick_Pass";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quick_Pass";
+            this.Text = "быстрый прыход";
             this.Load += new System.EventHandler(this.Quick_Pass_Load);
             ((System.ComponentModel.ISupportInitialize)(this.allProductViewModeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productQuantity)).EndInit();

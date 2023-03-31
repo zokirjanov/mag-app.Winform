@@ -37,10 +37,6 @@ public partial class QuickPass_AddProduct : Form
         barcodeLabel.Visible = false;
         barcodeTb.Visible = false;
         ComboBoxFillcategory();
-        //categoryComboBox.Text = "wwww";
-        //subCategoryComboBox.Text = "qw3rwe";
-        //categorylabel.Text = CategoriesForm.categoryParent.CategoryTitle;
-        //subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -286,14 +282,7 @@ public partial class QuickPass_AddProduct : Form
 
 
 
-    private async void ComboBoxFillSubCategory(long categoryId)
-    {
-        SubCategoryService subCategoryService = new SubCategoryService();
-        var entity = await subCategoryService.GetAllAsync(categoryId);
-        subCategoryComboBox.DataSource = entity;
-        subCategoryComboBox.DisplayMember = "SubCategoryName";
-        subCategoryComboBox.ValueMember = "SubCategoryName";
-    }
+
 
 
     private async void ComboBoxFillcategory()
@@ -302,28 +291,31 @@ public partial class QuickPass_AddProduct : Form
         var entity = await categoryService.GetAllAsync();
         categoryComboBox.DataSource = entity;
         categoryComboBox.DisplayMember = "CategoryName";
-        categoryComboBox.ValueMember = "CategoryName";
+        categoryComboBox.ValueMember = "Id";
 
-        var select = categoryComboBox.SelectedValue;
-        long id = await categoryService.GetId(select.ToString());
-        ComboBoxFillSubCategory(id);
+        Category obj = categoryComboBox.SelectedItem as Category;
+        ComboBoxFillSubCategory(obj.Id);
+
     }
 
 
-    private async void categoryComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
+    private void categoryComboBox_SelectionChangeCommitted(object sender, EventArgs e)
     {
-        CategoryService categoryService = new CategoryService();
-        var select = categoryComboBox.SelectedValue;
-        long id = await categoryService.GetId(select.ToString());   
-        CategoryId = id;
-        ComboBoxFillSubCategory(id);
+        Cursor.Current = Cursors.WaitCursor;
+        Category obj = categoryComboBox.SelectedItem as Category;
+        if(obj != null)
+        {
+            ComboBoxFillSubCategory(obj.Id);
+        }
+        Cursor.Current = Cursors.Default;
     }
 
-    private async void subCategoryComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
+    private async void ComboBoxFillSubCategory(long categoryId)
     {
         SubCategoryService subCategoryService = new SubCategoryService();
-        var select = subCategoryComboBox.SelectedValue;
-        long id = await subCategoryService.GetId(select.ToString());
-        SubCategoryId = Convert.ToInt64(id);
+        var entity = await subCategoryService.GetAllAsync(categoryId);
+        subCategoryComboBox.DataSource = entity;
+        subCategoryComboBox.DisplayMember = "SubCategoryName";
+        subCategoryComboBox.ValueMember = "Id";
     }
 }

@@ -64,24 +64,24 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(984, 44);
+            this.panel1.Size = new System.Drawing.Size(984, 80);
             this.panel1.TabIndex = 0;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Azure;
-            this.button2.Location = new System.Drawing.Point(162, 4);
+            this.button2.Location = new System.Drawing.Point(165, 39);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(147, 35);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Add new Product";
+            this.button2.Text = "Добавить продукт";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Azure;
-            this.button1.Location = new System.Drawing.Point(9, 4);
+            this.button1.Location = new System.Drawing.Point(12, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(147, 35);
             this.button1.TabIndex = 2;
@@ -93,7 +93,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(419, 9);
+            this.label1.Location = new System.Drawing.Point(419, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 25);
             this.label1.TabIndex = 1;
@@ -119,13 +119,13 @@
             this.Delete});
             this.dataGridView1.DataSource = this.allProductViewModeBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 80);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(984, 557);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 521);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
