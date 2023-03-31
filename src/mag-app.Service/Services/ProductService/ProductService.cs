@@ -76,14 +76,11 @@ namespace mag_app.Service.Services.ProductService
 
 
 
-        public async Task<string> UpdateAsync(Product product)
+        public async Task<string> UpdateAsync(Product product, bool checkname)
         {
-            var checkname = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
-            if (checkname != null) return "Такое название продукта существует, попробуйте другое название товара";
-
-            else
+            if (checkname)
             {
-                var oldproduct = await productRepository.FirstOrDefaultAsync(x=> x.Barcode == product.Barcode);
+                var oldproduct = await productRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
                 if (oldproduct is not null)
                 {
                     oldproduct.ProdutName = product.ProdutName;
@@ -92,13 +89,31 @@ namespace mag_app.Service.Services.ProductService
                     oldproduct.Quantity = product.Quantity;
                     oldproduct.Barcode = product.Barcode;
 
-                    var res = await productRepository.UpdateAsync(product);
+                    var res = await productRepository.UpdateAsync(oldproduct);
+                    return (res != null) ? "true" : "false";
+                }
+                else return "товар не найден";
+            }
+
+            else
+            {
+                var checkdb = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
+                if (checkdb != null) return "Такое название продукта существует, попробуйте другое название товара";
+
+                var oldproduct = await productRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
+                if (oldproduct is not null)
+                {
+                    oldproduct.ProdutName = product.ProdutName;
+                    oldproduct.Price = product.Price;
+                    oldproduct.PurchasedPrice = product.PurchasedPrice;
+                    oldproduct.Quantity = product.Quantity;
+                    oldproduct.Barcode = product.Barcode;
+
+                    var res = await productRepository.UpdateAsync(oldproduct);
                     return (res != null) ? "true" : "false";
                 }
                 else return "товар не найден";
             }
         }
-
-
     }
 }
