@@ -69,6 +69,12 @@ public class AllProductService : IAllProductService
 
 
 
+    public async Task<long> GetId(string name)
+    {
+        var store = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
+        return store.Id;
+    }
+
 
 
     public async Task<string> UpdateAsync(AllProduct product)

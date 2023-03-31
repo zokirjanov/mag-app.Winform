@@ -12,13 +12,15 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 {
     public partial class List_products : Form
     {
-        private ProductService _service;
+        private AllProductService _service;
+        private ProductService _productService;
         public static List_products listProductsParent = default!;
 
 
         public List_products( )
         {
-            _service = new ProductService();
+            _service = new AllProductService();
+            _productService= new ProductService();
             InitializeComponent();
             listProductsParent = this;
         }
@@ -47,7 +49,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-        private async void FillData()
+        public async void FillData()
         {
             AllProductService allProduct = new AllProductService();
             var products = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
@@ -84,13 +86,17 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-            else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
                 DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
                     long id = await _service.GetId(value);
+                    long id2 = await _productService.GetId(value);
                     var res = _service.DeleteAsync(id);
+                    var res2 = _productService.DeleteAsync(id2);
+
+
                     if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
                     else if (await res == false) MessageBox.Show("Товар не найден");
                     allProductViewModeBindingSource.Clear();

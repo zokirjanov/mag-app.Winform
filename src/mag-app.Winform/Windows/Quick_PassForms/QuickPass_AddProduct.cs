@@ -100,15 +100,14 @@ public partial class QuickPass_AddProduct : Form
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeResult,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                CategoryName = CategoriesForm.categoryParent.CategoryTitle,
-                CategoryId = CategoriesForm.categoryParent.Id,
-                SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
-                SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
+                CategoryName = categoryComboBox.Text,
+                CategoryId = CategoryId,
+                SubcategoryName = subCategoryComboBox.Text,
+                SubCategoryId = SubCategoryId,
                 Quantity = 0
             };
 
             var res = await _service.CreateProductAsync(product);
-
 
             if (res.product is not null)
             {
@@ -118,19 +117,20 @@ public partial class QuickPass_AddProduct : Form
                     Price = decimal.Parse(productPriceTb.Text),
                     Barcode = barcodeResult,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
-                    Storename = MyStoreForm.myStoreFormParent.StoreName,
-                    CategoryName = CategoriesForm.categoryParent.CategoryTitle,
-                    CategoryId = CategoriesForm.categoryParent.Id,
-                    SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
-                    SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
+                    StoreId = null,
+                    Storename = null,
+                    CategoryName = categoryComboBox.Text,
+                    CategoryId = CategoryId,
+                    SubcategoryName = subCategoryComboBox.Text,
+                    SubCategoryId = SubCategoryId,
                     Quantity = 0
                 };
 
                 AllProductService allProductService = new AllProductService();
                 await allProductService.CreateAllProductAsync(allProduct);
 
-                StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
+
+                List_products.listProductsParent.FillData();
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
@@ -295,7 +295,7 @@ public partial class QuickPass_AddProduct : Form
 
         Category obj = categoryComboBox.SelectedItem as Category;
         ComboBoxFillSubCategory(obj.Id);
-
+        CategoryId = obj.Id;
     }
 
 
@@ -306,8 +306,10 @@ public partial class QuickPass_AddProduct : Form
         if(obj != null)
         {
             ComboBoxFillSubCategory(obj.Id);
+            CategoryId = obj.Id;
         }
         Cursor.Current = Cursors.Default;
+        
     }
 
     private async void ComboBoxFillSubCategory(long categoryId)
@@ -317,5 +319,7 @@ public partial class QuickPass_AddProduct : Form
         subCategoryComboBox.DataSource = entity;
         subCategoryComboBox.DisplayMember = "SubCategoryName";
         subCategoryComboBox.ValueMember = "Id";
+        SubCategory obj = subCategoryComboBox.SelectedItem as SubCategory;
+        SubCategoryId = obj.Id;
     }
 }

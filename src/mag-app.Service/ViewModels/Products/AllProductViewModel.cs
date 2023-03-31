@@ -13,7 +13,7 @@ namespace mag_app.Service.Dtos.Products
         public string Barcode { get; set; } = string.Empty;
 
         public string Storename { get; set; } = string.Empty;
-        public long StoreId { get; set; }
+        public long? StoreId { get; set; }
 
         public string CategoryName { get; set; } = string.Empty;
         public long CategoryId { get; set; }
