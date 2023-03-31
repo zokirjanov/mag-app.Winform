@@ -100,12 +100,18 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
+                    bool checkname = false;
+                    if (oldName == productNameTb.Text)
+                    {
+                        checkname = true;
+                    }
+                    else checkname = false;
 
                     var res = await _productService.UpdateAsync(allProduct);
 
                     if (res == "true")
                     {
-                        var res1 = await _product.UpdateAsync(product);
+                        var res1 = await _product.UpdateAsync(product, checkname);
                         AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
                         StoreProductsForm.storeProductParent.openChildForm(new List_products());
                         this.Close();

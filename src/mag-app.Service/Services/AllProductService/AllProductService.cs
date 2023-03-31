@@ -69,6 +69,12 @@ public class AllProductService : IAllProductService
 
 
 
+    public async Task<long> GetId(string name)
+    {
+        var store = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
+        return store.Id;
+    }
+
 
 
     public async Task<string> UpdateAsync(AllProduct product)
@@ -89,6 +95,47 @@ public class AllProductService : IAllProductService
             var res = await allProductRepository.UpdateAsync(oldproduct);
 
             return (res != null)? "true":"false";
+        }
+    }
+
+
+
+    public async Task<string> UpdateAsync(AllProduct product, bool checkname)
+    {
+
+        if (checkname)
+        {
+            var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
+            if (oldproduct is not null)
+            {
+                oldproduct.ProdutName = product.ProdutName;
+                oldproduct.Price = product.Price;
+                oldproduct.PurchasedPrice = product.PurchasedPrice;
+                oldproduct.Barcode = product.Barcode;
+
+                var res = await allProductRepository.UpdateAsync(oldproduct);
+                return (res != null) ? "true" : "false";
+            }
+            else return "товар не найден";
+        }
+
+        else
+        {
+            var checkdb = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
+            if (checkdb != null) return "Такое название продукта существует, попробуйте другое название товара";
+
+            var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
+            if (oldproduct is not null)
+            {
+                oldproduct.ProdutName = product.ProdutName;
+                oldproduct.Price = product.Price;
+                oldproduct.PurchasedPrice = product.PurchasedPrice;
+                oldproduct.Barcode = product.Barcode;
+
+                var res = await allProductRepository.UpdateAsync(oldproduct);
+                return (res != null) ? "true" : "false";
+            }
+            else return "товар не найден";
         }
     }
 

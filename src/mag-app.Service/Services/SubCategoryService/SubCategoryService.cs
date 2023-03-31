@@ -1,23 +1,8 @@
-﻿
-using mag_app.DataAccess.DbContexts;
-using mag_app.DataAccess.Interfaces.Categories;
-using mag_app.DataAccess.Interfaces.SubCategories;
-using mag_app.DataAccess.Repositories.Categories;
-using mag_app.DataAccess.Repositories.Products;
+﻿using mag_app.DataAccess.Interfaces.SubCategories;
 using mag_app.DataAccess.Repositories.SubCategories;
-using mag_app.Domain.Entities.Categories;
-using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.SubCategories;
-using mag_app.Service.Common.Helpers;
-using mag_app.Service.Dtos.Categories;
 using mag_app.Service.Dtos.SubCategories;
 using mag_app.Service.Interfaces.SubCategories;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mag_app.Service.Services.SubCategoryService
 {
@@ -58,18 +43,18 @@ namespace mag_app.Service.Services.SubCategoryService
 
             if (category != null)
             {
-                return await subCategoryRepository.DeleteAsync(x => x.Id == category.Id);
+                return await subCategoryRepository.DeleteAsync(x => x.Id == Id);
             }
             return false;
         }
 
-         
+
 
 
 
         public async Task<List<SubCategory>> GetAllAsync(long cid)
         {
-            var result = await subCategoryRepository.GetAllAsync(x=>x.CategoryId == cid);
+            var result = await subCategoryRepository.GetAllAsync(x => x.CategoryId == cid);
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }

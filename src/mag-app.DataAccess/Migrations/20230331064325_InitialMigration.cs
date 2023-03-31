@@ -4,7 +4,7 @@
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class Intial_Migration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,7 +57,8 @@ namespace mag_app.DataAccess.Migrations
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SubCategoryName = table.Column<string>(type: "TEXT", nullable: false),
-                    CategoryId = table.Column<long>(type: "INTEGER", nullable: false)
+                    CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
+                    CategoryName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,17 +77,17 @@ namespace mag_app.DataAccess.Migrations
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ProdutName = table.Column<string>(type: "TEXT", nullable: false),
                     Barcode = table.Column<string>(type: "TEXT", nullable: false),
                     StoreId = table.Column<long>(type: "INTEGER", nullable: true),
                     StoreName = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     CategoryName = table.Column<string>(type: "TEXT", nullable: false),
-                    SubCategoryId = table.Column<long>(type: "INTEGER", nullable: false),
+                    SubCategoryId = table.Column<long>(type: "INTEGER", nullable: true),
                     SubCategoryName = table.Column<string>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProdutName = table.Column<string>(type: "TEXT", nullable: false),
                     PurchasedPrice = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,11 +99,11 @@ namespace mag_app.DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AllProducts_Stores_CategoryId",
-                        column: x => x.CategoryId,
+                        name: "FK_AllProducts_Stores_StoreId",
+                        column: x => x.StoreId,
                         principalTable: "Stores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_AllProducts_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
@@ -117,15 +118,15 @@ namespace mag_app.DataAccess.Migrations
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ProdutName = table.Column<string>(type: "TEXT", nullable: false),
                     Barcode = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     CategoryName = table.Column<string>(type: "TEXT", nullable: false),
                     SubCategoryId = table.Column<long>(type: "INTEGER", nullable: false),
                     SubCategoryName = table.Column<string>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProdutName = table.Column<string>(type: "TEXT", nullable: false),
                     PurchasedPrice = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,6 +149,11 @@ namespace mag_app.DataAccess.Migrations
                 name: "IX_AllProducts_CategoryId",
                 table: "AllProducts",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AllProducts_StoreId",
+                table: "AllProducts",
+                column: "StoreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AllProducts_SubCategoryId",

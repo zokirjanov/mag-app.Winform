@@ -1,44 +1,44 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.AllProducts;
-using mag_app.Service.Common.Helpers;
+using mag_app.Domain.Entities.Categories;
+using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.AllProductService;
+using mag_app.Service.Services.CategoryService;
 using mag_app.Service.Services.ProductService;
+using mag_app.Service.Services.SubCategoryService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
-using Newtonsoft.Json.Linq;
+using mag_app.Winform.Windows.ProductForms;
 using System;
-using System.Diagnostics.CodeAnalysis;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace mag_app.Winform.Windows.ProductForms;
+namespace mag_app.Winform.Windows.Quick_PassForms;
 
-public partial class Store_Add_ProductForm : Form
+public partial class QuickPass_AddProduct : Form
 {
     private readonly ProductService _service;
 
-    public Store_Add_ProductForm()
+    public QuickPass_AddProduct()
     {
         _service = new ProductService();
         InitializeComponent();
     }
 
-
-
-
-    private void Store_Add_ProductForm_Load(object sender, EventArgs e)
+    private void QuickPass_AddProduct_Load(object sender, EventArgs e)
     {
         barcodeLabel.Visible = false;
         barcodeTb.Visible = false;
-        categorylabel.Text = CategoriesForm.categoryParent!.CategoryTitle;
-        subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
+        ComboBoxFillcategory();
     }
 
-
-    //
-    // Add Button click
-    //
     private void button1_Click(object sender, EventArgs e)
     {
         string barcodeResult;
@@ -60,7 +60,6 @@ public partial class Store_Add_ProductForm : Form
         }
         else MessageBox.Show("Заполните поле");
     }
-
 
 
     //
@@ -91,8 +90,6 @@ public partial class Store_Add_ProductForm : Form
 
 
 
-
-
     private async void ProductPraparing(string barcodeResult)
     {
         if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
@@ -103,15 +100,14 @@ public partial class Store_Add_ProductForm : Form
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeResult,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                CategoryName = CategoriesForm.categoryParent.CategoryTitle,
-                CategoryId = CategoriesForm.categoryParent.Id,
-                SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
-                SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
+                CategoryName = categoryComboBox.Text,
+                CategoryId = CategoryId,
+                SubcategoryName = subCategoryComboBox.Text,
+                SubCategoryId = SubCategoryId,
                 Quantity = 0
             };
 
             var res = await _service.CreateProductAsync(product);
-
 
             if (res.product is not null)
             {
@@ -123,17 +119,18 @@ public partial class Store_Add_ProductForm : Form
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     StoreId = null,
                     Storename = null,
-                    CategoryName = CategoriesForm.categoryParent.CategoryTitle,
-                    CategoryId = CategoriesForm.categoryParent.Id,
-                    SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
-                    SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
+                    CategoryName = categoryComboBox.Text,
+                    CategoryId = CategoryId,
+                    SubcategoryName = subCategoryComboBox.Text,
+                    SubCategoryId = SubCategoryId,
                     Quantity = 0
                 };
 
                 AllProductService allProductService = new AllProductService();
                 await allProductService.CreateAllProductAsync(allProduct);
 
-                StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
+
+                List_products.listProductsParent.FillData();
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
@@ -160,7 +157,6 @@ public partial class Store_Add_ProductForm : Form
 
 
 
-
     // UX Design Codes
     private void productPriceTb_TextChanged(object sender, EventArgs e)
     {
@@ -177,7 +173,7 @@ public partial class Store_Add_ProductForm : Form
         {
             price.Text = "*";
             label1.Text = "";
-        } 
+        }
     }
 
 
@@ -230,11 +226,7 @@ public partial class Store_Add_ProductForm : Form
         }
     }
 
-
-
-
-
-    private void button2_Click(object sender, EventArgs e)
+    private void barcodeCheckbox_Click(object sender, EventArgs e)
     {
 
         if (barcodeQuestion.Visible == true)
@@ -253,7 +245,6 @@ public partial class Store_Add_ProductForm : Form
             barcodeTb.Text = " ";
         }
     }
-
 
 
 
@@ -284,5 +275,51 @@ public partial class Store_Add_ProductForm : Form
         {
             e.Handled = true;
         }
+    }
+
+    public long CategoryId { get; set; }
+    public long SubCategoryId { get; set; }
+
+
+
+
+
+
+    private async void ComboBoxFillcategory()
+    {
+        CategoryService categoryService = new CategoryService();
+        var entity = await categoryService.GetAllAsync();
+        categoryComboBox.DataSource = entity;
+        categoryComboBox.DisplayMember = "CategoryName";
+        categoryComboBox.ValueMember = "Id";
+
+        Category obj = categoryComboBox.SelectedItem as Category;
+        ComboBoxFillSubCategory(obj.Id);
+        CategoryId = obj.Id;
+    }
+
+
+    private void categoryComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+    {
+        Cursor.Current = Cursors.WaitCursor;
+        Category obj = categoryComboBox.SelectedItem as Category;
+        if(obj != null)
+        {
+            ComboBoxFillSubCategory(obj.Id);
+            CategoryId = obj.Id;
+        }
+        Cursor.Current = Cursors.Default;
+        
+    }
+
+    private async void ComboBoxFillSubCategory(long categoryId)
+    {
+        SubCategoryService subCategoryService = new SubCategoryService();
+        var entity = await subCategoryService.GetAllAsync(categoryId);
+        subCategoryComboBox.DataSource = entity;
+        subCategoryComboBox.DisplayMember = "SubCategoryName";
+        subCategoryComboBox.ValueMember = "Id";
+        SubCategory obj = subCategoryComboBox.SelectedItem as SubCategory;
+        SubCategoryId = obj.Id;
     }
 }

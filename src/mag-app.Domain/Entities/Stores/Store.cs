@@ -16,5 +16,7 @@ namespace mag_app.Domain.Entities.Stores
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id  { get; set; }
         public string StoreName { get; set; } = string.Empty;
+        public virtual ICollection<AllProduct> AllProducts { get; set; }
+
     }
 }

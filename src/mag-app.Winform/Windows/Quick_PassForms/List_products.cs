@@ -6,18 +6,21 @@ using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Reflection.Metadata.Ecma335;
+using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Quick_PassForms
 {
     public partial class List_products : Form
     {
-        private ProductService _service;
+        private AllProductService _service;
+        private ProductService _productService;
         public static List_products listProductsParent = default!;
 
 
         public List_products( )
         {
-            _service = new ProductService();
+            _service = new AllProductService();
+            _productService= new ProductService();
             InitializeComponent();
             listProductsParent = this;
         }
@@ -38,6 +41,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
+         
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
         }
 
@@ -45,7 +49,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-        private async void FillData()
+        public async void FillData()
         {
             AllProductService allProduct = new AllProductService();
             var products = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
@@ -81,22 +85,18 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             }
 
 
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
-            {
-                Row_Update row = new Row_Update();
-                row.ProductName = value;
-                row.Quantity = int.Parse(quantity_value);
-                row.ShowDialog();
-            }
 
-
-            else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
                 DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
                     long id = await _service.GetId(value);
+                    long id2 = await _productService.GetId(value);
                     var res = _service.DeleteAsync(id);
+                    var res2 = _productService.DeleteAsync(id2);
+
+
                     if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
                     else if (await res == false) MessageBox.Show("Товар не найден");
                     allProductViewModeBindingSource.Clear();
@@ -112,11 +112,24 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
+
+
+        bool isSelected = false;
         private void button1_Click(object sender, EventArgs e)
         {
-            Quick_Pass quick_Pass = new Quick_Pass();
-            quick_Pass.ShowDialog();
+            if (isSelected)
+            {
+                Quick_Pass quick_Pass = new Quick_Pass();
+                quick_Pass.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("пожалуйста, выберите строку");
+            }
         }
+
+
+
 
 
 
@@ -125,6 +138,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         {
             if (e.RowIndex != -1)
             {
+                isSelected = true;
                 indexRow = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[indexRow];
 
@@ -136,6 +150,18 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 qquantity = Convert.ToInt32(row.Cells[5].Value);
                 barcode = row.Cells[6].Value.ToString()!;
             }
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QuickPass_AddProduct quickPass_AddProduct = new QuickPass_AddProduct();
+            quickPass_AddProduct.ShowDialog();
+        }
+
+        private void List_products_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
     }
 }

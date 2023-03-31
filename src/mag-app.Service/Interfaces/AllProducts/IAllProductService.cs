@@ -16,6 +16,7 @@ namespace mag_app.Service.Interfaces.AllProducts
         public Task<IEnumerable<AllProduct>> GetAllAsync(long cId);
         public Task<bool> DeleteAsync(long Id );
         public Task<string> UpdateAsync(AllProduct product);
+        public Task<string> UpdateAsync(AllProduct product, bool checkname);
     }
 }
 

@@ -18,12 +18,13 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void categoryAddBtn_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(categoryAddBtn.Text))
+            if (!string.IsNullOrEmpty(subCategoryNameTb.Text))
             {
                 SubCategoryViewModel category = new SubCategoryViewModel()
                 {
                     SubCategoryName = subCategoryNameTb.Text,
                     CategoryId = CategoriesForm.categoryParent!.Id,
+                    CategoryName = CategoriesForm.categoryParent.CategoryTitle,
                 };
 
                 var res = await _service.CreateCategoryAsync(category);

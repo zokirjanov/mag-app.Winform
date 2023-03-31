@@ -44,6 +44,8 @@ public partial class Quick_Pass : Form
 
         List_products list_Products = List_products.listProductsParent;
         productNameTb.Text = list_Products.name;
+        categorylabel.Text= list_Products.category;
+        subCategoryLabel.Text = list_Products.subcat;
         productPriceTb.Text = list_Products.price;
         purchasePriceTb.Text = list_Products.pprice;
         barcodeTb.Text = list_Products.barcode;
@@ -54,6 +56,15 @@ public partial class Quick_Pass : Form
 
     private async void updateBtn_Click(object sender, EventArgs e)
     {
+        bool checkname = false;
+        if (oldName == productNameTb.Text)
+        {
+            checkname = true;
+        }
+        else checkname = false;
+
+
+
         if (string.IsNullOrEmpty(productNameTb.Text) || string.IsNullOrEmpty(productPriceTb.Text) || string.IsNullOrEmpty(purchasePriceTb.Text))
         {
             MessageBox.Show("заполнить все поле");
@@ -70,7 +81,6 @@ public partial class Quick_Pass : Form
             };
 
 
-
             AllProduct allProduct = new AllProduct()
             {
                 StoreId = MyStoreForm.myStoreFormParent.Id,
@@ -85,12 +95,11 @@ public partial class Quick_Pass : Form
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-
                 var res = await _productService.UpdateAsync(allProduct);
 
                 if (res == "true")
                 {
-                    var res1 = await _product.UpdateAsync(product);
+                    var res1 = await _product.UpdateAsync(product, checkname);
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
                     StoreProductsForm.storeProductParent.openChildForm(new List_products());
                     this.Close();

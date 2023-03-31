@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
+using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.Product_Forms;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +11,12 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class ProductUpdateForm : Form
     {
         ProductService _productService;
+        AllProductService _allProductService;
         public ProductUpdateForm()
         {
             InitializeComponent();
             _productService = new ProductService();
+            _allProductService = new AllProductService();
         }
 
         public string oldName { get; set; } = string.Empty;
@@ -55,7 +58,23 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void updateBtn_Click(object sender, EventArgs e)
         {
+            bool checkname = false;
+            if (oldName == productNameTb.Text)
+            {
+                checkname = true;
+            }
+            else checkname = false;
+
+
             ProductViewModel product = new ProductViewModel()
+            {
+                ProdutName = productNameTb.Text,
+                PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
+                Price = decimal.Parse(productPriceTb.Text),
+                Barcode = barcodeTb.Text,
+            };
+
+            AllProductViewModel allproduct = new AllProductViewModel()
             {
                 ProdutName = productNameTb.Text,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
@@ -66,10 +85,11 @@ namespace mag_app.Winform.Windows.ProductForms
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = await _productService.UpdateAsync(product);
+                var res = await _productService.UpdateAsync(product, checkname);
 
                 if (res == "true")
                 {
+                    var res2 = await _allProductService.UpdateAsync(allproduct, checkname);
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
                     StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
                     this.Close();

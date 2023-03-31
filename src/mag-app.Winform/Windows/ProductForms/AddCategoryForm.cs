@@ -19,7 +19,7 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private async void categoryAddBtn_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(categoryAddBtn.Text))
+            if (!string.IsNullOrEmpty(categoryNameTb.Text))
             {
                 CategoryViewModel category = new CategoryViewModel()
                 {

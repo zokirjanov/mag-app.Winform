@@ -16,31 +16,30 @@ namespace mag_app.Domain.Entities.AllProducts
     {
 
         public long Id { get; set; }
-        public string ProdutName { get; set; }
         public string Barcode { get; set; } 
 
-
-       
-        [ForeignKey("CategoryId")]
+        [ForeignKey("StoreId")]
         public virtual Store Store { get; set; }
         public long? StoreId { get; set; }
         public string? StoreName { get; set; } 
 
 
-        [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; }
+        [ForeignKey("CategoryId")]
+        public virtual Category? Category { get; set; }
         public long CategoryId { get; set; }
         public string CategoryName { get; set; } 
 
 
-        [ForeignKey(nameof(SubCategoryId))]
-        public SubCategory SubCategory { get; set; } 
-        public long SubCategoryId { get; set; }
-        public string SubCategoryName { get; set; } 
+        [ForeignKey("SubCategoryId")]
+        public virtual SubCategory? SubCategory { get; set; }
+        public long? SubCategoryId { get; set; }
+        public string SubCategoryName { get; set; }
 
-        public int Quantity { get; set; }
+        public string ProdutName { get; set; }
         public decimal PurchasedPrice { get; set; }
         public decimal Price { get; set; }
+        public int Quantity { get; set; }
+
 
     }
 }
