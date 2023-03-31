@@ -6,6 +6,7 @@ using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Reflection.Metadata.Ecma335;
+using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Quick_PassForms
 {
@@ -38,6 +39,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
+         
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
         }
 
@@ -81,14 +83,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             }
 
 
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
-            {
-                Row_Update row = new Row_Update();
-                row.ProductName = value;
-                row.Quantity = int.Parse(quantity_value);
-                row.ShowDialog();
-            }
-
 
             else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
@@ -112,11 +106,24 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
+
+
+        bool isSelected = false;
         private void button1_Click(object sender, EventArgs e)
         {
-            Quick_Pass quick_Pass = new Quick_Pass();
-            quick_Pass.ShowDialog();
+            if (isSelected)
+            {
+                Quick_Pass quick_Pass = new Quick_Pass();
+                quick_Pass.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("пожалуйста, выберите строку");
+            }
         }
+
+
+
 
 
 
@@ -125,6 +132,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         {
             if (e.RowIndex != -1)
             {
+                isSelected = true;
                 indexRow = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[indexRow];
 
@@ -138,10 +146,16 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             }
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
             QuickPass_AddProduct quickPass_AddProduct = new QuickPass_AddProduct();
             quickPass_AddProduct.ShowDialog();
+        }
+
+        private void List_products_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
     }
 }

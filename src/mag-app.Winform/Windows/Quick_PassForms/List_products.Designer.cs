@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -47,7 +46,6 @@
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.allProductViewModeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
@@ -103,7 +101,6 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -115,7 +112,6 @@
             this.priceDataGridViewTextBoxColumn,
             this.Quantity,
             this.barcodeDataGridViewTextBoxColumn,
-            this.Edit,
             this.Delete});
             this.dataGridView1.DataSource = this.allProductViewModeBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -209,24 +205,11 @@
             this.barcodeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.barcodeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Edit
+            // Delete
             // 
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Edit.Text = "⇙";
-            this.Edit.UseColumnTextForButtonValue = true;
-            this.Edit.Width = 50;
-            // 
-            // Delete
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(4, 1, 4, 1);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
@@ -250,6 +233,7 @@
             this.Name = "List_products";
             this.Text = "List_products";
             this.Load += new System.EventHandler(this.List_products_Load);
+            this.Shown += new System.EventHandler(this.List_products_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -265,6 +249,8 @@
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridView dataGridView1;
         private BindingSource allProductViewModeBindingSource;
+        private Button button1;
+        private Button button2;
         private DataGridViewTextBoxColumn produtNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn subcategoryNameDataGridViewTextBoxColumn;
@@ -272,9 +258,6 @@
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
-        private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
-        private Button button1;
-        private Button button2;
     }
 }
