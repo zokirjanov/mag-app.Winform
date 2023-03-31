@@ -24,7 +24,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 {
                     SubCategoryName = subCategoryNameTb.Text,
                     CategoryId = CategoriesForm.categoryParent!.Id,
-                    CategoryName = CategoriesForm.categoryParent.Name,
+                    CategoryName = CategoriesForm.categoryParent.CategoryTitle,
                 };
 
                 var res = await _service.CreateCategoryAsync(category);

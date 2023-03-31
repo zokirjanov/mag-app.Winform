@@ -137,6 +137,12 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 barcode = row.Cells[6].Value.ToString()!;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QuickPass_AddProduct quickPass_AddProduct = new QuickPass_AddProduct();
+            quickPass_AddProduct.ShowDialog();
+        }
     }
 }
 
