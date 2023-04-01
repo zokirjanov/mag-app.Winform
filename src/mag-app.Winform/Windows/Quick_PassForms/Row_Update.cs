@@ -43,8 +43,8 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             productNameTb.Text = list_Products.name;
             categorylabel.Text = list_Products.category;
             subCategoryLabel.Text = list_Products.subcat;
-            productPriceTb.Text = list_Products.price;
-            purchasePriceTb.Text = list_Products.pprice;
+            productPriceTb.Text = list_Products.price.ToString();
+            purchasePriceTb.Text = list_Products.pprice.ToString();
             barcodeTb.Text = list_Products.barcode;
             oldName = list_Products.name.ToString();
             quantityLabel.Text = list_Products.qquantity.ToString();

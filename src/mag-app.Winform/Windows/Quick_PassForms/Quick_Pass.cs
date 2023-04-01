@@ -33,10 +33,6 @@ public partial class Quick_Pass : Form
     }
 
     public string oldName { get; set; } = string.Empty;
-    public new string ProductName { get; set; } = string.Empty;
-    public int Quantity { get; set; }
-
-
 
     private void Quick_Pass_Load(object sender, EventArgs e)
     {
@@ -45,22 +41,22 @@ public partial class Quick_Pass : Form
 
 
         List_products list_Products = List_products.listProductsParent;
-        productNameTb.Text = list_Products.name;
-        categorylabel.Text= list_Products.category;
+        labelName.Text = list_Products.name;
+        categorylabel.Text = list_Products.category;
         subCategoryLabel.Text = list_Products.subcat;
-        productPriceTb.Text = list_Products.price;
-        purchasePriceTb.Text = list_Products.pprice;
-        barcodeTb.Text = list_Products.barcode;
+        labelPrice.Text = list_Products.price.ToString(@"#\ ###\ ###\ ###\");
+        labelPPrice.Text = list_Products.pprice.ToString(@"#\ ###\ ###\ ###\");
+        labelBarcode.Text = list_Products.barcode;
         quantityLabel.Text = list_Products.qquantity.ToString();
         oldName = list_Products.name.ToString();
     }
-
+    
 
 
     private async void updateBtn_Click(object sender, EventArgs e)
     {
         bool checkname = false;
-        if (oldName == productNameTb.Text)
+        if (oldName == labelName.Text)
         {
             checkname = true;
         }
@@ -68,7 +64,7 @@ public partial class Quick_Pass : Form
 
 
 
-        if (string.IsNullOrEmpty(productNameTb.Text) || string.IsNullOrEmpty(productPriceTb.Text) || string.IsNullOrEmpty(purchasePriceTb.Text))
+        if (string.IsNullOrEmpty(productQuantity.Text))
         {
             MessageBox.Show("заполнить все поле");
         }
@@ -76,11 +72,11 @@ public partial class Quick_Pass : Form
         {
             ProductViewModel product = new ProductViewModel()
             {
-                ProdutName = productNameTb.Text,
-                PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                Price = decimal.Parse(productPriceTb.Text),
-                Barcode = barcodeTb.Text,
-                Quantity = Convert.ToInt32(productQuantity.Value)
+                ProdutName = labelName.Text,
+                PurchasedPrice = decimal.Parse(labelPPrice.Text),
+                Price = decimal.Parse(labelPrice.Text),
+                Quantity = Convert.ToInt32(productQuantity.Value),
+                Barcode = labelBarcode.Text,
             };
 
 
@@ -88,15 +84,15 @@ public partial class Quick_Pass : Form
             {
                 StoreId = MyStoreForm.myStoreFormParent.Id,
                 StoreName = MyStoreForm.myStoreFormParent.StoreName,
-                ProdutName = productNameTb.Text,
-                PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                Price = decimal.Parse(productPriceTb.Text),
-                Barcode = barcodeTb.Text,
-                Quantity = Convert.ToInt32(productQuantity.Value)
+                ProdutName = labelName.Text,
+                PurchasedPrice = decimal.Parse(labelPPrice.Text),
+                Price = decimal.Parse(labelPrice.Text),
+                Quantity = Convert.ToInt32(productQuantity.Value),
+                Barcode= labelBarcode.Text,
             };
 
 
-            DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult dlg = MessageBox.Show("Хотите добавить колицество?", "добавлять", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
                 var res = await _productService.UpdateAsync(allProduct, checkname);
@@ -104,7 +100,7 @@ public partial class Quick_Pass : Form
                 if (res == "true")
                 {
                     var res1 = await _product.UpdateAsync(product, checkname);
-                    AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
+                    AutoClosingMessageBox.Show("успешно Добавлено", "добавлять", 350);
                     StoreProductsForm.storeProductParent.openChildForm(new List_products());
                     this.Close();
                 }
@@ -115,8 +111,8 @@ public partial class Quick_Pass : Form
                 else
                 {
                     MessageBox.Show(res);
-                    productNameTb.Focus();
-                    productNameTb.SelectAll();
+                    productQuantity.Focus();
+                    productQuantity.Select();
                 }
             }
 
@@ -125,85 +121,5 @@ public partial class Quick_Pass : Form
                 this.Close();
             }
         }
-    }
-
-
-
-
-    /// <summary>
-    /// UI Forms Configurations
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
-    private void productPriceTb_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
-    private void purchasePriceTb_TextChanged(object sender, EventArgs e)
-    {
-        if (!string.IsNullOrEmpty(purchasePriceTb.Text))
-        {
-            decimal pr = decimal.Parse(purchasePriceTb.Text);
-            label2.Text = pr.ToString(@"#\ ###\ ###\ ###\");
-        }
-
-        if (!(purchasePriceTb.Text == ""))
-        {
-            purchasedPriceChecker.Text = "";
-        }
-        else
-        {
-            purchasedPriceChecker.Text = "*";
-            label2.Text = "";
-        }
-    }
-
-    private void productPriceTb_TextChanged(object sender, EventArgs e)
-    {
-        if (!string.IsNullOrEmpty(productPriceTb.Text))
-        {
-            decimal pr = decimal.Parse(productPriceTb.Text);
-            label7.Text = pr.ToString(@"###\ ###\ ###\ ###\");
-        }
-        if (!(productPriceTb.Text == ""))
-        {
-            price.Text = "";
-        }
-        else
-        {
-            price.Text = "*";
-            label7.Text = "";
-        }
-    }
-
-    private void productNameTb_TextChanged(object sender, EventArgs e)
-    {
-        if (!(productNameTb.Text == ""))
-        {
-            productNameCheckLabel.Text = "";
-        }
-        else productNameCheckLabel.Text = "*";
     }
 }

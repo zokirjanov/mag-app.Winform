@@ -30,8 +30,8 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         public string name { get; set; } = string.Empty;
         public string category { get; set; } = string.Empty;
         public string subcat { get; set; } = string.Empty;
-        public string pprice { get; set; } = string.Empty;
-        public string price { get; set; } = string.Empty;
+        public decimal pprice { get; set; }
+        public decimal price { get; set; } 
         public string barcode { get; set; } = string.Empty;
         public int qquantity { get; set; }
 
@@ -151,8 +151,8 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 name = row.Cells[3].Value.ToString()!;
                 category = row.Cells[1].Value.ToString()!;
                 subcat = row.Cells[2].Value.ToString()!;
-                pprice = row.Cells[4].Value.ToString()!;
-                price = row.Cells[5].Value.ToString()!;
+                pprice = Convert.ToInt64(row.Cells[4].Value);
+                price = Convert.ToInt64(row.Cells[5].Value);
                 qquantity = Convert.ToInt32(row.Cells[6].Value);
                 barcode = row.Cells[0].Value.ToString()!;
 
