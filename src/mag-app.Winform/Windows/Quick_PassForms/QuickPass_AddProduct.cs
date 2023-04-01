@@ -157,44 +157,6 @@ public partial class QuickPass_AddProduct : Form
 
 
 
-    // UX Design Codes
-    private void productPriceTb_TextChanged(object sender, EventArgs e)
-    {
-        if (!string.IsNullOrEmpty(productPriceTb.Text))
-        {
-            decimal pr = decimal.Parse(productPriceTb.Text);
-            label1.Text = pr.ToString(@"###\ ###\ ###\ ###\");
-        }
-        if (!(productPriceTb.Text == ""))
-        {
-            price.Text = "";
-        }
-        else
-        {
-            price.Text = "*";
-            label1.Text = "";
-        }
-    }
-
-
-
-
-    private void productPriceTb_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
-
-
-
     private void productNameTb_TextChanged(object sender, EventArgs e)
     {
         if (!(productNameTb.Text == ""))
@@ -206,25 +168,6 @@ public partial class QuickPass_AddProduct : Form
 
 
 
-
-    private void purchasePriceTb_TextChanged(object sender, EventArgs e)
-    {
-        if (!string.IsNullOrEmpty(purchasePriceTb.Text))
-        {
-            decimal pr = decimal.Parse(purchasePriceTb.Text);
-            label2.Text = pr.ToString(@"#\ ###\ ###\ ###\");
-        }
-
-        if (!(purchasePriceTb.Text == ""))
-        {
-            purchasedPriceChecker.Text = "";
-        }
-        else
-        {
-            purchasedPriceChecker.Text = "*";
-            label2.Text = "";
-        }
-    }
 
     private void barcodeCheckbox_Click(object sender, EventArgs e)
     {
@@ -264,27 +207,14 @@ public partial class QuickPass_AddProduct : Form
 
 
 
-    private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
     public long CategoryId { get; set; }
     public long SubCategoryId { get; set; }
 
 
 
-
-
-
+    /// <summary>
+    /// Combo Boxes Configuration
+    /// </summary>
     private async void ComboBoxFillcategory()
     {
         CategoryService categoryService = new CategoryService();
@@ -312,6 +242,7 @@ public partial class QuickPass_AddProduct : Form
         
     }
 
+
     private async void ComboBoxFillSubCategory(long categoryId)
     {
         SubCategoryService subCategoryService = new SubCategoryService();
@@ -321,5 +252,85 @@ public partial class QuickPass_AddProduct : Form
         subCategoryComboBox.ValueMember = "Id";
         SubCategory obj = subCategoryComboBox.SelectedItem as SubCategory;
         SubCategoryId = obj.Id;
+    }
+
+
+
+
+    /// <summary>
+    /// Purchased && Price textboxes configuration
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void purchasePriceTb_KeyPress_1(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void productPriceTb_KeyPress_1(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void purchasePriceTb_TextChanged_1(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(purchasePriceTb.Text))
+        {
+            decimal pr = decimal.Parse(purchasePriceTb.Text);
+            label9.Text = pr.ToString(@"#\ ###\ ###\ ###\");
+        }
+
+        if (!(purchasePriceTb.Text == ""))
+        {
+            purchasedPriceChecker.Text = "";
+        }
+        else
+        {
+            purchasedPriceChecker.Text = "*";
+            label9.Text = "";
+        }
+    }
+
+    private void productPriceTb_TextChanged_1(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(productPriceTb.Text))
+        {
+            decimal pr = decimal.Parse(productPriceTb.Text);
+            label10.Text = pr.ToString(@"###\ ###\ ###\ ###\");
+        }
+        if (!(productPriceTb.Text == ""))
+        {
+            price.Text = "";
+        }
+        else
+        {
+            price.Text = "*";
+            label10.Text = "";
+        }
+    }
+
+    private void productNameTb_TextChanged_1(object sender, EventArgs e)
+    {
+        if (!(productNameTb.Text == ""))
+        {
+            productNameCheckLabel.Text = "";
+        }
+        else productNameCheckLabel.Text = "*";
     }
 }

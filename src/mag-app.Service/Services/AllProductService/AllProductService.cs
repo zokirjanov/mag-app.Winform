@@ -108,10 +108,13 @@ public class AllProductService : IAllProductService
             var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
             if (oldproduct is not null)
             {
+                oldproduct.StoreId = product.StoreId;
+                oldproduct.StoreName= product.StoreName;
                 oldproduct.ProdutName = product.ProdutName;
                 oldproduct.Price = product.Price;
                 oldproduct.PurchasedPrice = product.PurchasedPrice;
                 oldproduct.Barcode = product.Barcode;
+                oldproduct.Quantity += product.Quantity;
 
                 var res = await allProductRepository.UpdateAsync(oldproduct);
                 return (res != null) ? "true" : "false";
@@ -127,9 +130,12 @@ public class AllProductService : IAllProductService
             var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
             if (oldproduct is not null)
             {
+                oldproduct.StoreId = product.StoreId;
+                oldproduct.StoreName = product.StoreName;
                 oldproduct.ProdutName = product.ProdutName;
                 oldproduct.Price = product.Price;
                 oldproduct.PurchasedPrice = product.PurchasedPrice;
+                oldproduct.Quantity += product.Quantity;
                 oldproduct.Barcode = product.Barcode;
 
                 var res = await allProductRepository.UpdateAsync(oldproduct);

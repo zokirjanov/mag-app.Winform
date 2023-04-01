@@ -51,6 +51,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         public async void FillData()
         {
+            allProductViewModeBindingSource.Clear();
             AllProductService allProduct = new AllProductService();
             var products = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
 
@@ -149,6 +150,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 price = row.Cells[4].Value.ToString()!;
                 qquantity = Convert.ToInt32(row.Cells[5].Value);
                 barcode = row.Cells[6].Value.ToString()!;
+
             }
         }
 

@@ -27,6 +27,8 @@ public partial class Quick_Pass : Form
 
     public Quick_Pass()
     {
+        _productService = new AllProductService();
+        _product= new ProductService();
         InitializeComponent();
     }
 
@@ -40,7 +42,7 @@ public partial class Quick_Pass : Form
     {
         productQuantity.Minimum = 0;
         productQuantity.Maximum = 1000000;
-        oldName = ProductName;
+
 
         List_products list_Products = List_products.listProductsParent;
         productNameTb.Text = list_Products.name;
@@ -49,7 +51,8 @@ public partial class Quick_Pass : Form
         productPriceTb.Text = list_Products.price;
         purchasePriceTb.Text = list_Products.pprice;
         barcodeTb.Text = list_Products.barcode;
-        productQuantity.Value = list_Products.qquantity;
+        quantityLabel.Text = list_Products.qquantity.ToString();
+        oldName = list_Products.name.ToString();
     }
 
 
@@ -95,7 +98,7 @@ public partial class Quick_Pass : Form
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = await _productService.UpdateAsync(allProduct);
+                var res = await _productService.UpdateAsync(allProduct, checkname);
 
                 if (res == "true")
                 {
@@ -121,5 +124,77 @@ public partial class Quick_Pass : Form
                 this.Close();
             }
         }
+    }
+
+    private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void productPriceTb_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void purchasePriceTb_TextChanged(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(purchasePriceTb.Text))
+        {
+            decimal pr = decimal.Parse(purchasePriceTb.Text);
+            label2.Text = pr.ToString(@"#\ ###\ ###\ ###\");
+        }
+
+        if (!(purchasePriceTb.Text == ""))
+        {
+            purchasedPriceChecker.Text = "";
+        }
+        else
+        {
+            purchasedPriceChecker.Text = "*";
+            label2.Text = "";
+        }
+    }
+
+    private void productPriceTb_TextChanged(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(productPriceTb.Text))
+        {
+            decimal pr = decimal.Parse(productPriceTb.Text);
+            label7.Text = pr.ToString(@"###\ ###\ ###\ ###\");
+        }
+        if (!(productPriceTb.Text == ""))
+        {
+            price.Text = "";
+        }
+        else
+        {
+            price.Text = "*";
+            label7.Text = "";
+        }
+    }
+
+    private void productNameTb_TextChanged(object sender, EventArgs e)
+    {
+        if (!(productNameTb.Text == ""))
+        {
+            productNameCheckLabel.Text = "";
+        }
+        else productNameCheckLabel.Text = "*";
     }
 }
