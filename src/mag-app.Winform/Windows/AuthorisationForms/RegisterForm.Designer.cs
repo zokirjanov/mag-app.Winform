@@ -46,6 +46,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Sitka Text Semibold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(129, 46);
@@ -56,6 +57,7 @@
             // 
             // registerLogintb
             // 
+            this.registerLogintb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerLogintb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerLogintb.Location = new System.Drawing.Point(46, 138);
             this.registerLogintb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -67,6 +69,7 @@
             // 
             // registerEmailtb
             // 
+            this.registerEmailtb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerEmailtb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerEmailtb.Location = new System.Drawing.Point(46, 196);
             this.registerEmailtb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -78,6 +81,7 @@
             // 
             // registerPasswordtb
             // 
+            this.registerPasswordtb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerPasswordtb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerPasswordtb.Location = new System.Drawing.Point(46, 260);
             this.registerPasswordtb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -90,6 +94,7 @@
             // 
             // registerConfirmtb
             // 
+            this.registerConfirmtb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerConfirmtb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerConfirmtb.Location = new System.Drawing.Point(46, 322);
             this.registerConfirmtb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -102,6 +107,7 @@
             // 
             // confirmShowbt
             // 
+            this.confirmShowbt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.confirmShowbt.BackColor = System.Drawing.Color.Transparent;
             this.confirmShowbt.Image = ((System.Drawing.Image)(resources.GetObject("confirmShowbt.Image")));
             this.confirmShowbt.Location = new System.Drawing.Point(349, 325);
@@ -114,6 +120,7 @@
             // 
             // passwordShowbt
             // 
+            this.passwordShowbt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordShowbt.BackColor = System.Drawing.Color.Transparent;
             this.passwordShowbt.Image = ((System.Drawing.Image)(resources.GetObject("passwordShowbt.Image")));
             this.passwordShowbt.Location = new System.Drawing.Point(349, 264);
@@ -126,6 +133,7 @@
             // 
             // registerBtn
             // 
+            this.registerBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerBtn.BackColor = System.Drawing.Color.SpringGreen;
             this.registerBtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerBtn.Location = new System.Drawing.Point(46, 400);
@@ -139,6 +147,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(46, 461);
@@ -152,6 +161,7 @@
             // 
             // loginlabel
             // 
+            this.loginlabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginlabel.AutoSize = true;
             this.loginlabel.ForeColor = System.Drawing.Color.Red;
             this.loginlabel.Location = new System.Drawing.Point(46, 167);
@@ -161,6 +171,7 @@
             // 
             // emaillabel
             // 
+            this.emaillabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emaillabel.AutoSize = true;
             this.emaillabel.ForeColor = System.Drawing.Color.Red;
             this.emaillabel.Location = new System.Drawing.Point(46, 225);
@@ -170,6 +181,7 @@
             // 
             // passwordlabel
             // 
+            this.passwordlabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordlabel.AutoSize = true;
             this.passwordlabel.ForeColor = System.Drawing.Color.Red;
             this.passwordlabel.Location = new System.Drawing.Point(46, 289);
@@ -179,6 +191,7 @@
             // 
             // confirmlabel
             // 
+            this.confirmlabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.confirmlabel.AutoSize = true;
             this.confirmlabel.ForeColor = System.Drawing.Color.Red;
             this.confirmlabel.Location = new System.Drawing.Point(46, 352);

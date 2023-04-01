@@ -5,6 +5,7 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.VisualBasic.Devices;
 using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
 
@@ -41,7 +42,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
-         
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
         }
 
@@ -81,7 +81,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             if (e.RowIndex != -1)
             {
-                value = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()!;
+                value = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()!;
                 quantity_value = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString()!;
             }
 
@@ -90,6 +90,8 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 Row_Update row = new Row_Update();
                 row.ShowDialog();
             }
+
+
 
 
             else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
@@ -155,7 +157,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 price = Convert.ToInt64(row.Cells[5].Value);
                 qquantity = Convert.ToInt32(row.Cells[6].Value);
                 barcode = row.Cells[0].Value.ToString()!;
-
             }
         }
 

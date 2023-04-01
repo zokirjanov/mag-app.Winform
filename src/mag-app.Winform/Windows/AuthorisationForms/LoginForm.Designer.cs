@@ -41,6 +41,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(48, 434);
@@ -54,6 +55,7 @@
             // 
             // registerBtn
             // 
+            this.registerBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerBtn.BackColor = System.Drawing.Color.SpringGreen;
             this.registerBtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerBtn.Location = new System.Drawing.Point(46, 372);
@@ -67,6 +69,7 @@
             // 
             // loginPassShow
             // 
+            this.loginPassShow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginPassShow.BackColor = System.Drawing.Color.Transparent;
             this.loginPassShow.Image = ((System.Drawing.Image)(resources.GetObject("loginPassShow.Image")));
             this.loginPassShow.Location = new System.Drawing.Point(348, 266);
@@ -79,6 +82,7 @@
             // 
             // loginPass
             // 
+            this.loginPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginPass.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginPass.Location = new System.Drawing.Point(46, 262);
             this.loginPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -90,6 +94,7 @@
             // 
             // loginlogin
             // 
+            this.loginlogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginlogin.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginlogin.Location = new System.Drawing.Point(46, 196);
             this.loginlogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -100,6 +105,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Sitka Text Semibold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(147, 111);
@@ -110,6 +116,7 @@
             // 
             // rememberMe
             // 
+            this.rememberMe.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rememberMe.AutoSize = true;
             this.rememberMe.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rememberMe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,7 +143,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(424, 548);
+            this.ClientSize = new System.Drawing.Size(416, 548);
             this.Controls.Add(this.loginLoginerror);
             this.Controls.Add(this.rememberMe);
             this.Controls.Add(this.button1);
@@ -147,6 +154,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(432, 587);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
