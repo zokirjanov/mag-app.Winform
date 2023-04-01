@@ -179,6 +179,7 @@
             this.purchasePriceTb.Location = new System.Drawing.Point(66, 245);
             this.purchasePriceTb.MaxLength = 10;
             this.purchasePriceTb.Name = "purchasePriceTb";
+            this.purchasePriceTb.ReadOnly = true;
             this.purchasePriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 30);
             this.purchasePriceTb.TabIndex = 64;
@@ -219,6 +220,7 @@
             this.productPriceTb.Location = new System.Drawing.Point(66, 305);
             this.productPriceTb.MaxLength = 10;
             this.productPriceTb.Name = "productPriceTb";
+            this.productPriceTb.ReadOnly = true;
             this.productPriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.productPriceTb.Size = new System.Drawing.Size(314, 30);
             this.productPriceTb.TabIndex = 61;
@@ -254,6 +256,7 @@
             this.productNameTb.Location = new System.Drawing.Point(66, 184);
             this.productNameTb.MaxLength = 30;
             this.productNameTb.Name = "productNameTb";
+            this.productNameTb.ReadOnly = true;
             this.productNameTb.Size = new System.Drawing.Size(314, 29);
             this.productNameTb.TabIndex = 58;
             this.productNameTb.TextChanged += new System.EventHandler(this.productNameTb_TextChanged);

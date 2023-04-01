@@ -85,16 +85,14 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 quantity_value = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString()!;
             }
 
-            //if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
-            //{
-            //    Row_Update row = new Row_Update();
-            //    row.ProductName = value;
-            //    row.Quantity = int.Parse(quantity_value);
-            //    row.ShowDialog();
-            //}
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
+            {
+                Row_Update row = new Row_Update();
+                row.ShowDialog();
+            }
 
 
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
+            else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
                 DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
@@ -150,13 +148,13 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 indexRow = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[indexRow];
 
-                name = row.Cells[0].Value.ToString()!;
+                name = row.Cells[3].Value.ToString()!;
                 category = row.Cells[1].Value.ToString()!;
                 subcat = row.Cells[2].Value.ToString()!;
-                pprice = row.Cells[3].Value.ToString()!;
-                price = row.Cells[4].Value.ToString()!;
-                qquantity = Convert.ToInt32(row.Cells[5].Value);
-                barcode = row.Cells[6].Value.ToString()!;
+                pprice = row.Cells[4].Value.ToString()!;
+                price = row.Cells[5].Value.ToString()!;
+                qquantity = Convert.ToInt32(row.Cells[6].Value);
+                barcode = row.Cells[0].Value.ToString()!;
 
             }
         }
