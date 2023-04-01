@@ -5,6 +5,7 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.VisualBasic.Devices;
 using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
 
@@ -90,6 +91,8 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 Row_Update row = new Row_Update();
                 row.ShowDialog();
             }
+
+
 
 
             else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")

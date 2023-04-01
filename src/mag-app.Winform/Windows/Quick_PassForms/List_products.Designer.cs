@@ -138,7 +138,7 @@
             // barcodeDataGridViewTextBoxColumn
             // 
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.barcodeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.barcodeDataGridViewTextBoxColumn.HeaderText = "штрих-код";
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
