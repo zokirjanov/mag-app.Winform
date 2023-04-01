@@ -62,6 +62,7 @@ public class AllProductService : IAllProductService
 
     public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
     {
+     //   var result = await allProductRepository.GetAllAsync(x => x.StoreId == cId || x.StoreId == null);
         var result = await allProductRepository.GetAllAsync();
         if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
         else return null;

@@ -85,6 +85,13 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 quantity_value = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString()!;
             }
 
+            //if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
+            //{
+            //    Row_Update row = new Row_Update();
+            //    row.ProductName = value;
+            //    row.Quantity = int.Parse(quantity_value);
+            //    row.ShowDialog();
+            //}
 
 
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")

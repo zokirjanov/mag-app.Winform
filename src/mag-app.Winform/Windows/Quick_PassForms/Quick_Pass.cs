@@ -87,6 +87,7 @@ public partial class Quick_Pass : Form
             AllProduct allProduct = new AllProduct()
             {
                 StoreId = MyStoreForm.myStoreFormParent.Id,
+                StoreName = MyStoreForm.myStoreFormParent.StoreName,
                 ProdutName = productNameTb.Text,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                 Price = decimal.Parse(productPriceTb.Text),
@@ -126,6 +127,14 @@ public partial class Quick_Pass : Form
         }
     }
 
+
+
+
+    /// <summary>
+    /// UI Forms Configurations
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
