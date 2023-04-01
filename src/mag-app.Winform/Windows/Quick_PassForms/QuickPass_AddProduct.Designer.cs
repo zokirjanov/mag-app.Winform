@@ -51,6 +51,8 @@
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.categoryViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,6 +222,8 @@
             this.purchasePriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.purchasePriceTb.Size = new System.Drawing.Size(314, 34);
             this.purchasePriceTb.TabIndex = 47;
+            this.purchasePriceTb.TextChanged += new System.EventHandler(this.purchasePriceTb_TextChanged_1);
+            this.purchasePriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.purchasePriceTb_KeyPress_1);
             // 
             // productPriceTb
             // 
@@ -232,6 +236,8 @@
             this.productPriceTb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.productPriceTb.Size = new System.Drawing.Size(314, 34);
             this.productPriceTb.TabIndex = 46;
+            this.productPriceTb.TextChanged += new System.EventHandler(this.productPriceTb_TextChanged_1);
+            this.productPriceTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productPriceTb_KeyPress_1);
             // 
             // button1
             // 
@@ -255,6 +261,7 @@
             this.productNameTb.Name = "productNameTb";
             this.productNameTb.Size = new System.Drawing.Size(314, 30);
             this.productNameTb.TabIndex = 44;
+            this.productNameTb.TextChanged += new System.EventHandler(this.productNameTb_TextChanged_1);
             // 
             // categoryComboBox
             // 
@@ -280,12 +287,32 @@
             this.subCategoryComboBox.Size = new System.Drawing.Size(314, 29);
             this.subCategoryComboBox.TabIndex = 64;
             // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(214, 283);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(160, 15);
+            this.label9.TabIndex = 75;
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(200, 354);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(174, 15);
+            this.label10.TabIndex = 74;
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // QuickPass_AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(444, 585);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.subCategoryComboBox);
             this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.label2);
@@ -342,5 +369,7 @@
         private ComboBox categoryComboBox;
         private ComboBox subCategoryComboBox;
         private BindingSource categoryViewModelBindingSource;
+        private Label label9;
+        private Label label10;
     }
 }

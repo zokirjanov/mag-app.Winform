@@ -1,21 +1,16 @@
-﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.AllProducts;
+﻿using mag_app.Domain.Entities.AllProducts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
-using mag_app.Winform.Windows.ProductForms;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,54 +19,51 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 {
     public partial class Row_Update : Form
     {
+
         AllProductService _productService;
         ProductService _product;
 
-        public Row_Update( )
+        public Row_Update()
         {
-            InitializeComponent();
             _productService = new AllProductService();
             _product = new ProductService();
+            InitializeComponent();
         }
+
 
         public string oldName { get; set; } = string.Empty;
         public new string ProductName { get; set; } = string.Empty;
-        public int  Quantity { get; set; }
+        public int Quantity { get; set; }
 
 
 
         private void Row_Update_Load(object sender, EventArgs e)
         {
-            productQuantity.Minimum = 0;
-            productQuantity.Maximum = 1000000;
-            oldName = ProductName;
-            FillPoles(ProductName, Quantity);
+            List_products list_Products = List_products.listProductsParent;
+            productNameTb.Text = list_Products.name;
+            categorylabel.Text = list_Products.category;
+            subCategoryLabel.Text = list_Products.subcat;
+            productPriceTb.Text = list_Products.price.ToString();
+            purchasePriceTb.Text = list_Products.pprice.ToString();
+            barcodeTb.Text = list_Products.barcode;
+            oldName = list_Products.name.ToString();
+            quantityLabel.Text = list_Products.qquantity.ToString();
         }
 
 
 
-        public async void FillPoles(string productname, int quantity)
+        private async void updateBtn_Click(object sender, EventArgs e)
         {
-            AllProductService allProduct = new AllProductService();
-            var entity = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
-
-            foreach (var item in entity)
+            bool checkname = false;
+            if (oldName == productNameTb.Text)
             {
-                productNameTb.Text = item.ProdutName;
-                purchasePriceTb.Text = item.PurchasedPrice.ToString();
-                productPriceTb.Text = item.Price.ToString();
-                productQuantity.Value = Convert.ToInt32(item.Quantity);
-                barcodeTb.Text = item.Barcode.ToString();
+                checkname = true;
             }
-        }
+            else checkname = false;
 
 
 
-
-
-        private async void updateBtn_Click_1(object sender, EventArgs e)
-        {
-            if(string.IsNullOrEmpty(productNameTb.Text) || string.IsNullOrEmpty(productPriceTb.Text) || string.IsNullOrEmpty(purchasePriceTb.Text))
+            if (string.IsNullOrEmpty(productNameTb.Text) || string.IsNullOrEmpty(productPriceTb.Text) || string.IsNullOrEmpty(purchasePriceTb.Text))
             {
                 MessageBox.Show("заполнить все поле");
             }
@@ -89,25 +81,18 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 AllProduct allProduct = new AllProduct()
                 {
                     StoreId = MyStoreForm.myStoreFormParent.Id,
+                    StoreName = MyStoreForm.myStoreFormParent.StoreName,
                     ProdutName = productNameTb.Text,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Price = decimal.Parse(productPriceTb.Text),
                     Barcode = barcodeTb.Text,
-                    Quantity = Convert.ToInt32(productQuantity.Value)
                 };
 
 
                 DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
-                    bool checkname = false;
-                    if (oldName == productNameTb.Text)
-                    {
-                        checkname = true;
-                    }
-                    else checkname = false;
-
-                    var res = await _productService.UpdateAsync(allProduct);
+                    var res = await _productService.UpdateAsync(allProduct, checkname);
 
                     if (res == "true")
                     {
@@ -137,34 +122,13 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-
-
-        private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
+        private void productNameTb_TextChanged(object sender, EventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            if (!(productNameTb.Text == ""))
             {
-                e.Handled = true;
+                productNameCheckLabel.Text = "";
             }
-            // only allow one decimal point
-            if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-
-
-        private void productPriceTb_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-            {
-                e.Handled = true;
-            }
-            // only allow one decimal point
-            if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
-            }
+            else productNameCheckLabel.Text = "*";
         }
 
 
@@ -210,18 +174,30 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-        private void productNameTb_TextChanged(object sender, EventArgs e)
+        private void purchasePriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(productNameTb.Text == ""))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
-                productNameCheckLabel.Text = "";
+                e.Handled = true;
             }
-            else productNameCheckLabel.Text = "*";
+            // only allow one decimal point
+            if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
         }
 
-        private void productQuantity_ValueChanged(object sender, EventArgs e)
+        private void productPriceTb_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            // only allow one decimal point
+            if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

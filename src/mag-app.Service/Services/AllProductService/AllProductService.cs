@@ -62,6 +62,7 @@ public class AllProductService : IAllProductService
 
     public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
     {
+     //   var result = await allProductRepository.GetAllAsync(x => x.StoreId == cId || x.StoreId == null);
         var result = await allProductRepository.GetAllAsync();
         if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
         else return null;
@@ -108,10 +109,13 @@ public class AllProductService : IAllProductService
             var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
             if (oldproduct is not null)
             {
+                oldproduct.StoreId = product.StoreId;
+                oldproduct.StoreName= product.StoreName;
                 oldproduct.ProdutName = product.ProdutName;
                 oldproduct.Price = product.Price;
                 oldproduct.PurchasedPrice = product.PurchasedPrice;
                 oldproduct.Barcode = product.Barcode;
+                oldproduct.Quantity += product.Quantity;
 
                 var res = await allProductRepository.UpdateAsync(oldproduct);
                 return (res != null) ? "true" : "false";
@@ -127,9 +131,12 @@ public class AllProductService : IAllProductService
             var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
             if (oldproduct is not null)
             {
+                oldproduct.StoreId = product.StoreId;
+                oldproduct.StoreName = product.StoreName;
                 oldproduct.ProdutName = product.ProdutName;
                 oldproduct.Price = product.Price;
                 oldproduct.PurchasedPrice = product.PurchasedPrice;
+                oldproduct.Quantity += product.Quantity;
                 oldproduct.Barcode = product.Barcode;
 
                 var res = await allProductRepository.UpdateAsync(oldproduct);

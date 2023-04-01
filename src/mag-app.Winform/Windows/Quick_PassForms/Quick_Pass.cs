@@ -27,37 +27,36 @@ public partial class Quick_Pass : Form
 
     public Quick_Pass()
     {
+        _productService = new AllProductService();
+        _product= new ProductService();
         InitializeComponent();
     }
 
     public string oldName { get; set; } = string.Empty;
-    public new string ProductName { get; set; } = string.Empty;
-    public int Quantity { get; set; }
-
-
 
     private void Quick_Pass_Load(object sender, EventArgs e)
     {
         productQuantity.Minimum = 0;
         productQuantity.Maximum = 1000000;
-        oldName = ProductName;
+
 
         List_products list_Products = List_products.listProductsParent;
-        productNameTb.Text = list_Products.name;
-        categorylabel.Text= list_Products.category;
+        labelName.Text = list_Products.name;
+        categorylabel.Text = list_Products.category;
         subCategoryLabel.Text = list_Products.subcat;
-        productPriceTb.Text = list_Products.price;
-        purchasePriceTb.Text = list_Products.pprice;
-        barcodeTb.Text = list_Products.barcode;
-        productQuantity.Value = list_Products.qquantity;
+        labelPrice.Text = list_Products.price.ToString(@"#\ ###\ ###\ ###\");
+        labelPPrice.Text = list_Products.pprice.ToString(@"#\ ###\ ###\ ###\");
+        labelBarcode.Text = list_Products.barcode;
+        quantityLabel.Text = list_Products.qquantity.ToString();
+        oldName = list_Products.name.ToString();
     }
-
+    
 
 
     private async void updateBtn_Click(object sender, EventArgs e)
     {
         bool checkname = false;
-        if (oldName == productNameTb.Text)
+        if (oldName == labelName.Text)
         {
             checkname = true;
         }
@@ -65,7 +64,7 @@ public partial class Quick_Pass : Form
 
 
 
-        if (string.IsNullOrEmpty(productNameTb.Text) || string.IsNullOrEmpty(productPriceTb.Text) || string.IsNullOrEmpty(purchasePriceTb.Text))
+        if (string.IsNullOrEmpty(productQuantity.Text))
         {
             MessageBox.Show("заполнить все поле");
         }
@@ -73,34 +72,35 @@ public partial class Quick_Pass : Form
         {
             ProductViewModel product = new ProductViewModel()
             {
-                ProdutName = productNameTb.Text,
-                PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                Price = decimal.Parse(productPriceTb.Text),
-                Barcode = barcodeTb.Text,
-                Quantity = Convert.ToInt32(productQuantity.Value)
+                ProdutName = labelName.Text,
+                PurchasedPrice = decimal.Parse(labelPPrice.Text),
+                Price = decimal.Parse(labelPrice.Text),
+                Quantity = Convert.ToInt32(productQuantity.Value),
+                Barcode = labelBarcode.Text,
             };
 
 
             AllProduct allProduct = new AllProduct()
             {
                 StoreId = MyStoreForm.myStoreFormParent.Id,
-                ProdutName = productNameTb.Text,
-                PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                Price = decimal.Parse(productPriceTb.Text),
-                Barcode = barcodeTb.Text,
-                Quantity = Convert.ToInt32(productQuantity.Value)
+                StoreName = MyStoreForm.myStoreFormParent.StoreName,
+                ProdutName = labelName.Text,
+                PurchasedPrice = decimal.Parse(labelPPrice.Text),
+                Price = decimal.Parse(labelPrice.Text),
+                Quantity = Convert.ToInt32(productQuantity.Value),
+                Barcode= labelBarcode.Text,
             };
 
 
-            DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult dlg = MessageBox.Show("Хотите добавить колицество?", "добавлять", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = await _productService.UpdateAsync(allProduct);
+                var res = await _productService.UpdateAsync(allProduct, checkname);
 
                 if (res == "true")
                 {
                     var res1 = await _product.UpdateAsync(product, checkname);
-                    AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
+                    AutoClosingMessageBox.Show("успешно Добавлено", "добавлять", 350);
                     StoreProductsForm.storeProductParent.openChildForm(new List_products());
                     this.Close();
                 }
@@ -111,8 +111,8 @@ public partial class Quick_Pass : Form
                 else
                 {
                     MessageBox.Show(res);
-                    productNameTb.Focus();
-                    productNameTb.SelectAll();
+                    productQuantity.Focus();
+                    productQuantity.Select();
                 }
             }
 
