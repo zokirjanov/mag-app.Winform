@@ -91,6 +91,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(419, 6);
@@ -135,7 +137,6 @@
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
-            this.barcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.barcodeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
@@ -144,6 +145,7 @@
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             this.barcodeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.barcodeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.barcodeDataGridViewTextBoxColumn.Width = 131;
             // 
             // categoryNameDataGridViewTextBoxColumn
             // 
@@ -167,13 +169,13 @@
             // 
             // produtNameDataGridViewTextBoxColumn
             // 
+            this.produtNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.produtNameDataGridViewTextBoxColumn.DataPropertyName = "ProdutName";
             this.produtNameDataGridViewTextBoxColumn.HeaderText = "наименование";
             this.produtNameDataGridViewTextBoxColumn.Name = "produtNameDataGridViewTextBoxColumn";
             this.produtNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.produtNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.produtNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.produtNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // purchasedPriceDataGridViewTextBoxColumn
             // 
