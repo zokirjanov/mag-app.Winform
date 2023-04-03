@@ -74,7 +74,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     ProdutName = productNameTb.Text,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Price = decimal.Parse(productPriceTb.Text),
-                    Quantity = int.Parse(quantityLabel.Text),
+                    Quantity = 0,
                     Barcode = barcodeTb.Text,
                 };
 

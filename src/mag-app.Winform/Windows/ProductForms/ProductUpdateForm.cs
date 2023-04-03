@@ -87,20 +87,20 @@ namespace mag_app.Winform.Windows.ProductForms
             {
                 var res = await _productService.UpdateAsync(product, checkname);
 
-                if (res == "true")
+                if (res.message == "true")
                 {
                     var res2 = await _allProductService.UpdateAsync(allproduct, checkname);
                     AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
                     StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
                     this.Close();
                 }
-                else if (res == "false")
+                else if (res.message == "false")
                 {
                     MessageBox.Show("Что-то пошло не так, нет подходящего продукта");
                 }
                 else
                 {
-                    MessageBox.Show(res);
+                    MessageBox.Show(res.message);
                     productNameTb.Focus();
                     productNameTb.SelectAll();
                 }

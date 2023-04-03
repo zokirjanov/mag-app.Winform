@@ -4,6 +4,7 @@ using mag_app.DataAccess.Interfaces.Products;
 using mag_app.DataAccess.Repositories.AllProducts;
 using mag_app.DataAccess.Repositories.Products;
 using mag_app.Domain.Entities.AllProducts;
+using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.AllProducts;
@@ -103,6 +104,11 @@ public class AllProductService : IAllProductService
         return resultList;
     }
 
+
+    public async Task<AllProduct> Get(string barcode, long sId)
+    {
+        return await allProductRepository.GetAsync(x => x.Barcode == barcode && x.StoreId == sId);
+    }
 
 
     public async Task<long> GetId(string name)

@@ -14,7 +14,8 @@ namespace mag_app.Service.Interfaces.Products
         public Task<(string message, Product product)> CreateProductAsync(ProductViewModel product);
         public Task<IEnumerable<Product>> GetAllAsync(long Id);
         public Task<IEnumerable<Product>> GetAllAsync();
+        public Task<Product> Get(string barcode);
         public Task<bool> DeleteAsync(long Id);
-        public Task<string> UpdateAsync(Product Product, bool checkname);
+        Task<(string message, Product product)> UpdateAsync(Product product, bool checkname);
     }
 }
