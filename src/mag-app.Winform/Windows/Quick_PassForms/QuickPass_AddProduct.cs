@@ -1,24 +1,11 @@
-﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.Categories;
+﻿using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.SubCategories;
 using mag_app.Service.Dtos.Products;
-using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.CategoryService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.SubCategoryService;
-using mag_app.Winform.Windows.MainWindowForms;
-using mag_app.Winform.Windows.Product_Forms;
-using mag_app.Winform.Windows.ProductForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Quick_PassForms;
 
@@ -215,13 +202,13 @@ public partial class QuickPass_AddProduct : Form
     {
         Cursor.Current = Cursors.WaitCursor;
         Category obj = categoryComboBox.SelectedItem as Category;
-        if(obj != null)
+        if (obj != null)
         {
             ComboBoxFillSubCategory(obj.Id);
             CategoryId = obj.Id;
         }
         Cursor.Current = Cursors.Default;
-        
+
     }
 
 

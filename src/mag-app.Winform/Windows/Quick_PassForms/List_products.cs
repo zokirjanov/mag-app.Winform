@@ -99,16 +99,29 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
-                    long id = await _service.GetId(value);
-                    long id2 = await _productService.GetId(value);
-                    var res = _service.DeleteAsync(id);
-                    var res2 = _productService.DeleteAsync(id2);
+                    if (value == "test")
+                    {
+                        dataGridView1.Columns.RemoveAt(e.ColumnIndex);
+                        long id = await _productService.GetId(value);
+                        var res = _productService.DeleteAsync(id);
+                        if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                        else if (await res == false) MessageBox.Show("Товар не найден");
+                        allProductViewModeBindingSource.Clear();
+                        FillData();
+                    }
+                    else
+                    {
+                        long id = await _service.GetId(value);
+                        long id2 = await _productService.GetId(value);
+                        var res = _service.DeleteAsync(id);
+                        var res2 = _productService.DeleteAsync(id2);
 
+                        if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                        else if (await res == false) MessageBox.Show("Товар не найден");
+                        allProductViewModeBindingSource.Clear();
+                        FillData();
+                    }
 
-                    if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
-                    else if (await res == false) MessageBox.Show("Товар не найден");
-                    allProductViewModeBindingSource.Clear();
-                    FillData();
                 }
                 if (dlg == DialogResult.Cancel)
                 {

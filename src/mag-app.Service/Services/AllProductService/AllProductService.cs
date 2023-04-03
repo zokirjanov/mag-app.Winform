@@ -9,6 +9,7 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.AllProducts;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.Service.Services.AllProductService;
 
@@ -67,7 +68,7 @@ public class AllProductService : IAllProductService
     public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
     {
         IList<AllProduct> resultList = new List<AllProduct>();
-        var products = await  appDb.Products.ToListAsync();
+        var products = await  appDb.Products.OrderByDescending(x=>x.Id).ToListAsync();
         var allProducts = await appDb.AllProducts.Where(x => x.StoreId == cId).Include(x => x.Product).ToListAsync();
 
         foreach (var prod in products)
