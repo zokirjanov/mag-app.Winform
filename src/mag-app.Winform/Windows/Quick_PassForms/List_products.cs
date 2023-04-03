@@ -109,19 +109,19 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                         allProductViewModeBindingSource.Clear();
                         FillData();
                     }
-                    //else
-                    //{
-                    //    long id = await _service.GetId(value);
-                    //    long id2 = await _productService.GetId(value);
-                    //    var res = _service.DeleteAsync(id);
-                    //    var res2 = _productService.DeleteAsync(id2);
+                    else
+                    {
+                        long id = await _service.GetId(value);
+                        long id2 = await _productService.GetId(value);
+                        var res = _service.DeleteAsync(id);
+                        var res2 = _productService.DeleteAsync(id2);
 
-                    //    if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
-                    //    else if (await res == false) MessageBox.Show("Товар не найден");
-                    //    allProductViewModeBindingSource.Clear();
-                    //    FillData();
-                    //}
-                    
+                        if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                        else if (await res == false) MessageBox.Show("Товар не найден");
+                        allProductViewModeBindingSource.Clear();
+                        FillData();
+                    }
+
                 }
                 if (dlg == DialogResult.Cancel)
                 {
