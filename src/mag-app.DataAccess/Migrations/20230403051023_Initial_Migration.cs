@@ -4,7 +4,7 @@
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial_Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,47 +72,6 @@ namespace mag_app.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AllProducts",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Barcode = table.Column<string>(type: "TEXT", nullable: false),
-                    StoreId = table.Column<long>(type: "INTEGER", nullable: true),
-                    StoreName = table.Column<string>(type: "TEXT", nullable: true),
-                    CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
-                    CategoryName = table.Column<string>(type: "TEXT", nullable: false),
-                    SubCategoryId = table.Column<long>(type: "INTEGER", nullable: true),
-                    SubCategoryName = table.Column<string>(type: "TEXT", nullable: false),
-                    ProdutName = table.Column<string>(type: "TEXT", nullable: false),
-                    PurchasedPrice = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AllProducts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AllProducts_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AllProducts_Stores_StoreId",
-                        column: x => x.StoreId,
-                        principalTable: "Stores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
-                    table.ForeignKey(
-                        name: "FK_AllProducts_SubCategories_SubCategoryId",
-                        column: x => x.SubCategoryId,
-                        principalTable: "SubCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -145,10 +104,63 @@ namespace mag_app.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AllProducts",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Barcode = table.Column<string>(type: "TEXT", nullable: false),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: true),
+                    StoreName = table.Column<string>(type: "TEXT", nullable: true),
+                    CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
+                    CategoryName = table.Column<string>(type: "TEXT", nullable: false),
+                    SubCategoryId = table.Column<long>(type: "INTEGER", nullable: true),
+                    SubCategoryName = table.Column<string>(type: "TEXT", nullable: false),
+                    ProductId = table.Column<long>(type: "INTEGER", nullable: false),
+                    ProdutName = table.Column<string>(type: "TEXT", nullable: false),
+                    PurchasedPrice = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AllProducts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AllProducts_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AllProducts_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AllProducts_Stores_StoreId",
+                        column: x => x.StoreId,
+                        principalTable: "Stores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_AllProducts_SubCategories_SubCategoryId",
+                        column: x => x.SubCategoryId,
+                        principalTable: "SubCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AllProducts_CategoryId",
                 table: "AllProducts",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AllProducts_ProductId",
+                table: "AllProducts",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AllProducts_StoreId",
@@ -182,10 +194,10 @@ namespace mag_app.DataAccess.Migrations
                 name: "AllProducts");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Stores");

@@ -1,4 +1,5 @@
 ﻿using mag_app.Domain.Common;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Domain.Entities.SubCategories;
@@ -29,6 +30,7 @@ namespace mag_app.Domain.Entities.Products
         public decimal Price { get; set; }
         public int Quantity { get; set; }
 
+        public virtual ICollection<AllProduct> AllProducts { get; set; }
 
     }
 }

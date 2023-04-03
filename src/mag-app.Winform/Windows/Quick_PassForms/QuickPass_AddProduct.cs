@@ -114,6 +114,7 @@ public partial class QuickPass_AddProduct : Form
                 AllProductViewModel allProduct = new AllProductViewModel()
                 {
                     ProdutName = productNameTb.Text,
+                    ProductId = res.product.Id,
                     Price = decimal.Parse(productPriceTb.Text),
                     Barcode = barcodeResult,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),

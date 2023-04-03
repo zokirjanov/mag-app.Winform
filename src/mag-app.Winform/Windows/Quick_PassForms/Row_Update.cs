@@ -81,8 +81,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
                 AllProduct allProduct = new AllProduct()
                 {
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
-                    StoreName = MyStoreForm.myStoreFormParent.StoreName,
                     ProdutName = productNameTb.Text,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Price = decimal.Parse(productPriceTb.Text),

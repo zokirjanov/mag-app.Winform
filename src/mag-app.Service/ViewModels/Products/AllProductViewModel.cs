@@ -5,6 +5,7 @@ namespace mag_app.Service.Dtos.Products
     public class AllProductViewModel
     {
         public string ProdutName { get; set; } = string.Empty;
+        public long ProductId { get; set; }
 
         public decimal PurchasedPrice { get; set; }
         public decimal Price { get; set; }
@@ -27,6 +28,7 @@ namespace mag_app.Service.Dtos.Products
             return new AllProduct()
             {
                 ProdutName = product.ProdutName,
+                ProductId= product.ProductId,
                 Price = product.Price,
                 PurchasedPrice = product.PurchasedPrice,
                 Barcode = product.Barcode,

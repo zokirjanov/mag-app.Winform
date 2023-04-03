@@ -118,6 +118,7 @@ public partial class Store_Add_ProductForm : Form
                 AllProductViewModel allProduct = new AllProductViewModel()
                 {
                     ProdutName = productNameTb.Text,
+                    ProductId = res.product.Id,
                     Price = decimal.Parse(productPriceTb.Text),
                     Barcode = barcodeResult,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),

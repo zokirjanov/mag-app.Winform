@@ -53,7 +53,7 @@
             // 
             // subCategoryLabel
             // 
-            this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.subCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.subCategoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.subCategoryLabel.Location = new System.Drawing.Point(230, 130);
             this.subCategoryLabel.Name = "subCategoryLabel";
@@ -64,7 +64,7 @@
             // 
             // categorylabel
             // 
-            this.categorylabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.categorylabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categorylabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.categorylabel.Location = new System.Drawing.Point(220, 95);
             this.categorylabel.Name = "categorylabel";
@@ -75,6 +75,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(63, 130);
@@ -85,6 +86,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(63, 95);
@@ -95,6 +97,7 @@
             // 
             // productNameCheckLabel
             // 
+            this.productNameCheckLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.productNameCheckLabel.AutoSize = true;
             this.productNameCheckLabel.BackColor = System.Drawing.Color.Transparent;
             this.productNameCheckLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -107,6 +110,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(218, 288);
             this.label2.Name = "label2";
@@ -116,6 +120,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(206, 350);
             this.label7.Name = "label7";
@@ -125,6 +130,7 @@
             // 
             // price
             // 
+            this.price.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.price.AutoSize = true;
             this.price.BackColor = System.Drawing.Color.Transparent;
             this.price.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -137,6 +143,7 @@
             // 
             // purchasedPriceChecker
             // 
+            this.purchasedPriceChecker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.purchasedPriceChecker.AutoSize = true;
             this.purchasedPriceChecker.BackColor = System.Drawing.Color.Transparent;
             this.purchasedPriceChecker.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -149,6 +156,7 @@
             // 
             // barcodeTb
             // 
+            this.barcodeTb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.barcodeTb.Cursor = System.Windows.Forms.Cursors.No;
             this.barcodeTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.barcodeTb.Location = new System.Drawing.Point(66, 431);
@@ -161,6 +169,7 @@
             // 
             // barcodeLabel
             // 
+            this.barcodeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.barcodeLabel.AutoSize = true;
             this.barcodeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.barcodeLabel.Location = new System.Drawing.Point(64, 409);
@@ -181,6 +190,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(64, 346);
@@ -191,6 +201,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(64, 284);
@@ -201,7 +212,7 @@
             // 
             // purchasePriceTb
             // 
-            this.purchasePriceTb.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.purchasePriceTb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.purchasePriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.purchasePriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.purchasePriceTb.Location = new System.Drawing.Point(66, 309);
@@ -215,6 +226,7 @@
             // 
             // productPriceTb
             // 
+            this.productPriceTb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.productPriceTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.productPriceTb.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productPriceTb.Location = new System.Drawing.Point(66, 366);
@@ -228,6 +240,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(64, 223);
@@ -238,6 +251,7 @@
             // 
             // updateBtn
             // 
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.updateBtn.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.updateBtn.Location = new System.Drawing.Point(66, 505);
@@ -250,6 +264,7 @@
             // 
             // productNameTb
             // 
+            this.productNameTb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.productNameTb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productNameTb.Location = new System.Drawing.Point(66, 245);
             this.productNameTb.MaxLength = 30;
@@ -260,7 +275,7 @@
             // 
             // quantityLabel
             // 
-            this.quantityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.quantityLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.quantityLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.quantityLabel.Location = new System.Drawing.Point(278, 165);
             this.quantityLabel.Name = "quantityLabel";
@@ -271,6 +286,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(63, 165);

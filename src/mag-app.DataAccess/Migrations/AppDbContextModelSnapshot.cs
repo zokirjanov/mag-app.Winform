@@ -21,48 +21,66 @@ namespace mag_app.DataAccess.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
 
                     b.Property<string>("Barcode")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(2);
 
                     b.Property<long>("CategoryId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(5);
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(6);
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(12);
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(9);
 
                     b.Property<string>("ProdutName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(10);
 
                     b.Property<decimal>("PurchasedPrice")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(11);
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(13);
 
                     b.Property<long?>("StoreId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(3);
 
                     b.Property<string>("StoreName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(4);
 
                     b.Property<long?>("SubCategoryId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(7);
 
                     b.Property<string>("SubCategoryName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(8);
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("StoreId");
 
@@ -205,6 +223,12 @@ namespace mag_app.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("mag_app.Domain.Entities.Products.Product", "Product")
+                        .WithMany("AllProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("mag_app.Domain.Entities.Stores.Store", "Store")
                         .WithMany("AllProducts")
                         .HasForeignKey("StoreId")
@@ -216,6 +240,8 @@ namespace mag_app.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Category");
+
+                    b.Navigation("Product");
 
                     b.Navigation("Store");
 
@@ -259,6 +285,11 @@ namespace mag_app.DataAccess.Migrations
                     b.Navigation("Products");
 
                     b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("mag_app.Domain.Entities.Products.Product", b =>
+                {
+                    b.Navigation("AllProducts");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
