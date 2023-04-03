@@ -62,6 +62,12 @@ public class AppDbContext : DbContext
                     .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<AllProduct>()
+                   .HasOne<Product>(e => e.Product)
+                   .WithMany(d => d.AllProducts)
+                   .HasForeignKey(e => e.ProductId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<AllProduct>()
                     .HasOne<Category>(e => e.Category)
                     .WithMany(d => d.AllProducts)
                     .HasForeignKey(e => e.CategoryId)

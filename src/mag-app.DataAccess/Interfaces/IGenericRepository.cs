@@ -1,4 +1,5 @@
 ﻿using mag_app.Domain.Common;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace mag_app.DataAccess.Interfaces
     public interface IGenericRepository<T>  where T : class
     {
         public Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression = null!);
+
+        public  Task<T> GetAsync(Expression<Func<T, bool>> expression);
 
         public Task<IQueryable<T>> Where(Expression<Func<T, bool>> expression);
 

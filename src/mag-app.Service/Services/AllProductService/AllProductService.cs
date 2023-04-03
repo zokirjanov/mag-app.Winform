@@ -4,6 +4,7 @@ using mag_app.DataAccess.Interfaces.Products;
 using mag_app.DataAccess.Repositories.AllProducts;
 using mag_app.DataAccess.Repositories.Products;
 using mag_app.Domain.Entities.AllProducts;
+using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.AllProducts;
@@ -14,10 +15,12 @@ namespace mag_app.Service.Services.AllProductService;
 public class AllProductService : IAllProductService
 {
     IAllProductRepository allProductRepository { get; set; }
+    private AppDbContext appDb;
 
     public AllProductService()
     {
         allProductRepository = new AllProductRepository();
+        appDb = new AppDbContext();
     }
 
 
@@ -28,6 +31,7 @@ public class AllProductService : IAllProductService
         AllProduct allProduct = new AllProduct()
         {
             ProdutName = product.ProdutName,
+            ProductId = product.ProductId,
             Barcode = product.Barcode,
             StoreId = product.StoreId,
             StoreName = product.Storename,
@@ -62,12 +66,49 @@ public class AllProductService : IAllProductService
 
     public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
     {
-     //   var result = await allProductRepository.GetAllAsync(x => x.StoreId == cId || x.StoreId == null);
-        var result = await allProductRepository.GetAllAsync();
-        if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
-        else return null;
+        IList<AllProduct> resultList = new List<AllProduct>();
+        var products = await  appDb.Products.ToListAsync();
+        var allProducts = await appDb.AllProducts.Where(x => x.StoreId == cId).Include(x => x.Product).ToListAsync();
+
+        foreach (var prod in products)
+        {
+            AllProduct allProduct = new AllProduct();
+
+            foreach (var allProd in allProducts)
+            {
+                if (prod.Id == allProd.ProductId)
+                {
+                    allProduct = allProd;
+                }
+            }
+
+            if (allProduct.Id != 0)
+            {
+                resultList.Add(allProduct);
+            }
+            else
+            {
+                allProduct.Product = prod;
+                allProduct.Barcode = prod.Barcode;
+                allProduct.ProdutName = prod.ProdutName;
+                allProduct.CategoryId = prod.CategoryId;
+                allProduct.CategoryName = prod.CategoryName;
+                allProduct.SubCategoryId = prod.SubCategoryId;
+                allProduct.SubCategoryName = prod.SubCategoryName;
+                allProduct.PurchasedPrice = prod.PurchasedPrice;
+                allProduct.Price = prod.Price;
+                allProduct.Quantity = 0;
+                resultList.Add(allProduct);
+            }
+        }
+        return resultList;
     }
 
+
+    public async Task<AllProduct> Get(string barcode, long sId)
+    {
+        return await allProductRepository.GetAsync(x => x.Barcode == barcode && x.StoreId == sId);
+    }
 
 
     public async Task<long> GetId(string name)

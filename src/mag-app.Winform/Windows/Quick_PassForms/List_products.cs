@@ -59,7 +59,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
             {
                 allProductViewModeBindingSource.Add(new AllProductViewModel()
                 {
-                    ProdutName = i.ProdutName,
+                    ProdutName = i.Product.ProdutName,
                     CategoryName = i.CategoryName,
                     SubcategoryName = i.SubCategoryName,
                     Barcode = i.Barcode,

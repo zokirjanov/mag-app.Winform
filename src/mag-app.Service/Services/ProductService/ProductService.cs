@@ -3,6 +3,8 @@ using mag_app.DataAccess.Repositories.Products;
 using mag_app.Domain.Entities.Products;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Interfaces.Products;
+using System.Security.Policy;
+using System.Xml.Linq;
 
 namespace mag_app.Service.Services.ProductService
 {
@@ -57,6 +59,8 @@ namespace mag_app.Service.Services.ProductService
 
 
 
+
+
         public async Task<IEnumerable<Product>> GetAllAsync(long Id)
         {
             var result = await productRepository.GetAllAsync(x => x.SubCategoryId == Id);
@@ -66,17 +70,44 @@ namespace mag_app.Service.Services.ProductService
 
 
 
+
+
         public async Task<long> GetId(string name)
         {
-            var store = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
-            return store.Id;
+            var product = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
+            return product.Id;
         }
 
 
 
 
 
-        public async Task<string> UpdateAsync(Product product, bool checkname)
+        public async Task<Product> Get(string barcode)
+        {
+            return await productRepository.GetAsync(x => x.Barcode == barcode);
+        }
+
+
+
+
+
+        public async Task<(string message, Product product)> UpdateAsync(Product product)
+        {
+            var oldproduct = await productRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
+            if (oldproduct is not null)
+            {
+                oldproduct.Quantity += product.Quantity;
+                var res = await productRepository.UpdateAsync(oldproduct);
+                return (res != null) ? (message: "true", oldproduct) : (message: "false", null!);
+            }
+            else return (message: "товар не найден", null)!;
+        }
+
+
+
+
+
+        public async Task<(string message, Product product)> UpdateAsync(Product product, bool checkname)
         {
             if (checkname)
             {
@@ -86,19 +117,19 @@ namespace mag_app.Service.Services.ProductService
                     oldproduct.ProdutName = product.ProdutName;
                     oldproduct.Price = product.Price;
                     oldproduct.PurchasedPrice = product.PurchasedPrice;
-                    oldproduct.Quantity = product.Quantity;
+                    oldproduct.Quantity += product.Quantity;
                     oldproduct.Barcode = product.Barcode;
 
                     var res = await productRepository.UpdateAsync(oldproduct);
-                    return (res != null) ? "true" : "false";
+                    return (res != null) ? (message: "true", oldproduct) : (message: "false", null!);
                 }
-                else return "товар не найден";
+                else return (message: "товар не найден", null)!;
             }
 
             else
             {
                 var checkdb = await productRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
-                if (checkdb != null) return "Такое название продукта существует, попробуйте другое название товара";
+                if (checkdb != null) return (message:"Такое название продукта существует, попробуйте другое название товара",null!);
 
                 var oldproduct = await productRepository.FirstOrDefaultAsync(x => x.Barcode == product.Barcode);
                 if (oldproduct is not null)
@@ -106,13 +137,13 @@ namespace mag_app.Service.Services.ProductService
                     oldproduct.ProdutName = product.ProdutName;
                     oldproduct.Price = product.Price;
                     oldproduct.PurchasedPrice = product.PurchasedPrice;
-                    oldproduct.Quantity = product.Quantity;
+                    oldproduct.Quantity += product.Quantity;
                     oldproduct.Barcode = product.Barcode;
 
                     var res = await productRepository.UpdateAsync(oldproduct);
-                    return (res != null) ? "true" : "false";
+                    return (res != null) ? (message: "true", oldproduct) : (message: "false", null!);
                 }
-                else return "товар не найден";
+                else return (message: "товар не найден", null)!;
             }
         }
     }

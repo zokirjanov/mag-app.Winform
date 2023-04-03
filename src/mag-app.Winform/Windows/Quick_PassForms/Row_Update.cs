@@ -1,16 +1,21 @@
-﻿using mag_app.Domain.Entities.AllProducts;
+﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -74,18 +79,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     ProdutName = productNameTb.Text,
                     PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
                     Price = decimal.Parse(productPriceTb.Text),
-                    Quantity = int.Parse(quantityLabel.Text),
-                    Barcode = barcodeTb.Text,
-                };
-
-
-                AllProduct allProduct = new AllProduct()
-                {
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
-                    StoreName = MyStoreForm.myStoreFormParent.StoreName,
-                    ProdutName = productNameTb.Text,
-                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                    Price = decimal.Parse(productPriceTb.Text),
                     Quantity = 0,
                     Barcode = barcodeTb.Text,
                 };
@@ -94,26 +87,35 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
-                    var res = await _productService.UpdateAsync(allProduct, checkname);
+                    var res = 0;
 
-                    if (res == "true")
+
+                    using (var db = new AppDbContext()) 
+                    {
+                        var products = db.AllProducts.Where(e => barcodeTb.Text.Contains(e.Barcode)).ToList();
+                        products.ForEach(a =>
+                        {
+                            a.ProdutName = product.ProdutName;
+                            a.PurchasedPrice = product.PurchasedPrice;
+                            a.Price = product.Price;
+                        });
+                        res = db.SaveChanges();
+                    }
+
+
+                    if (res > 0)
                     {
                         var res1 = await _product.UpdateAsync(product, checkname);
                         AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
                         StoreProductsForm.storeProductParent.openChildForm(new List_products());
                         this.Close();
                     }
-                    else if (res == "false")
+                    else
                     {
                         MessageBox.Show("Что-то пошло не так, нет подходящего продукта");
                     }
-                    else
-                    {
-                        MessageBox.Show(res);
-                        productNameTb.Focus();
-                        productNameTb.SelectAll();
-                    }
                 }
+
 
                 if (dlg == DialogResult.Cancel)
                 {

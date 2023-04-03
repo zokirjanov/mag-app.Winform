@@ -111,26 +111,8 @@ public partial class QuickPass_AddProduct : Form
 
             if (res.product is not null)
             {
-                AllProductViewModel allProduct = new AllProductViewModel()
-                {
-                    ProdutName = productNameTb.Text,
-                    Price = decimal.Parse(productPriceTb.Text),
-                    Barcode = barcodeResult,
-                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                    StoreId = null,
-                    Storename = null,
-                    CategoryName = categoryComboBox.Text,
-                    CategoryId = CategoryId,
-                    SubcategoryName = subCategoryComboBox.Text,
-                    SubCategoryId = SubCategoryId,
-                    Quantity = 0
-                };
-
-                AllProductService allProductService = new AllProductService();
-                await allProductService.CreateAllProductAsync(allProduct);
-
-
                 List_products.listProductsParent.FillData();
+
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {

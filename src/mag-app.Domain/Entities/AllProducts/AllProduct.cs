@@ -59,12 +59,12 @@ namespace mag_app.Domain.Entities.AllProducts
 
 
 
-        //[ForeignKey("SubCategoryId")]
-        //public virtual Product Product { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
 
 
-        //[Column(Order =9)]
-        //public long ProductId { get; set; }
+        [Column(Order = 9)]
+        public long ProductId { get; set; }
 
 
         [Column(Order =10)]
