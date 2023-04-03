@@ -115,25 +115,6 @@ public partial class Store_Add_ProductForm : Form
 
             if (res.product is not null)
             {
-                AllProductViewModel allProduct = new AllProductViewModel()
-                {
-                    ProdutName = productNameTb.Text,
-                    ProductId = res.product.Id,
-                    Price = decimal.Parse(productPriceTb.Text),
-                    Barcode = barcodeResult,
-                    PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                    StoreId = null,
-                    Storename = null,
-                    CategoryName = CategoriesForm.categoryParent.CategoryTitle,
-                    CategoryId = CategoriesForm.categoryParent.Id,
-                    SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
-                    SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
-                    Quantity = 0
-                };
-
-                AllProductService allProductService = new AllProductService();
-                await allProductService.CreateAllProductAsync(allProduct);
-
                 StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)

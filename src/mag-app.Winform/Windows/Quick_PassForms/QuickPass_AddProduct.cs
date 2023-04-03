@@ -111,7 +111,6 @@ public partial class QuickPass_AddProduct : Form
 
             if (res.product is not null)
             {
-
                 List_products.listProductsParent.FillData();
 
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
