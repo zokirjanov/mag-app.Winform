@@ -74,8 +74,8 @@ namespace mag_app.Service.Services.StoreService
 
             if (checkname is null)
             {
-                var oldStore = await cashRepository.FirstOrDefaultAsync(x => x.StoreName == name);
-                oldStore.StoreName = cash.CashName;
+                var oldStore = await cashRepository.FirstOrDefaultAsync(x => x.CashName == name);
+                oldStore.CashName = cash.CashName;
                 var res = await cashRepository.UpdateAsync(oldStore);
                 return (res != null) ? "true" : "false";
             }

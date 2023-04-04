@@ -101,8 +101,8 @@ public partial class Cash_Register : Form
         };
         update.Click += (s, e) =>
         {
-            UpdateForm updateForm = new UpdateForm();
-            updateForm.storeName = cashName;
+            Update_Cash_Register updateForm = new Update_Cash_Register();
+            updateForm.cashName = cashName;
             updateForm.ShowDialog();
         };
         //

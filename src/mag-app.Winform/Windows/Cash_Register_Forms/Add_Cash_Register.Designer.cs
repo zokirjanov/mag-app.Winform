@@ -65,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(417, 177);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.storeNametb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Add_Cash_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_Cash_Register";
