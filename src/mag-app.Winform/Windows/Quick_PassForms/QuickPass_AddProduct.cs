@@ -314,4 +314,17 @@ public partial class QuickPass_AddProduct : Form
         }
         else productNameCheckLabel.Text = "*";
     }
+
+    private void barcodeTb_KeyPress_1(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+        {
+            e.Handled = true;
+        }
+    }
 }

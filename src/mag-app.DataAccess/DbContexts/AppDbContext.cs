@@ -21,6 +21,8 @@ public class AppDbContext : DbContext
     public virtual DbSet<SubCategory> SubCategories { get; set; } = default!;
     public virtual DbSet<Product> Products { get; set; } = default!;
     public virtual DbSet<AllProduct> AllProducts { get; set; } = default!;
+    public virtual DbSet<Cash> Cashes { get; set; } = default!;
+
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,6 +35,13 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        // Cash_Registers
+        modelBuilder.Entity<Cash>()
+                    .HasOne<Store>(e => e.Store)
+                    .WithMany(d => d.Cashes)
+                    .HasForeignKey(e => e.StoreId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
         // Products
         modelBuilder.Entity<Product>()

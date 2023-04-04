@@ -36,11 +36,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.allProductViewModeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subcategoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +50,7 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.allProductViewModeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductViewModeBindingSource)).BeginInit();
@@ -58,6 +59,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
@@ -67,12 +69,23 @@
             this.panel1.Size = new System.Drawing.Size(984, 80);
             this.panel1.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(116, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(780, 2);
+            this.label2.TabIndex = 4;
+            // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Azure;
-            this.button2.Location = new System.Drawing.Point(165, 39);
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.BackColor = System.Drawing.Color.SkyBlue;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(194, 39);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(147, 35);
+            this.button2.Size = new System.Drawing.Size(176, 35);
             this.button2.TabIndex = 3;
             this.button2.Text = "Добавить продукт";
             this.button2.UseVisualStyleBackColor = false;
@@ -80,10 +93,11 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Azure;
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.BackColor = System.Drawing.Color.Aquamarine;
             this.button1.Location = new System.Drawing.Point(12, 39);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 35);
+            this.button1.Size = new System.Drawing.Size(176, 35);
             this.button1.TabIndex = 2;
             this.button1.Text = "быстрый прыход";
             this.button1.UseVisualStyleBackColor = false;
@@ -130,10 +144,6 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // 
-            // allProductViewModeBindingSource
-            // 
-            this.allProductViewModeBindingSource.DataSource = typeof(mag_app.Service.Dtos.Products.AllProductViewModel);
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
@@ -240,6 +250,10 @@
             this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 50;
             // 
+            // allProductViewModeBindingSource
+            // 
+            this.allProductViewModeBindingSource.DataSource = typeof(mag_app.Service.Dtos.Products.AllProductViewModel);
+            // 
             // List_products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -278,5 +292,6 @@
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private Label label2;
     }
 }
