@@ -79,7 +79,7 @@ public partial class QuickPass_AddProduct : Form
 
     private async void ProductPraparing(string barcodeResult)
     {
-        if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text))
+        if (!string.IsNullOrEmpty(productNameTb.Text) && !string.IsNullOrEmpty(productPriceTb.Text) && !string.IsNullOrEmpty(purchasePriceTb.Text) && !string.IsNullOrEmpty(categoryComboBox.Text) && !string.IsNullOrEmpty(subCategoryComboBox.Text))
         {
             ProductViewModel product = new ProductViewModel()
             {
@@ -99,7 +99,7 @@ public partial class QuickPass_AddProduct : Form
             if (res.product is not null)
             {
                 List_products.listProductsParent.FillData();
-
+                
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
@@ -193,8 +193,13 @@ public partial class QuickPass_AddProduct : Form
         categoryComboBox.ValueMember = "Id";
 
         Category obj = categoryComboBox.SelectedItem as Category;
-        ComboBoxFillSubCategory(obj.Id);
-        CategoryId = obj.Id;
+        if(obj != null)
+        {
+            ComboBoxFillSubCategory(obj.Id);
+            CategoryId = obj.Id;
+        }
+        else { CategoryId = 0; }
+       
     }
 
 
@@ -220,7 +225,14 @@ public partial class QuickPass_AddProduct : Form
         subCategoryComboBox.DisplayMember = "SubCategoryName";
         subCategoryComboBox.ValueMember = "Id";
         SubCategory obj = subCategoryComboBox.SelectedItem as SubCategory;
-        SubCategoryId = obj.Id;
+        if(obj != null)
+        {
+            SubCategoryId = obj.Id;
+        }
+        else
+        {
+            SubCategoryId = 0;
+        }
     }
 
 
@@ -301,5 +313,18 @@ public partial class QuickPass_AddProduct : Form
             productNameCheckLabel.Text = "";
         }
         else productNameCheckLabel.Text = "*";
+    }
+
+    private void barcodeTb_KeyPress_1(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == ',') && ((sender as TextBox)!.Text.IndexOf(',') > -1))
+        {
+            e.Handled = true;
+        }
     }
 }

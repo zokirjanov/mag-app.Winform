@@ -1,5 +1,6 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Winform.Windows.AuthorisationForms;
+using mag_app.Winform.Windows.Cash_Register_Forms;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.ProductForms;
 using mag_app.Winform.Windows.Quick_PassForms;
@@ -66,21 +67,6 @@ namespace mag_app.Winform.Windows.Product_Forms
 
 
 
-
-        public void productBtn_Click(object sender, EventArgs e)
-        {
-            storeProductParent.openChildForm(new CategoriesForm());
-            storeProductParent.backBtn.Show();
-            titleFlowPanel.Controls.Clear();
-            subtitleFlowPanel.Controls.Clear();
-            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
-           
-        }
-
-
-
-
-
         private Form activeForm = null!;
         public void openChildForm(Form childForm)
         {
@@ -134,9 +120,30 @@ namespace mag_app.Winform.Windows.Product_Forms
               Color.DimGray, 1, ButtonBorderStyle.Solid);// bottom
         }
 
+
+
+
+        public void productBtn_Click(object sender, EventArgs e)
+        {
+            storeProductParent.openChildForm(new CategoriesForm());
+            storeProductParent.backBtn.Show();
+            titleFlowPanel.Controls.Clear();
+            subtitleFlowPanel.Controls.Clear();
+            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+        }
+
         private void quick_PassBtn_Click(object sender, EventArgs e)
         {
             storeProductParent.openChildForm(new List_products());
+            storeProductParent.backBtn.Show();
+            titleFlowPanel.Controls.Clear();
+            subtitleFlowPanel.Controls.Clear();
+            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            storeProductParent.openChildForm(new Cash_Register());
             storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();

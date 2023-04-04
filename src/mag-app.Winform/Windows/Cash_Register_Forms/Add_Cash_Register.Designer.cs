@@ -1,6 +1,6 @@
-﻿namespace mag_app.Winform.Windows
+﻿namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
-    partial class AddStoreForm
+    partial class Add_Cash_Register
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.storeNametb = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.storeNametb);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(417, 177);
-            this.panel1.TabIndex = 0;
             // 
             // button1
             // 
@@ -53,7 +40,7 @@
             this.button1.Location = new System.Drawing.Point(46, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(314, 39);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Добавлять";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -67,29 +54,29 @@
             this.storeNametb.Location = new System.Drawing.Point(46, 44);
             this.storeNametb.MaxLength = 20;
             this.storeNametb.Name = "storeNametb";
-            this.storeNametb.PlaceholderText = "Название магазина";
+            this.storeNametb.PlaceholderText = "Название касса";
             this.storeNametb.Size = new System.Drawing.Size(314, 30);
-            this.storeNametb.TabIndex = 5;
+            this.storeNametb.TabIndex = 8;
             // 
-            // AddStoreForm
+            // Add_Cash_Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(417, 177);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.storeNametb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "AddStoreForm";
+            this.Name = "Add_Cash_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddStoreForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Text = "Add_Cash_Register";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Panel panel1;
         private Button button1;
         private TextBox storeNametb;
     }

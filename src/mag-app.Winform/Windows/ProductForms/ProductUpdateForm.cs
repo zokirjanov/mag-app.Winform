@@ -13,12 +13,10 @@ namespace mag_app.Winform.Windows.ProductForms
     public partial class ProductUpdateForm : Form
     {
         ProductService _product;
-        AllProductService _allProductService;
         public ProductUpdateForm()
         {
             InitializeComponent();
             _product = new ProductService();
-            _allProductService = new AllProductService();
         }
 
         public string oldName { get; set; } = string.Empty;
@@ -75,7 +73,6 @@ namespace mag_app.Winform.Windows.ProductForms
                 Price = decimal.Parse(productPriceTb.Text),
                 Quantity = 0,
                 Barcode = barcodeTb.Text,
-                
             };
 
 
@@ -83,28 +80,28 @@ namespace mag_app.Winform.Windows.ProductForms
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-                var res = 0;
+       
+
+                var res1 = await _product.UpdateAsync(product, checkname);
 
 
-                using (var db = new AppDbContext())
+                if (res1.message ==  "true")
                 {
-                    var products = db.AllProducts.Where(e => barcodeTb.Text.Contains(e.Barcode)).ToList();
-                    products.ForEach(a =>
+
+                    using (var db = new AppDbContext())
                     {
-                        a.ProdutName = product.ProdutName;
-                        a.PurchasedPrice = product.PurchasedPrice;
-                        a.Price = product.Price;
-                    });
-                    res = db.SaveChanges();
-                }
-
-
-                if (res > 1)
-                {
-                    var res1 = await _product.UpdateAsync(product, checkname);
-                    AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
-                    StoreProductsForm.storeProductParent.openChildForm(new List_products());
-                    this.Close();
+                        var products = db.AllProducts.Where(e => barcodeTb.Text.Contains(e.Barcode)).ToList();
+                        products.ForEach(a =>
+                        {
+                            a.ProdutName = product.ProdutName;
+                            a.PurchasedPrice = product.PurchasedPrice;
+                            a.Price = product.Price;
+                        });
+                        db.SaveChanges();
+                        AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
+                        StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
+                        this.Close();
+                    }
                 }
                 else
                 {
