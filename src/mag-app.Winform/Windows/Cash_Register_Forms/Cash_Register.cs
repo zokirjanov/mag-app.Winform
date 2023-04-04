@@ -69,6 +69,7 @@ public partial class Cash_Register : Form
 
     public void AddItem(string cashName)
     {
+
         var w = new Button
         {
             Text = cashName,
@@ -78,14 +79,14 @@ public partial class Cash_Register : Form
             Font = new Font("Times New Roman", 14),
         };
         flowLayoutPanel1.Controls.Add(w);
-        //w.Click += async (s, e) =>
-        //{
-        //    Id = await _service.GetId(w.Text);
-        //    CashName = w.Text;
-        //    MainForm.mainParent.Hide();
-        //    StoreProductsForm storeProductsForm = new StoreProductsForm();
-        //    storeProductsForm.Show();
-        //};
+        w.Click += async (s, e) =>
+        {
+            Id = await _service.GetId(w.Text);
+            CashName = w.Text;
+            StoreProductsForm.storeProductParent.Hide();
+            Cash_Register_Main cash_Register_Main = new Cash_Register_Main();
+            cash_Register_Main.ShowDialog();
+        };
 
         //
         // update button
@@ -95,7 +96,7 @@ public partial class Cash_Register : Form
             Parent = w,
             Width = w.Width / 8,
             Height = w.Height / 3,
-            Location = new Point(170, 13),
+            Location = new Point(165, 13),
             BackColor = Color.LightYellow,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
         };
@@ -113,7 +114,7 @@ public partial class Cash_Register : Form
             Parent = w,
             Width = w.Width / 8,
             Height = w.Height / 3,
-            Location = new Point(170, 40),
+            Location = new Point(165, 40),
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/delete.png")
         };

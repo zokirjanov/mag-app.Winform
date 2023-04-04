@@ -22,6 +22,8 @@ public class AppDbContext : DbContext
     public virtual DbSet<Product> Products { get; set; } = default!;
     public virtual DbSet<AllProduct> AllProducts { get; set; } = default!;
     public virtual DbSet<Cash> Cashes { get; set; } = default!;
+    public virtual DbSet<TabController> Tabs { get; set; } = default!;
+
 
 
 
