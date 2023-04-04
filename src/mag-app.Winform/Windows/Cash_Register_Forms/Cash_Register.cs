@@ -1,20 +1,149 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using mag_app.Service.Common.Helpers;
+using mag_app.Service.Services.StoreService;
+using mag_app.Winform.Components;
+using mag_app.Winform.Windows.Product_Forms;
 
-namespace mag_app.Winform.Windows.Cash_Register_Forms
+namespace mag_app.Winform.Windows.Cash_Register_Forms;
+
+public partial class Cash_Register : Form
 {
-    public partial class Cash_Register : Form
+
+    private CashService _service;
+    public static Cash_Register cashRegisterParent = default!;
+
+    public Cash_Register()
     {
-        public Cash_Register()
+        _service = new CashService();
+        cashRegisterParent = this;
+        InitializeComponent();
+    }
+
+
+
+
+    private void Cash_Register_Load(object sender, EventArgs e)
+    {
+        LoadData();
+    }
+
+
+
+    public long Id { get; set; }
+    public string CashName { get; set; } = string.Empty;
+
+
+
+    public async void LoadData()
+    {
+        //
+        // Create button
+        //
+
+        PrimaryButton primaryButton = new PrimaryButton();
+        flowLayoutPanel1.Controls.Clear();
+        flowLayoutPanel1.Controls.Add(primaryButton);
+        primaryButton.Text = "добавить касса";
+        primaryButton.Width = 200;
+        primaryButton.Height = 80;
+        primaryButton.BorderRadius = 5;
+        primaryButton.Click += (s, e) =>
         {
-            InitializeComponent();
+            Add_Cash_Register form = new Add_Cash_Register();
+            form.ShowDialog();
+        };
+
+        var items = await _service.GetAllAsync();
+        if (items is null)
+        {
+            MessageBox.Show("касса не найден");
+        }
+        else
+        {
+            foreach (var item in items)
+            {
+                AddItem(item.CashName);
+            }
         }
     }
+
+
+    public void AddItem(string cashName)
+    {
+        var w = new Button
+        {
+            Text = cashName,
+            Width = 200,
+            Height = 80,
+            BackColor = Color.LightSteelBlue,
+            Font = new Font("Times New Roman", 14),
+        };
+        flowLayoutPanel1.Controls.Add(w);
+        //w.Click += async (s, e) =>
+        //{
+        //    Id = await _service.GetId(w.Text);
+        //    CashName = w.Text;
+        //    MainForm.mainParent.Hide();
+        //    StoreProductsForm storeProductsForm = new StoreProductsForm();
+        //    storeProductsForm.Show();
+        //};
+
+        //
+        // update button
+        //
+        var update = new Button()
+        {
+            Parent = w,
+            Width = w.Width / 8,
+            Height = w.Height / 3,
+            Location = new Point(170, 13),
+            BackColor = Color.LightYellow,
+            Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/edit-button.png"),
+        };
+        update.Click += (s, e) =>
+        {
+            UpdateForm updateForm = new UpdateForm();
+            updateForm.storeName = cashName;
+            updateForm.ShowDialog();
+        };
+        //
+        // delete button
+        //
+        var delete = new Button()
+        {
+            Parent = w,
+            Width = w.Width / 8,
+            Height = w.Height / 3,
+            Location = new Point(170, 40),
+            BackColor = Color.Transparent,
+            Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/delete.png")
+        };
+        delete.Click += async (s, e) =>
+        {
+            DialogResult dlg = MessageBox.Show("Вы хотите удалить кассу?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                long id = await _service.GetId(cashName);
+                var res = _service.DeleteAsync(id);
+                AutoClosingMessageBox.Show("Успешно удалено", "Delete", 300);
+                LoadData();
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                //do nothing
+            }
+        };
+    }
+
+
+
+    private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
+          Color.DimGray, 1, ButtonBorderStyle.Solid, // left
+          Color.DimGray, 1, ButtonBorderStyle.Solid, // top
+          Color.White, 1, ButtonBorderStyle.Solid, // right
+          Color.White, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace mag_app.DataAccess.Repositories.Stores
 {
-    internal class CashRepository : GenericRepository<Cash>, ICashRepository
+    public class CashRepository : GenericRepository<Cash>, ICashRepository
     {
     }
 }

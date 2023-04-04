@@ -83,12 +83,12 @@ public partial class MyStoreForm : Form
         };
         delete.Click += async (s, e) =>
         {
-            DialogResult dlg = MessageBox.Show("Do you want to delete store?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult dlg = MessageBox.Show("Вы хотите удалить магазин?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
                 long id = await _service.GetId(storename);
                 var res = _service.DeleteAsync(id);
-                AutoClosingMessageBox.Show("Succesfully deleted", "Delete", 300);
+                AutoClosingMessageBox.Show("Успешно удалено", "Delete", 300);
                 LoadData();
             }
             if (dlg == DialogResult.Cancel)
