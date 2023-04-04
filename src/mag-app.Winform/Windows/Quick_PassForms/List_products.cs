@@ -68,6 +68,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     PurchasedPrice = i.PurchasedPrice,
                 });
             }
+            dataGridView1.ClearSelection();
         }
 
 
@@ -76,7 +77,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private async void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            var value = "test";
+            var value = "";
             var quantity_value = "-1";
 
             if (e.RowIndex != -1)
@@ -99,13 +100,15 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                 DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
-                    if (value == "test")
+                    long check = await _service.GetId(value);
+                    if(check == -1)
                     {
-                        dataGridView1.Columns.RemoveAt(e.ColumnIndex);
                         long id = await _productService.GetId(value);
                         var res = _productService.DeleteAsync(id);
+
                         if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
                         else if (await res == false) MessageBox.Show("Товар не найден");
+
                         allProductViewModeBindingSource.Clear();
                         FillData();
                     }
@@ -113,15 +116,16 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                     {
                         long id = await _service.GetId(value);
                         long id2 = await _productService.GetId(value);
+
                         var res = _service.DeleteAsync(id);
                         var res2 = _productService.DeleteAsync(id2);
 
                         if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
                         else if (await res == false) MessageBox.Show("Товар не найден");
+
                         allProductViewModeBindingSource.Clear();
                         FillData();
                     }
-
                 }
                 if (dlg == DialogResult.Cancel)
                 {
@@ -135,7 +139,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
 
 
-        bool isSelected = false;
+        public bool isSelected = false;
         private void button1_Click(object sender, EventArgs e)
         {
             if (isSelected)

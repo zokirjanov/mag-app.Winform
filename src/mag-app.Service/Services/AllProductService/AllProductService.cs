@@ -114,8 +114,8 @@ public class AllProductService : IAllProductService
 
     public async Task<long> GetId(string name)
     {
-        var store = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
-        return store.Id;
+        var product = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
+        return(product == null) ?   -1 : product.Id;
     }
 
 
