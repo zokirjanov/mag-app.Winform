@@ -8,6 +8,7 @@ using mag_app.Service.ViewModels.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -60,9 +61,18 @@ namespace mag_app.Service.Services.StoreService
         }
 
 
-        public Task<string> UpdateAsync(TabController tab, string name)
+        public async Task<string> UpdateAsync(TabController tab, string name)
         {
-            throw new NotImplementedException();
+            var checkname = await tabRepository.FirstOrDefaultAsync(x => x.TabName == tab.TabName);
+
+            if (checkname is null)
+            {
+                var oldTab = await tabRepository.FirstOrDefaultAsync(x => x.TabName == name);
+                oldTab.TabName = tab.TabName;
+                var res = await tabRepository.UpdateAsync(oldTab);
+                return (res != null) ? "true" : "false";
+            }
+            else return "таб уже существует, попробуйте другое название";
         }
     }
 }

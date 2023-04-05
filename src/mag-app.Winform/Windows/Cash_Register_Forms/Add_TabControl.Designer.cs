@@ -70,7 +70,6 @@
             this.Name = "Add_TabControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_TabControl";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Add_TabControl_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

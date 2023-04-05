@@ -103,7 +103,7 @@ public partial class Cash_Register : Form
         };
         update.Click += (s, e) =>
         {
-            Update_Cash_Register updateForm = new Update_Cash_Register();
+            Edit_Cash_Register updateForm = new Edit_Cash_Register();
             updateForm.cashName = cashName;
             updateForm.ShowDialog();
         };

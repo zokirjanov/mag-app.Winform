@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
-    partial class Update_Cash_Register
+    partial class Edit_Cash_Register
     {
         /// <summary>
         /// Required designer variable.

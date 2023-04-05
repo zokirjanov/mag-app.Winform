@@ -1,16 +1,5 @@
 ﻿using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows.Product_Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -58,9 +47,20 @@ public partial class Cash_Register_Main : Form
             Parent = firstpanel,
             Height = 40,
             Width = 40,
-            BackColor= Color.Azure,
+            BackColor = Color.Azure,
             Location = new Point(0, 3),
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/cogwheel.png"),
+        };
+        settingtab.Click += (s, e) =>
+        {
+            if (!string.IsNullOrEmpty(TabName))
+            {
+                Edit_TabController edit_TabController = new Edit_TabController();
+                edit_TabController.TabName = TabName;
+                edit_TabController.ShowDialog();
+            }
+            else MessageBox.Show("выберите вкладку!");
+
         };
         Button addTab = new Button()
         {
@@ -91,7 +91,6 @@ public partial class Cash_Register_Main : Form
                 AddItem(item.TabName);
             }
         }
-
     }
 
     private void AddItem(string tabname)
@@ -102,11 +101,18 @@ public partial class Cash_Register_Main : Form
             Width = 90,
             Height = 40,
             BackColor = Color.WhiteSmoke,
-            Margin = new Padding(1,6,0,0),
+            Margin = new Padding(1, 6, 0, 0),
             Font = new Font("Times New Roman", 14),
         };
         tabButton.Click += async (s, e) =>
-        {   
+        {
+            foreach(Control control in tabFlowPanel.Controls)
+            {
+                if(control.Margin == new Padding(1,19,0,0))
+                control.Margin = new Padding(1,6,0,0);
+            }
+
+            tabButton.Margin = new Padding(1,19,0,0);
             TabId = await _service.GetId(tabname);
             TabName = tabname;
             TabProductsFill();
@@ -114,7 +120,6 @@ public partial class Cash_Register_Main : Form
 
         tabFlowPanel.Controls.Add(tabButton);
     }
-
 
 
 
@@ -136,7 +141,7 @@ public partial class Cash_Register_Main : Form
         {
             Parent = firstpanel,
             Height = firstpanel.Height,
-            Width = firstpanel.Width/2,
+            Width = firstpanel.Width / 2,
             BackColor = Color.Azure,
             Location = new Point(0, 0),
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/cogwheel.png"),
@@ -187,15 +192,15 @@ public partial class Cash_Register_Main : Form
             Text = name,
             Parent = tabProductButton,
             Width = 80,
-            Height= 20,
+            Height = 20,
             Font = new Font("Times new roman", 9),
             TextAlign = ContentAlignment.BottomCenter,
-            Location= new Point(0, 55),
+            Location = new Point(0, 55),
         };
+        labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
 
         tabProductFlowPanel.Controls.Add(tabProductButton);
     }
-
 
 
 

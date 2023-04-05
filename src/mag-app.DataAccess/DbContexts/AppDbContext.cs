@@ -44,13 +44,14 @@ public class AppDbContext : DbContext
                    .HasOne<TabController>(e => e.TabController)
                    .WithMany(d => d.TabProducts)
                    .HasForeignKey(e => e.TabControllerId)
-                   .OnDelete(DeleteBehavior.NoAction);
+                   .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<TabProduct>()
                     .HasOne<Product>(e => e.Product)
                     .WithMany(d => d.TabProducts)
                     .HasForeignKey(e => e.ProductId)
-                    .OnDelete(DeleteBehavior.NoAction);
+                    .OnDelete(DeleteBehavior.Cascade);
+
 
         // Cash_Registers
         modelBuilder.Entity<Cash>()
