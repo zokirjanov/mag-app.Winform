@@ -23,6 +23,7 @@ namespace mag_app.Service.Services.StoreService
             tabRepository= new TabRepository();
         }
 
+
         public async Task<string> CreateAsync(TabController tab)
         {
             var checktab = await tabRepository.FirstOrDefaultAsync(x => x.TabName == tab.TabName);
@@ -37,10 +38,12 @@ namespace mag_app.Service.Services.StoreService
             return (res != null) ? "true" : "Что-то пошло не так";
         }
 
+
         public Task<string> DeleteAsync(long Id)
         {
             throw new NotImplementedException();
         }
+
 
         public async Task<List<TabController>> GetAllAsync()
         {
@@ -49,11 +52,13 @@ namespace mag_app.Service.Services.StoreService
             else return null;
         }
 
+
         public async Task<long> GetId(string name)
         {
             var tab = await tabRepository.FirstOrDefaultAsync(x => x.TabName == name);
             return (tab == null) ? -1 : tab.Id;
         }
+
 
         public Task<string> UpdateAsync(TabController tab, string name)
         {
