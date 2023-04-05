@@ -116,7 +116,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Cash_Register_Main";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cash_Register_Main";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Cash_Register_Main_FormClosed);
             this.Load += new System.EventHandler(this.Cash_Register_Main_Load);

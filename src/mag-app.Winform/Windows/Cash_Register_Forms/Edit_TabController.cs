@@ -26,10 +26,9 @@ public partial class Edit_TabController : Form
 
     private async void updateBtn_Click(object sender, EventArgs e)
     {
-        TabController tab = new TabController()
-        {
-            TabName = tabNameTb.Text
-        };
+        TabController tab = new TabController();
+        tab.TabName = tabNameTb.Text;
+   
 
         DialogResult dlg = MessageBox.Show("Хотите отредактировать таб?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         if (dlg == DialogResult.OK)
@@ -38,8 +37,8 @@ public partial class Edit_TabController : Form
             var res = await _service.UpdateAsync(tab, oldName);
             if (res == "true")
             {
-                Cash_Register_Main cash_Register_Main = new Cash_Register_Main();
-                cash_Register_Main.FillTabs();
+                
+                Cash_Register_Main.cashRegisterMainParent.FillTabs();
                 AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 300);
                 this.Close();
             }

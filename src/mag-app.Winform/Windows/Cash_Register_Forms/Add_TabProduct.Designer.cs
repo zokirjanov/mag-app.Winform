@@ -41,8 +41,8 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allProductViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductViewModelBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -159,6 +159,15 @@
             this.panel1.Size = new System.Drawing.Size(984, 49);
             this.panel1.TabIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(203, 15);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Дважды щелкните, чтобы добавить";
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -171,15 +180,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Мои продукты:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(203, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Дважды щелкните, чтобы добавить";
-            // 
             // Add_TabProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -191,7 +191,7 @@
             this.MaximumSize = new System.Drawing.Size(1000, 640);
             this.MinimumSize = new System.Drawing.Size(1000, 640);
             this.Name = "Add_TabProduct";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add_TabProduct";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Add_TabProduct_FormClosed);
             this.Load += new System.EventHandler(this.Add_TabProduct_Load);

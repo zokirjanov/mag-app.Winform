@@ -68,7 +68,7 @@
             this.Controls.Add(this.tabNameTb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Add_TabControl";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add_TabControl";
             this.ResumeLayout(false);
             this.PerformLayout();

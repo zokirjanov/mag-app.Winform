@@ -44,16 +44,16 @@
             this.updateBtn.UseVisualStyleBackColor = false;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
-            // storeNameTb
+            // cashNameTb
             // 
             this.cashNameTb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cashNameTb.Location = new System.Drawing.Point(34, 26);
             this.cashNameTb.MaxLength = 30;
-            this.cashNameTb.Name = "storeNameTb";
+            this.cashNameTb.Name = "cashNameTb";
             this.cashNameTb.Size = new System.Drawing.Size(327, 29);
             this.cashNameTb.TabIndex = 3;
             // 
-            // Update_Cash_Register
+            // Edit_Cash_Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -61,8 +61,8 @@
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.cashNameTb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Update_Cash_Register";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Name = "Edit_Cash_Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update_Cash_Register";
             this.Load += new System.EventHandler(this.Update_Cash_Register_Load);
             this.ResumeLayout(false);

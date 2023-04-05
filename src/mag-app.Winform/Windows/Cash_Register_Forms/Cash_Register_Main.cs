@@ -12,9 +12,9 @@ public partial class Cash_Register_Main : Form
 
     public Cash_Register_Main()
     {
-        cashRegisterMainParent = this;
         _service = new TabService();
         _productService = new TabProductService();
+        cashRegisterMainParent = this;
         InitializeComponent();
     }
 
@@ -111,7 +111,6 @@ public partial class Cash_Register_Main : Form
                 if(control.Margin == new Padding(1,19,0,0))
                 control.Margin = new Padding(1,6,0,0);
             }
-
             tabButton.Margin = new Padding(1,19,0,0);
             TabId = await _service.GetId(tabname);
             TabName = tabname;
@@ -127,8 +126,6 @@ public partial class Cash_Register_Main : Form
     /// <summary>
     /// Fill Tab Products
     /// </summary>
-
-
     public async void TabProductsFill()
     {
         tabProductFlowPanel.Controls.Clear();

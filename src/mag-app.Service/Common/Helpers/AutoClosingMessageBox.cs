@@ -11,6 +11,7 @@ namespace mag_app.Service.Common.Helpers
     {
         System.Threading.Timer _timeoutTimer;
         string _caption;
+        
         AutoClosingMessageBox(string text, string caption, int timeout)
         {
             _caption = caption;
