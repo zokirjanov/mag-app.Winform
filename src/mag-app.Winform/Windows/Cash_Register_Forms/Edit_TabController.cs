@@ -28,17 +28,17 @@ public partial class Edit_TabController : Form
     {
         TabController tab = new TabController();
         tab.TabName = tabNameTb.Text;
-   
+
 
         DialogResult dlg = MessageBox.Show("Хотите отредактировать таб?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         if (dlg == DialogResult.OK)
         {
-
             var res = await _service.UpdateAsync(tab, oldName);
+
             if (res == "true")
             {
-                
                 Cash_Register_Main.cashRegisterMainParent.FillTabs();
+                //   Cash_Register_Main.cashRegisterMainParent.flw.Controls.Clear();
                 AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 300);
                 this.Close();
             }

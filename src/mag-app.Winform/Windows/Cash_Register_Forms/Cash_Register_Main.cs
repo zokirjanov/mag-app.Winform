@@ -9,6 +9,7 @@ public partial class Cash_Register_Main : Form
     public static Cash_Register_Main cashRegisterMainParent = default!;
     TabService _service;
     TabProductService _productService;
+    public FlowLayoutPanel flw;
 
     public Cash_Register_Main()
     {
@@ -16,6 +17,8 @@ public partial class Cash_Register_Main : Form
         _productService = new TabProductService();
         cashRegisterMainParent = this;
         InitializeComponent();
+        flw = tabFlowPanel;
+
     }
 
     private void Cash_Register_Main_Load(object sender, EventArgs e)
