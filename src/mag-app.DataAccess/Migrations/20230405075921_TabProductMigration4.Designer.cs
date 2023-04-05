@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mag_app.DataAccess.DbContexts;
 
@@ -10,9 +11,10 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230405075921_TabProductMigration4")]
+    partial class TabProductMigration4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
@@ -353,13 +355,13 @@ namespace mag_app.DataAccess.Migrations
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.TabProduct", b =>
                 {
                     b.HasOne("mag_app.Domain.Entities.Products.Product", "Product")
-                        .WithMany("TabProducts")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("mag_app.Domain.Entities.Stores.TabController", "TabController")
-                        .WithMany("TabProducts")
+                        .WithMany()
                         .HasForeignKey("TabControllerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -392,8 +394,6 @@ namespace mag_app.DataAccess.Migrations
             modelBuilder.Entity("mag_app.Domain.Entities.Products.Product", b =>
                 {
                     b.Navigation("AllProducts");
-
-                    b.Navigation("TabProducts");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
@@ -401,11 +401,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Navigation("AllProducts");
 
                     b.Navigation("Cashes");
-                });
-
-            modelBuilder.Entity("mag_app.Domain.Entities.Stores.TabController", b =>
-                {
-                    b.Navigation("TabProducts");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.SubCategories.SubCategory", b =>

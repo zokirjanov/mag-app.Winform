@@ -23,8 +23,7 @@ public class AppDbContext : DbContext
     public virtual DbSet<AllProduct> AllProducts { get; set; } = default!;
     public virtual DbSet<Cash> Cashes { get; set; } = default!;
     public virtual DbSet<TabController> Tabs { get; set; } = default!;
-
-
+    public virtual DbSet<TabProduct> Tabproducts { get; set; } = default!;
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,9 +33,25 @@ public class AppDbContext : DbContext
        // optionsBuilder.UseSqlite("Data Source" + "../../../../../LocalDatabase.db");
     }
 
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        // TabProducts
+        modelBuilder.Entity<TabProduct>()
+                   .HasOne<TabController>(e => e.TabController)
+                   .WithMany(d => d.TabProducts)
+                   .HasForeignKey(e => e.TabControllerId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<TabProduct>()
+                    .HasOne<Product>(e => e.Product)
+                    .WithMany(d => d.TabProducts)
+                    .HasForeignKey(e => e.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
 
         // Cash_Registers
         modelBuilder.Entity<Cash>()
@@ -73,10 +88,10 @@ public class AppDbContext : DbContext
                     .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<AllProduct>()
-                   .HasOne<Product>(e => e.Product)
-                   .WithMany(d => d.AllProducts)
-                   .HasForeignKey(e => e.ProductId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                    .HasOne<Product>(e => e.Product)
+                    .WithMany(d => d.AllProducts)
+                    .HasForeignKey(e => e.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<AllProduct>()
                     .HasOne<Category>(e => e.Category)

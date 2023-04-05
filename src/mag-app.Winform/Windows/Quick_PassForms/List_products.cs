@@ -42,7 +42,6 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         private void List_products_Load(object sender, EventArgs e)
         {
             FillData();
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
         }
 
 
@@ -52,8 +51,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         public async void FillData()
         {
             allProductViewModeBindingSource.Clear();
-            AllProductService allProduct = new AllProductService();
-            var products = await allProduct.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            var products = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
 
             foreach (var i in products)
             {

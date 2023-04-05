@@ -53,9 +53,9 @@ namespace mag_app.Service.Services.StoreService
 
 
 
-        public async Task<List<Cash>> GetAllAsync()
+        public async Task<List<Cash>> GetAllAsync(long id)
         {
-            var result = await cashRepository.GetAllAsync();
+            var result = await cashRepository.GetAllAsync(x=>x.StoreId == id);
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }

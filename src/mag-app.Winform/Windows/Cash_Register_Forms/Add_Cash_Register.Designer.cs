@@ -68,7 +68,7 @@
             this.Controls.Add(this.storeNametb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Add_Cash_Register";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add_Cash_Register";
             this.ResumeLayout(false);
             this.PerformLayout();

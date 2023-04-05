@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mag_app.DataAccess.DbContexts;
 
@@ -10,9 +11,10 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230405063740_TAbProductMigration")]
+    partial class TAbProductMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
@@ -207,35 +209,6 @@ namespace mag_app.DataAccess.Migrations
                     b.ToTable("Tabs");
                 });
 
-            modelBuilder.Entity("mag_app.Domain.Entities.Stores.TabProduct", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<long>("TabControllerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("TabControllerName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("TabControllerId");
-
-                    b.ToTable("Tabproducts");
-                });
-
             modelBuilder.Entity("mag_app.Domain.Entities.SubCategories.SubCategory", b =>
                 {
                     b.Property<long>("Id")
@@ -350,25 +323,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("mag_app.Domain.Entities.Stores.TabProduct", b =>
-                {
-                    b.HasOne("mag_app.Domain.Entities.Products.Product", "Product")
-                        .WithMany("TabProducts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("mag_app.Domain.Entities.Stores.TabController", "TabController")
-                        .WithMany("TabProducts")
-                        .HasForeignKey("TabControllerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("TabController");
-                });
-
             modelBuilder.Entity("mag_app.Domain.Entities.SubCategories.SubCategory", b =>
                 {
                     b.HasOne("mag_app.Domain.Entities.Categories.Category", "Category")
@@ -392,8 +346,6 @@ namespace mag_app.DataAccess.Migrations
             modelBuilder.Entity("mag_app.Domain.Entities.Products.Product", b =>
                 {
                     b.Navigation("AllProducts");
-
-                    b.Navigation("TabProducts");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
@@ -401,11 +353,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Navigation("AllProducts");
 
                     b.Navigation("Cashes");
-                });
-
-            modelBuilder.Entity("mag_app.Domain.Entities.Stores.TabController", b =>
-                {
-                    b.Navigation("TabProducts");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.SubCategories.SubCategory", b =>

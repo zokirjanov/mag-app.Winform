@@ -18,11 +18,11 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
-    public partial class Update_Cash_Register : Form
+    public partial class Edit_Cash_Register : Form
     {
 
         private CashService _service;
-        public Update_Cash_Register()
+        public Edit_Cash_Register()
         {
             _service= new CashService();    
             InitializeComponent();
