@@ -134,18 +134,19 @@
             // ProductId
             // 
             this.ProductId.DataPropertyName = "ProductId";
-            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.HeaderText = "Id";
             this.ProductId.Name = "ProductId";
             this.ProductId.ReadOnly = true;
-            this.ProductId.Width = 40;
+            this.ProductId.Visible = false;
+            this.ProductId.Width = 50;
             // 
             // produtNameDataGridViewTextBoxColumn
             // 
-            this.produtNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.produtNameDataGridViewTextBoxColumn.DataPropertyName = "ProdutName";
             this.produtNameDataGridViewTextBoxColumn.HeaderText = "наименования";
             this.produtNameDataGridViewTextBoxColumn.Name = "produtNameDataGridViewTextBoxColumn";
             this.produtNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.produtNameDataGridViewTextBoxColumn.Width = 210;
             // 
             // purchasedPriceDataGridViewTextBoxColumn
             // 
@@ -181,6 +182,7 @@
             this.Name = "Add_TabProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_TabProduct";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Add_TabProduct_FormClosed);
             this.Load += new System.EventHandler(this.Add_TabProduct_Load);
             this.Shown += new System.EventHandler(this.Add_TabProduct_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -39,6 +39,19 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        // TabProducts
+        modelBuilder.Entity<TabProduct>()
+                   .HasOne<TabController>(e => e.TabController)
+                   .WithMany(d => d.TabProducts)
+                   .HasForeignKey(e => e.TabControllerId)
+                   .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<TabProduct>()
+                    .HasOne<Product>(e => e.Product)
+                    .WithMany(d => d.TabProducts)
+                    .HasForeignKey(e => e.ProductId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
         // Cash_Registers
         modelBuilder.Entity<Cash>()
                     .HasOne<Store>(e => e.Store)
@@ -74,10 +87,10 @@ public class AppDbContext : DbContext
                     .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<AllProduct>()
-                   .HasOne<Product>(e => e.Product)
-                   .WithMany(d => d.AllProducts)
-                   .HasForeignKey(e => e.ProductId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                    .HasOne<Product>(e => e.Product)
+                    .WithMany(d => d.AllProducts)
+                    .HasForeignKey(e => e.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<AllProduct>()
                     .HasOne<Category>(e => e.Category)

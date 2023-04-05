@@ -52,17 +52,22 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
             foreach (var i in products)
             {
-                allProductViewModelBindingSource.Add(new AllProductViewModel()
+                if(i.StoreId != null)
                 {
-                    ProdutName = i.Product.ProdutName,
-                    Storename = i.StoreName,
-                    CategoryName = i.CategoryName,
-                    SubcategoryName = i.SubCategoryName,
-                    Barcode = i.Barcode,
-                    Price = i.Price,
-                    Quantity = i.Quantity,
-                    PurchasedPrice = i.PurchasedPrice,
-                });
+                    allProductViewModelBindingSource.Add(new AllProductViewModel()
+                    {
+                        ProductId = i.ProductId,
+                        ProdutName = i.Product.ProdutName,
+                        Storename = i.StoreName!,
+                        CategoryName = i.CategoryName,
+                        SubcategoryName = i.SubCategoryName,
+                        Barcode = i.Barcode,
+                        Price = i.Price,
+                        Quantity = i.Quantity,
+                        PurchasedPrice = i.PurchasedPrice,
+                    });
+                }
+               
             }
             dataGridView1.ClearSelection();
         }
@@ -73,12 +78,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
         int indexRow;
-        bool isSelected = false;
         private async void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                isSelected = true;
                 indexRow = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[indexRow];
 
@@ -92,11 +95,16 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
                 var result = await _tabService.CreateAsync(tabProductViewModel);
 
-                if (result == "true") AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                if (result == "true") AutoClosingMessageBox.Show("Успешно добавлен", "Удалить", 400);
                 else if (result == "exists") MessageBox.Show("Уже существует");
                 else if (result == "false") MessageBox.Show("Товар не найден");
 
             }
+        }
+
+        private void Add_TabProduct_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Cash_Register_Main.cashRegisterMainParent.TabProductsFill();
         }
     }
 }

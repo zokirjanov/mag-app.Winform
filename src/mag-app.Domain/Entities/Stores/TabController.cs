@@ -10,5 +10,6 @@ namespace mag_app.Domain.Entities.Stores
     {
         public long Id { get; set; }
         public string TabName { get; set; } = string.Empty;
+        public virtual ICollection<TabProduct> TabProducts { get; set; }
     }
 }
