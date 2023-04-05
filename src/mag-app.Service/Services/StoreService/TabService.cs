@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.AllProducts;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Dtos.Stores;
@@ -46,6 +47,12 @@ namespace mag_app.Service.Services.StoreService
             var result = await tabRepository.GetAllAsync();
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
+        }
+
+        public async Task<long> GetId(string name)
+        {
+            var tab = await tabRepository.FirstOrDefaultAsync(x => x.TabName == name);
+            return (tab == null) ? -1 : tab.Id;
         }
 
         public Task<string> UpdateAsync(TabController tab, string name)

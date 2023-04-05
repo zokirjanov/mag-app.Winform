@@ -16,8 +16,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
     public partial class Cash_Register_Main : Form
     {
+
         public static Cash_Register_Main cashRegisterMainParent = default!;
         TabService _service;
+
         public Cash_Register_Main()
         {
             cashRegisterMainParent = this;
@@ -27,13 +29,18 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void Cash_Register_Main_Load(object sender, EventArgs e)
         {
-            CreateTabControls();
+            FillTabs();
+            
         }
 
+
+        public long TabId { get; set; }
+
+
         /// <summary>
-        /// Tab Controllers
+        /// Tab Controllers Dynamically
         /// </summary>
-        public async void CreateTabControls()
+        public async void FillTabs()
         {
             tabFlowPanel.Controls.Clear();
             Panel firstpanel = new Panel()
@@ -83,6 +90,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
         string buttonText;
+
+        /// <summary>
+        /// Add  TabControls dynamically
+        /// </summary>
+        /// <param name="tabname"></param>
         private void AddItem(string tabname)
         {
             var tabButton = new Button
@@ -94,12 +106,51 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 Margin = new Padding(1,6,0,0),
                 Font = new Font("Times New Roman", 14),
             };
-            tabButton.Click += (s, e) =>
+            tabButton.Click += async (s, e) =>
             {   
-                tabButton.Margin = new Padding(1,17,0,0);
+             //   tabButton.Margin = new Padding(1,17,0,0);
+                TabId = await _service.GetId(tabname);
+                TabProductsFill();
             };
 
             tabFlowPanel.Controls.Add(tabButton);
+        }
+
+
+
+        /// <summary>
+        /// Tab Products
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabProductsFill()
+        {
+            tabProductFlowPanel.Controls.Clear();
+            Panel firstpanel = new Panel()
+            {
+                Width = 120,
+                Height = 60,
+            };
+            Button settingtab = new Button()
+            {
+                Parent = firstpanel,
+                Height = firstpanel.Height,
+                Width = firstpanel.Width/2,
+                BackColor = Color.Azure,
+                Location = new Point(0, 0),
+                Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/cogwheel.png"),
+            };
+            Button addTab = new Button()
+            {
+                Parent = firstpanel,
+                Height = firstpanel.Height,
+                Width = firstpanel.Width / 2,
+                BackColor = Color.Azure,
+                Location = new Point(60, 0),
+                Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/plus.png"),
+            };
+
+            tabProductFlowPanel.Controls.Add(firstpanel);
         }
 
 

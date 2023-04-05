@@ -1,10 +1,5 @@
-﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.Stores;
+﻿using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Services.StoreService;
-using mag_app.Service.ViewModels.Stores;
-using mag_app.Winform.Windows.MainWindowForms;
-using mag_app.Winform.Windows.Product_Forms;
-using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
@@ -13,7 +8,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         TabService _service;
         public Add_TabControl()
         {
-            _service= new TabService();
+            _service = new TabService();
             InitializeComponent();
         }
 
@@ -29,6 +24,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 var res = await _service.CreateAsync(tab);
                 if (res == "true")
                 {
+                    Cash_Register_Main.cashRegisterMainParent.FillTabs();
                     tabNameTb.Text = "";
                     DialogResult dlg = MessageBox.Show("Таб успешно добавлен \n\nВы хотите добавить еще один?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
