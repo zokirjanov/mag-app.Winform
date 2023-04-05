@@ -30,11 +30,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         private void Cash_Register_Main_Load(object sender, EventArgs e)
         {
             FillTabs();
-            
         }
 
 
         public long TabId { get; set; }
+        public string TabName { get; set; } = string.Empty;
 
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         }
 
-        string buttonText;
+        string buttonText = "";
 
         /// <summary>
         /// Add  TabControls dynamically
@@ -110,6 +110,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {   
              //   tabButton.Margin = new Padding(1,17,0,0);
                 TabId = await _service.GetId(tabname);
+                TabName = tabname;
                 TabProductsFill();
             };
 
@@ -148,6 +149,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 BackColor = Color.Azure,
                 Location = new Point(60, 0),
                 Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/plus.png"),
+            };
+            addTab.Click += (s, e) =>
+            {
+                Add_TabProduct add_TabProduct = new Add_TabProduct();
+                add_TabProduct.ShowDialog();
             };
 
             tabProductFlowPanel.Controls.Add(firstpanel);

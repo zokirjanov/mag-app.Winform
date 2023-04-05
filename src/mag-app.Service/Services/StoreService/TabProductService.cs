@@ -28,13 +28,13 @@ namespace mag_app.Service.Services.StoreService
             var checktabProduct = await tabRepository.FirstOrDefaultAsync(x => x.TabControllerId == tab.TabControllerId);
             if (checktabProduct != null)
             {
-                return "Таб уже существует";
+                return "exists";
             }
 
             var createTab = (TabProduct)tab;
             var res = await tabRepository.CreateAsync(createTab);
 
-            return (res != null) ? "true" : "Что-то пошло не так";
+            return (res != null) ? "true" : "false";
         }
 
         public Task<string> DeleteAsync(long Id)
