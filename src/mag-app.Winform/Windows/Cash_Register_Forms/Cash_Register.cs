@@ -1,6 +1,7 @@
 ﻿using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
+using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
@@ -52,7 +53,7 @@ public partial class Cash_Register : Form
             form.ShowDialog();
         };
 
-        var items = await _service.GetAllAsync();
+        var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
         if (items is null)
         {
             MessageBox.Show("касса не найден");

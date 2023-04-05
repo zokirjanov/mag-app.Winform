@@ -14,6 +14,6 @@ namespace mag_app.Service.Interfaces.Stores
         public Task<string> CreateAsync(CashViewModel cashViewModel);
         public Task<string> DeleteAsync(long Id);
         public Task<string> UpdateAsync(Cash cash, string name);
-        public Task<List<Cash>> GetAllAsync();
+        public Task<List<Cash>> GetAllAsync(long id);
     }
 }
