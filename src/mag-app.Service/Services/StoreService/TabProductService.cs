@@ -42,9 +42,11 @@ namespace mag_app.Service.Services.StoreService
             throw new NotImplementedException();
         }
 
-        public Task<List<TabController>> GetAllAsync()
+        public async Task<List<TabProduct>> GetAllAsync(long tId)
         {
-            throw new NotImplementedException();
+            var result = await tabRepository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
+            else return null;
         }
 
         public Task<string> UpdateAsync(TabProductViewModel tab, string name)

@@ -23,8 +23,7 @@ public class AppDbContext : DbContext
     public virtual DbSet<AllProduct> AllProducts { get; set; } = default!;
     public virtual DbSet<Cash> Cashes { get; set; } = default!;
     public virtual DbSet<TabController> Tabs { get; set; } = default!;
-
-
+    public virtual DbSet<TabProduct> Tabproducts { get; set; } = default!;
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,6 +32,8 @@ public class AppDbContext : DbContext
         optionsBuilder.UseSqlite("Data Source = LocalDatabase.db");
        // optionsBuilder.UseSqlite("Data Source" + "../../../../../LocalDatabase.db");
     }
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
