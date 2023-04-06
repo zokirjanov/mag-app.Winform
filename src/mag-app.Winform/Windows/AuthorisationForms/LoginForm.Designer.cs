@@ -37,6 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rememberMe = new System.Windows.Forms.CheckBox();
             this.loginLoginerror = new System.Windows.Forms.Label();
+            this.customPanel1 = new mag_app.Winform.Components.CustomPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.customPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -138,12 +141,37 @@
             this.loginLoginerror.Size = new System.Drawing.Size(0, 15);
             this.loginLoginerror.TabIndex = 19;
             // 
+            // customPanel1
+            // 
+            this.customPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel1.BorderRadius = 15;
+            this.customPanel1.BorderSize = 2;
+            this.customPanel1.Controls.Add(this.textBox1);
+            this.customPanel1.Location = new System.Drawing.Point(42, 38);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(327, 37);
+            this.customPanel1.TabIndex = 20;
+            this.customPanel1.UnderlinedStyle = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(12, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(306, 25);
+            this.textBox1.TabIndex = 0;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(416, 548);
+            this.Controls.Add(this.customPanel1);
             this.Controls.Add(this.loginLoginerror);
             this.Controls.Add(this.rememberMe);
             this.Controls.Add(this.button1);
@@ -160,6 +188,8 @@
             this.Text = "LoginForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.customPanel1.ResumeLayout(false);
+            this.customPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +205,7 @@
 		private Label label1;
 		private CheckBox rememberMe;
 		private Label loginLoginerror;
-	}
+        private Components.CustomPanel customPanel1;
+        private TextBox textBox1;
+    }
 }

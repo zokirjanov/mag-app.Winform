@@ -168,7 +168,7 @@
             this.customPanel1.BackColor = System.Drawing.Color.Red;
             this.customPanel1.BorderColor = System.Drawing.Color.Transparent;
             this.customPanel1.BorderFocusColor = System.Drawing.Color.Transparent;
-            this.customPanel1.BorderRadius = 5;
+            this.customPanel1.BorderRadius = 6;
             this.customPanel1.BorderSize = 1;
             this.customPanel1.Location = new System.Drawing.Point(13, 32);
             this.customPanel1.Name = "customPanel1";
