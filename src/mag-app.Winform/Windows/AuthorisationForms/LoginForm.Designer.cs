@@ -77,7 +77,7 @@
             this.loginPassShow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginPassShow.BackColor = System.Drawing.Color.Beige;
             this.loginPassShow.Image = ((System.Drawing.Image)(resources.GetObject("loginPassShow.Image")));
-            this.loginPassShow.Location = new System.Drawing.Point(347, 239);
+            this.loginPassShow.Location = new System.Drawing.Point(347, 240);
             this.loginPassShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginPassShow.Name = "loginPassShow";
             this.loginPassShow.Size = new System.Drawing.Size(26, 22);

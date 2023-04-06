@@ -118,7 +118,7 @@ public partial class Cash_Register_Main : Form
             Text = tabname,
             Width = 90,
             Height = 40,
-            BackColor = Color.WhiteSmoke,
+            BackColor = Color.Turquoise,
             Margin = new Padding(1, 6, 0, 0),
             Font = new Font("Times New Roman", 14),
         };
@@ -126,10 +126,14 @@ public partial class Cash_Register_Main : Form
         {
             foreach(Control control in tabFlowPanel.Controls)
             {
-                if(control.Margin == new Padding(1,19,0,0))
-                control.Margin = new Padding(1,6,0,0);
+                if(control.Margin == new Padding(1, 19, 0, 0))
+                {
+                    control.Margin = new Padding(1, 6, 0, 0);
+                    control.BackColor= Color.Turquoise;
+                }
             }
             tabButton.Margin = new Padding(1,19,0,0);
+            tabButton.BackColor = Color.White;
             TabId = await _service.GetId(tabname);
             TabName = tabname;
             TabProductsFill();
@@ -220,6 +224,8 @@ public partial class Cash_Register_Main : Form
 
 
 
+
+
     private void Cash_Register_Main_FormClosed(object sender, FormClosedEventArgs e)
     {
         Store_Product_Form.storeProductParent.Show();
@@ -233,5 +239,32 @@ public partial class Cash_Register_Main : Form
         Color.Transparent, 1, ButtonBorderStyle.Solid, // top
         Color.Transparent, 1, ButtonBorderStyle.Solid, // right
         Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void panel3_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel3.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void panel1_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Black, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Black, 1, ButtonBorderStyle.Solid);// bottom
     }
 }
