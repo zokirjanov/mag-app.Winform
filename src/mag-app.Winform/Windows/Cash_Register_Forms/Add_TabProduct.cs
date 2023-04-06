@@ -1,22 +1,10 @@
-﻿using mag_app.Domain.Entities.AllProducts;
-using mag_app.Domain.Entities.Categories;
-using mag_app.Service.Common.Helpers;
+﻿using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
 using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Windows.MainWindowForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
@@ -41,18 +29,22 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             TabName = Cash_Register_Main.cashRegisterMainParent.TabName;
         }
 
+
+
         public long TabId { get; set; }
         public string TabName { get; set; } = string.Empty;
+
+
 
 
         public async void FillData()
         {
             allProductViewModelBindingSource.Clear();
-            var products = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            var products = await _service.GetAllAsync(Stores_Form.myStoreFormParent.Id);
 
             foreach (var i in products)
             {
-                if(i.StoreId != null)
+                if (i.StoreId != null)
                 {
                     allProductViewModelBindingSource.Add(new AllProductViewModel()
                     {
@@ -67,15 +59,32 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                         PurchasedPrice = i.PurchasedPrice,
                     });
                 }
-               
             }
             dataGridView1.ClearSelection();
+
+            CompareList();
         }
 
-        private void Add_TabProduct_Shown(object sender, EventArgs e)
+
+
+        private async void CompareList()
         {
-            dataGridView1.ClearSelection();
+            var addedProducts = await _tabService.GetAllAsync(Cash_Register_Main.cashRegisterMainParent.TabId);
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach(var item in addedProducts)
+                {
+                    if (item.ProductName == row.Cells[5].Value.ToString())
+                    {
+                        row.DefaultCellStyle.ForeColor = Color.Red;
+                    }
+                }
+            }
         }
+
+
+
 
         int indexRow;
         private async void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -88,23 +97,38 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 TabProductViewModel tabProductViewModel = new TabProductViewModel()
                 {
                     ProductId = Convert.ToInt64(row.Cells[4].Value),
+                    Price= Convert.ToInt64(row.Cells[7].Value),
                     ProductName = row.Cells[5].Value.ToString()!,
-                    TabControllerId= TabId,
+                    TabControllerId = TabId,
                     TabControllerName = TabName
                 };
 
                 var result = await _tabService.CreateAsync(tabProductViewModel);
 
-                if (result == "true") AutoClosingMessageBox.Show("Успешно добавлен", "Удалить", 400);
+                if (result == "true")
+                {
+                    AutoClosingMessageBox.Show("Успешно добавлен", "Удалить", 400);
+                    CompareList();
+                    dataGridView1.ClearSelection();
+                }
                 else if (result == "exists") MessageBox.Show("Уже существует");
                 else if (result == "false") MessageBox.Show("Товар не найден");
+
 
             }
         }
 
+
+
         private void Add_TabProduct_FormClosed(object sender, FormClosedEventArgs e)
         {
             Cash_Register_Main.cashRegisterMainParent.TabProductsFill();
+        }
+
+
+        private void Add_TabProduct_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
     }
 }

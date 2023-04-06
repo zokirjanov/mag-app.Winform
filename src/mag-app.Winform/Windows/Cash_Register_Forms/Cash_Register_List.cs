@@ -6,13 +6,13 @@ using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
-public partial class Cash_Register : Form
+public partial class Cash_Register_List : Form
 {
-
+    
     private CashService _service;
-    public static Cash_Register cashRegisterParent = default!;
+    public static Cash_Register_List cashRegisterParent = default!;
 
-    public Cash_Register()
+    public Cash_Register_List()
     {
         _service = new CashService();
         cashRegisterParent = this;
@@ -53,7 +53,7 @@ public partial class Cash_Register : Form
             form.ShowDialog();
         };
 
-        var items = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+        var items = await _service.GetAllAsync(Stores_Form.myStoreFormParent.Id);
         if (items is null)
         {
             MessageBox.Show("касса не найден");
@@ -84,7 +84,7 @@ public partial class Cash_Register : Form
         {
             Id = await _service.GetId(w.Text);
             CashName = w.Text;
-            StoreProductsForm.storeProductParent.Hide();
+            Store_Product_Form.storeProductParent.Hide();
             Cash_Register_Main cash_Register_Main = new Cash_Register_Main();
             cash_Register_Main.ShowDialog();
         };

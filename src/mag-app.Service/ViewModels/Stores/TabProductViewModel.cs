@@ -11,6 +11,7 @@ namespace mag_app.Service.ViewModels.Stores
     public class TabProductViewModel
     {
         public long ProductId { get; set; }
+        public decimal Price { get; set; }
 
         public string ProductName { get; set; }
 
@@ -27,6 +28,7 @@ namespace mag_app.Service.ViewModels.Stores
                 ProductName = tabProduct.ProductName,
                 TabControllerId= tabProduct.TabControllerId,
                 TabControllerName= tabProduct.TabControllerName,
+                Price = tabProduct.Price
             };
         }
     }

@@ -10,10 +10,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
-    public partial class ProductUpdateForm : Form
+    public partial class Edit_Product : Form
     {
         ProductService _product;
-        public ProductUpdateForm()
+        public Edit_Product()
         {
             InitializeComponent();
             _product = new ProductService();
@@ -99,7 +99,7 @@ namespace mag_app.Winform.Windows.ProductForms
                         });
                         db.SaveChanges();
                         AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
-                        StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
+                        Store_Product_Form.storeProductParent.openChildForm(new Store_List_Product());
                         this.Close();
                     }
                 }

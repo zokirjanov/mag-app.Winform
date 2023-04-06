@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.ProductForms
 {
-    partial class AddCategoryForm
+    partial class Add_Category
     {
         /// <summary>
         /// Required designer variable.

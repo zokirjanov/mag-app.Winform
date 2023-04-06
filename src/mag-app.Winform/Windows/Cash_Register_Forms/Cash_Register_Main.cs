@@ -1,5 +1,10 @@
-﻿using mag_app.Service.Services.StoreService;
+﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Stores;
+using mag_app.Service.Services.StoreService;
+using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
+using Microsoft.EntityFrameworkCore;
+using System.Xml;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -11,6 +16,8 @@ public partial class Cash_Register_Main : Form
     TabProductService _productService;
     public FlowLayoutPanel flw;
 
+
+
     public Cash_Register_Main()
     {
         _service = new TabService();
@@ -18,13 +25,16 @@ public partial class Cash_Register_Main : Form
         cashRegisterMainParent = this;
         InitializeComponent();
         flw = tabFlowPanel;
-
     }
+
+
 
     private void Cash_Register_Main_Load(object sender, EventArgs e)
     {
         FillTabs();
     }
+
+
 
 
     public long TabId { get; set; }
@@ -45,6 +55,7 @@ public partial class Cash_Register_Main : Form
             Width = 80,
             Height = tabFlowPanel.Height,
         };
+
         Button settingtab = new Button()
         {
             Parent = firstpanel,
@@ -65,6 +76,7 @@ public partial class Cash_Register_Main : Form
             else MessageBox.Show("выберите вкладку!");
 
         };
+
         Button addTab = new Button()
         {
             Parent = firstpanel,
@@ -80,20 +92,26 @@ public partial class Cash_Register_Main : Form
             add_TabControl.ShowDialog();
         };
 
+
         tabFlowPanel.Controls.Add(firstpanel);
 
-        var items = await _service.GetAllAsync();
-        if (items is null)
+
+        using (var db = new AppDbContext())
         {
-            MessageBox.Show("Tabs not found");
-        }
-        else
-        {
-            foreach (var item in items)
+            var items = await db.Tabs.OrderByDescending(x=>x.Id).ToListAsync();
+            if (items is null)
             {
-                AddItem(item.TabName);
+                MessageBox.Show("Tabs not found");
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    AddItem(item.TabName);
+                }
             }
         }
+           
     }
 
     private void AddItem(string tabname)
@@ -103,7 +121,7 @@ public partial class Cash_Register_Main : Form
             Text = tabname,
             Width = 90,
             Height = 40,
-            BackColor = Color.WhiteSmoke,
+            BackColor = Color.Turquoise,
             Margin = new Padding(1, 6, 0, 0),
             Font = new Font("Times New Roman", 14),
         };
@@ -111,10 +129,14 @@ public partial class Cash_Register_Main : Form
         {
             foreach(Control control in tabFlowPanel.Controls)
             {
-                if(control.Margin == new Padding(1,19,0,0))
-                control.Margin = new Padding(1,6,0,0);
+                if(control.Margin == new Padding(1, 19, 0, 0))
+                {
+                    control.Margin = new Padding(1, 6, 0, 0);
+                    control.BackColor= Color.Turquoise;
+                }
             }
             tabButton.Margin = new Padding(1,19,0,0);
+            tabButton.BackColor = Color.White;
             TabId = await _service.GetId(tabname);
             TabName = tabname;
             TabProductsFill();
@@ -131,12 +153,16 @@ public partial class Cash_Register_Main : Form
     /// </summary>
     public async void TabProductsFill()
     {
+     
+        
         tabProductFlowPanel.Controls.Clear();
         Panel firstpanel = new Panel()
         {
             Width = 160,
             Height = 80,
         };
+    
+        
         Button settingtab = new Button()
         {
             Parent = firstpanel,
@@ -146,6 +172,12 @@ public partial class Cash_Register_Main : Form
             Location = new Point(0, 0),
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/cogwheel.png"),
         };
+        settingtab.Click += (s, e) =>
+        {
+
+        };
+     
+   
         Button addTab = new Button()
         {
             Parent = firstpanel,
@@ -161,9 +193,12 @@ public partial class Cash_Register_Main : Form
             add_TabProduct.ShowDialog();
         };
 
+    
         tabProductFlowPanel.Controls.Add(firstpanel);
 
+
         var items = await _productService.GetAllAsync(TabId);
+       
         if (items is null)
         {
             MessageBox.Show("Tab Products not found");
@@ -172,14 +207,19 @@ public partial class Cash_Register_Main : Form
         {
             foreach (var item in items)
             {
-                AddProductItem(item.ProductName);
+                AddProductItem(item);
             }
         }
+
+
     }
 
 
-    private void AddProductItem(string name)
+
+    private void AddProductItem(TabProduct product)
     {
+
+
         var tabProductButton = new Button
         {
             Width = 80,
@@ -187,9 +227,10 @@ public partial class Cash_Register_Main : Form
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png"),
         };
+
         var labelName = new Label()
         {
-            Text = name,
+            Text = product.ProductName,
             Parent = tabProductButton,
             Width = 80,
             Height = 20,
@@ -197,17 +238,86 @@ public partial class Cash_Register_Main : Form
             TextAlign = ContentAlignment.BottomCenter,
             Location = new Point(0, 55),
         };
+
+
+        List<long> arrayID = new List<long>();
         labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
+    
+
+        tabProductButton.Click += (s, e) =>
+        {
+
+
+            if (!arrayID.Contains(product.ProductId) || arrayID.Count == 0)
+            {
+               
+                var ucProduct = new ProductControl()
+                {
+                    Title = product.ProductName,
+                    Cost = product.Price.ToString(@"###\ ###\ ###\ ###\"),
+                    Quantity = 0,
+                    TotalCost = 0
+                };
+                arrayID.Append(product.ProductId);
+                flowLayoutPanel1.Controls.Add(ucProduct);
+            }
+        };
+
+
 
         tabProductFlowPanel.Controls.Add(tabProductButton);
     }
+
+    
+
 
 
 
 
     private void Cash_Register_Main_FormClosed(object sender, FormClosedEventArgs e)
     {
-        StoreProductsForm.storeProductParent.Show();
+        Store_Product_Form.storeProductParent.Show();
         this.Close();
+    }
+
+    private void panel2_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void panel3_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel3.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void panel1_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Black, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Black, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void primaryButton2_Click(object sender, EventArgs e)
+    {
+        flowLayoutPanel1.Controls.Clear();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.MainWindowForms
 {
-    partial class MyStoreForm
+    partial class Stores_Form
     {
         /// <summary>
         /// Required designer variable.

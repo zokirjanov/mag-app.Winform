@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms;
 
-public partial class CategoriesForm : Form
+public partial class Category_Form : Form
 {
     private readonly CategoryService _service;
-    public static CategoriesForm categoryParent = default!;
+    public static Category_Form categoryParent = default!;
 
 
-    public CategoriesForm()
+    public Category_Form()
     {
         _service = new CategoryService();
         categoryParent = this;
@@ -52,7 +52,7 @@ public partial class CategoriesForm : Form
 
         primaryButton.Click += (s, e) =>
         {
-            AddCategoryForm addCategoryForm = new AddCategoryForm();
+            Add_Category addCategoryForm = new Add_Category();
             addCategoryForm.ShowDialog();
         };
 
@@ -93,9 +93,9 @@ public partial class CategoriesForm : Form
         {
             Id = await _service.GetId(w.Text);
             CategoryTitle = w.Text;
-            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
-            StoreProductsForm.storeProductParent.AddTitle(categoryName, "›категория");
-            StoreProductsForm.storeProductParent.backBtn.Hide();
+            Store_Product_Form.storeProductParent.openChildForm(new SubCategoriesForm());
+            Store_Product_Form.storeProductParent.AddTitle(categoryName, "›категория");
+            Store_Product_Form.storeProductParent.backBtn.Hide();
         };
         //
         // Update Category Button
@@ -111,7 +111,7 @@ public partial class CategoriesForm : Form
         };
         update.Click += (s, e) =>
         {
-            CategoryUpdateForm category = new CategoryUpdateForm();
+            Edit_Category category = new Edit_Category();
             category.categoryName = w.Text;
             category.ShowDialog();
         };

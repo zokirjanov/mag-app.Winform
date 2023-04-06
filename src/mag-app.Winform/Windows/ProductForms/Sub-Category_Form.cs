@@ -48,7 +48,7 @@ public partial class SubCategoriesForm : Form
             AddSbCategoryForm addSbCategoryForm = new AddSbCategoryForm();
             addSbCategoryForm.ShowDialog();
         };
-        var items = await _service.GetAllAsync(CategoriesForm.categoryParent!.Id);
+        var items = await _service.GetAllAsync(Category_Form.categoryParent!.Id);
         if (items is null)
         {
             MessageBox.Show("Подкатегории не найдены");
@@ -81,9 +81,9 @@ public partial class SubCategoriesForm : Form
         {
             Id = await _service.GetId(button.Text);
             Title = button.Text;
-            StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
-            StoreProductsForm.storeProductParent.AddTitle(button.Text, "›подкатегория");
-            StoreProductsForm.storeProductParent.backBtn.Hide();
+            Store_Product_Form.storeProductParent.openChildForm(new Store_List_Product());
+            Store_Product_Form.storeProductParent.AddTitle(button.Text, "›подкатегория");
+            Store_Product_Form.storeProductParent.backBtn.Hide();
         };
      
         
@@ -148,10 +148,10 @@ public partial class SubCategoriesForm : Form
 
     private void button2_Click(object sender, EventArgs e)
     {
-        StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm());
-        StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(1);
-        StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(1);
-        StoreProductsForm.storeProductParent.backBtn.Show();
+        Store_Product_Form.storeProductParent.openChildForm(new Category_Form());
+        Store_Product_Form.storeProductParent.title1.Controls.RemoveAt(1);
+        Store_Product_Form.storeProductParent.title2.Controls.RemoveAt(1);
+        Store_Product_Form.storeProductParent.backBtn.Show();
     }
 
 

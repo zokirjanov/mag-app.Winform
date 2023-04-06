@@ -7,16 +7,16 @@ using mag_app.Winform.Windows.Quick_PassForms;
 
 namespace mag_app.Winform.Windows.Product_Forms
 {
-    public partial class StoreProductsForm : Form
+    public partial class Store_Product_Form : Form
     {
-        public static StoreProductsForm storeProductParent = default!;
+        public static Store_Product_Form storeProductParent = default!;
         public Button btn;
         public Button backBtn;
         public Panel pnl;
         public FlowLayoutPanel title1;
         public FlowLayoutPanel title2;
 
-        public StoreProductsForm()
+        public Store_Product_Form()
         {
             InitializeComponent();
             storeProductParent = this;
@@ -31,7 +31,7 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         private void StoreProductsForm_Load(object sender, EventArgs e)
         {
-            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+            AddTitle(Stores_Form.myStoreFormParent.StoreName, "›магазин");
         }
 
 
@@ -48,7 +48,7 @@ namespace mag_app.Winform.Windows.Product_Forms
         {
             this.Hide();
             MainForm.mainParent.Show();
-            MainForm.mainParent.openChildForm(new MyStoreForm());
+            MainForm.mainParent.openChildForm(new Stores_Form());
         }
 
 
@@ -125,11 +125,11 @@ namespace mag_app.Winform.Windows.Product_Forms
 
         public void productBtn_Click(object sender, EventArgs e)
         {
-            storeProductParent.openChildForm(new CategoriesForm());
+            storeProductParent.openChildForm(new Category_Form());
             storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();
-            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+            AddTitle(Stores_Form.myStoreFormParent.StoreName, "›магазин");
         }
 
         private void quick_PassBtn_Click(object sender, EventArgs e)
@@ -138,16 +138,16 @@ namespace mag_app.Winform.Windows.Product_Forms
             storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();
-            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+            AddTitle(Stores_Form.myStoreFormParent.StoreName, "›магазин");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            storeProductParent.openChildForm(new Cash_Register());
+            storeProductParent.openChildForm(new Cash_Register_List());
             storeProductParent.backBtn.Show();
             titleFlowPanel.Controls.Clear();
             subtitleFlowPanel.Controls.Clear();
-            AddTitle(MyStoreForm.myStoreFormParent.StoreName, "›магазин");
+            AddTitle(Stores_Form.myStoreFormParent.StoreName, "›магазин");
         }
     }
 }

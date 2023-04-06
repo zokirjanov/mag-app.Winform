@@ -11,8 +11,9 @@ namespace mag_app.Domain.Entities.Stores
     public class TabProduct
     {
         public long Id { get; set; }
+        public decimal Price { get; set; }
 
-        
+
         [ForeignKey("TabControllerId")]
         public TabController TabController { get; set; }
 

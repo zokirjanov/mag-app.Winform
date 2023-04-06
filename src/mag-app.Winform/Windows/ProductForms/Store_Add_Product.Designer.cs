@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.ProductForms
 {
-    partial class Store_Add_ProductForm
+    partial class Store_Add_Product
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store_Add_ProductForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store_Add_Product));
             this.productPriceTb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.productNameTb = new System.Windows.Forms.TextBox();

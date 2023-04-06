@@ -18,10 +18,10 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows
 {
-    public partial class UpdateForm : Form
+    public partial class Edit_Store : Form
     {
         private StoreService _service;
-        public UpdateForm()
+        public Edit_Store()
         {
             InitializeComponent();
             _service = new StoreService();

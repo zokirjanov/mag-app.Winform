@@ -53,7 +53,7 @@ public partial class Quick_Pass : Form
     private async void updateBtn_Click(object sender, EventArgs e)
     {
         AppDbContext appDbContext = new AppDbContext();
-        var result = await  appDbContext.AllProducts.FirstOrDefaultAsync(x=>x.Barcode == barcode && x.StoreId == MyStoreForm.myStoreFormParent.Id);
+        var result = await  appDbContext.AllProducts.FirstOrDefaultAsync(x=>x.Barcode == barcode && x.StoreId == Stores_Form.myStoreFormParent.Id);
         if (result == null)
         {
             AddProduct();
@@ -86,8 +86,8 @@ public partial class Quick_Pass : Form
 
             AllProduct allProduct = new AllProduct()
             {
-                StoreId = MyStoreForm.myStoreFormParent.Id,
-                StoreName = MyStoreForm.myStoreFormParent.StoreName,
+                StoreId = Stores_Form.myStoreFormParent.Id,
+                StoreName = Stores_Form.myStoreFormParent.StoreName,
                 ProdutName = labelName.Text,
                 PurchasedPrice = decimal.Parse(labelPPrice.Text),
                 Price = decimal.Parse(labelPrice.Text),
@@ -114,7 +114,7 @@ public partial class Quick_Pass : Form
                     await _product.UpdateAsync(productViewModel);
                 
                     AutoClosingMessageBox.Show("успешно Добавлено", "добавлять", 350);
-                    StoreProductsForm.storeProductParent.openChildForm(new List_products());
+                    Store_Product_Form.storeProductParent.openChildForm(new List_products());
                     this.Close();
                 }
                 else if (res == "false")
@@ -144,8 +144,8 @@ public partial class Quick_Pass : Form
 
         AllProductViewModel allProduct = new AllProductViewModel()
         {
-            StoreId = MyStoreForm.myStoreFormParent.Id,
-            Storename = MyStoreForm.myStoreFormParent.StoreName,
+            StoreId = Stores_Form.myStoreFormParent.Id,
+            Storename = Stores_Form.myStoreFormParent.StoreName,
             CategoryId = product.CategoryId,
             CategoryName= product.CategoryName,
             SubCategoryId= product.SubCategoryId,
@@ -186,7 +186,7 @@ public partial class Quick_Pass : Form
                 {
                     await _product.UpdateAsync(productViewModel);
                     AutoClosingMessageBox.Show("успешно Добавлено", "добавлять", 350);
-                    StoreProductsForm.storeProductParent.openChildForm(new List_products());
+                    Store_Product_Form.storeProductParent.openChildForm(new List_products());
                     this.Close();
                 }
                 else if (result == null)
