@@ -153,12 +153,16 @@ public partial class Cash_Register_Main : Form
     /// </summary>
     public async void TabProductsFill()
     {
+     
+        
         tabProductFlowPanel.Controls.Clear();
         Panel firstpanel = new Panel()
         {
             Width = 160,
             Height = 80,
         };
+    
+        
         Button settingtab = new Button()
         {
             Parent = firstpanel,
@@ -172,6 +176,8 @@ public partial class Cash_Register_Main : Form
         {
 
         };
+     
+   
         Button addTab = new Button()
         {
             Parent = firstpanel,
@@ -187,9 +193,12 @@ public partial class Cash_Register_Main : Form
             add_TabProduct.ShowDialog();
         };
 
+    
         tabProductFlowPanel.Controls.Add(firstpanel);
 
+
         var items = await _productService.GetAllAsync(TabId);
+       
         if (items is null)
         {
             MessageBox.Show("Tab Products not found");
@@ -201,13 +210,16 @@ public partial class Cash_Register_Main : Form
                 AddProductItem(item);
             }
         }
+
+
     }
 
 
-    IList<long> arrayID = new List<long>();   
 
     private void AddProductItem(TabProduct product)
     {
+
+
         var tabProductButton = new Button
         {
             Width = 80,
@@ -215,6 +227,7 @@ public partial class Cash_Register_Main : Form
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png"),
         };
+
         var labelName = new Label()
         {
             Text = product.ProductName,
@@ -227,14 +240,17 @@ public partial class Cash_Register_Main : Form
         };
 
 
+        List<long> arrayID = new List<long>();
         labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
     
 
         tabProductButton.Click += (s, e) =>
         {
-            
-            if(arrayID.Contains(product.ProductId) || arrayID.Count == 0)
+
+
+            if (!arrayID.Contains(product.ProductId) || arrayID.Count == 0)
             {
+               
                 var ucProduct = new ProductControl()
                 {
                     Title = product.ProductName,
@@ -246,10 +262,15 @@ public partial class Cash_Register_Main : Form
                 flowLayoutPanel1.Controls.Add(ucProduct);
             }
         };
+
+
+
         tabProductFlowPanel.Controls.Add(tabProductButton);
     }
 
     
+
+
 
 
 
