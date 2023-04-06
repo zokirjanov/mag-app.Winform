@@ -38,7 +38,6 @@ public partial class Edit_TabController : Form
             if (res == "true")
             {
                 Cash_Register_Main.cashRegisterMainParent.FillTabs();
-                //   Cash_Register_Main.cashRegisterMainParent.flw.Controls.Clear();
                 AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 300);
                 this.Close();
             }

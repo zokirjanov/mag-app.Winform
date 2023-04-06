@@ -1,5 +1,7 @@
-﻿using mag_app.Service.Services.StoreService;
+﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Windows.Product_Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -11,6 +13,8 @@ public partial class Cash_Register_Main : Form
     TabProductService _productService;
     public FlowLayoutPanel flw;
 
+
+
     public Cash_Register_Main()
     {
         _service = new TabService();
@@ -20,10 +24,14 @@ public partial class Cash_Register_Main : Form
         flw = tabFlowPanel;
     }
 
+
+
     private void Cash_Register_Main_Load(object sender, EventArgs e)
     {
         FillTabs();
     }
+
+
 
 
     public long TabId { get; set; }
@@ -44,6 +52,7 @@ public partial class Cash_Register_Main : Form
             Width = 80,
             Height = tabFlowPanel.Height,
         };
+
         Button settingtab = new Button()
         {
             Parent = firstpanel,
@@ -64,6 +73,7 @@ public partial class Cash_Register_Main : Form
             else MessageBox.Show("выберите вкладку!");
 
         };
+
         Button addTab = new Button()
         {
             Parent = firstpanel,
@@ -79,20 +89,26 @@ public partial class Cash_Register_Main : Form
             add_TabControl.ShowDialog();
         };
 
+
         tabFlowPanel.Controls.Add(firstpanel);
 
-        var items = await _service.GetAllAsync();
-        if (items is null)
+
+        using (var db = new AppDbContext())
         {
-            MessageBox.Show("Tabs not found");
-        }
-        else
-        {
-            foreach (var item in items)
+            var items = await db.Tabs.OrderByDescending(x=>x.Id).ToListAsync();
+            if (items is null)
             {
-                AddItem(item.TabName);
+                MessageBox.Show("Tabs not found");
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    AddItem(item.TabName);
+                }
             }
         }
+           
     }
 
     private void AddItem(string tabname)

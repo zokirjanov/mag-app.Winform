@@ -8,7 +8,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
 public partial class Cash_Register_List : Form
 {
-
+    
     private CashService _service;
     public static Cash_Register_List cashRegisterParent = default!;
 
