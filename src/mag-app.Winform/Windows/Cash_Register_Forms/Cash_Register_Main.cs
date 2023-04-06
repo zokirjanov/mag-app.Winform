@@ -4,6 +4,7 @@ using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
 using Microsoft.EntityFrameworkCore;
+using System.Xml;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -203,6 +204,8 @@ public partial class Cash_Register_Main : Form
     }
 
 
+    IList<long> arrayID = new List<long>();   
+
     private void AddProductItem(TabProduct product)
     {
         var tabProductButton = new Button
@@ -222,22 +225,29 @@ public partial class Cash_Register_Main : Form
             TextAlign = ContentAlignment.BottomCenter,
             Location = new Point(0, 55),
         };
+
+
         labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
     
+
         tabProductButton.Click += (s, e) =>
         {
-            var ucProduct = new ProductControl()
+            
+            if(arrayID.Contains(product.ProductId) || arrayID.Count == 0)
             {
-                Title= product.ProductName,
-                Cost = product.Product.Price,
-                Quantity= product.Product.Quantity,
-                TotalCost = product.Product.Quantity * product.Product.Price,
-            };
+                var ucProduct = new ProductControl()
+                {
+                    Title = product.ProductName,
+                    Cost = product.Price.ToString(@"###\ ###\ ###\ ###\"),
+                    Quantity = 0,
+                    TotalCost = 0
+                };
+                arrayID.Append(product.ProductId);
+                flowLayoutPanel1.Controls.Add(ucProduct);
+            }
         };
-        
         tabProductFlowPanel.Controls.Add(tabProductButton);
     }
-
 
     
 
@@ -283,5 +293,10 @@ public partial class Cash_Register_Main : Form
         Color.Black, 1, ButtonBorderStyle.Solid, // top
         Color.Transparent, 1, ButtonBorderStyle.Solid, // right
         Color.Black, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void primaryButton2_Click(object sender, EventArgs e)
+    {
+        flowLayoutPanel1.Controls.Clear();
     }
 }

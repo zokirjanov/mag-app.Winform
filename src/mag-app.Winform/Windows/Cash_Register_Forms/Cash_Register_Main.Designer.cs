@@ -185,6 +185,7 @@
             this.primaryButton2.Text = "очистить корзину";
             this.primaryButton2.TextColor = System.Drawing.Color.Black;
             this.primaryButton2.UseVisualStyleBackColor = false;
+            this.primaryButton2.Click += new System.EventHandler(this.primaryButton2_Click);
             // 
             // primaryButton1
             // 
