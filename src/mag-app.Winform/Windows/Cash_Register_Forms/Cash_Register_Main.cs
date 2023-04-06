@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
@@ -196,13 +197,13 @@ public partial class Cash_Register_Main : Form
         {
             foreach (var item in items)
             {
-                AddProductItem(item.ProductName);
+                AddProductItem(item);
             }
         }
     }
 
 
-    private void AddProductItem(string name)
+    private void AddProductItem(TabProduct product)
     {
         var tabProductButton = new Button
         {
@@ -211,15 +212,9 @@ public partial class Cash_Register_Main : Form
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png"),
         };
-        tabProductButton.Click += (s, e) =>
-        {
-            ProductControl productControl = new ProductControl();
-            flowLayoutPanel1.Controls.Add(productControl);
-
-        };
         var labelName = new Label()
         {
-            Text = name,
+            Text = product.ProductName,
             Parent = tabProductButton,
             Width = 80,
             Height = 20,
@@ -228,7 +223,18 @@ public partial class Cash_Register_Main : Form
             Location = new Point(0, 55),
         };
         labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
-
+    
+        tabProductButton.Click += (s, e) =>
+        {
+            var ucProduct = new ProductControl()
+            {
+                Title= product.ProductName,
+                Cost = product.Product.Price,
+                Quantity= product.Product.Quantity,
+                TotalCost = product.Product.Quantity * product.Product.Price,
+            };
+        };
+        
         tabProductFlowPanel.Controls.Add(tabProductButton);
     }
 
