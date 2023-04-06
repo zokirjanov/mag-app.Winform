@@ -6,15 +6,15 @@ using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.MainWindowForms;
 
-public partial class MyStoreForm : Form
+public partial class Stores_Form : Form
 {
     private StoreService _service;
     public FlowLayoutPanel panel = default!;
-    public static MyStoreForm myStoreFormParent = default!;
+    public static Stores_Form myStoreFormParent = default!;
 
 
 
-    public MyStoreForm()
+    public Stores_Form()
     {
         _service = new StoreService();
         myStoreFormParent = this;
@@ -48,7 +48,7 @@ public partial class MyStoreForm : Form
             Id = await _service.GetId(w.Text);
             StoreName = w.Text;
             MainForm.mainParent.Hide();
-            StoreProductsForm storeProductsForm = new StoreProductsForm();
+            Store_Product_Form storeProductsForm = new Store_Product_Form();
             storeProductsForm.Show();
         };
         //
@@ -65,7 +65,7 @@ public partial class MyStoreForm : Form
         };
         update.Click += (s, e) =>
         {
-            UpdateForm updateForm = new UpdateForm();
+            Edit_Store updateForm = new Edit_Store();
             updateForm.storeName = storename;
             updateForm.ShowDialog();
         };
@@ -115,7 +115,7 @@ public partial class MyStoreForm : Form
         primaryButton.BorderRadius = 5;
         primaryButton.Click += (s, e) =>
         {
-            AddStoreForm form = new AddStoreForm();
+            Add_Store form = new Add_Store();
             form.ShowDialog();
         };
 

@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.ProductForms
 {
-    partial class CategoriesForm
+    partial class Category_Form
     {
         /// <summary>
         /// Required designer variable.

@@ -49,7 +49,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 var res = await _service.UpdateAsync(cash, oldName);
                 if (res == "true")
                 {
-                    StoreProductsForm.storeProductParent.openChildForm(new Cash_Register());
+                    Store_Product_Form.storeProductParent.openChildForm(new Cash_Register_List());
                     this.Close();
                 }
                 else if (res == "false")

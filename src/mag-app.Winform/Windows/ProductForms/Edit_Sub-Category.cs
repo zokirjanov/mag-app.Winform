@@ -37,7 +37,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 var res = await service.UpdateAsync(category, oldName);
                 if (res == "true")
                 {
-                    StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
+                    Store_Product_Form.storeProductParent.openChildForm(new SubCategoriesForm());
                     this.Close();
                 }
                 else if (res == "false")

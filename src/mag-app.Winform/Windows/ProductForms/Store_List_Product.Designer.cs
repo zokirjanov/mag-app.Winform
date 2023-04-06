@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.ProductForms
 {
-    partial class Store_Create_ProductForm
+    partial class Store_List_Product
     {
         /// <summary>
         /// Required designer variable.

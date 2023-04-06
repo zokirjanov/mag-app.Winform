@@ -18,7 +18,6 @@ public partial class Cash_Register_Main : Form
         cashRegisterMainParent = this;
         InitializeComponent();
         flw = tabFlowPanel;
-
     }
 
     private void Cash_Register_Main_Load(object sender, EventArgs e)
@@ -207,7 +206,7 @@ public partial class Cash_Register_Main : Form
 
     private void Cash_Register_Main_FormClosed(object sender, FormClosedEventArgs e)
     {
-        StoreProductsForm.storeProductParent.Show();
+        Store_Product_Form.storeProductParent.Show();
         this.Close();
     }
 }

@@ -23,8 +23,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 SubCategoryViewModel category = new SubCategoryViewModel()
                 {
                     SubCategoryName = subCategoryNameTb.Text,
-                    CategoryId = CategoriesForm.categoryParent!.Id,
-                    CategoryName = CategoriesForm.categoryParent.CategoryTitle,
+                    CategoryId = Category_Form.categoryParent!.Id,
+                    CategoryName = Category_Form.categoryParent.CategoryTitle,
                 };
 
                 var res = await _service.CreateCategoryAsync(category);
@@ -32,7 +32,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 if (res == "true")
                 {
                     subCategoryNameTb.Text = "";
-                    StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
+                    Store_Product_Form.storeProductParent.openChildForm(new SubCategoriesForm());
                     DialogResult dlg = MessageBox.Show("Подкатегория успешно добавлена \n\nВы хотите добавить еще один?", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {

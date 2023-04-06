@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.ProductForms
 {
-    partial class ProductUpdateForm
+    partial class Edit_Product
     {
         /// <summary>
         /// Required designer variable.

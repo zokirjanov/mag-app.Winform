@@ -31,14 +31,14 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 CashViewModel cashViewModel = new CashViewModel()
                 {
                     CashName = storeNametb.Text,
-                    StoreId = MyStoreForm.myStoreFormParent.Id,
-                    StoreName = MyStoreForm.myStoreFormParent.Name
+                    StoreId = Stores_Form.myStoreFormParent.Id,
+                    StoreName = Stores_Form.myStoreFormParent.Name
                 };
 
                 var res = await _service.CreateAsync(cashViewModel);
                 if (res == "true")
                 {
-                    StoreProductsForm.storeProductParent.openChildForm(new Cash_Register());
+                    Store_Product_Form.storeProductParent.openChildForm(new Cash_Register_List());
                     storeNametb.Text = "";
                     DialogResult dlg = MessageBox.Show("Касса успешно добавлен \n\nВы хотите добавить еще один?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)

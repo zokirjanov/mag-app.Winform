@@ -5,12 +5,12 @@ using mag_app.Service.Services.StoreService;
 
 namespace mag_app.Winform.Windows
 {
-    public partial class AddStoreForm : Form
+    public partial class Add_Store : Form
     {
         private readonly StoreService _service;
 
 
-        public AddStoreForm()
+        public Add_Store()
         {
             _service = new StoreService();
             InitializeComponent();

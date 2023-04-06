@@ -15,12 +15,12 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.ProductForms;
 
-public partial class CategoryUpdateForm : Form
+public partial class Edit_Category : Form
 {
     public CategoryService categoryService;
 
 
-    public CategoryUpdateForm()
+    public Edit_Category()
     {
         categoryService = new CategoryService();
         InitializeComponent();
@@ -52,7 +52,7 @@ public partial class CategoryUpdateForm : Form
             var res = await categoryService.UpdateAsync(category, oldName);
             if (res == "true")
             {
-                StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm());
+                Store_Product_Form.storeProductParent.openChildForm(new Category_Form());
                 this.Close();
             }
             else if (res == "false")

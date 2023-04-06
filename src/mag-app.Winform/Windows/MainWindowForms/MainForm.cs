@@ -25,7 +25,7 @@ namespace mag_app.Winform
 
         public void marketbtn_Click(object sender, EventArgs e)
         {
-            mainParent.openChildForm(new MyStoreForm());            
+            mainParent.openChildForm(new Stores_Form());            
         }
 
 

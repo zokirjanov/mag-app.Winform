@@ -8,11 +8,11 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
-    public partial class Store_Create_ProductForm : Form
+    public partial class Store_List_Product : Form
     {
-        public static Store_Create_ProductForm parentInstanse = default!;
+        public static Store_List_Product parentInstanse = default!;
         public ProductService _service;
-        public Store_Create_ProductForm()
+        public Store_List_Product()
         {
             _service = new ProductService();
             parentInstanse = this;
@@ -39,7 +39,7 @@ namespace mag_app.Winform.Windows.ProductForms
             primaryButton.BorderRadius = 5;
             primaryButton.Click += (s, e) =>
             {
-                Store_Add_ProductForm form = new Store_Add_ProductForm();
+                Store_Add_Product form = new Store_Add_Product();
                 form.ShowDialog();
             };
 
@@ -153,7 +153,7 @@ namespace mag_app.Winform.Windows.ProductForms
             };
             update.Click += (s, e) =>
             {
-                ProductUpdateForm productUpdateForm = new ProductUpdateForm();
+                Edit_Product productUpdateForm = new Edit_Product();
                 productUpdateForm.ProductName = product.ProdutName;
                 productUpdateForm.ShowDialog();
             };
@@ -193,10 +193,10 @@ namespace mag_app.Winform.Windows.ProductForms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            StoreProductsForm.storeProductParent.openChildForm(new SubCategoriesForm());
-            StoreProductsForm.storeProductParent.title1.Controls.RemoveAt(2);
-            StoreProductsForm.storeProductParent.title2.Controls.RemoveAt(2);
-            StoreProductsForm.storeProductParent.backBtn.Show();
+            Store_Product_Form.storeProductParent.openChildForm(new SubCategoriesForm());
+            Store_Product_Form.storeProductParent.title1.Controls.RemoveAt(2);
+            Store_Product_Form.storeProductParent.title2.Controls.RemoveAt(2);
+            Store_Product_Form.storeProductParent.backBtn.Show();
         }
 
 

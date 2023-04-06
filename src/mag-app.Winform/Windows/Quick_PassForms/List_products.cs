@@ -51,7 +51,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         public async void FillData()
         {
             allProductViewModeBindingSource.Clear();
-            var products = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            var products = await _service.GetAllAsync(Stores_Form.myStoreFormParent.Id);
 
             foreach (var i in products)
             {
@@ -86,7 +86,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
-                Row_Update row = new Row_Update();
+                Edit_Row row = new Edit_Row();
                 row.ShowDialog();
             }
 

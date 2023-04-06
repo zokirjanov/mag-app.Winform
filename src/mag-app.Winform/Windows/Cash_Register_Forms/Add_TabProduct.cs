@@ -48,7 +48,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         public async void FillData()
         {
             allProductViewModelBindingSource.Clear();
-            var products = await _service.GetAllAsync(MyStoreForm.myStoreFormParent.Id);
+            var products = await _service.GetAllAsync(Stores_Form.myStoreFormParent.Id);
 
             foreach (var i in products)
             {

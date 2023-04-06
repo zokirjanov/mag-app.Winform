@@ -22,13 +22,13 @@ using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Quick_PassForms
 {
-    public partial class Row_Update : Form
+    public partial class Edit_Row : Form
     {
 
         AllProductService _productService;
         ProductService _product;
 
-        public Row_Update()
+        public Edit_Row()
         {
             _productService = new AllProductService();
             _product = new ProductService();
@@ -103,7 +103,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                             });
                             var res = db.SaveChanges();
                             AutoClosingMessageBox.Show("успешно отредактировано", "редактировать", 350);
-                            StoreProductsForm.storeProductParent.openChildForm(new List_products());
+                            Store_Product_Form.storeProductParent.openChildForm(new List_products());
                             this.Close();
                         }
                     }

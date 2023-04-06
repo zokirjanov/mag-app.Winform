@@ -8,10 +8,10 @@ using mag_app.Winform.Windows.Product_Forms;
 
 namespace mag_app.Winform.Windows.ProductForms
 {
-    public partial class AddCategoryForm : Form
+    public partial class Add_Category : Form
     {
         private readonly CategoryService _service;
-        public AddCategoryForm()
+        public Add_Category()
         {
             _service = new CategoryService();
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace mag_app.Winform.Windows.ProductForms
                 if (res == "true")
                 {
                     categoryNameTb.Text = "";
-                    StoreProductsForm.storeProductParent.openChildForm(new CategoriesForm());
+                    Store_Product_Form.storeProductParent.openChildForm(new Category_Form());
                     DialogResult dlg = MessageBox.Show("Категория успешно добавлена \n\nВы хотите добавить еще один", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (dlg == DialogResult.OK)
                     {

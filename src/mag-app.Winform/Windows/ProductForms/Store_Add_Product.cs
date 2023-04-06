@@ -14,11 +14,11 @@ using System.Text;
 
 namespace mag_app.Winform.Windows.ProductForms;
 
-public partial class Store_Add_ProductForm : Form
+public partial class Store_Add_Product : Form
 {
     private readonly ProductService _service;
 
-    public Store_Add_ProductForm()
+    public Store_Add_Product()
     {
         _service = new ProductService();
         InitializeComponent();
@@ -31,7 +31,7 @@ public partial class Store_Add_ProductForm : Form
     {
         barcodeLabel.Visible = false;
         barcodeTb.Visible = false;
-        categorylabel.Text = CategoriesForm.categoryParent!.CategoryTitle;
+        categorylabel.Text = Category_Form.categoryParent!.CategoryTitle;
         subCategoryLabel.Text = SubCategoriesForm.subCategoryParent.Title;
     }
 
@@ -103,8 +103,8 @@ public partial class Store_Add_ProductForm : Form
                 Price = decimal.Parse(productPriceTb.Text),
                 Barcode = barcodeResult,
                 PurchasedPrice = decimal.Parse(purchasePriceTb.Text),
-                CategoryName = CategoriesForm.categoryParent.CategoryTitle,
-                CategoryId = CategoriesForm.categoryParent.Id,
+                CategoryName = Category_Form.categoryParent.CategoryTitle,
+                CategoryId = Category_Form.categoryParent.Id,
                 SubcategoryName = SubCategoriesForm.subCategoryParent.Title,
                 SubCategoryId = SubCategoriesForm.subCategoryParent.Id,
                 Quantity = 0
@@ -115,7 +115,7 @@ public partial class Store_Add_ProductForm : Form
 
             if (res.product is not null)
             {
-                StoreProductsForm.storeProductParent.openChildForm(new Store_Create_ProductForm());
+                Store_Product_Form.storeProductParent.openChildForm(new Store_List_Product());
                 DialogResult dlg = MessageBox.Show("Продукт успешно добавлен \n\nВы хотите добавить еще один", "\r\nПодтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {

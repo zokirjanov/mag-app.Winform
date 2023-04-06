@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.Product_Forms
 {
-    partial class StoreProductsForm
+    partial class Store_Product_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StoreProductsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store_Product_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.quick_PassBtn = new System.Windows.Forms.Button();

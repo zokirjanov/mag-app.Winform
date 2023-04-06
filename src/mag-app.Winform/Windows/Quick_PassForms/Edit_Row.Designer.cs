@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.Quick_PassForms
 {
-    partial class Row_Update
+    partial class Edit_Row
     {
         /// <summary>
         /// Required designer variable.
