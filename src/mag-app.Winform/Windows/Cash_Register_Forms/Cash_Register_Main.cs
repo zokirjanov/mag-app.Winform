@@ -225,4 +225,13 @@ public partial class Cash_Register_Main : Form
         Store_Product_Form.storeProductParent.Show();
         this.Close();
     }
+
+    private void panel2_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
 }

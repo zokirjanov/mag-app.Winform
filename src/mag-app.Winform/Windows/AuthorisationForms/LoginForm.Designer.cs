@@ -75,7 +75,7 @@
             // loginPassShow
             // 
             this.loginPassShow.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginPassShow.BackColor = System.Drawing.Color.Transparent;
+            this.loginPassShow.BackColor = System.Drawing.Color.Beige;
             this.loginPassShow.Image = ((System.Drawing.Image)(resources.GetObject("loginPassShow.Image")));
             this.loginPassShow.Location = new System.Drawing.Point(347, 239);
             this.loginPassShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -129,7 +129,7 @@
             this.rememberMe.AutoSize = true;
             this.rememberMe.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rememberMe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rememberMe.Location = new System.Drawing.Point(42, 286);
+            this.rememberMe.Location = new System.Drawing.Point(42, 285);
             this.rememberMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rememberMe.Name = "rememberMe";
             this.rememberMe.Size = new System.Drawing.Size(101, 19);
@@ -142,7 +142,7 @@
             // 
             this.loginLoginerror.AutoSize = true;
             this.loginLoginerror.ForeColor = System.Drawing.Color.Red;
-            this.loginLoginerror.Location = new System.Drawing.Point(44, 206);
+            this.loginLoginerror.Location = new System.Drawing.Point(46, 212);
             this.loginLoginerror.Name = "loginLoginerror";
             this.loginLoginerror.Size = new System.Drawing.Size(0, 15);
             this.loginLoginerror.TabIndex = 19;
@@ -155,7 +155,7 @@
             this.customPanel2.BorderRadius = 15;
             this.customPanel2.BorderSize = 2;
             this.customPanel2.Controls.Add(this.loginlogin);
-            this.customPanel2.Location = new System.Drawing.Point(34, 176);
+            this.customPanel2.Location = new System.Drawing.Point(34, 175);
             this.customPanel2.Name = "customPanel2";
             this.customPanel2.Size = new System.Drawing.Size(347, 32);
             this.customPanel2.TabIndex = 21;

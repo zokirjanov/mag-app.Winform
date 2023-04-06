@@ -58,7 +58,7 @@ namespace mag_app.Winform
 
         private void MenuPanel_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, MenuPanel.ClientRectangle,
+               ControlPaint.DrawBorder(e.Graphics, MenuPanel.ClientRectangle,
                Color.White, 1, ButtonBorderStyle.Solid, // left
                Color.Transparent, 1, ButtonBorderStyle.Solid, // top
                Color.DimGray, 1, ButtonBorderStyle.Solid, // right
@@ -79,11 +79,6 @@ namespace mag_app.Winform
             {
                 //do nothing
             }
-        }
-
-        private void quick_PassBtn_Click(object sender, EventArgs e)
-        {
-            mainParent.openChildForm(new List_products());
         }
     }
 }
