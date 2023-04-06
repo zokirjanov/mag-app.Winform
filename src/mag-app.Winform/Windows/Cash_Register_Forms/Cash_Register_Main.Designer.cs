@@ -38,6 +38,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.primaryButton2 = new mag_app.Winform.Components.PrimaryButton();
             this.primaryButton1 = new mag_app.Winform.Components.PrimaryButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -76,7 +78,7 @@
             this.tabProductFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabProductFlowPanel.Location = new System.Drawing.Point(0, 55);
             this.tabProductFlowPanel.Name = "tabProductFlowPanel";
-            this.tabProductFlowPanel.Size = new System.Drawing.Size(865, 506);
+            this.tabProductFlowPanel.Size = new System.Drawing.Size(865, 531);
             this.tabProductFlowPanel.TabIndex = 5;
             // 
             // tabFlowPanel
@@ -92,9 +94,9 @@
             // 
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 561);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 586);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(865, 100);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(865, 75);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // panel2
@@ -105,7 +107,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(340, 561);
+            this.panel2.Size = new System.Drawing.Size(340, 540);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -116,9 +118,9 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 55);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 506);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 485);
             this.flowLayoutPanel1.TabIndex = 2;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint_1);
             // 
             // panel3
             // 
@@ -133,6 +135,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(119, 16);
@@ -144,13 +147,44 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.primaryButton2);
             this.panel1.Controls.Add(this.primaryButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 561);
+            this.panel1.Location = new System.Drawing.Point(0, 540);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 100);
+            this.panel1.Size = new System.Drawing.Size(340, 121);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(18, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(300, 2);
+            this.label2.TabIndex = 2;
+            // 
+            // primaryButton2
+            // 
+            this.primaryButton2.BackColor = System.Drawing.Color.MistyRose;
+            this.primaryButton2.BackgroundColor = System.Drawing.Color.MistyRose;
+            this.primaryButton2.BorderColor = System.Drawing.Color.Tomato;
+            this.primaryButton2.BorderRadius = 10;
+            this.primaryButton2.BorderSize = 1;
+            this.primaryButton2.FlatAppearance.BorderSize = 0;
+            this.primaryButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.primaryButton2.ForeColor = System.Drawing.Color.Black;
+            this.primaryButton2.Image = ((System.Drawing.Image)(resources.GetObject("primaryButton2.Image")));
+            this.primaryButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.primaryButton2.Location = new System.Drawing.Point(178, 6);
+            this.primaryButton2.Name = "primaryButton2";
+            this.primaryButton2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.primaryButton2.Size = new System.Drawing.Size(150, 30);
+            this.primaryButton2.TabIndex = 1;
+            this.primaryButton2.Text = "очистить корзину";
+            this.primaryButton2.TextColor = System.Drawing.Color.Black;
+            this.primaryButton2.UseVisualStyleBackColor = false;
             // 
             // primaryButton1
             // 
@@ -164,7 +198,7 @@
             this.primaryButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.primaryButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.primaryButton1.ForeColor = System.Drawing.Color.Black;
-            this.primaryButton1.Location = new System.Drawing.Point(54, 23);
+            this.primaryButton1.Location = new System.Drawing.Point(53, 54);
             this.primaryButton1.Name = "primaryButton1";
             this.primaryButton1.Size = new System.Drawing.Size(238, 54);
             this.primaryButton1.TabIndex = 0;
@@ -208,5 +242,7 @@
         private Panel panel3;
         private Components.PrimaryButton primaryButton1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Label label2;
+        private Components.PrimaryButton primaryButton2;
     }
 }

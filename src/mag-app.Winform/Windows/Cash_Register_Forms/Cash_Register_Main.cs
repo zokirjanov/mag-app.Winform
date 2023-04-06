@@ -1,5 +1,6 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Services.StoreService;
+using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
 using Microsoft.EntityFrameworkCore;
 
@@ -165,6 +166,10 @@ public partial class Cash_Register_Main : Form
             Location = new Point(0, 0),
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/cogwheel.png"),
         };
+        settingtab.Click += (s, e) =>
+        {
+
+        };
         Button addTab = new Button()
         {
             Parent = firstpanel,
@@ -206,6 +211,12 @@ public partial class Cash_Register_Main : Form
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png"),
         };
+        tabProductButton.Click += (s, e) =>
+        {
+            ProductControl productControl = new ProductControl();
+            flowLayoutPanel1.Controls.Add(productControl);
+
+        };
         var labelName = new Label()
         {
             Text = name,
@@ -222,7 +233,7 @@ public partial class Cash_Register_Main : Form
     }
 
 
-
+    
 
 
 
@@ -259,7 +270,7 @@ public partial class Cash_Register_Main : Form
         Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
     }
 
-    private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+    private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
     {
         ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
         Color.Black, 1, ButtonBorderStyle.Solid, // left

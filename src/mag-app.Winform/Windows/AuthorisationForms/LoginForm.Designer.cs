@@ -49,10 +49,10 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(44, 414);
+            this.button1.Location = new System.Drawing.Point(51, 409);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(326, 37);
+            this.button1.Size = new System.Drawing.Size(319, 37);
             this.button1.TabIndex = 16;
             this.button1.Text = "Register";
             this.button1.UseVisualStyleBackColor = false;
@@ -63,10 +63,10 @@
             this.registerBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerBtn.BackColor = System.Drawing.Color.SpringGreen;
             this.registerBtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.registerBtn.Location = new System.Drawing.Point(42, 352);
+            this.registerBtn.Location = new System.Drawing.Point(49, 347);
             this.registerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.registerBtn.Name = "registerBtn";
-            this.registerBtn.Size = new System.Drawing.Size(329, 44);
+            this.registerBtn.Size = new System.Drawing.Size(321, 44);
             this.registerBtn.TabIndex = 15;
             this.registerBtn.Text = "Login";
             this.registerBtn.UseVisualStyleBackColor = false;
@@ -77,7 +77,7 @@
             this.loginPassShow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginPassShow.BackColor = System.Drawing.Color.Beige;
             this.loginPassShow.Image = ((System.Drawing.Image)(resources.GetObject("loginPassShow.Image")));
-            this.loginPassShow.Location = new System.Drawing.Point(347, 240);
+            this.loginPassShow.Location = new System.Drawing.Point(341, 240);
             this.loginPassShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginPassShow.Name = "loginPassShow";
             this.loginPassShow.Size = new System.Drawing.Size(26, 22);
@@ -91,11 +91,11 @@
             this.loginPass.BackColor = System.Drawing.Color.Beige;
             this.loginPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.loginPass.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.loginPass.Location = new System.Drawing.Point(10, 5);
+            this.loginPass.Location = new System.Drawing.Point(11, 5);
             this.loginPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginPass.Name = "loginPass";
             this.loginPass.PlaceholderText = "Password";
-            this.loginPass.Size = new System.Drawing.Size(325, 23);
+            this.loginPass.Size = new System.Drawing.Size(320, 23);
             this.loginPass.TabIndex = 13;
             this.loginPass.UseSystemPasswordChar = true;
             // 
@@ -105,11 +105,11 @@
             this.loginlogin.BackColor = System.Drawing.Color.Beige;
             this.loginlogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.loginlogin.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.loginlogin.Location = new System.Drawing.Point(10, 5);
+            this.loginlogin.Location = new System.Drawing.Point(11, 5);
             this.loginlogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginlogin.Name = "loginlogin";
             this.loginlogin.PlaceholderText = "Login";
-            this.loginlogin.Size = new System.Drawing.Size(325, 23);
+            this.loginlogin.Size = new System.Drawing.Size(320, 23);
             this.loginlogin.TabIndex = 12;
             // 
             // label1
@@ -157,7 +157,7 @@
             this.customPanel2.Controls.Add(this.loginlogin);
             this.customPanel2.Location = new System.Drawing.Point(34, 175);
             this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(347, 32);
+            this.customPanel2.Size = new System.Drawing.Size(342, 32);
             this.customPanel2.TabIndex = 21;
             this.customPanel2.UnderlinedStyle = false;
             // 
@@ -172,7 +172,7 @@
             this.customPanel3.Controls.Add(this.loginPass);
             this.customPanel3.Location = new System.Drawing.Point(34, 234);
             this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Size = new System.Drawing.Size(347, 32);
+            this.customPanel3.Size = new System.Drawing.Size(342, 32);
             this.customPanel3.TabIndex = 22;
             this.customPanel3.UnderlinedStyle = false;
             // 
@@ -182,7 +182,7 @@
             this.textBox2.BackColor = System.Drawing.Color.Beige;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(83, -29);
+            this.textBox2.Location = new System.Drawing.Point(81, -29);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
             this.textBox2.PlaceholderText = "Login";
