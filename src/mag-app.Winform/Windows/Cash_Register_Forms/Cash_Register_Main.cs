@@ -1,10 +1,17 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
+using mag_app.Service.Common.Helpers;
+using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
+using mag_app.Winform.Windows.ProductForms;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.Devices;
+using System.Windows.Forms;
 using System.Xml;
+using static System.Net.WebRequestMethods;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -13,7 +20,8 @@ public partial class Cash_Register_Main : Form
 
     public static Cash_Register_Main cashRegisterMainParent = default!;
     TabService _service;
-    TabProductService _productService;
+    TabProductService _tabProductService;
+    ProductService _productService;
     public FlowLayoutPanel flw;
 
 
@@ -21,7 +29,8 @@ public partial class Cash_Register_Main : Form
     public Cash_Register_Main()
     {
         _service = new TabService();
-        _productService = new TabProductService();
+        _tabProductService = new TabProductService();
+        _productService= new ProductService();
         cashRegisterMainParent = this;
         InitializeComponent();
         flw = tabFlowPanel;
@@ -98,7 +107,7 @@ public partial class Cash_Register_Main : Form
 
         using (var db = new AppDbContext())
         {
-            var items = await db.Tabs.OrderByDescending(x=>x.Id).ToListAsync();
+            var items = await db.Tabs.OrderByDescending(x => x.Id).ToListAsync();
             if (items is null)
             {
                 MessageBox.Show("Tabs not found");
@@ -111,7 +120,7 @@ public partial class Cash_Register_Main : Form
                 }
             }
         }
-           
+
     }
 
     private void AddItem(string tabname)
@@ -127,15 +136,15 @@ public partial class Cash_Register_Main : Form
         };
         tabButton.Click += async (s, e) =>
         {
-            foreach(Control control in tabFlowPanel.Controls)
+            foreach (Control control in tabFlowPanel.Controls)
             {
-                if(control.Margin == new Padding(1, 19, 0, 0))
+                if (control.Margin == new Padding(1, 19, 0, 0))
                 {
                     control.Margin = new Padding(1, 6, 0, 0);
-                    control.BackColor= Color.Turquoise;
+                    control.BackColor = Color.Turquoise;
                 }
             }
-            tabButton.Margin = new Padding(1,19,0,0);
+            tabButton.Margin = new Padding(1, 19, 0, 0);
             tabButton.BackColor = Color.White;
             TabId = await _service.GetId(tabname);
             TabName = tabname;
@@ -153,16 +162,16 @@ public partial class Cash_Register_Main : Form
     /// </summary>
     public async void TabProductsFill()
     {
-     
-        
+
+
         tabProductFlowPanel.Controls.Clear();
         Panel firstpanel = new Panel()
         {
             Width = 160,
             Height = 80,
         };
-    
-        
+
+
         Button settingtab = new Button()
         {
             Parent = firstpanel,
@@ -176,8 +185,8 @@ public partial class Cash_Register_Main : Form
         {
 
         };
-     
-   
+
+
         Button addTab = new Button()
         {
             Parent = firstpanel,
@@ -193,12 +202,12 @@ public partial class Cash_Register_Main : Form
             add_TabProduct.ShowDialog();
         };
 
-    
+
         tabProductFlowPanel.Controls.Add(firstpanel);
 
 
-        var items = await _productService.GetAllAsync(TabId);
-       
+        var items = await _tabProductService.GetAllAsync(TabId);
+
         if (items is null)
         {
             MessageBox.Show("Tab Products not found");
@@ -219,56 +228,49 @@ public partial class Cash_Register_Main : Form
     private void AddProductItem(TabProduct product)
     {
 
-
         var tabProductButton = new Button
         {
+            Text = product.ProductName,
+            TextAlign = ContentAlignment.BottomCenter,
             Width = 80,
             Height = 80,
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png"),
         };
-
-        var labelName = new Label()
-        {
-            Text = product.ProductName,
-            Parent = tabProductButton,
-            Width = 80,
-            Height = 20,
-            Font = new Font("Times new roman", 9),
-            TextAlign = ContentAlignment.BottomCenter,
-            Location = new Point(0, 55),
-        };
-
-
-        List<long> arrayID = new List<long>();
-        labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
-    
-
-        tabProductButton.Click += (s, e) =>
-        {
-
-
-            if (!arrayID.Contains(product.ProductId) || arrayID.Count == 0)
-            {
-               
-                var ucProduct = new ProductControl()
-                {
-                    Title = product.ProductName,
-                    Cost = product.Price.ToString(@"###\ ###\ ###\ ###\"),
-                    Quantity = 0,
-                    TotalCost = 0
-                };
-                arrayID.Append(product.ProductId);
-                flowLayoutPanel1.Controls.Add(ucProduct);
-            }
-        };
-
-
-
         tabProductFlowPanel.Controls.Add(tabProductButton);
+
+
+
+        tabProductButton.Click += (ss, e) =>
+        {
+            var ucProduct = new ProductControl()
+            {
+                Title = product.ProductName,
+                Cost = product.Price,
+                Quantity = 1,
+                TotalCost = product.Price,
+            };
+
+
+            foreach(Control item in flowLayoutPanel1.Controls)
+            {
+                var wdg = (ProductControl)item;
+
+                if(wdg.Title == ucProduct.Title)
+                {
+                    decimal totalPrice = (Convert.ToDecimal(wdg.Quantity) + 1) * wdg.Cost;
+                    wdg.Quantity++;
+                    wdg.TotalCost = totalPrice;
+                    return;
+                }
+            }
+
+
+            flowLayoutPanel1.Controls.Add(ucProduct);
+        };
     }
 
-    
+
 
 
 
@@ -318,6 +320,113 @@ public partial class Cash_Register_Main : Form
 
     private void primaryButton2_Click(object sender, EventArgs e)
     {
-        flowLayoutPanel1.Controls.Clear();
+        DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        if (dlg == DialogResult.OK)
+        {
+            flowLayoutPanel1.Controls.Clear();
+        }
+        if (dlg == DialogResult.Cancel)
+        {
+            // Do nothing
+        }
+    }
+
+    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    
+
+
+
+
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+
+
+        if(barcodeTb.Text.Length == 13)
+        {
+            using (var db = new AppDbContext())
+            {
+                var tpr = db.Tabproducts.Where(x => x.Product.Barcode == barcodeTb.Text).Include(x => x.Product).ToList();
+
+                foreach (var item in tpr)
+                {
+                    if (item.Product != null)
+                    {
+                        customPanel2.BorderColor = Color.Lime;
+                    }
+                }
+            }
+        }
+        else customPanel2.BorderColor = Color.Cyan;
+
+
+    }
+
+
+
+    private async void primaryButton3_Click(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(barcodeTb.Text) && !string.IsNullOrEmpty(quantityTb.Text) && customPanel2.BorderColor == Color.Lime)
+        {
+            var product = await _productService.Get(barcodeTb.Text);
+
+
+
+            if (product != null)
+            {
+
+
+                var ucProduct = new ProductControl()
+                {
+                    Title = product.ProdutName,
+                    Cost = product.Price,
+                    Quantity = int.Parse(quantityTb.Text),
+                    TotalCost = product.Price * int.Parse(quantityTb.Text),
+                };
+
+
+                foreach (Control item in flowLayoutPanel1.Controls)
+                {
+                    var wdg = (ProductControl)item;
+
+                    if (wdg.Title == ucProduct.Title)
+                    {
+                        decimal totalPrice = (Convert.ToDecimal(wdg.Quantity) + 1) * wdg.Cost;
+                        wdg.Quantity += Convert.ToInt32(quantityTb.Text);
+                        wdg.TotalCost = totalPrice;
+                        quantityTb.Text = "";
+                        return;
+                    }
+                }
+                quantityTb.Text = "";
+                flowLayoutPanel1.Controls.Add(ucProduct);
+            }
+            else MessageBox.Show("товар не найден");
+        }
+        else MessageBox.Show("заполните поле");
     }
 }

@@ -63,7 +63,7 @@ namespace mag_app.Winform.Components
         {
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
-            this.Size = new Size(830, 30);
+            this.Size = new Size(50, 50);
             this.BackColor = Color.AliceBlue;
             this.ForeColor = Color.Black;
             this.Resize += new EventHandler(Button_Resize);

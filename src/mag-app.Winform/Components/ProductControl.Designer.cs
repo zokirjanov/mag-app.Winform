@@ -124,10 +124,10 @@
             // 
             // ucTotalPrice
             // 
-            this.ucTotalPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ucTotalPrice.Location = new System.Drawing.Point(68, 13);
+            this.ucTotalPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ucTotalPrice.Location = new System.Drawing.Point(63, 13);
             this.ucTotalPrice.Name = "ucTotalPrice";
-            this.ucTotalPrice.Size = new System.Drawing.Size(76, 18);
+            this.ucTotalPrice.Size = new System.Drawing.Size(91, 18);
             this.ucTotalPrice.TabIndex = 5;
             this.ucTotalPrice.Text = "Total Price";
             this.ucTotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -136,21 +136,21 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(22, 13);
+            this.label3.Location = new System.Drawing.Point(17, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 19);
+            this.label3.Size = new System.Drawing.Size(47, 19);
             this.label3.TabIndex = 5;
-            this.label3.Text = "и-го:";
+            this.label3.Text = "итого:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(179, 9);
+            this.label1.Location = new System.Drawing.Point(174, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 19);
+            this.label1.Size = new System.Drawing.Size(55, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "к-во:";
+            this.label1.Text = "кол-во:";
             // 
             // ucTitle
             // 

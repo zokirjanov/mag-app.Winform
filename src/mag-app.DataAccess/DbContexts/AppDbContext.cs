@@ -49,9 +49,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<TabProduct>()
                     .HasOne<Product>(e => e.Product)
                     .WithMany(d => d.TabProducts)
-                    .HasForeignKey(e => e.ProductId)
-                    .OnDelete(DeleteBehavior.Cascade);
-
+                    .HasForeignKey(e => e.ProductId);
 
         // Cash_Registers
         modelBuilder.Entity<Cash>()
