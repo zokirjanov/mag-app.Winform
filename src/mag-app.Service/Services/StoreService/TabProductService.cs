@@ -49,6 +49,11 @@ namespace mag_app.Service.Services.StoreService
             else return null;
         }
 
+        public async Task<TabProduct> GetAsync(string barcode)
+        {
+            return await tabRepository.FirstOrDefaultAsync(x => x.Product.Barcode == barcode);
+        }
+
         public Task<string> UpdateAsync(TabProductViewModel tab, string name)
         {
             throw new NotImplementedException();

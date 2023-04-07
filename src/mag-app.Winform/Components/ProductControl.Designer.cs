@@ -125,9 +125,9 @@
             // ucTotalPrice
             // 
             this.ucTotalPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ucTotalPrice.Location = new System.Drawing.Point(68, 13);
+            this.ucTotalPrice.Location = new System.Drawing.Point(63, 13);
             this.ucTotalPrice.Name = "ucTotalPrice";
-            this.ucTotalPrice.Size = new System.Drawing.Size(76, 18);
+            this.ucTotalPrice.Size = new System.Drawing.Size(91, 18);
             this.ucTotalPrice.TabIndex = 5;
             this.ucTotalPrice.Text = "Total Price";
             this.ucTotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

@@ -2,6 +2,7 @@
 using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
@@ -19,7 +20,8 @@ public partial class Cash_Register_Main : Form
 
     public static Cash_Register_Main cashRegisterMainParent = default!;
     TabService _service;
-    TabProductService _productService;
+    TabProductService _tabProductService;
+    ProductService _productService;
     public FlowLayoutPanel flw;
 
 
@@ -27,7 +29,8 @@ public partial class Cash_Register_Main : Form
     public Cash_Register_Main()
     {
         _service = new TabService();
-        _productService = new TabProductService();
+        _tabProductService = new TabProductService();
+        _productService= new ProductService();
         cashRegisterMainParent = this;
         InitializeComponent();
         flw = tabFlowPanel;
@@ -203,7 +206,7 @@ public partial class Cash_Register_Main : Form
         tabProductFlowPanel.Controls.Add(firstpanel);
 
 
-        var items = await _productService.GetAllAsync(TabId);
+        var items = await _tabProductService.GetAllAsync(TabId);
 
         if (items is null)
         {
@@ -326,5 +329,104 @@ public partial class Cash_Register_Main : Form
         {
             // Do nothing
         }
+    }
+
+    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    
+
+
+
+
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+
+
+        if(barcodeTb.Text.Length == 13)
+        {
+            using (var db = new AppDbContext())
+            {
+                var tpr = db.Tabproducts.Where(x => x.Product.Barcode == barcodeTb.Text).Include(x => x.Product).ToList();
+
+                foreach (var item in tpr)
+                {
+                    if (item.Product != null)
+                    {
+                        customPanel2.BorderColor = Color.Lime;
+                    }
+                }
+            }
+        }
+        else customPanel2.BorderColor = Color.Cyan;
+
+
+    }
+
+
+
+    private async void primaryButton3_Click(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(barcodeTb.Text) && !string.IsNullOrEmpty(quantityTb.Text) && customPanel2.BorderColor == Color.Lime)
+        {
+            var product = await _productService.Get(barcodeTb.Text);
+
+
+
+            if (product != null)
+            {
+
+
+                var ucProduct = new ProductControl()
+                {
+                    Title = product.ProdutName,
+                    Cost = product.Price,
+                    Quantity = int.Parse(quantityTb.Text),
+                    TotalCost = product.Price * int.Parse(quantityTb.Text),
+                };
+
+
+                foreach (Control item in flowLayoutPanel1.Controls)
+                {
+                    var wdg = (ProductControl)item;
+
+                    if (wdg.Title == ucProduct.Title)
+                    {
+                        decimal totalPrice = (Convert.ToDecimal(wdg.Quantity) + 1) * wdg.Cost;
+                        wdg.Quantity += Convert.ToInt32(quantityTb.Text);
+                        wdg.TotalCost = totalPrice;
+                        quantityTb.Text = "";
+                        return;
+                    }
+                }
+                quantityTb.Text = "";
+                flowLayoutPanel1.Controls.Add(ucProduct);
+            }
+            else MessageBox.Show("товар не найден");
+        }
+        else MessageBox.Show("заполните поле");
     }
 }

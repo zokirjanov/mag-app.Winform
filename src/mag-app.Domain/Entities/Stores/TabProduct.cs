@@ -15,14 +15,14 @@ namespace mag_app.Domain.Entities.Stores
 
 
         [ForeignKey("TabControllerId")]
-        public TabController TabController { get; set; }
+        public virtual TabController TabController { get; set; }
 
         public long TabControllerId { get; set; }
         public string TabControllerName { get; set; }
 
 
         [ForeignKey("ProductId")]
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         public long ProductId { get; set; }
         public string ProductName { get; set; }
