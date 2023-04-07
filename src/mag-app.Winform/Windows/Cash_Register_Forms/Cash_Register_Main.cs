@@ -350,14 +350,12 @@ public partial class Cash_Register_Main : Form
         {
             e.Handled = true;
         }
-        // only allow one decimal point
         if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
         {
             e.Handled = true;
         }
     }
 
-    
 
 
 
@@ -385,7 +383,6 @@ public partial class Cash_Register_Main : Form
 
 
     }
-
 
 
     private async void primaryButton3_Click(object sender, EventArgs e)
