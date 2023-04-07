@@ -86,7 +86,7 @@
             this.tabProductFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabProductFlowPanel.Location = new System.Drawing.Point(0, 55);
             this.tabProductFlowPanel.Name = "tabProductFlowPanel";
-            this.tabProductFlowPanel.Size = new System.Drawing.Size(865, 531);
+            this.tabProductFlowPanel.Size = new System.Drawing.Size(865, 535);
             this.tabProductFlowPanel.TabIndex = 5;
             // 
             // tabFlowPanel
@@ -102,9 +102,9 @@
             // 
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 586);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 590);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(865, 75);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(865, 71);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // panel2
@@ -177,6 +177,7 @@
             // 
             // primaryButton3
             // 
+            this.primaryButton3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.primaryButton3.BackColor = System.Drawing.Color.AliceBlue;
             this.primaryButton3.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.primaryButton3.BorderColor = System.Drawing.Color.Cyan;
