@@ -1,8 +1,11 @@
 ﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
+using mag_app.Winform.Windows.ProductForms;
 using Microsoft.EntityFrameworkCore;
 using System.Xml;
 
@@ -215,10 +218,11 @@ public partial class Cash_Register_Main : Form
     }
 
 
+    List<long> arrayID = new List<long>();
 
     private void AddProductItem(TabProduct product)
     {
-
+        //arrayID.Add(product.ProductId);
 
         var tabProductButton = new Button
         {
@@ -240,31 +244,25 @@ public partial class Cash_Register_Main : Form
         };
 
 
-        List<long> arrayID = new List<long>();
         labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
     
 
         tabProductButton.Click += (s, e) =>
         {
-
-
             if (!arrayID.Contains(product.ProductId) || arrayID.Count == 0)
             {
-               
+                arrayID.Add(product.ProductId);
+
                 var ucProduct = new ProductControl()
                 {
                     Title = product.ProductName,
                     Cost = product.Price.ToString(@"###\ ###\ ###\ ###\"),
-                    Quantity = 0,
-                    TotalCost = 0
+                    Quantity = 1,
+                    TotalCost = product.Price.ToString(@"###\ ###\ ###\ ###\"),
                 };
-                arrayID.Append(product.ProductId);
                 flowLayoutPanel1.Controls.Add(ucProduct);
             }
         };
-
-
-
         tabProductFlowPanel.Controls.Add(tabProductButton);
     }
 
@@ -318,6 +316,15 @@ public partial class Cash_Register_Main : Form
 
     private void primaryButton2_Click(object sender, EventArgs e)
     {
-        flowLayoutPanel1.Controls.Clear();
+        DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        if (dlg == DialogResult.OK)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            arrayID.Clear();
+        }
+        if (dlg == DialogResult.Cancel)
+        {
+            // Do nothing
+        }
     }
 }
