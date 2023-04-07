@@ -7,7 +7,10 @@ using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
 using mag_app.Winform.Windows.ProductForms;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.Devices;
+using System.Windows.Forms;
 using System.Xml;
+using static System.Net.WebRequestMethods;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -101,7 +104,7 @@ public partial class Cash_Register_Main : Form
 
         using (var db = new AppDbContext())
         {
-            var items = await db.Tabs.OrderByDescending(x=>x.Id).ToListAsync();
+            var items = await db.Tabs.OrderByDescending(x => x.Id).ToListAsync();
             if (items is null)
             {
                 MessageBox.Show("Tabs not found");
@@ -114,7 +117,7 @@ public partial class Cash_Register_Main : Form
                 }
             }
         }
-           
+
     }
 
     private void AddItem(string tabname)
@@ -130,15 +133,15 @@ public partial class Cash_Register_Main : Form
         };
         tabButton.Click += async (s, e) =>
         {
-            foreach(Control control in tabFlowPanel.Controls)
+            foreach (Control control in tabFlowPanel.Controls)
             {
-                if(control.Margin == new Padding(1, 19, 0, 0))
+                if (control.Margin == new Padding(1, 19, 0, 0))
                 {
                     control.Margin = new Padding(1, 6, 0, 0);
-                    control.BackColor= Color.Turquoise;
+                    control.BackColor = Color.Turquoise;
                 }
             }
-            tabButton.Margin = new Padding(1,19,0,0);
+            tabButton.Margin = new Padding(1, 19, 0, 0);
             tabButton.BackColor = Color.White;
             TabId = await _service.GetId(tabname);
             TabName = tabname;
@@ -156,16 +159,16 @@ public partial class Cash_Register_Main : Form
     /// </summary>
     public async void TabProductsFill()
     {
-     
-        
+
+
         tabProductFlowPanel.Controls.Clear();
         Panel firstpanel = new Panel()
         {
             Width = 160,
             Height = 80,
         };
-    
-        
+
+
         Button settingtab = new Button()
         {
             Parent = firstpanel,
@@ -179,8 +182,8 @@ public partial class Cash_Register_Main : Form
         {
 
         };
-     
-   
+
+
         Button addTab = new Button()
         {
             Parent = firstpanel,
@@ -196,12 +199,12 @@ public partial class Cash_Register_Main : Form
             add_TabProduct.ShowDialog();
         };
 
-    
+
         tabProductFlowPanel.Controls.Add(firstpanel);
 
 
         var items = await _productService.GetAllAsync(TabId);
-       
+
         if (items is null)
         {
             MessageBox.Show("Tab Products not found");
@@ -218,55 +221,53 @@ public partial class Cash_Register_Main : Form
     }
 
 
-    List<long> arrayID = new List<long>();
 
     private void AddProductItem(TabProduct product)
     {
-        //arrayID.Add(product.ProductId);
 
         var tabProductButton = new Button
         {
+            Text = product.ProductName,
+            TextAlign = ContentAlignment.BottomCenter,
             Width = 80,
             Height = 80,
             BackColor = Color.Transparent,
             Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png"),
         };
-
-        var labelName = new Label()
-        {
-            Text = product.ProductName,
-            Parent = tabProductButton,
-            Width = 80,
-            Height = 20,
-            Font = new Font("Times new roman", 9),
-            TextAlign = ContentAlignment.BottomCenter,
-            Location = new Point(0, 55),
-        };
-
-
-        labelName.Click += (sender, args) => InvokeOnClick(tabProductButton, args);
-    
-
-        tabProductButton.Click += (s, e) =>
-        {
-            if (!arrayID.Contains(product.ProductId) || arrayID.Count == 0)
-            {
-                arrayID.Add(product.ProductId);
-
-                var ucProduct = new ProductControl()
-                {
-                    Title = product.ProductName,
-                    Cost = product.Price.ToString(@"###\ ###\ ###\ ###\"),
-                    Quantity = 1,
-                    TotalCost = product.Price.ToString(@"###\ ###\ ###\ ###\"),
-                };
-                flowLayoutPanel1.Controls.Add(ucProduct);
-            }
-        };
         tabProductFlowPanel.Controls.Add(tabProductButton);
+
+
+
+        tabProductButton.Click += (ss, e) =>
+        {
+            var ucProduct = new ProductControl()
+            {
+                Title = product.ProductName,
+                Cost = product.Price,
+                Quantity = 1,
+                TotalCost = product.Price,
+            };
+
+
+            foreach(Control item in flowLayoutPanel1.Controls)
+            {
+                var wdg = (ProductControl)item;
+
+                if(wdg.Title == ucProduct.Title)
+                {
+                    decimal totalPrice = (Convert.ToDecimal(wdg.Quantity) + 1) * wdg.Cost;
+                    wdg.Quantity++;
+                    wdg.TotalCost = totalPrice;
+                    return;
+                }
+            }
+
+
+            flowLayoutPanel1.Controls.Add(ucProduct);
+        };
     }
 
-    
+
 
 
 
@@ -320,7 +321,6 @@ public partial class Cash_Register_Main : Form
         if (dlg == DialogResult.OK)
         {
             flowLayoutPanel1.Controls.Clear();
-            arrayID.Clear();
         }
         if (dlg == DialogResult.Cancel)
         {
