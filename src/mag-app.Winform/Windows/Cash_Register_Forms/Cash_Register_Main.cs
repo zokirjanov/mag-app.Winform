@@ -245,6 +245,7 @@ public partial class Cash_Register_Main : Form
         {
             var ucProduct = new ProductControl()
             {
+                Width = flowLayoutPanel1.Width - 10,
                 Title = product.ProductName,
                 Cost = product.Price,
                 Quantity = 1,
