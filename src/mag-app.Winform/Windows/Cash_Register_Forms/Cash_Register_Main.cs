@@ -274,92 +274,6 @@ public partial class Cash_Register_Main : Form
 
 
 
-
-
-    private void Cash_Register_Main_FormClosed(object sender, FormClosedEventArgs e)
-    {
-        Store_Product_Form.storeProductParent.Show();
-        this.Close();
-    }
-
-    private void panel2_Paint(object sender, PaintEventArgs e)
-    {
-        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
-        Color.Black, 1, ButtonBorderStyle.Solid, // left
-        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
-        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
-        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
-    }
-
-    private void panel3_Paint(object sender, PaintEventArgs e)
-    {
-        ControlPaint.DrawBorder(e.Graphics, panel3.ClientRectangle,
-        Color.Black, 1, ButtonBorderStyle.Solid, // left
-        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
-        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
-        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
-    }
-
-    private void panel1_Paint(object sender, PaintEventArgs e)
-    {
-        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
-        Color.Black, 1, ButtonBorderStyle.Solid, // left
-        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
-        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
-        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
-    }
-
-    private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-    {
-        ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
-        Color.Black, 1, ButtonBorderStyle.Solid, // left
-        Color.Black, 1, ButtonBorderStyle.Solid, // top
-        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
-        Color.Black, 1, ButtonBorderStyle.Solid);// bottom
-    }
-
-    private void primaryButton2_Click(object sender, EventArgs e)
-    {
-        DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        if (dlg == DialogResult.OK)
-        {
-            flowLayoutPanel1.Controls.Clear();
-        }
-        if (dlg == DialogResult.Cancel)
-        {
-            // Do nothing
-        }
-    }
-
-    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
-    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-        {
-            e.Handled = true;
-        }
-        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
-
-
-
-
     private void textBox1_TextChanged(object sender, EventArgs e)
     {
 
@@ -426,4 +340,147 @@ public partial class Cash_Register_Main : Form
         }
         else MessageBox.Show("заполните поле");
     }
+
+
+
+    /// <summary>
+    ///  Delete Specific controls
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private async void primaryButton4_Click(object sender, EventArgs e)
+    {
+
+        int cnt = 0;
+
+
+        foreach (Control item in flowLayoutPanel1.Controls)
+        {
+            var wdg = (ProductControl)item;
+
+            if (wdg.customPanel1.BorderColor == Color.Tomato)
+            {
+                cnt++;
+                break;
+            }
+        }
+
+
+
+
+        if (cnt > 0)
+        {
+            
+            DialogResult dlg = MessageBox.Show("Хотите удалить товар?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                for (int i = flowLayoutPanel1.Controls.Count - 1; i >= 0; i--)
+                {
+                    var wdg = (ProductControl)flowLayoutPanel1.Controls[i];
+
+                    if (wdg.customPanel1.BorderColor == Color.Tomato)
+                    {
+                        flowLayoutPanel1.Controls.RemoveAt(i);
+                    }
+                }
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                // Do nothing
+            }
+
+        }
+
+        else MessageBox.Show("Выбранные продукты недоступны");
+      
+    }
+
+
+
+
+
+
+    private void Cash_Register_Main_FormClosed(object sender, FormClosedEventArgs e)
+    {
+        Store_Product_Form.storeProductParent.Show();
+        this.Close();
+    }
+
+    private void panel2_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void panel3_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel3.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void panel1_Paint(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, panel2.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Transparent, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+    private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+    {
+        ControlPaint.DrawBorder(e.Graphics, flowLayoutPanel1.ClientRectangle,
+        Color.Black, 1, ButtonBorderStyle.Solid, // left
+        Color.Black, 1, ButtonBorderStyle.Solid, // top
+        Color.Transparent, 1, ButtonBorderStyle.Solid, // right
+        Color.Black, 1, ButtonBorderStyle.Solid);// bottom
+    }
+
+
+
+
+    private void primaryButton2_Click(object sender, EventArgs e)
+    {
+        DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        if (dlg == DialogResult.OK)
+        {
+            flowLayoutPanel1.Controls.Clear();
+        }
+        if (dlg == DialogResult.Cancel)
+        {
+            // Do nothing
+        }
+    }
+
+    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
 }

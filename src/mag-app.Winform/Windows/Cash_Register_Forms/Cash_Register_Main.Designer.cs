@@ -44,6 +44,7 @@
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.primaryButton4 = new mag_app.Winform.Components.PrimaryButton();
             this.label2 = new System.Windows.Forms.Label();
             this.primaryButton2 = new mag_app.Winform.Components.PrimaryButton();
             this.primaryButton1 = new mag_app.Winform.Components.PrimaryButton();
@@ -252,6 +253,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.primaryButton4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.primaryButton2);
             this.panel1.Controls.Add(this.primaryButton1);
@@ -261,6 +263,29 @@
             this.panel1.Size = new System.Drawing.Size(340, 110);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // primaryButton4
+            // 
+            this.primaryButton4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.primaryButton4.BackColor = System.Drawing.Color.MistyRose;
+            this.primaryButton4.BackgroundColor = System.Drawing.Color.MistyRose;
+            this.primaryButton4.BorderColor = System.Drawing.Color.Tomato;
+            this.primaryButton4.BorderRadius = 10;
+            this.primaryButton4.BorderSize = 1;
+            this.primaryButton4.FlatAppearance.BorderSize = 0;
+            this.primaryButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.primaryButton4.ForeColor = System.Drawing.Color.Black;
+            this.primaryButton4.Image = ((System.Drawing.Image)(resources.GetObject("primaryButton4.Image")));
+            this.primaryButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.primaryButton4.Location = new System.Drawing.Point(119, 4);
+            this.primaryButton4.Name = "primaryButton4";
+            this.primaryButton4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.primaryButton4.Size = new System.Drawing.Size(100, 30);
+            this.primaryButton4.TabIndex = 3;
+            this.primaryButton4.Text = "удалить ";
+            this.primaryButton4.TextColor = System.Drawing.Color.Black;
+            this.primaryButton4.UseVisualStyleBackColor = false;
+            this.primaryButton4.Click += new System.EventHandler(this.primaryButton4_Click);
             // 
             // label2
             // 
@@ -284,12 +309,12 @@
             this.primaryButton2.ForeColor = System.Drawing.Color.Black;
             this.primaryButton2.Image = ((System.Drawing.Image)(resources.GetObject("primaryButton2.Image")));
             this.primaryButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.primaryButton2.Location = new System.Drawing.Point(178, 4);
+            this.primaryButton2.Location = new System.Drawing.Point(229, 4);
             this.primaryButton2.Name = "primaryButton2";
             this.primaryButton2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.primaryButton2.Size = new System.Drawing.Size(150, 30);
+            this.primaryButton2.Size = new System.Drawing.Size(100, 30);
             this.primaryButton2.TabIndex = 1;
-            this.primaryButton2.Text = "очистить корзину";
+            this.primaryButton2.Text = "очистить ";
             this.primaryButton2.TextColor = System.Drawing.Color.Black;
             this.primaryButton2.UseVisualStyleBackColor = false;
             this.primaryButton2.Click += new System.EventHandler(this.primaryButton2_Click);
@@ -362,5 +387,6 @@
         private Components.CustomPanel customPanel1;
         private Components.CustomPanel customPanel2;
         private TextBox textBox3;
+        private Components.PrimaryButton primaryButton4;
     }
 }
