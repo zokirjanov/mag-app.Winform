@@ -232,8 +232,6 @@
         }
 
         #endregion
-
-        private CustomPanel customPanel1;
         private Label label1;
         private Label ucTitle;
         private CustomPanel customPanel3;
@@ -247,5 +245,6 @@
         private Label label6;
         private Label label4;
         private Label label2;
+        public CustomPanel customPanel1;
     }
 }
