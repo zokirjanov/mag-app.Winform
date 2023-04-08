@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductControl));
             this.customPanel1 = new mag_app.Winform.Components.CustomPanel();
+            this.ucTotalPrice = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,15 +38,10 @@
             this.ucPrice = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ucQuantity = new System.Windows.Forms.Label();
-            this.customPanel3 = new mag_app.Winform.Components.CustomPanel();
-            this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
-            this.ucTotalPrice = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ucTitle = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.customPanel1.SuspendLayout();
-            this.customPanel3.SuspendLayout();
-            this.customPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // customPanel1
@@ -55,6 +51,7 @@
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 10;
             this.customPanel1.BorderSize = 1;
+            this.customPanel1.Controls.Add(this.ucTotalPrice);
             this.customPanel1.Controls.Add(this.label6);
             this.customPanel1.Controls.Add(this.label4);
             this.customPanel1.Controls.Add(this.label2);
@@ -62,9 +59,9 @@
             this.customPanel1.Controls.Add(this.ucPrice);
             this.customPanel1.Controls.Add(this.label5);
             this.customPanel1.Controls.Add(this.ucQuantity);
-            this.customPanel1.Controls.Add(this.customPanel3);
             this.customPanel1.Controls.Add(this.label1);
             this.customPanel1.Controls.Add(this.ucTitle);
+            this.customPanel1.Controls.Add(this.label3);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customPanel1.Location = new System.Drawing.Point(0, 0);
             this.customPanel1.Name = "customPanel1";
@@ -73,12 +70,22 @@
             this.customPanel1.UnderlinedStyle = false;
             this.customPanel1.Click += new System.EventHandler(this.customPanel1_Click);
             // 
+            // ucTotalPrice
+            // 
+            this.ucTotalPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ucTotalPrice.Location = new System.Drawing.Point(196, 41);
+            this.ucTotalPrice.Name = "ucTotalPrice";
+            this.ucTotalPrice.Size = new System.Drawing.Size(91, 18);
+            this.ucTotalPrice.TabIndex = 5;
+            this.ucTotalPrice.Text = "Total Price";
+            this.ucTotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(152, 41);
+            this.label6.Location = new System.Drawing.Point(165, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(19, 19);
             this.label6.TabIndex = 10;
@@ -98,9 +105,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(7, 26);
+            this.label2.Location = new System.Drawing.Point(12, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 2);
+            this.label2.Size = new System.Drawing.Size(269, 2);
             this.label2.TabIndex = 8;
             // 
             // button1
@@ -145,55 +152,6 @@
             this.ucQuantity.Text = "quantity";
             this.ucQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // customPanel3
-            // 
-            this.customPanel3.BackColor = System.Drawing.Color.LightYellow;
-            this.customPanel3.BorderColor = System.Drawing.Color.Gold;
-            this.customPanel3.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel3.BorderRadius = 10;
-            this.customPanel3.BorderSize = 1;
-            this.customPanel3.Controls.Add(this.customPanel2);
-            this.customPanel3.Location = new System.Drawing.Point(172, 34);
-            this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Size = new System.Drawing.Size(158, 37);
-            this.customPanel3.TabIndex = 3;
-            this.customPanel3.UnderlinedStyle = false;
-            // 
-            // customPanel2
-            // 
-            this.customPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.customPanel2.BorderColor = System.Drawing.Color.Gold;
-            this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel2.BorderRadius = 10;
-            this.customPanel2.BorderSize = 1;
-            this.customPanel2.Controls.Add(this.ucTotalPrice);
-            this.customPanel2.Controls.Add(this.label3);
-            this.customPanel2.Location = new System.Drawing.Point(-15, -8);
-            this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(158, 37);
-            this.customPanel2.TabIndex = 4;
-            this.customPanel2.UnderlinedStyle = false;
-            // 
-            // ucTotalPrice
-            // 
-            this.ucTotalPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ucTotalPrice.Location = new System.Drawing.Point(63, 13);
-            this.ucTotalPrice.Name = "ucTotalPrice";
-            this.ucTotalPrice.Size = new System.Drawing.Size(91, 18);
-            this.ucTotalPrice.TabIndex = 5;
-            this.ucTotalPrice.Text = "Total Price";
-            this.ucTotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(17, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 19);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "итого:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -213,6 +171,17 @@
             this.ucTitle.TabIndex = 0;
             this.ucTitle.Text = "product name";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.LightCyan;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(209, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 19);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "итого:";
+            // 
             // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -224,9 +193,6 @@
             this.Load += new System.EventHandler(this.ProductControl_Load);
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
-            this.customPanel3.ResumeLayout(false);
-            this.customPanel2.ResumeLayout(false);
-            this.customPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -234,17 +200,15 @@
         #endregion
         private Label label1;
         private Label ucTitle;
-        private CustomPanel customPanel3;
-        private CustomPanel customPanel2;
         private Label ucQuantity;
         private Label ucPrice;
         private Label label5;
         private Label ucTotalPrice;
-        private Label label3;
         private Button button1;
         private Label label6;
         private Label label4;
         private Label label2;
         public CustomPanel customPanel1;
+        private Label label3;
     }
 }

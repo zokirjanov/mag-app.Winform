@@ -34,8 +34,6 @@ namespace mag_app.Winform.Components
             label4.Click += (sender, args) => InvokeOnClick(customPanel1, args);
             label5.Click += (sender, args) => InvokeOnClick(customPanel1, args);
             label6.Click += (sender, args) => InvokeOnClick(customPanel1, args); 
-            customPanel2.Click += (sender, args) => InvokeOnClick(customPanel1, args);
-            customPanel3.Click += (sender, args) => InvokeOnClick(customPanel1, args);
         }
 
 
@@ -59,6 +57,8 @@ namespace mag_app.Winform.Components
         private void button1_Click(object sender, EventArgs e)
         {
             Edit_ProductQuantity edit_ProductQuantity = new Edit_ProductQuantity();
+            edit_ProductQuantity.Quantity = Quantity;
+            edit_ProductQuantity.Name = Title;
             edit_ProductQuantity.ShowDialog();
         }
 
