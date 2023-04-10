@@ -83,5 +83,7 @@ namespace mag_app.Domain.Entities.AllProducts
         public int Quantity { get; set; }
 
         public virtual ICollection<TabProduct> TabProducts { get; set; }
+        public virtual ICollection<SaleDetail> SaleDetails { get; set; }
+
     }
 }

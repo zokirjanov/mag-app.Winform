@@ -18,5 +18,7 @@ namespace mag_app.Domain.Entities.Stores
         public string StoreName { get; set; } = string.Empty;
         public virtual ICollection<AllProduct> AllProducts { get; set; }
         public virtual ICollection<Cash> Cashes { get; set; }
+        public virtual ICollection<SalesGlobal> SalesGlobal { get; set; }
+
     }
 }
