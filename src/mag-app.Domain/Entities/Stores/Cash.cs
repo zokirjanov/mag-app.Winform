@@ -26,6 +26,5 @@ namespace mag_app.Domain.Entities.Stores
         public string CashName { get; set; }
 
         public virtual ICollection<SalesGlobal> SalesGlobals { get; set; }
-
     }
 }

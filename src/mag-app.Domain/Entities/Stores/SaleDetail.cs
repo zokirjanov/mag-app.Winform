@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mag_app.Domain.Entities.Stores
 {
-    public class SaleDetails : IAuditable
+    public class SaleDetail : IAuditable
     {
         public long Id { get; set; }
 
