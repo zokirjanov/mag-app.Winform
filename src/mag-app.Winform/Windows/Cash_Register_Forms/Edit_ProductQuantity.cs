@@ -1,4 +1,5 @@
 ﻿using mag_app.Winform.Components;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
@@ -43,61 +45,80 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void button12_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button12.Text;
-
+            ChechandFill(button12.Text);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button11.Text;
+            ChechandFill(button11.Text);
 
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button10.Text;
+            ChechandFill(button10.Text);
 
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button9.Text;
+            ChechandFill(button9.Text);
 
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button8.Text;
+            ChechandFill(button8.Text);
 
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button7.Text;
+            ChechandFill(button7.Text);
 
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button6.Text;
+            ChechandFill(button6.Text);
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button5.Text;
-
+            ChechandFill(button5.Text);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button4.Text;
+            ChechandFill(button4.Text);
         }
+
+
+        private void ChechandFill(string number)
+        {
+            if (quantityTb.Text.Length == 1 && quantityTb.Text.Contains("0"))
+            {
+                quantityTb.Text = number.ToString();
+            }
+            else
+            {
+                quantityTb.Text += number.ToString();
+            }
+        }
+
 
         private void button14_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button14.Text;
-
+            string check = quantityTb.Text;
+            if (quantityTb.Text.Length == 1 && check.Contains("0"))
+            {
+                quantityTb.Text = "0";
+            }
+            else
+            {
+                quantityTb.Text += button14.Text;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -109,15 +130,26 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
             if (!commaUsed)
             {
-                quantityTb.Text += button2.Text;
+                quantityTb.Text += btnComa.Text;
                 commaUsed = true;
             }
         }
 
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button1.Text;
+            if ((quantityTb.Text == "0" || quantityTb.Text == "") )
+            {
+                quantityTb.Text = "0";
+            }
+            else
+            {
+                quantityTb.Text += button1.Text;
+            }
         }
+
+
 
         private void quantityTb_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -132,19 +164,27 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
         }
 
+
+
         private void button17_Click(object sender, EventArgs e)
         {
+            if (quantityTb.Text == "") quantityTb.Text = "0";
             decimal value = decimal.Parse(quantityTb.Text);
             value++;
             quantityTb.Text = value.ToString();
         }
 
+
+
         private void button16_Click(object sender, EventArgs e)
         {
+            if (quantityTb.Text == "") return;
             decimal value = decimal.Parse(quantityTb.Text);
             value = Math.Max(value - 1, 0);
             quantityTb.Text = value.ToString();
         }
+
+
 
         private void button15_Click(object sender, EventArgs e)
         {
@@ -157,6 +197,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 commaUsed = false;
             }
         }
+
 
 
         private void button3_Click(object sender, EventArgs e)
