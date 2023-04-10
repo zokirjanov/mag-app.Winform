@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace mag_app.Domain.Entities.AllProducts
 {
-    public class AllProduct 
+    public class AllProduct : IAuditable
     {
         [Column(Order =1)]
         public long Id { get; set; }
@@ -82,6 +82,6 @@ namespace mag_app.Domain.Entities.AllProducts
         [Column(Order =13)]
         public int Quantity { get; set; }
 
-
+        public virtual ICollection<TabProduct> TabProducts { get; set; }
     }
 }

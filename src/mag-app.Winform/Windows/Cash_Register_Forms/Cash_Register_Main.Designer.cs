@@ -378,7 +378,6 @@
         private Label label1;
         private Panel panel3;
         private Components.PrimaryButton primaryButton1;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Label label2;
         private Components.PrimaryButton primaryButton2;
         private TextBox quantityTb;
@@ -388,5 +387,6 @@
         private Components.CustomPanel customPanel2;
         private TextBox textBox3;
         private Components.PrimaryButton primaryButton4;
+        public FlowLayoutPanel flowLayoutPanel1;
     }
 }

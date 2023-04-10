@@ -25,7 +25,7 @@ namespace mag_app.Service.Services.StoreService
 
         public async Task<string> CreateAsync(TabProductViewModel tab)
         {
-            var checktabProduct = await tabRepository.FirstOrDefaultAsync(x => x.TabControllerId == tab.TabControllerId && x.Product.Id == tab.ProductId);
+            var checktabProduct = await tabRepository.FirstOrDefaultAsync(x => x.TabControllerId == tab.TabControllerId && x.AllProduct.Id == tab.ProductId);
             if (checktabProduct != null)
             {
                 return "exists";
@@ -51,7 +51,7 @@ namespace mag_app.Service.Services.StoreService
 
         public async Task<TabProduct> GetAsync(string barcode)
         {
-            return await tabRepository.FirstOrDefaultAsync(x => x.Product.Barcode == barcode);
+            return await tabRepository.FirstOrDefaultAsync(x => x.AllProduct.Barcode == barcode);
         }
 
         public Task<string> UpdateAsync(TabProductViewModel tab, string name)

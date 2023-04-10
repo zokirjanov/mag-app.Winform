@@ -1,4 +1,5 @@
-﻿using mag_app.Domain.Entities.Products;
+﻿using mag_app.Domain.Entities.AllProducts;
+using mag_app.Domain.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,6 +13,9 @@ namespace mag_app.Domain.Entities.Stores
     {
         public long Id { get; set; }
         public decimal Price { get; set; }
+        public string Barcode { get; set; }
+        public decimal Quantity { get; set; }
+
 
 
         [ForeignKey("TabControllerId")]
@@ -22,8 +26,7 @@ namespace mag_app.Domain.Entities.Stores
 
 
         [ForeignKey("ProductId")]
-        public virtual Product Product { get; set; }
-
+        public virtual AllProduct AllProduct { get; set; }
         public long ProductId { get; set; }
         public string ProductName { get; set; }
     }

@@ -48,7 +48,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 {
                     allProductViewModelBindingSource.Add(new AllProductViewModel()
                     {
-                        ProductId = i.ProductId,
+                        ProductId = i.Id,
                         ProdutName = i.Product.ProdutName,
                         Storename = i.StoreName!,
                         CategoryName = i.CategoryName,
@@ -100,7 +100,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     Price= Convert.ToInt64(row.Cells[7].Value),
                     ProductName = row.Cells[5].Value.ToString()!,
                     TabControllerId = TabId,
-                    TabControllerName = TabName
+                    TabControllerName = TabName,
+                    Barcode = row.Cells[0].ToString(),
+                    Quantity = Convert.ToInt64(row.Cells[8].Value)
                 };
 
                 var result = await _tabService.CreateAsync(tabProductViewModel);
@@ -113,8 +115,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 }
                 else if (result == "exists") MessageBox.Show("Уже существует");
                 else if (result == "false") MessageBox.Show("Товар не найден");
-
-
             }
         }
 

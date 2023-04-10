@@ -1,6 +1,7 @@
 ﻿using mag_app.DataAccess.DbContexts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
+using mag_app.Service.Interfaces.AllProducts;
 using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.VisualBasic.Devices;
 using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace mag_app.Winform.Windows.Quick_PassForms
 {
@@ -75,37 +77,34 @@ namespace mag_app.Winform.Windows.Quick_PassForms
 
         private async void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            var value = "";
-            var quantity_value = "-1";
 
-            if (e.RowIndex != -1)
+
+            if (e.RowIndex == -1)
             {
-                value = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()!;
-                quantity_value = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString()!;
+                return;
             }
+
+            string value = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string quantity_value = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
             if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
             {
                 Edit_Row row = new Edit_Row();
                 row.ShowDialog();
             }
-
-
-
-
             else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
                 DialogResult dlg = MessageBox.Show($"Вы хотите удалить товар {value}?", "Удалить", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dlg == DialogResult.OK)
                 {
                     long check = await _service.GetId(value);
-                    if(check == -1)
+                    if (check == -1)
                     {
                         long id = await _productService.GetId(value);
-                        var res = _productService.DeleteAsync(id);
+                        bool res = await _productService.DeleteAsync(id);
 
-                        if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
-                        else if (await res == false) MessageBox.Show("Товар не найден");
+                        if (res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                        else MessageBox.Show("Товар не найден");
 
                         allProductViewModeBindingSource.Clear();
                         FillData();
@@ -115,21 +114,18 @@ namespace mag_app.Winform.Windows.Quick_PassForms
                         long id = await _service.GetId(value);
                         long id2 = await _productService.GetId(value);
 
-                        var res = _service.DeleteAsync(id);
-                        var res2 = _productService.DeleteAsync(id2);
+                        bool res = await _service.DeleteAsync(id);
+                        bool res2 = await _productService.DeleteAsync(id2);
 
-                        if (await res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
-                        else if (await res == false) MessageBox.Show("Товар не найден");
+                        if (res) AutoClosingMessageBox.Show("Успешно удалено", "Удалить", 300);
+                        else MessageBox.Show("Товар не найден");
 
                         allProductViewModeBindingSource.Clear();
                         FillData();
                     }
                 }
-                if (dlg == DialogResult.Cancel)
-                {
-                    //do nothing
-                }
             }
+
         }
 
 

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_ProductQuantity));
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.quantityTb = new System.Windows.Forms.TextBox();
             this.nameLb = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnComa = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -43,13 +44,17 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.btnBackspace = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
+            this.decrementBtn = new System.Windows.Forms.Button();
+            this.incrementBtn = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblMaxQ = new System.Windows.Forms.Label();
             this.customPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // customPanel2
@@ -72,17 +77,19 @@
             this.quantityTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.quantityTb.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.quantityTb.Location = new System.Drawing.Point(2, 5);
+            this.quantityTb.MaxLength = 17;
             this.quantityTb.Name = "quantityTb";
-            this.quantityTb.Size = new System.Drawing.Size(180, 25);
+            this.quantityTb.Size = new System.Drawing.Size(162, 25);
             this.quantityTb.TabIndex = 11;
             this.quantityTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.quantityTb.TextChanged += new System.EventHandler(this.quantityTb_TextChanged);
             this.quantityTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.quantityTb_KeyPress);
             // 
             // nameLb
             // 
             this.nameLb.AutoSize = true;
             this.nameLb.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nameLb.Location = new System.Drawing.Point(18, 9);
+            this.nameLb.Location = new System.Drawing.Point(16, 3);
             this.nameLb.Name = "nameLb";
             this.nameLb.Size = new System.Drawing.Size(57, 22);
             this.nameLb.TabIndex = 8;
@@ -101,17 +108,17 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnComa
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(210, 345);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 56);
-            this.button2.TabIndex = 10;
-            this.button2.Text = ",";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnComa.BackColor = System.Drawing.Color.White;
+            this.btnComa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnComa.Location = new System.Drawing.Point(210, 345);
+            this.btnComa.Name = "btnComa";
+            this.btnComa.Size = new System.Drawing.Size(72, 56);
+            this.btnComa.TabIndex = 10;
+            this.btnComa.Text = ",";
+            this.btnComa.UseVisualStyleBackColor = false;
+            this.btnComa.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
@@ -221,17 +228,17 @@
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // button13
+            // btnClear
             // 
-            this.button13.BackColor = System.Drawing.Color.MistyRose;
-            this.button13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button13.Location = new System.Drawing.Point(43, 104);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(99, 37);
-            this.button13.TabIndex = 21;
-            this.button13.Text = "↺";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.btnClear.BackColor = System.Drawing.Color.MistyRose;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.Location = new System.Drawing.Point(43, 104);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(100, 37);
+            this.btnClear.TabIndex = 21;
+            this.btnClear.Text = "C";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.button13_Click);
             // 
             // button14
             // 
@@ -245,17 +252,17 @@
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // button15
+            // btnBackspace
             // 
-            this.button15.BackColor = System.Drawing.Color.LightGray;
-            this.button15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button15.Location = new System.Drawing.Point(181, 104);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(101, 37);
-            this.button15.TabIndex = 23;
-            this.button15.Text = "⇐";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.btnBackspace.BackColor = System.Drawing.Color.LightGray;
+            this.btnBackspace.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnBackspace.Image = ((System.Drawing.Image)(resources.GetObject("btnBackspace.Image")));
+            this.btnBackspace.Location = new System.Drawing.Point(181, 104);
+            this.btnBackspace.Name = "btnBackspace";
+            this.btnBackspace.Size = new System.Drawing.Size(100, 37);
+            this.btnBackspace.TabIndex = 23;
+            this.btnBackspace.UseVisualStyleBackColor = false;
+            this.btnBackspace.Click += new System.EventHandler(this.button15_Click);
             // 
             // button3
             // 
@@ -266,26 +273,51 @@
             this.button3.TabIndex = 24;
             this.button3.Text = "Enter";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button16
+            // decrementBtn
             // 
-            this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
-            this.button16.Location = new System.Drawing.Point(18, 44);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(45, 45);
-            this.button16.TabIndex = 25;
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.decrementBtn.Image = ((System.Drawing.Image)(resources.GetObject("decrementBtn.Image")));
+            this.decrementBtn.Location = new System.Drawing.Point(18, 44);
+            this.decrementBtn.Name = "decrementBtn";
+            this.decrementBtn.Size = new System.Drawing.Size(45, 45);
+            this.decrementBtn.TabIndex = 25;
+            this.decrementBtn.UseVisualStyleBackColor = true;
+            this.decrementBtn.Click += new System.EventHandler(this.button16_Click);
             // 
-            // button17
+            // incrementBtn
             // 
-            this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
-            this.button17.Location = new System.Drawing.Point(260, 44);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(45, 45);
-            this.button17.TabIndex = 26;
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.incrementBtn.Image = ((System.Drawing.Image)(resources.GetObject("incrementBtn.Image")));
+            this.incrementBtn.Location = new System.Drawing.Point(260, 44);
+            this.incrementBtn.Name = "incrementBtn";
+            this.incrementBtn.Size = new System.Drawing.Size(45, 45);
+            this.incrementBtn.TabIndex = 26;
+            this.incrementBtn.UseVisualStyleBackColor = true;
+            this.incrementBtn.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(215, 15);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "максимальное количество на складе:";
+            // 
+            // lblMaxQ
+            // 
+            this.lblMaxQ.AutoSize = true;
+            this.lblMaxQ.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMaxQ.Location = new System.Drawing.Point(230, 21);
+            this.lblMaxQ.Name = "lblMaxQ";
+            this.lblMaxQ.Size = new System.Drawing.Size(57, 22);
+            this.lblMaxQ.TabIndex = 28;
+            this.lblMaxQ.Text = "name";
+            this.lblMaxQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Edit_ProductQuantity
             // 
@@ -293,12 +325,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(324, 454);
-            this.Controls.Add(this.button17);
-            this.Controls.Add(this.button16);
+            this.Controls.Add(this.lblMaxQ);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.incrementBtn);
+            this.Controls.Add(this.decrementBtn);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button15);
+            this.Controls.Add(this.btnBackspace);
             this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
@@ -308,7 +342,7 @@
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnComa);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nameLb);
             this.Controls.Add(this.customPanel2);
@@ -318,6 +352,7 @@
             this.Load += new System.EventHandler(this.Edit_ProductQuantity_Load);
             this.customPanel2.ResumeLayout(false);
             this.customPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,7 +363,7 @@
         private Label nameLb;
         private TextBox quantityTb;
         private Button button1;
-        private Button button2;
+        private Button btnComa;
         private Button button4;
         private Button button5;
         private Button button6;
@@ -338,11 +373,14 @@
         private Button button10;
         private Button button11;
         private Button button12;
-        private Button button13;
+        private Button btnClear;
         private Button button14;
-        private Button button15;
+        private Button btnBackspace;
         private Button button3;
-        private Button button16;
-        private Button button17;
+        private Button decrementBtn;
+        private Button incrementBtn;
+        private ErrorProvider errorProvider1;
+        private Label lblMaxQ;
+        private Label label1;
     }
 }
