@@ -106,7 +106,7 @@ public class AllProductService : IAllProductService
     }
 
 
-    public async Task<AllProduct> Get(string barcode, long sId)
+    public async Task<AllProduct> GetAsync(string barcode, long sId)
     {
         return await allProductRepository.GetAsync(x => x.Barcode == barcode && x.StoreId == sId);
     }

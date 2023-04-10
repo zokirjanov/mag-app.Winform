@@ -16,6 +16,8 @@ namespace mag_app.Service.ViewModels.Stores
         public string ProductName { get; set; }
 
         public long TabControllerId { get; set; }
+        public string Barcode { get; set; }
+        public decimal Quantity { get; set; }
 
         public string TabControllerName { get; set; }
 
@@ -26,6 +28,8 @@ namespace mag_app.Service.ViewModels.Stores
             {
                 ProductId = tabProduct.ProductId,
                 ProductName = tabProduct.ProductName,
+                Quantity= tabProduct.Quantity,
+                Barcode = tabProduct.Barcode,
                 TabControllerId= tabProduct.TabControllerId,
                 TabControllerName= tabProduct.TabControllerName,
                 Price = tabProduct.Price

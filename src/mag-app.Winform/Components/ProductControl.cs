@@ -40,6 +40,8 @@ namespace mag_app.Winform.Components
         public decimal Cost { get => _cost; set { _cost = value; ucPrice.Text = _cost.ToString(@"###\ ###\ ###\ ###\"); } }
         public decimal TotalCost { get => _totalCost; set { _totalCost = value; ucTotalPrice.Text = _totalCost.ToString(@"###\ ###\ ###\ ###\"); } }
         public decimal Quantity { get => _quantity; set { _quantity = value; ucQuantity.Text = _quantity.ToString(); } }
+        public string Barcode { get; set; }
+        public decimal maxQ  { get; set; }
 
 
 
@@ -51,6 +53,8 @@ namespace mag_app.Winform.Components
             edit_ProductQuantity.Quantity = Quantity;
             edit_ProductQuantity.Name = Title;
             edit_ProductQuantity.Price = Cost;
+            edit_ProductQuantity.Barcode = Barcode;
+            edit_ProductQuantity.maxQ = maxQ;
             edit_ProductQuantity.ShowDialog();
         }
 

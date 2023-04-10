@@ -47,7 +47,7 @@ public class AppDbContext : DbContext
                    .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<TabProduct>()
-                    .HasOne<Product>(e => e.Product)
+                    .HasOne<AllProduct>(e => e.AllProduct)
                     .WithMany(d => d.TabProducts)
                     .HasForeignKey(e => e.ProductId);
 

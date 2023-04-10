@@ -1,27 +1,39 @@
-﻿using mag_app.Winform.Components;
+﻿using mag_app.Service.Services.AllProductService;
+using mag_app.Winform.Components;
+using mag_app.Winform.Windows.MainWindowForms;
+using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
     public partial class Edit_ProductQuantity : Form
     {
+        AllProductService _service;
         public Edit_ProductQuantity()
         {
             InitializeComponent();
-
+            button3.CausesValidation = true;
+            _service = new AllProductService();
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Cash_Register_Main.cashRegisterMainParent.Location.X + 545, Cash_Register_Main.cashRegisterMainParent.Location.Y + 97);
         }
-        private void Edit_ProductQuantity_Load(object sender, EventArgs e)
+        private async void Edit_ProductQuantity_Load(object sender, EventArgs e)
         {
+
             quantityTb.Text = Quantity.ToString();
             nameLb.Text = Name;
+            lblMaxQ.Text = maxQ.ToString(@"###\ ###\ ###\ ###\");
+
         }
 
         public decimal Quantity { get; set; }
         public decimal Price { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public new string Name { get; set; } = string.Empty;
+        public string Barcode { get; set; }
+        public decimal maxQ { get; set; }
 
         bool commaUsed = false;
+
+
 
 
         private void button13_Click(object sender, EventArgs e)
@@ -186,22 +198,45 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
 
-
+        bool checkMax = false;
         private void button3_Click(object sender, EventArgs e)
         {
-            decimal total = decimal.Parse(quantityTb.Text) * Price;
-
-            foreach (Control item in Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls)
+            if (checkMax != true)
             {
-                var wdg = (ProductControl)item;
+                decimal total = decimal.Parse(quantityTb.Text) * Price;
 
-                if (wdg.Title == Name)
+                foreach (Control item in Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls)
                 {
-                    wdg.TotalCost = total;
-                    wdg.Quantity = int.Parse(quantityTb.Text);
+                    var wdg = (ProductControl)item;
+
+                    if (wdg.Title == Name)
+                    {
+                        wdg.TotalCost = total;
+                        wdg.Quantity = decimal.Parse(quantityTb.Text);
+                    }
                 }
+                this.Close();
             }
-            this.Close();
+            else MessageBox.Show("Пожалуйста, введите действительное количество");
+           
+        }
+
+        private async void quantityTb_TextChanged(object sender, EventArgs e)
+        {
+            decimal max = maxQ;
+
+            int value;
+
+            if (int.TryParse(quantityTb.Text, out value) && value > max)
+            {
+                errorProvider1.SetError(quantityTb, $"Maximum value is {max}");
+                checkMax= true;
+            }
+            else
+            {
+                errorProvider1.SetError(quantityTb, "");
+                checkMax = false;
+            }
         }
     }
 }

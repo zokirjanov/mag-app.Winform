@@ -249,6 +249,8 @@ public partial class Cash_Register_Main : Form
                 Cost = product.Price,
                 Quantity = 1,
                 TotalCost = product.Price,
+                Barcode = product.Barcode,
+                maxQ = product.Quantity,
             };
 
 
@@ -282,11 +284,11 @@ public partial class Cash_Register_Main : Form
         {
             using (var db = new AppDbContext())
             {
-                var tpr = db.Tabproducts.Where(x => x.Product.Barcode == barcodeTb.Text).Include(x => x.Product).ToList();
+                var tpr = db.Tabproducts.Where(x => x.AllProduct.Barcode == barcodeTb.Text).Include(x => x.AllProduct).ToList();
 
                 foreach (var item in tpr)
                 {
-                    if (item.Product != null)
+                    if (item.AllProduct != null)
                     {
                         customPanel2.BorderColor = Color.Lime;
                     }
@@ -304,7 +306,12 @@ public partial class Cash_Register_Main : Form
         if (!string.IsNullOrEmpty(barcodeTb.Text) && !string.IsNullOrEmpty(quantityTb.Text) && customPanel2.BorderColor == Color.Lime)
         {
             var product = await _productService.Get(barcodeTb.Text);
-
+            if (product.Quantity <= int.Parse(quantityTb.Text))
+            {
+                MessageBox.Show($"недостаточно коbтество\n" +
+                                $"максимальное количество товара на складе {product.Quantity}");
+                return;
+            }
 
 
             if (product != null)

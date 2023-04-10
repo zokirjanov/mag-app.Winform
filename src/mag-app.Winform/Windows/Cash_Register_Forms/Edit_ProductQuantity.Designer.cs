@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_ProductQuantity));
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.quantityTb = new System.Windows.Forms.TextBox();
@@ -49,7 +50,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.decrementBtn = new System.Windows.Forms.Button();
             this.incrementBtn = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblMaxQ = new System.Windows.Forms.Label();
             this.customPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // customPanel2
@@ -72,18 +77,19 @@
             this.quantityTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.quantityTb.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.quantityTb.Location = new System.Drawing.Point(2, 5);
-            this.quantityTb.MaxLength = 18;
+            this.quantityTb.MaxLength = 17;
             this.quantityTb.Name = "quantityTb";
-            this.quantityTb.Size = new System.Drawing.Size(180, 25);
+            this.quantityTb.Size = new System.Drawing.Size(162, 25);
             this.quantityTb.TabIndex = 11;
             this.quantityTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.quantityTb.TextChanged += new System.EventHandler(this.quantityTb_TextChanged);
             this.quantityTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.quantityTb_KeyPress);
             // 
             // nameLb
             // 
             this.nameLb.AutoSize = true;
             this.nameLb.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nameLb.Location = new System.Drawing.Point(18, 9);
+            this.nameLb.Location = new System.Drawing.Point(16, 3);
             this.nameLb.Name = "nameLb";
             this.nameLb.Size = new System.Drawing.Size(57, 22);
             this.nameLb.TabIndex = 8;
@@ -228,9 +234,9 @@
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.Location = new System.Drawing.Point(43, 104);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(99, 37);
+            this.btnClear.Size = new System.Drawing.Size(100, 37);
             this.btnClear.TabIndex = 21;
-            this.btnClear.Text = "↺";
+            this.btnClear.Text = "C";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.button13_Click);
             // 
@@ -249,12 +255,12 @@
             // btnBackspace
             // 
             this.btnBackspace.BackColor = System.Drawing.Color.LightGray;
-            this.btnBackspace.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBackspace.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnBackspace.Image = ((System.Drawing.Image)(resources.GetObject("btnBackspace.Image")));
             this.btnBackspace.Location = new System.Drawing.Point(181, 104);
             this.btnBackspace.Name = "btnBackspace";
-            this.btnBackspace.Size = new System.Drawing.Size(101, 37);
+            this.btnBackspace.Size = new System.Drawing.Size(100, 37);
             this.btnBackspace.TabIndex = 23;
-            this.btnBackspace.Text = "⇐";
             this.btnBackspace.UseVisualStyleBackColor = false;
             this.btnBackspace.Click += new System.EventHandler(this.button15_Click);
             // 
@@ -289,12 +295,38 @@
             this.incrementBtn.UseVisualStyleBackColor = true;
             this.incrementBtn.Click += new System.EventHandler(this.button17_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(215, 15);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "максимальное количество на складе:";
+            // 
+            // lblMaxQ
+            // 
+            this.lblMaxQ.AutoSize = true;
+            this.lblMaxQ.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMaxQ.Location = new System.Drawing.Point(230, 21);
+            this.lblMaxQ.Name = "lblMaxQ";
+            this.lblMaxQ.Size = new System.Drawing.Size(57, 22);
+            this.lblMaxQ.TabIndex = 28;
+            this.lblMaxQ.Text = "name";
+            this.lblMaxQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Edit_ProductQuantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(324, 454);
+            this.Controls.Add(this.lblMaxQ);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.incrementBtn);
             this.Controls.Add(this.decrementBtn);
             this.Controls.Add(this.button3);
@@ -320,6 +352,7 @@
             this.Load += new System.EventHandler(this.Edit_ProductQuantity_Load);
             this.customPanel2.ResumeLayout(false);
             this.customPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,5 +379,8 @@
         private Button button3;
         private Button decrementBtn;
         private Button incrementBtn;
+        private ErrorProvider errorProvider1;
+        private Label lblMaxQ;
+        private Label label1;
     }
 }
