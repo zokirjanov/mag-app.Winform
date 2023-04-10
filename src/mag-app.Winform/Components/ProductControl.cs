@@ -38,6 +38,7 @@ namespace mag_app.Winform.Components
 
         private void ProductControl_Load(object sender, EventArgs e)
         {
+            this.Width = Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Width - 25;
         }
 
         

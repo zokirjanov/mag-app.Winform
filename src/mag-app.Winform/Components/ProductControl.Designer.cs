@@ -39,6 +39,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ucQuantity = new System.Windows.Forms.Label();
             this.ucTitle = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.customPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +60,8 @@
             this.customPanel1.Controls.Add(this.label5);
             this.customPanel1.Controls.Add(this.ucQuantity);
             this.customPanel1.Controls.Add(this.ucTitle);
+            this.customPanel1.Controls.Add(this.label1);
+            this.customPanel1.Controls.Add(this.label3);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customPanel1.Location = new System.Drawing.Point(0, 0);
             this.customPanel1.Name = "customPanel1";
@@ -68,6 +72,7 @@
             // 
             // ucTotalPrice
             // 
+            this.ucTotalPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ucTotalPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ucTotalPrice.Location = new System.Drawing.Point(196, 41);
             this.ucTotalPrice.Name = "ucTotalPrice";
@@ -78,6 +83,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -89,6 +95,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(75, 41);
@@ -108,6 +115,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(284, 5);
@@ -119,6 +127,7 @@
             // 
             // ucPrice
             // 
+            this.ucPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ucPrice.BackColor = System.Drawing.Color.Transparent;
             this.ucPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ucPrice.Location = new System.Drawing.Point(5, 41);
@@ -130,16 +139,17 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(20, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(261, 19);
+            this.label5.Size = new System.Drawing.Size(49, 19);
             this.label5.TabIndex = 5;
-            this.label5.Text = "цена:              кол-во:                итого:                                 " +
-    " ";
+            this.label5.Text = "цена:                               ";
             // 
             // ucQuantity
             // 
+            this.ucQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ucQuantity.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ucQuantity.Location = new System.Drawing.Point(105, 41);
             this.ucQuantity.Name = "ucQuantity";
@@ -150,12 +160,33 @@
             // 
             // ucTitle
             // 
+            this.ucTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ucTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ucTitle.Location = new System.Drawing.Point(11, 5);
             this.ucTitle.Name = "ucTitle";
             this.ucTitle.Size = new System.Drawing.Size(160, 17);
             this.ucTitle.TabIndex = 0;
             this.ucTitle.Text = "product name";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(119, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 19);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "кол-во:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(217, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 19);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "итого:";
             // 
             // ProductControl
             // 
@@ -183,5 +214,7 @@
         private Label label4;
         private Label label2;
         public CustomPanel customPanel1;
+        private Label label1;
+        private Label label3;
     }
 }

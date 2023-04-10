@@ -447,16 +447,26 @@ public partial class Cash_Register_Main : Form
 
     private void primaryButton2_Click(object sender, EventArgs e)
     {
-        DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        if (dlg == DialogResult.OK)
+        if(flowLayoutPanel1.Controls.Count == 0)
         {
-            flowLayoutPanel1.Controls.Clear();
+            return;
         }
-        if (dlg == DialogResult.Cancel)
+        else
         {
-            // Do nothing
+            DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                flowLayoutPanel1.Controls.Clear();
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                // Do nothing
+            }
         }
     }
+
+
+
 
     private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
     {
