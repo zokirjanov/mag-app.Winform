@@ -25,10 +25,6 @@ namespace mag_app.Domain.Entities.Stores
 
         public decimal? DiscountPrice { get; set; }
 
-        public DateTime? DiscountStartDate { get; set; }
-
-        public DateTime? DiscountEndDate { get; set; }
-
         public PaymentType PaymentType { get; set; } = PaymentType.Cash;
 
         public decimal? CashAmount { get; set; }
