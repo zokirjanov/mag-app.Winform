@@ -72,6 +72,7 @@
             this.quantityTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.quantityTb.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.quantityTb.Location = new System.Drawing.Point(2, 5);
+            this.quantityTb.MaxLength = 18;
             this.quantityTb.Name = "quantityTb";
             this.quantityTb.Size = new System.Drawing.Size(180, 25);
             this.quantityTb.TabIndex = 11;
@@ -266,6 +267,7 @@
             this.button3.TabIndex = 24;
             this.button3.Text = "Enter";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button16
             // 

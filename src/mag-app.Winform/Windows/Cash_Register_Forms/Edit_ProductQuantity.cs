@@ -1,7 +1,9 @@
-﻿using System;
+﻿using mag_app.Winform.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         public Edit_ProductQuantity()
         {
             InitializeComponent();
+
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Cash_Register_Main.cashRegisterMainParent.Location.X + 545, Cash_Register_Main.cashRegisterMainParent.Location.Y + 97);
         }
@@ -23,16 +26,19 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         {
             quantityTb.Text = Quantity.ToString();
             nameLb.Text = Name;
-
         }
 
         public decimal Quantity { get; set; }
-        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Name { get; set; } = string.Empty;
+
+        bool commaUsed = false;
 
 
         private void button13_Click(object sender, EventArgs e)
         {
-            quantityTb.Text = "";
+            commaUsed = false;
+            quantityTb.Clear();
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -96,14 +102,21 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            quantityTb.Text += button2.Text;
-
+            if (string.IsNullOrEmpty(quantityTb.Text))
+            {
+                quantityTb.Text = "";
+                return;
+            }
+            if (!commaUsed)
+            {
+                quantityTb.Text += button2.Text;
+                commaUsed = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             quantityTb.Text += button1.Text;
-
         }
 
         private void quantityTb_KeyPress(object sender, KeyPressEventArgs e)
@@ -129,15 +142,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         private void button16_Click(object sender, EventArgs e)
         {
             decimal value = decimal.Parse(quantityTb.Text);
-            value--;
-            if(value > 0) 
-            {
-                quantityTb.Text = value.ToString();
-            }
-            else
-            {
-                quantityTb.Text = 0.ToString();
-            }
+            value = Math.Max(value - 1, 0);
+            quantityTb.Text = value.ToString();
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -146,8 +152,28 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 quantityTb.Text = quantityTb.Text.Substring(0, quantityTb.Text.Length - 1);
             }
+            if (quantityTb.Text.EndsWith(","))
+            {
+                commaUsed = false;
+            }
         }
 
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            decimal total = decimal.Parse(quantityTb.Text) * Price;
+
+            foreach (Control item in Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls)
+            {
+                var wdg = (ProductControl)item;
+
+                if (wdg.Title == Name)
+                {
+                    wdg.TotalCost = total;
+                    wdg.Quantity = int.Parse(quantityTb.Text);
+                }
+            }
+            this.Close();
+        }
     }
 }

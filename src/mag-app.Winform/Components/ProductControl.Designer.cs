@@ -38,9 +38,7 @@
             this.ucPrice = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ucQuantity = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.ucTitle = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.customPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,9 +57,7 @@
             this.customPanel1.Controls.Add(this.ucPrice);
             this.customPanel1.Controls.Add(this.label5);
             this.customPanel1.Controls.Add(this.ucQuantity);
-            this.customPanel1.Controls.Add(this.label1);
             this.customPanel1.Controls.Add(this.ucTitle);
-            this.customPanel1.Controls.Add(this.label3);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customPanel1.Location = new System.Drawing.Point(0, 0);
             this.customPanel1.Name = "customPanel1";
@@ -134,13 +130,13 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(20, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 19);
+            this.label5.Size = new System.Drawing.Size(261, 19);
             this.label5.TabIndex = 5;
-            this.label5.Text = "цена:";
+            this.label5.Text = "цена:              кол-во:                итого:                                 " +
+    " ";
             // 
             // ucQuantity
             // 
@@ -152,16 +148,6 @@
             this.ucQuantity.Text = "quantity";
             this.ucQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(106, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "кол-во:";
-            // 
             // ucTitle
             // 
             this.ucTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -170,17 +156,6 @@
             this.ucTitle.Size = new System.Drawing.Size(160, 17);
             this.ucTitle.TabIndex = 0;
             this.ucTitle.Text = "product name";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.LightCyan;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(209, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 19);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "итого:";
             // 
             // ProductControl
             // 
@@ -198,7 +173,6 @@
         }
 
         #endregion
-        private Label label1;
         private Label ucTitle;
         private Label ucQuantity;
         private Label ucPrice;
@@ -209,6 +183,5 @@
         private Label label4;
         private Label label2;
         public CustomPanel customPanel1;
-        private Label label3;
     }
 }
