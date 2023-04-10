@@ -87,7 +87,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(165, 40);
+            this.label6.Location = new System.Drawing.Point(175, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(19, 19);
             this.label6.TabIndex = 10;
@@ -151,7 +151,7 @@
             // 
             this.ucQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ucQuantity.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ucQuantity.Location = new System.Drawing.Point(105, 41);
+            this.ucQuantity.Location = new System.Drawing.Point(106, 41);
             this.ucQuantity.Name = "ucQuantity";
             this.ucQuantity.Size = new System.Drawing.Size(63, 18);
             this.ucQuantity.TabIndex = 4;

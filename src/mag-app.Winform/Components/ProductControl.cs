@@ -1,14 +1,4 @@
 ﻿using mag_app.Winform.Windows.Cash_Register_Forms;
-using mag_app.Winform.Windows.ProductForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Components
 {
@@ -31,7 +21,9 @@ namespace mag_app.Winform.Components
             label2.Click += (sender, args) => InvokeOnClick(customPanel1, args);
             label4.Click += (sender, args) => InvokeOnClick(customPanel1, args);
             label5.Click += (sender, args) => InvokeOnClick(customPanel1, args);
-            label6.Click += (sender, args) => InvokeOnClick(customPanel1, args); 
+            label6.Click += (sender, args) => InvokeOnClick(customPanel1, args);
+            label1.Click += (sender, args) => InvokeOnClick(customPanel1, args);
+            label3.Click += (sender, args) => InvokeOnClick(customPanel1, args);
         }
 
 
@@ -41,7 +33,7 @@ namespace mag_app.Winform.Components
             this.Width = Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Width - 25;
         }
 
-        
+
 
 
         public string Title { get => ucTitle.Text; set => ucTitle.Text = value; }
