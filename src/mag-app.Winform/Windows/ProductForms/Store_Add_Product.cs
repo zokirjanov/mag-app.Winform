@@ -50,16 +50,20 @@ public partial class Store_Add_Product : Form
         }
         else if (barcodeTb.Visible == false)
         {
-            byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(productNameTb.Text));
+            string countryManufacturerCode = "869";
+            string manufacturerCode = "12345";
+            string productName = productNameTb.Text;
+            string concatenatedString = countryManufacturerCode + manufacturerCode + productName;
+            byte[] generatedBarcode = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(concatenatedString));
             var res = BitConverter.ToUInt32(generatedBarcode, 0) % 100000;
-
-            string barcode = CalculateEan13("478", "1234", res.ToString());
-            barcodeResult = barcode.ToString();
-            barcodeTb.Text = barcode.ToString();
+            string barcode = CalculateEan13(countryManufacturerCode, manufacturerCode, res.ToString());
+            barcodeResult = barcode;
+            barcodeTb.Text = barcode;
             ProductPraparing(barcode);
         }
         else MessageBox.Show("Заполните поле");
     }
+
 
 
 
