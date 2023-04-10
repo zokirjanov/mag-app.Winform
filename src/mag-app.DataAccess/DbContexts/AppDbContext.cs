@@ -5,7 +5,6 @@ using mag_app.Domain.Entities.Stores;
 using mag_app.Domain.Entities.SubCategories;
 using mag_app.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 namespace mag_app.DataAccess.DbContexts;
 
@@ -24,13 +23,16 @@ public class AppDbContext : DbContext
     public virtual DbSet<Cash> Cashes { get; set; } = default!;
     public virtual DbSet<TabController> Tabs { get; set; } = default!;
     public virtual DbSet<TabProduct> Tabproducts { get; set; } = default!;
+    public virtual DbSet<SalesGlobal> SalesGlobals { get; set; } = default!;
+    public virtual DbSet<SaleDetail> SaleDetails { get; set; } = default!;
+
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.UseSqlite("Data Source = LocalDatabase.db");
-       // optionsBuilder.UseSqlite("Data Source" + "../../../../../LocalDatabase.db");
+        // optionsBuilder.UseSqlite("Data Source" + "../../../../../LocalDatabase.db");
     }
 
 
@@ -39,17 +41,47 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+
+        // Sales Global
+        modelBuilder.Entity<SalesGlobal>()
+                    .HasOne<Cash>(sd => sd.Cash)
+                    .WithMany(sg => sg.SalesGlobals)
+                    .HasForeignKey(sd => sd.CashId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<SalesGlobal>()
+                    .HasOne<Store>(sd => sd.Store)
+                    .WithMany(sg => sg.SalesGlobal)
+                    .HasForeignKey(sd => sd.StoreId)
+                    .OnDelete(DeleteBehavior.SetNull);
+
+
+        // Sales Details
+        modelBuilder.Entity<SaleDetail>()
+                    .HasOne<SalesGlobal>(sd => sd.SalesGlobal)
+                    .WithMany(sg => sg.SaleDetails)
+                    .HasForeignKey(sd => sd.SaleId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<SaleDetail>()
+                    .HasOne<AllProduct>(sd => sd.AllProduct)
+                    .WithMany(sd => sd.SaleDetails)
+                    .HasForeignKey(sd => sd.ProductId)
+                    .OnDelete(DeleteBehavior.SetNull);
+        
+
         // TabProducts
         modelBuilder.Entity<TabProduct>()
-                   .HasOne<TabController>(e => e.TabController)
-                   .WithMany(d => d.TabProducts)
-                   .HasForeignKey(e => e.TabControllerId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                    .HasOne<TabController>(e => e.TabController)
+                    .WithMany(d => d.TabProducts)
+                    .HasForeignKey(e => e.TabControllerId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<TabProduct>()
                     .HasOne<AllProduct>(e => e.AllProduct)
                     .WithMany(d => d.TabProducts)
                     .HasForeignKey(e => e.ProductId);
+        
 
         // Cash_Registers
         modelBuilder.Entity<Cash>()
