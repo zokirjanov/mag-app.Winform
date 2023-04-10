@@ -200,8 +200,9 @@
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
             this.ResumeLayout(false);
-
-        }
+	
+}
+        
 
         #endregion
         private Label ucTitle;
