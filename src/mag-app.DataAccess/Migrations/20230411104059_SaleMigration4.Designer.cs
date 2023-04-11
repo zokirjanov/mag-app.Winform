@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mag_app.DataAccess.DbContexts;
 
@@ -10,9 +11,10 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230411104059_SaleMigration4")]
+    partial class SaleMigration4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
@@ -242,8 +244,8 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(5);
 
-                    b.Property<string>("PaymentType")
-                        .HasColumnType("TEXT")
+                    b.Property<int?>("PaymentType")
+                        .HasColumnType("INTEGER")
                         .HasColumnOrder(6);
 
                     b.Property<long>("StoreId")
@@ -266,8 +268,6 @@ namespace mag_app.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CashId");
-
-                    b.HasIndex("PaymentType");
 
                     b.HasIndex("StoreId");
 

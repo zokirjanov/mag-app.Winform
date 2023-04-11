@@ -119,19 +119,21 @@ public class AllProductService : IAllProductService
     }
 
 
-    public async Task<string> UpdateAsync(long id, int qnt)
+    public async Task<bool> UpdateAsync(long id, decimal qnt)
     {
         var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Id == id);
 
-        if (oldproduct != null) return ("Такое название продукта существует, попробуйте другое название товара");
-
+        if (oldproduct == null)
+        {
+            return false;
+        }
         else
         {
-            oldproduct.Quantity = qnt;
+            oldproduct.Quantity -= qnt;
 
             var res = await allProductRepository.UpdateAsync(oldproduct);
 
-            return (res != null) ? "true" : "false";
+            return (res != null) ? true : false;
         }
     }
 

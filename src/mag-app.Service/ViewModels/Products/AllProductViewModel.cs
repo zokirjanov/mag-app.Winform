@@ -10,7 +10,7 @@ namespace mag_app.Service.Dtos.Products
         public decimal PurchasedPrice { get; set; }
         public decimal Price { get; set; }
 
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public string Barcode { get; set; } = string.Empty;
 
         public string Storename { get; set; } = string.Empty;

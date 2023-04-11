@@ -40,7 +40,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
         public decimal TotalAmount { get; set; }
-        public PaymentType Type { get; set; }
 
         bool commaUsed = false;
 
@@ -90,18 +89,21 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         {
             decimal card=0;
             decimal cash=0;
+            PaymentType type = default(PaymentType);
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells[0].Value.ToString() == "Терминал")
                 {
                     card += Convert.ToDecimal(row.Cells[1].Value);
+                    type = PaymentType.Card;
                 }
                 else if (row.Cells[0].Value.ToString() == "Наличные")
                 {
                     cash += Convert.ToDecimal(row.Cells[1].Value);
+                    type = PaymentType.Cash;
                 }
-                
+                if(dataGridView1.Rows.Count > 1) type= PaymentType.MixedPayment;
             }
 
             SalesGlobalViewModel SaleGlobal = new SalesGlobalViewModel()
@@ -111,7 +113,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 StoreName = Stores_Form.myStoreFormParent.StoreName,
                 CashId = Cash_Register_List.cashRegisterParent.Id,
                 CashName = Cash_Register_List.cashRegisterParent.CashName,
-                PaymentType = Type,
+                PaymentType = type,
                 CashAmount= cash,
                 CardAmount= card,
             };
@@ -135,7 +137,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                             Quantity= uc.Quantity,
                             Price = uc.TotalCost,
                         };
-                        await saleDetail.CreateAsync(saleDetails);
+                        var sd = await saleDetail.CreateAsync(saleDetails);
+
+                        await productService.UpdateAsync(sd.ProductId, uc.Quantity);
                     }
                 }
                 return true;
@@ -155,15 +159,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         private void btnCash_Click(object sender, EventArgs e)
         {
             FillTypePayment("Наличные");
-            if(Type == PaymentType.Card) Type = PaymentType.MixedPayment;
-            else Type = PaymentType.Cash;
         }
 
         private void btnCard_Click(object sender, EventArgs e)
         {
             FillTypePayment("Терминал");
-            if (Type == PaymentType.Cash) Type = PaymentType.MixedPayment;
-            else Type = PaymentType.Card;
         }
 
 

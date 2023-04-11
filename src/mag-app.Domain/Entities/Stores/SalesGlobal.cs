@@ -1,5 +1,6 @@
 ﻿using mag_app.Domain.Common;
 using mag_app.Domain.Constant;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mag_app.Domain.Entities.Stores
@@ -32,7 +33,8 @@ namespace mag_app.Domain.Entities.Stores
 
 
         [Column(Order = 6)]
-        public PaymentType? PaymentType { get; set; } = null;
+        [EnumDataType(typeof(PaymentType))]
+        public  PaymentType? PaymentType { get; set; } = null;
 
 
         [Column(Order = 7)]

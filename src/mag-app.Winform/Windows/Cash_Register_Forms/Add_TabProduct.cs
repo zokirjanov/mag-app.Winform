@@ -101,7 +101,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     ProductName = row.Cells[5].Value.ToString()!,
                     TabControllerId = TabId,
                     TabControllerName = TabName,
-                    Barcode = row.Cells[0].ToString(),
+                    Barcode = row.Cells[0].Value.ToString(),
                     Quantity = Convert.ToInt64(row.Cells[8].Value)
                 };
 

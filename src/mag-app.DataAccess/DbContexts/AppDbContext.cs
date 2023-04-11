@@ -1,10 +1,12 @@
-﻿using mag_app.Domain.Entities.AllProducts;
+﻿using mag_app.Domain.Constant;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Domain.Entities.SubCategories;
 using mag_app.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace mag_app.DataAccess.DbContexts;
 
@@ -54,6 +56,13 @@ public class AppDbContext : DbContext
                     .WithMany(sg => sg.SalesGlobal)
                     .HasForeignKey(sd => sd.StoreId)
                     .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<SalesGlobal>()
+                    .Property(sg => sg.PaymentType)
+                    .HasConversion<string>();
+
+        modelBuilder.Entity<SalesGlobal>()
+                    .HasIndex(sg => sg.PaymentType);
 
 
         // Sales Details
