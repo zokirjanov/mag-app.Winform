@@ -408,11 +408,92 @@ public partial class Cash_Register_Main : Form
 
 
 
+    private void primaryButton2_Click(object sender, EventArgs e)
+    {
+        if(flowLayoutPanel1.Controls.Count == 0)
+        {
+            return;
+        }
+        else
+        {
+            DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                flowLayoutPanel1.Controls.Clear();
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                // Do nothing
+            }
+        }
+    }
+
+
+
+    private void btnPayment_Click(object sender, EventArgs e)
+    {
+
+        if (flowLayoutPanel1.Controls.Count != 0)
+        {
+            Payment payment = new Payment();
+            payment.ShowDialog();
+        }
+        else
+        {
+            DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                flowLayoutPanel1.Controls.Clear();
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                // Do nothing
+            }
+        }
+
+    }
+
+
+
+
+    private void Payment()
+    {
+
+    }
+
+
+
 
     private void Cash_Register_Main_FormClosed(object sender, FormClosedEventArgs e)
     {
         Store_Product_Form.storeProductParent.Show();
         this.Close();
+    }
+
+
+    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
     }
 
     private void panel2_Paint(object sender, PaintEventArgs e)
@@ -450,56 +531,4 @@ public partial class Cash_Register_Main : Form
         Color.Transparent, 1, ButtonBorderStyle.Solid, // right
         Color.Black, 1, ButtonBorderStyle.Solid);// bottom
     }
-
-
-
-
-    private void primaryButton2_Click(object sender, EventArgs e)
-    {
-        if(flowLayoutPanel1.Controls.Count == 0)
-        {
-            return;
-        }
-        else
-        {
-            DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (dlg == DialogResult.OK)
-            {
-                flowLayoutPanel1.Controls.Clear();
-            }
-            if (dlg == DialogResult.Cancel)
-            {
-                // Do nothing
-            }
-        }
-    }
-
-
-
-
-    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
-    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-        {
-            e.Handled = true;
-        }
-        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
 }

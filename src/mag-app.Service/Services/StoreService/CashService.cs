@@ -1,14 +1,8 @@
 ﻿using mag_app.DataAccess.Interfaces.Stores;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Stores;
-using mag_app.Service.Dtos.Stores;
 using mag_app.Service.Interfaces.Stores;
 using mag_app.Service.ViewModels.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mag_app.Service.Services.StoreService
 {
@@ -55,7 +49,7 @@ namespace mag_app.Service.Services.StoreService
 
         public async Task<List<Cash>> GetAllAsync(long id)
         {
-            var result = await cashRepository.GetAllAsync(x=>x.StoreId == id);
+            var result = await cashRepository.GetAllAsync(x => x.StoreId == id);
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }

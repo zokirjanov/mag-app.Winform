@@ -47,7 +47,7 @@
             this.primaryButton4 = new mag_app.Winform.Components.PrimaryButton();
             this.label2 = new System.Windows.Forms.Label();
             this.primaryButton2 = new mag_app.Winform.Components.PrimaryButton();
-            this.primaryButton1 = new mag_app.Winform.Components.PrimaryButton();
+            this.btnPayment = new mag_app.Winform.Components.PrimaryButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -256,7 +256,7 @@
             this.panel1.Controls.Add(this.primaryButton4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.primaryButton2);
-            this.panel1.Controls.Add(this.primaryButton1);
+            this.panel1.Controls.Add(this.btnPayment);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 551);
             this.panel1.Name = "panel1";
@@ -319,25 +319,26 @@
             this.primaryButton2.UseVisualStyleBackColor = false;
             this.primaryButton2.Click += new System.EventHandler(this.primaryButton2_Click);
             // 
-            // primaryButton1
+            // btnPayment
             // 
-            this.primaryButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.primaryButton1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.primaryButton1.BackgroundColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.primaryButton1.BorderColor = System.Drawing.Color.DarkGoldenrod;
-            this.primaryButton1.BorderRadius = 20;
-            this.primaryButton1.BorderSize = 1;
-            this.primaryButton1.FlatAppearance.BorderSize = 0;
-            this.primaryButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.primaryButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.primaryButton1.ForeColor = System.Drawing.Color.Black;
-            this.primaryButton1.Location = new System.Drawing.Point(53, 49);
-            this.primaryButton1.Name = "primaryButton1";
-            this.primaryButton1.Size = new System.Drawing.Size(238, 54);
-            this.primaryButton1.TabIndex = 0;
-            this.primaryButton1.Text = "Оплатить";
-            this.primaryButton1.TextColor = System.Drawing.Color.Black;
-            this.primaryButton1.UseVisualStyleBackColor = false;
+            this.btnPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPayment.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.btnPayment.BackgroundColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.btnPayment.BorderColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnPayment.BorderRadius = 20;
+            this.btnPayment.BorderSize = 1;
+            this.btnPayment.FlatAppearance.BorderSize = 0;
+            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayment.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPayment.ForeColor = System.Drawing.Color.Black;
+            this.btnPayment.Location = new System.Drawing.Point(53, 49);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(238, 54);
+            this.btnPayment.TabIndex = 0;
+            this.btnPayment.Text = "Оплатить";
+            this.btnPayment.TextColor = System.Drawing.Color.Black;
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // Cash_Register_Main
             // 
@@ -377,7 +378,7 @@
         private FlowLayoutPanel tabProductFlowPanel;
         private Label label1;
         private Panel panel3;
-        private Components.PrimaryButton primaryButton1;
+        private Components.PrimaryButton btnPayment;
         private Label label2;
         private Components.PrimaryButton primaryButton2;
         private TextBox quantityTb;
