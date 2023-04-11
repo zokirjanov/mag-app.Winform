@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class Initial_Migration : Migration
+    public partial class InitialMigratiom : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +33,19 @@ namespace mag_app.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Stores", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tabs",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    TabName = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tabs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,6 +86,27 @@ namespace mag_app.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cashes",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
+                    StoreName = table.Column<string>(type: "TEXT", nullable: false),
+                    CashName = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cashes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cashes_Stores_StoreId",
+                        column: x => x.StoreId,
+                        principalTable: "Stores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -105,6 +140,39 @@ namespace mag_app.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SalesGlobals",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
+                    StoreName = table.Column<string>(type: "TEXT", nullable: false),
+                    CashId = table.Column<long>(type: "INTEGER", nullable: false),
+                    CashName = table.Column<string>(type: "TEXT", nullable: false),
+                    PaymentType = table.Column<string>(type: "TEXT", nullable: true),
+                    CashAmount = table.Column<decimal>(type: "TEXT", nullable: true),
+                    CardAmount = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TotalSalePrice = table.Column<decimal>(type: "TEXT", nullable: false),
+                    TransactionDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SalesGlobals", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SalesGlobals_Cashes_CashId",
+                        column: x => x.CashId,
+                        principalTable: "Cashes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SalesGlobals_Stores_StoreId",
+                        column: x => x.StoreId,
+                        principalTable: "Stores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AllProducts",
                 columns: table => new
                 {
@@ -121,7 +189,7 @@ namespace mag_app.DataAccess.Migrations
                     ProdutName = table.Column<string>(type: "TEXT", nullable: false),
                     PurchasedPrice = table.Column<decimal>(type: "TEXT", nullable: false),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
+                    Quantity = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -152,6 +220,67 @@ namespace mag_app.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SaleDetails",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    SaleId = table.Column<long>(type: "INTEGER", nullable: false),
+                    ProductId = table.Column<long>(type: "INTEGER", nullable: false),
+                    ProductName = table.Column<string>(type: "TEXT", nullable: false),
+                    Quantity = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    DiscountPrice = table.Column<decimal>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SaleDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SaleDetails_AllProducts_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "AllProducts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_SaleDetails_SalesGlobals_SaleId",
+                        column: x => x.SaleId,
+                        principalTable: "SalesGlobals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tabproducts",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Barcode = table.Column<string>(type: "TEXT", nullable: false),
+                    Quantity = table.Column<decimal>(type: "TEXT", nullable: false),
+                    TabControllerId = table.Column<long>(type: "INTEGER", nullable: false),
+                    TabControllerName = table.Column<string>(type: "TEXT", nullable: false),
+                    ProductId = table.Column<long>(type: "INTEGER", nullable: false),
+                    ProductName = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tabproducts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tabproducts_AllProducts_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "AllProducts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tabproducts_Tabs_TabControllerId",
+                        column: x => x.TabControllerId,
+                        principalTable: "Tabs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AllProducts_CategoryId",
                 table: "AllProducts",
@@ -173,6 +302,11 @@ namespace mag_app.DataAccess.Migrations
                 column: "SubCategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cashes_StoreId",
+                table: "Cashes",
+                column: "StoreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
@@ -183,18 +317,68 @@ namespace mag_app.DataAccess.Migrations
                 column: "SubCategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SaleDetails_ProductId",
+                table: "SaleDetails",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SaleDetails_SaleId",
+                table: "SaleDetails",
+                column: "SaleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalesGlobals_CashId",
+                table: "SalesGlobals",
+                column: "CashId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalesGlobals_PaymentType",
+                table: "SalesGlobals",
+                column: "PaymentType");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalesGlobals_StoreId",
+                table: "SalesGlobals",
+                column: "StoreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SubCategories_CategoryId",
                 table: "SubCategories",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tabproducts_ProductId",
+                table: "Tabproducts",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tabproducts_TabControllerId",
+                table: "Tabproducts",
+                column: "TabControllerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AllProducts");
+                name: "SaleDetails");
+
+            migrationBuilder.DropTable(
+                name: "Tabproducts");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "SalesGlobals");
+
+            migrationBuilder.DropTable(
+                name: "AllProducts");
+
+            migrationBuilder.DropTable(
+                name: "Tabs");
+
+            migrationBuilder.DropTable(
+                name: "Cashes");
 
             migrationBuilder.DropTable(
                 name: "Products");

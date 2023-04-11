@@ -119,6 +119,25 @@ public class AllProductService : IAllProductService
     }
 
 
+    public async Task<bool> UpdateAsync(long id, decimal qnt)
+    {
+        var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.Id == id);
+
+        if (oldproduct == null)
+        {
+            return false;
+        }
+        else
+        {
+            oldproduct.Quantity -= qnt;
+
+            var res = await allProductRepository.UpdateAsync(oldproduct);
+
+            return (res != null) ? true : false;
+        }
+    }
+
+
 
     public async Task<string> UpdateAsync(AllProduct product)
     {

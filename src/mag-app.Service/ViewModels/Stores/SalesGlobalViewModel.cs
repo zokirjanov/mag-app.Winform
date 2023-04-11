@@ -4,6 +4,7 @@ using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Stores;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,8 @@ namespace mag_app.Service.ViewModels.Stores
         public long CashId { get; set; }
         public string CashName { get; set; }
 
-        public PaymentType PaymentType { get; set; } = PaymentType.Cash;
+        [EnumDataType(typeof(PaymentType))]
+        public PaymentType PaymentType { get; set; }
 
         public decimal? CashAmount { get; set; }
 
@@ -33,7 +35,7 @@ namespace mag_app.Service.ViewModels.Stores
         {
             return new SalesGlobal()
             {
-                TotalSale = salesGlobalViewModel.TotalSale,
+                TotalSalePrice = salesGlobalViewModel.TotalSale,
                 TransactionDate = TimeHelper.CurrentTime(),
                 StoreId= salesGlobalViewModel.StoreId,
                 StoreName= salesGlobalViewModel.StoreName,

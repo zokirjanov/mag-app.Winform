@@ -55,8 +55,8 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(11);
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER")
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("TEXT")
                         .HasColumnOrder(13);
 
                     b.Property<long?>("StoreId")
@@ -181,26 +181,33 @@ namespace mag_app.DataAccess.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
 
                     b.Property<decimal?>("DiscountPrice")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(7);
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(6);
 
                     b.Property<long>("ProductId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(3);
 
                     b.Property<string>("ProductName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(4);
 
                     b.Property<decimal>("Quantity")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(5);
 
                     b.Property<long>("SaleId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
 
                     b.HasKey("Id");
 
@@ -215,40 +222,52 @@ namespace mag_app.DataAccess.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
 
                     b.Property<decimal?>("CardAmount")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(8);
 
                     b.Property<decimal?>("CashAmount")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(7);
 
                     b.Property<long>("CashId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("CashName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(5);
 
-                    b.Property<int>("PaymentType")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PaymentType")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(6);
 
                     b.Property<long>("StoreId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
 
                     b.Property<string>("StoreName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(3);
 
-                    b.Property<decimal>("TotalSale")
-                        .HasColumnType("TEXT");
+                    b.Property<decimal>("TotalSalePrice")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(9);
 
                     b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(10);
 
                     b.HasKey("Id");
 
                     b.HasIndex("CashId");
+
+                    b.HasIndex("PaymentType");
 
                     b.HasIndex("StoreId");
 

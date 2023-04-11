@@ -1,25 +1,10 @@
 ﻿using mag_app.Domain.Constant;
-using mag_app.Domain.Entities.Products;
-using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
-using mag_app.Service.Interfaces.Stores;
+using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
@@ -27,18 +12,21 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
     {
         SalesGlobalService salesGlobal;
         SaleDetailService saleDetail;
+        AllProductService productService;
 
         public Payment()
         {
             salesGlobal = new SalesGlobalService();
-            saleDetail= new SaleDetailService();
+            saleDetail = new SaleDetailService();
+            productService = new AllProductService();
             InitializeComponent();
         }
 
         public decimal TotalAmount { get; set; }
-        public PaymentType Type { get; set; }
 
         bool commaUsed = false;
+
+
 
 
         private void Payment_Load(object sender, EventArgs e)
@@ -65,6 +53,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 if (paymentProcessed)
                 {
                     AutoClosingMessageBox.Show("Платеж успешно обработан", "Success", 1000);
+                    Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls.Clear();
                     this.Close();
                 }
                 else
@@ -77,34 +66,40 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
+
+
+
         private async Task<bool> PreparePaymentInfo()
         {
-            decimal card=0;
-            decimal cash=0;
+            decimal card = 0;
+            decimal cash = 0;
+            PaymentType type = default(PaymentType);
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells[0].Value.ToString() == "Терминал")
                 {
                     card += Convert.ToDecimal(row.Cells[1].Value);
+                    type = PaymentType.Card;
                 }
                 else if (row.Cells[0].Value.ToString() == "Наличные")
                 {
                     cash += Convert.ToDecimal(row.Cells[1].Value);
+                    type = PaymentType.Cash;
                 }
-                
+                if (dataGridView1.Rows.Count > 1) type = PaymentType.MixedPayment;
             }
 
             SalesGlobalViewModel SaleGlobal = new SalesGlobalViewModel()
             {
-                TotalSale = card+cash,
+                TotalSale = card + cash,
                 StoreId = Stores_Form.myStoreFormParent.Id,
                 StoreName = Stores_Form.myStoreFormParent.StoreName,
                 CashId = Cash_Register_List.cashRegisterParent.Id,
                 CashName = Cash_Register_List.cashRegisterParent.CashName,
-                PaymentType = Type,
-                CashAmount= cash,
-                CardAmount= card,
+                PaymentType = type,
+                CashAmount = cash,
+                CardAmount = card,
             };
 
 
@@ -112,7 +107,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 var sg = await salesGlobal.CreateAsync(SaleGlobal);
 
-                if(sg != null)
+                if (sg != null)
                 {
                     foreach (Control item in Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls)
                     {
@@ -122,11 +117,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                         {
                             SaleId = sg.Id,
                             ProductId = uc.ProductId,
-                            ProductName = uc.ProductName,
-                            Quantity= uc.Quantity,
+                            ProductName = uc.Title,
+                            Quantity = uc.Quantity,
                             Price = uc.TotalCost,
                         };
-                        await saleDetail.CreateAsync(saleDetails);
+                        var sd = await saleDetail.CreateAsync(saleDetails);
+
+                        await productService.UpdateAsync(sd.ProductId, uc.Quantity);
                     }
                 }
                 return true;
@@ -134,7 +131,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Произошла ошибка: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false; 
+                return false;
             }
         }
 
@@ -146,15 +143,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         private void btnCash_Click(object sender, EventArgs e)
         {
             FillTypePayment("Наличные");
-            if(Type == PaymentType.Card) Type = PaymentType.MixedPayment;
-            else Type = PaymentType.Cash;
         }
 
         private void btnCard_Click(object sender, EventArgs e)
         {
             FillTypePayment("Терминал");
-            if (Type == PaymentType.Cash) Type = PaymentType.MixedPayment;
-            else Type = PaymentType.Card;
         }
 
 
@@ -172,7 +165,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 lblActiveSum.Text = restCash.ToString();
                 quantityTb.Text = restCash.ToString();
             }
-            
+
         }
 
 
@@ -289,7 +282,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void btnBackspace_Click(object sender, EventArgs e)
         {
-            if(quantityTb.Text.Length == 1)
+            if (quantityTb.Text.Length == 1)
             {
                 quantityTb.Text = "0";
                 return;
@@ -352,6 +345,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 }
                 else lblWarning.Text = "недостаточно суммы";
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            lblActiveSum.Text = TotalAmount.ToString(@"###\ ###\ ###\ ###\");
+            dataGridView1.Rows.Clear();
+            quantityTb.Text = TotalAmount.ToString();
         }
     }
 }
