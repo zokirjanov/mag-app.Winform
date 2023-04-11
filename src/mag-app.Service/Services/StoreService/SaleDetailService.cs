@@ -1,4 +1,6 @@
-﻿using mag_app.Domain.Entities.Stores;
+﻿using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.Stores;
+using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Interfaces.Stores;
 using mag_app.Service.ViewModels.Stores;
 using System;
@@ -11,9 +13,14 @@ namespace mag_app.Service.Services.StoreService
 {
     public class SaleDetailService : ISaleDetailService
     {
-        public Task<string> CreateAsync(SaleDetailsViewModel viewModel)
+        ISaleDetailsRepository _repository;
+        public SaleDetailService()
         {
-            throw new NotImplementedException();
+            _repository = new SaleDetailRepository();
+        }
+        public async Task<SaleDetail> CreateAsync(SaleDetailsViewModel viewModel)
+        {
+            return await _repository.CreateAsync(viewModel);
         }
 
         public Task<string> DeleteAsync(long Id)

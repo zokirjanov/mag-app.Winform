@@ -10,7 +10,7 @@ namespace mag_app.Service.Interfaces.Stores
 {
     public interface ISaleDetailService
     {
-        public Task<string> CreateAsync(SaleDetailsViewModel viewModel);
+        public Task<SaleDetail> CreateAsync(SaleDetailsViewModel viewModel);
         public Task<string> DeleteAsync(long Id);
         public Task<string> UpdateAsync(SaleDetail saleDetail, string name);
         public Task<List<SaleDetail>> GetAllAsync();

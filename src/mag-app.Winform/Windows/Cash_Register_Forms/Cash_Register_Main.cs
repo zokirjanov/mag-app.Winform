@@ -53,6 +53,30 @@ public partial class Cash_Register_Main : Form
 
 
 
+    private void btnPayment_Click(object sender, EventArgs e)
+    {
+
+        if (flowLayoutPanel1.Controls.Count != 0)
+        {
+            decimal total;
+            Payment(out total);
+            Payment payment = new Payment();
+            payment.TotalAmount = total;
+            payment.ShowDialog();
+        }
+        else
+        {
+            MessageBox.Show("Корзина пуста");
+        }
+
+    }
+
+
+
+
+
+
+
     /// <summary>
     /// Tab Controllers Dynamically
     /// </summary>
@@ -253,6 +277,7 @@ public partial class Cash_Register_Main : Form
                 TotalCost = product.Price,
                 Barcode = product.Barcode,
                 maxQ = product.Quantity,
+                ProductId= product.ProductId,
             };
 
 
@@ -408,11 +433,84 @@ public partial class Cash_Register_Main : Form
 
 
 
+    private void primaryButton2_Click(object sender, EventArgs e)
+    {
+        if(flowLayoutPanel1.Controls.Count == 0)
+        {
+            return;
+        }
+        else
+        {
+            DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (dlg == DialogResult.OK)
+            {
+                flowLayoutPanel1.Controls.Clear();
+            }
+            if (dlg == DialogResult.Cancel)
+            {
+                // Do nothing
+            }
+        }
+    }
+
+
+
+
+
+
+
+    private void Payment(out decimal total)
+    {
+        total = 0;
+        try
+        {
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                if (control is ProductControl productControl)
+                {
+                    total += productControl.TotalCost;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"товар не найден: {ex.Message}");
+        }
+    }
+
+
+
 
     private void Cash_Register_Main_FormClosed(object sender, FormClosedEventArgs e)
     {
         Store_Product_Form.storeProductParent.Show();
         this.Close();
+    }
+
+
+    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        // only allow one decimal point
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+        {
+            e.Handled = true;
+        }
+        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
+        {
+            e.Handled = true;
+        }
     }
 
     private void panel2_Paint(object sender, PaintEventArgs e)
@@ -450,56 +548,4 @@ public partial class Cash_Register_Main : Form
         Color.Transparent, 1, ButtonBorderStyle.Solid, // right
         Color.Black, 1, ButtonBorderStyle.Solid);// bottom
     }
-
-
-
-
-    private void primaryButton2_Click(object sender, EventArgs e)
-    {
-        if(flowLayoutPanel1.Controls.Count == 0)
-        {
-            return;
-        }
-        else
-        {
-            DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (dlg == DialogResult.OK)
-            {
-                flowLayoutPanel1.Controls.Clear();
-            }
-            if (dlg == DialogResult.Cancel)
-            {
-                // Do nothing
-            }
-        }
-    }
-
-
-
-
-    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-        {
-            e.Handled = true;
-        }
-        // only allow one decimal point
-        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
-    private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-        {
-            e.Handled = true;
-        }
-        if ((e.KeyChar == '.') && ((sender as TextBox)!.Text.IndexOf('.') > -1))
-        {
-            e.Handled = true;
-        }
-    }
-
 }
