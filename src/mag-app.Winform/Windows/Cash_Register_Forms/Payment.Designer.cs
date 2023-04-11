@@ -59,6 +59,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.PaymentForm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.customPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -367,6 +368,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightCyan;
+            this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.lblTotalSum);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -432,6 +434,17 @@
             this.TotalSum.Name = "TotalSum";
             this.TotalSum.ReadOnly = true;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.MistyRose;
+            this.btnCancel.Location = new System.Drawing.Point(264, 46);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(69, 23);
+            this.btnCancel.TabIndex = 46;
+            this.btnCancel.Text = "отмена";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -487,5 +500,6 @@
         private Label lblWarning;
         private DataGridViewTextBoxColumn PaymentForm;
         private DataGridViewTextBoxColumn TotalSum;
+        private Button btnCancel;
     }
 }

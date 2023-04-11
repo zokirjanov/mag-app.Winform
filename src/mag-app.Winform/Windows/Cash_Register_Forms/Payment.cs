@@ -70,6 +70,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 if (paymentProcessed)
                 {
                     AutoClosingMessageBox.Show("Платеж успешно обработан", "Success", 1000);
+                    Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls.Clear();
                     this.Close();
                 }
                 else
@@ -361,6 +362,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 }
                 else lblWarning.Text = "недостаточно суммы";
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            lblActiveSum.Text = TotalAmount.ToString(@"###\ ###\ ###\ ###\");
+            dataGridView1.Rows.Clear();
+            quantityTb.Text = TotalAmount.ToString();
         }
     }
 }

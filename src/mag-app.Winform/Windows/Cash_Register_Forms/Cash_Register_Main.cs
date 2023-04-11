@@ -152,7 +152,7 @@ public partial class Cash_Register_Main : Form
         var tabButton = new Button
         {
             Text = tabname,
-            Width = 90,
+            Width = 120,
             Height = 40,
             BackColor = Color.Turquoise,
             Margin = new Padding(1, 6, 0, 0),
