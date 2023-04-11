@@ -33,7 +33,7 @@ namespace mag_app.Service.ViewModels.Stores
         {
             return new SalesGlobal()
             {
-                TotalSale = salesGlobalViewModel.TotalSale,
+                TotalSalePrice = salesGlobalViewModel.TotalSale,
                 TransactionDate = TimeHelper.CurrentTime(),
                 StoreId= salesGlobalViewModel.StoreId,
                 StoreName= salesGlobalViewModel.StoreName,

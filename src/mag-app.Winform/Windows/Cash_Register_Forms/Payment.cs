@@ -1,8 +1,10 @@
 ﻿using mag_app.Domain.Constant;
+using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Interfaces.Stores;
+using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
@@ -27,11 +29,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
     {
         SalesGlobalService salesGlobal;
         SaleDetailService saleDetail;
+        AllProductService productService;
 
         public Payment()
         {
             salesGlobal = new SalesGlobalService();
             saleDetail= new SaleDetailService();
+            productService = new AllProductService();
             InitializeComponent();
         }
 
@@ -39,6 +43,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         public PaymentType Type { get; set; }
 
         bool commaUsed = false;
+
+
 
 
         private void Payment_Load(object sender, EventArgs e)
@@ -74,6 +80,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
             else MessageBox.Show("торговля ведется не корректно");
         }
+
+        
+
 
 
 
@@ -122,7 +131,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                         {
                             SaleId = sg.Id,
                             ProductId = uc.ProductId,
-                            ProductName = uc.ProductName,
+                            ProductName = uc.Title,
                             Quantity= uc.Quantity,
                             Price = uc.TotalCost,
                         };
