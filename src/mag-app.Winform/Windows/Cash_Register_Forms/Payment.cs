@@ -1,27 +1,10 @@
 ﻿using mag_app.Domain.Constant;
-using mag_app.Domain.Entities.AllProducts;
-using mag_app.Domain.Entities.Products;
-using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
-using mag_app.Service.Interfaces.Stores;
 using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
@@ -34,7 +17,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         public Payment()
         {
             salesGlobal = new SalesGlobalService();
-            saleDetail= new SaleDetailService();
+            saleDetail = new SaleDetailService();
             productService = new AllProductService();
             InitializeComponent();
         }
@@ -81,15 +64,15 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             else MessageBox.Show("торговля ведется не корректно");
         }
 
-        
+
 
 
 
 
         private async Task<bool> PreparePaymentInfo()
         {
-            decimal card=0;
-            decimal cash=0;
+            decimal card = 0;
+            decimal cash = 0;
             PaymentType type = default(PaymentType);
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -104,19 +87,19 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     cash += Convert.ToDecimal(row.Cells[1].Value);
                     type = PaymentType.Cash;
                 }
-                if(dataGridView1.Rows.Count > 1) type= PaymentType.MixedPayment;
+                if (dataGridView1.Rows.Count > 1) type = PaymentType.MixedPayment;
             }
 
             SalesGlobalViewModel SaleGlobal = new SalesGlobalViewModel()
             {
-                TotalSale = card+cash,
+                TotalSale = card + cash,
                 StoreId = Stores_Form.myStoreFormParent.Id,
                 StoreName = Stores_Form.myStoreFormParent.StoreName,
                 CashId = Cash_Register_List.cashRegisterParent.Id,
                 CashName = Cash_Register_List.cashRegisterParent.CashName,
                 PaymentType = type,
-                CashAmount= cash,
-                CardAmount= card,
+                CashAmount = cash,
+                CardAmount = card,
             };
 
 
@@ -124,7 +107,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 var sg = await salesGlobal.CreateAsync(SaleGlobal);
 
-                if(sg != null)
+                if (sg != null)
                 {
                     foreach (Control item in Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls)
                     {
@@ -135,7 +118,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                             SaleId = sg.Id,
                             ProductId = uc.ProductId,
                             ProductName = uc.Title,
-                            Quantity= uc.Quantity,
+                            Quantity = uc.Quantity,
                             Price = uc.TotalCost,
                         };
                         var sd = await saleDetail.CreateAsync(saleDetails);
@@ -148,7 +131,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Произошла ошибка: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false; 
+                return false;
             }
         }
 
@@ -182,7 +165,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 lblActiveSum.Text = restCash.ToString();
                 quantityTb.Text = restCash.ToString();
             }
-            
+
         }
 
 
@@ -299,7 +282,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void btnBackspace_Click(object sender, EventArgs e)
         {
-            if(quantityTb.Text.Length == 1)
+            if (quantityTb.Text.Length == 1)
             {
                 quantityTb.Text = "0";
                 return;
