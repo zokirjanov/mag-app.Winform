@@ -24,11 +24,6 @@ namespace mag_app.Service.ViewModels.Stores
 
         public decimal? DiscountPrice { get; set; }
 
-        public PaymentType PaymentType { get; set; }
-
-        public decimal? CashAmount { get; set; }
-
-        public decimal? CardAmount { get; set; }
 
         public static implicit operator SaleDetail(SaleDetailsViewModel saleDetailsViewModel)
         {
@@ -40,9 +35,6 @@ namespace mag_app.Service.ViewModels.Stores
                 Quantity = saleDetailsViewModel.Quantity,
                 Price= saleDetailsViewModel.Price,
                 DiscountPrice= saleDetailsViewModel.DiscountPrice,
-                PaymentType= saleDetailsViewModel.PaymentType,
-                CardAmount= saleDetailsViewModel.CardAmount,
-                CashAmount= saleDetailsViewModel.CashAmount,
             };
         }
     }

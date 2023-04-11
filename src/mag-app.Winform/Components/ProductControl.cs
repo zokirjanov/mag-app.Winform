@@ -41,6 +41,7 @@ namespace mag_app.Winform.Components
         public decimal TotalCost { get => _totalCost; set { _totalCost = value; ucTotalPrice.Text = _totalCost.ToString(@"###\ ###\ ###\ ###\"); } }
         public decimal Quantity { get => _quantity; set { _quantity = value; ucQuantity.Text = _quantity.ToString(); } }
         public string Barcode { get; set; }
+        public long  ProductId { get; set; }
         public decimal maxQ  { get; set; }
 
 

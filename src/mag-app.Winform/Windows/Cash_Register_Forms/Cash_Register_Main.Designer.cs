@@ -127,7 +127,6 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 66);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 485);
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint_1);
@@ -331,9 +330,9 @@
             this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayment.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPayment.ForeColor = System.Drawing.Color.Black;
-            this.btnPayment.Location = new System.Drawing.Point(53, 49);
+            this.btnPayment.Location = new System.Drawing.Point(18, 49);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(238, 54);
+            this.btnPayment.Size = new System.Drawing.Size(300, 54);
             this.btnPayment.TabIndex = 0;
             this.btnPayment.Text = "Оплатить";
             this.btnPayment.TextColor = System.Drawing.Color.Black;

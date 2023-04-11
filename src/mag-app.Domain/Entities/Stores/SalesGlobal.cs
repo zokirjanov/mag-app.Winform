@@ -1,4 +1,5 @@
 ﻿using mag_app.Domain.Common;
+using mag_app.Domain.Constant;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mag_app.Domain.Entities.Stores
@@ -10,6 +11,12 @@ namespace mag_app.Domain.Entities.Stores
         public decimal TotalSale { get; set; }
 
         public DateTime TransactionDate { get; set; }
+
+        public PaymentType? PaymentType { get; set; } = null;
+
+        public decimal? CashAmount { get; set; }
+
+        public decimal? CardAmount { get; set; }
 
 
         public long StoreId { get; set; }

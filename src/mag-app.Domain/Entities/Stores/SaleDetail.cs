@@ -24,12 +24,5 @@ namespace mag_app.Domain.Entities.Stores
         public decimal Price { get; set; }
 
         public decimal? DiscountPrice { get; set; }
-
-        public PaymentType PaymentType { get; set; } = PaymentType.Cash;
-
-        public decimal? CashAmount { get; set; }
-
-        public decimal? CardAmount { get; set; }
-
     }
 }

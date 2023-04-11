@@ -58,10 +58,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button13.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        rwAAAK8BK7AVuQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKaSURBVEhL7ZVN
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKaSURBVEhL7ZVN
         bxJBHIdXv4cX71712EQtbbcsLCxva22KxIJAgRZKgS60gYJaEN2+WLGv2lRTE5vUxmhrv0BjPHjXg1+g
         Jp48ePg5M4Ut4pblA3SSJywTeH4z/5md4c5bJ+2C1apckqT05XZYnbkrspzrslhSHkEY6zKC52PXiPsi
         J9rTmwQYITlzcMsFCNZxXO/2d4SpN/ydBvxplenhdE+xAF4Y05WdBQ1ggrSyhun8JiKx+f/kNinD5C5P
@@ -76,10 +76,10 @@
         fjoyoI0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        rwAAAK8BK7AVuQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALSSURBVEhLrVZN
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALSSURBVEhLrVZN
         TxNRFG1i3BtdudHElT9Bd/4BhUAQgqAuLAQZMKHTQqSUmfIhYpFEA4SFhdhg0LIgGDcQgtBKQaYqAp0m
         xoWRPwC0M8bNdc7rPOyMQwHpTU7y5s5957x337t3xnUSuztWesYcFt/qXl6/UBe+8d0dLukzXcUzTn4/
         Ukb1Y6VUVBFOLrwqJ3GmijzTlcUT4eSNE2Ukgni8hPLHJxJxIq8L51BQZFSRLg8r0vhhGFxumxuI+RKh
@@ -98,7 +98,7 @@
   <data name="btnBackspace.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qwAAAKsB1E2SqwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHwSURBVEhL7ZHL
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHwSURBVEhL7ZHL
         LwNRGMXnP2BjiZ2NtYWlrY2Nol1UWdgpjVfUTJU2DZk+FoREUO/EY+GRqEgkXgukrdCgCdpY2ggWaLVz
         3fv1YnpnRNoNi57kl5t7vvOdycxwOf1fNVjEKoMgPmFQFjzVC+KswerJp3Xp0lsGK3DolVnKHF6coZXf
         MgjOMjx8VoSz45HWpqS3ukqwec+EvuCHvWhqfRs19jrTfHInPpnLfQKtxt+8x1WIjTs2IOc0fIOI9vzn
@@ -110,4 +110,10 @@
         dTn9mTjuAwUOSDfIUe+GAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="PaymentForm.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TotalSum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

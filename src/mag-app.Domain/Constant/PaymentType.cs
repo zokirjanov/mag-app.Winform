@@ -8,6 +8,6 @@ namespace mag_app.Domain.Constant
 {
     public enum PaymentType
     {
-        Cash, Card
+        Cash, Card, MixedPayment
     }
 }

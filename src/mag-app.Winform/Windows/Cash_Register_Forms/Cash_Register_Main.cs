@@ -53,6 +53,30 @@ public partial class Cash_Register_Main : Form
 
 
 
+    private void btnPayment_Click(object sender, EventArgs e)
+    {
+
+        if (flowLayoutPanel1.Controls.Count != 0)
+        {
+            decimal total;
+            Payment(out total);
+            Payment payment = new Payment();
+            payment.TotalAmount = total;
+            payment.ShowDialog();
+        }
+        else
+        {
+            MessageBox.Show("Корзина пуста");
+        }
+
+    }
+
+
+
+
+
+
+
     /// <summary>
     /// Tab Controllers Dynamically
     /// </summary>
@@ -253,6 +277,7 @@ public partial class Cash_Register_Main : Form
                 TotalCost = product.Price,
                 Barcode = product.Barcode,
                 maxQ = product.Quantity,
+                ProductId= product.ProductId,
             };
 
 
@@ -430,35 +455,27 @@ public partial class Cash_Register_Main : Form
 
 
 
-    private void btnPayment_Click(object sender, EventArgs e)
-    {
 
-        if (flowLayoutPanel1.Controls.Count != 0)
+
+
+
+    private void Payment(out decimal total)
+    {
+        total = 0;
+        try
         {
-            Payment payment = new Payment();
-            payment.ShowDialog();
-        }
-        else
-        {
-            DialogResult dlg = MessageBox.Show("Хотите очистить корзину?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (dlg == DialogResult.OK)
+            foreach (Control control in flowLayoutPanel1.Controls)
             {
-                flowLayoutPanel1.Controls.Clear();
-            }
-            if (dlg == DialogResult.Cancel)
-            {
-                // Do nothing
+                if (control is ProductControl productControl)
+                {
+                    total += productControl.TotalCost;
+                }
             }
         }
-
-    }
-
-
-
-
-    private void Payment()
-    {
-
+        catch (Exception ex)
+        {
+            MessageBox.Show($"товар не найден: {ex.Message}");
+        }
     }
 
 

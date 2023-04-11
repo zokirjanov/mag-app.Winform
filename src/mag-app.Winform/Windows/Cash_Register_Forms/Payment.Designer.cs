@@ -29,59 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblWarning = new System.Windows.Forms.Label();
             this.lblActiveSum = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCard = new System.Windows.Forms.Button();
+            this.btnCash = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
             this.btnBackspace = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnZero = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn9 = new System.Windows.Forms.Button();
+            this.btn8 = new System.Windows.Forms.Button();
+            this.btn7 = new System.Windows.Forms.Button();
+            this.btn6 = new System.Windows.Forms.Button();
+            this.btn5 = new System.Windows.Forms.Button();
+            this.btn4 = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.btn1 = new System.Windows.Forms.Button();
             this.btnComa = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDoubleZero = new System.Windows.Forms.Button();
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.quantityTb = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTotalSum = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.PaymentForm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.customPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightCyan;
+            this.panel1.Controls.Add(this.lblWarning);
             this.panel1.Controls.Add(this.lblActiveSum);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button13);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnCard);
+            this.panel1.Controls.Add(this.btnCash);
+            this.panel1.Controls.Add(this.btnPay);
             this.panel1.Controls.Add(this.btnBackspace);
-            this.panel1.Controls.Add(this.button14);
+            this.panel1.Controls.Add(this.btnZero);
             this.panel1.Controls.Add(this.btnClear);
-            this.panel1.Controls.Add(this.button12);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btn9);
+            this.panel1.Controls.Add(this.btn8);
+            this.panel1.Controls.Add(this.btn7);
+            this.panel1.Controls.Add(this.btn6);
+            this.panel1.Controls.Add(this.btn5);
+            this.panel1.Controls.Add(this.btn4);
+            this.panel1.Controls.Add(this.btn3);
+            this.panel1.Controls.Add(this.btn2);
+            this.panel1.Controls.Add(this.btn1);
             this.panel1.Controls.Add(this.btnComa);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnDoubleZero);
             this.panel1.Controls.Add(this.customPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(334, 0);
@@ -89,6 +95,16 @@
             this.panel1.Size = new System.Drawing.Size(350, 541);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // lblWarning
+            // 
+            this.lblWarning.AutoSize = true;
+            this.lblWarning.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblWarning.Location = new System.Drawing.Point(59, 108);
+            this.lblWarning.Name = "lblWarning";
+            this.lblWarning.Size = new System.Drawing.Size(0, 15);
+            this.lblWarning.TabIndex = 45;
             // 
             // lblActiveSum
             // 
@@ -110,44 +126,47 @@
             this.label1.TabIndex = 43;
             this.label1.Text = "Остаток:";
             // 
-            // button13
+            // btnCard
             // 
-            this.button13.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.button13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button13.Location = new System.Drawing.Point(178, 429);
-            this.button13.Name = "button13";
-            this.button13.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.button13.Size = new System.Drawing.Size(160, 47);
-            this.button13.TabIndex = 42;
-            this.button13.Text = "терминал";
-            this.button13.UseVisualStyleBackColor = false;
+            this.btnCard.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnCard.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCard.Image = ((System.Drawing.Image)(resources.GetObject("btnCard.Image")));
+            this.btnCard.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCard.Location = new System.Drawing.Point(178, 429);
+            this.btnCard.Name = "btnCard";
+            this.btnCard.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnCard.Size = new System.Drawing.Size(160, 47);
+            this.btnCard.TabIndex = 42;
+            this.btnCard.Text = "терминал";
+            this.btnCard.UseVisualStyleBackColor = false;
+            this.btnCard.Click += new System.EventHandler(this.btnCard_Click);
             // 
-            // button2
+            // btnCash
             // 
-            this.button2.BackColor = System.Drawing.Color.PaleGreen;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(14, 429);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.button2.Size = new System.Drawing.Size(160, 47);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "наличными";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnCash.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnCash.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCash.Image = ((System.Drawing.Image)(resources.GetObject("btnCash.Image")));
+            this.btnCash.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCash.Location = new System.Drawing.Point(14, 429);
+            this.btnCash.Name = "btnCash";
+            this.btnCash.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnCash.Size = new System.Drawing.Size(160, 47);
+            this.btnCash.TabIndex = 41;
+            this.btnCash.Text = "наличными";
+            this.btnCash.UseVisualStyleBackColor = false;
+            this.btnCash.Click += new System.EventHandler(this.btnCash_Click);
             // 
-            // button3
+            // btnPay
             // 
-            this.button3.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(14, 482);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(324, 47);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Завершить оплату";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnPay.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnPay.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPay.Location = new System.Drawing.Point(14, 482);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(324, 47);
+            this.btnPay.TabIndex = 40;
+            this.btnPay.Text = "Завершить оплату";
+            this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // btnBackspace
             // 
@@ -159,17 +178,19 @@
             this.btnBackspace.Size = new System.Drawing.Size(100, 37);
             this.btnBackspace.TabIndex = 39;
             this.btnBackspace.UseVisualStyleBackColor = false;
+            this.btnBackspace.Click += new System.EventHandler(this.btnBackspace_Click);
             // 
-            // button14
+            // btnZero
             // 
-            this.button14.BackColor = System.Drawing.Color.White;
-            this.button14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button14.Location = new System.Drawing.Point(140, 367);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(72, 56);
-            this.button14.TabIndex = 38;
-            this.button14.Text = "0";
-            this.button14.UseVisualStyleBackColor = false;
+            this.btnZero.BackColor = System.Drawing.Color.White;
+            this.btnZero.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnZero.Location = new System.Drawing.Point(140, 367);
+            this.btnZero.Name = "btnZero";
+            this.btnZero.Size = new System.Drawing.Size(72, 56);
+            this.btnZero.TabIndex = 38;
+            this.btnZero.Text = "0";
+            this.btnZero.UseVisualStyleBackColor = false;
+            this.btnZero.Click += new System.EventHandler(this.btnZero_Click);
             // 
             // btnClear
             // 
@@ -181,105 +202,115 @@
             this.btnClear.TabIndex = 37;
             this.btnClear.Text = "C";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // button12
+            // btn9
             // 
-            this.button12.BackColor = System.Drawing.Color.White;
-            this.button12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button12.Location = new System.Drawing.Point(223, 169);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(72, 56);
-            this.button12.TabIndex = 36;
-            this.button12.Text = "9";
-            this.button12.UseVisualStyleBackColor = false;
+            this.btn9.BackColor = System.Drawing.Color.White;
+            this.btn9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn9.Location = new System.Drawing.Point(223, 169);
+            this.btn9.Name = "btn9";
+            this.btn9.Size = new System.Drawing.Size(72, 56);
+            this.btn9.TabIndex = 36;
+            this.btn9.Text = "9";
+            this.btn9.UseVisualStyleBackColor = false;
+            this.btn9.Click += new System.EventHandler(this.btn9_Click);
             // 
-            // button11
+            // btn8
             // 
-            this.button11.BackColor = System.Drawing.Color.White;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button11.Location = new System.Drawing.Point(140, 169);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(72, 56);
-            this.button11.TabIndex = 35;
-            this.button11.Text = "8";
-            this.button11.UseVisualStyleBackColor = false;
+            this.btn8.BackColor = System.Drawing.Color.White;
+            this.btn8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn8.Location = new System.Drawing.Point(140, 169);
+            this.btn8.Name = "btn8";
+            this.btn8.Size = new System.Drawing.Size(72, 56);
+            this.btn8.TabIndex = 35;
+            this.btn8.Text = "8";
+            this.btn8.UseVisualStyleBackColor = false;
+            this.btn8.Click += new System.EventHandler(this.btn8_Click);
             // 
-            // button10
+            // btn7
             // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button10.Location = new System.Drawing.Point(56, 169);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(72, 56);
-            this.button10.TabIndex = 34;
-            this.button10.Text = "7";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btn7.BackColor = System.Drawing.Color.White;
+            this.btn7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn7.Location = new System.Drawing.Point(56, 169);
+            this.btn7.Name = "btn7";
+            this.btn7.Size = new System.Drawing.Size(72, 56);
+            this.btn7.TabIndex = 34;
+            this.btn7.Text = "7";
+            this.btn7.UseVisualStyleBackColor = false;
+            this.btn7.Click += new System.EventHandler(this.btn7_Click);
             // 
-            // button9
+            // btn6
             // 
-            this.button9.BackColor = System.Drawing.Color.White;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button9.Location = new System.Drawing.Point(223, 235);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(72, 56);
-            this.button9.TabIndex = 33;
-            this.button9.Text = "6";
-            this.button9.UseVisualStyleBackColor = false;
+            this.btn6.BackColor = System.Drawing.Color.White;
+            this.btn6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn6.Location = new System.Drawing.Point(223, 235);
+            this.btn6.Name = "btn6";
+            this.btn6.Size = new System.Drawing.Size(72, 56);
+            this.btn6.TabIndex = 33;
+            this.btn6.Text = "6";
+            this.btn6.UseVisualStyleBackColor = false;
+            this.btn6.Click += new System.EventHandler(this.btn6_Click);
             // 
-            // button8
+            // btn5
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button8.Location = new System.Drawing.Point(140, 235);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(72, 56);
-            this.button8.TabIndex = 32;
-            this.button8.Text = "5";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btn5.BackColor = System.Drawing.Color.White;
+            this.btn5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn5.Location = new System.Drawing.Point(140, 235);
+            this.btn5.Name = "btn5";
+            this.btn5.Size = new System.Drawing.Size(72, 56);
+            this.btn5.TabIndex = 32;
+            this.btn5.Text = "5";
+            this.btn5.UseVisualStyleBackColor = false;
+            this.btn5.Click += new System.EventHandler(this.btn5_Click);
             // 
-            // button7
+            // btn4
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button7.Location = new System.Drawing.Point(56, 235);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(72, 56);
-            this.button7.TabIndex = 31;
-            this.button7.Text = "4";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btn4.BackColor = System.Drawing.Color.White;
+            this.btn4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn4.Location = new System.Drawing.Point(56, 235);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(72, 56);
+            this.btn4.TabIndex = 31;
+            this.btn4.Text = "4";
+            this.btn4.UseVisualStyleBackColor = false;
+            this.btn4.Click += new System.EventHandler(this.btn4_Click);
             // 
-            // button6
+            // btn3
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button6.Location = new System.Drawing.Point(223, 301);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(72, 56);
-            this.button6.TabIndex = 30;
-            this.button6.Text = "3";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btn3.BackColor = System.Drawing.Color.White;
+            this.btn3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn3.Location = new System.Drawing.Point(223, 301);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(72, 56);
+            this.btn3.TabIndex = 30;
+            this.btn3.Text = "3";
+            this.btn3.UseVisualStyleBackColor = false;
+            this.btn3.Click += new System.EventHandler(this.btn3_Click);
             // 
-            // button5
+            // btn2
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(140, 301);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(72, 56);
-            this.button5.TabIndex = 29;
-            this.button5.Text = "2";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn2.BackColor = System.Drawing.Color.White;
+            this.btn2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn2.Location = new System.Drawing.Point(140, 301);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(72, 56);
+            this.btn2.TabIndex = 29;
+            this.btn2.Text = "2";
+            this.btn2.UseVisualStyleBackColor = false;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
-            // button4
+            // btn1
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(56, 301);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(72, 56);
-            this.button4.TabIndex = 28;
-            this.button4.Text = "1";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn1.BackColor = System.Drawing.Color.White;
+            this.btn1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn1.Location = new System.Drawing.Point(56, 301);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(72, 56);
+            this.btn1.TabIndex = 28;
+            this.btn1.Text = "1";
+            this.btn1.UseVisualStyleBackColor = false;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btnComa
             // 
@@ -291,17 +322,19 @@
             this.btnComa.TabIndex = 27;
             this.btnComa.Text = ",";
             this.btnComa.UseVisualStyleBackColor = false;
+            this.btnComa.Click += new System.EventHandler(this.btnComa_Click);
             // 
-            // button1
+            // btnDoubleZero
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(56, 367);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 56);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "00";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnDoubleZero.BackColor = System.Drawing.Color.White;
+            this.btnDoubleZero.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDoubleZero.Location = new System.Drawing.Point(56, 367);
+            this.btnDoubleZero.Name = "btnDoubleZero";
+            this.btnDoubleZero.Size = new System.Drawing.Size(72, 56);
+            this.btnDoubleZero.TabIndex = 26;
+            this.btnDoubleZero.Text = "00";
+            this.btnDoubleZero.UseVisualStyleBackColor = false;
+            this.btnDoubleZero.Click += new System.EventHandler(this.btnDoubleZero_Click);
             // 
             // customPanel2
             // 
@@ -328,6 +361,8 @@
             this.quantityTb.Size = new System.Drawing.Size(232, 25);
             this.quantityTb.TabIndex = 11;
             this.quantityTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.quantityTb.TextChanged += new System.EventHandler(this.quantityTb_TextChanged);
+            this.quantityTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.quantityTb_KeyPress);
             // 
             // panel2
             // 
@@ -361,32 +396,62 @@
             this.label2.TabIndex = 44;
             this.label2.Text = "К оплате:";
             // 
-            // flowLayoutPanel1
+            // dataGridView1
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 70);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 471);
-            this.flowLayoutPanel1.TabIndex = 2;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PaymentForm,
+            this.TotalSum});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 70);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(334, 471);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // PaymentForm
+            // 
+            this.PaymentForm.HeaderText = "форма оплаты";
+            this.PaymentForm.Name = "PaymentForm";
+            this.PaymentForm.ReadOnly = true;
+            this.PaymentForm.Width = 150;
+            // 
+            // TotalSum
+            // 
+            this.TotalSum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "### ### ### ### ";
+            this.TotalSum.DefaultCellStyle = dataGridViewCellStyle1;
+            this.TotalSum.HeaderText = "сумма";
+            this.TotalSum.Name = "TotalSum";
+            this.TotalSum.ReadOnly = true;
             // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 541);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Payment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Payment";
+            this.Load += new System.EventHandler(this.Payment_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.customPanel2.ResumeLayout(false);
             this.customPanel2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -394,30 +459,33 @@
         #endregion
 
         private Panel panel1;
-        private Button button3;
+        private Button btnPay;
         private Button btnBackspace;
-        private Button button14;
+        private Button btnZero;
         private Button btnClear;
-        private Button button12;
-        private Button button11;
-        private Button button10;
-        private Button button9;
-        private Button button8;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private Button button4;
+        private Button btn9;
+        private Button btn8;
+        private Button btn7;
+        private Button btn6;
+        private Button btn5;
+        private Button btn4;
+        private Button btn3;
+        private Button btn2;
+        private Button btn1;
         private Button btnComa;
-        private Button button1;
+        private Button btnDoubleZero;
         private Components.CustomPanel customPanel2;
         private TextBox quantityTb;
         private Label lblActiveSum;
         private Label label1;
-        private Button button13;
-        private Button button2;
+        private Button btnCard;
+        private Button btnCash;
         private Panel panel2;
         private Label lblTotalSum;
         private Label label2;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private DataGridView dataGridView1;
+        private Label lblWarning;
+        private DataGridViewTextBoxColumn PaymentForm;
+        private DataGridViewTextBoxColumn TotalSum;
     }
 }

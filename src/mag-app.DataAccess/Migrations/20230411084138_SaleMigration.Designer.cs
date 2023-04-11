@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mag_app.DataAccess.DbContexts;
 
@@ -10,9 +11,10 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230411084138_SaleMigration")]
+    partial class SaleMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
@@ -183,8 +185,17 @@ namespace mag_app.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<decimal?>("CardAmount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("CashAmount")
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal?>("DiscountPrice")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("PaymentType")
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
@@ -217,21 +228,12 @@ namespace mag_app.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal?>("CardAmount")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("CashAmount")
-                        .HasColumnType("TEXT");
-
                     b.Property<long>("CashId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CashName")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("PaymentType")
-                        .HasColumnType("INTEGER");
 
                     b.Property<long>("StoreId")
                         .HasColumnType("INTEGER");
