@@ -25,8 +25,8 @@ public class AppDbContext : DbContext
     public virtual DbSet<Cash> Cashes { get; set; } = default!;
     public virtual DbSet<TabController> Tabs { get; set; } = default!;
     public virtual DbSet<TabProduct> Tabproducts { get; set; } = default!;
-    public virtual DbSet<SalesGlobal> SalesGlobals { get; set; } = default!;
-    public virtual DbSet<SaleDetail> SaleDetails { get; set; } = default!;
+    public virtual DbSet<SaleDetail> SalesGlobals { get; set; } = default!;
+    public virtual DbSet<SaleGlobal> SaleDetails { get; set; } = default!;
 
 
 
@@ -45,34 +45,34 @@ public class AppDbContext : DbContext
 
 
         // Sales Global
-        modelBuilder.Entity<SalesGlobal>()
+        modelBuilder.Entity<SaleDetail>()
                     .HasOne<Cash>(sd => sd.Cash)
                     .WithMany(sg => sg.SalesGlobals)
                     .HasForeignKey(sd => sd.CashId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-        modelBuilder.Entity<SalesGlobal>()
+        modelBuilder.Entity<SaleDetail>()
                     .HasOne<Store>(sd => sd.Store)
                     .WithMany(sg => sg.SalesGlobal)
                     .HasForeignKey(sd => sd.StoreId)
                     .OnDelete(DeleteBehavior.SetNull);
 
-        modelBuilder.Entity<SalesGlobal>()
+        modelBuilder.Entity<SaleDetail>()
                     .Property(sg => sg.PaymentType)
                     .HasConversion<string>();
 
-        modelBuilder.Entity<SalesGlobal>()
+        modelBuilder.Entity<SaleDetail>()
                     .HasIndex(sg => sg.PaymentType);
 
 
         // Sales Details
-        modelBuilder.Entity<SaleDetail>()
-                    .HasOne<SalesGlobal>(sd => sd.SalesGlobal)
+        modelBuilder.Entity<SaleGlobal>()
+                    .HasOne<SaleDetail>(sd => sd.SalesGlobal)
                     .WithMany(sg => sg.SaleDetails)
                     .HasForeignKey(sd => sd.SaleId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-        modelBuilder.Entity<SaleDetail>()
+        modelBuilder.Entity<SaleGlobal>()
                     .HasOne<AllProduct>(sd => sd.AllProduct)
                     .WithMany(sd => sd.SaleDetails)
                     .HasForeignKey(sd => sd.ProductId)

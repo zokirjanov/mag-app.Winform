@@ -80,7 +80,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
             PaymentType type = card != 0 ? PaymentType.Card : (cash != 0 ? PaymentType.Cash : PaymentType.MixedPayment);
 
-            SalesGlobalViewModel SaleGlobal = new SalesGlobalViewModel()
+            SaleDetailsViewModel SaleGlobal = new SaleDetailsViewModel()
             {
                 TotalSale = card + cash,
                 StoreId = Stores_Form.myStoreFormParent.Id,
@@ -101,7 +101,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 {
                     foreach (ProductControl item in Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls.OfType<ProductControl>())
                     {
-                        SaleDetailsViewModel saleDetails = new SaleDetailsViewModel()
+                        SaleGlobalViewModel saleDetails = new SaleGlobalViewModel()
                         {
                             SaleId = sg.Id,
                             ProductId = item.ProductId,

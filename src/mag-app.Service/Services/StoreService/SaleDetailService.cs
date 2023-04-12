@@ -18,7 +18,7 @@ namespace mag_app.Service.Services.StoreService
         {
             _repository = new SaleDetailRepository();
         }
-        public async Task<SaleDetail> CreateAsync(SaleDetailsViewModel viewModel)
+        public async Task<SaleGlobal> CreateAsync(SaleGlobalViewModel viewModel)
         {
             return await _repository.CreateAsync(viewModel);
         }
@@ -28,12 +28,12 @@ namespace mag_app.Service.Services.StoreService
             throw new NotImplementedException();
         }
 
-        public Task<List<SaleDetail>> GetAllAsync()
+        public Task<List<SaleGlobal>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<string> UpdateAsync(SaleDetail saleDetail, string name)
+        public Task<string> UpdateAsync(SaleGlobal saleDetail, string name)
         {
             throw new NotImplementedException();
         }
