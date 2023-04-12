@@ -39,6 +39,8 @@ namespace mag_app.Domain.Entities.Stores
         [Column(Order = 7)]
         public decimal TotalSalePrice { get; set; }
 
+        public decimal change { get; set; }
+
 
         [Column(Order = 8)]
         public DateTime TransactionDate { get; set; }

@@ -31,6 +31,8 @@ namespace mag_app.Service.ViewModels.Stores
 
         public decimal? CardAmount { get; set; }
 
+        public decimal Change { get; set; }
+
         public static implicit operator SalesGlobal(SalesGlobalViewModel salesGlobalViewModel)
         {
             return new SalesGlobal()
@@ -44,6 +46,7 @@ namespace mag_app.Service.ViewModels.Stores
                 PaymentType= salesGlobalViewModel.PaymentType,
                 CardAmount= salesGlobalViewModel.CardAmount,    
                 CashAmount= salesGlobalViewModel.CashAmount,
+                change= salesGlobalViewModel.Change,
             };
         }
     }
