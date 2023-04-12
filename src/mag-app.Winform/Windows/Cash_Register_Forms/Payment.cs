@@ -45,7 +45,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         {
             decimal check = decimal.Parse(lblActiveSum.Text);
 
-            if (check == 0 && btnPay.BackColor == Color.Lime)
+            if (check == 0 && btnPay.BackColor == Color.PowderBlue)
             {
                 bool paymentProcessed = await PreparePaymentInfo();
               
@@ -157,7 +157,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             decimal total = decimal.Parse(lblCard.Text)+decimal.Parse(lblCash.Text);
             if(total == TotalAmount && restCash == 0)
             {
-                btnPay.BackColor= Color.Lime;
+                btnPay.BackColor= Color.PowderBlue;
             }
         }
 
@@ -185,7 +185,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             decimal total = decimal.Parse(lblCard.Text) + decimal.Parse(lblCash.Text);
             if (total == TotalAmount && restCash == 0)
             {
-                btnPay.BackColor = Color.Lime;
+                btnPay.BackColor = Color.PowderBlue;
             }
 
         }

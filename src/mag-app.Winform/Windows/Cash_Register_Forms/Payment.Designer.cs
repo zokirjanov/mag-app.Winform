@@ -180,7 +180,7 @@
             // 
             // btnCard
             // 
-            this.btnCard.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnCard.BackColor = System.Drawing.Color.LightBlue;
             this.btnCard.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCard.Image = ((System.Drawing.Image)(resources.GetObject("btnCard.Image")));
             this.btnCard.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -220,7 +220,7 @@
             // 
             // btnCash
             // 
-            this.btnCash.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnCash.BackColor = System.Drawing.Color.LightBlue;
             this.btnCash.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCash.Image = ((System.Drawing.Image)(resources.GetObject("btnCash.Image")));
             this.btnCash.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -314,7 +314,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.MistyRose;
+            this.btnClear.BackColor = System.Drawing.Color.LightGray;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.Location = new System.Drawing.Point(99, 272);
             this.btnClear.Name = "btnClear";
@@ -458,8 +458,8 @@
             // 
             // customPanel2
             // 
-            this.customPanel2.BackColor = System.Drawing.Color.LightYellow;
-            this.customPanel2.BorderColor = System.Drawing.Color.MediumTurquoise;
+            this.customPanel2.BackColor = System.Drawing.Color.PowderBlue;
+            this.customPanel2.BorderColor = System.Drawing.Color.LightBlue;
             this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel2.BorderRadius = 5;
             this.customPanel2.BorderSize = 1;
@@ -473,7 +473,7 @@
             // 
             // quantityTb
             // 
-            this.quantityTb.BackColor = System.Drawing.Color.LightYellow;
+            this.quantityTb.BackColor = System.Drawing.Color.PowderBlue;
             this.quantityTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.quantityTb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.quantityTb.Location = new System.Drawing.Point(3, 5);
