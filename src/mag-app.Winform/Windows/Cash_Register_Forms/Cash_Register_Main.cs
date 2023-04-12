@@ -1,17 +1,10 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
-using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.Product_Forms;
-using mag_app.Winform.Windows.ProductForms;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic.Devices;
-using System.Windows.Forms;
-using System.Xml;
-using static System.Net.WebRequestMethods;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -19,10 +12,10 @@ public partial class Cash_Register_Main : Form
 {
 
     public static Cash_Register_Main cashRegisterMainParent = default!;
+    public FlowLayoutPanel flw;
     TabService _service;
     TabProductService _tabProductService;
     ProductService _productService;
-    public FlowLayoutPanel flw;
 
 
 
@@ -30,7 +23,7 @@ public partial class Cash_Register_Main : Form
     {
         _service = new TabService();
         _tabProductService = new TabProductService();
-        _productService= new ProductService();
+        _productService = new ProductService();
         cashRegisterMainParent = this;
         InitializeComponent();
         flw = tabFlowPanel;
@@ -269,7 +262,7 @@ public partial class Cash_Register_Main : Form
         {
             var ucProduct = new ProductControl()
             {
-                Margin = new Padding(2,2,15,2),
+                Margin = new Padding(2, 2, 15, 2),
                 Width = flowLayoutPanel1.Width - 10,
                 Title = product.ProductName,
                 Cost = product.Price,
@@ -277,15 +270,15 @@ public partial class Cash_Register_Main : Form
                 TotalCost = product.Price,
                 Barcode = product.Barcode,
                 maxQ = product.Quantity,
-                ProductId= product.ProductId,
+                ProductId = product.ProductId,
             };
 
 
-            foreach(Control item in flowLayoutPanel1.Controls)
+            foreach (Control item in flowLayoutPanel1.Controls)
             {
                 var wdg = (ProductControl)item;
 
-                if(wdg.Title == ucProduct.Title)
+                if (wdg.Title == ucProduct.Title)
                 {
                     decimal totalPrice = (Convert.ToDecimal(wdg.Quantity) + 1) * wdg.Cost;
                     wdg.Quantity++;
@@ -307,7 +300,7 @@ public partial class Cash_Register_Main : Form
     {
 
 
-        if(barcodeTb.Text.Length == 13)
+        if (barcodeTb.Text.Length == 13)
         {
             using (var db = new AppDbContext())
             {
@@ -404,7 +397,7 @@ public partial class Cash_Register_Main : Form
 
         if (cnt > 0)
         {
-            
+
             DialogResult dlg = MessageBox.Show("Хотите удалить товар?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
@@ -426,7 +419,7 @@ public partial class Cash_Register_Main : Form
         }
 
         else MessageBox.Show("Выбранные продукты недоступны");
-      
+
     }
 
 
@@ -435,7 +428,7 @@ public partial class Cash_Register_Main : Form
 
     private void primaryButton2_Click(object sender, EventArgs e)
     {
-        if(flowLayoutPanel1.Controls.Count == 0)
+        if (flowLayoutPanel1.Controls.Count == 0)
         {
             return;
         }

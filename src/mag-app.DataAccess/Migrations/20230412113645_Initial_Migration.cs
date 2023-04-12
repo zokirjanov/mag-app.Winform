@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mag_app.DataAccess.Migrations
 {
-    public partial class InitialMigratiom : Migration
+    public partial class Initial_Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -145,15 +145,17 @@ namespace mag_app.DataAccess.Migrations
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
-                    StoreName = table.Column<string>(type: "TEXT", nullable: false),
                     CashId = table.Column<long>(type: "INTEGER", nullable: false),
                     CashName = table.Column<string>(type: "TEXT", nullable: false),
                     PaymentType = table.Column<string>(type: "TEXT", nullable: true),
                     CashAmount = table.Column<decimal>(type: "TEXT", nullable: true),
                     CardAmount = table.Column<decimal>(type: "TEXT", nullable: true),
                     TotalSalePrice = table.Column<decimal>(type: "TEXT", nullable: false),
-                    TransactionDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    change = table.Column<decimal>(type: "TEXT", nullable: false),
+                    DiscountPrice = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TransactionDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    StoreId = table.Column<long>(type: "INTEGER", nullable: false),
+                    StoreName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

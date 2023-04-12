@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace mag_app.DataAccess.Repositories.Stores
 {
-    public class SalesGlobalRepository : GenericRepository<SalesGlobal>, ISalesGlobalRepository
+    public class SalesGlobalRepository : GenericRepository<SaleDetail>, ISalesGlobalRepository
     {
     }
 }
