@@ -117,7 +117,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(319, 14);
+            this.label3.Location = new System.Drawing.Point(360, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 21);
             this.label3.TabIndex = 59;
@@ -128,7 +128,7 @@
             this.totalSum.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.totalSum.Location = new System.Drawing.Point(176, 9);
             this.totalSum.Name = "totalSum";
-            this.totalSum.Size = new System.Drawing.Size(137, 30);
+            this.totalSum.Size = new System.Drawing.Size(178, 30);
             this.totalSum.TabIndex = 58;
             this.totalSum.Text = "0";
             this.totalSum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -147,7 +147,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(319, 47);
+            this.label2.Location = new System.Drawing.Point(360, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 21);
             this.label2.TabIndex = 56;
@@ -261,7 +261,7 @@
             this.lblActiveSum.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblActiveSum.Location = new System.Drawing.Point(176, 42);
             this.lblActiveSum.Name = "lblActiveSum";
-            this.lblActiveSum.Size = new System.Drawing.Size(137, 30);
+            this.lblActiveSum.Size = new System.Drawing.Size(178, 30);
             this.lblActiveSum.TabIndex = 44;
             this.lblActiveSum.Text = "0";
             this.lblActiveSum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

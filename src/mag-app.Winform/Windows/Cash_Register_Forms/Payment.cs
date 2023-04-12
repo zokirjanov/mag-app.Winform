@@ -4,6 +4,7 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
+using mag_app.Winform.Windows.Cash_Register_Forms;
 using mag_app.Winform.Windows.MainWindowForms;
 using System.Windows.Forms;
 
@@ -40,10 +41,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
-
         private async void btnPay_Click(object sender, EventArgs e)
         {
-
 
             decimal check = decimal.Parse(lblActiveSum.Text);
             decimal changeAmount = 0;
@@ -68,8 +67,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             else MessageBox.Show("торговля ведется не корректно");
 
         }
-
-
 
 
 
@@ -359,3 +356,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
     }
 }
+
+
+
+

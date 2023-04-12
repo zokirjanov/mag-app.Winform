@@ -39,21 +39,23 @@ namespace mag_app.Domain.Entities.Stores
         [Column(Order = 7)]
         public decimal TotalSalePrice { get; set; }
 
+
+        [Column(Order = 8)]
         public decimal change { get; set; }
 
 
-        [Column(Order = 8)]
+        [Column(Order = 9)]
         public DateTime TransactionDate { get; set; }
 
 
 
-        [Column(Order = 9)]
+        [Column(Order = 10)]
         public long StoreId { get; set; }
         [ForeignKey("StoreId")]
         public virtual Store Store { get; set; }
 
 
-        [Column(Order = 10)]
+        [Column(Order = 11)]
         public string StoreName { get; set; }
         public virtual ICollection<SaleDetail> SaleDetails { get; set; }
 

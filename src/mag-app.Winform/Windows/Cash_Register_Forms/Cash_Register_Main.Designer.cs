@@ -323,7 +323,7 @@
             this.btnPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPayment.BackColor = System.Drawing.Color.Turquoise;
             this.btnPayment.BackgroundColor = System.Drawing.Color.Turquoise;
-            this.btnPayment.BorderColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnPayment.BorderColor = System.Drawing.Color.LightSeaGreen;
             this.btnPayment.BorderRadius = 20;
             this.btnPayment.BorderSize = 1;
             this.btnPayment.FlatAppearance.BorderSize = 0;
