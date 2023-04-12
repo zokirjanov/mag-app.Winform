@@ -11,8 +11,8 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230412075459_FixedMIgration")]
-    partial class FixedMIgration
+    [Migration("20230412113645_Initial_Migration")]
+    partial class Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -186,6 +186,70 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(1);
 
+                    b.Property<decimal?>("CardAmount")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(6);
+
+                    b.Property<decimal?>("CashAmount")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(5);
+
+                    b.Property<long>("CashId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
+
+                    b.Property<string>("CashName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(3);
+
+                    b.Property<decimal?>("DiscountPrice")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(9);
+
+                    b.Property<string>("PaymentType")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(4);
+
+                    b.Property<long>("StoreId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(11);
+
+                    b.Property<string>("StoreName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(12);
+
+                    b.Property<decimal>("TotalSalePrice")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(7);
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(10);
+
+                    b.Property<decimal>("change")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(8);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CashId");
+
+                    b.HasIndex("PaymentType");
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("SalesGlobals");
+                });
+
+            modelBuilder.Entity("mag_app.Domain.Entities.Stores.SaleGlobal", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
+
                     b.Property<decimal?>("DiscountPrice")
                         .HasColumnType("TEXT")
                         .HasColumnOrder(7);
@@ -218,62 +282,6 @@ namespace mag_app.DataAccess.Migrations
                     b.HasIndex("SaleId");
 
                     b.ToTable("SaleDetails");
-                });
-
-            modelBuilder.Entity("mag_app.Domain.Entities.Stores.SalesGlobal", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(1);
-
-                    b.Property<decimal?>("CardAmount")
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(6);
-
-                    b.Property<decimal?>("CashAmount")
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(5);
-
-                    b.Property<long>("CashId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(2);
-
-                    b.Property<string>("CashName")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(3);
-
-                    b.Property<string>("PaymentType")
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(4);
-
-                    b.Property<long>("StoreId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(9);
-
-                    b.Property<string>("StoreName")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(10);
-
-                    b.Property<decimal>("TotalSalePrice")
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(7);
-
-                    b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(8);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CashId");
-
-                    b.HasIndex("PaymentType");
-
-                    b.HasIndex("StoreId");
-
-                    b.ToTable("SalesGlobals");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
@@ -461,25 +469,6 @@ namespace mag_app.DataAccess.Migrations
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.SaleDetail", b =>
                 {
-                    b.HasOne("mag_app.Domain.Entities.AllProducts.AllProduct", "AllProduct")
-                        .WithMany("SaleDetails")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
-
-                    b.HasOne("mag_app.Domain.Entities.Stores.SalesGlobal", "SalesGlobal")
-                        .WithMany("SaleDetails")
-                        .HasForeignKey("SaleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AllProduct");
-
-                    b.Navigation("SalesGlobal");
-                });
-
-            modelBuilder.Entity("mag_app.Domain.Entities.Stores.SalesGlobal", b =>
-                {
                     b.HasOne("mag_app.Domain.Entities.Stores.Cash", "Cash")
                         .WithMany("SalesGlobals")
                         .HasForeignKey("CashId")
@@ -495,6 +484,25 @@ namespace mag_app.DataAccess.Migrations
                     b.Navigation("Cash");
 
                     b.Navigation("Store");
+                });
+
+            modelBuilder.Entity("mag_app.Domain.Entities.Stores.SaleGlobal", b =>
+                {
+                    b.HasOne("mag_app.Domain.Entities.AllProducts.AllProduct", "AllProduct")
+                        .WithMany("SaleDetails")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.HasOne("mag_app.Domain.Entities.Stores.SaleDetail", "SalesGlobal")
+                        .WithMany("SaleDetails")
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AllProduct");
+
+                    b.Navigation("SalesGlobal");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.TabProduct", b =>
@@ -553,7 +561,7 @@ namespace mag_app.DataAccess.Migrations
                     b.Navigation("SalesGlobals");
                 });
 
-            modelBuilder.Entity("mag_app.Domain.Entities.Stores.SalesGlobal", b =>
+            modelBuilder.Entity("mag_app.Domain.Entities.Stores.SaleDetail", b =>
                 {
                     b.Navigation("SaleDetails");
                 });

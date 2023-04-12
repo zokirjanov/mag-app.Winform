@@ -238,7 +238,7 @@ namespace mag_app.DataAccess.Migrations
 
                     b.HasIndex("StoreId");
 
-                    b.ToTable("SalesGlobals");
+                    b.ToTable("SaleDetails");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.SaleGlobal", b =>
@@ -279,7 +279,7 @@ namespace mag_app.DataAccess.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.ToTable("SaleDetails");
+                    b.ToTable("SaleGlobal");
                 });
 
             modelBuilder.Entity("mag_app.Domain.Entities.Stores.Store", b =>
