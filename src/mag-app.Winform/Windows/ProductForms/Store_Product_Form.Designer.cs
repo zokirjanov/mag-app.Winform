@@ -59,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button1.BackColor = System.Drawing.Color.Turquoise;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -75,7 +75,7 @@
             // 
             // quick_PassBtn
             // 
-            this.quick_PassBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.quick_PassBtn.BackColor = System.Drawing.Color.Turquoise;
             this.quick_PassBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.quick_PassBtn.Image = ((System.Drawing.Image)(resources.GetObject("quick_PassBtn.Image")));
             this.quick_PassBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,7 +105,7 @@
             // 
             // productBtn
             // 
-            this.productBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.productBtn.BackColor = System.Drawing.Color.Turquoise;
             this.productBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.productBtn.Image = ((System.Drawing.Image)(resources.GetObject("productBtn.Image")));
             this.productBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,7 +158,7 @@
             this.subtitleFlowPanel.Size = new System.Drawing.Size(990, 18);
             this.subtitleFlowPanel.TabIndex = 4;
             // 
-            // StoreProductsForm
+            // Store_Product_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,7 +170,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1225, 700);
             this.MinimumSize = new System.Drawing.Size(1225, 700);
-            this.Name = "StoreProductsForm";
+            this.Name = "Store_Product_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StoreProductsForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StoreProductsForm_FormClosed);

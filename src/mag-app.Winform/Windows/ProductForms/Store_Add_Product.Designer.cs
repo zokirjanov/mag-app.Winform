@@ -267,7 +267,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(174, 299);
+            this.label1.Location = new System.Drawing.Point(174, 354);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(174, 15);
             this.label1.TabIndex = 42;
@@ -276,13 +276,14 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(186, 229);
+            this.label2.Location = new System.Drawing.Point(188, 283);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 15);
             this.label2.TabIndex = 43;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // Store_Add_ProductForm
+            // Store_Add_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -312,7 +313,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Store_Add_ProductForm";
+            this.Name = "Store_Add_Product";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store_Add_ProductForm";
             this.Load += new System.EventHandler(this.Store_Add_ProductForm_Load);

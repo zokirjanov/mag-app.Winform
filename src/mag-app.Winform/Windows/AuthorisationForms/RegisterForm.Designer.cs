@@ -134,7 +134,7 @@
             // registerBtn
             // 
             this.registerBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.registerBtn.BackColor = System.Drawing.Color.SpringGreen;
+            this.registerBtn.BackColor = System.Drawing.Color.Turquoise;
             this.registerBtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerBtn.Location = new System.Drawing.Point(46, 400);
             this.registerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -148,7 +148,7 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(46, 461);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

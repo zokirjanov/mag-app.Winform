@@ -29,13 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRepeater = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.totalSum = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.customPanel3 = new mag_app.Winform.Components.CustomPanel();
+            this.lblCard = new System.Windows.Forms.Label();
+            this.btnCard = new System.Windows.Forms.Button();
+            this.customPanel1 = new mag_app.Winform.Components.CustomPanel();
+            this.lblCash = new System.Windows.Forms.Label();
+            this.btnCash = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblWarning = new System.Windows.Forms.Label();
             this.lblActiveSum = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCard = new System.Windows.Forms.Button();
-            this.btnCash = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.btnBackspace = new System.Windows.Forms.Button();
             this.btnZero = new System.Windows.Forms.Button();
@@ -53,27 +62,26 @@
             this.btnDoubleZero = new System.Windows.Forms.Button();
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.quantityTb = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTotalSum = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.PaymentForm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.customPanel3.SuspendLayout();
+            this.customPanel1.SuspendLayout();
             this.customPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightCyan;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblRepeater);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.totalSum);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.customPanel3);
+            this.panel1.Controls.Add(this.customPanel1);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.lblWarning);
             this.panel1.Controls.Add(this.lblActiveSum);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnCard);
-            this.panel1.Controls.Add(this.btnCash);
             this.panel1.Controls.Add(this.btnPay);
             this.panel1.Controls.Add(this.btnBackspace);
             this.panel1.Controls.Add(this.btnZero);
@@ -91,79 +99,190 @@
             this.panel1.Controls.Add(this.btnDoubleZero);
             this.panel1.Controls.Add(this.customPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(334, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(350, 541);
+            this.panel1.Size = new System.Drawing.Size(436, 661);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // lblWarning
+            // lblRepeater
             // 
-            this.lblWarning.AutoSize = true;
-            this.lblWarning.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblWarning.Location = new System.Drawing.Point(59, 108);
-            this.lblWarning.Name = "lblWarning";
-            this.lblWarning.Size = new System.Drawing.Size(0, 15);
-            this.lblWarning.TabIndex = 45;
+            this.lblRepeater.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblRepeater.Location = new System.Drawing.Point(147, 125);
+            this.lblRepeater.Name = "lblRepeater";
+            this.lblRepeater.Size = new System.Drawing.Size(160, 21);
+            this.lblRepeater.TabIndex = 60;
+            this.lblRepeater.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblActiveSum
+            // label3
             // 
-            this.lblActiveSum.AutoSize = true;
-            this.lblActiveSum.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblActiveSum.Location = new System.Drawing.Point(144, 21);
-            this.lblActiveSum.Name = "lblActiveSum";
-            this.lblActiveSum.Size = new System.Drawing.Size(89, 25);
-            this.lblActiveSum.TabIndex = 44;
-            this.lblActiveSum.Text = "0000000";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(319, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 25);
+            this.label3.TabIndex = 59;
+            this.label3.Text = "сум";
             // 
-            // label1
+            // totalSum
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(50, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 25);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "Остаток:";
+            this.totalSum.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.totalSum.Location = new System.Drawing.Point(176, 9);
+            this.totalSum.Name = "totalSum";
+            this.totalSum.Size = new System.Drawing.Size(137, 30);
+            this.totalSum.TabIndex = 58;
+            this.totalSum.Text = "0";
+            this.totalSum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(70, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 25);
+            this.label6.TabIndex = 57;
+            this.label6.Text = "К оплате:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(319, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 25);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "сум";
+            // 
+            // customPanel3
+            // 
+            this.customPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.customPanel3.BorderColor = System.Drawing.Color.Turquoise;
+            this.customPanel3.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel3.BorderRadius = 5;
+            this.customPanel3.BorderSize = 1;
+            this.customPanel3.Controls.Add(this.lblCard);
+            this.customPanel3.Controls.Add(this.btnCard);
+            this.customPanel3.Location = new System.Drawing.Point(31, 212);
+            this.customPanel3.Name = "customPanel3";
+            this.customPanel3.Size = new System.Drawing.Size(372, 43);
+            this.customPanel3.TabIndex = 55;
+            this.customPanel3.UnderlinedStyle = false;
+            // 
+            // lblCard
+            // 
+            this.lblCard.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCard.Location = new System.Drawing.Point(146, 7);
+            this.lblCard.Name = "lblCard";
+            this.lblCard.Size = new System.Drawing.Size(221, 29);
+            this.lblCard.TabIndex = 53;
+            this.lblCard.Text = "0";
+            this.lblCard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnCard
             // 
-            this.btnCard.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnCard.BackColor = System.Drawing.Color.Turquoise;
             this.btnCard.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCard.Image = ((System.Drawing.Image)(resources.GetObject("btnCard.Image")));
             this.btnCard.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCard.Location = new System.Drawing.Point(178, 429);
+            this.btnCard.Location = new System.Drawing.Point(3, 2);
             this.btnCard.Name = "btnCard";
             this.btnCard.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnCard.Size = new System.Drawing.Size(160, 47);
+            this.btnCard.Size = new System.Drawing.Size(137, 39);
             this.btnCard.TabIndex = 42;
             this.btnCard.Text = "терминал";
             this.btnCard.UseVisualStyleBackColor = false;
             this.btnCard.Click += new System.EventHandler(this.btnCard_Click);
             // 
+            // customPanel1
+            // 
+            this.customPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.customPanel1.BorderColor = System.Drawing.Color.Turquoise;
+            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel1.BorderRadius = 5;
+            this.customPanel1.BorderSize = 1;
+            this.customPanel1.Controls.Add(this.lblCash);
+            this.customPanel1.Controls.Add(this.btnCash);
+            this.customPanel1.Location = new System.Drawing.Point(31, 163);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(372, 43);
+            this.customPanel1.TabIndex = 54;
+            this.customPanel1.UnderlinedStyle = false;
+            // 
+            // lblCash
+            // 
+            this.lblCash.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCash.Location = new System.Drawing.Point(145, 7);
+            this.lblCash.Name = "lblCash";
+            this.lblCash.Size = new System.Drawing.Size(221, 29);
+            this.lblCash.TabIndex = 52;
+            this.lblCash.Text = "0";
+            this.lblCash.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // btnCash
             // 
-            this.btnCash.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnCash.BackColor = System.Drawing.Color.Turquoise;
             this.btnCash.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCash.Image = ((System.Drawing.Image)(resources.GetObject("btnCash.Image")));
             this.btnCash.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCash.Location = new System.Drawing.Point(14, 429);
+            this.btnCash.Location = new System.Drawing.Point(3, 2);
             this.btnCash.Name = "btnCash";
             this.btnCash.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnCash.Size = new System.Drawing.Size(160, 47);
+            this.btnCash.Size = new System.Drawing.Size(137, 39);
             this.btnCash.TabIndex = 41;
             this.btnCash.Text = "наличными";
             this.btnCash.UseVisualStyleBackColor = false;
             this.btnCash.Click += new System.EventHandler(this.btnCash_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(330, 84);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(73, 38);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "все сумма";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblWarning
+            // 
+            this.lblWarning.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblWarning.Location = new System.Drawing.Point(34, 125);
+            this.lblWarning.Name = "lblWarning";
+            this.lblWarning.Size = new System.Drawing.Size(107, 35);
+            this.lblWarning.TabIndex = 45;
+            this.lblWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblActiveSum
+            // 
+            this.lblActiveSum.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblActiveSum.Location = new System.Drawing.Point(176, 42);
+            this.lblActiveSum.Name = "lblActiveSum";
+            this.lblActiveSum.Size = new System.Drawing.Size(137, 30);
+            this.lblActiveSum.TabIndex = 44;
+            this.lblActiveSum.Text = "0";
+            this.lblActiveSum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(70, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 25);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Остаток:";
+            // 
             // btnPay
             // 
-            this.btnPay.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnPay.BackColor = System.Drawing.Color.LightGray;
             this.btnPay.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPay.Location = new System.Drawing.Point(14, 482);
+            this.btnPay.Location = new System.Drawing.Point(31, 595);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(324, 47);
+            this.btnPay.Size = new System.Drawing.Size(372, 54);
             this.btnPay.TabIndex = 40;
             this.btnPay.Text = "Завершить оплату";
             this.btnPay.UseVisualStyleBackColor = false;
@@ -174,7 +293,7 @@
             this.btnBackspace.BackColor = System.Drawing.Color.LightGray;
             this.btnBackspace.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnBackspace.Image = ((System.Drawing.Image)(resources.GetObject("btnBackspace.Image")));
-            this.btnBackspace.Location = new System.Drawing.Point(194, 126);
+            this.btnBackspace.Location = new System.Drawing.Point(237, 272);
             this.btnBackspace.Name = "btnBackspace";
             this.btnBackspace.Size = new System.Drawing.Size(100, 37);
             this.btnBackspace.TabIndex = 39;
@@ -185,7 +304,7 @@
             // 
             this.btnZero.BackColor = System.Drawing.Color.White;
             this.btnZero.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnZero.Location = new System.Drawing.Point(140, 367);
+            this.btnZero.Location = new System.Drawing.Point(183, 513);
             this.btnZero.Name = "btnZero";
             this.btnZero.Size = new System.Drawing.Size(72, 56);
             this.btnZero.TabIndex = 38;
@@ -195,9 +314,9 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.MistyRose;
+            this.btnClear.BackColor = System.Drawing.Color.LightGray;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClear.Location = new System.Drawing.Point(56, 126);
+            this.btnClear.Location = new System.Drawing.Point(99, 272);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 37);
             this.btnClear.TabIndex = 37;
@@ -209,7 +328,7 @@
             // 
             this.btn9.BackColor = System.Drawing.Color.White;
             this.btn9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn9.Location = new System.Drawing.Point(223, 169);
+            this.btn9.Location = new System.Drawing.Point(266, 315);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(72, 56);
             this.btn9.TabIndex = 36;
@@ -221,7 +340,7 @@
             // 
             this.btn8.BackColor = System.Drawing.Color.White;
             this.btn8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn8.Location = new System.Drawing.Point(140, 169);
+            this.btn8.Location = new System.Drawing.Point(183, 315);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(72, 56);
             this.btn8.TabIndex = 35;
@@ -233,7 +352,7 @@
             // 
             this.btn7.BackColor = System.Drawing.Color.White;
             this.btn7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn7.Location = new System.Drawing.Point(56, 169);
+            this.btn7.Location = new System.Drawing.Point(99, 315);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(72, 56);
             this.btn7.TabIndex = 34;
@@ -245,7 +364,7 @@
             // 
             this.btn6.BackColor = System.Drawing.Color.White;
             this.btn6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn6.Location = new System.Drawing.Point(223, 235);
+            this.btn6.Location = new System.Drawing.Point(266, 381);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(72, 56);
             this.btn6.TabIndex = 33;
@@ -257,7 +376,7 @@
             // 
             this.btn5.BackColor = System.Drawing.Color.White;
             this.btn5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn5.Location = new System.Drawing.Point(140, 235);
+            this.btn5.Location = new System.Drawing.Point(183, 381);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(72, 56);
             this.btn5.TabIndex = 32;
@@ -269,7 +388,7 @@
             // 
             this.btn4.BackColor = System.Drawing.Color.White;
             this.btn4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn4.Location = new System.Drawing.Point(56, 235);
+            this.btn4.Location = new System.Drawing.Point(99, 381);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(72, 56);
             this.btn4.TabIndex = 31;
@@ -281,7 +400,7 @@
             // 
             this.btn3.BackColor = System.Drawing.Color.White;
             this.btn3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn3.Location = new System.Drawing.Point(223, 301);
+            this.btn3.Location = new System.Drawing.Point(266, 447);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(72, 56);
             this.btn3.TabIndex = 30;
@@ -293,7 +412,7 @@
             // 
             this.btn2.BackColor = System.Drawing.Color.White;
             this.btn2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn2.Location = new System.Drawing.Point(140, 301);
+            this.btn2.Location = new System.Drawing.Point(183, 447);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(72, 56);
             this.btn2.TabIndex = 29;
@@ -305,7 +424,7 @@
             // 
             this.btn1.BackColor = System.Drawing.Color.White;
             this.btn1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn1.Location = new System.Drawing.Point(56, 301);
+            this.btn1.Location = new System.Drawing.Point(99, 447);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(72, 56);
             this.btn1.TabIndex = 28;
@@ -317,7 +436,7 @@
             // 
             this.btnComa.BackColor = System.Drawing.Color.White;
             this.btnComa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnComa.Location = new System.Drawing.Point(223, 367);
+            this.btnComa.Location = new System.Drawing.Point(266, 513);
             this.btnComa.Name = "btnComa";
             this.btnComa.Size = new System.Drawing.Size(72, 56);
             this.btnComa.TabIndex = 27;
@@ -329,7 +448,7 @@
             // 
             this.btnDoubleZero.BackColor = System.Drawing.Color.White;
             this.btnDoubleZero.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDoubleZero.Location = new System.Drawing.Point(56, 367);
+            this.btnDoubleZero.Location = new System.Drawing.Point(99, 513);
             this.btnDoubleZero.Name = "btnDoubleZero";
             this.btnDoubleZero.Size = new System.Drawing.Size(72, 56);
             this.btnDoubleZero.TabIndex = 26;
@@ -339,119 +458,38 @@
             // 
             // customPanel2
             // 
-            this.customPanel2.BackColor = System.Drawing.Color.LightYellow;
-            this.customPanel2.BorderColor = System.Drawing.Color.MediumTurquoise;
+            this.customPanel2.BackColor = System.Drawing.Color.White;
+            this.customPanel2.BorderColor = System.Drawing.Color.Turquoise;
             this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel2.BorderRadius = 5;
             this.customPanel2.BorderSize = 1;
             this.customPanel2.Controls.Add(this.quantityTb);
-            this.customPanel2.Location = new System.Drawing.Point(56, 72);
+            this.customPanel2.Location = new System.Drawing.Point(35, 84);
             this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(238, 35);
+            this.customPanel2.Size = new System.Drawing.Size(275, 38);
             this.customPanel2.TabIndex = 25;
             this.customPanel2.UnderlinedStyle = false;
+            this.customPanel2.Click += new System.EventHandler(this.customPanel2_Click);
             // 
             // quantityTb
             // 
-            this.quantityTb.BackColor = System.Drawing.Color.LightYellow;
+            this.quantityTb.BackColor = System.Drawing.Color.White;
             this.quantityTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.quantityTb.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.quantityTb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.quantityTb.Location = new System.Drawing.Point(3, 5);
             this.quantityTb.MaxLength = 17;
             this.quantityTb.Name = "quantityTb";
-            this.quantityTb.Size = new System.Drawing.Size(232, 25);
+            this.quantityTb.Size = new System.Drawing.Size(269, 29);
             this.quantityTb.TabIndex = 11;
-            this.quantityTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.quantityTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.quantityTb.TextChanged += new System.EventHandler(this.quantityTb_TextChanged);
             this.quantityTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.quantityTb_KeyPress);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.LightCyan;
-            this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Controls.Add(this.lblTotalSum);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(334, 70);
-            this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // lblTotalSum
-            // 
-            this.lblTotalSum.AutoSize = true;
-            this.lblTotalSum.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotalSum.Location = new System.Drawing.Point(134, 21);
-            this.lblTotalSum.Name = "lblTotalSum";
-            this.lblTotalSum.Size = new System.Drawing.Size(89, 25);
-            this.lblTotalSum.TabIndex = 45;
-            this.lblTotalSum.Text = "0000000";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(33, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 25);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "К оплате:";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PaymentForm,
-            this.TotalSum});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 70);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(334, 471);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // PaymentForm
-            // 
-            this.PaymentForm.HeaderText = "форма оплаты";
-            this.PaymentForm.Name = "PaymentForm";
-            this.PaymentForm.ReadOnly = true;
-            this.PaymentForm.Width = 150;
-            // 
-            // TotalSum
-            // 
-            this.TotalSum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "### ### ### ### ";
-            this.TotalSum.DefaultCellStyle = dataGridViewCellStyle1;
-            this.TotalSum.HeaderText = "сумма";
-            this.TotalSum.Name = "TotalSum";
-            this.TotalSum.ReadOnly = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.MistyRose;
-            this.btnCancel.Location = new System.Drawing.Point(264, 46);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(69, 23);
-            this.btnCancel.TabIndex = 46;
-            this.btnCancel.Text = "отмена";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 541);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(436, 661);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Payment";
@@ -460,11 +498,10 @@
             this.Load += new System.EventHandler(this.Payment_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.customPanel3.ResumeLayout(false);
+            this.customPanel1.ResumeLayout(false);
             this.customPanel2.ResumeLayout(false);
             this.customPanel2.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -493,13 +530,16 @@
         private Label label1;
         private Button btnCard;
         private Button btnCash;
-        private Panel panel2;
-        private Label lblTotalSum;
-        private Label label2;
-        private DataGridView dataGridView1;
         private Label lblWarning;
-        private DataGridViewTextBoxColumn PaymentForm;
-        private DataGridViewTextBoxColumn TotalSum;
-        private Button btnCancel;
+        private Button button1;
+        private Label lblCard;
+        private Label lblCash;
+        private Components.CustomPanel customPanel3;
+        private Components.CustomPanel customPanel1;
+        private Label label2;
+        private Label label3;
+        private Label totalSum;
+        private Label label6;
+        private Label lblRepeater;
     }
 }

@@ -47,7 +47,7 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(51, 409);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -61,7 +61,7 @@
             // registerBtn
             // 
             this.registerBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.registerBtn.BackColor = System.Drawing.Color.SpringGreen;
+            this.registerBtn.BackColor = System.Drawing.Color.Turquoise;
             this.registerBtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.registerBtn.Location = new System.Drawing.Point(49, 347);
             this.registerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -75,7 +75,7 @@
             // loginPassShow
             // 
             this.loginPassShow.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginPassShow.BackColor = System.Drawing.Color.Beige;
+            this.loginPassShow.BackColor = System.Drawing.Color.White;
             this.loginPassShow.Image = ((System.Drawing.Image)(resources.GetObject("loginPassShow.Image")));
             this.loginPassShow.Location = new System.Drawing.Point(341, 240);
             this.loginPassShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -88,7 +88,7 @@
             // loginPass
             // 
             this.loginPass.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginPass.BackColor = System.Drawing.Color.Beige;
+            this.loginPass.BackColor = System.Drawing.Color.White;
             this.loginPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.loginPass.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginPass.Location = new System.Drawing.Point(11, 5);
@@ -102,7 +102,7 @@
             // loginlogin
             // 
             this.loginlogin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginlogin.BackColor = System.Drawing.Color.Beige;
+            this.loginlogin.BackColor = System.Drawing.Color.White;
             this.loginlogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.loginlogin.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginlogin.Location = new System.Drawing.Point(11, 5);
@@ -149,8 +149,8 @@
             // 
             // customPanel2
             // 
-            this.customPanel2.BackColor = System.Drawing.Color.Beige;
-            this.customPanel2.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.customPanel2.BackColor = System.Drawing.Color.White;
+            this.customPanel2.BorderColor = System.Drawing.Color.Turquoise;
             this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel2.BorderRadius = 15;
             this.customPanel2.BorderSize = 2;
@@ -163,8 +163,8 @@
             // 
             // customPanel3
             // 
-            this.customPanel3.BackColor = System.Drawing.Color.Beige;
-            this.customPanel3.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.customPanel3.BackColor = System.Drawing.Color.White;
+            this.customPanel3.BorderColor = System.Drawing.Color.Turquoise;
             this.customPanel3.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel3.BorderRadius = 15;
             this.customPanel3.BorderSize = 2;

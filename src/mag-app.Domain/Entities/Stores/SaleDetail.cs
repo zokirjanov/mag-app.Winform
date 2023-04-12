@@ -1,10 +1,13 @@
 ﻿using mag_app.Domain.Common;
 using mag_app.Domain.Constant;
 using mag_app.Domain.Entities.AllProducts;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mag_app.Domain.Entities.Stores
 {
+    [DisplayName("Sale Global")]
+
     public class SaleDetail : IAuditable
     {
 
@@ -16,17 +19,17 @@ namespace mag_app.Domain.Entities.Stores
         [Column(Order = 2)]
         public long SaleId { get; set; }
         [ForeignKey("SaleId")]
-        public virtual SalesGlobal SalesGlobal { get; set; }
+        public virtual SalesGlobal SalesGlobal { get; set; } = default!;
 
 
         [Column(Order = 3)]
         public long ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public virtual AllProduct AllProduct { get; set; }
+        public virtual AllProduct AllProduct { get; set; } = default!;
 
 
         [Column(Order = 4)]
-        public string ProductName { get; set; }
+        public string ProductName { get; set; } = string.Empty;
 
 
         [Column(Order = 5)]
