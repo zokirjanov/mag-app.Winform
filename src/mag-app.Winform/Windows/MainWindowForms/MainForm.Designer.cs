@@ -66,7 +66,7 @@
             // 
             // marketbtn
             // 
-            this.marketbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.marketbtn.BackColor = System.Drawing.Color.Turquoise;
             this.marketbtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.marketbtn.Image = ((System.Drawing.Image)(resources.GetObject("marketbtn.Image")));
             this.marketbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

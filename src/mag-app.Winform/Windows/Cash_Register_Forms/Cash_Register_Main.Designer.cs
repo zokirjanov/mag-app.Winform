@@ -150,7 +150,7 @@
             // 
             this.customPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.customPanel1.BackColor = System.Drawing.Color.AliceBlue;
-            this.customPanel1.BorderColor = System.Drawing.Color.Cyan;
+            this.customPanel1.BorderColor = System.Drawing.Color.Turquoise;
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 5;
             this.customPanel1.BorderSize = 1;
@@ -180,7 +180,7 @@
             this.primaryButton3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.primaryButton3.BackColor = System.Drawing.Color.AliceBlue;
             this.primaryButton3.BackgroundColor = System.Drawing.Color.AliceBlue;
-            this.primaryButton3.BorderColor = System.Drawing.Color.Cyan;
+            this.primaryButton3.BorderColor = System.Drawing.Color.Turquoise;
             this.primaryButton3.BorderRadius = 5;
             this.primaryButton3.BorderSize = 1;
             this.primaryButton3.FlatAppearance.BorderSize = 0;
@@ -225,7 +225,7 @@
             // 
             this.customPanel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.customPanel2.BackColor = System.Drawing.Color.AliceBlue;
-            this.customPanel2.BorderColor = System.Drawing.Color.Cyan;
+            this.customPanel2.BorderColor = System.Drawing.Color.Turquoise;
             this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel2.BorderRadius = 5;
             this.customPanel2.BorderSize = 1;
@@ -321,8 +321,8 @@
             // btnPayment
             // 
             this.btnPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPayment.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.btnPayment.BackgroundColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.btnPayment.BackColor = System.Drawing.Color.Turquoise;
+            this.btnPayment.BackgroundColor = System.Drawing.Color.Turquoise;
             this.btnPayment.BorderColor = System.Drawing.Color.DarkGoldenrod;
             this.btnPayment.BorderRadius = 20;
             this.btnPayment.BorderSize = 1;
