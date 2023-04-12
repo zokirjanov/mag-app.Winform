@@ -1,10 +1,13 @@
 ﻿using mag_app.Domain.Common;
 using mag_app.Domain.Constant;
 using mag_app.Domain.Entities.AllProducts;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mag_app.Domain.Entities.Stores
 {
+    [DisplayName("Sale Global")]
+
     public class SaleDetail : IAuditable
     {
 
