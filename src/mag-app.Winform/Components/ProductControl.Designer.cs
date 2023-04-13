@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductControl));
             this.customPanel1 = new mag_app.Winform.Components.CustomPanel();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.ucTotalPrice = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,6 +53,8 @@
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 10;
             this.customPanel1.BorderSize = 1;
+            this.customPanel1.Controls.Add(this.lblDiscount);
+            this.customPanel1.Controls.Add(this.label7);
             this.customPanel1.Controls.Add(this.ucTotalPrice);
             this.customPanel1.Controls.Add(this.label6);
             this.customPanel1.Controls.Add(this.label4);
@@ -69,6 +73,27 @@
             this.customPanel1.TabIndex = 0;
             this.customPanel1.UnderlinedStyle = false;
             this.customPanel1.Click += new System.EventHandler(this.customPanel1_Click);
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblDiscount.BackColor = System.Drawing.Color.Transparent;
+            this.lblDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDiscount.Location = new System.Drawing.Point(186, 11);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(89, 18);
+            this.lblDiscount.TabIndex = 14;
+            this.lblDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(118, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 19);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "скидка:";
             // 
             // ucTotalPrice
             // 
@@ -196,11 +221,12 @@
             this.Controls.Add(this.customPanel1);
             this.Name = "ProductControl";
             this.Size = new System.Drawing.Size(315, 69);
+            this.Tag = "";
             this.Load += new System.EventHandler(this.ProductControl_Load);
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
             this.ResumeLayout(false);
-	
+
 }
         
 
@@ -217,5 +243,7 @@
         public CustomPanel customPanel1;
         private Label label1;
         private Label label3;
+        private Label lblDiscount;
+        private Label label7;
     }
 }

@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cash_Register_Main));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabProductFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -44,7 +45,7 @@
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.primaryButton4 = new mag_app.Winform.Components.PrimaryButton();
+            this.deleteButton = new mag_app.Winform.Components.PrimaryButton();
             this.label2 = new System.Windows.Forms.Label();
             this.primaryButton2 = new mag_app.Winform.Components.PrimaryButton();
             this.btnPayment = new mag_app.Winform.Components.PrimaryButton();
@@ -52,6 +53,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.customPanel1.SuspendLayout();
@@ -68,9 +70,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.panel4);
             this.splitContainer1.Panel1.Controls.Add(this.tabProductFlowPanel);
             this.splitContainer1.Panel1.Controls.Add(this.tabFlowPanel);
-            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel2);
             // 
             // splitContainer1.Panel2
             // 
@@ -80,11 +82,30 @@
             this.splitContainer1.SplitterDistance = 865;
             this.splitContainer1.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 590);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(865, 71);
+            this.panel4.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(10, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 53);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Скидка";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tabProductFlowPanel
             // 
             this.tabProductFlowPanel.AutoScroll = true;
             this.tabProductFlowPanel.BackColor = System.Drawing.Color.White;
-            this.tabProductFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabProductFlowPanel.Location = new System.Drawing.Point(0, 55);
             this.tabProductFlowPanel.Name = "tabProductFlowPanel";
             this.tabProductFlowPanel.Size = new System.Drawing.Size(865, 535);
@@ -98,15 +119,6 @@
             this.tabFlowPanel.Name = "tabFlowPanel";
             this.tabFlowPanel.Size = new System.Drawing.Size(865, 55);
             this.tabFlowPanel.TabIndex = 4;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 590);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(865, 71);
-            this.flowLayoutPanel2.TabIndex = 3;
             // 
             // panel2
             // 
@@ -252,7 +264,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Controls.Add(this.primaryButton4);
+            this.panel1.Controls.Add(this.deleteButton);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.primaryButton2);
             this.panel1.Controls.Add(this.btnPayment);
@@ -263,28 +275,28 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // primaryButton4
+            // deleteButton
             // 
-            this.primaryButton4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.primaryButton4.BackColor = System.Drawing.Color.MistyRose;
-            this.primaryButton4.BackgroundColor = System.Drawing.Color.MistyRose;
-            this.primaryButton4.BorderColor = System.Drawing.Color.Tomato;
-            this.primaryButton4.BorderRadius = 10;
-            this.primaryButton4.BorderSize = 1;
-            this.primaryButton4.FlatAppearance.BorderSize = 0;
-            this.primaryButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.primaryButton4.ForeColor = System.Drawing.Color.Black;
-            this.primaryButton4.Image = ((System.Drawing.Image)(resources.GetObject("primaryButton4.Image")));
-            this.primaryButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.primaryButton4.Location = new System.Drawing.Point(119, 4);
-            this.primaryButton4.Name = "primaryButton4";
-            this.primaryButton4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.primaryButton4.Size = new System.Drawing.Size(100, 30);
-            this.primaryButton4.TabIndex = 3;
-            this.primaryButton4.Text = "удалить ";
-            this.primaryButton4.TextColor = System.Drawing.Color.Black;
-            this.primaryButton4.UseVisualStyleBackColor = false;
-            this.primaryButton4.Click += new System.EventHandler(this.primaryButton4_Click);
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.deleteButton.BackColor = System.Drawing.Color.MistyRose;
+            this.deleteButton.BackgroundColor = System.Drawing.Color.MistyRose;
+            this.deleteButton.BorderColor = System.Drawing.Color.Tomato;
+            this.deleteButton.BorderRadius = 10;
+            this.deleteButton.BorderSize = 1;
+            this.deleteButton.FlatAppearance.BorderSize = 0;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.ForeColor = System.Drawing.Color.Black;
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.deleteButton.Location = new System.Drawing.Point(119, 4);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.deleteButton.Size = new System.Drawing.Size(100, 30);
+            this.deleteButton.TabIndex = 3;
+            this.deleteButton.Text = "удалить ";
+            this.deleteButton.TextColor = System.Drawing.Color.Black;
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.primaryButton4_Click);
             // 
             // label2
             // 
@@ -355,6 +367,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -372,7 +385,6 @@
         private SplitContainer splitContainer1;
         private Panel panel1;
         private FlowLayoutPanel tabFlowPanel;
-        private FlowLayoutPanel flowLayoutPanel2;
         private Panel panel2;
         private FlowLayoutPanel tabProductFlowPanel;
         private Label label1;
@@ -386,7 +398,9 @@
         private Components.CustomPanel customPanel1;
         private Components.CustomPanel customPanel2;
         private TextBox textBox3;
-        private Components.PrimaryButton primaryButton4;
+        private Components.PrimaryButton deleteButton;
         public FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel4;
+        private Button button1;
     }
 }

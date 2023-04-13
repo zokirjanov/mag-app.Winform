@@ -9,6 +9,7 @@ namespace mag_app.Winform.Components
         public decimal _totalCost;
         public decimal _quantity;
         private bool isColorChanged;
+        private decimal _discount;
 
         public ProductControl()
         {
@@ -24,6 +25,8 @@ namespace mag_app.Winform.Components
             label6.Click += (sender, args) => InvokeOnClick(customPanel1, args);
             label1.Click += (sender, args) => InvokeOnClick(customPanel1, args);
             label3.Click += (sender, args) => InvokeOnClick(customPanel1, args);
+            label7.Click += (sender, args) => InvokeOnClick(customPanel1, args);
+            lblDiscount.Click += (sender, args) => InvokeOnClick(customPanel1, args);
         }
 
 
@@ -35,11 +38,11 @@ namespace mag_app.Winform.Components
 
 
 
-
-        public string Title { get => ucTitle.Text; set => ucTitle.Text = value; }
-        public decimal Cost { get => _cost; set { _cost = value; ucPrice.Text = _cost.ToString(@"###\ ###\ ###\ ###\"); } }
         public decimal TotalCost { get => _totalCost; set { _totalCost = value; ucTotalPrice.Text = _totalCost.ToString(@"###\ ###\ ###\ ###\"); } }
+        public decimal Cost { get => _cost; set { _cost = value; ucPrice.Text = _cost.ToString(@"###\ ###\ ###\ ###\"); } }
+        public decimal Discount { get => _discount; set { _discount = value; lblDiscount.Text = _discount.ToString(); } }
         public decimal Quantity { get => _quantity; set { _quantity = value; ucQuantity.Text = _quantity.ToString(); } }
+        public string Title { get => ucTitle.Text; set => ucTitle.Text = value; }
         public string Barcode { get; set; }
         public long  ProductId { get; set; }
         public decimal maxQ  { get; set; }

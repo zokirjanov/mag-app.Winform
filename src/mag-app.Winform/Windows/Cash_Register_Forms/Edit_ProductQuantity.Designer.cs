@@ -230,7 +230,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.MistyRose;
+            this.btnClear.BackColor = System.Drawing.Color.LightGray;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.Location = new System.Drawing.Point(43, 104);
             this.btnClear.Name = "btnClear";
@@ -323,7 +323,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(324, 454);
             this.Controls.Add(this.lblMaxQ);
             this.Controls.Add(this.label1);

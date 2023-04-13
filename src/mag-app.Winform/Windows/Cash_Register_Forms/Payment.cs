@@ -4,9 +4,7 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
-using mag_app.Winform.Windows.Cash_Register_Forms;
 using mag_app.Winform.Windows.MainWindowForms;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
@@ -15,16 +13,19 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         SalesGlobalService salesGlobal;
         SaleDetailService saleDetail;
         AllProductService productService;
+        TabProductService tabProductService;
 
         public Payment()
         {
             salesGlobal = new SalesGlobalService();
             saleDetail = new SaleDetailService();
             productService = new AllProductService();
+            tabProductService = new TabProductService();
             InitializeComponent();
         }
 
         public decimal TotalAmount { get; set; }
+        public decimal TotalDiscount { get; set; }
         bool commaUsed = false;
 
 
@@ -32,9 +33,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void Payment_Load(object sender, EventArgs e)
         {
-
             totalSum.Text = TotalAmount.ToString(@"###\ ###\ ###\ ###\");
-
+            totalDiscount.Text = TotalDiscount.ToString(@"###\ ###\ ###\ ###\");
         }
 
 
@@ -52,11 +52,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 changeAmount = check - TotalAmount;
                 bool paymentProcessed = await PreparePaymentInfo(changeAmount);
-              
+
                 if (paymentProcessed)
                 {
                     MessageBox.Show($"Платеж успешно обработан\nВаше сдача {check - TotalAmount} сум");
                     Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls.Clear();
+                    Cash_Register_Main.cashRegisterMainParent._productTitles.Clear();
                     this.Close();
                 }
                 else
@@ -75,10 +76,17 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private async Task<bool> PreparePaymentInfo(decimal changeAmount)
         {
+
+
             if (!decimal.TryParse(lblCard.Text, out decimal card)) card = 0;
             if (!decimal.TryParse(lblCash.Text, out decimal cash)) cash = 0;
 
+
+
             PaymentType type = card != 0 ? PaymentType.Card : (cash != 0 ? PaymentType.Cash : PaymentType.MixedPayment);
+
+
+
 
             SaleDetailsViewModel SaleGlobal = new SaleDetailsViewModel()
             {
@@ -90,8 +98,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 PaymentType = type,
                 CashAmount = cash,
                 CardAmount = card,
-                Change = changeAmount
+                Change = changeAmount,
+                Discount = TotalDiscount
             };
+
+
+
 
             try
             {
@@ -108,10 +120,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                             ProductName = item.Title,
                             Quantity = item.Quantity,
                             Price = item.TotalCost,
+                            DiscountPrice = item.Discount
                         };
                         var sd = await saleDetail.CreateAsync(saleDetails);
 
                         await productService.UpdateAsync(sd.ProductId, item.Quantity);
+                        await tabProductService.UpdateAsync(sd.ProductId, item.Quantity);
                     }
                 }
                 return true;
@@ -121,8 +135,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 MessageBox.Show($"Произошла ошибка: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-        }
 
+
+
+        }
 
 
 
@@ -138,14 +154,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
 
 
-
             if (paymentAmount != 0)
             {
                 decimal count = decimal.Parse(lblActiveSum.Text) + paymentAmount;
                 lblActiveSum.Text = count.ToString(@"###\ ###\ ###\ ###\");
 
                 paymentLabel.Text = paymentAmount.ToString(@"###\ ###\ ###\ ###\");
-                //quantityTb.Text = (TotalAmount - count).ToString();
                 quantityTb.Text = "";
             }
 
@@ -156,10 +170,14 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 btnPay.BackColor = Color.Turquoise;
                 lblActiveSum.ForeColor = Color.Green;
-                label1.ForeColor= Color.Green;
+                label1.ForeColor = Color.Green;
                 label2.ForeColor = Color.Green;
             }
         }
+
+
+
+
 
 
 
@@ -354,6 +372,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             decimal leftMoney = TotalAmount - decimal.Parse(lblActiveSum.Text);
             quantityTb.Text = leftMoney.ToString();
         }
+
+
     }
 }
 

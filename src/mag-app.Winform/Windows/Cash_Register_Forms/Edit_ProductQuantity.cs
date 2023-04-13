@@ -16,6 +16,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Cash_Register_Main.cashRegisterMainParent.Location.X + 545, Cash_Register_Main.cashRegisterMainParent.Location.Y + 97);
         }
+
         private async void Edit_ProductQuantity_Load(object sender, EventArgs e)
         {
 
@@ -44,57 +45,57 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void button12_Click(object sender, EventArgs e)
         {
-            ChechandFill(button12.Text);
+            CheckandFill(button12.Text);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ChechandFill(button11.Text);
+            CheckandFill(button11.Text);
 
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            ChechandFill(button10.Text);
+            CheckandFill(button10.Text);
 
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            ChechandFill(button9.Text);
+            CheckandFill(button9.Text);
 
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            ChechandFill(button8.Text);
+            CheckandFill(button8.Text);
 
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ChechandFill(button7.Text);
+            CheckandFill(button7.Text);
 
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            ChechandFill(button6.Text);
+            CheckandFill(button6.Text);
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ChechandFill(button5.Text);
+            CheckandFill(button5.Text);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ChechandFill(button4.Text);
+            CheckandFill(button4.Text);
         }
 
 
-        private void ChechandFill(string number)
+        private void CheckandFill(string number)
         {
             if (quantityTb.Text.Length == 1 && quantityTb.Text.Contains("0"))
             {
@@ -150,6 +151,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
+
+
+
         private void quantityTb_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
@@ -165,6 +169,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
+
+
+
+
         private void button17_Click(object sender, EventArgs e)
         {
             if (quantityTb.Text == "") quantityTb.Text = "0";
@@ -175,6 +183,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
+
+
+
+
         private void button16_Click(object sender, EventArgs e)
         {
             if (quantityTb.Text == "") return;
@@ -182,6 +194,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             value = Math.Max(value - 1, 0);
             quantityTb.Text = value.ToString();
         }
+
+
+
+
+
 
 
 
@@ -198,6 +215,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
 
+
+
+
+
+
         bool checkMax = false;
         private void button3_Click(object sender, EventArgs e)
         {
@@ -211,6 +233,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
                     if (wdg.Title == Name)
                     {
+                        wdg.customPanel1.BorderColor = Color.ForestGreen;
+                        wdg.customPanel1.BorderSize = 1;
                         wdg.TotalCost = total;
                         wdg.Quantity = decimal.Parse(quantityTb.Text);
                     }
@@ -220,6 +244,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             else MessageBox.Show("Пожалуйста, введите действительное количество");
            
         }
+
+
+
+
 
         private async void quantityTb_TextChanged(object sender, EventArgs e)
         {
