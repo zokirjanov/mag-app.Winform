@@ -1,4 +1,5 @@
 ﻿using mag_app.DataAccess.Interfaces.Stores;
+using mag_app.DataAccess.Repositories.AllProducts;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Interfaces.Stores;
@@ -54,9 +55,24 @@ namespace mag_app.Service.Services.StoreService
             return await tabRepository.FirstOrDefaultAsync(x => x.AllProduct.Barcode == barcode);
         }
 
-        public Task<string> UpdateAsync(TabProductViewModel tab, string name)
+
+
+        public async Task<bool> UpdateAsync(long id, decimal qnt)
         {
-            throw new NotImplementedException();
+            var oldproduct = await tabRepository.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (oldproduct == null)
+            {
+                return false;
+            }
+            else
+            {
+                oldproduct.Quantity -= qnt;
+
+                var res = await tabRepository.UpdateAsync(oldproduct);
+
+                return (res != null) ? true : false;
+            }
         }
     }
 }
