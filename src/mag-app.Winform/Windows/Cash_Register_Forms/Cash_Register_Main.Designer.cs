@@ -45,7 +45,7 @@
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.primaryButton4 = new mag_app.Winform.Components.PrimaryButton();
+            this.deleteButton = new mag_app.Winform.Components.PrimaryButton();
             this.label2 = new System.Windows.Forms.Label();
             this.primaryButton2 = new mag_app.Winform.Components.PrimaryButton();
             this.btnPayment = new mag_app.Winform.Components.PrimaryButton();
@@ -264,7 +264,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Controls.Add(this.primaryButton4);
+            this.panel1.Controls.Add(this.deleteButton);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.primaryButton2);
             this.panel1.Controls.Add(this.btnPayment);
@@ -275,28 +275,28 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // primaryButton4
+            // deleteButton
             // 
-            this.primaryButton4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.primaryButton4.BackColor = System.Drawing.Color.MistyRose;
-            this.primaryButton4.BackgroundColor = System.Drawing.Color.MistyRose;
-            this.primaryButton4.BorderColor = System.Drawing.Color.Tomato;
-            this.primaryButton4.BorderRadius = 10;
-            this.primaryButton4.BorderSize = 1;
-            this.primaryButton4.FlatAppearance.BorderSize = 0;
-            this.primaryButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.primaryButton4.ForeColor = System.Drawing.Color.Black;
-            this.primaryButton4.Image = ((System.Drawing.Image)(resources.GetObject("primaryButton4.Image")));
-            this.primaryButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.primaryButton4.Location = new System.Drawing.Point(119, 4);
-            this.primaryButton4.Name = "primaryButton4";
-            this.primaryButton4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.primaryButton4.Size = new System.Drawing.Size(100, 30);
-            this.primaryButton4.TabIndex = 3;
-            this.primaryButton4.Text = "удалить ";
-            this.primaryButton4.TextColor = System.Drawing.Color.Black;
-            this.primaryButton4.UseVisualStyleBackColor = false;
-            this.primaryButton4.Click += new System.EventHandler(this.primaryButton4_Click);
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.deleteButton.BackColor = System.Drawing.Color.MistyRose;
+            this.deleteButton.BackgroundColor = System.Drawing.Color.MistyRose;
+            this.deleteButton.BorderColor = System.Drawing.Color.Tomato;
+            this.deleteButton.BorderRadius = 10;
+            this.deleteButton.BorderSize = 1;
+            this.deleteButton.FlatAppearance.BorderSize = 0;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.ForeColor = System.Drawing.Color.Black;
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.deleteButton.Location = new System.Drawing.Point(119, 4);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.deleteButton.Size = new System.Drawing.Size(100, 30);
+            this.deleteButton.TabIndex = 3;
+            this.deleteButton.Text = "удалить ";
+            this.deleteButton.TextColor = System.Drawing.Color.Black;
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.primaryButton4_Click);
             // 
             // label2
             // 
@@ -398,7 +398,7 @@
         private Components.CustomPanel customPanel1;
         private Components.CustomPanel customPanel2;
         private TextBox textBox3;
-        private Components.PrimaryButton primaryButton4;
+        private Components.PrimaryButton deleteButton;
         public FlowLayoutPanel flowLayoutPanel1;
         private Panel panel4;
         private Button button1;

@@ -13,12 +13,15 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms;
 public partial class Cash_Register_Main : Form
 {
 
+
+
     public static Cash_Register_Main cashRegisterMainParent = default!;
     public FlowLayoutPanel flw;
     TabService _service;
     TabProductService _tabProductService;
     ProductService _productService;
-
+    private static readonly Image _productImage = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png");
+    public readonly HashSet<string> _productTitles = new HashSet<string>();
 
 
     public Cash_Register_Main()
@@ -302,12 +305,11 @@ public partial class Cash_Register_Main : Form
 
 
 
+
+
+
     private void AddProductItem(TabProduct product)
     {
-
-
-
-
         var tabProductButton = new Button
         {
             Text = product.ProductName,
@@ -315,16 +317,12 @@ public partial class Cash_Register_Main : Form
             Width = 80,
             Height = 80,
             BackColor = Color.Transparent,
-            Image = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png"),
+            Image = _productImage,
         };
         tabProductFlowPanel.Controls.Add(tabProductButton);
 
-
-
         tabProductButton.Click += (ss, e) =>
         {
-
-
             var ucProduct = new ProductControl()
             {
                 Margin = new Padding(2, 2, 15, 2),
@@ -338,26 +336,24 @@ public partial class Cash_Register_Main : Form
                 ProductId = product.ProductId,
             };
 
-
-
-            foreach (Control item in flowLayoutPanel1.Controls)
+            if (_productTitles.Contains(ucProduct.Title))
             {
-                var wdg = (ProductControl)item;
+                var existingProduct = flowLayoutPanel1.Controls
+                    .OfType<ProductControl>()
+                    .FirstOrDefault(pc => pc.Title == ucProduct.Title);
 
-                if (wdg.Title == ucProduct.Title)
-                {
-                    decimal totalPrice = (Convert.ToDecimal(wdg.Quantity) + 1) * wdg.Cost;
-                    wdg.Quantity++;
-                    wdg.TotalCost = totalPrice;
-                    return;
-                }
+                decimal totalPrice = (Convert.ToDecimal(existingProduct.Quantity) + 1) * existingProduct.Cost;
+                existingProduct.Quantity++;
+                existingProduct.TotalCost = totalPrice;
             }
-
-            flowLayoutPanel1.Controls.Add(ucProduct);
-
-
+            else
+            {
+                flowLayoutPanel1.Controls.Add(ucProduct);
+                _productTitles.Add(ucProduct.Title);
+            }
         };
     }
+
 
 
 
@@ -438,57 +434,36 @@ public partial class Cash_Register_Main : Form
 
 
 
-    /// <summary>
-    ///  Delete Specific controls
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+
+
+
+
     private async void primaryButton4_Click(object sender, EventArgs e)
     {
+        var productsToRemove = flowLayoutPanel1.Controls
+            .OfType<ProductControl>()
+            .Where(p => p.customPanel1.BorderColor == Color.Tomato)
+            .ToList();
 
-        int cnt = 0;
-
-
-        foreach (Control item in flowLayoutPanel1.Controls)
+        if (productsToRemove.Count > 0)
         {
-            var wdg = (ProductControl)item;
-
-            if (wdg.customPanel1.BorderColor == Color.Tomato)
-            {
-                cnt++;
-                break;
-            }
-        }
-
-
-
-
-        if (cnt > 0)
-        {
-
             DialogResult dlg = MessageBox.Show("Хотите удалить товар?", "Очищения", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
             if (dlg == DialogResult.OK)
             {
-                for (int i = flowLayoutPanel1.Controls.Count - 1; i >= 0; i--)
+                foreach (var product in productsToRemove)
                 {
-                    var wdg = (ProductControl)flowLayoutPanel1.Controls[i];
-
-                    if (wdg.customPanel1.BorderColor == Color.Tomato)
-                    {
-                        flowLayoutPanel1.Controls.RemoveAt(i);
-                    }
+                    flowLayoutPanel1.Controls.Remove(product);
+                    _productTitles.Remove(product.Title);
                 }
             }
-            if (dlg == DialogResult.Cancel)
-            {
-                // Do nothing
-            }
-
         }
-
-        else MessageBox.Show("Выбранные продукты недоступны");
-
+        else
+        {
+            MessageBox.Show("Выбранные продукты недоступны");
+        }
     }
+   
 
 
 
@@ -506,6 +481,7 @@ public partial class Cash_Register_Main : Form
             if (dlg == DialogResult.OK)
             {
                 flowLayoutPanel1.Controls.Clear();
+                _productTitles.Clear();
             }
             if (dlg == DialogResult.Cancel)
             {

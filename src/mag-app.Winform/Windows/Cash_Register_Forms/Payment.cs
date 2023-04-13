@@ -4,9 +4,7 @@ using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
-using mag_app.Winform.Windows.Cash_Register_Forms;
 using mag_app.Winform.Windows.MainWindowForms;
-using System.Windows.Forms;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
@@ -22,7 +20,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             salesGlobal = new SalesGlobalService();
             saleDetail = new SaleDetailService();
             productService = new AllProductService();
-            tabProductService= new TabProductService();
+            tabProductService = new TabProductService();
             InitializeComponent();
         }
 
@@ -35,7 +33,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void Payment_Load(object sender, EventArgs e)
         {
-
             totalSum.Text = TotalAmount.ToString(@"###\ ###\ ###\ ###\");
             totalDiscount.Text = TotalDiscount.ToString(@"###\ ###\ ###\ ###\");
         }
@@ -55,11 +52,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 changeAmount = check - TotalAmount;
                 bool paymentProcessed = await PreparePaymentInfo(changeAmount);
-              
+
                 if (paymentProcessed)
                 {
                     MessageBox.Show($"Платеж успешно обработан\nВаше сдача {check - TotalAmount} сум");
                     Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls.Clear();
+                    Cash_Register_Main.cashRegisterMainParent._productTitles.Clear();
                     this.Close();
                 }
                 else
@@ -78,13 +76,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private async Task<bool> PreparePaymentInfo(decimal changeAmount)
         {
-           
-            
+
+
             if (!decimal.TryParse(lblCard.Text, out decimal card)) card = 0;
             if (!decimal.TryParse(lblCash.Text, out decimal cash)) cash = 0;
 
-          
-            
+
+
             PaymentType type = card != 0 ? PaymentType.Card : (cash != 0 ? PaymentType.Cash : PaymentType.MixedPayment);
 
 
@@ -103,7 +101,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 Change = changeAmount,
                 Discount = TotalDiscount
             };
-            
+
 
 
 
@@ -172,7 +170,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 btnPay.BackColor = Color.Turquoise;
                 lblActiveSum.ForeColor = Color.Green;
-                label1.ForeColor= Color.Green;
+                label1.ForeColor = Color.Green;
                 label2.ForeColor = Color.Green;
             }
         }

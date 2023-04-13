@@ -56,6 +56,8 @@ namespace mag_app.Winform.Windows.ProductForms
 
 
 
+
+
         private async void updateBtn_Click(object sender, EventArgs e)
         {
             bool checkname = false;
@@ -80,12 +82,12 @@ namespace mag_app.Winform.Windows.ProductForms
             DialogResult dlg = MessageBox.Show("Хотите отредактировать продукт?", "редактировать", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dlg == DialogResult.OK)
             {
-       
+
 
                 var res1 = await _product.UpdateAsync(product, checkname);
 
 
-                if (res1.message ==  "true")
+                if (res1.message == "true")
                 {
 
                     using (var db = new AppDbContext())
@@ -113,6 +115,8 @@ namespace mag_app.Winform.Windows.ProductForms
                 this.Close();
             }
         }
+
+
 
 
 

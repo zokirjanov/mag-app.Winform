@@ -39,10 +39,13 @@ public partial class LoginForm : Form
     private void lastuser()
     {
         string path = "database.txt";
-        var result = File.ReadAllText(path);
-        string[] tokens = result.Split(':');
-        loginlogin.Text = tokens[0];
-        loginPass.Text = tokens[1];
+        if (File.Exists(path) && new FileInfo(path).Length > 0)
+        {
+            var result = File.ReadAllText(path);
+            string[] tokens = result.Split(':');
+            loginlogin.Text = tokens[0];
+            loginPass.Text = tokens[1];
+        }
     }
 
 
@@ -123,4 +126,5 @@ public partial class LoginForm : Form
     {
         Application.Exit();
     }
+
 }

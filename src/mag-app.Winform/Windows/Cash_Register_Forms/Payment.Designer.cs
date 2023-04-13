@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.totalDiscount = new System.Windows.Forms.Label();
             this.lblRepeater = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,8 +65,6 @@
             this.btnDoubleZero = new System.Windows.Forms.Button();
             this.customPanel2 = new mag_app.Winform.Components.CustomPanel();
             this.quantityTb = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.customPanel3.SuspendLayout();
             this.customPanel1.SuspendLayout();
@@ -110,12 +110,32 @@
             this.panel1.Size = new System.Drawing.Size(436, 661);
             this.panel1.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(359, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 21);
+            this.label5.TabIndex = 63;
+            this.label5.Text = "сум";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(359, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 21);
+            this.label4.TabIndex = 62;
+            this.label4.Text = "сум";
+            // 
             // totalDiscount
             // 
             this.totalDiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.totalDiscount.Location = new System.Drawing.Point(150, 48);
+            this.totalDiscount.Location = new System.Drawing.Point(176, 48);
             this.totalDiscount.Name = "totalDiscount";
-            this.totalDiscount.Size = new System.Drawing.Size(204, 26);
+            this.totalDiscount.Size = new System.Drawing.Size(178, 26);
             this.totalDiscount.TabIndex = 61;
             this.totalDiscount.Text = "0";
             this.totalDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -133,7 +153,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(40, 54);
+            this.label3.Location = new System.Drawing.Point(38, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 19);
             this.label3.TabIndex = 59;
@@ -142,9 +162,9 @@
             // totalSum
             // 
             this.totalSum.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.totalSum.Location = new System.Drawing.Point(161, 11);
+            this.totalSum.Location = new System.Drawing.Point(176, 11);
             this.totalSum.Name = "totalSum";
-            this.totalSum.Size = new System.Drawing.Size(193, 26);
+            this.totalSum.Size = new System.Drawing.Size(178, 26);
             this.totalSum.TabIndex = 58;
             this.totalSum.Text = "0";
             this.totalSum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -500,26 +520,6 @@
             this.quantityTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.quantityTb.TextChanged += new System.EventHandler(this.quantityTb_TextChanged);
             this.quantityTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.quantityTb_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(359, 50);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 21);
-            this.label4.TabIndex = 62;
-            this.label4.Text = "сум";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(359, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 21);
-            this.label5.TabIndex = 63;
-            this.label5.Text = "сум";
             // 
             // Payment
             // 
