@@ -65,6 +65,7 @@ public partial class Quick_Pass : Form
     }
 
 
+
     private async void UpdateProduct()
     {
         bool checkname = false;
@@ -104,13 +105,13 @@ public partial class Quick_Pass : Form
             };
 
             DialogResult dlg = MessageBox.Show("Хотите добавить колицество?", "добавлять", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-         
+
             if (dlg == DialogResult.OK)
             {
-              
-                
+
+
                 var res = await _productService.UpdateAsync(allProduct, checkname);
-                
+
                 if (res == "true")
                 {
 
@@ -129,7 +130,7 @@ public partial class Quick_Pass : Form
 
                         await context.SaveChangesAsync();
                     }
-           
+
 
 
 
@@ -137,14 +138,14 @@ public partial class Quick_Pass : Form
                     Store_Product_Form.storeProductParent.openChildForm(new List_products());
                     this.Close();
                 }
-             
-                
+
+
                 else if (res == "false")
                 {
                     MessageBox.Show("Что-то пошло не так, нет подходящего продукта");
                 }
-             
-                
+
+
                 else
                 {
                     MessageBox.Show(res);

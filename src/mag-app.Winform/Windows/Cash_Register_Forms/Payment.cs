@@ -58,6 +58,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     MessageBox.Show($"Платеж успешно обработан\nВаше сдача {check - TotalAmount} сум");
                     Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls.Clear();
                     Cash_Register_Main.cashRegisterMainParent._productTitles.Clear();
+                    Cash_Register_Main.cashRegisterMainParent.TabProductsFill();
                     this.Close();
                 }
                 else
