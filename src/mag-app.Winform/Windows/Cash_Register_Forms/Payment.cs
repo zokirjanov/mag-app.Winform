@@ -58,6 +58,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     MessageBox.Show($"Платеж успешно обработан\nВаше сдача {check - TotalAmount} сум");
                     Cash_Register_Main.cashRegisterMainParent.flowLayoutPanel1.Controls.Clear();
                     Cash_Register_Main.cashRegisterMainParent._productTitles.Clear();
+                    Cash_Register_Main.cashRegisterMainParent.TabProductsFill();
                     this.Close();
                 }
                 else
@@ -120,12 +121,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                             ProductName = item.Title,
                             Quantity = item.Quantity,
                             Price = item.TotalCost,
-                            DiscountPrice = item.Discount
+                            DiscountPrice = item.Discount,
+                            Barcode = item.Barcode
                         };
                         var sd = await saleDetail.CreateAsync(saleDetails);
 
                         await productService.UpdateAsync(sd.ProductId, item.Quantity);
-                        await tabProductService.UpdateAsync(sd.ProductId, item.Quantity);
+                        await tabProductService.UpdateAsync(sd.Barcode, item.Quantity);
                     }
                 }
                 return true;

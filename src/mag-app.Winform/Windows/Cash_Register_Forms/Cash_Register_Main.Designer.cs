@@ -386,7 +386,6 @@
         private Panel panel1;
         private FlowLayoutPanel tabFlowPanel;
         private Panel panel2;
-        private FlowLayoutPanel tabProductFlowPanel;
         private Label label1;
         private Panel panel3;
         private Components.PrimaryButton btnPayment;
@@ -402,5 +401,6 @@
         public FlowLayoutPanel flowLayoutPanel1;
         private Panel panel4;
         private Button button1;
+        public FlowLayoutPanel tabProductFlowPanel;
     }
 }

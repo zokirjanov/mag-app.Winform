@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using mag_app.DataAccess.DbContexts;
 
 namespace mag_app.Service.Services.StoreService
 {
@@ -38,10 +41,16 @@ namespace mag_app.Service.Services.StoreService
             return (res != null) ? "true" : "false";
         }
 
+
+
+
         public Task<string> DeleteAsync(long Id)
         {
             throw new NotImplementedException();
         }
+
+
+
 
         public async Task<List<TabProduct>> GetAllAsync(long tId)
         {
@@ -50,6 +59,9 @@ namespace mag_app.Service.Services.StoreService
             else return null;
         }
 
+
+
+
         public async Task<TabProduct> GetAsync(string barcode)
         {
             return await tabRepository.FirstOrDefaultAsync(x => x.AllProduct.Barcode == barcode);
@@ -57,22 +69,24 @@ namespace mag_app.Service.Services.StoreService
 
 
 
-        public async Task<bool> UpdateAsync(long id, decimal qnt)
+
+
+        public async Task<bool> UpdateAsync(string barcode, decimal qnt)
         {
-            var oldproduct = await tabRepository.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (oldproduct == null)
+            using (var context = new AppDbContext())
             {
-                return false;
-            }
-            else
-            {
-                oldproduct.Quantity -= qnt;
+                var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == barcode);
 
-                var res = await tabRepository.UpdateAsync(oldproduct);
+                foreach (var product in productsToUpdate)
+                {
+                    product.Quantity -= qnt;
+                }
 
-                return (res != null) ? true : false;
+                await context.SaveChangesAsync();
+
+                return true;
             }
+            return false;
         }
     }
 }
