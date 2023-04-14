@@ -125,8 +125,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                         };
                         var sd = await saleDetail.CreateAsync(saleDetails);
 
-                     //   await productService.UpdateAsync(sd.ProductId, item.Quantity);
-                     //   await tabProductService.UpdateAsync(sd.Barcode, item.Quantity);
+                        await productService.UpdateAsync(sd.ProductId, item.Quantity);
+                        await tabProductService.UpdateAsync(sd.Barcode, item.Quantity);
                     }
                 }
                 return true;

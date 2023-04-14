@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using mag_app.DataAccess.DbContexts;
 
 namespace mag_app.Service.Services.StoreService
 {
@@ -40,10 +41,16 @@ namespace mag_app.Service.Services.StoreService
             return (res != null) ? "true" : "false";
         }
 
+
+
+
         public Task<string> DeleteAsync(long Id)
         {
             throw new NotImplementedException();
         }
+
+
+
 
         public async Task<List<TabProduct>> GetAllAsync(long tId)
         {
@@ -51,6 +58,9 @@ namespace mag_app.Service.Services.StoreService
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }
+
+
+
 
         public async Task<TabProduct> GetAsync(string barcode)
         {
@@ -63,21 +73,18 @@ namespace mag_app.Service.Services.StoreService
 
         public async Task<bool> UpdateAsync(string barcode, decimal qnt)
         {
-            var oldproduct = await tabRepository.GetAllAsync(x => x.Barcode == barcode);
+            using (var context = new AppDbContext())
+            {
+                var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == barcode);
 
-            if (oldproduct == null)
-            {
-                return false;
-            }
-            else
-            {
-                foreach (var i in oldproduct)
+                foreach (var product in productsToUpdate)
                 {
-                    i.Quantity -= qnt;
-                    var res = await tabRepository.UpdateAsync(i);
-
-                    return (res != null) ? true : false;
+                    product.Quantity -= qnt;
                 }
+
+                await context.SaveChangesAsync();
+
+                return true;
             }
             return false;
         }

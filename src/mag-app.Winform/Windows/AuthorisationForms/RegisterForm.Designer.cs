@@ -110,7 +110,7 @@
             this.confirmShowbt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.confirmShowbt.BackColor = System.Drawing.Color.Transparent;
             this.confirmShowbt.Image = ((System.Drawing.Image)(resources.GetObject("confirmShowbt.Image")));
-            this.confirmShowbt.Location = new System.Drawing.Point(349, 325);
+            this.confirmShowbt.Location = new System.Drawing.Point(349, 326);
             this.confirmShowbt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.confirmShowbt.Name = "confirmShowbt";
             this.confirmShowbt.Size = new System.Drawing.Size(26, 22);

@@ -107,20 +107,44 @@ public partial class Quick_Pass : Form
          
             if (dlg == DialogResult.OK)
             {
+              
+                
                 var res = await _productService.UpdateAsync(allProduct, checkname);
-
+                
                 if (res == "true")
                 {
+
+
+
                     await _product.UpdateAsync(productViewModel);
-                
+
+                    using (var context = new AppDbContext())
+                    {
+                        var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == labelBarcode.Text);
+
+                        foreach (var product in productsToUpdate)
+                        {
+                            product.Quantity += Convert.ToInt32(productQuantity.Value);
+                        }
+
+                        await context.SaveChangesAsync();
+                    }
+           
+
+
+
                     AutoClosingMessageBox.Show("успешно Добавлено", "добавлять", 350);
                     Store_Product_Form.storeProductParent.openChildForm(new List_products());
                     this.Close();
                 }
+             
+                
                 else if (res == "false")
                 {
                     MessageBox.Show("Что-то пошло не так, нет подходящего продукта");
                 }
+             
+                
                 else
                 {
                     MessageBox.Show(res);
