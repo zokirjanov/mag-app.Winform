@@ -13,7 +13,7 @@ namespace mag_app.Service.Interfaces.Stores
         public Task<string> CreateAsync(TabProductViewModel tab);
         public Task<string> DeleteAsync(long Id);
         public Task<TabProduct> GetAsync(string barcode);
-        public Task<bool> UpdateAsync(long id, decimal qnt);
+        public Task<bool> UpdateAsync(string barcode, decimal qnt);
         public Task<List<TabProduct>> GetAllAsync(long tID);
     }
 }

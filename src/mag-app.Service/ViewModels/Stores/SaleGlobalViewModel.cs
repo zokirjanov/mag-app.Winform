@@ -23,7 +23,7 @@ namespace mag_app.Service.ViewModels.Stores
         public decimal Price { get; set; }
 
         public decimal? DiscountPrice { get; set; }
-
+        public string Barcode { get; set; }
 
         public static implicit operator SaleGlobal(SaleGlobalViewModel saleGlobalViewModel)
         {
@@ -35,6 +35,7 @@ namespace mag_app.Service.ViewModels.Stores
                 Quantity = saleGlobalViewModel.Quantity,
                 Price= saleGlobalViewModel.Price,
                 DiscountPrice= saleGlobalViewModel.DiscountPrice,
+                Barcode = saleGlobalViewModel.Barcode
             };
         }
     }

@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace mag_app.Service.Services.StoreService
 {
@@ -57,9 +59,11 @@ namespace mag_app.Service.Services.StoreService
 
 
 
-        public async Task<bool> UpdateAsync(long id, decimal qnt)
+
+
+        public async Task<bool> UpdateAsync(string barcode, decimal qnt)
         {
-            var oldproduct = await tabRepository.FirstOrDefaultAsync(x => x.Id == id);
+            var oldproduct = await tabRepository.GetAllAsync(x => x.Barcode == barcode);
 
             if (oldproduct == null)
             {
@@ -67,12 +71,15 @@ namespace mag_app.Service.Services.StoreService
             }
             else
             {
-                oldproduct.Quantity -= qnt;
+                foreach (var i in oldproduct)
+                {
+                    i.Quantity -= qnt;
+                    var res = await tabRepository.UpdateAsync(i);
 
-                var res = await tabRepository.UpdateAsync(oldproduct);
-
-                return (res != null) ? true : false;
+                    return (res != null) ? true : false;
+                }
             }
+            return false;
         }
     }
 }

@@ -120,12 +120,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                             ProductName = item.Title,
                             Quantity = item.Quantity,
                             Price = item.TotalCost,
-                            DiscountPrice = item.Discount
+                            DiscountPrice = item.Discount,
+                            Barcode = item.Barcode
                         };
                         var sd = await saleDetail.CreateAsync(saleDetails);
 
-                        await productService.UpdateAsync(sd.ProductId, item.Quantity);
-                        await tabProductService.UpdateAsync(sd.ProductId, item.Quantity);
+                     //   await productService.UpdateAsync(sd.ProductId, item.Quantity);
+                     //   await tabProductService.UpdateAsync(sd.Barcode, item.Quantity);
                     }
                 }
                 return true;
