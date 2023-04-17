@@ -103,5 +103,64 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 costTb.Text = "";
             }
         }
+
+        private void quantityTb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == ',') && ((sender as System.Windows.Forms.TextBox)!.Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            string filterText = textBox1.Text.ToLower();
+            dataGridView1.ClearSelection();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                string cellText = row.Cells[0].Value.ToString().ToLower();
+                row.Visible = cellText.Contains(filterText);
+            }
+
+            //string filterText = textBox1.Text.ToLower();
+            //foreach (DataGridViewRow row in dataGridView1.Rows)
+            //{
+            //    string rowText = string.Empty;
+            //    foreach (DataGridViewCell cell in row.Cells)
+            //    {
+            //        rowText += cell.Value.ToString().ToLower() + " ";
+            //    }
+            //    if (rowText.Contains(filterText))
+            //    {
+            //        row.Visible = true;
+            //    }
+            //    else
+            //    {
+            //        row.Visible = false;
+            //    }
+            //}
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Enter || textBox1.Text.Trim().Length == 0)
+            //{
+            //    string filterText = textBox1.Text.ToLower();
+            //    dataGridView1.ClearSelection();
+            //    foreach (DataGridViewRow row in dataGridView1.Rows)
+            //    {
+            //        string cellText = row.Cells[0].Value.ToString().ToLower();
+            //        if(row.Visible == true)
+            //        {
+            //            row.Visible = cellText.Contains(filterText);
+            //        }
+            //    }
+            //}
+        }
     }
 }
