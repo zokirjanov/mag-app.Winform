@@ -12,6 +12,7 @@ public partial class Add_TabControl : Form
         InitializeComponent();
     }
 
+
     private async void button1_Click(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(tabNameTb.Text))

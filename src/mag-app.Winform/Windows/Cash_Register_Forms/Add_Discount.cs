@@ -30,7 +30,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         public decimal Discount { get; set; }
         public string ProductName { get => lblName.Text; set => lblName.Text = value; }
-        public decimal Quantity { get => _quantity; set { _quantity = value; lblQuantity.Text = _quantity.ToString(); } }
         public decimal TotalDiscount { get => _Cost; set { _Cost = value; lblDiscount.Text = _Cost.ToString(@"###\ ###\ ###\ ###\") + " сум"; } }
         public decimal TotalCost { get => _Cost; set { _Cost = value; lblCost.Text = _Cost.ToString(@"###\ ###\ ###\ ###\") + " сум"; } }
 

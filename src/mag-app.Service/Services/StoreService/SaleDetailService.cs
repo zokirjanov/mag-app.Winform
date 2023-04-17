@@ -28,9 +28,11 @@ namespace mag_app.Service.Services.StoreService
             throw new NotImplementedException();
         }
 
-        public Task<List<SaleGlobal>> GetAllAsync()
+        public async Task<List<SaleGlobal>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var result = await _repository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
+            else return null;
         }
 
         public Task<string> UpdateAsync(SaleGlobal saleDetail, string name)

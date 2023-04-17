@@ -559,7 +559,6 @@ public partial class Cash_Register_Main : Form
 
         Add_Discount add_Discount = new Add_Discount();
         add_Discount.ProductName = selectedProduct.Title.ToString();
-        add_Discount.Quantity = selectedProduct.Quantity;
         add_Discount.TotalCost = selectedProduct.TotalCost;
         add_Discount.ShowDialog();
     }
@@ -607,4 +606,9 @@ public partial class Cash_Register_Main : Form
         Color.Black, 1, ButtonBorderStyle.Solid);// bottom
     }
 
+    private void button2_Click(object sender, EventArgs e)
+    {
+        Return_List return_List = new Return_List();
+        return_List.ShowDialog();
+    }
 }
