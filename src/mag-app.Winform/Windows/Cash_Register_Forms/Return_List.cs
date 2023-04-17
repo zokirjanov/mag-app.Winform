@@ -49,6 +49,36 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                indexRow = e.RowIndex;
+                DataGridViewRow row = dataGridView1.Rows[indexRow];
+                decimal p = Convert.ToDecimal(row.Cells[1].Value.ToString());
 
+                nameTb.Text = row.Cells[0].Value.ToString();
+                costTb.Text = p.ToString(@"###\ ###\ ###\ ###\");
+                Validate = decimal.Parse(row.Cells[3].Value.ToString());
+            }
+        }
+
+        private void quantityTb_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(quantityTb.Text))
+            {
+                decimal validate = decimal.Parse(quantityTb.Text);
+
+                if (validate > Validate)
+                {
+                    MessageBox.Show("Сумма увеличилась");
+                    quantityTb.ForeColor = Color.Red;
+                }
+                else
+                {
+                    quantityTb.ForeColor = Color.Black;
+                }
+            }
+        }
     }
 }
