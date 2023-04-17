@@ -14,6 +14,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
     public partial class Return_List : Form
     {
+
         SaleDetailService _service;
         public Return_List()
         {
@@ -21,13 +22,20 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             InitializeComponent();
         }
 
+
         private void Return_List_Load(object sender, EventArgs e)
         {
             FillData();
         }
 
+
         public decimal Validate { get; set; } = 0;
+        public decimal price { get; set; }
+
         int indexRow;
+
+
+
 
         public async void FillData()
         {
@@ -49,6 +57,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         }
 
+
+
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -57,11 +68,15 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 DataGridViewRow row = dataGridView1.Rows[indexRow];
                 decimal p = Convert.ToDecimal(row.Cells[1].Value.ToString());
 
+                costTb.Text = "";
                 nameTb.Text = row.Cells[0].Value.ToString();
-                costTb.Text = p.ToString(@"###\ ###\ ###\ ###\");
                 Validate = decimal.Parse(row.Cells[3].Value.ToString());
+                price = decimal.Parse(row.Cells[1].Value.ToString());
             }
         }
+
+
+
 
         private void quantityTb_TextChanged(object sender, EventArgs e)
         {
@@ -77,7 +92,15 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 else
                 {
                     quantityTb.ForeColor = Color.Black;
+
+                    decimal p = price / Validate * validate;
+                    costTb.Text = p.ToString(@"###\ ###\ ###\ ###\");
                 }
+            }
+            else
+            {
+                quantityTb.ForeColor = Color.Black;
+                costTb.Text = "";
             }
         }
     }

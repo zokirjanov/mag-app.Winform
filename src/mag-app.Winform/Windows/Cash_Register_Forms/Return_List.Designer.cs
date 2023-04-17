@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.quantityTb = new System.Windows.Forms.TextBox();
             this.costTb = new System.Windows.Forms.TextBox();
             this.nameTb = new System.Windows.Forms.TextBox();
@@ -46,6 +47,7 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).BeginInit();
@@ -53,25 +55,38 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.quantityTb);
             this.panel1.Controls.Add(this.costTb);
             this.panel1.Controls.Add(this.nameTb);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 82);
+            this.panel1.Size = new System.Drawing.Size(734, 98);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(503, 65);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 25);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "возврат";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // quantityTb
             // 
             this.quantityTb.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.quantityTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.quantityTb.Location = new System.Drawing.Point(328, 52);
+            this.quantityTb.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.quantityTb.Location = new System.Drawing.Point(333, 67);
             this.quantityTb.Name = "quantityTb";
-            this.quantityTb.Size = new System.Drawing.Size(152, 23);
+            this.quantityTb.Size = new System.Drawing.Size(152, 25);
             this.quantityTb.TabIndex = 5;
             this.quantityTb.TextChanged += new System.EventHandler(this.quantityTb_TextChanged);
             // 
@@ -79,27 +94,30 @@
             // 
             this.costTb.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.costTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.costTb.Location = new System.Drawing.Point(170, 52);
+            this.costTb.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.costTb.Location = new System.Drawing.Point(169, 67);
             this.costTb.Name = "costTb";
             this.costTb.ReadOnly = true;
-            this.costTb.Size = new System.Drawing.Size(152, 23);
+            this.costTb.Size = new System.Drawing.Size(152, 25);
             this.costTb.TabIndex = 4;
+            this.costTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nameTb
             // 
             this.nameTb.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.nameTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameTb.Location = new System.Drawing.Point(12, 52);
+            this.nameTb.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nameTb.Location = new System.Drawing.Point(11, 67);
             this.nameTb.Name = "nameTb";
             this.nameTb.ReadOnly = true;
-            this.nameTb.Size = new System.Drawing.Size(152, 23);
+            this.nameTb.Size = new System.Drawing.Size(152, 25);
             this.nameTb.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(328, 29);
+            this.label3.Location = new System.Drawing.Point(333, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 20);
             this.label3.TabIndex = 2;
@@ -109,7 +127,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(168, 29);
+            this.label2.Location = new System.Drawing.Point(167, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 1;
@@ -119,7 +137,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 29);
+            this.label1.Location = new System.Drawing.Point(11, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 20);
             this.label1.TabIndex = 0;
@@ -140,13 +158,14 @@
             this.quantityDataGridViewTextBoxColumn,
             this.barcodeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.saleGlobalViewModelBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 82);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 98);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(734, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(734, 445);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -202,15 +221,26 @@
             // 
             this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(290, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "(сум)";
+            // 
             // Return_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 511);
+            this.ClientSize = new System.Drawing.Size(734, 543);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Return_List";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Return_List";
             this.Load += new System.EventHandler(this.Return_List_Load);
             this.panel1.ResumeLayout(false);
@@ -237,5 +267,7 @@
         private DataGridViewTextBoxColumn discountPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
+        private Button button1;
+        private Label label4;
     }
 }
