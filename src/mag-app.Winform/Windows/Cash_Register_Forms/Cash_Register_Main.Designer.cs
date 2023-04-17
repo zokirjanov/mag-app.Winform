@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cash_Register_Main));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabProductFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,7 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.primaryButton2 = new mag_app.Winform.Components.PrimaryButton();
             this.btnPayment = new mag_app.Winform.Components.PrimaryButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -92,6 +93,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(865, 71);
             this.panel4.TabIndex = 6;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(152, 9);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 53);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Возврат";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -354,15 +366,12 @@
             this.btnPayment.UseVisualStyleBackColor = false;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
-            // button2
+            // sqliteCommand1
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(152, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 53);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Возврат";
-            this.button2.UseVisualStyleBackColor = true;
+            this.sqliteCommand1.CommandTimeout = 30;
+            this.sqliteCommand1.Connection = null;
+            this.sqliteCommand1.Transaction = null;
+            this.sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
             // Cash_Register_Main
             // 
@@ -416,5 +425,6 @@
         private Button button1;
         public FlowLayoutPanel tabProductFlowPanel;
         private Button button2;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
     }
 }

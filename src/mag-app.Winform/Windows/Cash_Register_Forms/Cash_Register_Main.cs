@@ -606,4 +606,9 @@ public partial class Cash_Register_Main : Form
         Color.Black, 1, ButtonBorderStyle.Solid);// bottom
     }
 
+    private void button2_Click(object sender, EventArgs e)
+    {
+        Return_List return_List = new Return_List();
+        return_List.ShowDialog();
+    }
 }
