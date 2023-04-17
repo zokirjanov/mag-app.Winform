@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.primaryButton2 = new mag_app.Winform.Components.PrimaryButton();
             this.btnPayment = new mag_app.Winform.Components.PrimaryButton();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -84,6 +85,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.button1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 590);
@@ -106,9 +108,10 @@
             // 
             this.tabProductFlowPanel.AutoScroll = true;
             this.tabProductFlowPanel.BackColor = System.Drawing.Color.White;
+            this.tabProductFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabProductFlowPanel.Location = new System.Drawing.Point(0, 55);
             this.tabProductFlowPanel.Name = "tabProductFlowPanel";
-            this.tabProductFlowPanel.Size = new System.Drawing.Size(865, 535);
+            this.tabProductFlowPanel.Size = new System.Drawing.Size(865, 606);
             this.tabProductFlowPanel.TabIndex = 5;
             // 
             // tabFlowPanel
@@ -351,6 +354,16 @@
             this.btnPayment.UseVisualStyleBackColor = false;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(152, 9);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 53);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Возврат";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Cash_Register_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -402,5 +415,6 @@
         private Panel panel4;
         private Button button1;
         public FlowLayoutPanel tabProductFlowPanel;
+        private Button button2;
     }
 }

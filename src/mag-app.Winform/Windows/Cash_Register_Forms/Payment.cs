@@ -15,6 +15,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         AllProductService productService;
         TabProductService tabProductService;
 
+
+
+
         public Payment()
         {
             salesGlobal = new SalesGlobalService();
@@ -23,6 +26,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             tabProductService = new TabProductService();
             InitializeComponent();
         }
+
+
+
+
+
 
         public decimal TotalAmount { get; set; }
         public decimal TotalDiscount { get; set; }
@@ -34,7 +42,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         private void Payment_Load(object sender, EventArgs e)
         {
             totalSum.Text = TotalAmount.ToString(@"###\ ###\ ###\ ###\");
-            totalDiscount.Text = TotalDiscount.ToString(@"###\ ###\ ###\ ###\");
         }
 
 
@@ -138,8 +145,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 return false;
             }
 
-
-
         }
 
 
@@ -225,6 +230,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
 
+
+
         private void btnComa_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(quantityTb.Text))
@@ -239,6 +246,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
         }
 
+
+
         private void btnZero_Click(object sender, EventArgs e)
         {
             string check = quantityTb.Text;
@@ -252,6 +261,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
         }
 
+
+
+
         private void btnDoubleZero_Click(object sender, EventArgs e)
         {
             if ((quantityTb.Text == "0" || quantityTb.Text == ""))
@@ -263,6 +275,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 quantityTb.Text += btnDoubleZero.Text;
             }
         }
+
+
 
 
         private void btn1_Click(object sender, EventArgs e)
@@ -315,6 +329,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             commaUsed = false;
             quantityTb.Text = "0";
         }
+
+
 
         private void btnBackspace_Click(object sender, EventArgs e)
         {
@@ -375,7 +391,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             quantityTb.Text = leftMoney.ToString();
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
 

@@ -559,7 +559,6 @@ public partial class Cash_Register_Main : Form
 
         Add_Discount add_Discount = new Add_Discount();
         add_Discount.ProductName = selectedProduct.Title.ToString();
-        add_Discount.Quantity = selectedProduct.Quantity;
         add_Discount.TotalCost = selectedProduct.TotalCost;
         add_Discount.ShowDialog();
     }
