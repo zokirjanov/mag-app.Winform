@@ -91,7 +91,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 model.DiscountPrice = decimal.Parse(row.Cells[2].Value.ToString()!);
                 model.Barcode = row.Cells[4].Value.ToString()!;
                 model.Quantity = decimal.Parse(row.Cells[3].Value.ToString()!);
-                model.SaleId = long.Parse(row.Cells[5].Value.ToString());
             }
         }
 
