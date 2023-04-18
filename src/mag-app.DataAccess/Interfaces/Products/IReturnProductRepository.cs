@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mag_app.DataAccess.Interfaces.AllProducts
+namespace mag_app.DataAccess.Interfaces.Products
 {
-    public interface IAllProductRepository : IGenericRepository<AllProduct>
+    public interface IReturnProductRepository : IGenericRepository<ReturnProduct>
     {
     }
 }

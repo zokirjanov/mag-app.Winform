@@ -1,5 +1,4 @@
 ﻿using mag_app.Domain.Constant;
-using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using System;
@@ -13,6 +12,7 @@ namespace mag_app.Service.ViewModels.Stores
 {
     public class SaleGlobalViewModel
     {
+        public long Id { get; set; }
         public long SaleId { get; set; }
 
         public long ProductId { get; set; }

@@ -1,15 +1,7 @@
-﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Service.Common.Helpers;
+﻿using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
-using mag_app.Service.Interfaces.AllProducts;
-using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.VisualBasic.Devices;
-using System.Reflection.Metadata.Ecma335;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
 namespace mag_app.Winform.Windows.Quick_PassForms
 {
@@ -20,10 +12,10 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         public static List_products listProductsParent = default!;
 
 
-        public List_products( )
+        public List_products()
         {
             _service = new AllProductService();
-            _productService= new ProductService();
+            _productService = new ProductService();
             InitializeComponent();
             listProductsParent = this;
         }
@@ -34,7 +26,7 @@ namespace mag_app.Winform.Windows.Quick_PassForms
         public string category { get; set; } = string.Empty;
         public string subcat { get; set; } = string.Empty;
         public decimal pprice { get; set; }
-        public decimal price { get; set; } 
+        public decimal price { get; set; }
         public string barcode { get; set; } = string.Empty;
         public int qquantity { get; set; }
 

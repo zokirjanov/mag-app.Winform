@@ -1,5 +1,6 @@
 ﻿using mag_app.Domain.Common;
 using mag_app.Domain.Constant;
+using mag_app.Domain.Entities.Products;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

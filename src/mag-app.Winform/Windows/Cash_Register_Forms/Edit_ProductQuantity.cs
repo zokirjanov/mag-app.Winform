@@ -1,4 +1,4 @@
-﻿using mag_app.Service.Services.AllProductService;
+﻿using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Components;
 using mag_app.Winform.Windows.MainWindowForms;
 using System.Windows.Forms;

@@ -43,12 +43,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).BeginInit();
@@ -76,25 +77,26 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(503, 12);
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "search";
             this.textBox1.Size = new System.Drawing.Size(219, 23);
             this.textBox1.TabIndex = 8;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button1.Location = new System.Drawing.Point(503, 65);
+            this.button1.Location = new System.Drawing.Point(503, 63);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 27);
+            this.button1.Size = new System.Drawing.Size(114, 30);
             this.button1.TabIndex = 6;
             this.button1.Text = "возврат";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // quantityTb
             // 
             this.quantityTb.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.quantityTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.quantityTb.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.quantityTb.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.quantityTb.Location = new System.Drawing.Point(333, 67);
             this.quantityTb.Name = "quantityTb";
@@ -105,7 +107,7 @@
             // 
             // costTb
             // 
-            this.costTb.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.costTb.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.costTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.costTb.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.costTb.Location = new System.Drawing.Point(169, 67);
@@ -117,7 +119,7 @@
             // 
             // nameTb
             // 
-            this.nameTb.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nameTb.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.nameTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nameTb.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.nameTb.Location = new System.Drawing.Point(11, 67);
@@ -181,7 +183,8 @@
             this.priceDataGridViewTextBoxColumn,
             this.discountPriceDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
-            this.barcodeDataGridViewTextBoxColumn});
+            this.barcodeDataGridViewTextBoxColumn,
+            this.Id});
             this.dataGridView1.DataSource = this.saleGlobalViewModelBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 109);
@@ -193,6 +196,10 @@
             this.dataGridView1.Size = new System.Drawing.Size(734, 434);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // saleGlobalViewModelBindingSource
+            // 
+            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
             // 
             // productNameDataGridViewTextBoxColumn
             // 
@@ -242,9 +249,13 @@
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // saleGlobalViewModelBindingSource
+            // Id
             // 
-            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // Return_List
             // 
@@ -277,13 +288,14 @@
         private TextBox nameTb;
         private Label label3;
         private Label label2;
+        private Button button1;
+        private Label label4;
+        private TextBox textBox1;
         private DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn discountPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
-        private Button button1;
-        private Label label4;
-        private TextBox textBox1;
+        private DataGridViewTextBoxColumn Id;
     }
 }

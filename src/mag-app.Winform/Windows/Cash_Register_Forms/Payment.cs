@@ -1,6 +1,6 @@
 ﻿using mag_app.Domain.Constant;
 using mag_app.Service.Common.Helpers;
-using mag_app.Service.Services.AllProductService;
+using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
@@ -10,8 +10,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
     public partial class Payment : Form
     {
-        SalesGlobalService salesGlobal;
-        SaleDetailService saleDetail;
+        SaleDetailsService salesGlobal;
+        SaleGlobalService saleDetail;
         AllProductService productService;
         TabProductService tabProductService;
 
@@ -20,8 +20,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         public Payment()
         {
-            salesGlobal = new SalesGlobalService();
-            saleDetail = new SaleDetailService();
+            salesGlobal = new SaleDetailsService();
+            saleDetail = new SaleGlobalService();
             productService = new AllProductService();
             tabProductService = new TabProductService();
             InitializeComponent();

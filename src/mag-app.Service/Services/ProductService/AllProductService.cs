@@ -3,15 +3,14 @@ using mag_app.DataAccess.Interfaces.AllProducts;
 using mag_app.DataAccess.Interfaces.Products;
 using mag_app.DataAccess.Repositories.AllProducts;
 using mag_app.DataAccess.Repositories.Products;
-using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
-using mag_app.Service.Interfaces.AllProducts;
+using mag_app.Service.Interfaces.Products;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
-namespace mag_app.Service.Services.AllProductService;
+namespace mag_app.Service.Services.ProductService;
 
 public class AllProductService : IAllProductService
 {
@@ -57,7 +56,7 @@ public class AllProductService : IAllProductService
         if (checkProduct != null)
         {
             var res = await allProductRepository.DeleteAsync(x => x.Id == checkProduct.Id);
-            return (res) ? true : false;
+            return res ? true : false;
         }
         return false;
     }
@@ -68,7 +67,7 @@ public class AllProductService : IAllProductService
     public async Task<IEnumerable<AllProduct>> GetAllAsync(long cId)
     {
         IList<AllProduct> resultList = new List<AllProduct>();
-        var products = await  appDb.Products.OrderByDescending(x=>x.Id).ToListAsync();
+        var products = await appDb.Products.OrderByDescending(x => x.Id).ToListAsync();
         var allProducts = await appDb.AllProducts.Where(x => x.StoreId == cId).Include(x => x.Product).ToListAsync();
 
         foreach (var prod in products)
@@ -115,7 +114,7 @@ public class AllProductService : IAllProductService
     public async Task<long> GetId(string name)
     {
         var product = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == name);
-        return(product == null) ?   -1 : product.Id;
+        return product == null ? -1 : product.Id;
     }
 
 
@@ -133,7 +132,7 @@ public class AllProductService : IAllProductService
 
             var res = await allProductRepository.UpdateAsync(oldproduct);
 
-            return (res != null) ? true : false;
+            return res != null ? true : false;
         }
     }
 
@@ -144,7 +143,7 @@ public class AllProductService : IAllProductService
 
         var oldproduct = await allProductRepository.FirstOrDefaultAsync(x => x.ProdutName == product.ProdutName);
 
-        if (oldproduct != null) return ("Такое название продукта существует, попробуйте другое название товара");
+        if (oldproduct != null) return "Такое название продукта существует, попробуйте другое название товара";
 
         else
         {
@@ -156,7 +155,7 @@ public class AllProductService : IAllProductService
 
             var res = await allProductRepository.UpdateAsync(oldproduct);
 
-            return (res != null)? "true":"false";
+            return res != null ? "true" : "false";
         }
     }
 
@@ -171,7 +170,7 @@ public class AllProductService : IAllProductService
             if (oldproduct is not null)
             {
                 oldproduct.StoreId = product.StoreId;
-                oldproduct.StoreName= product.StoreName;
+                oldproduct.StoreName = product.StoreName;
                 oldproduct.ProdutName = product.ProdutName;
                 oldproduct.Price = product.Price;
                 oldproduct.PurchasedPrice = product.PurchasedPrice;
@@ -179,7 +178,7 @@ public class AllProductService : IAllProductService
                 oldproduct.Quantity += product.Quantity;
 
                 var res = await allProductRepository.UpdateAsync(oldproduct);
-                return (res != null) ? "true" : "false";
+                return res != null ? "true" : "false";
             }
             else return "товар не найден";
         }
@@ -201,7 +200,7 @@ public class AllProductService : IAllProductService
                 oldproduct.Barcode = product.Barcode;
 
                 var res = await allProductRepository.UpdateAsync(oldproduct);
-                return (res != null) ? "true" : "false";
+                return res != null ? "true" : "false";
             }
             else return "товар не найден";
         }
