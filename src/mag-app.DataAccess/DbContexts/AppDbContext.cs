@@ -27,6 +27,8 @@ public class AppDbContext : DbContext
     public virtual DbSet<TabProduct> Tabproducts { get; set; } = default!;
     public virtual DbSet<SaleDetail> SaleDetails { get; set; } = default!;
     public virtual DbSet<SaleGlobal> SaleGlobal { get; set; } = default!;
+    public virtual DbSet<ReturnProduct> ReturnProducts { get; set; } = default!;
+
 
 
 
@@ -42,6 +44,14 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+
+        // ReturnedProducts
+        modelBuilder.Entity<ReturnProduct>()
+                    .HasOne<SaleGlobal>(sd => sd.SaleGlobal)
+                    .WithMany(sg => sg.ReturnProducts)
+                    .HasForeignKey(sd => sd.SaleGlobalId)
+                    .OnDelete(DeleteBehavior.SetNull);
 
 
         // Sales Global

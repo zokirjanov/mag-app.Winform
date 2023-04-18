@@ -29,10 +29,14 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
 
+
+
         public decimal Validate { get; set; } = 0;
         public decimal price { get; set; }
 
         int indexRow;
+
+
 
 
 
@@ -54,8 +58,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 });
             }
             dataGridView1.ClearSelection();
-
         }
+
+
+
+
 
 
 
@@ -72,8 +79,14 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 nameTb.Text = row.Cells[0].Value.ToString();
                 Validate = decimal.Parse(row.Cells[3].Value.ToString());
                 price = decimal.Parse(row.Cells[1].Value.ToString());
+                quantityTb.Text = row.Cells[3].Value.ToString();
             }
         }
+
+
+
+
+
 
 
 
@@ -84,17 +97,20 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 decimal validate = decimal.Parse(quantityTb.Text);
 
-                if (validate > Validate)
+                if (validate <= Validate)
                 {
-                    MessageBox.Show("Сумма увеличилась");
-                    quantityTb.ForeColor = Color.Red;
+                    
+                    decimal p = price / Validate * validate;
+                    quantityTb.ForeColor = Color.Black;
+                    costTb.Text = p.ToString(@"###\ ###\ ###\ ###\");
+
                 }
                 else
                 {
-                    quantityTb.ForeColor = Color.Black;
 
-                    decimal p = price / Validate * validate;
-                    costTb.Text = p.ToString(@"###\ ###\ ###\ ###\");
+                    MessageBox.Show("Сумма увеличилась");
+                    quantityTb.ForeColor = Color.Red;
+                  
                 }
             }
             else
@@ -103,6 +119,13 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 costTb.Text = "";
             }
         }
+
+
+
+
+
+
+
 
         private void quantityTb_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -116,16 +139,22 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
         }
 
+
+
+
+
+
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-            string filterText = textBox1.Text.ToLower();
-            dataGridView1.ClearSelection();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                string cellText = row.Cells[0].Value.ToString().ToLower();
-                row.Visible = cellText.Contains(filterText);
-            }
+            //string filterText = textBox1.Text.ToLower();
+            //dataGridView1.ClearSelection();
+            //foreach (DataGridViewRow row in dataGridView1.Rows)
+            //{
+            //    string cellText = row.Cells[0].Value.ToString().ToLower();
+            //    row.Visible = cellText.Contains(filterText);
+            //}
 
             //string filterText = textBox1.Text.ToLower();
             //foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -145,6 +174,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             //    }
             //}
         }
+
+
+
+
+
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {

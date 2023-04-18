@@ -1,6 +1,7 @@
 ﻿using mag_app.Domain.Common;
 using mag_app.Domain.Constant;
 using mag_app.Domain.Entities.AllProducts;
+using mag_app.Domain.Entities.Products;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -44,5 +45,9 @@ namespace mag_app.Domain.Entities.Stores
 
         [Column(Order = 8)]
         public decimal? DiscountPrice { get; set; }
+
+
+        public virtual ICollection<ReturnProduct> ReturnProducts { get; set; }
+
     }
 }
