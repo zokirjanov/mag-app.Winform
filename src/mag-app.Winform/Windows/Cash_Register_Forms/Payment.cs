@@ -147,7 +147,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
             SaleDetailsViewModel SaleGlobal = new SaleDetailsViewModel()
             {
-                CheckNumber = number,
+                CheckNumber = "null",
                 TotalSale = card + cash,
                 StoreId = Stores_Form.myStoreFormParent.Id,
                 StoreName = Stores_Form.myStoreFormParent.StoreName,
