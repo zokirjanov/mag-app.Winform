@@ -215,8 +215,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
-
-
         private async void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(nameTb.Text) || string.IsNullOrEmpty(quantityTb.Text) || string.IsNullOrEmpty(costTb.Text))
@@ -270,5 +268,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 this.Close();
             }
         }
+
+
     }
 }
