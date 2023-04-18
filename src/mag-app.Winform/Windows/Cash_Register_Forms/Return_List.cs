@@ -158,34 +158,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         }
 
 
-        //   private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        // {
-        //if (e.RowIndex != -1)
-        //{
-        //    indexRow = e.RowIndex;
-        //    DataGridViewRow row = dataGridView1.Rows[indexRow];
-        //    decimal p = Convert.ToDecimal(row.Cells[1].Value.ToString());
-
-        //    costTb.Text = "";
-        //    nameTb.Text = row.Cells[0].Value.ToString();
-        //    Validate = Convert.ToDecimal(row.Cells[3].Value.ToString());
-        //    price = Convert.ToDecimal(row.Cells[1].Value.ToString());
-        //    quantityTb.Text = row.Cells[3].Value.ToString();
-
-        //    model.ProductName = Convert.ToString(row.Cells[0].Value);
-        //    model.Price = Convert.ToDecimal(row.Cells[1].Value.ToString());
-        //    model.DiscountPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
-        //    model.Barcode = row.Cells[4].Value.ToString();
-        //    model.Quantity = Convert.ToDecimal(row.Cells[3].Value.ToString());
-        //    model.Id = Convert.ToInt64(row.Cells[5].Value.ToString());
-        //}
-        //  }
-
-
-
-
-
-
 
 
 
