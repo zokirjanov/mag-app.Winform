@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.saleDetailsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -61,7 +60,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -69,22 +67,14 @@
             this.panel1.Size = new System.Drawing.Size(945, 58);
             this.panel1.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(507, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "search";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(314, 17);
+            this.textBox1.Location = new System.Drawing.Point(373, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "check number";
             this.textBox1.Size = new System.Drawing.Size(174, 23);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridView1
             // 
@@ -163,7 +153,7 @@
             // cashNameDataGridViewTextBoxColumn
             // 
             this.cashNameDataGridViewTextBoxColumn.DataPropertyName = "CashName";
-            this.cashNameDataGridViewTextBoxColumn.HeaderText = "CashName";
+            this.cashNameDataGridViewTextBoxColumn.HeaderText = "Кассир";
             this.cashNameDataGridViewTextBoxColumn.Name = "cashNameDataGridViewTextBoxColumn";
             this.cashNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -260,7 +250,6 @@
         private Panel panel1;
         private DataGridView dataGridView1;
         private BindingSource saleGlobalViewModelBindingSource;
-        private Button button1;
         private TextBox textBox1;
         private BindingSource saleDetailsViewModelBindingSource;
         private DataGridViewTextBoxColumn Id;

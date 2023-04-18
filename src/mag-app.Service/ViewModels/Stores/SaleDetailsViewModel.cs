@@ -15,6 +15,7 @@ namespace mag_app.Service.ViewModels.Stores
     public class SaleDetailsViewModel
     {
         public long Id { get; set; }
+        public string CheckNumber { get; set; }
         public decimal TotalSale { get; set; }
 
         public DateTime TransactionDate { get; set; }
@@ -41,6 +42,7 @@ namespace mag_app.Service.ViewModels.Stores
             return new SaleDetail()
             {
                 TotalSalePrice = saleDetailsViewModel.TotalSale,
+                CheckNumber= saleDetailsViewModel.CheckNumber,
                 TransactionDate = TimeHelper.CurrentTime(),
                 StoreId= saleDetailsViewModel.StoreId,
                 StoreName= saleDetailsViewModel.StoreName,

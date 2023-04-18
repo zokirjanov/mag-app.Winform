@@ -1,18 +1,6 @@
-﻿using mag_app.Service.Common.Helpers;
-using mag_app.Service.Services.ProductService;
+﻿using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
-using mag_app.Service.ViewModels.Products;
 using mag_app.Service.ViewModels.Stores;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 
@@ -62,6 +50,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 });
             }
             dataGridView1.ClearSelection();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
