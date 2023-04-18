@@ -1,5 +1,4 @@
 ﻿using mag_app.Domain.Common;
-using mag_app.Domain.Entities.AllProducts;
 using mag_app.Domain.Entities.Categories;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Domain.Entities.SubCategories;

@@ -93,27 +93,19 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private void quantityTb_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(quantityTb.Text))
+            if (decimal.TryParse(quantityTb.Text, out decimal quantity) && quantity <= Validate)
             {
-                decimal validate = decimal.Parse(quantityTb.Text);
-
-                if (validate <= Validate)
-                {
-                    
-                    decimal p = price / Validate * validate;
-                    quantityTb.ForeColor = Color.Black;
-                    costTb.Text = p.ToString(@"###\ ###\ ###\ ###\");
-
-                }
-                else
-                {
-
-                    MessageBox.Show("Сумма увеличилась");
-                    quantityTb.ForeColor = Color.Red;
-                  
-                }
+                decimal cost = price / Validate * quantity;
+                quantityTb.ForeColor = Color.Black;
+                costTb.Text = cost.ToString("N0");
             }
             else
+            {
+                MessageBox.Show("Сумма увеличилась");
+                quantityTb.ForeColor = Color.Red;
+            }
+
+            if (string.IsNullOrEmpty(quantityTb.Text))
             {
                 quantityTb.ForeColor = Color.Black;
                 costTb.Text = "";
@@ -195,6 +187,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             //        }
             //    }
             //}
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

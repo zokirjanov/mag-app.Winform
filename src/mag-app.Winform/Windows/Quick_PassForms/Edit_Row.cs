@@ -1,8 +1,6 @@
 ﻿using mag_app.DataAccess.DbContexts;
-using mag_app.Domain.Entities.AllProducts;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
-using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.MainWindowForms;
 using mag_app.Winform.Windows.Product_Forms;

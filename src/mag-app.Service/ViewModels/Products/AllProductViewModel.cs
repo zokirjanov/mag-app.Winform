@@ -1,4 +1,4 @@
-﻿using mag_app.Domain.Entities.AllProducts;
+﻿using mag_app.Domain.Entities.Products;
 
 namespace mag_app.Service.Dtos.Products
 {

@@ -2,7 +2,6 @@
 using mag_app.Domain.Entities.Products;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Dtos.Products;
-using mag_app.Service.Services.AllProductService;
 using mag_app.Service.Services.ProductService;
 using mag_app.Winform.Windows.Product_Forms;
 using mag_app.Winform.Windows.Quick_PassForms;

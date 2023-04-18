@@ -1,6 +1,6 @@
 ﻿using mag_app.Domain.Constant;
 using mag_app.Service.Common.Helpers;
-using mag_app.Service.Services.AllProductService;
+using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Components;
