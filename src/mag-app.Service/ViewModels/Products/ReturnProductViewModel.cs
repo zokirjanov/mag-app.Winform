@@ -17,7 +17,7 @@ namespace mag_app.Service.ViewModels.Products
         public string Barcode { get; set; }
         public long SaleGlobalId { get; set; }
         public string SgName { get; set; }
-        public int Return { get; set; }
+        public decimal Return { get; set; }
         public decimal ReturnedPrice { get; set; }
         public DateTime ReturnDate { get; set; }
 
@@ -28,7 +28,7 @@ namespace mag_app.Service.ViewModels.Products
                 Barcode= product.Barcode,
                 SaleGlobalId= product.SaleGlobalId,
                 SgName= product.SgName,
-                Return= product.Return,
+                Quantity= product.Return,
                 ReturnedPrice= product.ReturnedPrice,
                 ReturnDate = TimeHelper.CurrentTime(),
             };

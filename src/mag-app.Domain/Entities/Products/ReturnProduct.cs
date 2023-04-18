@@ -24,15 +24,17 @@ namespace mag_app.Domain.Entities.Products
         [ForeignKey("SaleGlobalId")]
         public long SaleGlobalId { get; set; }
         public virtual SaleGlobal SaleGlobal { get; set; }
+        [Column(Order = 3)]
+
         public string SgName { get; set; }
 
-        [Column(Order =3)]
-        public int Return { get; set; }
-
         [Column(Order =4)]
-        public decimal ReturnedPrice { get; set; }
+        public decimal Quantity { get; set; }
 
         [Column(Order =5)]
+        public decimal ReturnedPrice { get; set; }
+
+        [Column(Order =6)]
         public DateTime ReturnDate { get; set; }
     }
 }
