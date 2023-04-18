@@ -1,5 +1,4 @@
 ﻿using mag_app.DataAccess.Interfaces.Stores;
-using mag_app.DataAccess.Repositories.AllProducts;
 using mag_app.DataAccess.Repositories.Stores;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Interfaces.Stores;
@@ -12,16 +11,14 @@ using System.Threading.Tasks;
 
 namespace mag_app.Service.Services.StoreService
 {
-    public class SalesGlobalService : ISalesGlobalService
+    public class SaleGlobalService : ISaleGlobalService
     {
-        ISalesGlobalRepository _repository;
-
-        public SalesGlobalService()
+        ISaleDetailsRepository _repository;
+        public SaleGlobalService()
         {
-            _repository = new SalesGlobalRepository();
+            _repository = new SaleDetailRepository();
         }
-        
-        public async Task<SaleDetail> CreateAsync(SaleDetailsViewModel viewModel)
+        public async Task<SaleGlobal> CreateAsync(SaleGlobalViewModel viewModel)
         {
             return await _repository.CreateAsync(viewModel);
         }
@@ -31,12 +28,14 @@ namespace mag_app.Service.Services.StoreService
             throw new NotImplementedException();
         }
 
-        public Task<List<SaleDetail>> GetAllAsync()
+        public async Task<List<SaleGlobal>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var result = await _repository.GetAllAsync();
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
+            else return null;
         }
 
-        public Task<string> UpdateAsync(SaleDetail salesGlobal, string name)
+        public Task<string> UpdateAsync(SaleGlobal saleDetail, string name)
         {
             throw new NotImplementedException();
         }

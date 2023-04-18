@@ -19,12 +19,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
     public partial class Return_List : Form
     {
 
-        SaleDetailService _service;
+        SaleGlobalService _service;
         ReturnProductService _productService;
         public Return_List()
         {
             _productService = new ReturnProductService();
-            _service = new SaleDetailService();
+            _service = new SaleGlobalService();
             InitializeComponent();
         }
 
@@ -61,6 +61,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     Quantity = i.Quantity,
                     Price = i.Price,
                     DiscountPrice = i.DiscountPrice,
+                    Id = i.Id
                 });
             }
             dataGridView1.ClearSelection();
@@ -86,11 +87,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 price = decimal.Parse(row.Cells[1].Value.ToString()!);
                 quantityTb.Text = row.Cells[3].Value.ToString();
 
-                model.ProductName = row.Cells[0].Value.ToString()!;
-                model.Price = decimal.Parse(row.Cells[1].Value.ToString()!);
-                model.DiscountPrice = decimal.Parse(row.Cells[2].Value.ToString()!);
-                model.Barcode = row.Cells[4].Value.ToString()!;
-                model.Quantity = decimal.Parse(row.Cells[3].Value.ToString()!);
+                model.ProductName = row.Cells[0].Value.ToString();
+                model.Price = decimal.Parse(row.Cells[1].Value.ToString());
+                model.DiscountPrice = decimal.Parse(row.Cells[2].Value.ToString());
+                model.Barcode = row.Cells[4].Value.ToString();
+                model.Quantity = decimal.Parse(row.Cells[3].Value.ToString());
+                model.Id = long.Parse(row.Cells[5].Value.ToString());
             }
         }
 

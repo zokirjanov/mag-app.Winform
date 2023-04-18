@@ -12,6 +12,7 @@ namespace mag_app.Service.ViewModels.Stores
 {
     public class SaleGlobalViewModel
     {
+        public long Id { get; set; }
         public long SaleId { get; set; }
 
         public long ProductId { get; set; }

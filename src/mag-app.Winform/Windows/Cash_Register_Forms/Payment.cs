@@ -10,8 +10,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
     public partial class Payment : Form
     {
-        SalesGlobalService salesGlobal;
-        SaleDetailService saleDetail;
+        SaleDetailsService salesGlobal;
+        SaleGlobalService saleDetail;
         AllProductService productService;
         TabProductService tabProductService;
 
@@ -20,8 +20,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         public Payment()
         {
-            salesGlobal = new SalesGlobalService();
-            saleDetail = new SaleDetailService();
+            salesGlobal = new SaleDetailsService();
+            saleDetail = new SaleGlobalService();
             productService = new AllProductService();
             tabProductService = new TabProductService();
             InitializeComponent();
