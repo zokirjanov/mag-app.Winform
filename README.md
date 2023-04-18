@@ -1,3 +1,3 @@
 # mag-app
 
-https://youtu.be/eNOx2iHqnko
+[![Watch the video](https://youtu.be/eNOx2iHqnko)]
