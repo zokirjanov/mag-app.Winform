@@ -70,31 +70,116 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
-
-
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
                 indexRow = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[indexRow];
-                decimal p = Convert.ToDecimal(row.Cells[1].Value.ToString());
 
-                costTb.Text = "";
+                decimal p;
+                if (decimal.TryParse(row.Cells[1].Value.ToString(), out p))
+                {
+                    costTb.Text = p.ToString();
+                }
+                else
+                {
+                    costTb.Text = "";
+                }
+
                 nameTb.Text = row.Cells[0].Value.ToString();
-                Validate = decimal.Parse(row.Cells[3].Value.ToString()!);
-                price = decimal.Parse(row.Cells[1].Value.ToString()!);
+
+                decimal validate;
+                if (decimal.TryParse(row.Cells[3].Value.ToString(), out validate))
+                {
+                    Validate = validate;
+                }
+                else
+                {
+                    Validate = 0;
+                }
+
+                decimal price;
+                if (decimal.TryParse(row.Cells[1].Value.ToString(), out price))
+                {
+                    this.price = price;
+                }
+                else
+                {
+                    this.price = 0;
+                }
+
                 quantityTb.Text = row.Cells[3].Value.ToString();
 
                 model.ProductName = row.Cells[0].Value.ToString();
-                model.Price = decimal.Parse(row.Cells[1].Value.ToString());
-                model.DiscountPrice = decimal.Parse(row.Cells[2].Value.ToString());
+
+                decimal modelPrice;
+                if (decimal.TryParse(row.Cells[1].Value.ToString(), out modelPrice))
+                {
+                    model.Price = modelPrice;
+                }
+                else
+                {
+                    model.Price = 0;
+                }
+
+                decimal discountPrice;
+                if (decimal.TryParse(row.Cells[2].Value.ToString(), out discountPrice))
+                {
+                    model.DiscountPrice = discountPrice;
+                }
+                else
+                {
+                    model.DiscountPrice = 0;
+                }
+
                 model.Barcode = row.Cells[4].Value.ToString();
-                model.Quantity = decimal.Parse(row.Cells[3].Value.ToString());
-                model.Id = long.Parse(row.Cells[5].Value.ToString());
+
+                decimal modelQuantity;
+                if (decimal.TryParse(row.Cells[3].Value.ToString(), out modelQuantity))
+                {
+                    model.Quantity = modelQuantity;
+                }
+                else
+                {
+                    model.Quantity = 0;
+                }
+
+                long modelId;
+                if (long.TryParse(row.Cells[5].Value.ToString(), out modelId))
+                {
+                    model.Id = modelId;
+                }
+                else
+                {
+                    model.Id = 0;
+                }
             }
         }
+
+
+        //   private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        // {
+        //if (e.RowIndex != -1)
+        //{
+        //    indexRow = e.RowIndex;
+        //    DataGridViewRow row = dataGridView1.Rows[indexRow];
+        //    decimal p = Convert.ToDecimal(row.Cells[1].Value.ToString());
+
+        //    costTb.Text = "";
+        //    nameTb.Text = row.Cells[0].Value.ToString();
+        //    Validate = Convert.ToDecimal(row.Cells[3].Value.ToString());
+        //    price = Convert.ToDecimal(row.Cells[1].Value.ToString());
+        //    quantityTb.Text = row.Cells[3].Value.ToString();
+
+        //    model.ProductName = Convert.ToString(row.Cells[0].Value);
+        //    model.Price = Convert.ToDecimal(row.Cells[1].Value.ToString());
+        //    model.DiscountPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
+        //    model.Barcode = row.Cells[4].Value.ToString();
+        //    model.Quantity = Convert.ToDecimal(row.Cells[3].Value.ToString());
+        //    model.Id = Convert.ToInt64(row.Cells[5].Value.ToString());
+        //}
+        //  }
 
 
 
@@ -183,8 +268,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
             ReturnProductViewModel product = new ReturnProductViewModel()
             {
+               
                 SgName = model.ProductName,
-                SaleGlobalId = model.ProductId,
+                SaleGlobalId = model.Id,
                 Barcode = model.Barcode,
                 ReturnedPrice = returnedPrice,
                 Return = returnQuantity,
@@ -199,7 +285,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
                     if (result != null)
                     {
-                        MessageBox.Show("Товар успешно возвращен");
+                        AutoClosingMessageBox.Show("Товар успешно возвращен", "возвращаться", 400);
                     }
                 }
                 catch (Exception ex)
