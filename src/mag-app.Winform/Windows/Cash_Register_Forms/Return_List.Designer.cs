@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -65,12 +66,12 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1004, 58);
+            this.panel1.Size = new System.Drawing.Size(945, 58);
             this.panel1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(560, 16);
+            this.button1.Location = new System.Drawing.Point(507, 17);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -79,7 +80,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(367, 16);
+            this.textBox1.Location = new System.Drawing.Point(314, 17);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "check number";
             this.textBox1.Size = new System.Drawing.Size(174, 23);
@@ -116,7 +117,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1004, 485);
+            this.dataGridView1.Size = new System.Drawing.Size(945, 485);
             this.dataGridView1.TabIndex = 1;
             // 
             // saleDetailsViewModelBindingSource
@@ -165,7 +166,6 @@
             this.cashNameDataGridViewTextBoxColumn.HeaderText = "CashName";
             this.cashNameDataGridViewTextBoxColumn.Name = "cashNameDataGridViewTextBoxColumn";
             this.cashNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cashNameDataGridViewTextBoxColumn.Width = 130;
             // 
             // paymentTypeDataGridViewTextBoxColumn
             // 
@@ -173,7 +173,7 @@
             this.paymentTypeDataGridViewTextBoxColumn.HeaderText = "Способ оплаты";
             this.paymentTypeDataGridViewTextBoxColumn.Name = "paymentTypeDataGridViewTextBoxColumn";
             this.paymentTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.paymentTypeDataGridViewTextBoxColumn.Width = 150;
+            this.paymentTypeDataGridViewTextBoxColumn.Width = 120;
             // 
             // cashAmountDataGridViewTextBoxColumn
             // 
@@ -198,6 +198,9 @@
             // totalSaleDataGridViewTextBoxColumn
             // 
             this.totalSaleDataGridViewTextBoxColumn.DataPropertyName = "TotalSale";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "### ### ### ###";
+            this.totalSaleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.totalSaleDataGridViewTextBoxColumn.HeaderText = "общая продажа";
             this.totalSaleDataGridViewTextBoxColumn.Name = "totalSaleDataGridViewTextBoxColumn";
             this.totalSaleDataGridViewTextBoxColumn.ReadOnly = true;
@@ -206,9 +209,9 @@
             // changeDataGridViewTextBoxColumn
             // 
             this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "### ### ### ###";
-            this.changeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "### ### ### ###";
+            this.changeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.changeDataGridViewTextBoxColumn.HeaderText = "сдача";
             this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
             this.changeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -216,9 +219,9 @@
             // discountDataGridViewTextBoxColumn
             // 
             this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "### ### ### ###";
-            this.discountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "### ### ### ###";
+            this.discountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.discountDataGridViewTextBoxColumn.HeaderText = "скидка";
             this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
             this.discountDataGridViewTextBoxColumn.ReadOnly = true;
@@ -235,7 +238,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 543);
+            this.ClientSize = new System.Drawing.Size(945, 543);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

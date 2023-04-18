@@ -21,14 +21,15 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
     public partial class Return_List : Form
     {
 
-        SaleGlobalService _service;
+        SaleDetailsService _service;
         ReturnProductService _productService;
         public Return_List()
         {
             _productService = new ReturnProductService();
-            _service = new SaleGlobalService();
+            _service = new SaleDetailsService();
             InitializeComponent();
         }
+
 
 
 
@@ -49,12 +50,18 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             {
                 saleDetailsViewModelBindingSource.Add(new SaleDetailsViewModel()
                 {
-                    
+                    Id = i.Id,
+                    CashName = i.CashName,
+                    PaymentType = (Domain.Constant.PaymentType)i.PaymentType,
+                    CashAmount = i.CashAmount,
+                    CardAmount = i.CardAmount,
+                    TotalSale = i.TotalSalePrice,
+                    Change = i.change,
+                    Discount = i.DiscountPrice,
+                    TransactionDate = i.TransactionDate
                 });
             }
             dataGridView1.ClearSelection();
         }
-
-
     }
 }

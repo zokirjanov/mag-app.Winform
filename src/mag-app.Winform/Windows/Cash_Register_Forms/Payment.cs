@@ -91,7 +91,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
-            PaymentType type = card != 0 ? PaymentType.Card : (cash != 0 ? PaymentType.Cash : PaymentType.MixedPayment);
+            PaymentType type = card != 0 ? PaymentType.Терминал : (cash != 0 ? PaymentType.наличные : PaymentType.частичная_оплата);
 
 
 

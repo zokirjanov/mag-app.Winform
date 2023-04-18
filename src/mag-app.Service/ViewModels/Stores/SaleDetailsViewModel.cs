@@ -14,6 +14,7 @@ namespace mag_app.Service.ViewModels.Stores
 {
     public class SaleDetailsViewModel
     {
+        public long Id { get; set; }
         public decimal TotalSale { get; set; }
 
         public DateTime TransactionDate { get; set; }

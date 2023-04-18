@@ -49,8 +49,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<ReturnProduct>()
                     .HasOne<SaleGlobal>(sd => sd.SaleGlobal)
                     .WithMany(sg => sg.ReturnProducts)
-                    .HasForeignKey(sd => sd.SaleGlobalId)
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .HasForeignKey(sd => sd.SaleGlobalId);
 
 
         // Sales Global
