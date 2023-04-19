@@ -76,7 +76,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             else MessageBox.Show("торговля ведется не корректно");
 
         }
-
+        
 
 
 

@@ -13,6 +13,6 @@ namespace mag_app.Service.Interfaces.Stores
         public Task<SaleGlobal> CreateAsync(SaleGlobalViewModel viewModel);
         public Task<string> DeleteAsync(long Id);
         public Task<string> UpdateAsync(SaleGlobal saleDetail, string name);
-        public Task<List<SaleGlobal>> GetAllAsync();
+        public Task<List<SaleGlobal>> GetAllAsync(long Id);
     }
 }

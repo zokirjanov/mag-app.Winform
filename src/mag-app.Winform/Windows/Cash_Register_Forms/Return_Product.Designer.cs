@@ -30,24 +30,50 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(945, 58);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(749, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(184, 28);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "возврат";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(362, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Search";
+            this.textBox1.Size = new System.Drawing.Size(186, 23);
+            this.textBox1.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -60,7 +86,10 @@
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.select,
             this.barcodeDataGridViewTextBoxColumn,
+            this.categoryDataGridViewTextBoxColumn,
+            this.subCategoryDataGridViewTextBoxColumn,
             this.productNameDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
@@ -70,6 +99,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 58);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -80,15 +110,40 @@
             // 
             this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
             // 
+            // select
+            // 
+            this.select.HeaderText = "";
+            this.select.Name = "select";
+            this.select.ReadOnly = true;
+            this.select.Width = 30;
+            // 
             // barcodeDataGridViewTextBoxColumn
             // 
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
             this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.barcodeDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categoryDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // subCategoryDataGridViewTextBoxColumn
+            // 
+            this.subCategoryDataGridViewTextBoxColumn.DataPropertyName = "SubCategory";
+            this.subCategoryDataGridViewTextBoxColumn.HeaderText = "SubCategory";
+            this.subCategoryDataGridViewTextBoxColumn.Name = "subCategoryDataGridViewTextBoxColumn";
+            this.subCategoryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.subCategoryDataGridViewTextBoxColumn.Width = 130;
             // 
             // productNameDataGridViewTextBoxColumn
             // 
+            this.productNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
             this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
             this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
@@ -124,7 +179,11 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Return_Product";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Return_Product";
+            this.Load += new System.EventHandler(this.Return_Product_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -136,7 +195,12 @@
         private Panel panel1;
         private DataGridView dataGridView1;
         private BindingSource saleGlobalViewModelBindingSource;
+        private Button button1;
+        private TextBox textBox1;
+        private DataGridViewCheckBoxColumn select;
         private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn subCategoryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;

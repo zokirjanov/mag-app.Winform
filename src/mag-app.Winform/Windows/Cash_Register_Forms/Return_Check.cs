@@ -1,4 +1,6 @@
-﻿using mag_app.Service.Services.ProductService;
+﻿using mag_app.Service.Common.Helpers;
+using mag_app.Service.Interfaces.Stores;
+using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
 
@@ -11,6 +13,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         SaleDetailsService _service;
         ReturnProductService _productService;
+        int indexRow = 0;
         public Return_Check()
         {
             _productService = new ReturnProductService();
@@ -24,6 +27,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         private void Return_List_Load(object sender, EventArgs e)
         {
             FillData();
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Turquoise;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
 
@@ -52,9 +57,19 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             dataGridView1.ClearSelection();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                indexRow = e.RowIndex;
+                DataGridViewRow row = dataGridView1.Rows[indexRow];
+
+                Return_Product return_Product = new Return_Product();
+                return_Product.Id = Convert.ToInt64(row.Cells[0].Value.ToString());
+                return_Product.ShowDialog();
+            }
         }
     }
 }
