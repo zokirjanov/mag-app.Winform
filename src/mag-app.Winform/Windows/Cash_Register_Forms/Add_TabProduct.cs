@@ -97,8 +97,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 TabProductViewModel tabProductViewModel = new TabProductViewModel()
                 {
                     ProductId = Convert.ToInt64(row.Cells[4].Value),
-                    Price= Convert.ToInt64(row.Cells[7].Value),
+                    Price = Convert.ToInt64(row.Cells[7].Value),
                     ProductName = row.Cells[5].Value.ToString()!,
+                    Category = row.Cells[2].Value.ToString(),
+                    SubCategory= row.Cells[3].Value.ToString(),
                     TabControllerId = TabId,
                     TabControllerName = TabName,
                     Barcode = row.Cells[0].Value.ToString(),

@@ -81,66 +81,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
-
-        public static string GenerateCheckNumber(PaymentType paymentType, decimal amount)
-        {
-            if (paymentType == PaymentType.Терминал)
-            {
-                string cardNumber = "8600120462515050"; 
-                return LuhnAlgorithm(cardNumber);
-            }
-
-            else if (paymentType == PaymentType.наличные)
-            {
-                int checkNumber = (int)(amount * 100) % 97;
-                return checkNumber.ToString();
-            }
-
-            else
-            {
-                throw new ArgumentException("Invalid payment type");
-            }
-        }
-
-
-
-
-
-        public static string LuhnAlgorithm(string cardNumber)
-        {
-            var reversedNumber = cardNumber.Reverse().ToArray();
-
-            var doubledDigits = new List<int>();
-            for (int i = 0; i < reversedNumber.Length; i++)
-            {
-                int digit = int.Parse(reversedNumber[i].ToString());
-                if (i % 2 == 1)
-                {
-                    int doubledDigit = digit * 2;
-                    if (doubledDigit > 9)
-                    {
-                        doubledDigit -= 9;
-                    }
-                    doubledDigits.Add(doubledDigit);
-                }
-                else
-                {
-                    doubledDigits.Add(digit);
-                }
-            }
-
-            int total = doubledDigits.Sum();
-            int checkDigit = (10 - (total % 10)) % 10;
-
-            return checkDigit.ToString();
-        }
-
-
-
-
-
-
-
         private async Task<bool> PreparePaymentInfo(decimal changeAmount)
         {
 
@@ -152,7 +92,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
             PaymentType type = (card != 0 && cash !=0) ? PaymentType.частичная_оплата : (cash != 0 ? PaymentType.наличные : PaymentType.Терминал);
 
-            string number = GenerateCheckNumber(type, cash + card);
 
 
             SaleDetailsViewModel SaleGlobal = new SaleDetailsViewModel()

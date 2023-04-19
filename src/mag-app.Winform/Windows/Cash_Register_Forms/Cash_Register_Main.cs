@@ -334,6 +334,8 @@ public partial class Cash_Register_Main : Form
                 Barcode = product.Barcode,
                 maxQ = product.Quantity,
                 ProductId = product.ProductId,
+                Category = product.Category,
+                SubCategory = product.Subcategory
             };
 
             if (_productTitles.Contains(ucProduct.Title))
