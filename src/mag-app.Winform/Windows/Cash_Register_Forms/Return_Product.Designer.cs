@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +42,7 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).BeginInit();
@@ -50,6 +51,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -57,6 +59,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(945, 58);
             this.panel1.TabIndex = 0;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(10, 33);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(71, 19);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "select all";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button1
             // 
@@ -69,7 +82,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(362, 15);
+            this.textBox1.Location = new System.Drawing.Point(9, 7);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Search";
             this.textBox1.Size = new System.Drawing.Size(186, 23);
@@ -98,23 +111,21 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 58);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(945, 485);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // saleGlobalViewModelBindingSource
-            // 
-            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // select
             // 
             this.select.HeaderText = "";
             this.select.Name = "select";
-            this.select.ReadOnly = true;
             this.select.Width = 30;
             // 
             // barcodeDataGridViewTextBoxColumn
@@ -154,7 +165,6 @@
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // priceDataGridViewTextBoxColumn
             // 
@@ -169,6 +179,10 @@
             this.discountPriceDataGridViewTextBoxColumn.HeaderText = "DiscountPrice";
             this.discountPriceDataGridViewTextBoxColumn.Name = "discountPriceDataGridViewTextBoxColumn";
             this.discountPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // saleGlobalViewModelBindingSource
+            // 
+            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
             // 
             // Return_Product
             // 
@@ -197,6 +211,7 @@
         private BindingSource saleGlobalViewModelBindingSource;
         private Button button1;
         private TextBox textBox1;
+        private CheckBox checkBox1;
         private DataGridViewCheckBoxColumn select;
         private DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
