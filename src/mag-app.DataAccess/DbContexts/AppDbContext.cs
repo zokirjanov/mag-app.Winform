@@ -52,7 +52,7 @@ public class AppDbContext : DbContext
                     .HasForeignKey(sd => sd.SaleGlobalId);
 
 
-        // Sales Global
+        // Sales Detail
         modelBuilder.Entity<SaleDetail>()
                     .HasOne<Cash>(sd => sd.Cash)
                     .WithMany(sg => sg.SalesGlobals)
@@ -73,7 +73,7 @@ public class AppDbContext : DbContext
                     .HasIndex(sg => sg.PaymentType);
 
 
-        // Sales Details
+        // Sales Global
         modelBuilder.Entity<SaleGlobal>()
                     .HasOne<SaleDetail>(sd => sd.SalesGlobal)
                     .WithMany(sg => sg.SaleDetails)

@@ -42,6 +42,7 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,6 +80,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "возврат";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -106,7 +108,8 @@
             this.productNameDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
-            this.discountPriceDataGridViewTextBoxColumn});
+            this.discountPriceDataGridViewTextBoxColumn,
+            this.SaleId});
             this.dataGridView1.DataSource = this.saleGlobalViewModelBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 58);
@@ -180,6 +183,13 @@
             this.discountPriceDataGridViewTextBoxColumn.Name = "discountPriceDataGridViewTextBoxColumn";
             this.discountPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // SaleId
+            // 
+            this.SaleId.DataPropertyName = "SaleId";
+            this.SaleId.HeaderText = "SaleId";
+            this.SaleId.Name = "SaleId";
+            this.SaleId.Visible = false;
+            // 
             // saleGlobalViewModelBindingSource
             // 
             this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
@@ -220,5 +230,6 @@
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn discountPriceDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn SaleId;
     }
 }

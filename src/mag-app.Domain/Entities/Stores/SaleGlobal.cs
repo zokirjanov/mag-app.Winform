@@ -30,10 +30,10 @@ namespace mag_app.Domain.Entities.Stores
         [Column(Order = 5)]
         public long ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public virtual AllProduct AllProduct { get; set; } = default!;
+        public virtual AllProduct? AllProduct { get; set; } = default!;
 
         [Column(Order = 6)]
-        public string ProductName { get; set; } = string.Empty;
+        public string? ProductName { get; set; } = string.Empty;
 
 
 

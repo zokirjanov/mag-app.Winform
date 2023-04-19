@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mag_app.DataAccess.DbContexts;
 
@@ -10,9 +11,10 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230419101413_FixedMigration1")]
+    partial class FixedMigration1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
@@ -326,6 +328,7 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnOrder(5);
 
                     b.Property<string>("ProductName")
+                        .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnOrder(6);
 
@@ -587,7 +590,7 @@ namespace mag_app.DataAccess.Migrations
                     b.HasOne("mag_app.Domain.Entities.Products.AllProduct", "AllProduct")
                         .WithMany("SaleDetails")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("mag_app.Domain.Entities.Stores.SaleDetail", "SalesGlobal")

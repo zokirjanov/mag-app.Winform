@@ -1,4 +1,7 @@
-﻿using mag_app.Service.Services.StoreService;
+﻿using mag_app.Service.Common.Helpers;
+using mag_app.Service.Services.ProductService;
+using mag_app.Service.Services.StoreService;
+using mag_app.Service.ViewModels.Products;
 using mag_app.Service.ViewModels.Stores;
 using System.Threading.Tasks.Dataflow;
 
@@ -7,10 +10,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms;
 public partial class Return_Product : Form
 {
     SaleGlobalService _service;
+    ReturnProductService _returnService;
 
     public Return_Product()
     {
         _service = new SaleGlobalService();
+        _returnService= new ReturnProductService();
         InitializeComponent();
     }
 
@@ -46,6 +51,7 @@ public partial class Return_Product : Form
                 ProductName = i.ProductName,
                 Quantity = i.Quantity,
                 Price = i.Price,
+                SaleId = i.SaleId,
                 DiscountPrice = i.DiscountPrice,
             });
         }
@@ -164,5 +170,34 @@ public partial class Return_Product : Form
             }
         }
 
+    }
+
+    private async void button1_Click(object sender, EventArgs e)
+    {
+        foreach (DataGridViewRow row in dataGridView1.Rows)
+        {
+            DataGridViewCheckBoxCell checkboxCell = row.Cells[0] as DataGridViewCheckBoxCell;
+            if (checkboxCell.Value != null && (bool)checkboxCell.Value)
+            {
+                ReturnProductViewModel product = new ReturnProductViewModel()
+                {
+                    Barcode = row.Cells[1].Value.ToString(),
+                    Category = row.Cells[2].Value.ToString(),
+                    SubCastegory = row.Cells[3].Value.ToString(),
+                    SaleGlobalId = Convert.ToInt64(row.Cells[8].Value),
+                    SgName = row.Cells[4].Value.ToString(),
+                    Return = Convert.ToDecimal(row.Cells[5].Value),
+                    ReturnedPrice = (Convert.ToDecimal(row.Cells[5].Value) * Convert.ToDecimal(row.Cells[6].Value)),
+                    ReturnDate = TimeHelper.CurrentTime()
+                };
+
+
+                var result = await _returnService.CreateProductAsync(product);
+                if (result != null)
+                {
+                    MessageBox.Show("sdfsfs");
+                }
+            }
+        }
     }
 }
