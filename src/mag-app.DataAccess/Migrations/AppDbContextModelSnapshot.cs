@@ -161,23 +161,33 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(1);
 
-                    b.Property<decimal>("Quantity")
+                    b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(4);
+                        .HasColumnOrder(2);
 
-                    b.Property<DateTime>("ReturnDate")
+                    b.Property<decimal>("Quantity")
                         .HasColumnType("TEXT")
                         .HasColumnOrder(6);
 
+                    b.Property<DateTime>("ReturnDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(8);
+
                     b.Property<decimal>("ReturnedPrice")
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(5);
+                        .HasColumnOrder(7);
 
                     b.Property<long>("SaleGlobalId")
                         .HasColumnType("INTEGER")
-                        .HasColumnOrder(2);
+                        .HasColumnOrder(4);
 
                     b.Property<string>("SgName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(5);
+
+                    b.Property<string>("SubCategory")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnOrder(3);
@@ -298,30 +308,40 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(2);
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(3);
+
                     b.Property<decimal?>("DiscountPrice")
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(8);
+                        .HasColumnOrder(10);
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(7);
+                        .HasColumnOrder(9);
 
                     b.Property<long>("ProductId")
                         .HasColumnType("INTEGER")
-                        .HasColumnOrder(4);
+                        .HasColumnOrder(5);
 
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(5);
+                        .HasColumnOrder(6);
 
                     b.Property<decimal>("Quantity")
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(6);
+                        .HasColumnOrder(8);
 
                     b.Property<long>("SaleId")
                         .HasColumnType("INTEGER")
-                        .HasColumnOrder(3);
+                        .HasColumnOrder(7);
+
+                    b.Property<string>("SubCategory")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(4);
 
                     b.HasKey("Id");
 
@@ -366,31 +386,49 @@ namespace mag_app.DataAccess.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(0);
 
                     b.Property<string>("Barcode")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(1);
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(2);
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(8);
 
                     b.Property<long>("ProductId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ProductName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(5);
 
                     b.Property<decimal>("Quantity")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(9);
+
+                    b.Property<string>("Subcategory")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(3);
 
                     b.Property<long>("TabControllerId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("TabControllerName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(7);
 
                     b.HasKey("Id");
 

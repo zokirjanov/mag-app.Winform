@@ -15,6 +15,8 @@ namespace mag_app.Service.ViewModels.Products
     {
         public long Id { get; set; }
         public string Barcode { get; set; }
+        public string Category { get; set; }
+        public string SubCastegory { get; set; }
         public long SaleGlobalId { get; set; }
         public string SgName { get; set; }
         public decimal Return { get; set; }
@@ -26,6 +28,8 @@ namespace mag_app.Service.ViewModels.Products
             return new ReturnProduct()
             {
                 Barcode= product.Barcode,
+                Category = product.Category,
+                SubCategory = product.SubCastegory,
                 SaleGlobalId= product.SaleGlobalId,
                 SgName= product.SgName,
                 Quantity= product.Return,

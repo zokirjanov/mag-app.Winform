@@ -29,6 +29,10 @@ namespace mag_app.Winform.Components
             lblDiscount.Click += (sender, args) => InvokeOnClick(customPanel1, args);
         }
 
+        public string Barcode { get; set; }
+        public long ProductId { get; set; }
+        public decimal maxQ { get; set; }
+
 
 
         private void ProductControl_Load(object sender, EventArgs e)
@@ -38,14 +42,18 @@ namespace mag_app.Winform.Components
 
 
 
+
+
         public decimal TotalCost { get => _totalCost; set { _totalCost = value; ucTotalPrice.Text = _totalCost.ToString(@"###\ ###\ ###\ ###\"); } }
         public decimal Discount { get => _discount; set { _discount = value; lblDiscount.Text = _discount.ToString(@"###\ ###\ ###\ ###\"); } }
         public decimal Cost { get => _cost; set { _cost = value; ucPrice.Text = _cost.ToString(@"###\ ###\ ###\ ###\"); } }
         public decimal Quantity { get => _quantity; set { _quantity = value; ucQuantity.Text = _quantity.ToString(); } }
         public string Title { get => ucTitle.Text; set => ucTitle.Text = value; }
-        public string Barcode { get; set; }
-        public long  ProductId { get; set; }
-        public decimal maxQ  { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+
+
+
 
 
 
@@ -61,6 +69,8 @@ namespace mag_app.Winform.Components
             edit_ProductQuantity.maxQ = maxQ;
             edit_ProductQuantity.ShowDialog();
         }
+
+
 
 
 

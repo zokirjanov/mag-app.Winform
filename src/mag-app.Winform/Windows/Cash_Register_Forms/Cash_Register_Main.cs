@@ -334,6 +334,8 @@ public partial class Cash_Register_Main : Form
                 Barcode = product.Barcode,
                 maxQ = product.Quantity,
                 ProductId = product.ProductId,
+                Category = product.Category,
+                SubCategory = product.Subcategory
             };
 
             if (_productTitles.Contains(ucProduct.Title))
@@ -608,7 +610,7 @@ public partial class Cash_Register_Main : Form
 
     private void button2_Click(object sender, EventArgs e)
     {
-        Return_List return_List = new Return_List();
+        Return_Check return_List = new Return_Check();
         return_List.ShowDialog();
     }
 }

@@ -10,23 +10,52 @@ namespace mag_app.Domain.Entities.Stores
 {
     public class TabProduct
     {
+        [Column(Order = 0)]
         public long Id { get; set; }
-        public decimal Price { get; set; }
+
+        [Column(Order = 1)]
         public string Barcode { get; set; }
-        public decimal Quantity { get; set; }
+
+
+        [Column(Order = 2)]
+        public string Category { get; set; }
+
+
+        [Column(Order = 3)]
+        public string Subcategory { get; set; }
+
+
+
+
+        [ForeignKey("ProductId")]
+        public virtual AllProduct AllProduct { get; set; }
+        [Column(Order =4)]
+        public long ProductId { get; set; }
+        [Column(Order = 5)]
+        public string ProductName { get; set; }
 
 
 
         [ForeignKey("TabControllerId")]
         public virtual TabController TabController { get; set; }
-
+        [Column(Order =6)]
         public long TabControllerId { get; set; }
+        [Column(Order =7)]
         public string TabControllerName { get; set; }
 
 
-        [ForeignKey("ProductId")]
-        public virtual AllProduct AllProduct { get; set; }
-        public long ProductId { get; set; }
-        public string ProductName { get; set; }
+
+
+        [Column(Order =8)]
+        public decimal Price { get; set; }
+        [Column(Order =9)]
+        public decimal Quantity { get; set; }
+
+
+
+
+
+
+
     }
 }

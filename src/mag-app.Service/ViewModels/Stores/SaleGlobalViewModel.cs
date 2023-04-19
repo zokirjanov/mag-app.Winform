@@ -18,6 +18,9 @@ namespace mag_app.Service.ViewModels.Stores
         public long ProductId { get; set; }
         public string ProductName { get; set; }
 
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+
         public decimal Quantity { get; set; }
 
         public decimal Price { get; set; }
@@ -32,6 +35,8 @@ namespace mag_app.Service.ViewModels.Stores
                 SaleId= saleGlobalViewModel.SaleId,
                 ProductId= saleGlobalViewModel.ProductId,
                 ProductName= saleGlobalViewModel.ProductName,
+                Category= saleGlobalViewModel.Category,
+                SubCategory= saleGlobalViewModel.SubCategory,
                 Quantity = saleGlobalViewModel.Quantity,
                 Price= saleGlobalViewModel.Price,
                 DiscountPrice= saleGlobalViewModel.DiscountPrice,
