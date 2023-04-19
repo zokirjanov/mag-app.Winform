@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).BeginInit();
@@ -125,6 +125,10 @@
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
+            // saleGlobalViewModelBindingSource
+            // 
+            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
+            // 
             // select
             // 
             this.select.HeaderText = "";
@@ -185,14 +189,10 @@
             // 
             // SaleId
             // 
-            this.SaleId.DataPropertyName = "SaleId";
+            this.SaleId.DataPropertyName = "Id";
             this.SaleId.HeaderText = "SaleId";
             this.SaleId.Name = "SaleId";
             this.SaleId.Visible = false;
-            // 
-            // saleGlobalViewModelBindingSource
-            // 
-            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
             // 
             // Return_Product
             // 

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -51,6 +51,7 @@
             this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleDetailsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleDetailsViewModelBindingSource)).BeginInit();
@@ -60,6 +61,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -69,7 +71,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(373, 18);
+            this.textBox1.Location = new System.Drawing.Point(12, 29);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "check number";
             this.textBox1.Size = new System.Drawing.Size(174, 23);
@@ -160,9 +162,9 @@
             // cashAmountDataGridViewTextBoxColumn
             // 
             this.cashAmountDataGridViewTextBoxColumn.DataPropertyName = "CashAmount";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "### ### ### ###";
-            this.cashAmountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "### ### ### ###";
+            this.cashAmountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.cashAmountDataGridViewTextBoxColumn.HeaderText = "Наличные";
             this.cashAmountDataGridViewTextBoxColumn.Name = "cashAmountDataGridViewTextBoxColumn";
             this.cashAmountDataGridViewTextBoxColumn.ReadOnly = true;
@@ -170,9 +172,9 @@
             // cardAmountDataGridViewTextBoxColumn
             // 
             this.cardAmountDataGridViewTextBoxColumn.DataPropertyName = "CardAmount";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "### ### ### ###";
-            this.cardAmountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "### ### ### ###";
+            this.cardAmountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.cardAmountDataGridViewTextBoxColumn.HeaderText = "Терминал";
             this.cardAmountDataGridViewTextBoxColumn.Name = "cardAmountDataGridViewTextBoxColumn";
             this.cardAmountDataGridViewTextBoxColumn.ReadOnly = true;
@@ -180,9 +182,9 @@
             // totalSaleDataGridViewTextBoxColumn
             // 
             this.totalSaleDataGridViewTextBoxColumn.DataPropertyName = "TotalSale";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "### ### ### ###";
-            this.totalSaleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "### ### ### ###";
+            this.totalSaleDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.totalSaleDataGridViewTextBoxColumn.HeaderText = "общая продажа";
             this.totalSaleDataGridViewTextBoxColumn.Name = "totalSaleDataGridViewTextBoxColumn";
             this.totalSaleDataGridViewTextBoxColumn.ReadOnly = true;
@@ -191,9 +193,9 @@
             // changeDataGridViewTextBoxColumn
             // 
             this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "### ### ### ###";
-            this.changeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "### ### ### ###";
+            this.changeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.changeDataGridViewTextBoxColumn.HeaderText = "сдача";
             this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
             this.changeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -201,9 +203,9 @@
             // discountDataGridViewTextBoxColumn
             // 
             this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "### ### ### ###";
-            this.discountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "### ### ### ###";
+            this.discountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.discountDataGridViewTextBoxColumn.HeaderText = "скидка";
             this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
             this.discountDataGridViewTextBoxColumn.ReadOnly = true;
@@ -223,6 +225,16 @@
             // saleGlobalViewModelBindingSource
             // 
             this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(247, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(470, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "оплаченные чеки";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Return_Check
             // 
@@ -264,5 +276,6 @@
         private DataGridViewTextBoxColumn changeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
+        private Label label1;
     }
 }

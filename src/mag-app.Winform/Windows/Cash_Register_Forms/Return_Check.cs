@@ -12,11 +12,11 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
     {
 
         SaleDetailsService _service;
-        ReturnProductService _productService;
         int indexRow = 0;
+
+
         public Return_Check()
         {
-            _productService = new ReturnProductService();
             _service = new SaleDetailsService();
             InitializeComponent();
         }
@@ -30,6 +30,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Turquoise;
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
+
+
+
 
 
 
@@ -56,6 +59,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             }
             dataGridView1.ClearSelection();
         }
+
+
 
 
 

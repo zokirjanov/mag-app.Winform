@@ -1,8 +1,10 @@
-﻿using mag_app.Service.Common.Helpers;
+﻿using mag_app.Domain.Entities.Stores;
+using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Products;
 using mag_app.Service.ViewModels.Stores;
+using mag_app.Winform.Windows.Product_Forms;
 using System.Threading.Tasks.Dataflow;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
@@ -31,8 +33,10 @@ public partial class Return_Product : Form
     }
 
 
+
     public long Id { get; set; }
     public decimal MaxQuantity { get; set; }
+
 
 
 
@@ -45,13 +49,13 @@ public partial class Return_Product : Form
         {
             saleGlobalViewModelBindingSource.Add(new SaleGlobalViewModel()
             {
+                Id= i.Id,
                 Barcode = i.Barcode,
                 Category = i.Category,
                 SubCategory = i.SubCategory,
                 ProductName = i.ProductName,
                 Quantity = i.Quantity,
                 Price = i.Price,
-                SaleId = i.SaleId,
                 DiscountPrice = i.DiscountPrice,
             });
         }
@@ -153,6 +157,10 @@ public partial class Return_Product : Form
 
 
 
+
+
+
+
     private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
     {
         if (e.ColumnIndex == 5 && e.RowIndex >= 0)
@@ -172,8 +180,31 @@ public partial class Return_Product : Form
 
     }
 
+
+
+
+
+
     private async void button1_Click(object sender, EventArgs e)
     {
+        DialogResult dlg = MessageBox.Show("Хотите возврат продукты?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        if (dlg == DialogResult.OK)
+        {
+            ReturnAll();
+        }
+        if (dlg == DialogResult.Cancel)
+        {
+            this.Close();
+        }
+    }
+
+
+    private async  void ReturnAll()
+    {
+        int count = dataGridView1.Rows.Cast<DataGridViewRow>()
+           .Count(row => (row.Cells[0] as DataGridViewCheckBoxCell)?.Value as bool? == true);
+
+        int cnt = 0;
         foreach (DataGridViewRow row in dataGridView1.Rows)
         {
             DataGridViewCheckBoxCell checkboxCell = row.Cells[0] as DataGridViewCheckBoxCell;
@@ -193,11 +224,15 @@ public partial class Return_Product : Form
 
 
                 var result = await _returnService.CreateProductAsync(product);
-                if (result != null)
-                {
-                    MessageBox.Show("sdfsfs");
-                }
+                if (result != null) cnt++;
+
             }
+        }
+
+        if (cnt == count)
+        {
+            AutoClosingMessageBox.Show("товары были успешно возвращены", "", 400);
+            this.Close();
         }
     }
 }

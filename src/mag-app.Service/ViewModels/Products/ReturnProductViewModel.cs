@@ -13,7 +13,6 @@ namespace mag_app.Service.ViewModels.Products
 {
     public class ReturnProductViewModel
     {
-        public long Id { get; set; }
         public string Barcode { get; set; }
         public string Category { get; set; }
         public string SubCastegory { get; set; }
