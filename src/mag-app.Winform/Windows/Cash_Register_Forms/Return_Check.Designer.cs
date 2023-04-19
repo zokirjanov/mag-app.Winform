@@ -1,6 +1,6 @@
 ﻿namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
-    partial class Return_List
+    partial class Return_Check
     {
         /// <summary>
         /// Required designer variable.

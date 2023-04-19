@@ -79,6 +79,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
+
+
+
         public static string GenerateCheckNumber(PaymentType paymentType, decimal amount)
         {
             if (paymentType == PaymentType.Терминал)
@@ -98,6 +101,9 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 throw new ArgumentException("Invalid payment type");
             }
         }
+
+
+
 
 
         public static string LuhnAlgorithm(string cardNumber)
@@ -128,6 +134,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
             return checkDigit.ToString();
         }
+
+
+
+
 
 
 

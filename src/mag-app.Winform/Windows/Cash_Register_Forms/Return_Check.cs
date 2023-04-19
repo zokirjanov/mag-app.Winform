@@ -6,12 +6,12 @@ using mag_app.Service.ViewModels.Stores;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
-    public partial class Return_List : Form
+    public partial class Return_Check : Form
     {
 
         SaleDetailsService _service;
         ReturnProductService _productService;
-        public Return_List()
+        public Return_Check()
         {
             _productService = new ReturnProductService();
             _service = new SaleDetailsService();
