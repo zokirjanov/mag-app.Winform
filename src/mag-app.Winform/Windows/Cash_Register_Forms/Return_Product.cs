@@ -158,9 +158,6 @@ public partial class Return_Product : Form
 
 
 
-
-
-
     private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
     {
         if (e.ColumnIndex == 5 && e.RowIndex >= 0)
