@@ -186,6 +186,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                             SaleId = sg.Id,
                             ProductId = item.ProductId,
                             ProductName = item.Title,
+                            Category = item.Category,
+                            SubCategory= item.SubCategory,
                             Quantity = item.Quantity,
                             Price = item.TotalCost,
                             DiscountPrice = item.Discount,

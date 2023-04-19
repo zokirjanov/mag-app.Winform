@@ -21,20 +21,32 @@ namespace mag_app.Domain.Entities.Products
 
 
         [Column(Order =2)]
+        public string Category { get; set; }
+
+
+        [Column(Order =3)]
+        public string SubCategory { get; set; }
+        
+
+        [Column(Order =4)]
         [ForeignKey("SaleGlobalId")]
         public long SaleGlobalId { get; set; }
         public virtual SaleGlobal SaleGlobal { get; set; }
-        [Column(Order = 3)]
 
+
+        [Column(Order = 5)]
         public string SgName { get; set; }
 
-        [Column(Order =4)]
-        public decimal Quantity { get; set; }
-
-        [Column(Order =5)]
-        public decimal ReturnedPrice { get; set; }
 
         [Column(Order =6)]
+        public decimal Quantity { get; set; }
+
+
+        [Column(Order =7)]
+        public decimal ReturnedPrice { get; set; }
+
+
+        [Column(Order =8)]
         public DateTime ReturnDate { get; set; }
     }
 }
