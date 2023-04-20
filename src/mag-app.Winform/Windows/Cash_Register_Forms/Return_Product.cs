@@ -275,7 +275,7 @@ public partial class Return_Product : Form
             if (res != 0)
             {
                 await Return_SaleDetailAsync(result.SaleId);
-                await Return_TabProductAsync(result.ProductId, product.Quantity);
+  //              await Return_TabProductAsync(result.ProductId, product.Quantity);
                 
             }
         }
@@ -305,17 +305,17 @@ public partial class Return_Product : Form
 
 
 
-    private async Task Return_TabProductAsync(long id,  decimal quantity)
-    {
-        using (var db = new AppDbContext())
-        {
-            var result = await db.Tabproducts.FirstOrDefaultAsync(x => x.Id == id);
-            if (result != null)
-            {
-                result.Quantity += quantity;
-                await db.SaveChangesAsync();
-            }
-        }
-    }
+    //private async Task Return_TabProductAsync(long id,  decimal quantity)
+    //{
+    //    using (var db = new AppDbContext())
+    //    {
+    //        var result = await db.Tabproducts.FirstOrDefaultAsync(x => x.Id == id);
+    //        if (result != null)
+    //        {
+    //            result.Quantity += quantity;
+    //            await db.SaveChangesAsync();
+    //        }
+    //    }
+    //}
 
 }

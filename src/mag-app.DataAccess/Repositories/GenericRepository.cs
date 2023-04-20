@@ -21,6 +21,8 @@ namespace mag_app.DataAccess.Repositories
             return expression == null ? _dbSet : _dbSet.Where(expression);
         }
 
+
+
         public async Task<T> GetAsync(Expression<Func<T, bool>> expression)
         {
             return await _dbSet.FirstOrDefaultAsync(expression);
