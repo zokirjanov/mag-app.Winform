@@ -102,6 +102,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
+
         string filterField = "Id";
         private async void textBox1_TextChanged(object sender, EventArgs e)
         {

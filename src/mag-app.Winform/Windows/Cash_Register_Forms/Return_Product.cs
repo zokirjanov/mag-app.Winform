@@ -337,6 +337,6 @@ public partial class Return_Product : Form
     private void textBox1_TextChanged(object sender, EventArgs e)
     {
         var filterText = textBox1.Text;
-        saleGlobalViewModelBindingSource.Filter = string.Format("[{0}] LIKE '%{1}%'", "ProductName", filterText);
+        saleGlobalViewModelBindingSource.Filter = string.Format("[{0}] LIKE '%{1}%'", filterField, filterText);
     }
 }

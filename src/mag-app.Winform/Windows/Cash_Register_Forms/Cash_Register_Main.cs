@@ -15,13 +15,14 @@ public partial class Cash_Register_Main : Form
 
 
 
-    public static Cash_Register_Main cashRegisterMainParent = default!;
-    public FlowLayoutPanel flw;
-    TabService _service;
-    TabProductService _tabProductService;
-    ProductService _productService;
     private static readonly Image _productImage = Image.FromFile("Data Source= ../../../../../Resources/Icons/brand-identity.png");
     public readonly HashSet<string> _productTitles = new HashSet<string>();
+    public static Cash_Register_Main cashRegisterMainParent = default!;
+    public FlowLayoutPanel flw;
+    TabProductService _tabProductService;
+    ProductService _productService;
+    TabService _service;
+
 
 
     public Cash_Register_Main()
@@ -465,7 +466,7 @@ public partial class Cash_Register_Main : Form
             MessageBox.Show("Выбранные продукты недоступны");
         }
     }
-   
+
 
 
 
@@ -565,7 +566,7 @@ public partial class Cash_Register_Main : Form
         add_Discount.ShowDialog();
     }
 
-   
+
 
 
 
