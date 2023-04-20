@@ -1,11 +1,15 @@
-﻿using mag_app.Domain.Entities.Stores;
+﻿using mag_app.DataAccess.DbContexts;
+using mag_app.Domain.Entities.Products;
+using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Products;
 using mag_app.Service.ViewModels.Stores;
 using mag_app.Winform.Windows.Product_Forms;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks.Dataflow;
+using System.Transactions;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -43,6 +47,7 @@ public partial class Return_Product : Form
     public async void FillData()
     {
         saleGlobalViewModelBindingSource.Clear();
+        dataGridView1.Rows.Clear();
         var products = await _service.GetAllAsync(Id);
 
         foreach (var i in products)
@@ -130,7 +135,7 @@ public partial class Return_Product : Form
     }
 
 
-
+   
 
     private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
     {
@@ -138,7 +143,7 @@ public partial class Return_Product : Form
         {
             DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
             string oldValue = cell.Value != null ? cell.Value.ToString() : "";
-        
+
             string newValue = e.FormattedValue.ToString();
 
             decimal oldDecimalValue, newDecimalValue;
@@ -166,7 +171,7 @@ public partial class Return_Product : Form
             DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
             cell.Style.ForeColor = dataGridView1.DefaultCellStyle.ForeColor;
 
-            if (!Convert.IsDBNull(cell.Value) && Convert.ToDecimal(cell.Value) != MaxQuantity)
+            if (Convert.ToDecimal(cell.Value) != 0 && Convert.ToDecimal(cell.Value) != MaxQuantity)
             {
                 DataGridViewCheckBoxCell checkBoxCell = dataGridView1.Rows[e.RowIndex].Cells[0] as DataGridViewCheckBoxCell;
                 if (checkBoxCell != null)
@@ -174,6 +179,7 @@ public partial class Return_Product : Form
                     checkBoxCell.Value = true;
                 }
             }
+            
         }
     }
 
@@ -199,43 +205,117 @@ public partial class Return_Product : Form
 
 
 
-    private async  void ReturnAll()
+
+    public decimal totalReturn = 0;
+    private async void ReturnAll()
     {
-        int count = dataGridView1.Rows.Cast<DataGridViewRow>()
-           .Count(row => (row.Cells[0] as DataGridViewCheckBoxCell)?.Value as bool? == true);
+        List<DataGridViewRow> selectedRows = dataGridView1.Rows.Cast<DataGridViewRow>()
+            .Where(row => (row.Cells[0] as DataGridViewCheckBoxCell)?.Value as bool? == true)
+            .ToList();
 
+        int count = selectedRows.Count;
         int cnt = 0;
-        foreach (DataGridViewRow row in dataGridView1.Rows)
+
+
+        foreach (DataGridViewRow row in selectedRows)
         {
-            DataGridViewCheckBoxCell checkboxCell = row.Cells[0] as DataGridViewCheckBoxCell;
-            if (checkboxCell.Value != null && (bool)checkboxCell.Value)
+            if (Convert.ToDecimal(row.Cells[5].Value) == 0)
             {
-                ReturnProductViewModel product = new ReturnProductViewModel()
-                {
-                    Barcode = row.Cells[1].Value.ToString(),
-                    Category = row.Cells[2].Value.ToString(),
-                    SubCastegory = row.Cells[3].Value.ToString(),
-                    SaleGlobalId = Convert.ToInt64(row.Cells[8].Value),
-                    SgName = row.Cells[4].Value.ToString(),
-                    SgProductPrice= Convert.ToInt64(row.Cells[5].Value),
-                    Return = Convert.ToDecimal(row.Cells[6].Value),
-                    ReturnedPrice = (Convert.ToDecimal(row.Cells[5].Value) * Convert.ToDecimal(row.Cells[7].Value)),
-                    ReturnDate = TimeHelper.CurrentTime()
-                };
+                return;
+            }
 
+            ReturnProductViewModel product = new ReturnProductViewModel()
+            {
+                Barcode = row.Cells[1].Value.ToString(),
+                Category = row.Cells[2].Value.ToString(),
+                SubCastegory = row.Cells[3].Value.ToString(),
+                SaleGlobalId = Convert.ToInt64(row.Cells[9].Value),
+                SgName = row.Cells[4].Value.ToString(),
+                SgProductPrice = Convert.ToInt64(row.Cells[5].Value),
+                Return = Convert.ToDecimal(row.Cells[6].Value),
+                ReturnedPrice = (Convert.ToDecimal(row.Cells[5].Value) * Convert.ToDecimal(row.Cells[6].Value)),
+                ReturnDate = TimeHelper.CurrentTime()
+            };
 
-                var result = await _returnService.CreateProductAsync(product);
-                if (result != null) cnt++;
-
+            var result = await _returnService.CreateProductAsync(product);
+            if (result != null)
+            {
+                totalReturn = result.ReturnedPrice;
+                await Return_SaleGlobalAsync(result);
+                cnt++;
             }
         }
 
         if (cnt == count)
         {
-            AutoClosingMessageBox.Show("товары были успешно возвращены", "", 400);
+            MessageBox.Show($"Товары были успешно возвращены.\nОбщая сумма возврата: {totalReturn}", "Возврат товаров", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            Return_Check.Instance.FillData();
             this.Close();
         }
     }
 
+
+  
+
+    private async Task Return_SaleGlobalAsync(ReturnProduct product)
+    {
+        using (var db = new AppDbContext())
+        {
+            var result = await db.SaleGlobal.FirstOrDefaultAsync(x => x.Id == product.SaleGlobalId);
+            int res = 0;
+            if (result != null)
+            {
+                decimal cnt = result.Quantity - product.Quantity;
+                result.Quantity = cnt;
+                result.TotalPrice = cnt * result.Price;
+
+                res = await db.SaveChangesAsync();
+            }
+            if (res != 0)
+            {
+                await Return_SaleDetailAsync(result.SaleId);
+                await Return_TabProductAsync(result.ProductId, product.Quantity);
+                
+            }
+        }
+    }
+
+
+
+
+
+
+    private async Task Return_SaleDetailAsync(long Id)
+    {
+        using (var db = new AppDbContext())
+        {
+            var result = await db.SaleDetails.FirstOrDefaultAsync(x => x.Id == Id);
+
+            if (result != null)
+            {
+                result.TotalSalePrice  -=  totalReturn;
+                await db.SaveChangesAsync();
+            }
+        }
+    }
+
+
+
+
+
+
+    private async Task Return_TabProductAsync(long id,  decimal quantity)
+    {
+        using (var db = new AppDbContext())
+        {
+            var result = await db.Tabproducts.FirstOrDefaultAsync(x => x.Id == id);
+            if (result != null)
+            {
+                result.Quantity += quantity;
+                await db.SaveChangesAsync();
+            }
+        }
+    }
 
 }
