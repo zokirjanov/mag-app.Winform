@@ -32,7 +32,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             FillData();
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Turquoise;
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
-
         }
 
 
@@ -102,13 +101,12 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
+
+        string filterField = "Id";
         private async void textBox1_TextChanged(object sender, EventArgs e)
         {
-
-            DataView dv = new DataView();
-            dv.RowFilter = "check LIKE  '" + textBox1.Text + "%'";
-            dataGridView1.DataSource= dv;
-         
+            var filterText = textBox1.Text;
+            saleDetailsViewModelBindingSource.Filter = string.Format("[{0}] LIKE '%{1}%'", filterField, filterText);
         }
     }
 }
