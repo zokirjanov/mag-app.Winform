@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.saleDetailsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,8 +55,6 @@
             this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleDetailsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleDetailsViewModelBindingSource)).BeginInit();
@@ -109,6 +109,7 @@
             this.textBox1.PlaceholderText = "check number";
             this.textBox1.Size = new System.Drawing.Size(174, 23);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridView1
             // 
@@ -146,10 +147,18 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
+            // saleDetailsViewModelBindingSource
+            // 
+            this.saleDetailsViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleDetailsViewModel);
+            // 
+            // saleGlobalViewModelBindingSource
+            // 
+            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "№ Чек";
+            this.Id.HeaderText = "check";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Width = 70;
@@ -260,14 +269,6 @@
             this.IsReturned.ReadOnly = true;
             this.IsReturned.Visible = false;
             // 
-            // saleDetailsViewModelBindingSource
-            // 
-            this.saleDetailsViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleDetailsViewModel);
-            // 
-            // saleGlobalViewModelBindingSource
-            // 
-            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
-            // 
             // Return_Check
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -297,6 +298,8 @@
         private BindingSource saleDetailsViewModelBindingSource;
         private Label label1;
         public DataGridView dataGridView1;
+        private Label label2;
+        private Panel panel2;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn storeIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn storeNameDataGridViewTextBoxColumn;
@@ -310,7 +313,5 @@
         private DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn IsReturned;
-        private Label label2;
-        private Panel panel2;
     }
 }

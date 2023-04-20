@@ -2,15 +2,11 @@
 using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
-using mag_app.Service.Interfaces.Stores;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Products;
 using mag_app.Service.ViewModels.Stores;
-using mag_app.Winform.Windows.Product_Forms;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks.Dataflow;
-using System.Transactions;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms;
 
@@ -22,7 +18,7 @@ public partial class Return_Product : Form
     public Return_Product()
     {
         _service = new SaleGlobalService();
-        _returnService= new ReturnProductService();
+        _returnService = new ReturnProductService();
         InitializeComponent();
     }
 
@@ -55,16 +51,16 @@ public partial class Return_Product : Form
         {
             saleGlobalViewModelBindingSource.Add(new SaleGlobalViewModel()
             {
-                Id= i.Id,
+                Id = i.Id,
                 Barcode = i.Barcode,
                 Category = i.Category,
                 SubCategory = i.SubCategory,
                 ProductName = i.ProductName,
                 Quantity = i.Quantity,
-                TotalPrice= i.TotalPrice,
+                TotalPrice = i.TotalPrice,
                 Price = i.Price,
                 DiscountPrice = i.DiscountPrice,
-                IsReturned= i.IsReturned,
+                IsReturned = i.IsReturned,
             });
         }
         CompareList();
@@ -76,7 +72,7 @@ public partial class Return_Product : Form
     {
         foreach (DataGridViewRow row in dataGridView1.Rows)
         {
-            if (row.Cells[10].Value != null) 
+            if (row.Cells[10].Value != null)
             {
                 row.DefaultCellStyle.ForeColor = Color.DarkGray;
             }
@@ -104,11 +100,11 @@ public partial class Return_Product : Form
 
     private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.ColumnIndex == 6 && e.RowIndex >= 0) 
+        if (e.ColumnIndex == 6 && e.RowIndex >= 0)
         {
             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            MaxQuantity= Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
-            dataGridView1.BeginEdit(true); 
+            MaxQuantity = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
+            dataGridView1.BeginEdit(true);
         }
     }
 
@@ -132,6 +128,7 @@ public partial class Return_Product : Form
 
 
 
+
     private void textBox_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
@@ -150,7 +147,8 @@ public partial class Return_Product : Form
     }
 
 
-   
+
+
 
     private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
     {
@@ -194,7 +192,7 @@ public partial class Return_Product : Form
                     checkBoxCell.Value = true;
                 }
             }
-            
+
         }
     }
 
@@ -264,13 +262,14 @@ public partial class Return_Product : Form
         if (cnt == count)
         {
             MessageBox.Show($"Товары были успешно возвращены.\nОбщая сумма возврата: {totalReturn}", "Возврат товаров", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Return_Check.Instance.dataGridView1.Rows.Clear();
             Return_Check.Instance.FillData();
             this.Close();
         }
     }
 
 
-  
+
 
     private async Task Return_SaleGlobalAsync(ReturnProduct product)
     {
@@ -291,7 +290,7 @@ public partial class Return_Product : Form
             {
                 await Return_SaleDetailAsync(result);
                 await Return_TabProductAsync(result.ProductId, product.Quantity);
-                
+
             }
         }
     }
@@ -309,7 +308,7 @@ public partial class Return_Product : Form
 
             if (result != null)
             {
-                result.TotalSalePrice  -=  totalReturn;
+                result.TotalSalePrice -= totalReturn;
                 result.IsReturned = product.IsReturned;
                 await db.SaveChangesAsync();
             }
@@ -334,4 +333,10 @@ public partial class Return_Product : Form
         }
     }
 
+    string filterField = "ProductName";
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+        var filterText = textBox1.Text;
+        saleGlobalViewModelBindingSource.Filter = string.Format("[{0}] LIKE '%{1}%'", filterField, filterText);
+    }
 }

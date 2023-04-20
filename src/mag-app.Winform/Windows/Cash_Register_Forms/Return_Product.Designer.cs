@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -48,7 +49,6 @@
             this.SaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).BeginInit();
@@ -68,6 +68,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(945, 77);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(237, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(470, 23);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "продукты для возврата";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -115,6 +125,7 @@
             this.textBox1.PlaceholderText = "Search";
             this.textBox1.Size = new System.Drawing.Size(186, 23);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridView1
             // 
@@ -235,16 +246,6 @@
             // saleGlobalViewModelBindingSource
             // 
             this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(237, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(470, 23);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "продукты для возврата";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Return_Product
             // 
