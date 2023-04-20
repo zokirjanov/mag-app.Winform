@@ -19,6 +19,7 @@ namespace mag_app.Service.ViewModels.Products
         public long SaleGlobalId { get; set; }
         public string SgName { get; set; }
         public decimal Return { get; set; }
+        public decimal SgProductPrice { get; set; }
         public decimal ReturnedPrice { get; set; }
         public DateTime ReturnDate { get; set; }
 
@@ -30,8 +31,9 @@ namespace mag_app.Service.ViewModels.Products
                 Category = product.Category,
                 SubCategory = product.SubCastegory,
                 SaleGlobalId= product.SaleGlobalId,
-                SgName= product.SgName,
+                SgProductName= product.SgName,
                 Quantity= product.Return,
+                SgProductPrice= product.SgProductPrice,
                 ReturnedPrice= product.ReturnedPrice,
                 ReturnDate = TimeHelper.CurrentTime(),
             };

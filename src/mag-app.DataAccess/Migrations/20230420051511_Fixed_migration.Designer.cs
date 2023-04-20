@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mag_app.DataAccess.DbContexts;
 
@@ -10,9 +11,10 @@ using mag_app.DataAccess.DbContexts;
 namespace mag_app.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230420051511_Fixed_migration")]
+    partial class Fixed_migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.12");
@@ -264,10 +266,6 @@ namespace mag_app.DataAccess.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(10);
 
-                    b.Property<long?>("IsReturned")
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(14);
-
                     b.Property<string>("PaymentType")
                         .HasColumnType("TEXT")
                         .HasColumnOrder(5);
@@ -324,10 +322,6 @@ namespace mag_app.DataAccess.Migrations
                     b.Property<decimal?>("DiscountPrice")
                         .HasColumnType("TEXT")
                         .HasColumnOrder(11);
-
-                    b.Property<long?>("IsReturned")
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(12);
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT")
@@ -426,6 +420,10 @@ namespace mag_app.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnOrder(5);
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(9);
 
                     b.Property<string>("Subcategory")
                         .IsRequired()

@@ -50,11 +50,19 @@ namespace mag_app.Service.Services.StoreService
         }
 
 
+        public async Task<List<TabProduct>> GetAll_WithTabAsync(long Tid)
+        {
+            var result = await tabRepository.GetAllAsync(x=>x.TabControllerId == Tid);
+            if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
+            else return null;
+        }
 
 
         public async Task<List<TabProduct>> GetAllAsync(long tId)
         {
-            var result = await tabRepository.GetAllAsync(x=>x.TabControllerId == tId);
+            var db = new AppDbContext();
+
+            var result = await db.Tabproducts.Where(x => x.TabControllerId == tId).Include(x => x.AllProduct).ToListAsync();
             if (result is not null) return result.OrderByDescending(x => x.Id).ToList();
             else return null;
         }
@@ -65,28 +73,6 @@ namespace mag_app.Service.Services.StoreService
         public async Task<TabProduct> GetAsync(string barcode)
         {
             return await tabRepository.FirstOrDefaultAsync(x => x.AllProduct.Barcode == barcode);
-        }
-
-
-
-
-
-        public async Task<bool> UpdateAsync(string barcode, decimal qnt)
-        {
-            using (var context = new AppDbContext())
-            {
-                var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == barcode);
-
-                foreach (var product in productsToUpdate)
-                {
-                    product.Quantity -= qnt;
-                }
-
-                await context.SaveChangesAsync();
-
-                return true;
-            }
-            return false;
         }
     }
 }

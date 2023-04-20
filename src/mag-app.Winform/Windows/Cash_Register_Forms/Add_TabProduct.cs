@@ -69,7 +69,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
         private async void CompareList()
         {
-            var addedProducts = await _tabService.GetAllAsync(Cash_Register_Main.cashRegisterMainParent.TabId);
+            var addedProducts = await _tabService.GetAll_WithTabAsync(Cash_Register_Main.cashRegisterMainParent.TabId);
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -104,7 +104,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     TabControllerId = TabId,
                     TabControllerName = TabName,
                     Barcode = row.Cells[0].Value.ToString(),
-                    Quantity = Convert.ToInt64(row.Cells[8].Value)
                 };
 
                 var result = await _tabService.CreateAsync(tabProductViewModel);

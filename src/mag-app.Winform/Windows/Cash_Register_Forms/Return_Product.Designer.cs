@@ -30,20 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleGlobalViewModelBindingSource)).BeginInit();
@@ -52,6 +57,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
@@ -60,6 +68,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(945, 77);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(34, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "- возвращенные продукты";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel2.Location = new System.Drawing.Point(12, 47);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(20, 20);
+            this.panel2.TabIndex = 3;
             // 
             // checkBox1
             // 
@@ -84,7 +110,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 45);
+            this.textBox1.Location = new System.Drawing.Point(385, 43);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Search";
             this.textBox1.Size = new System.Drawing.Size(186, 23);
@@ -106,10 +132,12 @@
             this.categoryDataGridViewTextBoxColumn,
             this.subCategoryDataGridViewTextBoxColumn,
             this.productNameDataGridViewTextBoxColumn,
+            this.Price,
             this.quantityDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
             this.discountPriceDataGridViewTextBoxColumn,
-            this.SaleId});
+            this.SaleId,
+            this.IsReturned});
             this.dataGridView1.DataSource = this.saleGlobalViewModelBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 77);
@@ -124,10 +152,6 @@
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            // 
-            // saleGlobalViewModelBindingSource
-            // 
-            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
             // 
             // select
             // 
@@ -167,6 +191,13 @@
             this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
             this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "цена по-шт";
+            this.Price.Name = "Price";
+            this.Price.Width = 90;
+            // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
@@ -175,7 +206,7 @@
             // 
             // priceDataGridViewTextBoxColumn
             // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
             this.priceDataGridViewTextBoxColumn.HeaderText = "Общая стоимость";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             this.priceDataGridViewTextBoxColumn.ReadOnly = true;
@@ -193,6 +224,27 @@
             this.SaleId.HeaderText = "SaleId";
             this.SaleId.Name = "SaleId";
             this.SaleId.Visible = false;
+            // 
+            // IsReturned
+            // 
+            this.IsReturned.DataPropertyName = "IsReturned";
+            this.IsReturned.HeaderText = "IsReturned";
+            this.IsReturned.Name = "IsReturned";
+            this.IsReturned.Visible = false;
+            // 
+            // saleGlobalViewModelBindingSource
+            // 
+            this.saleGlobalViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleGlobalViewModel);
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(237, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(470, 23);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "продукты для возврата";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Return_Product
             // 
@@ -227,9 +279,14 @@
         private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn subCategoryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn discountPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn SaleId;
+        private DataGridViewTextBoxColumn IsReturned;
+        private Label label1;
+        private Panel panel2;
+        private Label label2;
     }
 }

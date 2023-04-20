@@ -62,6 +62,11 @@ namespace mag_app.Domain.Entities.Stores
 
         [Column(Order = 13)]
         public string StoreName { get; set; }
+
+
+        [Column(Order = 14)]
+        public long? IsReturned { get; set; }
+
         public virtual ICollection<SaleGlobal> SaleDetails { get; set; }
 
     }

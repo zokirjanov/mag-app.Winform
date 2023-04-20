@@ -117,17 +117,17 @@ public partial class Quick_Pass : Form
 
                     await _product.UpdateAsync(productViewModel);
 
-                    using (var context = new AppDbContext())
-                    {
-                        var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == labelBarcode.Text);
+                    //using (var context = new AppDbContext())
+                    //{
+                    //    var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == labelBarcode.Text);
 
-                        foreach (var product in productsToUpdate)
-                        {
-                            product.Quantity += Convert.ToInt32(productQuantity.Value);
-                        }
+                    //    foreach (var product in productsToUpdate)
+                    //    {
+                    //        product.Quantity += Convert.ToInt32(productQuantity.Value);
+                    //    }
 
-                        await context.SaveChangesAsync();
-                    }
+                    //    await context.SaveChangesAsync();
+                    //}
 
 
 

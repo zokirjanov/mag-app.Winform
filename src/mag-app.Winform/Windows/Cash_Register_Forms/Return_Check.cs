@@ -10,13 +10,14 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
     public partial class Return_Check : Form
     {
-
+        public static Return_Check Instance;
         SaleDetailsService _service;
         int indexRow = 0;
 
 
         public Return_Check()
         {
+            Instance =  this;
             _service = new SaleDetailsService();
             InitializeComponent();
         }
@@ -41,6 +42,7 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         public async void FillData()
         {
             saleGlobalViewModelBindingSource.Clear();
+            dataGridView1.Rows.Clear(); 
             var products = await _service.GetAllAsync();
 
             foreach (var i in products)
@@ -55,12 +57,26 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     TotalSale = i.TotalSalePrice,
                     Change = i.change,
                     Discount = i.DiscountPrice,
-                    TransactionDate = i.TransactionDate
+                    TransactionDate = i.TransactionDate,
+                    IsReturned= i.IsReturned,
                 });
             }
+            CompareList();
             dataGridView1.ClearSelection();
         }
 
+
+
+        private async void CompareList()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[12].Value != null)
+                {
+                    row.DefaultCellStyle.ForeColor = Color.DarkGray;
+                }
+            }
+        }
 
 
 

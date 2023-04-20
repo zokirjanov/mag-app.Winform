@@ -35,18 +35,20 @@ namespace mag_app.Domain.Entities.Products
 
 
         [Column(Order = 5)]
-        public string SgName { get; set; }
-
+        public string SgProductName { get; set; }
 
         [Column(Order =6)]
+        public decimal SgProductPrice { get; set; }
+
+        [Column(Order =7)]
         public decimal Quantity { get; set; }
 
 
-        [Column(Order =7)]
+        [Column(Order =8)]
         public decimal ReturnedPrice { get; set; }
 
 
-        [Column(Order =8)]
+        [Column(Order =9)]
         public DateTime ReturnDate { get; set; }
     }
 }
