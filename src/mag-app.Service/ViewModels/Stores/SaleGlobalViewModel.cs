@@ -24,7 +24,7 @@ namespace mag_app.Service.ViewModels.Stores
         public decimal Quantity { get; set; }
 
         public decimal Price { get; set; }
-
+        public decimal TotalPrice  { get; set; }
         public decimal? DiscountPrice { get; set; }
         public string Barcode { get; set; }
 
@@ -39,6 +39,7 @@ namespace mag_app.Service.ViewModels.Stores
                 SubCategory= saleGlobalViewModel.SubCategory,
                 Quantity = saleGlobalViewModel.Quantity,
                 Price= saleGlobalViewModel.Price,
+                TotalPrice= saleGlobalViewModel.TotalPrice,
                 DiscountPrice= saleGlobalViewModel.DiscountPrice,
                 Barcode = saleGlobalViewModel.Barcode
             };

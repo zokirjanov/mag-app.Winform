@@ -55,6 +55,7 @@ public partial class Return_Product : Form
                 SubCategory = i.SubCategory,
                 ProductName = i.ProductName,
                 Quantity = i.Quantity,
+                TotalPrice= i.TotalPrice,
                 Price = i.Price,
                 DiscountPrice = i.DiscountPrice,
             });
@@ -83,7 +84,7 @@ public partial class Return_Product : Form
 
     private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.ColumnIndex == 5 && e.RowIndex >= 0) 
+        if (e.ColumnIndex == 6 && e.RowIndex >= 0) 
         {
             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
             MaxQuantity= Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
@@ -96,7 +97,7 @@ public partial class Return_Product : Form
 
     private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
     {
-        if (dataGridView1.CurrentCell.ColumnIndex == 5)
+        if (dataGridView1.CurrentCell.ColumnIndex == 6)
         {
             TextBox textBox = e.Control as TextBox;
 
@@ -133,7 +134,7 @@ public partial class Return_Product : Form
 
     private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
     {
-        if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+        if (e.ColumnIndex == 6 && e.RowIndex >= 0)
         {
             DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
             string oldValue = cell.Value != null ? cell.Value.ToString() : "";
@@ -160,7 +161,7 @@ public partial class Return_Product : Form
 
     private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+        if (e.ColumnIndex == 6 && e.RowIndex >= 0)
         {
             DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
             cell.Style.ForeColor = dataGridView1.DefaultCellStyle.ForeColor;
@@ -174,7 +175,6 @@ public partial class Return_Product : Form
                 }
             }
         }
-
     }
 
 
@@ -196,6 +196,9 @@ public partial class Return_Product : Form
     }
 
 
+
+
+
     private async  void ReturnAll()
     {
         int count = dataGridView1.Rows.Cast<DataGridViewRow>()
@@ -214,8 +217,9 @@ public partial class Return_Product : Form
                     SubCastegory = row.Cells[3].Value.ToString(),
                     SaleGlobalId = Convert.ToInt64(row.Cells[8].Value),
                     SgName = row.Cells[4].Value.ToString(),
-                    Return = Convert.ToDecimal(row.Cells[5].Value),
-                    ReturnedPrice = (Convert.ToDecimal(row.Cells[5].Value) * Convert.ToDecimal(row.Cells[6].Value)),
+                    SgProductPrice= Convert.ToInt64(row.Cells[5].Value),
+                    Return = Convert.ToDecimal(row.Cells[6].Value),
+                    ReturnedPrice = (Convert.ToDecimal(row.Cells[5].Value) * Convert.ToDecimal(row.Cells[7].Value)),
                     ReturnDate = TimeHelper.CurrentTime()
                 };
 
@@ -232,4 +236,6 @@ public partial class Return_Product : Form
             this.Close();
         }
     }
+
+
 }

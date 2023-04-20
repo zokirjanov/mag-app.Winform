@@ -128,7 +128,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                             Category = item.Category,
                             SubCategory= item.SubCategory,
                             Quantity = item.Quantity,
-                            Price = item.TotalCost,
+                            Price = item.Cost,
+                            TotalPrice = item.TotalCost,
                             DiscountPrice = item.Discount,
                             Barcode = item.Barcode
                         };

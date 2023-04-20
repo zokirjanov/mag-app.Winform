@@ -51,8 +51,10 @@ namespace mag_app.Domain.Entities.Stores
         [Column(Order = 9)]
         public decimal Price { get; set; }
 
-
         [Column(Order = 10)]
+        public decimal TotalPrice { get; set; }
+
+        [Column(Order = 11)]
         public decimal? DiscountPrice { get; set; }
 
 

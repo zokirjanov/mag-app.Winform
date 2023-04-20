@@ -40,6 +40,7 @@
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +107,7 @@
             this.categoryDataGridViewTextBoxColumn,
             this.subCategoryDataGridViewTextBoxColumn,
             this.productNameDataGridViewTextBoxColumn,
+            this.Price,
             this.quantityDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
             this.discountPriceDataGridViewTextBoxColumn,
@@ -167,6 +169,13 @@
             this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
             this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "цена по-шт";
+            this.Price.Name = "Price";
+            this.Price.Width = 90;
+            // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
@@ -175,7 +184,7 @@
             // 
             // priceDataGridViewTextBoxColumn
             // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
             this.priceDataGridViewTextBoxColumn.HeaderText = "Общая стоимость";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             this.priceDataGridViewTextBoxColumn.ReadOnly = true;
@@ -227,6 +236,7 @@
         private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn subCategoryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn discountPriceDataGridViewTextBoxColumn;
