@@ -3,8 +3,7 @@ using mag_app.Service.Interfaces.Stores;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Stores;
-
-
+using System.Data;
 
 namespace mag_app.Winform.Windows.Cash_Register_Forms
 {
@@ -13,6 +12,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
         public static Return_Check Instance;
         SaleDetailsService _service;
         int indexRow = 0;
+
+
 
 
         public Return_Check()
@@ -31,9 +32,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
             FillData();
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Turquoise;
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+
         }
-
-
 
 
 
@@ -67,7 +67,10 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
 
 
 
-        private async void CompareList()
+
+
+
+        public async void CompareList()
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -77,6 +80,8 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 }
             }
         }
+
+
 
 
 
@@ -92,6 +97,18 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                 return_Product.Id = Convert.ToInt64(row.Cells[0].Value.ToString());
                 return_Product.ShowDialog();
             }
+        }
+
+
+
+
+        private async void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            DataView dv = new DataView();
+            dv.RowFilter = "check LIKE  '" + textBox1.Text + "%'";
+            dataGridView1.DataSource= dv;
+         
         }
     }
 }
