@@ -57,12 +57,26 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     TotalSale = i.TotalSalePrice,
                     Change = i.change,
                     Discount = i.DiscountPrice,
-                    TransactionDate = i.TransactionDate
+                    TransactionDate = i.TransactionDate,
+                    IsReturned= i.IsReturned,
                 });
             }
+            CompareList();
             dataGridView1.ClearSelection();
         }
 
+
+
+        private async void CompareList()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[12].Value != null)
+                {
+                    row.DefaultCellStyle.ForeColor = Color.DarkGray;
+                }
+            }
+        }
 
 
 

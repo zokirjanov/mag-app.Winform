@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -50,6 +52,7 @@
             this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleDetailsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saleGlobalViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
@@ -61,6 +64,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -68,6 +73,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(945, 58);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(31, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(235, 19);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "- Чеки с возвращенными товарами";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel2.Location = new System.Drawing.Point(9, 32);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(20, 20);
+            this.panel2.TabIndex = 5;
             // 
             // label1
             // 
@@ -81,7 +104,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 29);
+            this.textBox1.Location = new System.Drawing.Point(759, 28);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "check number";
             this.textBox1.Size = new System.Drawing.Size(174, 23);
@@ -109,7 +132,8 @@
             this.totalSaleDataGridViewTextBoxColumn,
             this.changeDataGridViewTextBoxColumn,
             this.discountDataGridViewTextBoxColumn,
-            this.transactionDateDataGridViewTextBoxColumn});
+            this.transactionDateDataGridViewTextBoxColumn,
+            this.IsReturned});
             this.dataGridView1.DataSource = this.saleDetailsViewModelBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 58);
@@ -228,6 +252,14 @@
             this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
             this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // IsReturned
+            // 
+            this.IsReturned.DataPropertyName = "IsReturned";
+            this.IsReturned.HeaderText = "IsReturned";
+            this.IsReturned.Name = "IsReturned";
+            this.IsReturned.ReadOnly = true;
+            this.IsReturned.Visible = false;
+            // 
             // saleDetailsViewModelBindingSource
             // 
             this.saleDetailsViewModelBindingSource.DataSource = typeof(mag_app.Service.ViewModels.Stores.SaleDetailsViewModel);
@@ -263,6 +295,8 @@
         private BindingSource saleGlobalViewModelBindingSource;
         private TextBox textBox1;
         private BindingSource saleDetailsViewModelBindingSource;
+        private Label label1;
+        public DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn storeIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn storeNameDataGridViewTextBoxColumn;
@@ -275,7 +309,8 @@
         private DataGridViewTextBoxColumn changeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
-        private Label label1;
-        public DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn IsReturned;
+        private Label label2;
+        private Panel panel2;
     }
 }

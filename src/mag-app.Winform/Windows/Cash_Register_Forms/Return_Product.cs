@@ -2,6 +2,7 @@
 using mag_app.Domain.Entities.Products;
 using mag_app.Domain.Entities.Stores;
 using mag_app.Service.Common.Helpers;
+using mag_app.Service.Interfaces.Stores;
 using mag_app.Service.Services.ProductService;
 using mag_app.Service.Services.StoreService;
 using mag_app.Service.ViewModels.Products;
@@ -63,9 +64,23 @@ public partial class Return_Product : Form
                 TotalPrice= i.TotalPrice,
                 Price = i.Price,
                 DiscountPrice = i.DiscountPrice,
+                IsReturned= i.IsReturned,
             });
         }
+        CompareList();
         dataGridView1.ClearSelection();
+    }
+
+
+    private async void CompareList()
+    {
+        foreach (DataGridViewRow row in dataGridView1.Rows)
+        {
+            if (row.Cells[10].Value != null) 
+            {
+                row.DefaultCellStyle.ForeColor = Color.DarkGray;
+            }
+        }
     }
 
 
@@ -153,7 +168,7 @@ public partial class Return_Product : Form
                 if (newDecimalValue > oldDecimalValue)
                 {
                     e.Cancel = true;
-                    MessageBox.Show($"Новое значение не может быть больше старого  ({MaxQuantity})");
+                    MessageBox.Show($"Новое значение не может быть больше старого  ({oldDecimalValue})");
                     cell.Style.ForeColor = Color.Red;
                 }
             }
@@ -240,7 +255,7 @@ public partial class Return_Product : Form
             var result = await _returnService.CreateProductAsync(product);
             if (result != null)
             {
-                totalReturn = result.ReturnedPrice;
+                totalReturn += result.ReturnedPrice;
                 await Return_SaleGlobalAsync(result);
                 cnt++;
             }
@@ -249,7 +264,6 @@ public partial class Return_Product : Form
         if (cnt == count)
         {
             MessageBox.Show($"Товары были успешно возвращены.\nОбщая сумма возврата: {totalReturn}", "Возврат товаров", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
             Return_Check.Instance.FillData();
             this.Close();
         }
@@ -269,13 +283,14 @@ public partial class Return_Product : Form
                 decimal cnt = result.Quantity - product.Quantity;
                 result.Quantity = cnt;
                 result.TotalPrice = cnt * result.Price;
+                result.IsReturned = product.Id;
 
                 res = await db.SaveChangesAsync();
             }
             if (res != 0)
             {
-                await Return_SaleDetailAsync(result.SaleId);
-  //              await Return_TabProductAsync(result.ProductId, product.Quantity);
+                await Return_SaleDetailAsync(result);
+                await Return_TabProductAsync(result.ProductId, product.Quantity);
                 
             }
         }
@@ -286,15 +301,16 @@ public partial class Return_Product : Form
 
 
 
-    private async Task Return_SaleDetailAsync(long Id)
+    private async Task Return_SaleDetailAsync(SaleGlobal product)
     {
         using (var db = new AppDbContext())
         {
-            var result = await db.SaleDetails.FirstOrDefaultAsync(x => x.Id == Id);
+            var result = await db.SaleDetails.FirstOrDefaultAsync(x => x.Id == product.SaleId);
 
             if (result != null)
             {
                 result.TotalSalePrice  -=  totalReturn;
+                result.IsReturned = product.IsReturned;
                 await db.SaveChangesAsync();
             }
         }
@@ -305,17 +321,17 @@ public partial class Return_Product : Form
 
 
 
-    //private async Task Return_TabProductAsync(long id,  decimal quantity)
-    //{
-    //    using (var db = new AppDbContext())
-    //    {
-    //        var result = await db.Tabproducts.FirstOrDefaultAsync(x => x.Id == id);
-    //        if (result != null)
-    //        {
-    //            result.Quantity += quantity;
-    //            await db.SaveChangesAsync();
-    //        }
-    //    }
-    //}
+    private async Task Return_TabProductAsync(long id, decimal quantity)
+    {
+        using (var db = new AppDbContext())
+        {
+            var result = await db.AllProducts.FirstOrDefaultAsync(x => x.Id == id);
+            if (result != null)
+            {
+                result.Quantity += quantity;
+                await db.SaveChangesAsync();
+            }
+        }
+    }
 
 }

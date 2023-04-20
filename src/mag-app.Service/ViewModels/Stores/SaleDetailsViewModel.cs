@@ -36,6 +36,7 @@ namespace mag_app.Service.ViewModels.Stores
         public decimal Change { get; set; }
 
         public decimal? Discount { get; set; }
+        public long? IsReturned { get; set; }
 
         public static implicit operator SaleDetail(SaleDetailsViewModel saleDetailsViewModel)
         {
@@ -52,7 +53,8 @@ namespace mag_app.Service.ViewModels.Stores
                 CardAmount= saleDetailsViewModel.CardAmount,    
                 CashAmount= saleDetailsViewModel.CashAmount,
                 change= saleDetailsViewModel.Change,
-                DiscountPrice = saleDetailsViewModel.Discount
+                DiscountPrice = saleDetailsViewModel.Discount,
+                IsReturned= saleDetailsViewModel.IsReturned,
             };
         }
     }

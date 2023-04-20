@@ -36,7 +36,6 @@ namespace mag_app.Domain.Entities.Stores
         public string? ProductName { get; set; } = string.Empty;
 
 
-
         [Column(Order = 7)]
         public long SaleId { get; set; }
         [ForeignKey("SaleId")]
@@ -57,6 +56,9 @@ namespace mag_app.Domain.Entities.Stores
         [Column(Order = 11)]
         public decimal? DiscountPrice { get; set; }
 
+
+        [Column(Order = 12)]
+        public long? IsReturned { get; set; }
 
         public virtual ICollection<ReturnProduct> ReturnProducts { get; set; }
 
