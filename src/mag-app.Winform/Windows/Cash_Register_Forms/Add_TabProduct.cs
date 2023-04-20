@@ -104,7 +104,6 @@ namespace mag_app.Winform.Windows.Cash_Register_Forms
                     TabControllerId = TabId,
                     TabControllerName = TabName,
                     Barcode = row.Cells[0].Value.ToString(),
-                    Quantity = Convert.ToInt64(row.Cells[8].Value)
                 };
 
                 var result = await _tabService.CreateAsync(tabProductViewModel);

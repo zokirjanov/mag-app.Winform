@@ -71,22 +71,22 @@ namespace mag_app.Service.Services.StoreService
 
 
 
-        public async Task<bool> UpdateAsync(string barcode, decimal qnt)
-        {
-            using (var context = new AppDbContext())
-            {
-                var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == barcode);
+        //public async Task<bool> UpdateAsync(string barcode, decimal qnt)
+        //{
+        //    using (var context = new AppDbContext())
+        //    {
+        //        var productsToUpdate = context.Tabproducts.Where(p => p.Barcode == barcode);
 
-                foreach (var product in productsToUpdate)
-                {
-                    product.Quantity -= qnt;
-                }
+        //        foreach (var product in productsToUpdate)
+        //        {
+        //            product.Quantity -= qnt;
+        //        }
 
-                await context.SaveChangesAsync();
+        //        await context.SaveChangesAsync();
 
-                return true;
-            }
-            return false;
-        }
+        //        return true;
+        //    }
+        //    return false;
+        //}
     }
 }

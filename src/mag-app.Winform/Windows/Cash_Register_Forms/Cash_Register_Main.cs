@@ -332,7 +332,7 @@ public partial class Cash_Register_Main : Form
                 Quantity = 1,
                 TotalCost = product.Price,
                 Barcode = product.Barcode,
-                maxQ = product.Quantity,
+                maxQ = product.AllProduct.Quantity,
                 ProductId = product.ProductId,
                 Category = product.Category,
                 SubCategory = product.Subcategory

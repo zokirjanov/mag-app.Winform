@@ -48,14 +48,6 @@ namespace mag_app.Domain.Entities.Stores
 
         [Column(Order =8)]
         public decimal Price { get; set; }
-        [Column(Order =9)]
-        public decimal Quantity { get; set; }
-
-
-
-
-
-
 
     }
 }
